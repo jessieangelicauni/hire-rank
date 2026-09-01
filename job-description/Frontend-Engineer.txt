@@ -1,0 +1,14 @@
+Frontend Engineer
+Our product team is looking for a Frontend Engineer to build responsive, accessible web applications used by thousands of customers daily. You'll collaborate with designers and backend engineers to ship polished user experiences.
+
+What we're looking for:
+- Solid experience with React (hooks, component composition patterns) and TypeScript.
+- Experience with server-side rendering and routing via Next.js (App Router).
+- Understanding of state management patterns (Redux Toolkit or Zustand) and server-state tooling (TanStack Query).
+- Proficiency with Tailwind CSS for utility-first styling.
+- Comfortable working with REST or GraphQL APIs.
+- Experience with build tooling such as Vite, and testing with Jest, React Testing Library, and Playwright.
+- Fluent written and spoken English for daily collaboration with a distributed team.
+- Experience with responsive design and cross-browser compatibility.
+- A good eye for UI/UX detail and experience collaborating with design tools like Figma.
+- Advantageous: experience with Next.js, Go, testing libraries (Jest, React Testing Library), and CI/CD pipelines.

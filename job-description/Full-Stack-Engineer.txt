@@ -1,0 +1,13 @@
+Full-Stack Engineer
+We are a fast-growing fintech startup looking for a Full-Stack Engineer who can move comfortably between frontend and backend work. You'll own features end-to-end, from database schema to the final UI polish.
+
+Requirements:
+- Proficiency in TypeScript across both React or Next.js (frontend) and Node.js (backend, Express or NestJS).
+- Experience designing and consuming REST APIs.
+- Working knowledge of PostgreSQL and ORMs such as Prisma.
+- Comfortable with Git-based workflows and code review.
+- Experience with Docker for containerized development and deployment.
+- Experience deploying applications to cloud platforms such as AWS or GCP.
+- Familiarity with CI/CD pipelines (GitHub Actions).
+- A pragmatic, product-minded approach to engineering trade-offs.
+- Nice to have: experience with Stripe payment integrations and Kubernetes.

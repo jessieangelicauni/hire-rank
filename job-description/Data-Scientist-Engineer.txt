@@ -1,0 +1,11 @@
+Data Scientist / Machine Learning Engineer
+We're building predictive and generative models that directly influence business decisions, and we need a Data Scientist / ML Engineer to take them from prototype to production.
+
+Requirements:
+- Strong background in Python, with experience using Scikit-learn, PyTorch, or TensorFlow.
+- Comfortable working with SQL for data exploration and feature engineering.
+- Experience fine-tuning and serving Large Language Models, including techniques such as LoRA/PEFT and prompt engineering.
+- Familiarity with LLM application frameworks (LangChain or LlamaIndex) and vector databases (Pinecone, or pgvector) for retrieval-augmented generation.
+- Experience deploying ML models to production, including MLOps practices (model versioning with MLflow, monitoring, CI/CD for ML).
+- Solid grounding in deep learning and NLP fundamentals, especially transformer-based architectures (Hugging Face Transformers).
+- Master's degree in Computer Science, Statistics, or a related field preferred, but strong practical experience will also be considered.

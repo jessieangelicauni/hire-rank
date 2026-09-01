@@ -1,0 +1,13 @@
+Data Engineer
+We're looking for a Data Engineer to design and maintain the data pipelines that feed our analytics and machine learning teams. You'll work with large, messy datasets and turn them into reliable, well-modeled data products.
+
+Requirements:
+- Strong SQL skills and experience building ETL/ELT pipelines using tools such as Airflow, Dagster, and dbt.
+- Proficiency in Python for data processing (Pandas, PySpark).
+- Hands-on experience with distributed data processing (Apache Spark, Redis) and cloud data warehouses (Snowflake, BigQuery, or Redshift).
+- Understanding of data modeling concepts (star schema, slowly changing dimensions) and data warehousing best practices.
+- Experience working with streaming data (Kafka).
+- Comfortable with Docker and Kubernetes for containerized pipeline deployments.
+- Experience with Power BI, AS400, SQL, MySQL, PostgreSQL, version control (Git) and CI/CD for data pipelines.
+- Nice to have: experience with Terraform for infrastructure as code, Databricks, and data quality/testing frameworks (Great Expectations).
+- Bachelor's degree in Computer Science, Engineering, or a related quantitative field.

@@ -1,0 +1,13 @@
+Cloud Engineer
+We're looking for a Cloud Engineer to design, provision, and operate the cloud infrastructure our products run on. You'll partner with product and platform teams to build environments that are secure, cost-efficient, and ready to scale.
+
+What you'll need:
+- Hands-on experience architecting and operating workloads on a major cloud provider (AWS, GCP, or Azure).
+- Proficiency with Infrastructure as Code (Terraform or CloudFormation) for provisioning and managing cloud resources.
+- Solid understanding of cloud networking (VPC design, load balancing, DNS, and VPN/Direct Connect).
+- Experience with containerized workloads on managed Kubernetes (EKS, GKE, or AKS).
+- Working knowledge of IAM and cloud security best practices (least-privilege access, encryption, security groups).
+- Experience with cost optimization and cloud governance, including budgeting, tagging, and rightsizing resources.
+- Familiarity with CI/CD tooling (GitHub Actions, GitLab CI, or Jenkins) for automating infrastructure and deployments.
+- Experience with configuration management tools (Ansible, Chef, or Puppet) for fleet configuration and drift management.
+- Working knowledge of observability stacks (Prometheus, Grafana, CloudWatch, or Datadog) for monitoring, alerting, and incident response.

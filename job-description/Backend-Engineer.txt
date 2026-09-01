@@ -1,0 +1,13 @@
+Backend Engineer
+We're hiring a Backend Engineer to help build and scale the services powering our e-commerce platform. You'll work closely with product and frontend teams to design APIs, optimize database performance, and keep our systems reliable as we grow.
+
+Requirements:
+- 3+ years of experience building backend services in Node.js and TypeScript or a comparable stack.
+- Strong understanding of RESTful API design; experience with GraphQL is a plus.
+- Experience with relational databases (PostgreSQL preferred) and query optimization.
+- Familiarity with message queues (Kafka) for asynchronous processing.
+- Comfortable writing and maintaining unit and integration tests.
+- Experience with Docker and Kubernetes for container-based deployments.
+- Familiarity with CI/CD pipelines (GitHub Actions) and Linux environments.
+- Nice to have: experience with Redis for caching, JWT-based authentication, and microservices architecture.
+- Bachelor's degree in Computer Science or equivalent practical experience.

@@ -1,0 +1,13 @@
+IT Security Engineer
+We're looking for an IT Security Engineer to protect our infrastructure, applications, and data from evolving threats. You'll work across the stack to identify vulnerabilities, respond to incidents, and keep the company audit-ready.
+
+What you'll need:
+- Experience with vulnerability scanning and management (Nessus or Qualys).
+- Hands-on experience with penetration testing tools (Burp Suite or Metasploit).
+- Familiarity with SIEM platforms (Splunk) for monitoring and threat detection.
+- Experience securing cloud environments (AWS Security Hub, IAM, or Azure Security Center).
+- Solid understanding of Network Security and Firewalls.
+- Scripting ability in Python or Bash for security automation.
+- Familiarity with compliance frameworks (SOC 2 or ISO 27001).
+- Experience with incident response and threat hunting.
+- Advantageous: certifications such as CISSP or CEH.

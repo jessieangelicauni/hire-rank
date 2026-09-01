@@ -1,0 +1,36 @@
+[project]
+name = "candidate-ranking"
+version = "0.1.0"
+description = "LLM-driven agentic candidate ranking research"
+requires-python = ">=3.12"
+dependencies = [
+    "langgraph>=0.2.60",
+    "langgraph-checkpoint-sqlite>=2.0.1",
+    "langchain>=0.3.0",
+    "langchain-ollama>=0.2.0",
+    "pydantic>=2.9.0",
+    "pypdf>=5.1.0",
+    "torch>=2.13.0",
+    "sentence-transformers>=5.7.0",
+    "numpy>=2.5.2",
+    "scipy>=1.14.0",
+    "python-dotenv>=1.2.3",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
+eval = [
+    "ragas>=0.4.3,<0.5",
+    "pandas",
+    # ragas has no upper bound on this; 0.4.2 removed a module ragas 0.4.3 still imports -- see commit 867e713
+    "langchain-community<0.4.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/candidate_ranking"]

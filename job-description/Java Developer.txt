@@ -1,0 +1,14 @@
+Java Developer
+We're looking for a Java Developer to help design and build the backend services powering our platform. You'll work closely with product and platform teams to deliver reliable, well-tested APIs and services.
+
+Requirements:
+- 3+ years of experience building backend applications in Java (17+ preferred).
+- Strong experience with the Spring ecosystem (Spring Boot, Spring Data, Spring Security; Spring Cloud a plus).
+- Solid understanding of RESTful API design and microservices architecture.
+- Experience with relational databases (PostgreSQL or MySQL) via JPA/Hibernate.
+- Familiarity with build tools (Maven or Gradle) and dependency management.
+- Experience writing unit and integration tests with JUnit 5 and Mockito.
+- Comfortable with Docker and container-based deployments to Kubernetes.
+- Familiarity with message brokers (Kafka or RabbitMQ) for asynchronous processing.
+- Nice to have: exposure to reactive programming (Spring WebFlux/Project Reactor) or Kotlin.
+- Bachelor's degree in Computer Science or equivalent practical experience.
