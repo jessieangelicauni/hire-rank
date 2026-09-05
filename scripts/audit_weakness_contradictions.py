@@ -137,6 +137,7 @@ def _run(run_id: str = "20260831-010721") -> dict:
     # and stays sequential on the main thread; only the per-(jd, candidate)
     # assessment work below is fanned out.
     pending: list[tuple] = []
+    original_run_weaknesses_checked = 0
     for jd_id in jd_ids:
         jd = jds_by_id[jd_id]
         jd_skills = load_or_generate_jd_skills(jd, jd_skills_chain, cfg.ollama_model, cfg.cache_dir / "jd_skills.json")
@@ -145,6 +146,7 @@ def _run(run_id: str = "20260831-010721") -> dict:
         for existing in existing_assessments:
             candidate = all_candidates_by_id[existing.candidate_id]
             pending.append((jd, candidate, jd_skills))
+            original_run_weaknesses_checked += len(existing.weaknesses)
 
     events_by_pair: dict[tuple[str, str], list[AttemptEvent]] = {}
     total_weaknesses_checked = 0
@@ -178,12 +180,19 @@ def _run(run_id: str = "20260831-010721") -> dict:
     ragas_report = json.loads((run_dir / "ragas_faithfulness_report.json").read_text(encoding="utf-8"))
     offline_residual = len(ragas_report["weakness_contradictions"])
 
+    # offline_residual (from ragas_faithfulness_report.json) was computed against
+    # the ORIGINAL published run's weaknesses, so its denominator must be that
+    # run's weakness count (original_run_weaknesses_checked), not this replay's
+    # own total_weaknesses_checked -- the two runs' generated text differs (see
+    # "concurrent re-run to match original run's serving conditions" note above:
+    # even at temperature=0, batching-dependent floating-point effects mean a
+    # replay is not guaranteed to reproduce the original run's exact output).
     report = build_report(
         classifications,
         total_weaknesses_checked=total_weaknesses_checked,
         items_dropped=items_dropped,
         offline_residual_contradictions=offline_residual,
-        offline_denominator=total_weaknesses_checked,
+        offline_denominator=original_run_weaknesses_checked,
     )
 
     out_path = run_dir / "weakness_retry_audit_report.json"
