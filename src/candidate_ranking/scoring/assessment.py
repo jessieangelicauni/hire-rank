@@ -134,6 +134,7 @@ def generate_assessment(
     model_name: str,
     jd_skills: JDSkills | None = None,
     skill_embedder: Callable[[list[str]], np.ndarray] | None = None,
+    on_attempt: Callable[[int, list[str], list[str]], None] | None = None,
 ) -> Assessment:
     jd_technical_skills = jd_skills.technical_skills if jd_skills is not None else None
     retry_feedback = ""
@@ -160,6 +161,8 @@ def generate_assessment(
         contradicted, bridged = _find_contradictions(
             result.weaknesses, candidate.skills, jd_technical_skills, skill_embedder
         )
+        if on_attempt is not None:
+            on_attempt(attempt, contradicted, result.weaknesses)
         if not contradicted:
             break
         retry_feedback = _build_retry_feedback(contradicted)

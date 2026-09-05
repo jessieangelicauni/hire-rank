@@ -274,3 +274,52 @@ def test_generate_assessment_keeps_jd_vocab_weakness_unresolved_when_no_embedder
 
     assert chain.calls == 1
     assert assessment.weaknesses == ["No specific mention of RESTful API design."]
+
+
+def test_generate_assessment_calls_on_attempt_hook_once_when_no_retry_needed():
+    result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong Python background."],
+        weaknesses=["No Kubernetes experience noted."],
+    )
+    chain = _SequencedAssessmentChain([result])
+    events = []
+
+    generate_assessment(
+        JD, CANDIDATE, chain, "fake-model",
+        on_attempt=lambda attempt, contradicted, weaknesses: events.append((attempt, contradicted, weaknesses)),
+    )
+
+    assert events == [(0, [], ["No Kubernetes experience noted."])]
+
+
+def test_generate_assessment_calls_on_attempt_hook_for_both_attempts_on_retry():
+    bad_result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong AWS background."],
+        weaknesses=["Lacks experience with Docker."],
+    )
+    good_result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong AWS background."],
+        weaknesses=["Lacks experience with Kubernetes."],
+    )
+    chain = _SequencedAssessmentChain([bad_result, good_result])
+    events = []
+
+    generate_assessment(
+        JD, CANDIDATE_WITH_SKILLS, chain, "fake-model",
+        on_attempt=lambda attempt, contradicted, weaknesses: events.append((attempt, contradicted, weaknesses)),
+    )
+
+    assert len(events) == 2
+    assert events[0] == (0, ["Docker"], ["Lacks experience with Docker."])
+    assert events[1] == (1, [], ["Lacks experience with Kubernetes."])
+
+
+def test_generate_assessment_on_attempt_defaults_to_none_without_error():
+    result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong Python background."], weaknesses=[],
+    )
+    chain = _SequencedAssessmentChain([result])
+
+    assessment = generate_assessment(JD, CANDIDATE, chain, "fake-model")
+
+    assert assessment.strengths == ["Strong Python background."]
