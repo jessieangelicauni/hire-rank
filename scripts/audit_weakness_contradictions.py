@@ -66,3 +66,91 @@ def build_report(
         "offline_audit_denominator": offline_denominator,
         "offline_audit_rate": offline_residual_contradictions / offline_denominator,
     }
+
+
+def _run(run_id: str = "20260831-010721") -> dict:
+    from langchain_ollama import ChatOllama
+
+    from candidate_ranking.config import RunConfig, apply_env_overrides
+    from candidate_ranking.evaluation.evaluation import load_assessment_results
+    from candidate_ranking.ingestion.cv import (
+        build_skill_extraction_chain,
+        enrich_candidates_with_skills,
+        load_candidates,
+    )
+    from candidate_ranking.ingestion.jd import load_job_descriptions
+    from candidate_ranking.scoring.assessment import build_assessment_chain, generate_assessment
+    from candidate_ranking.scoring.jd_skills import build_jd_skills_chain, load_or_generate_jd_skills
+    from candidate_ranking.scoring.skills import build_skill_embedder
+
+    project_root = Path(__file__).resolve().parents[1]
+    cfg = apply_env_overrides(RunConfig.full(project_root))
+    run_dir = cfg.runs_dir / run_id
+
+    manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
+    jd_ids: list[str] = manifest["jd_ids"]
+
+    jds_by_id = {jd.id: jd for jd in load_job_descriptions(cfg.jd_dir)}
+    all_candidates_by_id = {c.id: c for c in load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")}
+
+    llm = ChatOllama(model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx)
+    jd_skills_chain = build_jd_skills_chain(llm)
+    assessment_chain = build_assessment_chain(llm)
+    skill_extraction_chain = build_skill_extraction_chain(llm)
+    skill_embedder = build_skill_embedder(cfg.skill_embedding_model)
+
+    events_by_pair: dict[tuple[str, str], list[AttemptEvent]] = {}
+    total_weaknesses_checked = 0
+    items_dropped = 0
+
+    for jd_id in jd_ids:
+        jd = jds_by_id[jd_id]
+        jd_skills = load_or_generate_jd_skills(jd, jd_skills_chain, cfg.ollama_model, cfg.cache_dir / "jd_skills.json")
+        existing_assessments = load_assessment_results(run_dir, jd_id)
+
+        for existing in existing_assessments:
+            candidate_id = existing.candidate_id
+            candidate = all_candidates_by_id[candidate_id]
+            enriched = enrich_candidates_with_skills(
+                [candidate], skill_extraction_chain, cfg.ollama_model, cfg.cache_dir / "cv_skills.json",
+            )[0]
+
+            pair_key = (jd_id, candidate_id)
+            events_by_pair[pair_key] = []
+
+            def on_attempt(attempt: int, contradicted: list[str], weaknesses: list[str],
+                            _pair_key: tuple[str, str] = pair_key) -> None:
+                events_by_pair[_pair_key].append(
+                    AttemptEvent(_pair_key[0], _pair_key[1], attempt, contradicted, weaknesses)
+                )
+
+            final = generate_assessment(
+                jd, enriched, assessment_chain, cfg.ollama_model,
+                jd_skills=jd_skills, skill_embedder=skill_embedder, on_attempt=on_attempt,
+            )
+            total_weaknesses_checked += len(final.weaknesses)
+            last_attempt_weaknesses = events_by_pair[pair_key][-1].weaknesses
+            items_dropped += max(0, len(last_attempt_weaknesses) - len(final.weaknesses))
+
+    classifications = {pair: classify_pair(events) for pair, events in events_by_pair.items()}
+
+    ragas_report = json.loads((run_dir / "ragas_faithfulness_report.json").read_text(encoding="utf-8"))
+    offline_residual = len(ragas_report["weakness_contradictions"])
+
+    report = build_report(
+        classifications,
+        total_weaknesses_checked=total_weaknesses_checked,
+        items_dropped=items_dropped,
+        offline_residual_contradictions=offline_residual,
+        offline_denominator=total_weaknesses_checked,
+    )
+
+    out_path = run_dir / "weakness_retry_audit_report.json"
+    out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    print(f"Wrote {out_path}")
+    print(json.dumps(report, indent=2))
+    return report
+
+
+if __name__ == "__main__":
+    _run()
