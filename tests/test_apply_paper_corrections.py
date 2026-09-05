@@ -4,6 +4,7 @@ from scripts.apply_paper_corrections import (
     ABSTRACT_TEXT,
     find_paragraph,
     fix_abstract_and_contributions,
+    fix_conclusion_and_limitations,
     fix_experimental_setup_and_table_ii,
     fix_methods_iii_c_d_e,
     insert_paragraph_before,
@@ -320,3 +321,61 @@ def test_insert_results_adds_ranking_failure_table_before_comparison_section():
     assert table.cell(0, 0).text == "Metric"
     assert table.cell(1, 1).text == "1713"
     assert table.cell(4, 1).text == "0"
+
+
+_OLD_CONCLUSION = (
+    "This paper presented three pipeline-level mechanisms for LLM-driven applicant ranking, validated against a "
+    "real, locally-hosted 14-billion-parameter model rather than an undisclosed one. Self-correcting assessment "
+    "generation achieves a 0.0% live skill-contradiction rate (0.6% under independent audit); the "
+    "position-robust tournament completes reliably, with zero unrecovered ranking failures; and adaptive "
+    "iteration scaling settles convergence at Kendall-τ 0.91–0.98 across all ten job profiles, a reproducible "
+    "number the closest prior system's rescaled curve never discloses. Mean Faithfulness reaches 0.896, with "
+    "the residual gap traced to Faithfulness's own architecture rather than generation quality."
+)
+
+_OLD_FUTURE_WORK = (
+    "Building on these results, future work will pursue two directions: 1) human-rater validation — comparing "
+    "this pipeline against independent human-expert rankings using the same protocol as [1]; and 2) an "
+    "independent judge model — sourcing Faithfulness scoring from a separate model than the one used for "
+    "generation, to rule out shared-model bias. Taken together, these mechanisms move an already-strong "
+    "architecture — the LLM listwise tournament with Plackett-Luce aggregation — toward one whose failure modes "
+    "on a real, imperfect local model are documented, fixed, and measured, with the future work above set to "
+    "close the remaining validation gaps."
+)
+
+
+def test_fix_conclusion_renames_independent_audit_and_softens_faithfulness_claim():
+    document = docx.Document()
+    document.add_paragraph(_OLD_CONCLUSION)
+    document.add_paragraph(_OLD_FUTURE_WORK)
+
+    fix_conclusion_and_limitations(document)
+
+    conclusion_text = document.paragraphs[0].text
+    assert "under independent audit" not in conclusion_text
+    assert "0.6%" not in conclusion_text
+    assert "offline post-hoc audit" in conclusion_text
+    assert "0.82%" in conclusion_text
+    assert "traced to Faithfulness's own architecture rather than generation quality" not in conclusion_text
+    assert "cannot rule out that part of the gap reflects genuine generation quality" in conclusion_text
+
+
+def test_fix_conclusion_inserts_limitations_paragraph_and_extends_future_work():
+    document = docx.Document()
+    document.add_paragraph(_OLD_CONCLUSION)
+    document.add_paragraph(_OLD_FUTURE_WORK)
+
+    fix_conclusion_and_limitations(document)
+
+    texts = [p.text for p in document.paragraphs]
+    limitations = [t for t in texts if "synthetic resumes" in t]
+    assert len(limitations) == 1
+    assert "real-world hiring validity" in limitations[0]
+    assert "no demographic or fairness analysis" in limitations[0]
+
+    future_work_text = [t for t in texts if "future work will pursue" in t][0]
+    assert "three directions" in future_work_text
+    assert "demographic and fairness evaluation" in future_work_text
+    limitations_index = texts.index(limitations[0])
+    future_work_index = texts.index(future_work_text)
+    assert limitations_index < future_work_index

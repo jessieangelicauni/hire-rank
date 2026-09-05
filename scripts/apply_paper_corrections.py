@@ -203,6 +203,49 @@ def insert_results_headers_and_ranking_failure_table(document) -> None:
         table.cell(row_index, 1).text = value
 
 
+NEW_CONCLUSION_TEXT = (
+    "This paper presented three pipeline-level mechanisms for LLM-driven applicant ranking, validated against a "
+    "real, locally-hosted 14-billion-parameter model rather than an undisclosed one. Self-correcting assessment "
+    "generation guarantees zero known skill-contradictions in its own output by construction (Section V-B), "
+    "with a 0.82% residual rate surfaced only by a separate offline post-hoc audit using the same heuristic; "
+    "the position-robust tournament completes reliably, with zero unrecovered ranking failures out of 1,713 "
+    "ranking calls (Section V-B); and adaptive iteration scaling settles convergence at Kendall-τ 0.91–0.98 "
+    "across all ten job profiles, a reproducible number the closest prior system's rescaled curve never "
+    "discloses. Mean Faithfulness reaches 0.896; the residual gap may partly reflect Faithfulness's own "
+    "architectural sensitivity to phrasing and entailment strictness, but because the same model serves as both "
+    "generator and judge, this evaluation cannot rule out that part of the gap reflects genuine generation "
+    "quality — disentangling the two requires the independent judge model proposed as future work."
+)
+
+LIMITATIONS_TEXT = (
+    "This study's corpus consists of synthetic resumes over synthetic job profiles authored by the paper's own "
+    "authors, not real hiring data; its claims are correspondingly scoped to pipeline-level system reliability "
+    "— self-correction, ranking robustness, and convergence — rather than real-world hiring validity, and no "
+    "demographic or fairness analysis has been performed on the shortlisting, assessment, or ranking stages."
+)
+
+NEW_FUTURE_WORK_TEXT = (
+    "Building on these results, future work will pursue three directions: 1) human-rater validation — "
+    "comparing this pipeline against independent human-expert rankings using the same protocol as [1]; 2) an "
+    "independent judge model — sourcing Faithfulness scoring from a separate model than the one used for "
+    "generation, to rule out shared-model bias; and 3) demographic and fairness evaluation — checking whether "
+    "shortlisting, assessment, or ranking behavior varies systematically across candidate demographic groups, "
+    "once a suitable dataset with demographic labels is available. Taken together, these mechanisms move an "
+    "already-strong architecture — the LLM listwise tournament with Plackett-Luce aggregation — toward one "
+    "whose failure modes on a real, imperfect local model are documented, fixed, and measured, with the future "
+    "work above set to close the remaining validation gaps."
+)
+
+
+def fix_conclusion_and_limitations(document) -> None:
+    conclusion_paragraph = find_paragraph(document, "0.0% live skill-contradiction rate")
+    replace_paragraph_text(conclusion_paragraph, NEW_CONCLUSION_TEXT)
+
+    future_work_paragraph = find_paragraph(document, "future work will pursue two directions")
+    insert_paragraph_before(future_work_paragraph, LIMITATIONS_TEXT)
+    replace_paragraph_text(future_work_paragraph, NEW_FUTURE_WORK_TEXT)
+
+
 def main() -> None:
     shutil.copy2(PAPER_PATH, BACKUP_PATH)
     print(f"Backed up {PAPER_PATH} -> {BACKUP_PATH}")
@@ -215,7 +258,7 @@ def main() -> None:
     swap_figure_2_image(document)
     fix_experimental_setup_and_table_ii(document)
     insert_results_headers_and_ranking_failure_table(document)
-    # fix_conclusion_and_limitations(document)
+    fix_conclusion_and_limitations(document)
     # insert_weakness_retry_audit_table(document)
     # apply_table_and_figure_layout_fixes(document)
 
