@@ -22,6 +22,7 @@ Run with: uv run python scripts/audit_weakness_contradictions.py
 from __future__ import annotations
 
 import json
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -68,18 +69,51 @@ def build_report(
     }
 
 
+def _process_pair(
+    jd,
+    candidate,
+    jd_skills,
+    assessment_chain,
+    skill_extraction_chain,
+    skill_embedder,
+    cfg,
+) -> tuple[tuple[str, str], list[AttemptEvent], object]:
+    """Runs one (jd, candidate) pair end-to-end and returns its own results.
+
+    Executed inside a worker thread. Everything mutated here (the local
+    `events` list, the `enriched` candidate) is local to this call, so
+    nothing here is shared with any other in-flight worker -- the caller is
+    responsible for folding the returned tuple into shared state back on the
+    main thread.
+    """
+    from candidate_ranking.ingestion.cv import enrich_candidates_with_skills
+    from candidate_ranking.scoring.assessment import generate_assessment
+
+    pair_key = (jd.id, candidate.id)
+    enriched = enrich_candidates_with_skills(
+        [candidate], skill_extraction_chain, cfg.ollama_model, cfg.cache_dir / "cv_skills.json",
+    )[0]
+
+    events: list[AttemptEvent] = []
+
+    def on_attempt(attempt: int, contradicted: list[str], weaknesses: list[str]) -> None:
+        events.append(AttemptEvent(pair_key[0], pair_key[1], attempt, contradicted, weaknesses))
+
+    final = generate_assessment(
+        jd, enriched, assessment_chain, cfg.ollama_model,
+        jd_skills=jd_skills, skill_embedder=skill_embedder, on_attempt=on_attempt,
+    )
+    return pair_key, events, final
+
+
 def _run(run_id: str = "20260831-010721") -> dict:
     from langchain_ollama import ChatOllama
 
     from candidate_ranking.config import RunConfig, apply_env_overrides
     from candidate_ranking.evaluation.evaluation import load_assessment_results
-    from candidate_ranking.ingestion.cv import (
-        build_skill_extraction_chain,
-        enrich_candidates_with_skills,
-        load_candidates,
-    )
+    from candidate_ranking.ingestion.cv import build_skill_extraction_chain, load_candidates
     from candidate_ranking.ingestion.jd import load_job_descriptions
-    from candidate_ranking.scoring.assessment import build_assessment_chain, generate_assessment
+    from candidate_ranking.scoring.assessment import build_assessment_chain
     from candidate_ranking.scoring.jd_skills import build_jd_skills_chain, load_or_generate_jd_skills
     from candidate_ranking.scoring.skills import build_skill_embedder
 
@@ -99,37 +133,44 @@ def _run(run_id: str = "20260831-010721") -> dict:
     skill_extraction_chain = build_skill_extraction_chain(llm)
     skill_embedder = build_skill_embedder(cfg.skill_embedding_model)
 
-    events_by_pair: dict[tuple[str, str], list[AttemptEvent]] = {}
-    total_weaknesses_checked = 0
-    items_dropped = 0
-
+    # Loading each JD's skills is cheap (one cached call per JD, not per pair)
+    # and stays sequential on the main thread; only the per-(jd, candidate)
+    # assessment work below is fanned out.
+    pending: list[tuple] = []
     for jd_id in jd_ids:
         jd = jds_by_id[jd_id]
         jd_skills = load_or_generate_jd_skills(jd, jd_skills_chain, cfg.ollama_model, cfg.cache_dir / "jd_skills.json")
         existing_assessments = load_assessment_results(run_dir, jd_id)
 
         for existing in existing_assessments:
-            candidate_id = existing.candidate_id
-            candidate = all_candidates_by_id[candidate_id]
-            enriched = enrich_candidates_with_skills(
-                [candidate], skill_extraction_chain, cfg.ollama_model, cfg.cache_dir / "cv_skills.json",
-            )[0]
+            candidate = all_candidates_by_id[existing.candidate_id]
+            pending.append((jd, candidate, jd_skills))
 
-            pair_key = (jd_id, candidate_id)
-            events_by_pair[pair_key] = []
+    events_by_pair: dict[tuple[str, str], list[AttemptEvent]] = {}
+    total_weaknesses_checked = 0
+    items_dropped = 0
 
-            def on_attempt(attempt: int, contradicted: list[str], weaknesses: list[str],
-                            _pair_key: tuple[str, str] = pair_key) -> None:
-                events_by_pair[_pair_key].append(
-                    AttemptEvent(_pair_key[0], _pair_key[1], attempt, contradicted, weaknesses)
-                )
-
-            final = generate_assessment(
-                jd, enriched, assessment_chain, cfg.ollama_model,
-                jd_skills=jd_skills, skill_embedder=skill_embedder, on_attempt=on_attempt,
+    # max_workers matches cfg.ollama_num_parallel (4) so this replay hits
+    # Ollama at the same concurrency as the original run, per
+    # RunConfig.ollama_num_parallel / cli.py's max_concurrency. Each worker
+    # (_process_pair) only touches its own local `events` list and returns
+    # a self-contained (pair_key, events, final) tuple; all shared state
+    # (events_by_pair, total_weaknesses_checked, items_dropped) is mutated
+    # only here on the main thread as results come back, so no lock is
+    # needed. A future.result() exception (e.g. AssessmentGenerationError)
+    # propagates out of this loop and aborts the run -- no report is written.
+    with ThreadPoolExecutor(max_workers=cfg.ollama_num_parallel) as executor:
+        futures = [
+            executor.submit(
+                _process_pair, jd, candidate, jd_skills, assessment_chain, skill_extraction_chain, skill_embedder, cfg
             )
+            for jd, candidate, jd_skills in pending
+        ]
+        for future in as_completed(futures):
+            pair_key, events, final = future.result()
+            events_by_pair[pair_key] = events
             total_weaknesses_checked += len(final.weaknesses)
-            last_attempt_weaknesses = events_by_pair[pair_key][-1].weaknesses
+            last_attempt_weaknesses = events[-1].weaknesses
             items_dropped += max(0, len(last_attempt_weaknesses) - len(final.weaknesses))
 
     classifications = {pair: classify_pair(events) for pair, events in events_by_pair.items()}
