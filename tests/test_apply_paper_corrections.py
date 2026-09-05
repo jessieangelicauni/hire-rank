@@ -4,6 +4,7 @@ from scripts.apply_paper_corrections import (
     ABSTRACT_TEXT,
     find_paragraph,
     fix_abstract_and_contributions,
+    fix_experimental_setup_and_table_ii,
     fix_methods_iii_c_d_e,
     insert_paragraph_before,
     insert_table_before,
@@ -235,3 +236,42 @@ def test_insert_table_before_without_col_widths_keeps_default_autofit():
     table = insert_table_before(document, anchor, rows=2, cols=2)
 
     assert table.autofit is True
+
+
+_OLD_EXPERIMENTAL_SETUP_START = (
+    "All results runs against the Qwen2.5-14B-Instruct model, over the repository's corpus of resumes (500 "
+    "sampled from the EraMatch CV Parsing Benchmark v3.0 synthetic resume dataset [14]) and 10 job profiles, "
+    "authored synthetically by the authors. Shortlisting (Section III-B) narrowed this corpus to 348 (job, "
+    "applicant) pairs across the 10 profiles."
+)
+
+_OLD_TABLE_II_CAPTION = (
+    "Table II. Faithfulness scores for generated strengths, from the full-coverage audit against the latest "
+    "assessments (run-id 20260831-010721), covering all 10 job profiles (2 evaluation failures excluded from "
+    "the 300-item sample). The run-wide mean is 0.896, following successive prompt refinements described in "
+    "Section III-C."
+)
+
+
+def test_fix_experimental_setup_grammar():
+    document = docx.Document()
+    document.add_paragraph(_OLD_EXPERIMENTAL_SETUP_START)
+    document.add_paragraph(_OLD_TABLE_II_CAPTION)
+
+    fix_experimental_setup_and_table_ii(document)
+
+    assert "All results runs against" not in document.paragraphs[0].text
+    assert "All results were obtained by running the pipeline against" in document.paragraphs[0].text
+
+
+def test_fix_table_ii_caption_consistency():
+    document = docx.Document()
+    document.add_paragraph(_OLD_EXPERIMENTAL_SETUP_START)
+    document.add_paragraph(_OLD_TABLE_II_CAPTION)
+
+    fix_experimental_setup_and_table_ii(document)
+
+    caption = document.paragraphs[1].text
+    assert "full-coverage audit" not in caption
+    assert "300-item stratified sample" in caption
+    assert "298 of the 300 sampled items scored" in caption

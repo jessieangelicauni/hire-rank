@@ -133,6 +133,27 @@ def fix_methods_iii_c_d_e(document) -> None:
     replace_paragraph_text(audit_paragraph, new_text)
 
 
+def fix_experimental_setup_and_table_ii(document) -> None:
+    setup_paragraph = find_paragraph(document, "All results runs against")
+    replace_paragraph_text(
+        setup_paragraph,
+        setup_paragraph.text.replace(
+            "All results runs against", "All results were obtained by running the pipeline against"
+        ),
+    )
+
+    table_ii_paragraph = find_paragraph(document, "full-coverage audit")
+    old_clause = (
+        "from the full-coverage audit against the latest assessments (run-id 20260831-010721), covering all "
+        "10 job profiles (2 evaluation failures excluded from the 300-item sample)"
+    )
+    new_clause = (
+        "from a 300-item stratified sample of the run's assessments (run-id 20260831-010721), covering all 10 "
+        "job profiles, with 298 of the 300 sampled items scored (2 excluded as Ragas evaluation failures)"
+    )
+    replace_paragraph_text(table_ii_paragraph, table_ii_paragraph.text.replace(old_clause, new_clause))
+
+
 FIGURE_2_PNG_PATH = (
     Path(__file__).resolve().parents[1] / "docs" / "figures" /
     "Hallucination-Aware Self-Correction Mechanism for Applicant Assessment.png"
@@ -162,7 +183,7 @@ def main() -> None:
     fix_abstract_and_contributions(document)
     fix_methods_iii_c_d_e(document)
     swap_figure_2_image(document)
-    # fix_experimental_setup_and_table_ii(document)
+    fix_experimental_setup_and_table_ii(document)
     # insert_results_headers_and_ranking_failure_table(document)
     # fix_conclusion_and_limitations(document)
     # insert_weakness_retry_audit_table(document)
