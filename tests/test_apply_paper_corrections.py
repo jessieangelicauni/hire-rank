@@ -94,3 +94,28 @@ def test_insert_table_before_places_table_immediately_before_anchor():
     anchor_index = next(i for i, el in enumerate(body_children) if el is anchor._p)
     assert tbl_index == anchor_index - 1
     assert table.cell(0, 0).text == "Header"
+
+
+def test_insert_table_before_with_col_widths_disables_autofit():
+    document = docx.Document()
+    anchor = document.add_paragraph("Anchor paragraph.")
+
+    table = insert_table_before(document, anchor, rows=2, cols=2, col_widths_in=[1.5, 1.5])
+
+    assert table.autofit is False
+    tbl_layout = table._tbl.tblPr.find(
+        "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}tblLayout"
+    )
+    assert tbl_layout is not None
+    assert tbl_layout.get(
+        "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}type"
+    ) == "fixed"
+
+
+def test_insert_table_before_without_col_widths_keeps_default_autofit():
+    document = docx.Document()
+    anchor = document.add_paragraph("Anchor paragraph.")
+
+    table = insert_table_before(document, anchor, rows=2, cols=2)
+
+    assert table.autofit is True

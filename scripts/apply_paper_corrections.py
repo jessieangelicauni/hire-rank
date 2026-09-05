@@ -55,6 +55,7 @@ def insert_table_before(document, anchor, rows: int, cols: int, col_widths_in: l
         pass
     anchor._p.addprevious(table._tbl)
     if col_widths_in is not None:
+        table.autofit = False
         for row in table.rows:
             for cell, width in zip(row.cells, col_widths_in):
                 cell.width = Inches(width)
