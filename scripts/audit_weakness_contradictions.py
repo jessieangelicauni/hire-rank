@@ -8,11 +8,18 @@ never captured: how many pairs had a weakness contradiction on the first
 attempt, how many were fixed by the single retry, and how many still
 contradicted afterward (and were dropped).
 
-Because every ChatOllama call in this codebase uses temperature=0, this is
-expected to be a deterministic replay of what already happened during the
-original run -- it should reproduce the 26-pair drop count already visible
-in runs/20260831-010721/warnings.json, while also surfacing the
-previously-unlogged first-attempt and fixed-by-retry counts.
+Replaying at the same concurrency (4) as the original run does NOT
+guarantee reproducing its exact output: greedy (temperature=0) decoding is
+deterministic only given fixed logits, but GPU-batched inference's
+floating-point computation is not guaranteed identical across differing
+batch composition/timing even at matched concurrency. In practice, this
+replay produced 38 dropped pairs, not the 26 drops recorded in the
+original run's own logs (runs/20260831-010721/warnings.json). That
+discrepancy is expected and documented -- see
+apply_paper_corrections.WEAKNESS_RETRY_AUDIT_DISCREPANCY_NOTE -- not a bug
+in this script. This replay's value is in surfacing the
+previously-unlogged first-attempt and fixed-by-retry counts, not in
+exactly reproducing the original run's drop count.
 
 Does not touch runs/_cache/assessments/ or any existing run output; writes
 only a new runs/20260831-010721/weakness_retry_audit_report.json.
@@ -183,10 +190,13 @@ def _run(run_id: str = "20260831-010721") -> dict:
     # offline_residual (from ragas_faithfulness_report.json) was computed against
     # the ORIGINAL published run's weaknesses, so its denominator must be that
     # run's weakness count (original_run_weaknesses_checked), not this replay's
-    # own total_weaknesses_checked -- the two runs' generated text differs (see
-    # "concurrent re-run to match original run's serving conditions" note above:
-    # even at temperature=0, batching-dependent floating-point effects mean a
-    # replay is not guaranteed to reproduce the original run's exact output).
+    # own total_weaknesses_checked -- the two runs' generated text differs because
+    # matching concurrency does not guarantee matching output: greedy
+    # (temperature=0) decoding is deterministic only given fixed logits, and
+    # GPU-batched inference's floating-point computation is not guaranteed
+    # identical across differing batch composition/timing even at matched
+    # concurrency (see the module docstring for the full explanation, including
+    # this replay's actual 38-vs-26 drop-count discrepancy).
     report = build_report(
         classifications,
         total_weaknesses_checked=total_weaknesses_checked,

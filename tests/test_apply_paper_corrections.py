@@ -1,6 +1,7 @@
 import io
 
 import docx
+import pytest
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches
@@ -19,6 +20,7 @@ from scripts.apply_paper_corrections import (
     insert_table_before,
     insert_weakness_retry_audit_table,
     replace_paragraph_text,
+    swap_figure_2_image,
 )
 
 _OLD_ABSTRACT = (
@@ -405,6 +407,60 @@ def _tiny_png_path(tmp_path):
     return path
 
 
+def _colored_png_path(tmp_path, name: str, color: str):
+    path = tmp_path / name
+    Image.new("RGB", (10, 10), color=color).save(path)
+    return path
+
+
+def _inline_shape_rel_id(shape):
+    return shape._inline.graphic.graphicData.pic.blipFill.blip.embed
+
+
+def test_swap_figure_2_image_replaces_only_the_matching_dimension_shape(tmp_path):
+    document = docx.Document()
+    document.add_picture(str(_colored_png_path(tmp_path, "first.png", "red")), width=Inches(2.0), height=Inches(1.0))
+    document.add_picture(
+        str(_colored_png_path(tmp_path, "second.png", "blue")), width=Inches(3.23), height=Inches(1.90)
+    )
+    new_image_path = _colored_png_path(tmp_path, "new.png", "green")
+    backup_path = tmp_path / "archive" / "image2.original.png"
+
+    first_rel_id = _inline_shape_rel_id(document.inline_shapes[0])
+    second_rel_id = _inline_shape_rel_id(document.inline_shapes[1])
+    original_first_bytes = document.part.related_parts[first_rel_id].blob
+    original_second_bytes = document.part.related_parts[second_rel_id].blob
+
+    swap_figure_2_image(document, new_image_path=new_image_path, backup_path=backup_path)
+
+    assert document.part.related_parts[first_rel_id].blob == original_first_bytes
+    assert document.part.related_parts[second_rel_id].blob == new_image_path.read_bytes()
+    assert document.part.related_parts[second_rel_id].blob != original_second_bytes
+    assert backup_path.exists()
+    assert backup_path.read_bytes() == original_second_bytes
+
+
+def test_swap_figure_2_image_raises_on_dimension_mismatch_and_does_not_modify_anything(tmp_path):
+    document = docx.Document()
+    document.add_picture(str(_colored_png_path(tmp_path, "first.png", "red")), width=Inches(2.0), height=Inches(1.0))
+    # Second shape deliberately does NOT match the expected ~3.23in x 1.90in.
+    document.add_picture(str(_colored_png_path(tmp_path, "second.png", "blue")), width=Inches(5.0), height=Inches(4.0))
+    new_image_path = _colored_png_path(tmp_path, "new.png", "green")
+    backup_path = tmp_path / "archive" / "image2.original.png"
+
+    first_rel_id = _inline_shape_rel_id(document.inline_shapes[0])
+    second_rel_id = _inline_shape_rel_id(document.inline_shapes[1])
+    original_first_bytes = document.part.related_parts[first_rel_id].blob
+    original_second_bytes = document.part.related_parts[second_rel_id].blob
+
+    with pytest.raises(ValueError):
+        swap_figure_2_image(document, new_image_path=new_image_path, backup_path=backup_path)
+
+    assert document.part.related_parts[first_rel_id].blob == original_first_bytes
+    assert document.part.related_parts[second_rel_id].blob == original_second_bytes
+    assert not backup_path.exists()
+
+
 def test_apply_table_and_figure_layout_fixes(tmp_path):
     document = docx.Document()
     # The real paper's body section is 2-column; a fresh python-docx
@@ -497,6 +553,123 @@ def test_apply_table_and_figure_layout_fixes(tmp_path):
     assert _sect_pr_cols_num(body_children[fig_index - 1]) == "2"
     assert _sect_pr_cols_num(body_children[fig_index + 1]) == "1"
     assert _sect_pr_type(body_children[fig_index + 1]) == "continuous"
+
+
+def _table_declared_width_in(table) -> float:
+    """Sums a table's declared column widths (as written to <w:tblGrid>'s
+    <w:gridCol> elements via table.columns[i].width) and converts to
+    inches. A table that was never given explicit widths (autofit, no
+    gridCol width attribute) contributes 0 -- it can't be "wide" by
+    declared value, so it's correctly excluded from the invariant below."""
+    total_emu = 0
+    for column in table.columns:
+        if column.width is not None:
+            total_emu += column.width
+    return total_emu / 914400
+
+
+def _num_columns_governing_index(body, body_children, index) -> int:
+    """Returns the column count of the section that governs the body
+    element at `index`, using the same OOXML semantics
+    _widen_to_full_page_width's docstring documents and relies on: a
+    paragraph's <w:pPr>/<w:sectPr> describes the section ENDING at that
+    paragraph (i.e. it governs everything back to the previous section
+    break, not what follows it). So the section governing a given element
+    is defined by the *next* paragraph-level sectPr at or after it in body
+    order, falling back to the body's own trailing sectPr if none follows
+    before the end of the document."""
+    for element in body_children[index:]:
+        if not element.tag.endswith("}p"):
+            continue
+        p_pr = element.find(qn("w:pPr"))
+        sect_pr = p_pr.find(qn("w:sectPr")) if p_pr is not None else None
+        if sect_pr is not None:
+            cols = sect_pr.find(qn("w:cols"))
+            num_attr = cols.get(qn("w:num")) if cols is not None else None
+            return int(num_attr) if num_attr is not None else 1
+    final_sect_pr = body.find(qn("w:sectPr"))
+    if final_sect_pr is not None:
+        cols = final_sect_pr.find(qn("w:cols"))
+        num_attr = cols.get(qn("w:num")) if cols is not None else None
+        return int(num_attr) if num_attr is not None else 1
+    return 1
+
+
+def test_wide_tables_are_always_bracketed_by_a_widened_section(tmp_path):
+    """Structural regression test for the wide-table-in-narrow-column bug
+    class (Task 14 bug 4). test_apply_table_and_figure_layout_fixes above
+    only checks that the two currently-hardcoded wide tables/blocks get
+    widened; it would NOT catch a future task that adds a third wide table
+    without adding a corresponding widening call. This test instead checks
+    the general invariant apply_table_and_figure_layout_fixes is supposed
+    to uphold: any table whose declared total column width exceeds one
+    column's worth of the document's original multi-column body must sit
+    in a section the fixes have widened to 1 column -- computed
+    structurally from the actual section/table XML, not by name-checking
+    the two known tables.
+    """
+    document = docx.Document()
+    existing_cols = document.sections[0]._sectPr.find(qn("w:cols"))
+    if existing_cols is None:
+        existing_cols = OxmlElement("w:cols")
+        document.sections[0]._sectPr.append(existing_cols)
+    existing_cols.set(qn("w:num"), "2")
+    original_num_cols = 2
+
+    # Two unrelated, unwidened, genuinely-narrow tables. python-docx's
+    # add_table default (no explicit widths) actually declares 3.0in per
+    # column, i.e. 6.0in total for a 2-column table -- which would itself
+    # trip the "wider than one narrow column" check below despite being an
+    # ordinary, correctly-unwidened table -- so give them explicit narrow
+    # widths to exercise the "must NOT trip the invariant" case cleanly.
+    for _ in range(2):
+        narrow_table = document.add_table(rows=2, cols=2)
+        narrow_table.autofit = False
+        for column in narrow_table.columns:
+            column.width = Inches(1.0)
+
+    # A stand-in for the ranking-failure/weakness-retry-audit evidence block:
+    # a 6.0in-wide table sitting between two paragraphs that
+    # apply_table_and_figure_layout_fixes widens as a single ranged block
+    # (not via a marker adjacent to the table itself).
+    ranking_failure_intro = document.add_paragraph(
+        "The position-robust tournament's reliability claim is backed by the following counts from the full run."
+    )
+    comparison_paragraph = document.add_paragraph("C. Comparison with the Closest Prior System")
+    insert_table_before(document, comparison_paragraph, rows=2, cols=2, col_widths_in=[4.5, 1.5])
+
+    table_iii = document.add_table(rows=2, cols=3)
+    table_iii.cell(0, 0).text = "Dimension"
+    document.add_picture(str(_tiny_png_path(tmp_path)), width=Inches(3.4))
+
+    apply_table_and_figure_layout_fixes(document)
+
+    reference_section = document.sections[0]
+    content_width_in = (
+        reference_section.page_width - reference_section.left_margin - reference_section.right_margin
+    ) / 914400
+    narrow_column_width_in = content_width_in / original_num_cols
+
+    body = document.element.body
+    body_children = list(body)
+    checked_a_wide_table = False
+    for table in document.tables:
+        declared_width_in = _table_declared_width_in(table)
+        if declared_width_in <= narrow_column_width_in:
+            continue
+        checked_a_wide_table = True
+        index = body_children.index(table._tbl)
+        num_cols = _num_columns_governing_index(body, body_children, index)
+        assert num_cols == 1, (
+            f"table declared at {declared_width_in:.2f}in exceeds the original "
+            f"{narrow_column_width_in:.2f}in-wide column but sits in a {num_cols}-column "
+            f"section instead of a widened 1-column one"
+        )
+
+    # Sanity check the test itself actually exercised the invariant against
+    # at least one wide table -- otherwise a bug that deletes every widening
+    # call could pass here vacuously.
+    assert checked_a_wide_table
 
 
 _FAKE_REPORT = {

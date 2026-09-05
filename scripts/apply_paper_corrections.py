@@ -165,19 +165,44 @@ FIGURE_2_PNG_PATH = (
     Path(__file__).resolve().parents[1] / "docs" / "figures" /
     "Hallucination-Aware Self-Correction Mechanism for Applicant Assessment.png"
 )
+FIGURE_2_BACKUP_PATH = FIGURE_2_PNG_PATH.parent / "_archive" / "image2.original.png"
+
+# Figure 2 is expected to be the second inline shape (index 1) at ~3.23in x
+# 1.90in per the design doc. Tolerance accounts for EMU-to-inch rounding and
+# python-docx internals, not for genuine layout drift.
+EXPECTED_FIGURE_2_WIDTH_IN = 3.23
+EXPECTED_FIGURE_2_HEIGHT_IN = 1.90
+FIGURE_2_DIMENSION_TOLERANCE_IN = 0.1
 
 
-def swap_figure_2_image(document) -> None:
-    # Figure 2 is the second inline shape (index 1) at ~3.23in x 1.90in per the design doc.
+def swap_figure_2_image(
+    document, new_image_path: Path = FIGURE_2_PNG_PATH, backup_path: Path = FIGURE_2_BACKUP_PATH
+) -> None:
     target_shape = document.inline_shapes[1]
+    actual_width_in = target_shape.width.inches
+    actual_height_in = target_shape.height.inches
+    if (
+        abs(actual_width_in - EXPECTED_FIGURE_2_WIDTH_IN) > FIGURE_2_DIMENSION_TOLERANCE_IN
+        or abs(actual_height_in - EXPECTED_FIGURE_2_HEIGHT_IN) > FIGURE_2_DIMENSION_TOLERANCE_IN
+    ):
+        raise ValueError(
+            f"document.inline_shapes[1] is {actual_width_in:.2f}in x {actual_height_in:.2f}in, "
+            f"expected ~{EXPECTED_FIGURE_2_WIDTH_IN}in x {EXPECTED_FIGURE_2_HEIGHT_IN}in (within "
+            f"{FIGURE_2_DIMENSION_TOLERANCE_IN}in tolerance) -- refusing to overwrite what may be "
+            f"the wrong figure. The document's image order may have changed."
+        )
+
     rel_id = target_shape._inline.graphic.graphicData.pic.blipFill.blip.embed
     image_part = document.part.related_parts[rel_id]
 
-    backup_path = FIGURE_2_PNG_PATH.parent / "_archive" / "image2.original.png"
-    backup_path.parent.mkdir(parents=True, exist_ok=True)
-    backup_path.write_bytes(image_part.blob)
+    # Only archive the original bytes the first time this runs. A second run
+    # (e.g. an accidental re-invocation of main()) would otherwise archive
+    # the already-swapped image over the real original, destroying it.
+    if not backup_path.exists():
+        backup_path.parent.mkdir(parents=True, exist_ok=True)
+        backup_path.write_bytes(image_part.blob)
 
-    image_part._blob = FIGURE_2_PNG_PATH.read_bytes()
+    image_part._blob = new_image_path.read_bytes()
 
 
 RANKING_FAILURE_EVIDENCE_INTRO = (
@@ -454,8 +479,15 @@ def apply_table_and_figure_layout_fixes(document) -> None:
 
 
 def main() -> None:
-    shutil.copy2(PAPER_PATH, BACKUP_PATH)
-    print(f"Backed up {PAPER_PATH} -> {BACKUP_PATH}")
+    # docs/ is gitignored, so BACKUP_PATH is the only surviving copy of the
+    # pre-corrections paper. Only create it if it doesn't already exist --
+    # an accidental second run of main() must not overwrite the one pristine
+    # backup with the already-corrected document.
+    if not BACKUP_PATH.exists():
+        shutil.copy2(PAPER_PATH, BACKUP_PATH)
+        print(f"Backed up {PAPER_PATH} -> {BACKUP_PATH}")
+    else:
+        print(f"Backup already exists at {BACKUP_PATH}, not overwriting")
 
     document = docx.Document(PAPER_PATH)
 
