@@ -461,6 +461,28 @@ def test_swap_figure_2_image_raises_on_dimension_mismatch_and_does_not_modify_an
     assert not backup_path.exists()
 
 
+def test_swap_figure_2_image_rejects_a_near_miss_within_the_old_looser_tolerance(tmp_path):
+    document = docx.Document()
+    document.add_picture(str(_colored_png_path(tmp_path, "first.png", "red")), width=Inches(2.0), height=Inches(1.0))
+    # 0.03in off on height -- matches the real paper's Figure 3, which sits
+    # this close to Figure 2's dimensions. Must be rejected: a looser
+    # tolerance (e.g. 0.1in) would have accepted this as a false match.
+    document.add_picture(
+        str(_colored_png_path(tmp_path, "second.png", "blue")), width=Inches(3.23), height=Inches(1.87)
+    )
+    new_image_path = _colored_png_path(tmp_path, "new.png", "green")
+    backup_path = tmp_path / "archive" / "image2.original.png"
+
+    second_rel_id = _inline_shape_rel_id(document.inline_shapes[1])
+    original_second_bytes = document.part.related_parts[second_rel_id].blob
+
+    with pytest.raises(ValueError):
+        swap_figure_2_image(document, new_image_path=new_image_path, backup_path=backup_path)
+
+    assert document.part.related_parts[second_rel_id].blob == original_second_bytes
+    assert not backup_path.exists()
+
+
 def test_apply_table_and_figure_layout_fixes(tmp_path):
     document = docx.Document()
     # The real paper's body section is 2-column; a fresh python-docx

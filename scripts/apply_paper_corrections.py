@@ -169,10 +169,13 @@ FIGURE_2_BACKUP_PATH = FIGURE_2_PNG_PATH.parent / "_archive" / "image2.original.
 
 # Figure 2 is expected to be the second inline shape (index 1) at ~3.23in x
 # 1.90in per the design doc. Tolerance accounts for EMU-to-inch rounding and
-# python-docx internals, not for genuine layout drift.
+# python-docx internals, not for genuine layout drift. Kept tight (0.01in):
+# the real paper has another inline shape (Figure 3) at 3.2313in x 1.8670in --
+# only 0.03in off on height -- so a looser tolerance (e.g. 0.1in) would accept
+# it as a false match instead of uniquely identifying Figure 2.
 EXPECTED_FIGURE_2_WIDTH_IN = 3.23
 EXPECTED_FIGURE_2_HEIGHT_IN = 1.90
-FIGURE_2_DIMENSION_TOLERANCE_IN = 0.1
+FIGURE_2_DIMENSION_TOLERANCE_IN = 0.01
 
 
 def swap_figure_2_image(
