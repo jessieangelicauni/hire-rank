@@ -15,6 +15,8 @@ import shutil
 from pathlib import Path
 
 import docx
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from docx.shared import Inches
 
 PAPER_PATH = Path(__file__).resolve().parents[1] / "docs" / "candidate-ranking-paper.docx"
@@ -246,6 +248,81 @@ def fix_conclusion_and_limitations(document) -> None:
     replace_paragraph_text(future_work_paragraph, NEW_FUTURE_WORK_TEXT)
 
 
+def _set_row_cant_split(row) -> None:
+    tr_pr = row._tr.get_or_add_trPr()
+    tr_pr.append(OxmlElement("w:cantSplit"))
+
+
+def _set_row_repeat_header(row) -> None:
+    tr_pr = row._tr.get_or_add_trPr()
+    tr_pr.append(OxmlElement("w:tblHeader"))
+
+
+def _find_table_by_header_cell_text(document, header_text: str):
+    for table in document.tables:
+        if table.rows[0].cells[0].text == header_text:
+            return table
+    raise ValueError(f"no table found with header cell text: {header_text!r}")
+
+
+def _widen_to_full_page_width(anchor_element) -> None:
+    """Wraps anchor_element (a table's <w:tbl> or a paragraph's <w:p>) in a
+    continuous, single-column section so it can span the full page width
+    instead of being squeezed into one column of the surrounding 2-column
+    layout. Setting width alone without this wrapping section would just
+    overflow/clip inside the narrow column."""
+    start_section = OxmlElement("w:p")
+    start_ppr = OxmlElement("w:pPr")
+    start_sect_pr = OxmlElement("w:sectPr")
+    start_cols = OxmlElement("w:cols")
+    start_cols.set(qn("w:num"), "1")
+    start_sect_pr.append(start_cols)
+    start_ppr.append(start_sect_pr)
+    start_section.append(start_ppr)
+    anchor_element.addprevious(start_section)
+
+    end_section = OxmlElement("w:p")
+    end_ppr = OxmlElement("w:pPr")
+    end_sect_pr = OxmlElement("w:sectPr")
+    end_cols = OxmlElement("w:cols")
+    end_cols.set(qn("w:num"), "2")
+    end_sect_pr.append(end_cols)
+    end_ppr.append(end_sect_pr)
+    end_section.append(end_ppr)
+    anchor_element.addnext(end_section)
+
+
+def _paragraph_element_for_inline_shape(shape):
+    """Returns the raw <w:p> element containing an inline image, by walking
+    up from the shape's <wp:inline> through its <w:drawing> and <w:r>."""
+    drawing = shape._inline.getparent()
+    run = drawing.getparent()
+    return run.getparent()
+
+
+def apply_table_and_figure_layout_fixes(document) -> None:
+    for table in document.tables:
+        for row in table.rows:
+            _set_row_cant_split(row)
+        _set_row_repeat_header(table.rows[0])
+
+    table_iii = _find_table_by_header_cell_text(document, "Dimension")
+    table_iii.autofit = False
+    full_width_cols_in = [1.6, 3.0, 3.0]
+    for idx, width in enumerate(full_width_cols_in):
+        table_iii.columns[idx].width = Inches(width)
+    for row in table_iii.rows:
+        for cell, width in zip(row.cells, full_width_cols_in):
+            cell.width = Inches(width)
+    _widen_to_full_page_width(table_iii._tbl)
+
+    figure_1_shape = document.inline_shapes[0]
+    aspect_ratio = figure_1_shape.height / figure_1_shape.width
+    figure_1_shape.width = Inches(6.8)
+    figure_1_shape.height = int(Inches(6.8) * aspect_ratio)
+    _widen_to_full_page_width(_paragraph_element_for_inline_shape(figure_1_shape))
+
+
 def main() -> None:
     shutil.copy2(PAPER_PATH, BACKUP_PATH)
     print(f"Backed up {PAPER_PATH} -> {BACKUP_PATH}")
@@ -260,7 +337,7 @@ def main() -> None:
     insert_results_headers_and_ranking_failure_table(document)
     fix_conclusion_and_limitations(document)
     # insert_weakness_retry_audit_table(document)
-    # apply_table_and_figure_layout_fixes(document)
+    apply_table_and_figure_layout_fixes(document)
 
     document.save(PAPER_PATH)
     print(f"Saved corrections to {PAPER_PATH}")

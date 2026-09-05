@@ -1,7 +1,13 @@
+import io
+
 import docx
+from docx.oxml.ns import qn
+from docx.shared import Inches
+from PIL import Image
 
 from scripts.apply_paper_corrections import (
     ABSTRACT_TEXT,
+    apply_table_and_figure_layout_fixes,
     find_paragraph,
     fix_abstract_and_contributions,
     fix_conclusion_and_limitations,
@@ -379,3 +385,44 @@ def test_fix_conclusion_inserts_limitations_paragraph_and_extends_future_work():
     limitations_index = texts.index(limitations[0])
     future_work_index = texts.index(future_work_text)
     assert limitations_index < future_work_index
+
+
+def _tiny_png_path(tmp_path):
+    path = tmp_path / "tiny.png"
+    Image.new("RGB", (100, 40), color="white").save(path)
+    return path
+
+
+def test_apply_table_and_figure_layout_fixes(tmp_path):
+    document = docx.Document()
+    # Two unrelated tables inserted earlier in the document, mimicking the
+    # ranking-failure and weakness-retry-audit tables Tasks 10/12 add before
+    # Table III's position -- Table III must not be found by position.
+    document.add_table(rows=2, cols=2)
+    document.add_table(rows=2, cols=2)
+    table_iii = document.add_table(rows=2, cols=3)
+    table_iii.cell(0, 0).text = "Dimension"
+    document.add_picture(str(_tiny_png_path(tmp_path)), width=Inches(3.4))
+
+    apply_table_and_figure_layout_fixes(document)
+
+    for table in document.tables:
+        for row in table.rows:
+            tr_pr = row._tr.get_or_add_trPr()
+            assert tr_pr.find(qn("w:cantSplit")) is not None
+        header_tr_pr = table.rows[0]._tr.get_or_add_trPr()
+        assert header_tr_pr.find(qn("w:tblHeader")) is not None
+
+    assert table_iii.columns[0].width == Inches(1.6)
+    assert table_iii.columns[1].width == Inches(3.0)
+    assert table_iii.columns[2].width == Inches(3.0)
+
+    body_children = list(document.element.body)
+    tbl_index = next(i for i, el in enumerate(body_children) if el is table_iii._tbl)
+    sect_pr_before = body_children[tbl_index - 1].find(qn("w:pPr") + "/" + qn("w:sectPr"))
+    assert sect_pr_before is not None
+    sect_pr_after = body_children[tbl_index + 1].find(qn("w:pPr") + "/" + qn("w:sectPr"))
+    assert sect_pr_after is not None
+
+    figure_1_shape = document.inline_shapes[0]
+    assert figure_1_shape.width == Inches(6.8)
