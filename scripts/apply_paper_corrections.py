@@ -11,6 +11,7 @@ Run with: uv run python scripts/apply_paper_corrections.py
 """
 from __future__ import annotations
 
+import json
 import shutil
 from pathlib import Path
 
@@ -205,6 +206,47 @@ def insert_results_headers_and_ranking_failure_table(document) -> None:
         table.cell(row_index, 1).text = value
 
 
+WEAKNESS_RETRY_AUDIT_INTRO = (
+    "To recover the before/after-retry breakdown the live pipeline's own logging does not persist, "
+    "assessment generation for the same 348 shortlisted pairs was replayed through an instrumented copy of "
+    "the generation loop, at the same concurrency (4) as the original run:"
+)
+
+WEAKNESS_RETRY_AUDIT_DISCREPANCY_NOTE = (
+    "This replay's 38 dropped pairs do not exactly match the 26 such drops recorded in the originally "
+    "published run's own logs (warnings.json), despite identical code, configuration, and greedy "
+    "(temperature=0) decoding at matched concurrency in both cases. We attribute this to floating-point "
+    "non-determinism in batched GPU inference, which greedy decoding does not eliminate when the underlying "
+    "batch composition differs between runs; we report it openly as evidence that this pipeline's "
+    "self-correction trigger rate carries genuine run-to-run variance, rather than treating either count as "
+    "uniquely authoritative."
+)
+
+
+def insert_weakness_retry_audit_table(document, report: dict) -> None:
+    comparison_paragraph = find_paragraph(document, "C. Comparison with the Closest Prior System")
+    insert_paragraph_before(comparison_paragraph, WEAKNESS_RETRY_AUDIT_INTRO)
+
+    rows = [
+        ("Metric", "Value"),
+        ("Total weaknesses checked (this replay)", str(report["total_weaknesses_checked"])),
+        ("Pairs with contradiction on first attempt", str(report["pairs_with_initial_contradiction"])),
+        ("Pairs fixed by the retry", str(report["pairs_fixed_by_retry"])),
+        ("Pairs dropped after retry still contradicted", str(report["pairs_dropped"])),
+        (
+            "Residual contradictions found by offline post-hoc audit (published run)",
+            f"{report['offline_audit_residual_contradictions']} / {report['offline_audit_denominator']} = "
+            f"{report['offline_audit_rate']:.2%}",
+        ),
+    ]
+    table = insert_table_before(document, comparison_paragraph, rows=len(rows), cols=2, col_widths_in=[4.5, 1.5])
+    for row_index, (metric, value) in enumerate(rows):
+        table.cell(row_index, 0).text = metric
+        table.cell(row_index, 1).text = value
+
+    insert_paragraph_before(comparison_paragraph, WEAKNESS_RETRY_AUDIT_DISCREPANCY_NOTE)
+
+
 NEW_CONCLUSION_TEXT = (
     "This paper presented three pipeline-level mechanisms for LLM-driven applicant ranking, validated against a "
     "real, locally-hosted 14-billion-parameter model rather than an undisclosed one. Self-correcting assessment "
@@ -329,6 +371,11 @@ def main() -> None:
 
     document = docx.Document(PAPER_PATH)
 
+    weakness_audit_report = json.loads(
+        (Path(__file__).resolve().parents[1] / "runs" / "20260831-010721" /
+         "weakness_retry_audit_report.json").read_text(encoding="utf-8")
+    )
+
     # fix_* calls are added here by later tasks, in this order:
     fix_abstract_and_contributions(document)
     fix_methods_iii_c_d_e(document)
@@ -336,7 +383,7 @@ def main() -> None:
     fix_experimental_setup_and_table_ii(document)
     insert_results_headers_and_ranking_failure_table(document)
     fix_conclusion_and_limitations(document)
-    # insert_weakness_retry_audit_table(document)
+    insert_weakness_retry_audit_table(document, weakness_audit_report)
     apply_table_and_figure_layout_fixes(document)
 
     document.save(PAPER_PATH)

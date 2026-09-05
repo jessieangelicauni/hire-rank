@@ -16,6 +16,7 @@ from scripts.apply_paper_corrections import (
     insert_paragraph_before,
     insert_results_headers_and_ranking_failure_table,
     insert_table_before,
+    insert_weakness_retry_audit_table,
     replace_paragraph_text,
 )
 
@@ -426,3 +427,55 @@ def test_apply_table_and_figure_layout_fixes(tmp_path):
 
     figure_1_shape = document.inline_shapes[0]
     assert figure_1_shape.width == Inches(6.8)
+
+
+_FAKE_REPORT = {
+    "total_pairs": 348,
+    "total_weaknesses_checked": 1298,
+    "pairs_with_initial_contradiction": 135,
+    "pairs_fixed_by_retry": 97,
+    "pairs_dropped": 38,
+    "items_dropped": 49,
+    "offline_audit_residual_contradictions": 10,
+    "offline_audit_denominator": 1224,
+    "offline_audit_rate": 10 / 1224,
+}
+
+
+def test_insert_weakness_retry_audit_table_before_comparison_section():
+    document, fig4, table_ii_caption, comparison_header = _results_section_skeleton()
+
+    insert_weakness_retry_audit_table(document, _FAKE_REPORT)
+
+    body_children = list(document.element.body)
+    tbl_index = next(i for i, el in enumerate(body_children) if el.tag.endswith("}tbl"))
+    comparison_index = next(i for i, el in enumerate(body_children) if el is comparison_header._p)
+    assert tbl_index < comparison_index
+
+    table = document.tables[0]
+    assert table.cell(0, 0).text == "Metric"
+    assert table.cell(1, 1).text == "1298"
+    assert table.cell(2, 1).text == "135"
+    assert table.cell(3, 1).text == "97"
+    assert table.cell(4, 1).text == "38"
+    assert table.cell(5, 1).text == "10 / 1224 = 0.82%"
+
+
+def test_insert_weakness_retry_audit_table_adds_discrepancy_paragraph():
+    document, fig4, table_ii_caption, comparison_header = _results_section_skeleton()
+
+    insert_weakness_retry_audit_table(document, _FAKE_REPORT)
+
+    texts = [p.text for p in document.paragraphs]
+    discrepancy = [t for t in texts if "38 dropped pairs" in t]
+    assert len(discrepancy) == 1
+    assert "26" in discrepancy[0]
+    assert "warnings.json" in discrepancy[0]
+
+    body_children = list(document.element.body)
+    tbl_index = next(i for i, el in enumerate(body_children) if el.tag.endswith("}tbl"))
+    discrepancy_index = next(
+        i for i, el in enumerate(body_children) if el is document.paragraphs[texts.index(discrepancy[0])]._p
+    )
+    comparison_index = next(i for i, el in enumerate(body_children) if el is comparison_header._p)
+    assert tbl_index < discrepancy_index < comparison_index
