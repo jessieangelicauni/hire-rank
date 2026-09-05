@@ -86,6 +86,72 @@ def fix_abstract_and_contributions(document) -> None:
     replace_paragraph_text(paragraph, ABSTRACT_TEXT)
 
 
+FIGURE_2_CAPTION_TEXT = (
+    "As shown, each generated weakness is checked in code against the applicant's own previously-extracted "
+    "skill list for a self-contradiction (e.g., claiming an absent skill the applicant's skill list shows); on "
+    "a detected contradiction, the assessment is regenerated once with corrective feedback, and any weakness "
+    "still contradicting after the retry is dropped rather than kept. Strengths and additional skills are not "
+    "live-checked by this mechanism."
+)
+
+_ADAPTIVE_ITERATION_FORMULA_ADDENDUM = (
+    " Concretely, the resolved iteration budget is "
+    "clamp(ceil(target_appearances_per_candidate × n_candidates / tournament_subset_size), "
+    "iterations_min, iterations_max). With this paper's Table I values (target=8, subset_size=5, floor=30, "
+    "ceiling=125): a 77-candidate shortlist (data-engineer) resolves to ceil(8×77/5)=124 iterations, while a "
+    "7-candidate shortlist (frontend-engineer) resolves to the floor of 30 iterations — though that repeat "
+    "stops earlier, at 21 iterations, once every one of its C(7,5)=21 distinct 5-candidate subsets has been "
+    "sampled."
+)
+
+WEAKNESS_AUDIT_GROUND_TRUTH_TEXT = (
+    "are instead audited with the job-profile-skill-bridging half of the same skill-contradiction heuristic "
+    "used in the live retry loop: each weakness is scanned for a negated mention using the job profile's skill "
+    "vocabulary — since a weakness typically echoes the job description's wording rather than the applicant's "
+    "own — and that mention is then matched by embedding similarity against the applicant's own extracted "
+    "skills, which is what actually decides whether the weakness is a genuine contradiction."
+)
+
+
+def fix_methods_iii_c_d_e(document) -> None:
+    caption_paragraph = find_paragraph(document, "evidence retrieved from the resume")
+    replace_paragraph_text(caption_paragraph, FIGURE_2_CAPTION_TEXT)
+
+    iteration_paragraph = find_paragraph(document, "subject to a floor and a ceiling.")
+    replace_paragraph_text(
+        iteration_paragraph, iteration_paragraph.text + _ADAPTIVE_ITERATION_FORMULA_ADDENDUM
+    )
+
+    audit_paragraph = find_paragraph(
+        document, "applied here against the job profile's required skills rather than the applicant's own skill list."
+    )
+    old_tail = (
+        "are instead audited with the same skill-contradiction heuristic used in the live retry loop, applied "
+        "here against the job profile's required skills rather than the applicant's own skill list."
+    )
+    new_text = audit_paragraph.text.replace(old_tail, WEAKNESS_AUDIT_GROUND_TRUTH_TEXT)
+    replace_paragraph_text(audit_paragraph, new_text)
+
+
+FIGURE_2_PNG_PATH = (
+    Path(__file__).resolve().parents[1] / "docs" / "figures" /
+    "Hallucination-Aware Self-Correction Mechanism for Applicant Assessment.png"
+)
+
+
+def swap_figure_2_image(document) -> None:
+    # Figure 2 is the second inline shape (index 1) at ~3.23in x 1.90in per the design doc.
+    target_shape = document.inline_shapes[1]
+    rel_id = target_shape._inline.graphic.graphicData.pic.blipFill.blip.embed
+    image_part = document.part.related_parts[rel_id]
+
+    backup_path = FIGURE_2_PNG_PATH.parent / "_archive" / "image2.original.png"
+    backup_path.parent.mkdir(parents=True, exist_ok=True)
+    backup_path.write_bytes(image_part.blob)
+
+    image_part._blob = FIGURE_2_PNG_PATH.read_bytes()
+
+
 def main() -> None:
     shutil.copy2(PAPER_PATH, BACKUP_PATH)
     print(f"Backed up {PAPER_PATH} -> {BACKUP_PATH}")
@@ -94,7 +160,8 @@ def main() -> None:
 
     # fix_* calls are added here by later tasks, in this order:
     fix_abstract_and_contributions(document)
-    # fix_methods_iii_c_d_e(document)
+    fix_methods_iii_c_d_e(document)
+    swap_figure_2_image(document)
     # fix_experimental_setup_and_table_ii(document)
     # insert_results_headers_and_ranking_failure_table(document)
     # fix_conclusion_and_limitations(document)

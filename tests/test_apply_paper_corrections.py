@@ -4,6 +4,7 @@ from scripts.apply_paper_corrections import (
     ABSTRACT_TEXT,
     find_paragraph,
     fix_abstract_and_contributions,
+    fix_methods_iii_c_d_e,
     insert_paragraph_before,
     insert_table_before,
     replace_paragraph_text,
@@ -50,6 +51,77 @@ def test_fix_abstract_and_contributions_lists_the_three_introduction_contributio
     position_robust_idx = text.index("position-robust")
     adaptive_idx = text.index("pool-size-aware adaptive iteration")
     assert self_correcting_idx < position_robust_idx < adaptive_idx
+
+
+_OLD_FIG2_CAPTION = (
+    "As shown, each generated claim is checked against evidence retrieved from the resume for unsupported, "
+    "contradicted, or unverifiable content, with the assessment regenerated once on any detected issue before "
+    "it is accepted."
+)
+
+_OLD_ADAPTIVE_ITERATION_PARAGRAPH = (
+    "The pipeline's third contribution addresses the fixed-iteration-count gap identified in Section I: at a "
+    "fixed iteration count, a large shortlist receives too few comparisons per applicant to rank reliably, while "
+    "a small shortlist receives far more than it needs. Rather than using a fixed count for every job profile "
+    "regardless of shortlist size, the iteration count is scaled so that every shortlisted applicant is expected "
+    "to appear in roughly a fixed target number of sampled subsets on average, subject to a floor and a ceiling."
+)
+
+_OLD_SECTION_III_E = (
+    "Each job profile's final ranking averages applicant utilities across its successful stability repeats, "
+    "which reduces the noise a single repeat's point estimate would otherwise carry into the ranking. "
+    "Within-repeat convergence — via the Kendall-τ rank correlation between the utility ordering at consecutive "
+    "iterations — is computed directly from the tournament traces, with no LLM call required. Separately, an "
+    "offline harness audits assessment quality after the fact: strengths are scored with the Faithfulness metric "
+    "(an LLM judge estimates how well each strength is entailed by the resume text, given a neutral, "
+    "job-agnostic question rather than one naming the job title, so the score reflects only resume support and "
+    "not job-profile-specific framing), while weaknesses — which are almost always absence claims that a "
+    "faithfulness-style entailment check cannot verify positively — are instead audited with the same "
+    "skill-contradiction heuristic used in the live retry loop, applied here against the job profile's required "
+    "skills rather than the applicant's own skill list."
+)
+
+
+def test_fix_methods_rewrites_figure_2_caption():
+    document = docx.Document()
+    document.add_paragraph(_OLD_FIG2_CAPTION)
+    document.add_paragraph(_OLD_ADAPTIVE_ITERATION_PARAGRAPH)
+    document.add_paragraph(_OLD_SECTION_III_E)
+
+    fix_methods_iii_c_d_e(document)
+
+    caption_text = document.paragraphs[0].text
+    assert "evidence retrieved from the resume" not in caption_text
+    assert "each generated weakness is checked" in caption_text
+    assert "Strengths and additional skills are not live-checked" in caption_text
+
+
+def test_fix_methods_adds_adaptive_iteration_formula():
+    document = docx.Document()
+    document.add_paragraph(_OLD_FIG2_CAPTION)
+    document.add_paragraph(_OLD_ADAPTIVE_ITERATION_PARAGRAPH)
+    document.add_paragraph(_OLD_SECTION_III_E)
+
+    fix_methods_iii_c_d_e(document)
+
+    formula_text = document.paragraphs[1].text
+    assert "ceil(target_appearances_per_candidate" in formula_text
+    assert "124 iterations" in formula_text
+    assert "30 iterations" in formula_text
+
+
+def test_fix_methods_corrects_weakness_audit_ground_truth():
+    document = docx.Document()
+    document.add_paragraph(_OLD_FIG2_CAPTION)
+    document.add_paragraph(_OLD_ADAPTIVE_ITERATION_PARAGRAPH)
+    document.add_paragraph(_OLD_SECTION_III_E)
+
+    fix_methods_iii_c_d_e(document)
+
+    audit_text = document.paragraphs[2].text
+    assert "applied here against the job profile's required skills rather than the applicant's own skill list" not in audit_text
+    assert "job-profile-skill-bridging half" in audit_text
+    assert "which is what actually decides whether the weakness is a genuine contradiction" in audit_text
 
 
 def test_find_paragraph_returns_matching_paragraph():
