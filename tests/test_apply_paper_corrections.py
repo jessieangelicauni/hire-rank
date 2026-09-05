@@ -7,6 +7,7 @@ from scripts.apply_paper_corrections import (
     fix_experimental_setup_and_table_ii,
     fix_methods_iii_c_d_e,
     insert_paragraph_before,
+    insert_results_headers_and_ranking_failure_table,
     insert_table_before,
     replace_paragraph_text,
 )
@@ -275,3 +276,47 @@ def test_fix_table_ii_caption_consistency():
     assert "full-coverage audit" not in caption
     assert "300-item stratified sample" in caption
     assert "298 of the 300 sampled items scored" in caption
+
+
+def _results_section_skeleton():
+    document = docx.Document()
+    document.add_paragraph("V. Results and Discussion")
+    document.add_paragraph("This section reports convergence, per-role stability, and generation faithfulness.")
+    fig4 = document.add_paragraph("Fig. 4. Within-repeat convergence (Kendall-τ) across the 10 job profiles.")
+    document.add_paragraph("Fig. 5. Final Kendall's Tau per job role after convergence.")
+    table_ii_caption = document.add_paragraph(
+        "Table II. Faithfulness scores for generated strengths, from a 300-item stratified sample."
+    )
+    fig6 = document.add_paragraph("Fig. 6. Faithfulness scores for generated strengths, by job profile.")
+    comparison_header = document.add_paragraph("C. Comparison with the Closest Prior System")
+    comparison_header.runs[0].bold = True
+    return document, fig4, table_ii_caption, comparison_header
+
+
+def test_insert_results_headers_adds_a_and_b_before_the_right_content():
+    document, fig4, table_ii_caption, comparison_header = _results_section_skeleton()
+
+    insert_results_headers_and_ranking_failure_table(document)
+
+    texts = [p.text for p in document.paragraphs]
+    assert "A. Tournament Convergence" in texts
+    assert texts.index("A. Tournament Convergence") == texts.index(fig4.text) - 1
+    assert "B. Generation Faithfulness and Contradiction Audit" in texts
+    assert texts.index("B. Generation Faithfulness and Contradiction Audit") == texts.index(table_ii_caption.text) - 1
+
+
+def test_insert_results_adds_ranking_failure_table_before_comparison_section():
+    document, fig4, table_ii_caption, comparison_header = _results_section_skeleton()
+
+    insert_results_headers_and_ranking_failure_table(document)
+
+    body_children = list(document.element.body)
+    tbl_indices = [i for i, el in enumerate(body_children) if el.tag.endswith("}tbl")]
+    comparison_index = next(i for i, el in enumerate(body_children) if el is comparison_header._p)
+    assert len(tbl_indices) == 1
+    assert tbl_indices[0] < comparison_index
+
+    table = document.tables[0]
+    assert table.cell(0, 0).text == "Metric"
+    assert table.cell(1, 1).text == "1713"
+    assert table.cell(4, 1).text == "0"

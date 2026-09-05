@@ -173,6 +173,36 @@ def swap_figure_2_image(document) -> None:
     image_part._blob = FIGURE_2_PNG_PATH.read_bytes()
 
 
+RANKING_FAILURE_EVIDENCE_INTRO = (
+    "The position-robust tournament's reliability claim is backed by the following counts from the full run "
+    "(run-id 20260831-010721), verified directly against repeats.json and warnings.json:"
+)
+
+_RANKING_FAILURE_ROWS = [
+    ("Metric", "Value"),
+    ("Total tournament ranking calls (rank_subset invocations)", "1713"),
+    ("Initial invalid outputs (failed schema/permutation validation on attempt 1)", "0"),
+    ("Successful retries", "0 (none needed)"),
+    ("Unrecovered failures (ListwiseRankingError, both attempts invalid)", "0"),
+]
+
+
+def insert_results_headers_and_ranking_failure_table(document) -> None:
+    fig4_paragraph = find_paragraph(document, "Fig. 4. Within-repeat convergence")
+    insert_paragraph_before(fig4_paragraph, "A. Tournament Convergence", bold=True)
+
+    table_ii_paragraph = find_paragraph(document, "Table II. Faithfulness scores")
+    insert_paragraph_before(table_ii_paragraph, "B. Generation Faithfulness and Contradiction Audit", bold=True)
+
+    comparison_paragraph = find_paragraph(document, "C. Comparison with the Closest Prior System")
+    intro_paragraph = insert_paragraph_before(comparison_paragraph, RANKING_FAILURE_EVIDENCE_INTRO)
+    table = insert_table_before(document, comparison_paragraph, rows=len(_RANKING_FAILURE_ROWS), cols=2,
+                                 col_widths_in=[4.5, 1.5])
+    for row_index, (metric, value) in enumerate(_RANKING_FAILURE_ROWS):
+        table.cell(row_index, 0).text = metric
+        table.cell(row_index, 1).text = value
+
+
 def main() -> None:
     shutil.copy2(PAPER_PATH, BACKUP_PATH)
     print(f"Backed up {PAPER_PATH} -> {BACKUP_PATH}")
@@ -184,7 +214,7 @@ def main() -> None:
     fix_methods_iii_c_d_e(document)
     swap_figure_2_image(document)
     fix_experimental_setup_and_table_ii(document)
-    # insert_results_headers_and_ranking_failure_table(document)
+    insert_results_headers_and_ranking_failure_table(document)
     # fix_conclusion_and_limitations(document)
     # insert_weakness_retry_audit_table(document)
     # apply_table_and_figure_layout_fixes(document)
