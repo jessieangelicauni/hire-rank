@@ -40,13 +40,17 @@ def replace_paragraph_text(paragraph, new_text: str) -> None:
         run.text = ""
 
 
-def insert_paragraph_before(anchor, text: str, bold: bool = False, style: str = "Body Text"):
+def insert_paragraph_before(
+    anchor, text: str, bold: bool = False, italic: bool = False, style: str = "Body Text"
+):
     try:
         new_paragraph = anchor.insert_paragraph_before(text, style=style)
     except KeyError:
         new_paragraph = anchor.insert_paragraph_before(text)
     if bold and new_paragraph.runs:
         new_paragraph.runs[0].bold = True
+    if italic and new_paragraph.runs:
+        new_paragraph.runs[0].italic = True
     return new_paragraph
 
 
@@ -192,10 +196,12 @@ _RANKING_FAILURE_ROWS = [
 
 def insert_results_headers_and_ranking_failure_table(document) -> None:
     fig4_paragraph = find_paragraph(document, "Fig. 4. Within-repeat convergence")
-    insert_paragraph_before(fig4_paragraph, "A. Tournament Convergence", bold=True)
+    insert_paragraph_before(fig4_paragraph, "A. Tournament Convergence", bold=True, italic=True)
 
     table_ii_paragraph = find_paragraph(document, "Table II. Faithfulness scores")
-    insert_paragraph_before(table_ii_paragraph, "B. Generation Faithfulness and Contradiction Audit", bold=True)
+    insert_paragraph_before(
+        table_ii_paragraph, "B. Generation Faithfulness and Contradiction Audit", bold=True, italic=True
+    )
 
     comparison_paragraph = find_paragraph(document, "C. Comparison with the Closest Prior System")
     intro_paragraph = insert_paragraph_before(comparison_paragraph, RANKING_FAILURE_EVIDENCE_INTRO)
@@ -307,31 +313,87 @@ def _find_table_by_header_cell_text(document, header_text: str):
     raise ValueError(f"no table found with header cell text: {header_text!r}")
 
 
-def _widen_to_full_page_width(anchor_element) -> None:
-    """Wraps anchor_element (a table's <w:tbl> or a paragraph's <w:p>) in a
-    continuous, single-column section so it can span the full page width
-    instead of being squeezed into one column of the surrounding 2-column
-    layout. Setting width alone without this wrapping section would just
-    overflow/clip inside the narrow column."""
-    start_section = OxmlElement("w:p")
-    start_ppr = OxmlElement("w:pPr")
-    start_sect_pr = OxmlElement("w:sectPr")
-    start_cols = OxmlElement("w:cols")
-    start_cols.set(qn("w:num"), "1")
-    start_sect_pr.append(start_cols)
-    start_ppr.append(start_sect_pr)
-    start_section.append(start_ppr)
-    anchor_element.addprevious(start_section)
+def _widen_to_full_page_width(
+    document, start_element, section_type: str = "continuous", end_boundary_element=None
+) -> None:
+    """Wraps start_element (a table's <w:tbl> or a paragraph's <w:p>) -- or,
+    if end_boundary_element is given, the whole run of elements from
+    start_element up to (not including) end_boundary_element -- in a
+    single-column section so it can span the full page width instead of
+    being squeezed into one column of the surrounding 2-column layout.
+    Setting width alone without this wrapping section would just
+    overflow/clip inside the narrow column.
 
-    end_section = OxmlElement("w:p")
-    end_ppr = OxmlElement("w:pPr")
-    end_sect_pr = OxmlElement("w:sectPr")
-    end_cols = OxmlElement("w:cols")
-    end_cols.set(qn("w:num"), "2")
-    end_sect_pr.append(end_cols)
-    end_ppr.append(end_sect_pr)
-    end_section.append(end_ppr)
-    anchor_element.addnext(end_section)
+    Important OOXML subtlety: a <w:sectPr> inside a paragraph's <w:pPr>
+    describes the section ENDING at that paragraph -- i.e. it governs the
+    content *before* it (back to the previous section break), not the
+    content after it. So the marker paragraph placed *before* the anchor
+    must carry the ORIGINAL column count (it closes out the preceding
+    section unchanged), while the marker paragraph placed *after* the
+    anchor must carry the NEW single-column count (it closes the section
+    that contains the anchor). Getting these backwards silently leaves the
+    anchor in the original multi-column section -- a synthetic single-
+    column test document can't catch this, since widening from 1 column to
+    1 column is a no-op either way; it only shows up against a real
+    multi-column document.
+    """
+    reference_section = document.sections[-1]
+    page_width_twips = reference_section.page_width.twips
+    page_height_twips = reference_section.page_height.twips
+    left_margin_twips = reference_section.left_margin.twips
+    right_margin_twips = reference_section.right_margin.twips
+    top_margin_twips = reference_section.top_margin.twips
+    bottom_margin_twips = reference_section.bottom_margin.twips
+    header_distance_twips = reference_section.header_distance.twips
+    footer_distance_twips = reference_section.footer_distance.twips
+    gutter_twips = reference_section.gutter.twips
+    existing_cols = reference_section._sectPr.find(qn("w:cols"))
+    # A <w:cols> element without an explicit w:num attribute means 1 column
+    # (the OOXML default), just like no <w:cols> element at all.
+    existing_num_attr = existing_cols.get(qn("w:num")) if existing_cols is not None else None
+    original_num_cols = int(existing_num_attr) if existing_num_attr is not None else 1
+
+    def _make_section_break_paragraph(num_cols: int):
+        paragraph = OxmlElement("w:p")
+        paragraph_properties = OxmlElement("w:pPr")
+        sect_pr = OxmlElement("w:sectPr")
+
+        sect_type = OxmlElement("w:type")
+        sect_type.set(qn("w:val"), section_type)
+        sect_pr.append(sect_type)
+
+        pg_sz = OxmlElement("w:pgSz")
+        pg_sz.set(qn("w:w"), str(page_width_twips))
+        pg_sz.set(qn("w:h"), str(page_height_twips))
+        sect_pr.append(pg_sz)
+
+        pg_mar = OxmlElement("w:pgMar")
+        pg_mar.set(qn("w:top"), str(top_margin_twips))
+        pg_mar.set(qn("w:right"), str(right_margin_twips))
+        pg_mar.set(qn("w:bottom"), str(bottom_margin_twips))
+        pg_mar.set(qn("w:left"), str(left_margin_twips))
+        pg_mar.set(qn("w:header"), str(header_distance_twips))
+        pg_mar.set(qn("w:footer"), str(footer_distance_twips))
+        pg_mar.set(qn("w:gutter"), str(gutter_twips))
+        sect_pr.append(pg_mar)
+
+        cols = OxmlElement("w:cols")
+        cols.set(qn("w:num"), str(num_cols))
+        sect_pr.append(cols)
+
+        paragraph_properties.append(sect_pr)
+        paragraph.append(paragraph_properties)
+        return paragraph
+
+    # Closes out the preceding section exactly as it was -- unaffected.
+    start_element.addprevious(_make_section_break_paragraph(original_num_cols))
+    # Closes the new section that contains start_element (and everything up
+    # to end_boundary_element, if given) -- this is the one that actually
+    # needs to be single-column.
+    if end_boundary_element is not None:
+        end_boundary_element.addprevious(_make_section_break_paragraph(1))
+    else:
+        start_element.addnext(_make_section_break_paragraph(1))
 
 
 def _paragraph_element_for_inline_shape(shape):
@@ -356,13 +418,39 @@ def apply_table_and_figure_layout_fixes(document) -> None:
     for row in table_iii.rows:
         for cell, width in zip(row.cells, full_width_cols_in):
             cell.width = Inches(width)
-    _widen_to_full_page_width(table_iii._tbl)
+    # LibreOffice's PDF export renders a "continuous" section change badly
+    # when a table immediately abuts it -- the widened table overlaps the
+    # two-column text that resumes after it instead of flowing below it.
+    # A page-break section change avoids that overlap at the cost of an
+    # extra page boundary around the table, which is an acceptable trade
+    # for a table that must render full-width and legible.
+    _widen_to_full_page_width(document, table_iii._tbl, section_type="nextPage")
+
+    # The ranking-failure-evidence and weakness-retry-audit tables (Tasks 10
+    # and 12) were both sized at 4.5in + 1.5in = 6.0in -- clearly meant for
+    # full page width -- but are inserted directly into the 2-column body,
+    # whose columns are only ~3.45in wide. Squeezed into one column, their
+    # "Value" column renders essentially invisible (a sliver with no visible
+    # digits) even though the underlying cell text is correct. Neither
+    # Task 10 nor Task 12's synthetic tests render to PDF, so this only
+    # surfaced now. Widen the whole evidence block -- both tables plus the
+    # paragraphs introducing/discussing them -- as a single full-width run,
+    # rather than wrapping each table separately, to avoid fragmenting it
+    # into several separate page breaks.
+    ranking_failure_intro = find_paragraph(document, "backed by the following counts from the full run")
+    comparison_paragraph = find_paragraph(document, "C. Comparison with the Closest Prior System")
+    _widen_to_full_page_width(
+        document,
+        ranking_failure_intro._p,
+        section_type="nextPage",
+        end_boundary_element=comparison_paragraph._p,
+    )
 
     figure_1_shape = document.inline_shapes[0]
     aspect_ratio = figure_1_shape.height / figure_1_shape.width
     figure_1_shape.width = Inches(6.8)
     figure_1_shape.height = int(Inches(6.8) * aspect_ratio)
-    _widen_to_full_page_width(_paragraph_element_for_inline_shape(figure_1_shape))
+    _widen_to_full_page_width(document, _paragraph_element_for_inline_shape(figure_1_shape))
 
 
 def main() -> None:

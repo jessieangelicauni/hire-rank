@@ -1,6 +1,7 @@
 import io
 
 import docx
+from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches
 from PIL import Image
@@ -297,7 +298,11 @@ def _results_section_skeleton():
     )
     fig6 = document.add_paragraph("Fig. 6. Faithfulness scores for generated strengths, by job profile.")
     comparison_header = document.add_paragraph("C. Comparison with the Closest Prior System")
+    # The real document's existing "A./B./C./D./E." subsection headers (e.g.
+    # Section III's) are bold *and* italic -- match that here so the test can
+    # actually catch a newly-inserted header that doesn't match the style.
     comparison_header.runs[0].bold = True
+    comparison_header.runs[0].italic = True
     return document, fig4, table_ii_caption, comparison_header
 
 
@@ -311,6 +316,12 @@ def test_insert_results_headers_adds_a_and_b_before_the_right_content():
     assert texts.index("A. Tournament Convergence") == texts.index(fig4.text) - 1
     assert "B. Generation Faithfulness and Contradiction Audit" in texts
     assert texts.index("B. Generation Faithfulness and Contradiction Audit") == texts.index(table_ii_caption.text) - 1
+
+    header_paragraphs = {p.text: p for p in document.paragraphs}
+    for header_text in ("A. Tournament Convergence", "B. Generation Faithfulness and Contradiction Audit"):
+        run = header_paragraphs[header_text].runs[0]
+        assert run.bold == comparison_header.runs[0].bold
+        assert run.italic == comparison_header.runs[0].italic
 
 
 def test_insert_results_adds_ranking_failure_table_before_comparison_section():
@@ -396,11 +407,34 @@ def _tiny_png_path(tmp_path):
 
 def test_apply_table_and_figure_layout_fixes(tmp_path):
     document = docx.Document()
+    # The real paper's body section is 2-column; a fresh python-docx
+    # Document() defaults to 1 column, which would make the "widen to 1
+    # column" fix a no-op and hide a swapped-marker bug entirely. Force a
+    # 2-column body section here so this test actually exercises widening.
+    # python-docx's default template's sectPr already has a <w:cols>
+    # element (with no explicit w:num, i.e. 1 column) -- modify it in place
+    # rather than appending a second one, since find() would keep returning
+    # the original, unmodified element.
+    existing_cols = document.sections[0]._sectPr.find(qn("w:cols"))
+    if existing_cols is None:
+        existing_cols = OxmlElement("w:cols")
+        document.sections[0]._sectPr.append(existing_cols)
+    existing_cols.set(qn("w:num"), "2")
+
     # Two unrelated tables inserted earlier in the document, mimicking the
     # ranking-failure and weakness-retry-audit tables Tasks 10/12 add before
     # Table III's position -- Table III must not be found by position.
     document.add_table(rows=2, cols=2)
     document.add_table(rows=2, cols=2)
+    # These two paragraphs mirror the real document's structure: the
+    # ranking-failure-evidence intro precedes "C. Comparison...", which in
+    # turn precedes Table III -- apply_table_and_figure_layout_fixes widens
+    # everything from the first anchor through (not including) the second
+    # as one full-width block, then separately widens Table III.
+    ranking_failure_intro = document.add_paragraph(
+        "The position-robust tournament's reliability claim is backed by the following counts from the full run."
+    )
+    comparison_paragraph = document.add_paragraph("C. Comparison with the Closest Prior System")
     table_iii = document.add_table(rows=2, cols=3)
     table_iii.cell(0, 0).text = "Dimension"
     document.add_picture(str(_tiny_png_path(tmp_path)), width=Inches(3.4))
@@ -418,15 +452,51 @@ def test_apply_table_and_figure_layout_fixes(tmp_path):
     assert table_iii.columns[1].width == Inches(3.0)
     assert table_iii.columns[2].width == Inches(3.0)
 
+    def _sect_pr(element):
+        sect_pr = element.find(qn("w:pPr") + "/" + qn("w:sectPr"))
+        assert sect_pr is not None
+        return sect_pr
+
+    def _sect_pr_cols_num(element):
+        return _sect_pr(element).find(qn("w:cols")).get(qn("w:num"))
+
+    def _sect_pr_type(element):
+        type_el = _sect_pr(element).find(qn("w:type"))
+        return type_el.get(qn("w:val")) if type_el is not None else None
+
     body_children = list(document.element.body)
     tbl_index = next(i for i, el in enumerate(body_children) if el is table_iii._tbl)
-    sect_pr_before = body_children[tbl_index - 1].find(qn("w:pPr") + "/" + qn("w:sectPr"))
-    assert sect_pr_before is not None
-    sect_pr_after = body_children[tbl_index + 1].find(qn("w:pPr") + "/" + qn("w:sectPr"))
-    assert sect_pr_after is not None
+    # The marker *before* the table ends the preceding section -- it must
+    # keep the document's original column count (2), not the new width.
+    assert _sect_pr_cols_num(body_children[tbl_index - 1]) == "2"
+    # The marker *after* the table ends the section containing the table
+    # itself -- per OOXML, a paragraph's sectPr governs backwards, so this
+    # is the one that must actually be single-column for the table to render
+    # at full width instead of being squeezed into one of the two columns.
+    assert _sect_pr_cols_num(body_children[tbl_index + 1]) == "1"
+    # Tables get a page-break (not continuous) section change around them --
+    # LibreOffice's PDF export garbles/overlaps a continuous section change
+    # that directly abuts a table.
+    assert _sect_pr_type(body_children[tbl_index + 1]) == "nextPage"
+
+    # The ranking-failure-evidence/weakness-retry-audit block (everything
+    # from the ranking-failure intro up to "C. Comparison...") is widened as
+    # a single full-width range, not per-table -- one pair of markers
+    # bracketing the whole range, not one pair per table inside it.
+    intro_index = next(i for i, el in enumerate(body_children) if el is ranking_failure_intro._p)
+    comparison_index = next(i for i, el in enumerate(body_children) if el is comparison_paragraph._p)
+    assert _sect_pr_cols_num(body_children[intro_index - 1]) == "2"
+    assert _sect_pr_cols_num(body_children[comparison_index - 1]) == "1"
+    assert _sect_pr_type(body_children[comparison_index - 1]) == "nextPage"
 
     figure_1_shape = document.inline_shapes[0]
     assert figure_1_shape.width == Inches(6.8)
+
+    figure_1_paragraph = figure_1_shape._inline.getparent().getparent().getparent()
+    fig_index = next(i for i, el in enumerate(body_children) if el is figure_1_paragraph)
+    assert _sect_pr_cols_num(body_children[fig_index - 1]) == "2"
+    assert _sect_pr_cols_num(body_children[fig_index + 1]) == "1"
+    assert _sect_pr_type(body_children[fig_index + 1]) == "continuous"
 
 
 _FAKE_REPORT = {
