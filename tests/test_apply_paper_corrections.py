@@ -9,6 +9,7 @@ from PIL import Image
 
 from scripts.apply_paper_corrections import (
     ABSTRACT_TEXT,
+    add_evidence_table_captions,
     apply_table_and_figure_layout_fixes,
     find_paragraph,
     fix_abstract_and_contributions,
@@ -744,3 +745,40 @@ def test_insert_weakness_retry_audit_table_adds_discrepancy_paragraph():
     )
     comparison_index = next(i for i, el in enumerate(body_children) if el is comparison_header._p)
     assert tbl_index < discrepancy_index < comparison_index
+
+
+def test_add_evidence_table_captions_labels_both_new_tables():
+    document, fig4, table_ii_caption, comparison_header = _results_section_skeleton()
+    insert_results_headers_and_ranking_failure_table(document)
+    insert_weakness_retry_audit_table(document, _FAKE_REPORT)
+
+    add_evidence_table_captions(document)
+
+    texts = [p.text for p in document.paragraphs]
+    table_iv_caption = [t for t in texts if t.startswith("Table IV.")]
+    table_v_caption = [t for t in texts if t.startswith("Table V.")]
+    assert len(table_iv_caption) == 1
+    assert len(table_v_caption) == 1
+
+    body_children = list(document.element.body)
+    tbl_indices = [i for i, el in enumerate(body_children) if el.tag.endswith("}tbl")]
+    assert len(tbl_indices) == 2
+    ranking_failure_tbl_index, weakness_audit_tbl_index = tbl_indices
+
+    def index_of(text: str) -> int:
+        p = document.paragraphs[texts.index(text)]
+        return body_children.index(p._p)
+
+    table_iv_explanation = [t for t in texts if t.startswith("As shown, all 1,713")]
+    assert len(table_iv_explanation) == 1
+
+    # Table IV: [table] -> caption -> explanation, matching the paper's
+    # existing Table I/II/III convention (caption + explanation below the table).
+    assert ranking_failure_tbl_index < index_of(table_iv_caption[0]) < index_of(table_iv_explanation[0])
+    # Table V: [table] -> caption -> (the existing discrepancy-note paragraph
+    # already serves as its explanation, added by Task 12 -- not duplicated here).
+    assert weakness_audit_tbl_index < index_of(table_v_caption[0])
+    discrepancy_index = index_of(
+        next(t for t in texts if "38 dropped pairs" in t)
+    )
+    assert index_of(table_v_caption[0]) < discrepancy_index

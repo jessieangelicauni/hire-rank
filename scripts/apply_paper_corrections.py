@@ -315,6 +315,40 @@ NEW_FUTURE_WORK_TEXT = (
 )
 
 
+TABLE_IV_CAPTION = (
+    "Table IV. Position-robust tournament reliability, from the full run (run-id 20260831-010721)."
+)
+
+TABLE_IV_EXPLANATION = (
+    "As shown, all 1,713 listwise ranking calls completed without an unrecovered failure, so no comparison "
+    "in this run had to be discarded."
+)
+
+TABLE_V_CAPTION = (
+    "Table V. Weakness self-correction retry outcomes, from an instrumented replay of the same 348 "
+    "shortlisted pairs."
+)
+
+
+def add_evidence_table_captions(document) -> None:
+    """Labels the two evidence tables (ranking-failure reliability, weakness
+    self-correction retry outcomes) with numbered captions, matching the
+    paper's existing convention of [table] -> "Table N. <caption>." -> an
+    explanatory sentence, already used for Tables I-III. These two tables
+    were originally inserted (Section V-B) with only lead-in/discussion
+    prose and no formal caption line."""
+    ranking_failure_next_paragraph = find_paragraph(document, "To recover the before/after-retry breakdown")
+    insert_paragraph_before(ranking_failure_next_paragraph, TABLE_IV_CAPTION)
+    insert_paragraph_before(ranking_failure_next_paragraph, TABLE_IV_EXPLANATION)
+
+    # The paragraph starting "This replay's 38 dropped pairs..." already
+    # explains the weakness-retry-audit table's numbers (added by the task
+    # that inserted the table) -- it just needs a caption line above it,
+    # not a second explanation.
+    discrepancy_paragraph = find_paragraph(document, "This replay's 38 dropped pairs")
+    insert_paragraph_before(discrepancy_paragraph, TABLE_V_CAPTION)
+
+
 def fix_conclusion_and_limitations(document) -> None:
     conclusion_paragraph = find_paragraph(document, "0.0% live skill-contradiction rate")
     replace_paragraph_text(conclusion_paragraph, NEW_CONCLUSION_TEXT)
@@ -507,6 +541,7 @@ def main() -> None:
     insert_results_headers_and_ranking_failure_table(document)
     fix_conclusion_and_limitations(document)
     insert_weakness_retry_audit_table(document, weakness_audit_report)
+    add_evidence_table_captions(document)
     apply_table_and_figure_layout_fixes(document)
 
     document.save(PAPER_PATH)
