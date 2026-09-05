@@ -62,6 +62,30 @@ def insert_table_before(document, anchor, rows: int, cols: int, col_widths_in: l
     return table
 
 
+ABSTRACT_TEXT = (
+    "Abstract—Talent-acquisition systems increasingly pair large language models (LLMs) with statistical ranking "
+    "to shortlist and order job applicants. The most closely related recent system combines an LLM-driven active "
+    "listwise tournament with Plackett-Luce aggregation for human-resources applicant ranking, but it reports no "
+    "mechanism against LLM identifier-drift failures during ranking, uses a fixed iteration count that leaves its "
+    "convergence unquantified, and offers only prompt-level mitigation against hallucinated assessment claims. "
+    "This paper's objective is to validate three pipeline-level mechanisms that close these gaps in an open, "
+    "reproducible applicant-ranking system, implemented as a LangGraph-orchestrated pipeline with embedding-based "
+    "skill shortlisting. This research's three contributions are: (i) resume-grounded strength/weakness "
+    "assessments generated with an automated self-correction retry loop; (ii) ranking of shortlisted applicants "
+    "with a position-robust, schema-constrained listwise tournament, adapting the Monte Carlo knowledge-gradient "
+    "(MC-KG) subset-selection rule and Bayesian Plackett-Luce aggregation from prior work; and (iii) pool-size-aware "
+    "adaptive iteration scaling. The results show that mean Faithfulness reached 0.896 and mean within-repeat "
+    "ranking convergence (Kendall-τ) reached 0.953, both measured across all 10 job profiles. In conclusion, "
+    "these results — measured with metrics the closest prior system does not report or disclose — offer "
+    "transparent, empirical evidence that this research addresses those gaps."
+)
+
+
+def fix_abstract_and_contributions(document) -> None:
+    paragraph = find_paragraph(document, "gives no cross-run stability")
+    replace_paragraph_text(paragraph, ABSTRACT_TEXT)
+
+
 def main() -> None:
     shutil.copy2(PAPER_PATH, BACKUP_PATH)
     print(f"Backed up {PAPER_PATH} -> {BACKUP_PATH}")
@@ -69,7 +93,7 @@ def main() -> None:
     document = docx.Document(PAPER_PATH)
 
     # fix_* calls are added here by later tasks, in this order:
-    # fix_abstract_and_contributions(document)
+    fix_abstract_and_contributions(document)
     # fix_methods_iii_c_d_e(document)
     # fix_experimental_setup_and_table_ii(document)
     # insert_results_headers_and_ranking_failure_table(document)
