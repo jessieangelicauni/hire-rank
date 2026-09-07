@@ -115,11 +115,6 @@ def replace_paragraph_text(paragraph, new_text: str) -> None:
         run.text = ""
 
 
-def delete_paragraph(paragraph) -> None:
-    element = paragraph._p
-    element.getparent().remove(element)
-
-
 def apply_text_and_table_updates(document) -> None:
     replace_everywhere(
         document,
@@ -188,12 +183,21 @@ def apply_text_and_table_updates(document) -> None:
     table_iv.cell(5, 0).text = "Residual contradictions found by offline post-hoc audit"
     table_iv.cell(5, 1).text = NEW_RETRY_AUDIT["offline_audit_residual"]
 
-    # The discrepancy paragraph only explained why an offline replay was once
-    # needed (and its 38-vs-26 mismatch vs. the original run) -- now that the
-    # breakdown is recorded live, that historical justification no longer
-    # belongs next to Table IV's live numbers, so it is dropped rather than
-    # reworded.
-    delete_paragraph(find_paragraph(document, "this replay's 38 dropped pairs"))
+    # The old paragraph here explained why an offline replay was once needed
+    # (and its 38-vs-26 mismatch vs. the original run); that historical
+    # justification no longer applies now that the breakdown is recorded
+    # live, so it is replaced -- not simply deleted -- with a plain
+    # explanation of Table IV's own numbers, matching every other table's
+    # [caption] -> "As Table N shows, ..." convention (Table IV must not be
+    # the only table left without one).
+    discrepancy_paragraph = find_paragraph(document, "this replay's 38 dropped pairs")
+    replace_paragraph_text(
+        discrepancy_paragraph,
+        "As Table IV shows, of the 130 pairs with an initial contradiction, 88 were fixed "
+        "by the retry and 42 still contradicted afterward and were dropped; a separate "
+        "offline post-hoc audit of the run's final weaknesses found zero residual "
+        "contradictions.",
+    )
 
     table_v = document.tables[4]
     for row in table_v.rows:
