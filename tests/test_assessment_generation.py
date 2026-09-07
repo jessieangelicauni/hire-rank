@@ -1,4 +1,6 @@
 
+import json
+
 import numpy as np
 import pytest
 
@@ -7,6 +9,8 @@ from candidate_ranking.scoring.assessment import (
     _GeneratedAssessment,
     _assessment_cache_key,
     generate_assessment,
+    load_or_generate_assessment,
+    write_retry_audit_report,
 )
 from candidate_ranking.models import Candidate, JDSkills, JobDescription
 
@@ -323,3 +327,80 @@ def test_generate_assessment_on_attempt_defaults_to_none_without_error():
     assessment = generate_assessment(JD, CANDIDATE, chain, "fake-model")
 
     assert assessment.strengths == ["Strong Python background."]
+
+
+def test_load_or_generate_assessment_classifies_clean_when_no_contradiction(tmp_path):
+    result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong Python background."],
+        weaknesses=["No Kubernetes experience noted."],
+    )
+    chain = _SequencedAssessmentChain([result])
+
+    assessment, retry_audit = load_or_generate_assessment(JD, CANDIDATE, chain, "fake-model", tmp_path)
+
+    assert assessment.weaknesses == ["No Kubernetes experience noted."]
+    assert retry_audit == {"classification": "clean", "weaknesses_checked": 1, "items_dropped": 0}
+
+
+def test_load_or_generate_assessment_classifies_fixed_by_retry(tmp_path):
+    bad_result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong AWS background."],
+        weaknesses=["Lacks experience with Docker."],
+    )
+    good_result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong AWS background."],
+        weaknesses=["Lacks experience with Kubernetes."],
+    )
+    chain = _SequencedAssessmentChain([bad_result, good_result])
+
+    _, retry_audit = load_or_generate_assessment(JD, CANDIDATE_WITH_SKILLS, chain, "fake-model", tmp_path)
+
+    assert retry_audit == {"classification": "fixed_by_retry", "weaknesses_checked": 1, "items_dropped": 0}
+
+
+def test_load_or_generate_assessment_classifies_dropped_when_still_contradicted_after_retry(tmp_path):
+    bad_result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong AWS background."],
+        weaknesses=["Lacks experience with Docker.", "No cloud certifications mentioned."],
+    )
+    chain = _SequencedAssessmentChain([bad_result, bad_result])
+
+    assessment, retry_audit = load_or_generate_assessment(JD, CANDIDATE_WITH_SKILLS, chain, "fake-model", tmp_path)
+
+    assert assessment.weaknesses == ["No cloud certifications mentioned."]
+    assert retry_audit == {"classification": "dropped", "weaknesses_checked": 1, "items_dropped": 1}
+
+
+def test_load_or_generate_assessment_serves_matching_retry_audit_from_cache(tmp_path):
+    result = _GeneratedAssessment(
+        reasoning="fake reasoning", strengths=["Strong Python background."], weaknesses=[],
+    )
+    chain = _SequencedAssessmentChain([result])
+
+    _, first_audit = load_or_generate_assessment(JD, CANDIDATE, chain, "fake-model", tmp_path)
+    assert chain.calls == 1
+
+    _, second_audit = load_or_generate_assessment(JD, CANDIDATE, chain, "fake-model", tmp_path)
+
+    assert chain.calls == 1  # served from cache, not regenerated
+    assert second_audit == first_audit
+
+
+def test_write_retry_audit_report_aggregates_per_pair_dicts(tmp_path):
+    retry_audits = [
+        {"classification": "clean", "weaknesses_checked": 2, "items_dropped": 0},
+        {"classification": "fixed_by_retry", "weaknesses_checked": 1, "items_dropped": 0},
+        {"classification": "dropped", "weaknesses_checked": 1, "items_dropped": 1},
+    ]
+
+    out_path = write_retry_audit_report(tmp_path, "run-1", retry_audits)
+
+    report = json.loads(out_path.read_text(encoding="utf-8"))
+    assert report == {
+        "total_pairs": 3,
+        "total_weaknesses_checked": 4,
+        "pairs_with_initial_contradiction": 2,
+        "pairs_fixed_by_retry": 1,
+        "pairs_dropped": 1,
+        "items_dropped": 1,
+    }

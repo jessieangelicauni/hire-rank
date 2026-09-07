@@ -28,6 +28,7 @@ class AssessmentResult(TypedDict):
     status: Literal["ok", "failed"]
     assessment: Assessment | None
     error: str | None
+    retry_audit: dict | None
 
 
 class PipelineState(TypedDict):
@@ -105,7 +106,7 @@ def build_pipeline_graph(
         candidate = payload["candidate"]
         jd_skills = payload.get("jd_skills")
         try:
-            assessment = load_or_generate_assessment(
+            assessment, retry_audit = load_or_generate_assessment(
                 jd, candidate, assessment_chain, cfg.ollama_model, cfg.cache_dir,
                 jd_skills=jd_skills, skill_embedder=skill_embedder,
             )
@@ -115,6 +116,7 @@ def build_pipeline_graph(
                 "status": "ok",
                 "assessment": assessment,
                 "error": None,
+                "retry_audit": retry_audit,
             }
         except AssessmentGenerationError as exc:
             result = {
@@ -123,6 +125,7 @@ def build_pipeline_graph(
                 "status": "failed",
                 "assessment": None,
                 "error": str(exc),
+                "retry_audit": None,
             }
         return {"assessment_results": [result]}
 

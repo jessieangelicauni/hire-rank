@@ -187,6 +187,56 @@ def generate_assessment(
     )
 
 
+def _classify_retry_attempts(attempts: list[tuple[list[str], list[str]]]) -> str:
+    """Classifies a pair's attempt history into "clean", "fixed_by_retry", or "dropped".
+
+    `attempts` is the (contradicted_skills, weaknesses) pair from each call to
+    `_find_contradictions`, in attempt order (as produced by `generate_assessment`'s
+    retry loop). Mirrors `classify_pair` in scripts/audit_weakness_contradictions.py
+    so the live pipeline and the offline replay script agree on what these labels mean.
+    """
+    first_contradicted, _ = attempts[0]
+    if not first_contradicted:
+        return "clean"
+    if len(attempts) == 1:
+        return "dropped"
+    second_contradicted, _ = attempts[1]
+    return "dropped" if second_contradicted else "fixed_by_retry"
+
+
+def _build_retry_audit(attempts: list[tuple[list[str], list[str]]], final_weaknesses: list[str]) -> dict:
+    classification = _classify_retry_attempts(attempts)
+    last_attempt_weaknesses = attempts[-1][1]
+    items_dropped = max(0, len(last_attempt_weaknesses) - len(final_weaknesses))
+    return {
+        "classification": classification,
+        "weaknesses_checked": len(final_weaknesses),
+        "items_dropped": items_dropped,
+    }
+
+
+def write_retry_audit_report(runs_dir: Path, run_id: str, retry_audits: list[dict]) -> Path:
+    """Aggregates per-pair retry_audit dicts (as produced alongside each assessment by
+    `load_or_generate_assessment`) into the run's own retry_audit.json -- the before/
+    after-retry breakdown the live pipeline previously never persisted."""
+    total_pairs = len(retry_audits)
+    pairs_with_initial_contradiction = sum(1 for a in retry_audits if a["classification"] != "clean")
+    pairs_fixed_by_retry = sum(1 for a in retry_audits if a["classification"] == "fixed_by_retry")
+    pairs_dropped = sum(1 for a in retry_audits if a["classification"] == "dropped")
+    report = {
+        "total_pairs": total_pairs,
+        "total_weaknesses_checked": sum(a["weaknesses_checked"] for a in retry_audits),
+        "pairs_with_initial_contradiction": pairs_with_initial_contradiction,
+        "pairs_fixed_by_retry": pairs_fixed_by_retry,
+        "pairs_dropped": pairs_dropped,
+        "items_dropped": sum(a["items_dropped"] for a in retry_audits),
+    }
+    out_path = runs_dir / run_id / "retry_audit.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    return out_path
+
+
 def filter_assessable_candidates(candidates: list[Candidate]) -> list[Candidate]:
     assessable = [c for c in candidates if c.parse_status == "ok"]
     excluded_count = len(candidates) - len(assessable)
@@ -218,7 +268,7 @@ def _assessment_cache_key(
     return hashlib.sha256(digest_input).hexdigest()
 
 
-def _read_cached_assessment(path: Path, expected_key: str) -> Assessment | None:
+def _read_cached_assessment(path: Path, expected_key: str) -> tuple[Assessment, dict] | None:
     if not path.exists():
         return None
     try:
@@ -226,20 +276,23 @@ def _read_cached_assessment(path: Path, expected_key: str) -> Assessment | None:
     except (json.JSONDecodeError, OSError) as exc:
         logger.warning("Discarding unreadable assessment cache %s: %s", path, exc)
         return None
-    if not isinstance(data, dict) or data.get("cache_key") != expected_key:
+    if not isinstance(data, dict) or data.get("cache_key") != expected_key or "retry_audit" not in data:
         return None
     try:
-        return Assessment.model_validate(data["assessment"])
+        return Assessment.model_validate(data["assessment"]), data["retry_audit"]
     except (KeyError, ValidationError) as exc:
         logger.warning("Discarding invalid cached assessment %s: %s", path, exc)
         return None
 
 
-def _write_cached_assessment(path: Path, cache_key: str, assessment: Assessment) -> None:
+def _write_cached_assessment(path: Path, cache_key: str, assessment: Assessment, retry_audit: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(path.suffix + ".tmp")
     tmp.write_text(
-        json.dumps({"cache_key": cache_key, "assessment": assessment.model_dump()}, indent=2),
+        json.dumps(
+            {"cache_key": cache_key, "assessment": assessment.model_dump(), "retry_audit": retry_audit},
+            indent=2,
+        ),
         encoding="utf-8",
     )
     tmp.replace(path)
@@ -253,7 +306,11 @@ def load_or_generate_assessment(
     cache_dir: Path,
     jd_skills: JDSkills | None = None,
     skill_embedder: Callable[[list[str]], np.ndarray] | None = None,
-) -> Assessment:
+) -> tuple[Assessment, dict]:
+    """Returns (assessment, retry_audit) -- retry_audit records this pair's before/
+    after-retry classification (see `_build_retry_audit`), whether this call generated
+    the assessment fresh or served it from cache (the cache stores retry_audit
+    alongside the assessment precisely so this holds either way)."""
     path = _assessment_cache_path(cache_dir, jd.id, candidate.id)
     key = _assessment_cache_key(jd, candidate, model_name)
 
@@ -261,6 +318,14 @@ def load_or_generate_assessment(
     if cached is not None:
         return cached
 
-    assessment = generate_assessment(jd, candidate, chain, model_name, jd_skills, skill_embedder)
-    _write_cached_assessment(path, key, assessment)
-    return assessment
+    attempts: list[tuple[list[str], list[str]]] = []
+
+    def on_attempt(_attempt: int, contradicted: list[str], weaknesses: list[str]) -> None:
+        attempts.append((contradicted, weaknesses))
+
+    assessment = generate_assessment(
+        jd, candidate, chain, model_name, jd_skills, skill_embedder, on_attempt=on_attempt
+    )
+    retry_audit = _build_retry_audit(attempts, assessment.weaknesses)
+    _write_cached_assessment(path, key, assessment, retry_audit)
+    return assessment, retry_audit
