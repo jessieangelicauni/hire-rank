@@ -113,6 +113,65 @@ def cut_figure_6(document) -> None:
     )
 
 
+
+
+_LITERATURE_REVIEW_II_A_MARKER = "Most recent papers apply LLMs to extraction"
+_LITERATURE_REVIEW_II_A_NEW = (
+    "Most recent papers apply LLMs to extraction and pointwise scoring inside RAG or multi-agent pipelines, "
+    "without a comparative ranking step. Tran and Tran [2] build a RAG resume agent (Faithfulness 0.882) but "
+    "do not rank applicants. Lo et al. [3] use a four-agent CrewAI scorer; Chowdhury et al. [4] fine-tune "
+    "open-LLM sub-dimension agents that collapse without data augmentation (R² as low as −8.15); "
+    "Jahan et al. [5]’s zero-shot multi-agent consensus vote sees recall drop to 27.9% from requiring "
+    "agent agreement; Walid et al. [7] tune an ensemble for field-extraction accuracy, not ranking; Gera et al. "
+    "[8] report only a single-resume case study with no benchmark; and Chong et al. [17] pair an LLM "
+    "relevance scorer with a fine-tuned-BERT chatbot (99.15% Q&A accuracy) but report no accuracy metric for "
+    "the scoring/ranking component itself. None validates hallucination mitigation with a verified retry loop "
+    "against the applicant’s own extracted skills, as this paper’s constrained, retry-on-contradiction "
+    "generation does. Synthesizing 141 such papers, Dasaklis et al. [15] find hallucination and cross-session "
+    "score instability to be recurring, unresolved risks across the field and call for dedicated "
+    "hallucination-tracking metrics — precisely the mechanism this paper’s retry-on-contradiction loop "
+    "provides."
+)
+
+_LITERATURE_REVIEW_II_B_MARKER = "Li et al. [6] deploy a production"
+_LITERATURE_REVIEW_II_B_NEW = (
+    "Li et al. [6] deploy a production talent-search ranker at Alibaba where the LLM only extracts hiring "
+    "preferences for a Mixture-of-Experts network’s pointwise predicted rates, not a comparative judgment. "
+    "Hoque et al. [9] combine a fine-tuned DistilRoBERTa classifier with Fuzzy TOPSIS under fixed, "
+    "expert-elicited weights, reaching high agreement with human rankings (NDCG = 0.926) but on only 100 "
+    "profiles from a single job family. Rosenberger et al. [13] embed resumes and ESCO job descriptions into "
+    "a shared space and rank jobs by cosine similarity, validated on only five resumes and ten HR experts by "
+    "the authors’ own admission. Xue et al. [14] fuse BERT-based semantic features with a graph neural "
+    "network into a single pointwise fit score (94.6% accuracy on binary hire/no-hire classification); neither "
+    "[13] nor [14] compares candidates against each other within a shared context the way a listwise judgment "
+    "would. This paper instead ranks applicants through a position-robust listwise tournament rather than "
+    "pointwise or fixed-weight scoring."
+)
+
+_LITERATURE_REVIEW_II_C_MARKER = "Yuksel et al. [1] are the closest prior work"
+_LITERATURE_REVIEW_II_C_NEW = (
+    "Yuksel et al. [1] are the closest prior work: an LLM ranks a small subset of applicants at once, "
+    "aggregating orderings into global utilities via a Plackett-Luce model under an active-learning loop with "
+    "a Monte Carlo knowledge-gradient acquisition strategy. It reports a real result against human judgment "
+    "(87% of ratings within one rubric level; peak NDCG@25% of 0.5703), but does not name its LLM, disclose "
+    "its dataset, report run-to-run variance, discuss identifier-drift failure, or self-correct hallucinated "
+    "claims beyond a single internal prompt check — and motivates its listwise design by noting pairwise "
+    "comparison “does not scale well to large applicant pools” without addressing how many applicants "
+    "reach the tournament in the first place. Section III gives the full structured comparison."
+)
+
+
+def cut_literature_review(document) -> None:
+    replace_paragraph_text(
+        find_paragraph(document, _LITERATURE_REVIEW_II_A_MARKER), _LITERATURE_REVIEW_II_A_NEW
+    )
+    replace_paragraph_text(
+        find_paragraph(document, _LITERATURE_REVIEW_II_B_MARKER), _LITERATURE_REVIEW_II_B_NEW
+    )
+    replace_paragraph_text(
+        find_paragraph(document, _LITERATURE_REVIEW_II_C_MARKER), _LITERATURE_REVIEW_II_C_NEW
+    )
+
 def main() -> None:
     if not SHORTENING_BACKUP_PATH.exists():
         shutil.copy2(PAPER_PATH, SHORTENING_BACKUP_PATH)
@@ -124,6 +183,7 @@ def main() -> None:
 
     cut_figure_5(document)
     cut_figure_6(document)
+    cut_literature_review(document)
     # cut_* calls are added here by later tasks, in this order.
 
     document.save(PAPER_PATH)
