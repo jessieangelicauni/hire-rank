@@ -232,11 +232,11 @@ def cut_table_v_prose(document) -> None:
                 raise ValueError(
                     f"unexpected Table V 'Convergence value disclosure' column 1 text: {row.cells[1].text!r}"
                 )
-            row.cells[1].text = _TABLE_V_CONVERGENCE_COL1_NEW
             if row.cells[2].text != _TABLE_V_CONVERGENCE_COL2_OLD:
                 raise ValueError(
                     f"unexpected Table V 'Convergence value disclosure' column 2 text: {row.cells[2].text!r}"
                 )
+            row.cells[1].text = _TABLE_V_CONVERGENCE_COL1_NEW
             row.cells[2].text = _TABLE_V_CONVERGENCE_COL2_NEW
         elif label == "Human-rater validation":
             if row.cells[1].text != _TABLE_V_HUMAN_RATER_COL1_OLD:

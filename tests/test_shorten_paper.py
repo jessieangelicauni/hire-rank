@@ -281,3 +281,24 @@ def test_cut_table_v_prose_raises_if_expected_text_does_not_match():
         assert False, "expected ValueError"
     except ValueError:
         pass
+
+
+def test_cut_table_v_prose_does_not_partially_write_when_only_the_second_cell_has_drifted():
+    document, table = _table_v_skeleton()
+    original_col1 = None
+    for row in table.rows:
+        if row.cells[0].text == "Convergence value disclosure":
+            original_col1 = row.cells[1].text
+            row.cells[2].text = "some drifted text in the second column only"
+
+    try:
+        cut_table_v_prose(document)
+        assert False, "expected ValueError"
+    except ValueError:
+        pass
+
+    convergence_row = next(r for r in table.rows if r.cells[0].text == "Convergence value disclosure")
+    assert convergence_row.cells[1].text == original_col1, (
+        "column 1 must not be overwritten when column 2's mismatch is what raises -- "
+        "both cells must be validated before either is written"
+    )
