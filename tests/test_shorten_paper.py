@@ -2,7 +2,7 @@ import docx
 from docx.shared import Inches
 from PIL import Image
 
-from scripts.shorten_paper_20260908 import cut_figure_6, cut_literature_review, cut_introduction_prose, delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
+from scripts.shorten_paper_20260908 import cut_figure_6, cut_literature_review, cut_introduction_prose, cut_table_v_prose, delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
 
 
 def test_delete_paragraph_removes_it_from_the_document():
@@ -215,3 +215,69 @@ def test_cut_introduction_prose_keeps_the_three_numbered_gaps_and_the_plackett_l
     for section in ("Section II", "Section III", "Section IV", "Section V", "Section VI"):
         assert section in new_11
     assert len(new_11) < len(_OLD_PARA_11)
+
+
+def _table_v_skeleton():
+    document = docx.Document()
+    table = document.add_table(rows=9, cols=3)
+    rows_data = [
+        ("Dimension", "Yuksel et al.\xa0[1]", "This work"),
+        ("Ranking mechanism", "LLM listwise tournament + Plackett-Luce + active subset sampling",
+         "Same core mechanism (independently implemented)"),
+        ("Generation model", "Not disclosed", "Qwen2.5-14B-Instruct, Ollama"),
+        ("Applicant-identifier robustness", "Not discussed",
+         "Positional tokens + schema-constrained decoding + retry"),
+        ("Self-correction for hallucinated claims", "Single internal cross-check inside one prompt",
+         "Verified retry loop against applicant's own extracted skills"),
+        ("Faithfulness / groundedness", "Not measured", "Faithfulness + non-LLM contradiction evaluation"),
+        ("Convergence value disclosure",
+         "Kendall-τ curve shown only as an axis-normalized [0, 1] plot; raw value never disclosed",
+         "Numeric Kendall-τ disclosed: 0.93–0.98 across all 10 job profiles"),
+        ("Iteration count vs. pool size", "Fixed 30 iterations", "Adaptive, scaled to shortlist size"),
+        ("Human-rater validation", "87% agreement within one rubric level; peak NDCG@25% = 0.5703",
+         "Not performed; proposed as future work."),
+    ]
+    for row, (label, yuksel, this_work) in zip(table.rows, rows_data):
+        row.cells[0].text = label
+        row.cells[1].text = yuksel
+        row.cells[2].text = this_work
+    return document, table
+
+
+def test_cut_table_v_prose_tightens_convergence_and_human_rater_rows_without_dropping_numbers():
+    document, table = _table_v_skeleton()
+
+    cut_table_v_prose(document)
+
+    convergence_row = next(r for r in table.rows if r.cells[0].text == "Convergence value disclosure")
+    human_rater_row = next(r for r in table.rows if r.cells[0].text == "Human-rater validation")
+
+    assert len(convergence_row.cells[1].text) < len(
+        "Kendall-τ curve shown only as an axis-normalized [0, 1] plot; raw value never disclosed"
+    )
+    assert "[0, 1]" in convergence_row.cells[1].text
+    assert convergence_row.cells[2].text == "Numeric τ disclosed: 0.93–0.98 across all 10 job profiles"
+    assert "0.93" in convergence_row.cells[2].text and "0.98" in convergence_row.cells[2].text
+
+    assert "87%" in human_rater_row.cells[1].text
+    assert "0.5703" in human_rater_row.cells[1].text
+    assert len(human_rater_row.cells[1].text) <= len(
+        "87% agreement within one rubric level; peak NDCG@25% = 0.5703"
+    )
+
+    # Other rows must be untouched.
+    ranking_row = next(r for r in table.rows if r.cells[0].text == "Ranking mechanism")
+    assert ranking_row.cells[1].text == "LLM listwise tournament + Plackett-Luce + active subset sampling"
+
+
+def test_cut_table_v_prose_raises_if_expected_text_does_not_match():
+    document, table = _table_v_skeleton()
+    for row in table.rows:
+        if row.cells[0].text == "Convergence value disclosure":
+            row.cells[1].text = "some drifted text that does not match what this function expects"
+
+    try:
+        cut_table_v_prose(document)
+        assert False, "expected ValueError"
+    except ValueError:
+        pass

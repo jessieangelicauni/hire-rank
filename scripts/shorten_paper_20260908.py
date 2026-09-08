@@ -23,7 +23,7 @@ from pathlib import Path
 import docx
 from docx.oxml.ns import qn
 
-from scripts.apply_paper_corrections import find_paragraph, replace_paragraph_text
+from scripts.apply_paper_corrections import _find_table_by_header_cell_text, find_paragraph, replace_paragraph_text
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PAPER_PATH = PROJECT_ROOT / "docs" / "candidate-ranking-paper-new.docx"
@@ -206,7 +206,57 @@ def cut_introduction_prose(document) -> None:
     replace_paragraph_text(find_paragraph(document, _INTRO_PARA_9_MARKER), _INTRO_PARA_9_NEW)
     replace_paragraph_text(find_paragraph(document, _INTRO_PARA_11_MARKER), _INTRO_PARA_11_NEW)
 
+_TABLE_V_CONVERGENCE_COL1_OLD = (
+    "Kendall-τ curve shown only as an axis-normalized [0, 1] plot; raw value never disclosed"
+)
+_TABLE_V_CONVERGENCE_COL1_NEW = "Curve shown only as a normalized [0, 1] plot; raw value undisclosed"
+
+_TABLE_V_CONVERGENCE_COL2_OLD = "Numeric Kendall-τ disclosed: 0.93–0.98 across all 10 job profiles"
+_TABLE_V_CONVERGENCE_COL2_NEW = "Numeric τ disclosed: 0.93–0.98 across all 10 job profiles"
+
+_TABLE_V_HUMAN_RATER_COL1_OLD = "87% agreement within one rubric level; peak NDCG@25% = 0.5703"
+_TABLE_V_HUMAN_RATER_COL1_NEW = "87% agreement within one rubric level; peak NDCG@25%=0.5703"
+
+
+def cut_table_v_prose(document) -> None:
+    """Tightens Table V's two wordiest comparison cells (same content,
+    shorter phrasing) -- every other cell is already terse enough that
+    further compression isn't worth the risk of losing a comparison point.
+    Verifies each cell's current text before overwriting it, raising loudly
+    on a mismatch rather than silently overwriting drifted content."""
+    table = _find_table_by_header_cell_text(document, "Dimension")
+    for row in table.rows:
+        label = row.cells[0].text
+        if label == "Convergence value disclosure":
+            if row.cells[1].text != _TABLE_V_CONVERGENCE_COL1_OLD:
+                raise ValueError(
+                    f"unexpected Table V 'Convergence value disclosure' column 1 text: {row.cells[1].text!r}"
+                )
+            row.cells[1].text = _TABLE_V_CONVERGENCE_COL1_NEW
+            if row.cells[2].text != _TABLE_V_CONVERGENCE_COL2_OLD:
+                raise ValueError(
+                    f"unexpected Table V 'Convergence value disclosure' column 2 text: {row.cells[2].text!r}"
+                )
+            row.cells[2].text = _TABLE_V_CONVERGENCE_COL2_NEW
+        elif label == "Human-rater validation":
+            if row.cells[1].text != _TABLE_V_HUMAN_RATER_COL1_OLD:
+                raise ValueError(
+                    f"unexpected Table V 'Human-rater validation' column 1 text: {row.cells[1].text!r}"
+                )
+            row.cells[1].text = _TABLE_V_HUMAN_RATER_COL1_NEW
+
+
 def main() -> None:
+    """NOT safe to re-run against its own output: every cut_* call below is
+    a one-shot text/image removal keyed to markers that only exist in the
+    pristine, pre-shortening document (e.g. cut_figure_5 looks for a "Fig.
+    5." caption that no longer exists once it has already been removed).
+    Re-running main() against an already-shortened PAPER_PATH raises
+    ValueError from the first cut_* call that hits a missing marker. To
+    apply a further edit (e.g. an updated _NEW constant), first restore
+    PAPER_PATH from SHORTENING_BACKUP_PATH, then re-run main() once from
+    that pristine copy -- never invoke individual cut_* functions by hand
+    against the live, already-shortened document."""
     if not SHORTENING_BACKUP_PATH.exists():
         shutil.copy2(PAPER_PATH, SHORTENING_BACKUP_PATH)
         print(f"Backed up {PAPER_PATH} -> {SHORTENING_BACKUP_PATH}")
@@ -219,6 +269,7 @@ def main() -> None:
     cut_figure_6(document)
     cut_literature_review(document)
     cut_introduction_prose(document)
+    cut_table_v_prose(document)
 
     document.save(PAPER_PATH)
     print(f"Saved shortened paper to {PAPER_PATH}")
