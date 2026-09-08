@@ -135,17 +135,16 @@ _LITERATURE_REVIEW_II_A_NEW = (
 
 _LITERATURE_REVIEW_II_B_MARKER = "Li et al. [6] deploy a production"
 _LITERATURE_REVIEW_II_B_NEW = (
-    "Li et al. [6] deploy a production talent-search ranker at Alibaba where the LLM only extracts hiring "
-    "preferences for a Mixture-of-Experts network’s pointwise predicted rates, not a comparative judgment. "
-    "Hoque et al. [9] combine a fine-tuned DistilRoBERTa classifier with Fuzzy TOPSIS under fixed, "
-    "expert-elicited weights, reaching high agreement with human rankings (NDCG = 0.926) but on only 100 "
-    "profiles from a single job family. Rosenberger et al. [13] embed resumes and ESCO job descriptions into "
-    "a shared space and rank jobs by cosine similarity, validated on only five resumes and ten HR experts by "
-    "the authors’ own admission. Xue et al. [14] fuse BERT-based semantic features with a graph neural "
-    "network into a single pointwise fit score (94.6% accuracy on binary hire/no-hire classification); neither "
-    "[13] nor [14] compares candidates against each other within a shared context the way a listwise judgment "
-    "would. This paper instead ranks applicants through a position-robust listwise tournament rather than "
-    "pointwise or fixed-weight scoring."
+    "Li et al. [6] deploy a production Alibaba ranker where the LLM only extracts hiring preferences for a "
+    "Mixture-of-Experts network’s pointwise rates, not a comparative judgment. Hoque et al. [9] pair a "
+    "fine-tuned DistilRoBERTa classifier with Fuzzy TOPSIS under fixed, expert-elicited weights, reaching high "
+    "agreement with human rankings (NDCG = 0.926) on just 100 profiles from one job family. Rosenberger et al. "
+    "[13] embed resumes and ESCO job descriptions into a shared space and rank by cosine similarity, validated "
+    "on only five resumes and ten HR experts by the authors’ own admission. Xue et al. [14] fuse BERT-based "
+    "semantic features with a graph neural network into one pointwise fit score (94.6% accuracy, binary "
+    "hire/no-hire); neither compares candidates within a shared context as a listwise judgment would. This "
+    "paper instead ranks applicants through a position-robust listwise tournament, not pointwise or "
+    "fixed-weight scoring."
 )
 
 _LITERATURE_REVIEW_II_C_MARKER = "Yuksel et al. [1] are the closest prior work"
