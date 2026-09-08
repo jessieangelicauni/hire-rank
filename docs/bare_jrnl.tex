@@ -524,26 +524,7 @@ Weaknesses are not scored by Faithfulness at all, by design: Faithfulness can on
 
 Per-role Faithfulness scores range from full-stack-engineer (lowest, 0.764) to devops-engineer (highest, 0.944), bracketing the run-wide mean of 0.880.
 
-The position-robust tournament's reliability claim is backed by the following counts from the full run, verified directly against \texttt{repeats.json} and \texttt{warnings.json}:
-
-\begin{table}[!t]
-\caption{Position-robust tournament reliability.}
-\label{tab_reliability}
-\centering
-\footnotesize
-\begin{tabular}{p{2.0in}p{1.1in}}
-\hline
-Metric & Value\\
-\hline
-Total tournament ranking calls (rank\_subset invocations) & 1713\\
-Initial invalid outputs (failed schema/permutation validation on attempt 1) & 0\\
-Successful retries & 0 (none needed)\\
-Unrecovered failures (ListwiseRankingError, both attempts invalid) & 0\\
-\hline
-\end{tabular}
-\end{table}
-
-All 1,713 listwise ranking calls (Table III) completed without an unrecovered failure, so no comparison in this run had to be discarded.
+The position-robust tournament's reliability claim is backed by the following counts from the full run, verified directly against \texttt{repeats.json} and \texttt{warnings.json}: of 1,713 total tournament ranking calls (\texttt{rank\_subset} invocations), 0 produced an initial invalid output (failed schema/permutation validation on the first attempt), 0 needed a successful retry, and 0 ended in an unrecovered failure (\texttt{ListwiseRankingError}, both attempts invalid) --- so no comparison in this run had to be discarded.
 
 The pipeline now records this before/after-retry breakdown directly during generation, persisting it to the run's own \texttt{retry\_audit.json}:
 
@@ -565,7 +546,7 @@ Residual contradictions found by offline post-hoc audit & 0 / 1268 = 0.00\%\\
 \end{tabular}
 \end{table}
 
-Of the 130 pairs with an initial contradiction (Table IV), 88 were fixed by the retry and 42 still contradicted afterward and were dropped; a separate offline post-hoc audit of the run's final weaknesses found zero residual contradictions.
+Of the 130 pairs with an initial contradiction (Table III), 88 were fixed by the retry and 42 still contradicted afterward and were dropped; a separate offline post-hoc audit of the run's final weaknesses found zero residual contradictions.
 
 \subsection{Comparison with the Closest Prior System}
 \begin{table*}[!t]
@@ -589,7 +570,7 @@ Human-rater validation & 87\% agreement within one rubric level; peak NDCG@25\% 
 \end{tabular}
 \end{table*}
 
-Table V's rows are drawn from the limitations and methodology stated in [1] and the results reported in Sections V-A--V-B. The comparison is not one-directional: Yuksel et al. [1] report a genuine external validation this pipeline does not yet have --- agreement with independent human-expert ratings. This pipeline instead offers internal, mechanistic reliability evidence for hallucination mitigation and tournament robustness that [1] does not report. Both kinds of evidence are complementary.
+Table IV's rows are drawn from the limitations and methodology stated in [1] and the results reported in Sections V-A--V-B. The comparison is not one-directional: Yuksel et al. [1] report a genuine external validation this pipeline does not yet have --- agreement with independent human-expert ratings. This pipeline instead offers internal, mechanistic reliability evidence for hallucination mitigation and tournament robustness that [1] does not report. Both kinds of evidence are complementary.
 
 \section{Conclusion}
 This paper presented three pipeline-level mechanisms for LLM-driven applicant ranking, validated against a real, locally-hosted 14-billion-parameter model rather than an undisclosed one. Self-correcting assessment generation guarantees zero known skill-contradictions in its own output by construction, with a 0.00\% residual rate surfaced only by a separate offline post-hoc audit using the same heuristic; the position-robust tournament completes reliably, with zero unrecovered ranking failures out of 1,713 ranking calls; and adaptive iteration scaling settles convergence at Kendall-$\tau$ 0.93--0.98 across all ten job profiles, a reproducible number the closest prior system's rescaled curve never discloses. Mean Faithfulness reaches 0.880; the residual gap may partly reflect Faithfulness's own architectural sensitivity to phrasing and entailment strictness.
