@@ -1,0 +1,665 @@
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{figures/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+\title{Hallucination-Aware IT Applicant Ranking:\\ A Pool-Calibrated Listwise Plackett-Luce Tournament with Monte Carlo Subset Selection}
+
+\author{Jessie~Angelica\thanks{J. Angelica, H.~F. Zuhri, and R.~Roestam are with the Faculty of Computer Science, President University, Bekasi, Indonesia.}%
+,~Hasanul~Fahmi~Zuhri\thanks{H.~F. Zuhri is also with the Faculty of Artificial Intelligence \& Frontier Technologies, UNITAR International University, Malaysia. e-mail: fahmi.zuhri@unitar.my (corresponding author); ORCID: 0000-0001-5951-4848.}%
+,~Rusdianto~Roestam\thanks{}%
+,~and~Muhammad~Arief\thanks{M. Arief is with the Research Center for Artificial Intelligence and Cyber Security, National Research and Innovation Agency, Indonesia.}}
+
+\markboth{Hallucination-Aware IT Applicant Ranking}%
+{Angelica \MakeLowercase{\textit{et al.}}: Hallucination-Aware IT Applicant Ranking}
+
+\maketitle
+
+\begin{abstract}
+Talent-acquisition systems increasingly pair large language models (LLMs) with statistical ranking to shortlist and order job applicants. The most closely related recent system combines an LLM-driven active listwise tournament with Plackett-Luce aggregation for human-resources applicant ranking, but it reports no mechanism against LLM identifier-drift failures during ranking, uses a fixed iteration count that leaves its convergence unquantified, and offers only prompt-level mitigation against hallucinated assessment claims. This paper's objective is to propose three pipeline-level mechanisms that close these gaps, implemented as a LangGraph-orchestrated pipeline with embedding-based skill shortlisting. This research's three methods are: (i) resume-grounded strength/weakness assessments generated with an automated self-correction retry loop; (ii) ranking of shortlisted applicants with a position-robust, schema-constrained listwise tournament, adapting the Monte Carlo subset-selection rule and Bayesian Plackett-Luce aggregation from prior work; and (iii) pool-size-aware adaptive iteration scaling. The results show that mean Faithfulness reached 0.880 and mean within-repeat ranking convergence (Kendall-$\tau$) reached 0.957, both measured across all 10 job profiles. In conclusion, these results offer transparent, empirical evidence that this research addresses those gaps.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Applicant Tracking System, Hallucination, Large Language Models, Ranking Convergence, Tournament Ranking.
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+\IEEEPARstart{H}{iring} teams routinely receive far more resumes than they can read carefully, so recruitment platforms have moved from keyword search toward machine-learning and, more recently, large-language-model (LLM) systems that read a resume and explain what they find [3]. LLMs can extract skills from unstructured text, justify why an applicant fits a role, and compare several applicants in a single pass --- none of which older keyword or embedding-similarity systems do on their own. The closest prior work turns applicant ranking into a tournament: an LLM looks at a small group of applicants side by side and orders them, and those orderings are combined statistically into one overall ranking using the Plackett-Luce model [1].
+
+This tournament idea is powerful, but recent research leaves three gaps in the LLM architecture and pipeline. 1) No defense against LLM identifier or format drift during ranking --- common with smaller, locally-hosted models. 2) No self-correction for hallucinated claims --- never checked against the resume or retried on contradiction. 3) Fixed iteration counts --- iterative methods [1] use a fixed value regardless of pool size, under-sampling large pools and over-sampling small ones.
+
+This paper presents an LLM-based ranking system whose architecture directly addresses these three gaps, and proposes these three contributions: 1) A self-correcting assessment that checks every generated weakness against the applicant's own previously-extracted skill list and automatically retries generation with a corrective instruction when a contradiction is found to prevent hallucination. 2) A position-robust listwise tournament ranker that replaces free-text applicant identifiers with numbered positional tokens and a schema that structurally forces the LLM's output to be a valid permutation, paired with a retry-with-feedback loop for the cases that still fail. 3) An adaptive, pool-size-aware subset layer that scales the tournament's iteration count to each job profile's shortlist size --- so every applicant gets a comparable number of comparisons regardless of pool size, instead of a fixed iteration count that under-serves large pools and wastes computation on small ones. The Monte Carlo knowledge-gradient subset-selection rule and Plackett-Luce aggregation underlying the tournament follow Yuksel et al. [1]; the three contributions above are additions to that ranking framework, not replacements of it.
+
+Section II reviews related work; Section III details the pipeline; Section IV describes the experimental setup; Section V reports results against the closest prior system; and Section VI concludes with limitations and future work.
+
+\section{Literature Review}
+
+\subsection{LLM-Based Extraction, RAG, and Multi-Agent Screening}
+Most recent papers apply LLMs to extraction and pointwise scoring inside RAG or multi-agent pipelines, without a comparative ranking step. Tran and Tran [2] build a RAG resume agent (Faithfulness 0.882) but do not rank applicants. Lo et al. [3] use a four-agent CrewAI scorer; Chowdhury et al. [4] fine-tune open-LLM sub-dimension agents that collapse without data augmentation ($R^2$ as low as $-8.15$); Jahan et al. [5]'s zero-shot multi-agent consensus vote sees recall drop to 27.9\% from requiring agent agreement; Walid et al. [7] tune an ensemble for field-extraction accuracy, not ranking; Gera et al. [8] report only a single-resume case study with no benchmark; and Chong et al. [17] pair an LLM relevance scorer with a fine-tuned-BERT chatbot (99.15\% Q\&A accuracy) but report no accuracy metric for the scoring/ranking component itself. None validates hallucination mitigation with a verified retry loop against the applicant's own extracted skills, as this paper's constrained, retry-on-contradiction generation does. Synthesizing 141 such papers, Dasaklis et al. [15] find hallucination and cross-session score instability to be recurring, unresolved risks across the field and call for dedicated hallucination-tracking metrics --- precisely the mechanism this paper's retry-on-contradiction loop provides.
+
+\subsection{Recommendation-Style and Fuzzy Multi-Criteria Ranking}
+Li et al. [6] deploy a production Alibaba ranker where the LLM only extracts hiring preferences for a Mixture-of-Experts network's pointwise rates, not a comparative judgment. Hoque et al. [9] pair a fine-tuned DistilRoBERTa classifier with Fuzzy TOPSIS under fixed, expert-elicited weights, reaching high agreement with human rankings (NDCG = 0.926) on just 100 profiles from one job family. Rosenberger et al. [13] embed resumes and ESCO job descriptions into a shared space and rank by cosine similarity, validated on only five resumes and ten HR experts by the authors' own admission. Xue et al. [14] fuse BERT-based semantic features with a graph neural network into one pointwise fit score (94.6\% accuracy, binary hire/no-hire); neither compares candidates within a shared context as a listwise judgment would. This paper instead ranks applicants through a position-robust listwise tournament, not pointwise or fixed-weight scoring.
+
+\subsection{LLM-Driven Active Listwise Tournaments}
+Yuksel et al. [1] are the closest prior work: an LLM ranks a small subset of applicants at once, aggregating orderings into global utilities via a Plackett-Luce model under an active-learning loop with a Monte Carlo knowledge-gradient acquisition strategy. It reports a real result against human judgment (87\% of ratings within one rubric level; peak NDCG@25\% of 0.5703), but does not name its LLM, disclose its dataset, report run-to-run variance, discuss identifier-drift failure, or self-correct hallucinated claims beyond a single internal prompt check --- and motivates its listwise design by noting pairwise comparison ``does not scale well to large applicant pools'' without addressing how many applicants reach the tournament in the first place. Section III gives the full structured comparison.
+
+\section{Methodology}
+The pipeline is implemented as a LangGraph graph (Fig.~1) that fans out work per job profile and per applicant. All generation stages use a single open, locally-hosted model, Qwen2.5-14B-Instruct (4-bit quantized), served by Ollama; skill matching uses the \texttt{all-MiniLM-L6-v2} sentence-embedding model. Every generation prompt in the pipeline asks the model to reason step by step in a dedicated field before producing its final answer, and every structured output is validated against a Pydantic schema before being accepted.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.8\textwidth]{Overall Architecture of the Proposed Applicant Ranking Methodology.png}
+\caption{Overall pipeline architecture.}
+\label{fig_pipeline}
+\end{figure*}
+
+As shown in Fig.~1, the pipeline runs LLM-based skill extraction and semantic shortlisting, then self-correcting LLM assessment generation (regenerated once on any detected hallucination), then an MC-KG-guided listwise tournament with Plackett-Luce aggregation, ending in a final ranking and evaluation stage.
+
+\subsection{Skill Extraction and Embedding}
+Job profiles are loaded as plain text and resumes are parsed from PDF. An LLM call extracts a normalized, resume-grounded list of skills from each applicant and each job profile, under explicit constraints that forbid inferring a skill from general job duties or naming a skill that is not literally present in the text. Every extracted skill is then embedded (L2-normalized) into a single shared matrix across the whole applicant corpus, so that later shortlisting for any job profile is one matrix multiplication rather than a per-applicant LLM call.
+
+\subsection{Shortlisting}
+For each job profile, every job skill is compared against every applicant skill by cosine similarity; an applicant is shortlisted only if at least a minimum number of the job's distinct technical skills are matched above a similarity threshold, automatically lowered to the job's own distinct-skill count when it has fewer than min\_matches. This keeps the two expensive LLM stages below --- assessment and ranking --- from running against the full corpus for every job.
+
+\subsection{Assessment Generation with Self-Correction}
+For every shortlisted (job, applicant) pair, the LLM generates strengths, weaknesses, and an additional\_skills list, grounded strictly in the applicant's resume text. Generation is constrained against failure modes traced from the Faithfulness audit: no speculation, no merging two resume facts into one claim, no skill or tool absent from the resume, no invented purpose or use case, no hedging language (``implied by'', ``likely'') in place of a direct claim, and --- critically --- no weakness claiming a skill gap that contradicts the applicant's own already-extracted skills, including skills appearing only as a bare list item. A bare-list-item skill with no descriptive context goes into additional\_skills instead of strengths or weaknesses, since it is still a skill the applicant has.
+
+Every weakness is then independently re-checked in code, not only enforced by prompt instruction. A lexical-plus-context heuristic flags absence claims (e.g., ``lacks X'') while avoiding false positives from contrastive phrasing or category labels; an embedding-similarity check further bridges the job profile's skill wording to the applicant's own, catching wording-mismatched contradictions the lexical check alone would miss. This is the pipeline's first contribution: hallucination mitigation enforced inside the generation loop, before an incorrect claim can reach ranking.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.0in]{Hallucination-Aware Self-Correction Mechanism for Applicant Assessment.png}
+\caption{Hallucination-aware self-correction mechanism for applicant assessment generation.}
+\label{fig_selfcorrect}
+\end{figure}
+
+As Fig.~2 shows, each generated weakness is checked in code against the applicant's own previously-extracted skill list for a self-contradiction; on a detected contradiction, the assessment is regenerated once with corrective feedback, and any weakness still contradicting after the retry is dropped rather than kept. Strengths and additional skills are not live-checked by this mechanism.
+
+\subsection{Tournament Ranking}
+Per job profile, the pipeline runs several independent ``stability repeats'' of an active listwise tournament, following the MC-KG subset-selection and Plackett-Luce aggregation design of Yuksel et al. [1]. Each iteration: (1) samples applicant subsets not yet shown this repeat; (2) scores each subset via Monte Carlo draws from the current posterior over applicant utilities --- how much showing it next would reduce overall uncertainty (a knowledge-gradient rule) --- and picks the highest-scoring subset; (3) shows that subset's strengths, weaknesses, and additional skills to the LLM and asks it to rank them strongest to weakest; (4) refits a Bayesian Plackett-Luce model on every ranking collected so far, numerically finding each applicant's best-fitting utility while gently regularizing toward zero, and estimating remaining uncertainty from how sharply that fit is peaked. A repeat stops when its iteration count is exhausted or every distinct subset has been shown once.
+
+The pipeline's second contribution targets a reliability failure observed in real-model testing: a 14-billion-parameter local model asked to copy each applicant's free-text identifier into its ranking does so unreliably, frequently dropping or renaming applicants. Instead, applicants in a subset are numbered 1..N and the model is asked to return only numbers, under a response schema that structurally requires exactly N integers with no duplicates. If the model's response is not a valid permutation of the shown numbers, it is given one retry with an explicit message repeating the exact numbers expected. This combination removed an entire class of ranking failure that free-text identifiers caused.
+
+The pipeline's third contribution addresses the fixed-iteration-count gap: a large shortlist receives too few comparisons per applicant to rank reliably, while a small shortlist receives far more than it needs. Rather than using a fixed count for every job profile regardless of shortlist size, the iteration count is scaled so that every shortlisted applicant is expected to appear in roughly a fixed target number of sampled subsets on average, subject to a floor and a ceiling. Concretely, the resolved iteration budget is
+\begin{multline*}
+\mathrm{clamp}\bigl(\mathrm{ceil}(\mathrm{target\_appearances\_per\_candidate}\\
+\times \mathrm{n\_candidates}/\mathrm{tournament\_subset\_size}),\\
+\mathrm{iterations\_min},\;\mathrm{iterations\_max}\bigr).
+\end{multline*}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.7in]{MC-KG-Guided Tournament Ranking and Plackett-Luce Aggregation.png}
+\caption{MC-KG-guided listwise tournament ranking and Plackett-Luce aggregation.}
+\label{fig_tournament}
+\end{figure}
+
+As shown in Fig.~3, Monte Carlo knowledge-gradient subset selection feeds the LLM listwise tournament, whose partial rankings are aggregated via a Plackett-Luce model to update global applicant utilities until a stopping criterion is met.
+
+\subsection{Evaluation}
+Each job profile's final ranking averages applicant utilities across its successful stability repeats, which reduces the noise a single repeat's point estimate would otherwise carry into the ranking. Within-repeat convergence --- via the Kendall-$\tau$ rank correlation between the utility ordering at consecutive iterations --- is computed directly from the tournament traces, with no LLM call required. Separately, an offline harness audits assessment quality after the fact: strengths are scored with the Faithfulness metric (an LLM judge estimates how well each strength is entailed by the resume text, given a neutral, job-agnostic question rather than one naming the job title, so the score reflects only resume support and not job-profile-specific framing), while weaknesses --- which are almost always absence claims that a faithfulness-style entailment check cannot verify positively --- are instead audited with the job-profile-skill-bridging half of the same skill-contradiction heuristic used in the live retry loop: each weakness is scanned for a negated mention using the job profile's skill vocabulary --- since a weakness typically echoes the job description's wording rather than the applicant's own --- and that mention is then matched by embedding similarity against the applicant's own extracted skills, which is what actually decides whether the weakness is a genuine contradiction.
+
+\section{Experimental Setup}
+All results were obtained by running the pipeline against the Qwen2.5-14B-Instruct model, over the repository's corpus of resumes (500 sampled from the EraMatch CV Parsing Benchmark v3.0 synthetic resume dataset [10]) and 10 job profiles, synthetically by the authors. Shortlisting narrowed this corpus to 348 (job, applicant) pairs across the 10 profiles --- 237 distinct applicants, since a resume can be shortlisted for more than one profile --- and it is this shortlisted set, not the raw 500-resume corpus, that proceeds to assessment and ranking.
+
+\begin{table}[!t]
+\caption{Pipeline configuration used for all runs reported in this paper.}
+\label{tab_config}
+\centering
+\footnotesize
+\begin{tabular}{p{1.4in}p{1.7in}}
+\hline
+Parameter & Value\\
+\hline
+Generation model & Qwen2.5-14B-Instruct (4-bit, Ollama)\\
+Skill embedding model & sentence-transformers/all-MiniLM-L6-v2\\
+Corpus & 500 resumes, 10 job profiles\\
+Shortlisted (job, applicant) pairs & 348 total across 10 profiles (237 distinct applicants)\\
+Skill-match threshold / min. matches & cosine $\geq$ 0.8 / $\geq$ 5 job skills\\
+Stability repeats per job profile & 3\\
+Tournament subset size & 5 applicants per listwise comparison\\
+Target appearances per applicant & 8 (drives adaptive iteration count)\\
+Iteration ceiling / floor & 125 / 30\\
+MC-KG applicant subsets sampled / iteration & 30\\
+MC-KG Monte Carlo draws / subset & 50\\
+Plackett-Luce prior variance & 1.0\\
+\hline
+\end{tabular}
+\end{table}
+
+As Table I shows, these values were held fixed across all runs reported in this paper. The target-appearances, ceiling, and floor rows drive the adaptive iteration mechanism, which computes each job profile's iteration budget from its shortlist size rather than using a single fixed count.
+
+\section{Results and Discussion}
+This section reports convergence and generation faithfulness, each measured on live model runs against the full corpus.
+
+\subsection{Tournament Convergence}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.9in]{table6_kendall_tau.png}
+\caption{Within-repeat convergence (Kendall-$\tau$) across the 10 job profiles, ordered by shortlist size ($n$).}
+\label{fig_convergence}
+\end{figure}
+
+As Fig.~4 shows, within-repeat convergence (Kendall-$\tau$) is uniformly high ($\tau$ = 0.93--0.98) across all ten job profiles regardless of shortlist size, under pool-size-adaptive iteration scaling (Table I). Yuksel et al. [1] report the same qualitative shape but never disclose a numeric value --- their curve is ``independently normalized to [0, 1] for visualization.'' This pipeline reports the reproducible number instead.
+
+Final Kendall's Tau per role, averaged across stability repeats, spans 0.930 (frontend-engineer, n=7) to 0.979 (data-engineer, n=77), with smaller shortlists scoring lower --- consistent with Kendall's Tau being a noisier estimator over fewer candidates rather than evidence that smaller pools rank less reliably.
+
+\subsection{Generation Faithfulness and Contradiction Audit}
+\begin{table}[!t]
+\caption{Faithfulness scores for generated strengths.}
+\label{tab_faithfulness}
+\centering
+\footnotesize
+\begin{tabular}{ll}
+\hline
+Job profile & Mean Faithfulness\\
+\hline
+full-stack-engineer & 0.764\\
+data-scientist-engineer & 0.828\\
+ui-ux-designer & 0.831\\
+it-security-engineer & 0.872\\
+frontend-engineer & 0.894\\
+data-engineer & 0.900\\
+backend-engineer & 0.917\\
+cloud-engineer & 0.917\\
+java-developer & 0.933\\
+devops-engineer & 0.944\\
+Total Mean & 0.880\\
+\hline
+\end{tabular}
+\end{table}
+
+As Table II shows, the sample comprises 300 stratified items from the run's assessments, covering all 10 job profiles, with 300 of the 300 scored (0 excluded as evaluation failures). The run-wide mean is 0.880, following successive prompt refinements. The judge model is the same Qwen2.5-14B model used for generation, not an independent judge, adopted after a smaller 7B judge was found to misjudge clearly resume-grounded claims.
+
+Weaknesses are not scored by Faithfulness at all, by design: Faithfulness can only verify a claim that is positively entailed by the source text, and a weakness is almost always an absence claim (``the resume does not mention X''), which resume text can never positively entail regardless of whether the claim is true. An earlier measurement on a pre-self-correction run found roughly 74\% of weakness items scored low under Faithfulness versus 37\% of strength items --- a gap attributable to Faithfulness's architecture, not to generation quality --- which is why weaknesses are audited instead with the skill-contradiction heuristic.
+
+As Table II shows, per-role Faithfulness scores range from full-stack-engineer (lowest, 0.764) to devops-engineer (highest, 0.944), bracketing the run-wide mean of 0.880.
+
+The position-robust tournament's reliability claim is backed by the following counts from the full run, verified directly against \texttt{repeats.json} and \texttt{warnings.json}:
+
+\begin{table}[!t]
+\caption{Position-robust tournament reliability.}
+\label{tab_reliability}
+\centering
+\footnotesize
+\begin{tabular}{p{2.0in}p{1.1in}}
+\hline
+Metric & Value\\
+\hline
+Total tournament ranking calls (rank\_subset invocations) & 1713\\
+Initial invalid outputs (failed schema/permutation validation on attempt 1) & 0\\
+Successful retries & 0 (none needed)\\
+Unrecovered failures (ListwiseRankingError, both attempts invalid) & 0\\
+\hline
+\end{tabular}
+\end{table}
+
+As shown in Table III, all 1,713 listwise ranking calls completed without an unrecovered failure, so no comparison in this run had to be discarded.
+
+The pipeline now records this before/after-retry breakdown directly during generation, persisting it to the run's own \texttt{retry\_audit.json}:
+
+\begin{table}[!t]
+\caption{Weakness self-correction retry outcomes, recorded live during generation across all 348 shortlisted pairs.}
+\label{tab_retry}
+\centering
+\footnotesize
+\begin{tabular}{p{2.0in}p{1.1in}}
+\hline
+Metric & Value\\
+\hline
+Total weaknesses checked & 1268\\
+Pairs with contradiction on first attempt & 130\\
+Pairs fixed by the retry & 88\\
+Pairs dropped after retry still contradicted & 42\\
+Residual contradictions found by offline post-hoc audit & 0 / 1268 = 0.00\%\\
+\hline
+\end{tabular}
+\end{table}
+
+As Table IV shows, of the 130 pairs with an initial contradiction, 88 were fixed by the retry and 42 still contradicted afterward and were dropped; a separate offline post-hoc audit of the run's final weaknesses found zero residual contradictions.
+
+\subsection{Comparison with the Closest Prior System}
+\begin{table*}[!t]
+\caption{Structured comparison against the closest prior published system.}
+\label{tab_comparison}
+\centering
+\footnotesize
+\begin{tabular}{p{1.5in}p{2.5in}p{2.5in}}
+\hline
+Dimension & Yuksel et al. [1] & This work\\
+\hline
+Ranking mechanism & LLM listwise tournament + Plackett-Luce + active subset sampling & Same core mechanism (independently implemented)\\
+Generation model & Not disclosed & Qwen2.5-14B-Instruct, Ollama\\
+Applicant-identifier robustness & Not discussed & Positional tokens + schema-constrained decoding + retry\\
+Self-correction for hallucinated claims & Single internal cross-check inside one prompt & Verified retry loop against applicant's own extracted skills\\
+Faithfulness / groundedness & Not measured & Faithfulness + non-LLM contradiction evaluation\\
+Convergence value disclosure & Kendall-$\tau$ curve shown only as an axis-normalized [0, 1] plot; raw value never disclosed & Numeric Kendall-$\tau$ disclosed: 0.93--0.98 across all 10 job profiles\\
+Iteration count vs. pool size & Fixed 30 iterations & Adaptive, scaled to shortlist size\\
+Human-rater validation & 87\% agreement within one rubric level; peak NDCG@25\% = 0.5703 & Not performed; proposed as future work.\\
+\hline
+\end{tabular}
+\end{table*}
+
+As shown in Table V, rows are drawn from the limitations and methodology explicitly stated in [1] and the results reported in Sections V-A--V-B of this paper. The comparison is not one-directional: Yuksel et al. [1] report a genuine external validation this pipeline does not yet have --- agreement with independent human-expert ratings. What this pipeline offers instead is internal, mechanistic reliability evidence for hallucination mitigation and tournament robustness that [1] does not report at all. Both kinds of evidence are complementary.
+
+\section{Conclusion}
+This paper presented three pipeline-level mechanisms for LLM-driven applicant ranking, validated against a real, locally-hosted 14-billion-parameter model rather than an undisclosed one. Self-correcting assessment generation guarantees zero known skill-contradictions in its own output by construction, with a 0.00\% residual rate surfaced only by a separate offline post-hoc audit using the same heuristic; the position-robust tournament completes reliably, with zero unrecovered ranking failures out of 1,713 ranking calls; and adaptive iteration scaling settles convergence at Kendall-$\tau$ 0.93--0.98 across all ten job profiles, a reproducible number the closest prior system's rescaled curve never discloses. Mean Faithfulness reaches 0.880; the residual gap may partly reflect Faithfulness's own architectural sensitivity to phrasing and entailment strictness.
+
+This study's corpus consists of synthetic resumes over synthetic job profiles authored by the paper's own authors, not real hiring data; its claims are correspondingly scoped to pipeline-level system reliability --- self-correction, ranking robustness, and convergence --- rather than real-world hiring validity or fairness. Building on these results, future work will pursue three directions: 1) human-rater validation --- comparing this pipeline against independent human-expert rankings using the same protocol as [1]; 2) an independent judge model --- sourcing Faithfulness scoring from a separate model than the one used for generation, to rule out shared-model bias; and 3) demographic and fairness evaluation --- checking whether shortlisting, assessment, or ranking behavior varies systematically across candidate demographic groups. Taken together, these mechanisms advance a proven architecture --- the LLM listwise tournament with Plackett-Luce aggregation --- toward one whose failure modes on a real, locally-hosted model are documented, mitigated, and measured, with the future work above set to close the remaining validation gaps.
+
+\section*{Acknowledgment}
+The authors acknowledge the use of NVIDIA GeForce RTX 4070 Ti SUPER GPU hardware and the open-source LangGraph, sentence-transformers, and PyTorch libraries.
+
+\begin{thebibliography}{19}
+
+\bibitem{ref1}
+K.~A. Yuksel, A.~B. Anees, A.~Elneima, S.~Hewavitharana, M.~Al-Badrashiny, and H.~Sawaf, ``Agentic AI for Human Resources: LLM-Driven Candidate Assessment,'' in \emph{Proc.\ 19th Conf.\ Eur.\ Chapter Assoc.\ Comput.\ Linguistics (EACL)}, vol.~3: System Demonstrations, San Jose, CA, USA, Mar.~2026, pp.~341--348.
+
+\bibitem{ref2}
+A.~C. Tran and N.~C. Tran, ``A recruitment support system based on Large Language Models and Retrieval-Augmented Generation,'' \emph{Procedia Computer Science}, vol.~269, pp.~259--268, 2025, doi: 10.1016/j.procs.2025.08.278.
+
+\bibitem{ref3}
+F.~P.-W. Lo, J.~Qiu, Z.~Wang, H.~Yu, Y.~Chen, G.~Zhang, and B.~Lo, ``AI Hiring with LLMs: A Context-Aware and Explainable Multi-Agent Framework for Resume Screening,'' arXiv:2504.02870, 2025.
+
+\bibitem{ref4}
+M.~S. Chowdhury, A.~F. Chowdhury, A.~Banu, R.~Hossain, and M.~Chowdhury, ``Automated Resume Evaluation Using Large Language Models: A Multi-Agent Framework With Fine-Tuning and Prompt Engineering,'' \emph{IEEE Access}, vol.~14, pp.~84085--84102, 2026, doi: 10.1109/ACCESS.2026.3696456.
+
+\bibitem{ref5}
+N.~Jahan, M.~B. Uddin, M.~S. Arefin, C.~M. Mehedi, F.~Tasnim, and K.~E. Delowar, ``Enhancing Resume Screening Through Multi-stage LLM Classification and Hybrid Summarization,'' in \emph{Proc.\ BIM 2025}, Lecture Notes in Networks and Systems, vol.~1798, Springer, 2026, pp.~742--757, doi: 10.1007/978-3-032-15346-3\_52.
+
+\bibitem{ref6}
+J.~Li, B.~Xu, Z.~Chen, C.~Xu, M.~Chen, S.~Liu, Y.~Zhou, and Z.~Wen, ``Enhancing Talent Search Ranking with Role-Aware Expert Mixtures and LLM-based Fine-Grained Job Descriptions,'' in \emph{Proc.\ 2025 Conf.\ Empirical Methods in Natural Language Processing (EMNLP): Industry Track}, Nov.~2025, pp.~185--194.
+
+\bibitem{ref7}
+O.~Walid, M.~T. Younes, K.~Shaban, M.~Hassan, and A.~Hamdi, ``MSLEF: Multi-Segment LLM Ensemble Finetuning in Recruitment,'' arXiv:2509.06200, 2025.
+
+\bibitem{ref8}
+A.~Gera, S.~Reddy, A.~Kothapalli, A.~Milan K, and M.~Venugopalan, ``Nexus: A Multi-Modal Framework for Semantic Job Matching and AI-Driven Resume Analysis,'' \emph{Procedia Computer Science}, vol.~283, pp.~922--935, 2026.
+
+\bibitem{ref9}
+S.~Hoque, A.~A.~J. Karim, M.~G.~R. Alam, and N.~Gope, ``When LLM Meets Fuzzy-TOPSIS for Personnel Selection Through Automated Profile Analysis,'' \emph{IEEE Access}, vol.~14, pp.~15778--15792, 2026, doi: 10.1109/ACCESS.2026.3658575.
+
+\bibitem{ref10}
+A.~Ahmad, ``EraMatch CV Parsing Benchmark v3.0,'' Kaggle, 2025. Accessed: Sep.~1, 2026. [Online]. Available: https://www.kaggle.com/datasets/anasahmad25/cv-parsing-eramatch/data
+
+\bibitem{ref11}
+D.~Piras, A.~Pes, D.~Reforgiato Recupero, and G.~Scarpi, ``MAIS: Exploring human-AI interaction in fair and transparent recruitment with a multi-agent LLM-based system,'' \emph{International Journal of Human-Computer Studies}, vol.~215, art.~103859, 2026, doi: 10.1016/j.ijhcs.2026.103859.
+
+\bibitem{ref12}
+K.~L. Abhishek, M.~Niranjanamurthy, S.~Aric, S.~I. Ansarullah, A.~Sinha, G.~Tejani, and M.~A. Shah, ``Developing an Intelligent Resume Screening Tool With AI-Driven Analysis and Recommendation Features,'' \emph{Applied AI Letters}, vol.~6, no.~2, art.~e116, 2025, doi: 10.1002/ail2.116.
+
+\bibitem{ref13}
+J.~Rosenberger, L.~Wolfrum, S.~Weinzierl, M.~Kraus, and P.~Zschech, ``CareerBERT: Matching resumes to ESCO jobs in a shared embedding space for generic job recommendations,'' \emph{Expert Systems With Applications}, vol.~275, art.~127043, 2025, doi: 10.1016/j.eswa.2025.127043.
+
+\bibitem{ref14}
+X.~Xue, F.~Wang, J.~Wang, B.~Ma, Y.~Yu, S.~Gao, J.~Chen, and B.~Wang, ``Graph-based adaptive feature fusion neural network model for person-job fit,'' \emph{Complex \& Intelligent Systems}, vol.~11, art.~234, 2025, doi: 10.1007/s40747-025-01834-8.
+
+\bibitem{ref15}
+T.~K. Dasaklis, P.~G. Giannopoulos, D.~Koutras, V.~Malamas, and P.~T. Chountalas, ``Large Language Models in Human Resource Management: A Systematic Literature Review of Applications, Open Issues and Future Research Directions,'' \emph{Technological Forecasting and Social Change}, vol.~231, art.~124800, 2026, doi: 10.1016/j.techfore.2026.124800.
+
+\bibitem{ref16}
+G.~Zhang, L.~Pan, F.~Tang, and F.~Yao, ``Explainable Artificial Intelligence in the Talent Recruitment Process --- A Literature Review,'' \emph{Cogent Business \& Management}, vol.~12, no.~1, art.~2570881, 2025, doi: 10.1080/23311975.2025.2570881.
+
+\bibitem{ref17}
+K.~W. Chong, K.~W. Ng, and Y.~H. Fu, ``Resume data extract and job recruitment Chatbot features for AI-based resume screening \& analytics,'' \emph{MethodsX}, vol.~16, art.~103775, 2026, doi: 10.1016/j.mex.2025.103775.
+
+\bibitem{ref18}
+G.~Barba, A.~Corallo, M.~Lazoi, and M.~Lezzi, ``Large language models for competence-based HRM: A case study in the aerospace industry,'' \emph{Journal of Innovation \& Knowledge}, vol.~10, art.~100780, 2025, doi: 10.1016/j.jik.2025.100780.
+
+\bibitem{ref19}
+R.~Alonso, D.~Dess\`i, A.~Meloni, and D.~Reforgiato Recupero, ``A novel approach for job matching and skill recommendation using transformers and the O*NET database,'' \emph{Big Data Research}, vol.~39, art.~100509, 2025, doi: 10.1016/j.bdr.2025.100509.
+
+\end{thebibliography}
+
+\end{document}
+
+
