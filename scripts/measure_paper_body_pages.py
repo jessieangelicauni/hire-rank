@@ -5,7 +5,9 @@ paper's first declaration section, immediately following the Conclusion).
 Exits nonzero if that page is greater than 5, per
 docs/superpowers/specs/2026-09-08-paper-5-page-shortening-design.md's target.
 
-Run with: uv run python scripts/measure_paper_body_pages.py
+Run with: .venv/bin/python scripts/measure_paper_body_pages.py (no PYTHONPATH
+needed -- unlike shorten_paper_20260908.py, this script has no cross-module
+import, so `uv run` isn't required even though `uv` isn't installed here).
 """
 from __future__ import annotations
 

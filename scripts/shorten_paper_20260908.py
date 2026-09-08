@@ -1,19 +1,40 @@
 """Shortens docs/candidate-ranking-paper-new.docx's main body (Title through
-end of Section VI. Conclusion) from ~6.85 pages to 5 pages or fewer, per
+end of Section VI. Conclusion) from ~6.85 pages toward a 5-page target, per
 docs/superpowers/specs/2026-09-08-paper-5-page-shortening-design.md.
 
 Cuts: Figures 5 and 6 (each verified redundant with existing data -- Fig. 5
 duplicates Fig. 4's endpoints, Fig. 6 duplicates Table II's rows), a
-condensed Literature Review (all 19 citations kept), and light
-prose-tightening in the Introduction. No number, claim, or citation is
-dropped -- only redundant charts and verbose wording.
+condensed Literature Review (all 13 papers cited in Section II kept, each
+with its differentiating fact -- the paper's other 6 references are cited
+elsewhere and untouched), and prose-tightening in the Introduction (three
+paragraphs, with paragraph 9 tightened twice -- see below). No number,
+claim, or citation is dropped anywhere -- only redundant charts and verbose
+wording.
+
+Measured final result (scripts/measure_paper_body_pages.py): the body ends
+on page 6, one page over the 5-page target. After this script's Figure/
+Literature-Review/Introduction cuts left the body at page 6, a further
+Introduction-paragraph-9 tightening pass and a Literature-Review-II-B
+tightening pass (both applied here, keeping every citation/number/claim)
+still left it at page 6. A follow-up attempt to also tighten two Table V
+comparison cells was tried, found to buy zero additional page savings, and
+was reverted after a whole-branch review found it broke a protected number
+(NDCG@25%=0.5703 rendering split across a line wrap) for no benefit -- so
+this script never touches Table V. The user explicitly accepted 6 pages as
+the final result rather than authorizing further cuts into Figures 1-3,
+Table V's rows, the Conclusion, or References/declarations.
 
 docs/ is gitignored, so SHORTENING_BACKUP_PATH is the only surviving copy of
 the pre-shortening (but post-accuracy-corrections) paper. Distinct from the
 older docs/candidate-ranking-paper-new-backup.docx, which must not be
 touched by this script.
 
-Run with: uv run python scripts/shorten_paper_20260908.py
+Run with: PYTHONPATH=. .venv/bin/python scripts/shorten_paper_20260908.py
+(a bare `python scripts/shorten_paper_20260908.py` fails at the first
+import with ModuleNotFoundError: No module named 'scripts', since that
+invocation puts scripts/ rather than the repo root on sys.path -- only
+pytest's conftest.py fixes this automatically; `uv run` would too, if `uv`
+were installed in this environment).
 """
 from __future__ import annotations
 
@@ -23,7 +44,7 @@ from pathlib import Path
 import docx
 from docx.oxml.ns import qn
 
-from scripts.apply_paper_corrections import _find_table_by_header_cell_text, find_paragraph, replace_paragraph_text
+from scripts.apply_paper_corrections import find_paragraph, replace_paragraph_text
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PAPER_PATH = PROJECT_ROOT / "docs" / "candidate-ranking-paper-new.docx"
@@ -206,45 +227,6 @@ def cut_introduction_prose(document) -> None:
     replace_paragraph_text(find_paragraph(document, _INTRO_PARA_9_MARKER), _INTRO_PARA_9_NEW)
     replace_paragraph_text(find_paragraph(document, _INTRO_PARA_11_MARKER), _INTRO_PARA_11_NEW)
 
-_TABLE_V_CONVERGENCE_COL1_OLD = (
-    "Kendall-τ curve shown only as an axis-normalized [0, 1] plot; raw value never disclosed"
-)
-_TABLE_V_CONVERGENCE_COL1_NEW = "Curve shown only as a normalized [0, 1] plot; raw value undisclosed"
-
-_TABLE_V_CONVERGENCE_COL2_OLD = "Numeric Kendall-τ disclosed: 0.93–0.98 across all 10 job profiles"
-_TABLE_V_CONVERGENCE_COL2_NEW = "Numeric τ disclosed: 0.93–0.98 across all 10 job profiles"
-
-_TABLE_V_HUMAN_RATER_COL1_OLD = "87% agreement within one rubric level; peak NDCG@25% = 0.5703"
-_TABLE_V_HUMAN_RATER_COL1_NEW = "87% agreement within one rubric level; peak NDCG@25%=0.5703"
-
-
-def cut_table_v_prose(document) -> None:
-    """Tightens Table V's two wordiest comparison cells (same content,
-    shorter phrasing) -- every other cell is already terse enough that
-    further compression isn't worth the risk of losing a comparison point.
-    Verifies each cell's current text before overwriting it, raising loudly
-    on a mismatch rather than silently overwriting drifted content."""
-    table = _find_table_by_header_cell_text(document, "Dimension")
-    for row in table.rows:
-        label = row.cells[0].text
-        if label == "Convergence value disclosure":
-            if row.cells[1].text != _TABLE_V_CONVERGENCE_COL1_OLD:
-                raise ValueError(
-                    f"unexpected Table V 'Convergence value disclosure' column 1 text: {row.cells[1].text!r}"
-                )
-            if row.cells[2].text != _TABLE_V_CONVERGENCE_COL2_OLD:
-                raise ValueError(
-                    f"unexpected Table V 'Convergence value disclosure' column 2 text: {row.cells[2].text!r}"
-                )
-            row.cells[1].text = _TABLE_V_CONVERGENCE_COL1_NEW
-            row.cells[2].text = _TABLE_V_CONVERGENCE_COL2_NEW
-        elif label == "Human-rater validation":
-            if row.cells[1].text != _TABLE_V_HUMAN_RATER_COL1_OLD:
-                raise ValueError(
-                    f"unexpected Table V 'Human-rater validation' column 1 text: {row.cells[1].text!r}"
-                )
-            row.cells[1].text = _TABLE_V_HUMAN_RATER_COL1_NEW
-
 
 def main() -> None:
     """NOT safe to re-run against its own output: every cut_* call below is
@@ -269,7 +251,6 @@ def main() -> None:
     cut_figure_6(document)
     cut_literature_review(document)
     cut_introduction_prose(document)
-    cut_table_v_prose(document)
 
     document.save(PAPER_PATH)
     print(f"Saved shortened paper to {PAPER_PATH}")

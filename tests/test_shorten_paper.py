@@ -2,7 +2,7 @@ import docx
 from docx.shared import Inches
 from PIL import Image
 
-from scripts.shorten_paper_20260908 import cut_figure_6, cut_literature_review, cut_introduction_prose, cut_table_v_prose, delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
+from scripts.shorten_paper_20260908 import cut_figure_5, cut_figure_6, cut_literature_review, cut_introduction_prose, delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
 
 
 def test_delete_paragraph_removes_it_from_the_document():
@@ -77,6 +77,32 @@ def test_remove_figure_and_fold_text_archives_the_original_image_bytes(tmp_path)
     )
 
     assert archive_path.read_bytes() == png_path.read_bytes()
+
+
+def test_cut_figure_5_removes_image_and_preserves_all_four_folded_numbers(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        "scripts.shorten_paper_20260908.FIGURE_5_ARCHIVE_PATH", tmp_path / "_archive" / "fig5.png"
+    )
+    document = docx.Document()
+    document.add_picture(str(_tiny_png_path(tmp_path, "fig5.png")), width=Inches(3.5), height=Inches(2.0))
+    document.add_paragraph("Fig. 5. Final Kendall's Tau per job role after convergence.")
+    document.add_paragraph(
+        "As Fig. 5 shows, final Kendall's Tau per role, averaged across stability repeats, "
+        "spans 0.930 (frontend-engineer, n=7) to 0.979 (data-engineer, n=77), with smaller "
+        "shortlists scoring lower — consistent with Kendall's Tau being a noisier estimator "
+        "over fewer candidates rather than evidence that smaller pools rank less reliably."
+    )
+
+    cut_figure_5(document)
+
+    texts = [p.text for p in document.paragraphs]
+    assert not any(t.startswith("Fig. 5.") for t in texts)
+    joined = " ".join(texts)
+    assert "As Fig. 5 shows" not in joined
+    for number in ("0.930", "n=7", "0.979", "n=77"):
+        assert number in joined
+    assert "noisier estimator" in joined
+    assert len(document.inline_shapes) == 0
 
 
 def test_cut_figure_6_removes_image_and_rewrites_sentence_to_reference_table_ii(tmp_path, monkeypatch):
@@ -163,8 +189,8 @@ def test_cut_literature_review_keeps_every_citation_and_shortens_each_paragraph(
     for citation in _ALL_LIT_REVIEW_CITATIONS:
         assert citation in combined, f"citation {citation} was dropped"
 
-    assert len(new_a) < len(_OLD_II_A) * 0.85   # was 0.75; real ratio is ~0.808
-    assert len(new_b) < len(_OLD_II_B) * 0.90   # was 0.75; real ratio is ~0.842
+    assert len(new_a) < len(_OLD_II_A) * 0.85   # real ratio is ~0.808
+    assert len(new_b) < len(_OLD_II_B) * 0.80   # tightened further in the contingency round; real ratio is ~0.753
     # II-C (Yuksel et al., the key comparator) gets the lightest cut.
     assert len(new_c) < len(_OLD_II_C)
     assert len(new_c) > len(_OLD_II_C) * 0.85   # was 0.7; real ratio is ~0.914, tighten the floor to match
@@ -212,93 +238,7 @@ def test_cut_introduction_prose_keeps_the_three_numbered_gaps_and_the_plackett_l
     assert len(new_8) < len(_OLD_PARA_8)
     for marker in ("1) No defense", "2) No self-correction", "3) Fixed iteration counts"):
         assert marker in new_9
+    assert len(new_9) < len(_OLD_PARA_9)
     for section in ("Section II", "Section III", "Section IV", "Section V", "Section VI"):
         assert section in new_11
     assert len(new_11) < len(_OLD_PARA_11)
-
-
-def _table_v_skeleton():
-    document = docx.Document()
-    table = document.add_table(rows=9, cols=3)
-    rows_data = [
-        ("Dimension", "Yuksel et al.\xa0[1]", "This work"),
-        ("Ranking mechanism", "LLM listwise tournament + Plackett-Luce + active subset sampling",
-         "Same core mechanism (independently implemented)"),
-        ("Generation model", "Not disclosed", "Qwen2.5-14B-Instruct, Ollama"),
-        ("Applicant-identifier robustness", "Not discussed",
-         "Positional tokens + schema-constrained decoding + retry"),
-        ("Self-correction for hallucinated claims", "Single internal cross-check inside one prompt",
-         "Verified retry loop against applicant's own extracted skills"),
-        ("Faithfulness / groundedness", "Not measured", "Faithfulness + non-LLM contradiction evaluation"),
-        ("Convergence value disclosure",
-         "Kendall-τ curve shown only as an axis-normalized [0, 1] plot; raw value never disclosed",
-         "Numeric Kendall-τ disclosed: 0.93–0.98 across all 10 job profiles"),
-        ("Iteration count vs. pool size", "Fixed 30 iterations", "Adaptive, scaled to shortlist size"),
-        ("Human-rater validation", "87% agreement within one rubric level; peak NDCG@25% = 0.5703",
-         "Not performed; proposed as future work."),
-    ]
-    for row, (label, yuksel, this_work) in zip(table.rows, rows_data):
-        row.cells[0].text = label
-        row.cells[1].text = yuksel
-        row.cells[2].text = this_work
-    return document, table
-
-
-def test_cut_table_v_prose_tightens_convergence_and_human_rater_rows_without_dropping_numbers():
-    document, table = _table_v_skeleton()
-
-    cut_table_v_prose(document)
-
-    convergence_row = next(r for r in table.rows if r.cells[0].text == "Convergence value disclosure")
-    human_rater_row = next(r for r in table.rows if r.cells[0].text == "Human-rater validation")
-
-    assert len(convergence_row.cells[1].text) < len(
-        "Kendall-τ curve shown only as an axis-normalized [0, 1] plot; raw value never disclosed"
-    )
-    assert "[0, 1]" in convergence_row.cells[1].text
-    assert convergence_row.cells[2].text == "Numeric τ disclosed: 0.93–0.98 across all 10 job profiles"
-    assert "0.93" in convergence_row.cells[2].text and "0.98" in convergence_row.cells[2].text
-
-    assert "87%" in human_rater_row.cells[1].text
-    assert "0.5703" in human_rater_row.cells[1].text
-    assert len(human_rater_row.cells[1].text) <= len(
-        "87% agreement within one rubric level; peak NDCG@25% = 0.5703"
-    )
-
-    # Other rows must be untouched.
-    ranking_row = next(r for r in table.rows if r.cells[0].text == "Ranking mechanism")
-    assert ranking_row.cells[1].text == "LLM listwise tournament + Plackett-Luce + active subset sampling"
-
-
-def test_cut_table_v_prose_raises_if_expected_text_does_not_match():
-    document, table = _table_v_skeleton()
-    for row in table.rows:
-        if row.cells[0].text == "Convergence value disclosure":
-            row.cells[1].text = "some drifted text that does not match what this function expects"
-
-    try:
-        cut_table_v_prose(document)
-        assert False, "expected ValueError"
-    except ValueError:
-        pass
-
-
-def test_cut_table_v_prose_does_not_partially_write_when_only_the_second_cell_has_drifted():
-    document, table = _table_v_skeleton()
-    original_col1 = None
-    for row in table.rows:
-        if row.cells[0].text == "Convergence value disclosure":
-            original_col1 = row.cells[1].text
-            row.cells[2].text = "some drifted text in the second column only"
-
-    try:
-        cut_table_v_prose(document)
-        assert False, "expected ValueError"
-    except ValueError:
-        pass
-
-    convergence_row = next(r for r in table.rows if r.cells[0].text == "Convergence value disclosure")
-    assert convergence_row.cells[1].text == original_col1, (
-        "column 1 must not be overwritten when column 2's mismatch is what raises -- "
-        "both cells must be validated before either is written"
-    )
