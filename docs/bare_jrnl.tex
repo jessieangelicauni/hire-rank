@@ -373,7 +373,7 @@ Applicant Tracking System, Hallucination, Large Language Models, Ranking Converg
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-\IEEEPARstart{H}{iring} teams routinely receive far more resumes than they can read carefully, so recruitment platforms have moved from keyword search toward machine-learning and, more recently, large-language-model (LLM) systems that read a resume and explain what they find [3]. LLMs can extract skills from unstructured text, justify why an applicant fits a role, and compare several applicants in a single pass --- none of which older keyword or embedding-similarity systems do on their own. The closest prior work turns applicant ranking into a tournament: an LLM looks at a small group of applicants side by side and orders them, and those orderings are combined statistically into one overall ranking using the Plackett-Luce model [1].
+\IEEEPARstart{H}{iring} teams routinely receive far more resumes than they can read carefully, so recruitment platforms have moved from keyword search toward machine-learning and, more recently, large-language-model (LLM) systems that read a resume and explain what they find [3]. LLMs can extract skills from unstructured text, justify why an applicant fits a role, and compare several applicants in a single pass --- none of which older keyword or embedding-similarity systems do. The closest prior work turns applicant ranking into a tournament: an LLM looks at a small group of applicants side by side and orders them, and those orderings are combined statistically into one overall ranking using the Plackett-Luce model [1].
 
 This tournament idea is powerful, but recent research leaves three gaps in the LLM architecture and pipeline. 1) No defense against LLM identifier or format drift during ranking --- common with smaller, locally-hosted models. 2) No self-correction for hallucinated claims --- never checked against the resume or retried on contradiction. 3) Fixed iteration counts --- iterative methods [1] use a fixed value regardless of pool size, under-sampling large pools and over-sampling small ones.
 
@@ -384,10 +384,10 @@ Section II reviews related work; Section III details the pipeline; Section IV de
 \section{Literature Review}
 
 \subsection{LLM-Based Extraction, RAG, and Multi-Agent Screening}
-Most recent papers apply LLMs to extraction and pointwise scoring inside RAG or multi-agent pipelines, without a comparative ranking step. Tran and Tran [2] build a RAG resume agent (Faithfulness 0.882) but do not rank applicants. Lo et al. [3] use a four-agent CrewAI scorer; Chowdhury et al. [4] fine-tune open-LLM sub-dimension agents that collapse without data augmentation ($R^2$ as low as $-8.15$); Jahan et al. [5]'s zero-shot multi-agent consensus vote sees recall drop to 27.9\% from requiring agent agreement; Walid et al. [7] tune an ensemble for field-extraction accuracy, not ranking; Gera et al. [8] report only a single-resume case study with no benchmark; and Chong et al. [17] pair an LLM relevance scorer with a fine-tuned-BERT chatbot (99.15\% Q\&A accuracy) but report no accuracy metric for the scoring/ranking component itself. None validates hallucination mitigation with a verified retry loop against the applicant's own extracted skills, as this paper's constrained, retry-on-contradiction generation does. Synthesizing 141 such papers, Dasaklis et al. [15] find hallucination and cross-session score instability to be recurring, unresolved risks across the field and call for dedicated hallucination-tracking metrics --- precisely the mechanism this paper's retry-on-contradiction loop provides.
+Most recent papers apply LLMs to extraction and pointwise scoring inside RAG or multi-agent pipelines, without a comparative ranking step. Tran and Tran [2] build a RAG resume agent (Faithfulness 0.882) but do not rank applicants. Lo et al. [3] use a four-agent CrewAI scorer; Chowdhury et al. [4] fine-tune open-LLM sub-dimension agents that collapse without data augmentation ($R^2$ as low as $-8.15$); Jahan et al. [5]'s zero-shot multi-agent consensus vote drops recall to 27.9\%; Walid et al. [7] tune an ensemble for field-extraction accuracy, not ranking; Gera et al. [8] report only a single-resume case study; and Chong et al. [17] pair an LLM relevance scorer with a fine-tuned-BERT chatbot (99.15\% Q\&A accuracy) but report no accuracy metric for the scoring/ranking component itself. None validates hallucination mitigation with a verified retry loop against the applicant's own extracted skills, as this paper does. Synthesizing 141 such papers, Dasaklis et al. [15] find hallucination and score instability to be recurring, unresolved risks and call for dedicated hallucination-tracking metrics --- precisely what this paper's retry-on-contradiction loop provides.
 
 \subsection{Recommendation-Style and Fuzzy Multi-Criteria Ranking}
-Li et al. [6] deploy a production Alibaba ranker where the LLM only extracts hiring preferences for a Mixture-of-Experts network's pointwise rates, not a comparative judgment. Hoque et al. [9] pair a fine-tuned DistilRoBERTa classifier with Fuzzy TOPSIS under fixed, expert-elicited weights, reaching high agreement with human rankings (NDCG = 0.926) on just 100 profiles from one job family. Rosenberger et al. [13] embed resumes and ESCO job descriptions into a shared space and rank by cosine similarity, validated on only five resumes and ten HR experts by the authors' own admission. Xue et al. [14] fuse BERT-based semantic features with a graph neural network into one pointwise fit score (94.6\% accuracy, binary hire/no-hire); neither compares candidates within a shared context as a listwise judgment would. This paper instead ranks applicants through a position-robust listwise tournament, not pointwise or fixed-weight scoring.
+Li et al. [6] deploy a production Alibaba ranker where the LLM only extracts hiring preferences for a Mixture-of-Experts network's pointwise rates, not a comparative judgment. Hoque et al. [9] pair a fine-tuned DistilRoBERTa classifier with Fuzzy TOPSIS under fixed, expert-elicited weights, reaching high agreement with human rankings (NDCG = 0.926) on just 100 profiles from one job family. Rosenberger et al. [13] embed resumes and ESCO job descriptions into a shared space and rank by cosine similarity, validated on only five resumes and ten HR experts. Xue et al. [14] fuse BERT-based semantic features with a graph neural network into one pointwise fit score (94.6\% accuracy, binary hire/no-hire); neither compares candidates within a shared context. This paper instead ranks applicants through a position-robust listwise tournament, not pointwise or fixed-weight scoring.
 
 \subsection{LLM-Driven Active Listwise Tournaments}
 Yuksel et al. [1] are the closest prior work: an LLM ranks a small subset of applicants at once, aggregating orderings into global utilities via a Plackett-Luce model under an active-learning loop with a Monte Carlo knowledge-gradient acquisition strategy. It reports a real result against human judgment (87\% of ratings within one rubric level; peak NDCG@25\% of 0.5703), but does not name its LLM, disclose its dataset, report run-to-run variance, discuss identifier-drift failure, or self-correct hallucinated claims beyond a single internal prompt check --- and motivates its listwise design by noting pairwise comparison ``does not scale well to large applicant pools'' without addressing how many applicants reach the tournament in the first place. Section III gives the full structured comparison.
@@ -402,7 +402,7 @@ The pipeline is implemented as a LangGraph graph (Fig.~1) that fans out work per
 \label{fig_pipeline}
 \end{figure*}
 
-As shown in Fig.~1, the pipeline runs LLM-based skill extraction and semantic shortlisting, then self-correcting LLM assessment generation (regenerated once on any detected hallucination), then an MC-KG-guided listwise tournament with Plackett-Luce aggregation, ending in a final ranking and evaluation stage.
+The pipeline (Fig.~1) runs LLM-based skill extraction and semantic shortlisting, then self-correcting LLM assessment generation (regenerated once on any detected hallucination), then an MC-KG-guided listwise tournament with Plackett-Luce aggregation, ending in a final ranking and evaluation stage.
 
 \subsection{Skill Extraction and Embedding}
 Job profiles are loaded as plain text and resumes are parsed from PDF. An LLM call extracts a normalized, resume-grounded list of skills from each applicant and each job profile, under explicit constraints that forbid inferring a skill from general job duties or naming a skill that is not literally present in the text. Every extracted skill is then embedded (L2-normalized) into a single shared matrix across the whole applicant corpus, so that later shortlisting for any job profile is one matrix multiplication rather than a per-applicant LLM call.
@@ -422,7 +422,7 @@ Every weakness is then independently re-checked in code, not only enforced by pr
 \label{fig_selfcorrect}
 \end{figure}
 
-As Fig.~2 shows, each generated weakness is checked in code against the applicant's own previously-extracted skill list for a self-contradiction; on a detected contradiction, the assessment is regenerated once with corrective feedback, and any weakness still contradicting after the retry is dropped rather than kept. Strengths and additional skills are not live-checked by this mechanism.
+Each generated weakness is checked in code against the applicant's own previously-extracted skill list for a self-contradiction; on a detected contradiction, the assessment is regenerated once with corrective feedback, and any weakness still contradicting after the retry is dropped rather than kept. Strengths and additional skills are not live-checked by this mechanism.
 
 \subsection{Tournament Ranking}
 Per job profile, the pipeline runs several independent ``stability repeats'' of an active listwise tournament, following the MC-KG subset-selection and Plackett-Luce aggregation design of Yuksel et al. [1]. Each iteration: (1) samples applicant subsets not yet shown this repeat; (2) scores each subset via Monte Carlo draws from the current posterior over applicant utilities --- how much showing it next would reduce overall uncertainty (a knowledge-gradient rule) --- and picks the highest-scoring subset; (3) shows that subset's strengths, weaknesses, and additional skills to the LLM and asks it to rank them strongest to weakest; (4) refits a Bayesian Plackett-Luce model on every ranking collected so far, numerically finding each applicant's best-fitting utility while gently regularizing toward zero, and estimating remaining uncertainty from how sharply that fit is peaked. A repeat stops when its iteration count is exhausted or every distinct subset has been shown once.
@@ -443,7 +443,7 @@ The pipeline's third contribution addresses the fixed-iteration-count gap: a lar
 \label{fig_tournament}
 \end{figure}
 
-As shown in Fig.~3, Monte Carlo knowledge-gradient subset selection feeds the LLM listwise tournament, whose partial rankings are aggregated via a Plackett-Luce model to update global applicant utilities until a stopping criterion is met.
+Monte Carlo knowledge-gradient subset selection (Fig.~3) feeds the LLM listwise tournament, aggregated via a Plackett-Luce model until a stopping criterion is met.
 
 \subsection{Evaluation}
 Each job profile's final ranking averages applicant utilities across its successful stability repeats, which reduces the noise a single repeat's point estimate would otherwise carry into the ranking. Within-repeat convergence --- via the Kendall-$\tau$ rank correlation between the utility ordering at consecutive iterations --- is computed directly from the tournament traces, with no LLM call required. Separately, an offline harness audits assessment quality after the fact: strengths are scored with the Faithfulness metric (an LLM judge estimates how well each strength is entailed by the resume text, given a neutral, job-agnostic question rather than one naming the job title, so the score reflects only resume support and not job-profile-specific framing), while weaknesses --- which are almost always absence claims that a faithfulness-style entailment check cannot verify positively --- are instead audited with the job-profile-skill-bridging half of the same skill-contradiction heuristic used in the live retry loop: each weakness is scanned for a negated mention using the job profile's skill vocabulary --- since a weakness typically echoes the job description's wording rather than the applicant's own --- and that mention is then matched by embedding similarity against the applicant's own extracted skills, which is what actually decides whether the weakness is a genuine contradiction.
@@ -476,7 +476,7 @@ Plackett-Luce prior variance & 1.0\\
 \end{tabular}
 \end{table}
 
-As Table I shows, these values were held fixed across all runs reported in this paper. The target-appearances, ceiling, and floor rows drive the adaptive iteration mechanism, which computes each job profile's iteration budget from its shortlist size rather than using a single fixed count.
+These values were held fixed across all runs. The target-appearances, ceiling, and floor rows drive the adaptive iteration mechanism, computing each job profile's iteration budget from its shortlist size rather than a single fixed count.
 
 \section{Results and Discussion}
 This section reports convergence and generation faithfulness, each measured on live model runs against the full corpus.
@@ -489,7 +489,7 @@ This section reports convergence and generation faithfulness, each measured on l
 \label{fig_convergence}
 \end{figure}
 
-As Fig.~4 shows, within-repeat convergence (Kendall-$\tau$) is uniformly high ($\tau$ = 0.93--0.98) across all ten job profiles regardless of shortlist size, under pool-size-adaptive iteration scaling (Table I). Yuksel et al. [1] report the same qualitative shape but never disclose a numeric value --- their curve is ``independently normalized to [0, 1] for visualization.'' This pipeline reports the reproducible number instead.
+Within-repeat convergence (Kendall-$\tau$, Fig.~4) is uniformly high ($\tau$ = 0.93--0.98) across all ten job profiles regardless of shortlist size, under pool-size-adaptive iteration scaling (Table I). Yuksel et al. [1] report the same qualitative shape but never disclose a numeric value --- their curve is ``independently normalized to [0, 1] for visualization.'' This pipeline reports the reproducible number instead.
 
 Final Kendall's Tau per role, averaged across stability repeats, spans 0.930 (frontend-engineer, n=7) to 0.979 (data-engineer, n=77), with smaller shortlists scoring lower --- consistent with Kendall's Tau being a noisier estimator over fewer candidates rather than evidence that smaller pools rank less reliably.
 
@@ -518,11 +518,11 @@ Total Mean & 0.880\\
 \end{tabular}
 \end{table}
 
-As Table II shows, the sample comprises 300 stratified items from the run's assessments, covering all 10 job profiles, with 300 of the 300 scored (0 excluded as evaluation failures). The run-wide mean is 0.880, following successive prompt refinements. The judge model is the same Qwen2.5-14B model used for generation, not an independent judge, adopted after a smaller 7B judge was found to misjudge clearly resume-grounded claims.
+The sample comprises 300 stratified items from the run's assessments, covering all 10 job profiles, with 300 of the 300 scored (0 excluded as evaluation failures). The run-wide mean is 0.880. The judge model is the same Qwen2.5-14B model used for generation, not an independent judge, adopted after a smaller 7B judge misjudged clearly resume-grounded claims.
 
 Weaknesses are not scored by Faithfulness at all, by design: Faithfulness can only verify a claim that is positively entailed by the source text, and a weakness is almost always an absence claim (``the resume does not mention X''), which resume text can never positively entail regardless of whether the claim is true. An earlier measurement on a pre-self-correction run found roughly 74\% of weakness items scored low under Faithfulness versus 37\% of strength items --- a gap attributable to Faithfulness's architecture, not to generation quality --- which is why weaknesses are audited instead with the skill-contradiction heuristic.
 
-As Table II shows, per-role Faithfulness scores range from full-stack-engineer (lowest, 0.764) to devops-engineer (highest, 0.944), bracketing the run-wide mean of 0.880.
+Per-role Faithfulness scores range from full-stack-engineer (lowest, 0.764) to devops-engineer (highest, 0.944), bracketing the run-wide mean of 0.880.
 
 The position-robust tournament's reliability claim is backed by the following counts from the full run, verified directly against \texttt{repeats.json} and \texttt{warnings.json}:
 
@@ -543,7 +543,7 @@ Unrecovered failures (ListwiseRankingError, both attempts invalid) & 0\\
 \end{tabular}
 \end{table}
 
-As shown in Table III, all 1,713 listwise ranking calls completed without an unrecovered failure, so no comparison in this run had to be discarded.
+All 1,713 listwise ranking calls completed without an unrecovered failure, so no comparison in this run had to be discarded.
 
 The pipeline now records this before/after-retry breakdown directly during generation, persisting it to the run's own \texttt{retry\_audit.json}:
 
@@ -565,7 +565,7 @@ Residual contradictions found by offline post-hoc audit & 0 / 1268 = 0.00\%\\
 \end{tabular}
 \end{table}
 
-As Table IV shows, of the 130 pairs with an initial contradiction, 88 were fixed by the retry and 42 still contradicted afterward and were dropped; a separate offline post-hoc audit of the run's final weaknesses found zero residual contradictions.
+Of the 130 pairs with an initial contradiction, 88 were fixed by the retry and 42 still contradicted afterward and were dropped; a separate offline post-hoc audit of the run's final weaknesses found zero residual contradictions.
 
 \subsection{Comparison with the Closest Prior System}
 \begin{table*}[!t]
@@ -589,12 +589,12 @@ Human-rater validation & 87\% agreement within one rubric level; peak NDCG@25\% 
 \end{tabular}
 \end{table*}
 
-As shown in Table V, rows are drawn from the limitations and methodology explicitly stated in [1] and the results reported in Sections V-A--V-B of this paper. The comparison is not one-directional: Yuksel et al. [1] report a genuine external validation this pipeline does not yet have --- agreement with independent human-expert ratings. What this pipeline offers instead is internal, mechanistic reliability evidence for hallucination mitigation and tournament robustness that [1] does not report at all. Both kinds of evidence are complementary.
+Table V's rows are drawn from the limitations and methodology stated in [1] and the results reported in Sections V-A--V-B. The comparison is not one-directional: Yuksel et al. [1] report a genuine external validation this pipeline does not yet have --- agreement with independent human-expert ratings. This pipeline instead offers internal, mechanistic reliability evidence for hallucination mitigation and tournament robustness that [1] does not report. Both kinds of evidence are complementary.
 
 \section{Conclusion}
 This paper presented three pipeline-level mechanisms for LLM-driven applicant ranking, validated against a real, locally-hosted 14-billion-parameter model rather than an undisclosed one. Self-correcting assessment generation guarantees zero known skill-contradictions in its own output by construction, with a 0.00\% residual rate surfaced only by a separate offline post-hoc audit using the same heuristic; the position-robust tournament completes reliably, with zero unrecovered ranking failures out of 1,713 ranking calls; and adaptive iteration scaling settles convergence at Kendall-$\tau$ 0.93--0.98 across all ten job profiles, a reproducible number the closest prior system's rescaled curve never discloses. Mean Faithfulness reaches 0.880; the residual gap may partly reflect Faithfulness's own architectural sensitivity to phrasing and entailment strictness.
 
-This study's corpus consists of synthetic resumes over synthetic job profiles authored by the paper's own authors, not real hiring data; its claims are correspondingly scoped to pipeline-level system reliability --- self-correction, ranking robustness, and convergence --- rather than real-world hiring validity or fairness. Building on these results, future work will pursue three directions: 1) human-rater validation --- comparing this pipeline against independent human-expert rankings using the same protocol as [1]; 2) an independent judge model --- sourcing Faithfulness scoring from a separate model than the one used for generation, to rule out shared-model bias; and 3) demographic and fairness evaluation --- checking whether shortlisting, assessment, or ranking behavior varies systematically across candidate demographic groups. Taken together, these mechanisms advance a proven architecture --- the LLM listwise tournament with Plackett-Luce aggregation --- toward one whose failure modes on a real, locally-hosted model are documented, mitigated, and measured, with the future work above set to close the remaining validation gaps.
+This study's corpus is synthetic resumes over synthetic job profiles authored by the paper's own authors, not real hiring data; its claims are scoped to pipeline-level reliability --- self-correction, ranking robustness, and convergence --- not real-world hiring validity or fairness. Future work will pursue three directions: 1) human-rater validation against independent human-expert rankings, using the same protocol as [1]; 2) an independent judge model, sourcing Faithfulness scoring from a model separate from generation to rule out shared-model bias; and 3) demographic and fairness evaluation, checking whether shortlisting, assessment, or ranking behavior varies across candidate demographic groups. Together, these mechanisms advance a proven architecture --- the LLM listwise tournament with Plackett-Luce aggregation --- toward one whose failure modes on a real, locally-hosted model are documented, mitigated, and measured.
 
 \section*{Acknowledgment}
 The authors acknowledge the use of NVIDIA GeForce RTX 4070 Ti SUPER GPU hardware and the open-source LangGraph, sentence-transformers, and PyTorch libraries.
