@@ -42,6 +42,58 @@ def paragraph_element_immediately_before(document, paragraph):
     return body_children[index - 1]
 
 
+def remove_figure_and_fold_text(
+    document, caption_marker: str, sentence_marker: str, new_sentence: str, archive_path: Path
+) -> None:
+    """Deletes a figure's image + caption paragraph, keeping every number the
+    figure carried by rewriting the paragraph that used to narrate it
+    (`sentence_marker`) into a self-contained sentence (`new_sentence`) that
+    no longer references the now-deleted figure. Archives the original image
+    bytes to `archive_path` first (only if not already archived, so a second
+    run doesn't overwrite the archive with nothing -- the image is gone from
+    the document after the first run)."""
+    caption_paragraph = find_paragraph(document, caption_marker)
+    image_element = paragraph_element_immediately_before(document, caption_paragraph)
+    if not image_element.findall(".//" + qn("w:drawing")):
+        raise ValueError(
+            f"paragraph immediately before the {caption_marker!r} caption has no image -- "
+            "document structure may have changed, refusing to delete"
+        )
+
+    blip = image_element.findall(".//" + qn("a:blip"))[0]
+    rel_id = blip.get(qn("r:embed"))
+    image_part = document.part.related_parts[rel_id]
+    if not archive_path.exists():
+        archive_path.parent.mkdir(parents=True, exist_ok=True)
+        archive_path.write_bytes(image_part.blob)
+
+    sentence_paragraph = find_paragraph(document, sentence_marker)
+    replace_paragraph_text(sentence_paragraph, new_sentence)
+
+    delete_paragraph(caption_paragraph)
+    image_element.getparent().remove(image_element)
+
+
+FIGURE_5_NEW_SENTENCE = (
+    "Final Kendall's Tau per role, averaged across stability repeats, spans 0.930 "
+    "(frontend-engineer, n=7) to 0.979 (data-engineer, n=77), with smaller shortlists "
+    "scoring lower — consistent with Kendall's Tau being a noisier estimator over "
+    "fewer candidates rather than evidence that smaller pools rank less reliably."
+)
+
+FIGURE_5_ARCHIVE_PATH = FIGURES_ARCHIVE_DIR / "table7_kendall_tau_per_role.removed.png"
+
+
+def cut_figure_5(document) -> None:
+    remove_figure_and_fold_text(
+        document,
+        caption_marker="Fig. 5. Final Kendall",
+        sentence_marker="As Fig. 5 shows",
+        new_sentence=FIGURE_5_NEW_SENTENCE,
+        archive_path=FIGURE_5_ARCHIVE_PATH,
+    )
+
+
 def main() -> None:
     if not SHORTENING_BACKUP_PATH.exists():
         shutil.copy2(PAPER_PATH, SHORTENING_BACKUP_PATH)
@@ -51,6 +103,7 @@ def main() -> None:
 
     document = docx.Document(PAPER_PATH)
 
+    cut_figure_5(document)
     # cut_* calls are added here by later tasks, in this order.
 
     document.save(PAPER_PATH)
