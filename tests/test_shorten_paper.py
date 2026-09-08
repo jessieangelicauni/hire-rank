@@ -2,7 +2,7 @@ import docx
 from docx.shared import Inches
 from PIL import Image
 
-from scripts.shorten_paper_20260908 import delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
+from scripts.shorten_paper_20260908 import cut_figure_6, delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
 
 
 def test_delete_paragraph_removes_it_from_the_document():
@@ -77,3 +77,26 @@ def test_remove_figure_and_fold_text_archives_the_original_image_bytes(tmp_path)
     )
 
     assert archive_path.read_bytes() == png_path.read_bytes()
+
+
+def test_cut_figure_6_removes_image_and_rewrites_sentence_to_reference_table_ii(tmp_path, monkeypatch):
+    monkeypatch.setattr(
+        "scripts.shorten_paper_20260908.FIGURE_6_ARCHIVE_PATH", tmp_path / "_archive" / "fig6.png"
+    )
+    document = docx.Document()
+    document.add_picture(str(_tiny_png_path(tmp_path, "fig6.png")), width=Inches(3.5), height=Inches(2.0))
+    document.add_paragraph("Fig. 6. Faithfulness scores for generated strengths, by job profile.")
+    document.add_paragraph(
+        "As shown in Fig. 6, per-role Faithfulness scores range from full-stack-engineer "
+        "(lowest, 0.764) to devops-engineer (highest, 0.944), bracketing the run-wide mean "
+        "of 0.880 (Table II)."
+    )
+
+    cut_figure_6(document)
+
+    texts = [p.text for p in document.paragraphs]
+    assert not any(t.startswith("Fig. 6.") for t in texts)
+    joined = " ".join(texts)
+    assert "As Table II shows" in joined
+    assert "0.764" in joined and "0.944" in joined and "0.880" in joined
+    assert len(document.inline_shapes) == 0

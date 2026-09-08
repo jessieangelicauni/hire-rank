@@ -94,6 +94,25 @@ def cut_figure_5(document) -> None:
     )
 
 
+FIGURE_6_NEW_SENTENCE = (
+    "As Table II shows, per-role Faithfulness scores range from full-stack-engineer "
+    "(lowest, 0.764) to devops-engineer (highest, 0.944), bracketing the run-wide mean "
+    "of 0.880."
+)
+
+FIGURE_6_ARCHIVE_PATH = FIGURES_ARCHIVE_DIR / "table5_ragas_faithfulness.removed.png"
+
+
+def cut_figure_6(document) -> None:
+    remove_figure_and_fold_text(
+        document,
+        caption_marker="Fig. 6. Faithfulness scores",
+        sentence_marker="As shown in Fig. 6",
+        new_sentence=FIGURE_6_NEW_SENTENCE,
+        archive_path=FIGURE_6_ARCHIVE_PATH,
+    )
+
+
 def main() -> None:
     if not SHORTENING_BACKUP_PATH.exists():
         shutil.copy2(PAPER_PATH, SHORTENING_BACKUP_PATH)
@@ -104,6 +123,7 @@ def main() -> None:
     document = docx.Document(PAPER_PATH)
 
     cut_figure_5(document)
+    cut_figure_6(document)
     # cut_* calls are added here by later tasks, in this order.
 
     document.save(PAPER_PATH)
