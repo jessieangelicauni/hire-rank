@@ -2,7 +2,7 @@ import docx
 from docx.shared import Inches
 from PIL import Image
 
-from scripts.shorten_paper_20260908 import cut_figure_6, cut_literature_review, delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
+from scripts.shorten_paper_20260908 import cut_figure_6, cut_literature_review, cut_introduction_prose, delete_paragraph, paragraph_element_immediately_before, remove_figure_and_fold_text
 
 
 def test_delete_paragraph_removes_it_from_the_document():
@@ -168,3 +168,50 @@ def test_cut_literature_review_keeps_every_citation_and_shortens_each_paragraph(
     # II-C (Yuksel et al., the key comparator) gets the lightest cut.
     assert len(new_c) < len(_OLD_II_C)
     assert len(new_c) > len(_OLD_II_C) * 0.85   # was 0.7; real ratio is ~0.914, tighten the floor to match
+
+
+_OLD_PARA_8 = (
+    "Hiring teams routinely receive far more resumes than they can read carefully, so recruitment platforms "
+    "have moved from plain keyword search toward machine-learning and, more recently, large-language-model "
+    "(LLM) systems that read a resume the way a person would and explain what they find [3]. This shift favors "
+    "LLMs because they can extract skills from unstructured text, write a short explanation of why an "
+    "applicant fits a role, and even compare several applicants against each other in a single pass — none "
+    "of which older keyword or embedding-similarity systems can do on their own. The closest prior work to "
+    "this paper turns applicant ranking into a tournament: instead of scoring each applicant alone, the LLM "
+    "looks at a small group of applicants side by side and orders them, and those orderings are combined "
+    "statistically into one overall ranking using the Plackett-Luce model [1]."
+)
+
+_OLD_PARA_9 = (
+    "This tournament idea is powerful, but the latest research leaves open several research gaps that stand "
+    "out at the level of the LLM architecture and system pipeline. 1) No defense against LLM identifier or "
+    "format drift during ranking — a failure mode common with smaller, locally-hosted models. 2) No "
+    "self-correction for hallucinated claims — generated claims are not checked against the resume, nor is "
+    "generation retried when a contradiction is found. 3) Fixed iteration counts — iterative methods [1] "
+    "use a fixed value regardless of how many applicants are being ranked, which under-samples large pools and "
+    "over-samples small ones."
+)
+
+_OLD_PARA_11 = (
+    "The remainder of the paper reviews related work (Section II), describes the pipeline in implementation "
+    "detail (Section III), details the experimental setup (Section IV), reports results and compares them "
+    "against the closest prior system (Section V), and concludes with limitations and future work (Section VI)."
+)
+
+
+def test_cut_introduction_prose_keeps_the_three_numbered_gaps_and_the_plackett_luce_citation():
+    document = docx.Document()
+    document.add_paragraph(_OLD_PARA_8)
+    document.add_paragraph(_OLD_PARA_9)
+    document.add_paragraph(_OLD_PARA_11)
+
+    cut_introduction_prose(document)
+
+    new_8, new_9, new_11 = (p.text for p in document.paragraphs)
+    assert "Plackett-Luce model [1]" in new_8
+    assert len(new_8) < len(_OLD_PARA_8)
+    for marker in ("1) No defense", "2) No self-correction", "3) Fixed iteration counts"):
+        assert marker in new_9
+    for section in ("Section II", "Section III", "Section IV", "Section V", "Section VI"):
+        assert section in new_11
+    assert len(new_11) < len(_OLD_PARA_11)

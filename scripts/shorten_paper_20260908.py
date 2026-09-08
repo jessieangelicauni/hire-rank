@@ -172,6 +172,42 @@ def cut_literature_review(document) -> None:
         find_paragraph(document, _LITERATURE_REVIEW_II_C_MARKER), _LITERATURE_REVIEW_II_C_NEW
     )
 
+
+_INTRO_PARA_8_MARKER = "Hiring teams routinely receive far more resumes"
+_INTRO_PARA_8_NEW = (
+    "Hiring teams routinely receive far more resumes than they can read carefully, so recruitment platforms "
+    "have moved from keyword search toward machine-learning and, more recently, large-language-model (LLM) "
+    "systems that read a resume and explain what they find [3]. LLMs can extract skills from unstructured "
+    "text, justify why an applicant fits a role, and compare several applicants in a single pass — none of "
+    "which older keyword or embedding-similarity systems do on their own. The closest prior work turns "
+    "applicant ranking into a tournament: an LLM looks at a small group of applicants side by side and orders "
+    "them, and those orderings are combined statistically into one overall ranking using the Plackett-Luce "
+    "model [1]."
+)
+
+_INTRO_PARA_9_MARKER = "This tournament idea is powerful"
+_INTRO_PARA_9_NEW = (
+    "This tournament idea is powerful, but recent research leaves three gaps at the level of the LLM "
+    "architecture and system pipeline. 1) No defense against LLM identifier or format drift during ranking "
+    "— a failure mode common with smaller, locally-hosted models. 2) No self-correction for hallucinated "
+    "claims — generated claims are not checked against the resume, nor is generation retried when a "
+    "contradiction is found. 3) Fixed iteration counts — iterative methods [1] use a fixed value regardless "
+    "of how many applicants are being ranked, which under-samples large pools and over-samples small ones."
+)
+
+_INTRO_PARA_11_MARKER = "The remainder of the paper reviews"
+_INTRO_PARA_11_NEW = (
+    "Section II reviews related work; Section III details the pipeline; Section IV describes the experimental "
+    "setup; Section V reports results against the closest prior system; and Section VI concludes with "
+    "limitations and future work."
+)
+
+
+def cut_introduction_prose(document) -> None:
+    replace_paragraph_text(find_paragraph(document, _INTRO_PARA_8_MARKER), _INTRO_PARA_8_NEW)
+    replace_paragraph_text(find_paragraph(document, _INTRO_PARA_9_MARKER), _INTRO_PARA_9_NEW)
+    replace_paragraph_text(find_paragraph(document, _INTRO_PARA_11_MARKER), _INTRO_PARA_11_NEW)
+
 def main() -> None:
     if not SHORTENING_BACKUP_PATH.exists():
         shutil.copy2(PAPER_PATH, SHORTENING_BACKUP_PATH)
@@ -184,7 +220,7 @@ def main() -> None:
     cut_figure_5(document)
     cut_figure_6(document)
     cut_literature_review(document)
-    # cut_* calls are added here by later tasks, in this order.
+    cut_introduction_prose(document)
 
     document.save(PAPER_PATH)
     print(f"Saved shortened paper to {PAPER_PATH}")
