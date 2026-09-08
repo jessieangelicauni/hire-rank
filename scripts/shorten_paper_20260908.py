@@ -187,12 +187,11 @@ _INTRO_PARA_8_NEW = (
 
 _INTRO_PARA_9_MARKER = "This tournament idea is powerful"
 _INTRO_PARA_9_NEW = (
-    "This tournament idea is powerful, but recent research leaves three gaps at the level of the LLM "
-    "architecture and system pipeline. 1) No defense against LLM identifier or format drift during ranking "
-    "— a failure mode common with smaller, locally-hosted models. 2) No self-correction for hallucinated "
-    "claims — generated claims are not checked against the resume, nor is generation retried when a "
-    "contradiction is found. 3) Fixed iteration counts — iterative methods [1] use a fixed value regardless "
-    "of how many applicants are being ranked, which under-samples large pools and over-samples small ones."
+    "This tournament idea is powerful, but recent research leaves three gaps in the LLM architecture and "
+    "pipeline. 1) No defense against LLM identifier or format drift during ranking — common with smaller, "
+    "locally-hosted models. 2) No self-correction for hallucinated claims — never checked against the resume "
+    "or retried on contradiction. 3) Fixed iteration counts — iterative methods [1] use a fixed value "
+    "regardless of pool size, under-sampling large pools and over-sampling small ones."
 )
 
 _INTRO_PARA_11_MARKER = "The remainder of the paper reviews"
