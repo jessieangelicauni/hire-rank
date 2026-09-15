@@ -47,8 +47,8 @@ per job description (JD) and/or per candidate where noted:
    Each repeat is checkpointed to disk as it runs.
 6. **Evaluation & output** — per JD, writes a final ranking
    (`ranking.md`/`ranking.json`), the raw per-repeat tournament traces
-   (`repeats.json`), and stability/convergence metrics computed across
-   repeats.
+   (`repeats.json`), and within-repeat convergence metrics, averaged across
+   repeats for reporting.
 7. **Console export** — after every run, `console-web/src/data/real-data.json`
    is regenerated automatically so the console-web dashboard reflects the
    latest run.
@@ -220,7 +220,7 @@ via `python-dotenv`); unset variables fall back to the defaults in
 | `CANDIDATE_RANKING_TOURNAMENT_ITERATIONS` | `30` | Iteration budget per tournament repeat. Acts as a ceiling, not a fixed count, whenever `TARGET_APPEARANCES_PER_CANDIDATE` is set (the default) — see below. |
 | `CANDIDATE_RANKING_TARGET_APPEARANCES_PER_CANDIDATE` | `8` | Scales the actual iteration count to each JD's shortlist size so every candidate is seen roughly this many times on average, clamped to `[TOURNAMENT_ITERATIONS_MIN, TOURNAMENT_ITERATIONS]`. Set to unset/empty to fall back to `TOURNAMENT_ITERATIONS` as a fixed count instead. |
 | `CANDIDATE_RANKING_TOURNAMENT_ITERATIONS_MIN` | `30` | Floor on the scaled iteration count, so scaling only ever adds iterations for JDs that need them. |
-| `CANDIDATE_RANKING_STABILITY_REPEATS` | `3` | Independent tournament repeats per JD (used to measure ranking stability; final rankings are the average across successful repeats). |
+| `CANDIDATE_RANKING_STABILITY_REPEATS` | `3` | Independent tournament repeats per JD, averaged together to reduce the noise a single repeat's point estimate would otherwise carry into the final ranking. This is noise reduction via averaging, not a stability *measurement* — nothing compares repeat-to-repeat rankings. `mean_kendall_tau` (see `evaluation/evaluation.py`) is the separate within-repeat convergence metric: how much a single repeat's utility ordering changes between consecutive iterations, then averaged across repeats for reporting. |
 | `CANDIDATE_RANKING_TOURNAMENT_SUBSET_SIZE` | `5` | Candidates per sampled subset shown to the LLM ranker. |
 | `CANDIDATE_RANKING_NUM_SUBSET_SAMPLES` | `30` | Candidate subsets sampled per knowledge-gradient selection step. |
 | `CANDIDATE_RANKING_NUM_MC_DRAWS` | `50` | Monte Carlo draws used to score each candidate subset. |

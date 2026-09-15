@@ -18,6 +18,7 @@ from candidate_ranking.scoring.assessment import (
     ASSESSMENT_SCOPE_VERSION,
     build_assessment_chain,
     filter_assessable_candidates,
+    write_retry_audit_report,
 )
 from candidate_ranking.config import RunConfig, apply_env_overrides
 from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
@@ -172,6 +173,10 @@ def run(
     run_dir = write_run_output(
         cfg.runs_dir, run_id, manifest, final_state["assessment_results"]
     )
+    retry_audits = [
+        r["retry_audit"] for r in final_state["assessment_results"] if r.get("retry_audit") is not None
+    ]
+    write_retry_audit_report(cfg.runs_dir, run_id, retry_audits)
 
     total_shortlisted = sum(len(v) for v in final_state["shortlists"].values())
     if total_shortlisted == 0:

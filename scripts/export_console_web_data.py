@@ -1,10 +1,3 @@
-"""Manual/backfill entry point for regenerating console-web's
-real-data.json from an already-completed run, without re-running the
-pipeline. The automatic path is candidate_ranking.cli.run() calling
-candidate_ranking.output.console_export.export_console_web_data() directly
-at the end of every run -- this script exists for pointing at an older run
-or re-exporting on demand.
-"""
 from __future__ import annotations
 
 import argparse

@@ -1,13 +1,3 @@
-"""Runs Ragas' Faithfulness metric directly over one already-completed run's
-strengths, as an offline content-quality monitor -- not part of the live
-pipeline. Weaknesses are checked separately (see --skip-weakness-check
-below), not through Ragas: Faithfulness can only verify a claim positively
-entailed by the context, and a weakness is almost always an absence claim
-("lacks X") that CV text can never positively entail. Read-only: does not
-touch the production pipeline or the run being evaluated other than writing
-its own report file. Requires the `eval` dependency group:
-`uv sync --group eval`.
-"""
 from __future__ import annotations
 
 import argparse

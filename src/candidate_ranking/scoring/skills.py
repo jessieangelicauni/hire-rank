@@ -60,15 +60,6 @@ def bridge_negated_jd_skills_to_candidate(
     embedder: Callable[[list[str]], np.ndarray],
     threshold: float = 0.8,
 ) -> dict[str, str]:
-    """Maps each JD skill some weakness claims the candidate lacks to the
-    candidate's own skill name it's actually the same skill as (via
-    embedding similarity), for JD-skill/candidate-skill pairs that are
-    worded differently -- e.g. a weakness says "lacks RESTful API design"
-    (the JD's wording) while the candidate's own extracted skill list has
-    "REST API Design". A literal substring match against candidate_skills
-    can't catch this, since the weakness echoes the JD's vocabulary, not
-    the candidate's.
-    """
     if not candidate_skills or not jd_technical_skills:
         return {}
     negated_jd_skills: set[str] = set()
