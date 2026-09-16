@@ -24,7 +24,7 @@ from candidate_ranking.ranking.plackett_luce import fit_utilities, laplace_covar
 
 logger = logging.getLogger(__name__)
 
-RANKING_PROMPT_VERSION = "strengths-weaknesses-additional_skills-no-reasoning"
+RANKING_PROMPT_VERSION = "strengths-weaknesses-additional_skills"
 
 LISTWISE_RANKING_PROMPT = ChatPromptTemplate.from_messages(
     [
@@ -33,6 +33,7 @@ LISTWISE_RANKING_PROMPT = ChatPromptTemplate.from_messages(
             "You are an expert hiring panel member ranking a small group of candidates for a role.\n\n"
             "Task:\n"
             "- Read the job description and each candidate's strengths and weaknesses.\n"
+            "- Reason through each candidate in turn in the `reasoning` field.\n"
             "- Weigh each candidate's strengths against their weaknesses.\n"
             "- Judge how well each candidate fits the role overall.\n"
             "- Compare the candidates against each other.\n"
@@ -52,6 +53,7 @@ LISTWISE_RANKING_PROMPT = ChatPromptTemplate.from_messages(
 def _ranking_result_model(size: int) -> type[BaseModel]:
     return create_model(
         "_RankingResult",
+        reasoning=(str, Field(min_length=1)),
         ranking=(list[int], Field(min_length=size, max_length=size)),
     )
 
