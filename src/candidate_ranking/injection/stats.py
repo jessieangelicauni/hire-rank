@@ -3,11 +3,11 @@ from __future__ import annotations
 from scipy.stats import wilcoxon
 
 
-def rank_biserial(a: list[float], b: list[float]) -> float:
-    n_pos = sum(1 for x, y in zip(a, b) if x > y)
-    n_neg = sum(1 for x, y in zip(a, b) if x < y)
-    n = len(a)
-    return (n_pos - n_neg) / n if n else 0.0
+def rank_biserial(first_deltas: list[float], second_deltas: list[float]) -> float:
+    n_first_higher = sum(1 for first, second in zip(first_deltas, second_deltas) if first > second)
+    n_second_higher = sum(1 for first, second in zip(first_deltas, second_deltas) if first < second)
+    n = len(first_deltas)
+    return (n_first_higher - n_second_higher) / n if n else 0.0
 
 
 def holm_correct(p_values: list[float]) -> list[float]:
@@ -26,11 +26,11 @@ def holm_correct(p_values: list[float]) -> list[float]:
     return result
 
 
-def wilcoxon_result(label: str, a: list[float], b: list[float]) -> dict | None:
-    n_pairs = len(a)
-    if n_pairs >= 1 and any(x != y for x, y in zip(a, b)):
-        stat, p_value = wilcoxon(a, b)
-        r = rank_biserial(a, b)
+def wilcoxon_result(label: str, first_deltas: list[float], second_deltas: list[float]) -> dict | None:
+    n_pairs = len(first_deltas)
+    if n_pairs >= 1 and any(first != second for first, second in zip(first_deltas, second_deltas)):
+        stat, p_value = wilcoxon(first_deltas, second_deltas)
+        r = rank_biserial(first_deltas, second_deltas)
         return {
             "label": label, "n_pairs": n_pairs, "statistic": float(stat),
             "p_value": float(p_value), "rank_biserial_r": r,
@@ -46,28 +46,28 @@ def paired_deltas_vs_control(
     results: list[dict], attack_condition: str, control_condition: str = "control_no_injection",
 ) -> tuple[list[float], list[float]]:
     control_by_pair = _deltas_by_pair_key(results, control_condition)
-    attack, control = [], []
+    attack_deltas, control_deltas = [], []
     for r in results:
         if r["condition"] != attack_condition:
             continue
         key = (r["jd_id"], r["candidate_id"])
         if key in control_by_pair:
-            attack.append(r["rank_delta"])
-            control.append(control_by_pair[key])
-    return attack, control
+            attack_deltas.append(r["rank_delta"])
+            control_deltas.append(control_by_pair[key])
+    return attack_deltas, control_deltas
 
 
 def paired_deltas_by_condition(
     results: list[dict], condition_a: str, condition_b: str,
 ) -> tuple[list[float], list[float]]:
-    by_key: dict[tuple, dict[str, float]] = {}
+    deltas_by_condition_at_key: dict[tuple, dict[str, float]] = {}
     for r in results:
         if r["condition"] in (condition_a, condition_b):
             key = (r["jd_id"], r["candidate_id"], r["variant_name"])
-            by_key.setdefault(key, {})[r["condition"]] = r["rank_delta"]
-    a, b = [], []
-    for pair in by_key.values():
-        if condition_a in pair and condition_b in pair:
-            a.append(pair[condition_a])
-            b.append(pair[condition_b])
-    return a, b
+            deltas_by_condition_at_key.setdefault(key, {})[r["condition"]] = r["rank_delta"]
+    deltas_a, deltas_b = [], []
+    for conditions_seen in deltas_by_condition_at_key.values():
+        if condition_a in conditions_seen and condition_b in conditions_seen:
+            deltas_a.append(conditions_seen[condition_a])
+            deltas_b.append(conditions_seen[condition_b])
+    return deltas_a, deltas_b
