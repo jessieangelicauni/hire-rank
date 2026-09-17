@@ -62,6 +62,21 @@ def _control_by_pair(prior_results: list[dict]) -> dict[tuple[str, str], dict]:
     }
 
 
+_NEW_CONDITIONS = (
+    "comparative_unmitigated", "comparative_mitigated",
+    "adaptive_unmitigated", "adaptive_mitigated",
+    "defense_a_classifier", "defense_b_self_reminder",
+)
+
+
+def _completed_pairs(existing_results: list[dict]) -> set[tuple[str, str]]:
+    conditions_by_pair: dict[tuple[str, str], set[str]] = {}
+    for r in existing_results:
+        key = (r["jd_id"], r["candidate_id"])
+        conditions_by_pair.setdefault(key, set()).add(r["condition"])
+    return {key for key, conditions in conditions_by_pair.items() if set(_NEW_CONDITIONS) <= conditions}
+
+
 def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: bool) -> None:
     cfg = apply_env_overrides(RunConfig.full(PROJECT_ROOT))
     run_dir = cfg.runs_dir / run_id
@@ -83,20 +98,27 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
         jd_id: [cid for cid in assessments_by_jd[jd_id] if cid in rank_by_jd[jd_id]] for jd_id in jd_ids
     }
     original_pairs = stratified_sample_pairs(candidate_ids_by_jd, per_profile=10, seed=seed)
-    pairs = select_pair_subsample(original_pairs, per_profile=per_profile)
-    print(f"Selected {len(pairs)} pairs (subset of the original {len(original_pairs)}-pair sample).")
+    all_pairs = select_pair_subsample(original_pairs, per_profile=per_profile)
+    print(f"Selected {len(all_pairs)} pairs (subset of the original {len(original_pairs)}-pair sample).")
 
     prior_results_path = cfg.runs_dir / prior_run_id / "injection_study" / "results.json"
     prior_results = json.loads(prior_results_path.read_text(encoding="utf-8"))
     control_by_pair = _control_by_pair(prior_results)
-    for jd_id, cv_id in pairs:
+    for jd_id, cv_id in all_pairs:
         assert (jd_id, cv_id) in control_by_pair, f"missing reused control for {(jd_id, cv_id)}"
+
+    out_path = run_dir / "injection_study" / "extended_results.json"
+    results: list[dict] = []
+    if out_path.exists():
+        results = json.loads(out_path.read_text(encoding="utf-8"))
+    done_pairs = _completed_pairs(results)
+    pairs = [p for p in all_pairs if p not in done_pairs]
+    print(f"{len(done_pairs)} pairs already completed in {out_path.name}; {len(pairs)} remaining to run.")
 
     if dry_run:
         print(f"Dry run OK: would run {len(pairs) * 6} new (pair, condition) combinations.")
         return
 
-    out_path = run_dir / "injection_study" / "extended_results.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     llm = ChatOllama(model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0)
@@ -109,7 +131,6 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
     classify = build_classifier_filter()
     rng = random.Random(seed)
 
-    results: list[dict] = []
     for jd_id, cv_id in pairs:
         results.append(control_by_pair[(jd_id, cv_id)])
 
