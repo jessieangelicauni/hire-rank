@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 import { assessmentFor, type Applicant, type Role } from '../data';
-import { colorAccent, colorAccentSoft, colorBorder, colorDanger, colorDangerSoft, colorSurfaceMuted } from '../tokens';
+import { avatarColorOf, initialsOf } from '../lib/avatar';
+import {
+  colorAccent, colorAccentSoft, colorBorder, colorDanger, colorDangerSoft,
+  colorSurface, colorSurfaceMuted, colorText, colorTextMuted, colorTextSoft,
+  radius, radiusPill, radiusSm, shadowMicro,
+} from '../tokens';
 
 const PAGE_SIZE = 20;
 
@@ -51,7 +56,7 @@ function RoleDescription({ role }: { role: Role }) {
       {blocks.map((block, i) => {
         if (block.type === 'bullets') {
           return (
-            <ul key={i} style={{ margin: '0 0 10px', paddingLeft: 18, fontSize: 14, color: '#000000', lineHeight: 1.55, textAlign: 'justify' }}>
+            <ul key={i} style={{ margin: '0 0 10px', paddingLeft: 18, fontSize: 14, color: colorTextMuted, lineHeight: 1.6, textAlign: 'justify' }}>
               {block.items.map((item, j) => (
                 <li key={j} style={{ marginBottom: 4 }}>{item}</li>
               ))}
@@ -60,11 +65,11 @@ function RoleDescription({ role }: { role: Role }) {
         }
         if (block.type === 'heading') {
           return (
-            <div key={i} style={{ fontSize: 14, fontWeight: 500, margin: '0 0 6px' }}>{block.text}</div>
+            <div key={i} style={{ fontSize: 14, fontWeight: 700, color: colorText, margin: '0 0 6px' }}>{block.text}</div>
           );
         }
         return (
-          <p key={i} style={{ fontSize: 14, color: '#000000', lineHeight: 1.55, margin: '0 0 10px', textAlign: 'justify' }}>{block.text}</p>
+          <p key={i} style={{ fontSize: 14, color: colorTextMuted, lineHeight: 1.6, margin: '0 0 10px', textAlign: 'justify' }}>{block.text}</p>
         );
       })}
     </div>
@@ -91,41 +96,63 @@ export default function Leaderboard({
   const pageItems = leaderboard.slice(pageStart, pageStart + PAGE_SIZE);
 
   return (
-    <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', gap: 28, alignItems: 'flex-start' }}>
+    <div style={{ maxWidth: 1128, margin: '0 auto', display: 'flex', gap: 24, alignItems: 'flex-start' }}>
       <div style={{ flex: splitFlex, minWidth: 0 }}>
-        <div style={{ fontSize: 14, color: colorAccent, fontWeight: 500, cursor: 'pointer', marginBottom: 10 }} onClick={onBackToDashboard}>
+        <div style={{ fontSize: 13, color: colorAccent, fontWeight: 700, cursor: 'pointer', marginBottom: 10 }} onClick={onBackToDashboard}>
           ← All roles
         </div>
-        <h1 style={{ fontSize: 24, fontWeight: 500, margin: '0 0 4px' }}>{role.title}</h1>
-        <RoleDescription role={role} />
-        <div style={{ display: 'flex', gap: 10, marginBottom: 24 }}>
-          <span style={{ fontSize: 14, color: '#000000', background: colorSurfaceMuted, padding: '5px 11px' }}>
-            {leaderboard.length} applicants ranked
-          </span>
+        <div style={{
+          background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius,
+          boxShadow: shadowMicro, padding: '20px 24px', marginBottom: 16,
+        }}>
+          <h1 style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.01em', color: colorText, margin: '0 0 4px' }}>{role.title}</h1>
+          <RoleDescription role={role} />
+        </div>
+        <div style={{ fontSize: 14, color: colorTextMuted, marginBottom: 16 }}>
+          {leaderboard.length} applicants, ranked
         </div>
 
-        <div style={{ background: '#fff', border: `1px solid ${colorBorder}`, overflow: 'hidden' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '44px 2.2fr 0.7fr', padding: '14px 24px', fontSize: 14, fontWeight: 500, letterSpacing: '0.08em', color: '#fff', background: colorAccent }}>
-            <div>#</div>
-            <div>APPLICANT</div>
-            <div></div>
-          </div>
+        <div style={{ background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden' }}>
           {pageItems.map((applicant) => {
             const isActive = applicant.id === activeApplicantId;
             return (
               <div
                 key={applicant.id}
+                className={isActive ? undefined : 'row-hover'}
                 style={{
-                  display: 'grid', gridTemplateColumns: '44px 2.2fr 0.7fr', alignItems: 'center',
-                  borderBottom: `1px solid ${colorBorder}`, padding: '16px 24px', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', gap: 14,
+                  borderBottom: `1px solid ${colorBorder}`, padding: '14px 20px', cursor: 'pointer',
                   background: isActive ? colorAccentSoft : undefined,
                 }}
                 onClick={() => onSelectApplicant(applicant.id)}
               >
-                <div style={{ fontSize: 14, fontWeight: 500, color: '#000000', fontVariantNumeric: 'tabular-nums' }}>{applicant.rank ?? '—'}</div>
-                <div style={{ fontSize: 14, fontWeight: 500, letterSpacing: '0.01em' }}>{applicant.name}</div>
+                <span style={{
+                  flex: '0 0 auto', display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  width: 24, height: 24, borderRadius: radiusPill, fontSize: 11, fontWeight: 700,
+                  fontVariantNumeric: 'tabular-nums',
+                  background: isActive ? colorSurface : colorSurfaceMuted,
+                  color: isActive ? colorAccent : colorTextMuted,
+                }}>
+                  {applicant.rank ?? '—'}
+                </span>
+                <div style={{
+                  flex: '0 0 auto', width: 40, height: 40, borderRadius: radiusPill,
+                  background: avatarColorOf(applicant.name), color: '#fff', fontWeight: 700, fontSize: 14,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  {initialsOf(applicant.name)}
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: colorText, letterSpacing: '0.01em' }}>{applicant.name}</div>
+                  <div style={{ fontSize: 12, color: colorTextMuted, marginTop: 1 }}>Rank {applicant.rank ?? '—'} of {leaderboard.length}</div>
+                </div>
                 <div
-                  style={{ fontSize: 14, fontWeight: 500, color: colorAccent, textAlign: 'right' }}
+                  className="ghost-btn"
+                  style={{
+                    flex: '0 0 auto', fontSize: 13, fontWeight: 700, color: colorAccent, textAlign: 'center',
+                    border: `1px solid ${colorAccent}`, borderRadius: radiusPill,
+                    padding: '5px 14px', whiteSpace: 'nowrap',
+                  }}
                   onClick={(e) => {
                     e.stopPropagation();
                     window.open('#', '_blank');
@@ -164,25 +191,29 @@ function Pager({
 
   const itemStyle = (active: boolean, disabled: boolean): React.CSSProperties => ({
     fontSize: 14,
-    fontWeight: 500,
-    padding: '6px 11px',
+    fontWeight: active ? 700 : 500,
+    padding: '4px 6px',
+    borderRadius: radiusSm,
     cursor: disabled ? 'default' : 'pointer',
-    color: disabled ? '#B8AFA5' : active ? '#fff' : '#000000',
-    background: active ? colorAccent : undefined,
+    color: disabled ? colorTextSoft : active ? colorAccent : colorTextMuted,
+    textDecoration: active ? 'underline' : 'none',
+    textUnderlineOffset: 3,
     userSelect: 'none',
   });
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginTop: 16, flexWrap: 'wrap' }}>
-      <div style={itemStyle(false, page === 1)} onClick={() => page > 1 && onChange(page - 1)}>
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 10, marginTop: 20, flexWrap: 'wrap',
+    }}>
+      <div className={page === 1 ? undefined : 'ghost-btn'} style={itemStyle(false, page === 1)} onClick={() => page > 1 && onChange(page - 1)}>
         ‹ Prev
       </div>
       {pages.map((p) => (
-        <div key={p} style={itemStyle(p === page, false)} onClick={() => onChange(p)}>
+        <div key={p} className={p === page ? undefined : 'ghost-btn'} style={itemStyle(p === page, false)} onClick={() => onChange(p)}>
           {p}
         </div>
       ))}
-      <div style={itemStyle(false, page === totalPages)} onClick={() => page < totalPages && onChange(page + 1)}>
+      <div className={page === totalPages ? undefined : 'ghost-btn'} style={itemStyle(false, page === totalPages)} onClick={() => page < totalPages && onChange(page + 1)}>
         Next ›
       </div>
     </div>
@@ -201,11 +232,22 @@ function DetailPanel({
 
   return (
     <div style={{ flex: 1, minWidth: 0, position: 'sticky', top: 0 }}>
-      <div style={{ fontSize: 14, color: colorAccent, fontWeight: 500, cursor: 'pointer', marginBottom: 10 }} onClick={onClose}>
+      <div style={{ fontSize: 13, color: colorAccent, fontWeight: 700, cursor: 'pointer', marginBottom: 10 }} onClick={onClose}>
         ✕ Close
       </div>
-      <h1 style={{ fontSize: 22, fontWeight: 500, margin: 0 }}>{applicant.name}</h1>
-      <div style={{ fontSize: 14, color: '#000000', marginBottom: 24 }}>{rank !== null ? `Rank ${rank} of ${total}` : 'Not ranked (insufficient tournament comparisons)'}</div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
+        <div style={{
+          flex: '0 0 auto', width: 64, height: 64, borderRadius: radiusPill,
+          background: avatarColorOf(applicant.name), color: '#fff', fontWeight: 700, fontSize: 20,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {initialsOf(applicant.name)}
+        </div>
+        <div>
+          <h1 style={{ fontSize: 20, fontWeight: 700, color: colorText, margin: 0 }}>{applicant.name}</h1>
+          <div style={{ fontSize: 13, color: colorTextMuted, marginTop: 2 }}>{rank !== null ? `Rank ${rank} of ${total}` : 'Not ranked (insufficient tournament comparisons)'}</div>
+        </div>
+      </div>
 
       <div style={{ display: 'flex', gap: 16, marginBottom: 20, alignItems: 'flex-start' }}>
         <AssessmentColumn title="Strengths" icon="✓" items={assessment.strengths} accent={colorAccent} accentSoft={colorAccentSoft} />
@@ -225,25 +267,26 @@ function AssessmentColumn({
   accentSoft: string;
 }) {
   return (
-    <div style={{ flex: 1, minWidth: 0 }}>
-      <div style={{ fontSize: 14, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#000000', margin: '0 0 10px' }}>
+    <div style={{ flex: 1, minWidth: 0, background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden' }}>
+      <div style={{ fontSize: 18, fontWeight: 700, color: colorText, padding: '16px 20px 12px' }}>
         {title}
       </div>
-      <div style={{ background: '#fff', border: `1px solid ${colorBorder}`, overflow: 'hidden' }}>
+      <div>
         {items.length === 0 ? (
-          <div style={{ padding: '16px 20px', fontSize: 14, color: '#000000' }}>None identified.</div>
+          <div style={{ padding: '4px 20px 20px', fontSize: 14, color: colorTextMuted }}>None identified.</div>
         ) : (
           items.map((item, i) => (
             <div
               key={i}
               style={{
-                display: 'flex', gap: 10, padding: '12px 16px', fontSize: 14, color: '#000000', lineHeight: 1.5,
-                borderBottom: i < items.length - 1 ? `1px solid ${colorBorder}` : undefined,
-                borderLeft: `3px solid ${accent}`,
-                background: accentSoft,
+                display: 'flex', gap: 12, padding: '12px 20px', fontSize: 14, color: colorText, lineHeight: 1.55,
+                borderTop: `1px solid ${colorBorder}`,
               }}
             >
-              <span style={{ color: accent, fontWeight: 700, flexShrink: 0 }}>{icon}</span>
+              <span style={{
+                flexShrink: 0, width: 20, height: 20, borderRadius: radiusPill, background: accentSoft,
+                color: accent, fontWeight: 700, fontSize: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 1,
+              }}>{icon}</span>
               <span>{item}</span>
             </div>
           ))

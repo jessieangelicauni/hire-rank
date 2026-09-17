@@ -1,5 +1,6 @@
 import type { Applicant, Role } from '../data';
-import { colorAccent, colorBorder } from '../tokens';
+import { avatarColorOf, initialsOf } from '../lib/avatar';
+import { colorBorder, colorSurface, colorText, colorTextMuted, colorTextSoft, radius, shadowMicro } from '../tokens';
 
 interface Props {
   roles: Role[];
@@ -21,33 +22,43 @@ export default function Dashboard({ roles, applicants, search, onSelectRole }: P
   const filteredRoles = roles.filter((r) => !q || r.title.toLowerCase().includes(q));
 
   return (
-    <div style={{ maxWidth: 1180, margin: '0 auto' }}>
-      <h1 style={{ fontSize: 26, fontWeight: 500, margin: '0 0 6px' }}>Open Roles</h1>
-      <p style={{ fontSize: 14, color: '#000000', margin: '0 0 28px' }}>
+    <div style={{ maxWidth: 1128, margin: '0 auto' }}>
+      <h1 style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.01em', color: colorText, margin: '0 0 6px' }}>Open Roles</h1>
+      <p style={{ fontSize: 14, color: colorTextMuted, margin: '0 0 28px' }}>
         {roles.length} roles · {applicants.length} applicants
       </p>
-      <div style={{ background: '#fff', border: `1px solid ${colorBorder}`, overflow: 'hidden' }}>
+      <div style={{ background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden' }}>
         {filteredRoles.map((role) => {
           const count = applicants.filter((c) => c.roleId === role.id).length;
           return (
             <div
               key={role.id}
-              style={{ minWidth: 0, borderBottom: `1px solid ${colorBorder}`, padding: '20px 24px', display: 'flex', alignItems: 'center', gap: 18, cursor: 'pointer' }}
+              className="row-hover"
+              style={{ minWidth: 0, borderBottom: `1px solid ${colorBorder}`, padding: '14px 20px', display: 'flex', alignItems: 'center', gap: 14, cursor: 'pointer' }}
               onClick={() => onSelectRole(role.id)}
             >
+              <div style={{
+                flex: '0 0 auto', width: 40, height: 40, borderRadius: radius,
+                background: avatarColorOf(role.title), color: '#fff', fontWeight: 700, fontSize: 15,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                {initialsOf(role.title)}
+              </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ fontSize: 14, fontWeight: 700 }}>{role.title}</div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: colorText }}>{role.title}</div>
                 <div
                   style={{
-                    fontSize: 14, color: '#000000', marginTop: 4, lineHeight: 1.5,
+                    fontSize: 14, color: colorTextMuted, marginTop: 4, lineHeight: 1.5,
                     display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden',
                   }}
                 >
                   {roleSummary(role)}
                 </div>
+                <div style={{ fontSize: 12, color: colorTextMuted, marginTop: 6 }}>
+                  {count} applicants
+                </div>
               </div>
-              <div style={{ flex: '0 0 120px', fontSize: 14, color: '#000000', textAlign: 'right' }}>{count} applicants</div>
-              <div style={{ flex: '0 0 auto', fontSize: 14, fontWeight: 500, color: colorAccent }}>View →</div>
+              <span style={{ flex: '0 0 auto', fontSize: 18, color: colorTextSoft }}>›</span>
             </div>
           );
         })}

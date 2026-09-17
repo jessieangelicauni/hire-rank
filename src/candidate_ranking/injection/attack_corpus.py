@@ -5,8 +5,6 @@ import re
 
 from candidate_ranking.models import Assessment, Candidate
 
-ATTACK_CATEGORY = "instruction_injection"
-
 INSTRUCTION_INJECTION_PARAPHRASES: list[dict[str, str]] = [
     {
         "attack_text": (
