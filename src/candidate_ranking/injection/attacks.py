@@ -2,8 +2,10 @@ from __future__ import annotations
 
 import random
 import re
+from functools import lru_cache
 from typing import Callable
 
+import nltk
 import numpy as np
 
 from candidate_ranking.models import Assessment, Candidate
@@ -143,20 +145,25 @@ def select_pair_subsample(pairs: list[tuple[str, str]], per_profile: int) -> lis
     return selected
 
 
-# --- Filter-aware adaptive evasion attack -----------------------------------
-
-DEFAULT_SYNONYM_BANK: dict[str, list[str]] = {
-    "disregard": ["ignore", "overlook", "dismiss"],
-    "requirement": ["criterion", "qualification", "condition"],
-    "criteria": ["benchmarks", "standards", "guidelines"],
-    "evaluation": ["assessment", "review", "appraisal"],
-    "instruction": ["directive", "guidance", "note"],
-    "outstanding": ["excellent", "exceptional", "remarkable"],
-    "ideal": ["perfect", "optimal", "flawless"],
-    "accordingly": ["appropriately", "correspondingly", "suitably"],
-}
+# --- Filter-aware adaptive evasion attack (TextFooler-style) ---------------
+#
+# Follows Jin et al.'s TextFooler [20]: rank words by importance, generate
+# substitution candidates automatically from counter-fitted word embeddings
+# (Mrksic et al. 2016) rather than a hand-curated bank, keep only candidates
+# that share the original word's coarse part-of-speech, and greedily accept
+# the candidate that most lowers similarity to the target (here: the
+# semantic filter's reference bank) while keeping the whole sentence
+# semantically close to the original. No LLM calls -- only the embedder
+# already used by the semantic filter, plus a local word-vector lookup.
 
 _TRAILING_PUNCT_RE = re.compile(r"[.,;:!?)\"']+$")
+
+_COARSE_POS_BY_PENN_TAG: dict[str, str] = {
+    "NN": "n", "NNS": "n", "NNP": "n", "NNPS": "n",
+    "VB": "v", "VBD": "v", "VBG": "v", "VBN": "v", "VBP": "v", "VBZ": "v",
+    "JJ": "a", "JJR": "a", "JJS": "a",
+    "RB": "r", "RBR": "r", "RBS": "r",
+}
 
 
 def _split_trailing_punct(word: str) -> tuple[str, str]:
@@ -185,54 +192,151 @@ def _max_reference_similarity(vector: np.ndarray, reference_embeddings: np.ndarr
     return float((reference_embeddings @ vector / norms).max())
 
 
+def _coarse_pos(penn_tag: str) -> str | None:
+    return _COARSE_POS_BY_PENN_TAG.get(penn_tag)
+
+
+@lru_cache(maxsize=1)
+def load_counter_fitted_vectors(path: str) -> tuple[dict[str, int], np.ndarray]:
+    """Loads Mrksic et al.'s counter-fitted word vectors (space-separated
+    ``word v1 v2 ... vN`` per line) into an L2-normalized matrix plus a
+    word->row index, so nearest-neighbor lookup is a single matrix-vector
+    product. Cached per-process since the file is ~180MB and unchanged for
+    the lifetime of a run."""
+    words: list[str] = []
+    rows: list[list[float]] = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            parts = line.rstrip("\n").split(" ")
+            words.append(parts[0])
+            rows.append([float(x) for x in parts[1:]])
+    matrix = np.array(rows, dtype="float32")
+    norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+    norms[norms == 0.0] = 1e-9
+    normalized = matrix / norms
+    word_to_index = {word: i for i, word in enumerate(words)}
+    return word_to_index, normalized
+
+
+def counter_fitted_synonyms(
+    word: str,
+    word_to_index: dict[str, int],
+    normalized_vectors: np.ndarray,
+    top_n: int = 50,
+    min_similarity: float = 0.5,
+) -> list[str]:
+    """Top-N nearest neighbors of ``word`` in counter-fitted embedding
+    space, above ``min_similarity``, nearest first. Returns an empty list
+    if ``word`` is out of vocabulary."""
+    index = word_to_index.get(word.lower())
+    if index is None:
+        return []
+    index_to_word = {i: w for w, i in word_to_index.items()}
+    similarities = normalized_vectors @ normalized_vectors[index]
+    ranked_indices = np.argsort(-similarities)
+    results: list[str] = []
+    for candidate_index in ranked_indices:
+        if candidate_index == index:
+            continue
+        similarity = similarities[candidate_index]
+        if similarity < min_similarity:
+            break
+        results.append(index_to_word[int(candidate_index)])
+        if len(results) >= top_n:
+            break
+    return results
+
+
+def _rank_positions_by_importance(
+    words: list[str], embedder: Callable[[list[str]], np.ndarray], reference_embeddings: np.ndarray,
+) -> list[int]:
+    """Word Importance Ranking (TextFooler): a word's importance is how
+    much the sentence's max similarity to the reference bank drops when
+    that word alone is deleted. Higher drop = more important to the attack,
+    so those words are substituted first."""
+    baseline_vector = np.array(embedder([" ".join(words)])[0])
+    baseline_score = _max_reference_similarity(baseline_vector, reference_embeddings)
+
+    importances: list[tuple[float, int]] = []
+    for i in range(len(words)):
+        remaining_words = words[:i] + words[i + 1 :]
+        if not remaining_words:
+            importances.append((0.0, i))
+            continue
+        without_word_vector = np.array(embedder([" ".join(remaining_words)])[0])
+        without_word_score = _max_reference_similarity(without_word_vector, reference_embeddings)
+        importances.append((baseline_score - without_word_score, i))
+
+    importances.sort(key=lambda pair: -pair[0])
+    return [i for _, i in importances]
+
+
 def optimize_evasive_attack(
     seed_text: str,
     embedder: Callable[[list[str]], np.ndarray],
     reference_embeddings: np.ndarray,
-    rng: random.Random,
-    synonym_bank: dict[str, list[str]],
-    max_iterations: int = 200,
-    semantic_floor: float = 0.75,
+    counter_fitted_vectors_path: str,
+    max_candidates_per_word: int = 50,
+    min_synonym_similarity: float = 0.5,
+    semantic_floor: float = 0.84,
 ) -> str:
-    """Deterministic (given rng) hill-climb: repeatedly substitutes one word
-    for a curated synonym, keeping the substitution only if it both (a)
-    lowers the candidate's max cosine similarity to reference_embeddings and
-    (b) keeps its similarity to the original seed_text at or above
-    semantic_floor. No LLM calls -- only the embedder already used by the
-    semantic filter."""
+    """TextFooler-style evasion: rank words by importance, generate
+    candidates automatically from counter-fitted embeddings, keep only
+    same-coarse-POS candidates, and greedily accept whichever candidate
+    lowers max similarity to reference_embeddings the most while keeping
+    the whole sentence's similarity to the original seed_text at or above
+    semantic_floor. Fully deterministic -- no randomness anywhere. No LLM
+    calls -- only the embedder already used by the semantic filter, plus a
+    local word-vector lookup and a local POS tagger."""
     words = seed_text.split(" ")
     seed_vector = np.array(embedder([seed_text])[0])
 
-    original_cores: dict[int, tuple[str, str]] = {}
-    for i, word in enumerate(words):
-        core, trailing = _split_trailing_punct(word)
-        if core.lower() in synonym_bank:
-            original_cores[i] = (core, trailing)
+    word_to_index, normalized_vectors = load_counter_fitted_vectors(counter_fitted_vectors_path)
+    penn_tags = [tag for _, tag in nltk.pos_tag(words)]
 
-    positions = list(original_cores)
-    if not positions:
-        return seed_text
-    rng.shuffle(positions)
+    positions = _rank_positions_by_importance(words, embedder, reference_embeddings)
 
     current_words = list(words)
     current_score = _max_reference_similarity(seed_vector, reference_embeddings)
 
-    for iteration in range(max_iterations):
-        position = positions[iteration % len(positions)]
-        core, trailing = original_cores[position]
-        candidates = synonym_bank[core.lower()]
-        candidate = candidates[(iteration // len(positions)) % len(candidates)]
-        trial_words = list(current_words)
-        trial_words[position] = _match_case(core, candidate) + trailing
-        trial_text = " ".join(trial_words)
-
-        trial_vector = np.array(embedder([trial_text])[0])
-        if _cosine_similarity(trial_vector, seed_vector) < semantic_floor:
+    for position in positions:
+        original_pos = _coarse_pos(penn_tags[position])
+        if original_pos is None:
             continue
 
-        trial_score = _max_reference_similarity(trial_vector, reference_embeddings)
-        if trial_score < current_score:
-            current_words = trial_words
-            current_score = trial_score
+        core, trailing = _split_trailing_punct(current_words[position])
+        candidates = counter_fitted_synonyms(
+            core.lower(), word_to_index, normalized_vectors, max_candidates_per_word, min_synonym_similarity,
+        )
+        if not candidates:
+            continue
+
+        best_words = None
+        best_score = current_score
+        for candidate in candidates:
+            trial_words = list(current_words)
+            trial_words[position] = _match_case(core, candidate) + trailing
+
+            # Tag the candidate in the sentence it would actually appear in --
+            # tagging it alone (or alongside other unrelated candidates) gives
+            # nltk's tagger no real context and produces unreliable guesses.
+            trial_penn_tags = [tag for _, tag in nltk.pos_tag(trial_words)]
+            if _coarse_pos(trial_penn_tags[position]) != original_pos:
+                continue
+
+            trial_text = " ".join(trial_words)
+            trial_vector = np.array(embedder([trial_text])[0])
+
+            if _cosine_similarity(trial_vector, seed_vector) < semantic_floor:
+                continue
+
+            trial_score = _max_reference_similarity(trial_vector, reference_embeddings)
+            if trial_score < best_score:
+                best_score = trial_score
+                best_words = trial_words
+
+        if best_words is not None:
+            current_words = best_words
+            current_score = best_score
 
     return " ".join(current_words)

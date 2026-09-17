@@ -18,6 +18,7 @@ dependencies = [
     "python-dotenv>=1.2.3",
     "python-docx==1.1.0",
     "dspy>=2.6.0,<4",
+    "nltk>=3.10.3",
 ]
 
 [dependency-groups]

@@ -14,7 +14,6 @@ from langchain_ollama import ChatOllama
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
 from candidate_ranking.injection.attacks import (
-    DEFAULT_SYNONYM_BANK,
     INSTRUCTION_INJECTION_PARAPHRASES,
     build_injected_candidate,
     marker_survived,
@@ -74,12 +73,12 @@ _NON_COMPARATIVE_CONDITIONS = (
 )
 
 
-def _completed_pairs(existing_results: list[dict], target_conditions: tuple[str, ...]) -> set[tuple[str, str]]:
+def _existing_conditions_by_pair(existing_results: list[dict]) -> dict[tuple[str, str], set[str]]:
     conditions_by_pair: dict[tuple[str, str], set[str]] = {}
     for r in existing_results:
         key = (r["jd_id"], r["candidate_id"])
         conditions_by_pair.setdefault(key, set()).add(r["condition"])
-    return {key for key, conditions in conditions_by_pair.items() if set(target_conditions) <= conditions}
+    return conditions_by_pair
 
 
 def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: bool, skip_comparative: bool) -> None:
@@ -117,14 +116,18 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
     results: list[dict] = []
     if out_path.exists():
         results = json.loads(out_path.read_text(encoding="utf-8"))
-    done_pairs = _completed_pairs(results, target_conditions)
-    pairs = [p for p in all_pairs if p not in done_pairs]
-    print(f"{len(done_pairs)} pairs already completed in {out_path.name}; {len(pairs)} remaining to run.")
+    existing = _existing_conditions_by_pair(results)
+    pairs = [p for p in all_pairs if not set(target_conditions) <= existing.get(p, set())]
+    missing_combinations = sum(len(set(target_conditions) - existing.get(p, set())) for p in pairs)
+    print(
+        f"{len(all_pairs) - len(pairs)} pairs already fully complete for the target conditions in "
+        f"{out_path.name}; {len(pairs)} pair(s) have at least one missing condition."
+    )
     if skip_comparative:
         print("Skipping Attack A (comparative) conditions for this run.")
 
     if dry_run:
-        print(f"Dry run OK: would run {len(pairs) * len(target_conditions)} new (pair, condition) combinations.")
+        print(f"Dry run OK: would run {missing_combinations} new (pair, condition) combinations.")
         return
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -140,7 +143,10 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
     rng = random.Random(seed)
 
     for jd_id, cv_id in pairs:
-        results.append(control_by_pair[(jd_id, cv_id)])
+        have = existing.setdefault((jd_id, cv_id), set())
+        if "control_no_injection" not in have:
+            results.append(control_by_pair[(jd_id, cv_id)])
+            have.add("control_no_injection")
 
         jd = jds_by_id[jd_id]
         pool_assessments = assessments_by_jd[jd_id]
@@ -149,6 +155,9 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
         history = history_by_jd[jd_id]
 
         def _measure(condition, variant_name, candidate_for_condition, chain, marker):
+            if condition in have:
+                print(f"{jd_id}/{cv_id} {variant_name}/{condition}: already present, skipping")
+                return
             modified_assessment = generate_assessment(jd, candidate_for_condition, chain, cfg.ollama_model)
             shift = compute_rank_shift(
                 jd=jd, pool_assessments=pool_assessments, candidate_id=cv_id, clean_rank=clean_rank,
@@ -161,9 +170,10 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
                 **shift,
             }
             results.append(record)
+            have.add(condition)
             print(f"{jd_id}/{cv_id} {variant_name}/{condition}: {shift}")
 
-        if not skip_comparative:
+        if not skip_comparative and {"comparative_unmitigated", "comparative_mitigated"} - have:
             comparative_candidate, comparative_marker = build_injected_candidate(
                 candidates_by_id[cv_id], jd_id, seed, category="comparative_injection",
             )
@@ -182,35 +192,36 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
                 hardened_chain, comparative_marker,
             )
 
-        seed_paraphrase = rng.choice(INSTRUCTION_INJECTION_PARAPHRASES)
-        evasive_text = optimize_evasive_attack(
-            seed_text=seed_paraphrase["attack_text"],
-            embedder=embedder,
-            reference_embeddings=reference_embeddings,
-            rng=random.Random(f"{seed}:{jd_id}:{cv_id}:adaptive"),
-            synonym_bank=DEFAULT_SYNONYM_BANK,
-        )
-        adaptive_candidate: Candidate = candidates_by_id[cv_id].model_copy(
-            update={"raw_text": candidates_by_id[cv_id].raw_text + "\n\n" + evasive_text}
-        )
-        adaptive_filtered_text, _ = filter_suspicious_lines(
-            adaptive_candidate.raw_text, embedder, reference_embeddings,
-        )
-        adaptive_filtered_candidate = adaptive_candidate.model_copy(update={"raw_text": adaptive_filtered_text})
-        _measure("adaptive_unmitigated", "adaptive_evasion", adaptive_candidate, unmitigated_chain, None)
-        _measure("adaptive_mitigated", "adaptive_evasion", adaptive_filtered_candidate, hardened_chain, None)
+        if {"adaptive_unmitigated", "adaptive_mitigated"} - have:
+            seed_paraphrase = rng.choice(INSTRUCTION_INJECTION_PARAPHRASES)
+            evasive_text = optimize_evasive_attack(
+                seed_text=seed_paraphrase["attack_text"],
+                embedder=embedder,
+                reference_embeddings=reference_embeddings,
+                counter_fitted_vectors_path=str(cfg.cache_dir / "counter-fitted-vectors.txt"),
+            )
+            adaptive_candidate: Candidate = candidates_by_id[cv_id].model_copy(
+                update={"raw_text": candidates_by_id[cv_id].raw_text + "\n\n" + evasive_text}
+            )
+            adaptive_filtered_text, _ = filter_suspicious_lines(
+                adaptive_candidate.raw_text, embedder, reference_embeddings,
+            )
+            adaptive_filtered_candidate = adaptive_candidate.model_copy(update={"raw_text": adaptive_filtered_text})
+            _measure("adaptive_unmitigated", "adaptive_evasion", adaptive_candidate, unmitigated_chain, None)
+            _measure("adaptive_mitigated", "adaptive_evasion", adaptive_filtered_candidate, hardened_chain, None)
 
-        original_candidate, original_marker = build_injected_candidate(candidates_by_id[cv_id], jd_id, seed)
-        classifier_filtered_text, _ = filter_suspicious_lines_classifier(original_candidate.raw_text, classify)
-        classifier_filtered_candidate = original_candidate.model_copy(update={"raw_text": classifier_filtered_text})
-        _measure(
-            "defense_a_classifier", "instruction_injection", classifier_filtered_candidate,
-            unmitigated_chain, original_marker,
-        )
-        _measure(
-            "defense_b_self_reminder", "instruction_injection", original_candidate,
-            self_reminder_chain, original_marker,
-        )
+        if {"defense_a_classifier", "defense_b_self_reminder"} - have:
+            original_candidate, original_marker = build_injected_candidate(candidates_by_id[cv_id], jd_id, seed)
+            classifier_filtered_text, _ = filter_suspicious_lines_classifier(original_candidate.raw_text, classify)
+            classifier_filtered_candidate = original_candidate.model_copy(update={"raw_text": classifier_filtered_text})
+            _measure(
+                "defense_a_classifier", "instruction_injection", classifier_filtered_candidate,
+                unmitigated_chain, original_marker,
+            )
+            _measure(
+                "defense_b_self_reminder", "instruction_injection", original_candidate,
+                self_reminder_chain, original_marker,
+            )
 
         out_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
 
