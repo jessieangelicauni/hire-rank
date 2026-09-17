@@ -1,35 +1,42 @@
 """Prompt-injection attack corpus, defenses, and measurement/statistics
-for the rank-shift study. Submodules stay import-by-path (e.g.
-``candidate_ranking.injection.attack_corpus``) for existing call sites;
-this file just re-exports the public surface for convenience."""
+for the rank-shift study, organized into three modules:
 
-from candidate_ranking.injection.adaptive_attack import (
-    DEFAULT_SYNONYM_BANK,
-    optimize_evasive_attack,
-)
-from candidate_ranking.injection.attack_corpus import (
+- ``attacks``: attack corpora (instruction injection, comparative
+  injection) and the filter-aware adaptive-evasion search.
+- ``defenses``: prompt-level defenses (isolation instruction,
+  self-reminder), the embedding-based semantic filter, and the
+  off-the-shelf classifier filter.
+- ``measurement``: rank-shift measurement and Wilcoxon/Holm-Bonferroni
+  significance analysis.
+
+This file re-exports the package's public surface for convenience, so
+``from candidate_ranking.injection import X`` works without knowing
+which of the three modules ``X`` lives in.
+"""
+
+from candidate_ranking.injection.attacks import (
     ATTACK_CATEGORIES,
     COMPARATIVE_INJECTION_PARAPHRASES,
+    DEFAULT_SYNONYM_BANK,
     INSTRUCTION_INJECTION_PARAPHRASES,
     build_injected_candidate,
     marker_survived,
+    optimize_evasive_attack,
     select_pair_subsample,
     stratified_sample_pairs,
 )
-from candidate_ranking.injection.classifier_filter import (
-    build_classifier_filter,
-    filter_suspicious_lines_classifier,
-)
-from candidate_ranking.injection.mitigation import (
+from candidate_ranking.injection.defenses import (
     HARDENED_ASSESSMENT_GENERATION_PROMPT,
+    REFERENCE_SUSPICIOUS_PHRASES,
     SELF_REMINDER_ASSESSMENT_GENERATION_PROMPT,
+    build_classifier_filter,
     build_hardened_assessment_chain,
     build_self_reminder_assessment_chain,
+    filter_suspicious_lines,
+    filter_suspicious_lines_classifier,
 )
-from candidate_ranking.injection.rank_shift import compute_rank_shift
-from candidate_ranking.injection.semantic_filter import filter_suspicious_lines
-from candidate_ranking.injection.semantic_filter_reference import REFERENCE_SUSPICIOUS_PHRASES
-from candidate_ranking.injection.stats import (
+from candidate_ranking.injection.measurement import (
+    compute_rank_shift,
     holm_correct,
     paired_deltas_by_condition,
     paired_deltas_vs_control,

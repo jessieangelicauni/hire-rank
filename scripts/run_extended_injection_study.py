@@ -13,19 +13,24 @@ from dotenv import load_dotenv
 from langchain_ollama import ChatOllama
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
-from candidate_ranking.injection.adaptive_attack import DEFAULT_SYNONYM_BANK, optimize_evasive_attack
-from candidate_ranking.injection.attack_corpus import (
+from candidate_ranking.injection.attacks import (
+    DEFAULT_SYNONYM_BANK,
     INSTRUCTION_INJECTION_PARAPHRASES,
     build_injected_candidate,
     marker_survived,
+    optimize_evasive_attack,
     select_pair_subsample,
     stratified_sample_pairs,
 )
-from candidate_ranking.injection.classifier_filter import build_classifier_filter, filter_suspicious_lines_classifier
-from candidate_ranking.injection.mitigation import build_hardened_assessment_chain, build_self_reminder_assessment_chain
-from candidate_ranking.injection.rank_shift import compute_rank_shift
-from candidate_ranking.injection.semantic_filter import filter_suspicious_lines
-from candidate_ranking.injection.semantic_filter_reference import REFERENCE_SUSPICIOUS_PHRASES
+from candidate_ranking.injection.defenses import (
+    REFERENCE_SUSPICIOUS_PHRASES,
+    build_classifier_filter,
+    build_hardened_assessment_chain,
+    build_self_reminder_assessment_chain,
+    filter_suspicious_lines,
+    filter_suspicious_lines_classifier,
+)
+from candidate_ranking.injection.measurement import compute_rank_shift
 from candidate_ranking.ingestion.cv import load_candidates
 from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import Assessment, Candidate

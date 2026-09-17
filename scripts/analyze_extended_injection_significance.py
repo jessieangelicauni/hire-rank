@@ -8,7 +8,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
-from candidate_ranking.injection.stats import holm_correct, paired_deltas_by_condition, paired_deltas_vs_control, wilcoxon_result
+from candidate_ranking.injection.measurement import holm_correct, paired_deltas_by_condition, paired_deltas_vs_control, wilcoxon_result
 
 
 def main(run_id: str) -> None:
