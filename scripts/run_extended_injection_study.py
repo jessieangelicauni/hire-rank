@@ -62,22 +62,23 @@ def _control_by_pair(prior_results: list[dict]) -> dict[tuple[str, str], dict]:
     }
 
 
-_NEW_CONDITIONS = (
-    "comparative_unmitigated", "comparative_mitigated",
+_COMPARATIVE_CONDITIONS = ("comparative_unmitigated", "comparative_mitigated")
+_NON_COMPARATIVE_CONDITIONS = (
     "adaptive_unmitigated", "adaptive_mitigated",
     "defense_a_classifier", "defense_b_self_reminder",
 )
 
 
-def _completed_pairs(existing_results: list[dict]) -> set[tuple[str, str]]:
+def _completed_pairs(existing_results: list[dict], target_conditions: tuple[str, ...]) -> set[tuple[str, str]]:
     conditions_by_pair: dict[tuple[str, str], set[str]] = {}
     for r in existing_results:
         key = (r["jd_id"], r["candidate_id"])
         conditions_by_pair.setdefault(key, set()).add(r["condition"])
-    return {key for key, conditions in conditions_by_pair.items() if set(_NEW_CONDITIONS) <= conditions}
+    return {key for key, conditions in conditions_by_pair.items() if set(target_conditions) <= conditions}
 
 
-def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: bool) -> None:
+def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: bool, skip_comparative: bool) -> None:
+    target_conditions = _NON_COMPARATIVE_CONDITIONS if skip_comparative else (_COMPARATIVE_CONDITIONS + _NON_COMPARATIVE_CONDITIONS)
     cfg = apply_env_overrides(RunConfig.full(PROJECT_ROOT))
     run_dir = cfg.runs_dir / run_id
     manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
@@ -111,12 +112,14 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
     results: list[dict] = []
     if out_path.exists():
         results = json.loads(out_path.read_text(encoding="utf-8"))
-    done_pairs = _completed_pairs(results)
+    done_pairs = _completed_pairs(results, target_conditions)
     pairs = [p for p in all_pairs if p not in done_pairs]
     print(f"{len(done_pairs)} pairs already completed in {out_path.name}; {len(pairs)} remaining to run.")
+    if skip_comparative:
+        print("Skipping Attack A (comparative) conditions for this run.")
 
     if dry_run:
-        print(f"Dry run OK: would run {len(pairs) * 6} new (pair, condition) combinations.")
+        print(f"Dry run OK: would run {len(pairs) * len(target_conditions)} new (pair, condition) combinations.")
         return
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -155,23 +158,24 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
             results.append(record)
             print(f"{jd_id}/{cv_id} {variant_name}/{condition}: {shift}")
 
-        comparative_candidate, comparative_marker = build_injected_candidate(
-            candidates_by_id[cv_id], jd_id, seed, category="comparative_injection",
-        )
-        comparative_filtered_text, _ = filter_suspicious_lines(
-            comparative_candidate.raw_text, embedder, reference_embeddings,
-        )
-        comparative_filtered_candidate = comparative_candidate.model_copy(
-            update={"raw_text": comparative_filtered_text}
-        )
-        _measure(
-            "comparative_unmitigated", "comparative_injection", comparative_candidate,
-            unmitigated_chain, comparative_marker,
-        )
-        _measure(
-            "comparative_mitigated", "comparative_injection", comparative_filtered_candidate,
-            hardened_chain, comparative_marker,
-        )
+        if not skip_comparative:
+            comparative_candidate, comparative_marker = build_injected_candidate(
+                candidates_by_id[cv_id], jd_id, seed, category="comparative_injection",
+            )
+            comparative_filtered_text, _ = filter_suspicious_lines(
+                comparative_candidate.raw_text, embedder, reference_embeddings,
+            )
+            comparative_filtered_candidate = comparative_candidate.model_copy(
+                update={"raw_text": comparative_filtered_text}
+            )
+            _measure(
+                "comparative_unmitigated", "comparative_injection", comparative_candidate,
+                unmitigated_chain, comparative_marker,
+            )
+            _measure(
+                "comparative_mitigated", "comparative_injection", comparative_filtered_candidate,
+                hardened_chain, comparative_marker,
+            )
 
         seed_paraphrase = rng.choice(INSTRUCTION_INJECTION_PARAPHRASES)
         evasive_text = optimize_evasive_attack(
@@ -216,5 +220,6 @@ if __name__ == "__main__":
     parser.add_argument("--per-profile", type=int, default=3)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--skip-comparative", action="store_true", help="Skip Attack A (comparative) conditions.")
     args = parser.parse_args()
-    main(args.run_id, args.prior_run_id, args.per_profile, args.seed, args.dry_run)
+    main(args.run_id, args.prior_run_id, args.per_profile, args.seed, args.dry_run, args.skip_comparative)
