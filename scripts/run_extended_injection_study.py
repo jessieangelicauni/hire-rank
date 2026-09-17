@@ -96,6 +96,9 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
         print(f"Dry run OK: would run {len(pairs) * 6} new (pair, condition) combinations.")
         return
 
+    out_path = run_dir / "injection_study" / "extended_results.json"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
     llm = ChatOllama(model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0)
     unmitigated_chain = build_assessment_chain(llm)
     hardened_chain = build_hardened_assessment_chain(llm)
@@ -179,8 +182,8 @@ def main(run_id: str, prior_run_id: str, per_profile: int, seed: int, dry_run: b
             self_reminder_chain, original_marker,
         )
 
-    out_path = run_dir / "injection_study" / "extended_results.json"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
+
     out_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
     print(f"Wrote {len(results)} record(s) to {out_path}")
 
