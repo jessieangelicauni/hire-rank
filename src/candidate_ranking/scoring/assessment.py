@@ -138,8 +138,14 @@ def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
                     f"requirement: '{jd_skills.seniority_requirement}'?"
                 ),
                 criteria={
-                    "true": "The CV supports that the candidate meets this seniority/experience requirement",
-                    "false": "The CV does not support that the candidate meets this seniority/experience requirement",
+                    "true": (
+                        "The CV explicitly states years of experience, employment dates, or job "
+                        "titles/roles that satisfy this seniority/experience requirement"
+                    ),
+                    "false": (
+                        "The CV's stated years of experience, employment dates, or job titles/roles "
+                        "clearly fall short of this requirement, or no relevant experience is mentioned at all"
+                    ),
                 },
             )
         )
@@ -153,8 +159,14 @@ def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
                     f"requirement: '{jd_skills.education_requirement}'?"
                 ),
                 criteria={
-                    "true": "The CV supports that the candidate meets this education requirement",
-                    "false": "The CV does not support that the candidate meets this education requirement",
+                    "true": (
+                        "The CV explicitly states a degree, field of study, or educational credential "
+                        "that satisfies this requirement"
+                    ),
+                    "false": (
+                        "The CV's stated education clearly falls short of this requirement, "
+                        "or no relevant education is mentioned at all"
+                    ),
                 },
             )
         )

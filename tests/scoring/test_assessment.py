@@ -10,6 +10,7 @@ from candidate_ranking.models import Candidate, JDSkills, JobDescription
 from candidate_ranking.scoring.assessment import (
     AssessmentGenerationError,
     JEV_MODEL_NAME,
+    _build_questions,
     generate_assessment,
     load_or_generate_assessment,
 )
@@ -243,6 +244,29 @@ def test_generate_assessment_omits_seniority_education_questions_when_not_stated
     assert assessment.certification_results == {}
     assert assessment.meets_seniority_requirement is None
     assert assessment.meets_education_requirement is None
+
+
+def test_seniority_and_education_criteria_point_to_concrete_evidence_not_circular_restatement():
+    jd_skills = JDSkills(
+        job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=[],
+        seniority_requirement="5+ years of backend experience",
+        education_requirement="Bachelor's degree in Computer Science",
+    )
+    questions = _build_questions(jd_skills)
+    by_key = {q.key: q for q in questions}
+
+    seniority_criteria = " ".join(by_key["seniority"].criteria.values()).lower()
+    education_criteria = " ".join(by_key["education"].criteria.values()).lower()
+
+    # The old criteria just restated the question ("supports"/"does not support" this
+    # requirement) -- circular, giving Jev no concrete evidence to look for. The fixed
+    # criteria must name the kind of evidence that should tip the judgment.
+    for banned_phrase in ("supports that the candidate", "does not support that the candidate"):
+        assert banned_phrase not in seniority_criteria
+        assert banned_phrase not in education_criteria
+
+    assert any(term in seniority_criteria for term in ("years", "dates", "titles", "roles"))
+    assert any(term in education_criteria for term in ("degree", "field of study", "credential"))
 
 
 def test_generate_assessment_aggregates_certification_and_seniority_across_calls():
