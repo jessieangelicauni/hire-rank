@@ -242,89 +242,144 @@ def analyze_ablation(records: list[dict]) -> dict:
     }
 
 
-def render_markdown(report: dict) -> str:
-    tr = report["test_retest"]
-    conv = report["ranking_convergence"]
-    coh = report["internal_coherence"]
-    abl = report["ablation"]
-    lat = tr["latency_seconds"]
+def analyze_noul_criteria_ablation(records: list[dict]) -> dict:
+    concrete_by_key: dict[str, list[float]] = {"seniority": [], "education": []}
+    circular_by_key: dict[str, list[float]] = {"seniority": [], "education": []}
+    circular_latencies: list[float] = []
 
-    lines = [
-        f"# Jev Evaluation Study -- Run {report['run_id']}",
-        "",
-        "## Test-retest reliability",
-        f"- {tr['n_pairs']} pairs x {tr['n_repeats_per_pair']} repeats",
-        f"- overall_fit_score stdev across repeats: mean={tr['overall_fit_score_stdev']['mean']:.2f}, "
-        f"median={tr['overall_fit_score_stdev']['median']:.2f}",
-        f"- per-requirement score stdev: mean={tr['requirement_score_stdev']['mean']:.2f} "
-        f"(n={tr['requirement_score_stdev']['n_requirement_observations']} requirement observations)",
-        f"- recommendation full agreement rate: {tr['recommendation_full_agreement_rate']:.1%}",
-        "",
-        "## Ranking convergence (Paper-1-equivalent: candidate order stability across repeats)",
-        f"- mean Kendall-tau across all {len(conv['per_job_profile'])} job profiles: "
-        f"{conv['mean_kendall_tau_across_all_profiles']:.3f}" if conv['mean_kendall_tau_across_all_profiles'] is not None else "- insufficient data",
-    ]
-    for jd_id, jd_conv in sorted(conv["per_job_profile"].items(), key=lambda kv: (kv[1]["mean_kendall_tau"] is None, kv[1]["mean_kendall_tau"] or 0)):
-        tau_str = f"{jd_conv['mean_kendall_tau']:.3f}" if jd_conv["mean_kendall_tau"] is not None else "N/A"
-        lines.append(f"  - {jd_id} (n={jd_conv['n_candidates']}): tau={tau_str}")
-    lines += [
-        "",
-        "## Internal coherence",
-        f"- n={coh['n_assessments']} assessments",
-    ]
-    if coh["requirement_vs_overall_score_correlation"]:
-        c = coh["requirement_vs_overall_score_correlation"]
-        lines.append(f"- mean(requirement_scores) vs overall_fit_score: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
-    if coh["recommendation_vs_score"]:
-        r = coh["recommendation_vs_score"]
-        lines.append(
-            f"- hire (n={r['hire_n']}, mean={r['hire_mean']:.1f}) vs no (n={r['no_n']}, mean={r['no_mean']:.1f}): "
-            f"Mann-Whitney U p={r['p_value_hire_greater_than_no']:.4g}"
-        )
-    if coh["min_qualifications_vs_score"]:
-        q = coh["min_qualifications_vs_score"]
-        lines.append(
-            f"- meets_min_qualifications=True (n={q['meets_min_n']}, mean={q['meets_min_mean']:.1f}) vs "
-            f"False (n={q['fails_min_n']}, mean={q['fails_min_mean']:.1f}): "
-            f"Mann-Whitney U p={q['p_value_meets_greater_than_fails']:.4g}"
-        )
-    lines += ["", "## Criteria-design ablation (concrete vs. vague Score criteria)", f"- n={abl['n_pairs']} sampled pairs"]
-    if abl["overall_fit_score"]["wilcoxon"]:
-        w = abl["overall_fit_score"]["wilcoxon"]
-        lines.append(
-            f"- overall_fit_score confidence (the one Score-type fixed question, directly affected by the criteria change): "
-            f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
-            f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
-            f"(<0.5: concrete {abl['overall_fit_score']['concrete_pct_below_0.5']:.0f}% vs vague {abl['overall_fit_score']['vague_pct_below_0.5']:.0f}%)"
-        )
-    if abl["unaffected_control"]["wilcoxon"]:
-        w = abl["unaffected_control"]["wilcoxon"]
-        lines.append(
-            f"- unaffected_control confidence (overall_recommendation + meets_min_qualifications, criteria "
-            f"NOT changed by the ablation -- expected null effect): "
-            f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
-            f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f}"
-        )
-    if abl["requirement_questions"]["wilcoxon"]:
-        w = abl["requirement_questions"]["wilcoxon"]
-        lines.append(
-            f"- Requirement questions confidence (n_obs={abl['requirement_questions']['n_observations']}): "
-            f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
-            f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
-            f"(<0.5: concrete {abl['requirement_questions']['concrete_pct_below_0.5']:.0f}% vs vague {abl['requirement_questions']['vague_pct_below_0.5']:.0f}%)"
-        )
-    lines += [
-        "",
-        "## Efficiency",
-        f"- Measured Jev latency (this study, n={lat['n']} calls): mean={lat['mean']*1000:.0f}ms, "
-        f"median={lat['median']*1000:.0f}ms"
-        + (f", p95={lat['p95']*1000:.0f}ms" if lat["p95"] is not None else ""),
-        f"- Vendor-published (not independently verified against a reconstructed baseline in this study):",
-        f"  - {_VENDOR_PUBLISHED_LATENCY_CLAIM}",
-        f"  - vs. {_VENDOR_PUBLISHED_COMPARISON_CLAIM}",
-        f"  - claimed speedup: {_VENDOR_PUBLISHED_SPEEDUP_CLAIM}",
-        "",
-    ]
+    for record in records:
+        concrete_conf = record["concrete_confidence"]
+        circular_conf = record["circular_confidence"]
+        for key in ("seniority", "education"):
+            if key in concrete_conf and key in circular_conf:
+                concrete_by_key[key].append(concrete_conf[key])
+                circular_by_key[key].append(circular_conf[key])
+        circular_latencies.append(record["circular_latency_seconds"])
+
+    buckets = {
+        key: _paired_bucket(concrete_by_key[key], circular_by_key[key], f"{key}_confidence")
+        for key in ("seniority", "education")
+    }
+    concrete_pooled = concrete_by_key["seniority"] + concrete_by_key["education"]
+    circular_pooled = circular_by_key["seniority"] + circular_by_key["education"]
+
+    return {
+        "n_pairs": len(records),
+        "seniority": buckets["seniority"],
+        "education": buckets["education"],
+        "pooled": _paired_bucket(concrete_pooled, circular_pooled, "seniority_education_pooled_confidence"),
+        "circular_latency_seconds_mean": statistics.mean(circular_latencies) if circular_latencies else None,
+    }
+
+
+def render_markdown(report: dict) -> str:
+    tr = report.get("test_retest")
+    conv = report.get("ranking_convergence")
+    coh = report.get("internal_coherence")
+    abl = report.get("ablation")
+
+    lines = [f"# Jev Evaluation Study -- Run {report['run_id']}"]
+
+    if tr:
+        lat = tr["latency_seconds"]
+        lines += [
+            "",
+            "## Test-retest reliability",
+            f"- {tr['n_pairs']} pairs x {tr['n_repeats_per_pair']} repeats",
+            f"- overall_fit_score stdev across repeats: mean={tr['overall_fit_score_stdev']['mean']:.2f}, "
+            f"median={tr['overall_fit_score_stdev']['median']:.2f}",
+            f"- per-requirement score stdev: mean={tr['requirement_score_stdev']['mean']:.2f} "
+            f"(n={tr['requirement_score_stdev']['n_requirement_observations']} requirement observations)",
+            f"- recommendation full agreement rate: {tr['recommendation_full_agreement_rate']:.1%}",
+        ]
+    if conv:
+        lines += [
+            "",
+            "## Ranking convergence (Paper-1-equivalent: candidate order stability across repeats)",
+            f"- mean Kendall-tau across all {len(conv['per_job_profile'])} job profiles: "
+            f"{conv['mean_kendall_tau_across_all_profiles']:.3f}" if conv['mean_kendall_tau_across_all_profiles'] is not None else "- insufficient data",
+        ]
+        for jd_id, jd_conv in sorted(conv["per_job_profile"].items(), key=lambda kv: (kv[1]["mean_kendall_tau"] is None, kv[1]["mean_kendall_tau"] or 0)):
+            tau_str = f"{jd_conv['mean_kendall_tau']:.3f}" if jd_conv["mean_kendall_tau"] is not None else "N/A"
+            lines.append(f"  - {jd_id} (n={jd_conv['n_candidates']}): tau={tau_str}")
+    if coh:
+        lines += [
+            "",
+            "## Internal coherence",
+            f"- n={coh['n_assessments']} assessments",
+        ]
+        if coh["requirement_vs_overall_score_correlation"]:
+            c = coh["requirement_vs_overall_score_correlation"]
+            lines.append(f"- mean(requirement_scores) vs overall_fit_score: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
+        if coh["recommendation_vs_score"]:
+            r = coh["recommendation_vs_score"]
+            lines.append(
+                f"- hire (n={r['hire_n']}, mean={r['hire_mean']:.1f}) vs no (n={r['no_n']}, mean={r['no_mean']:.1f}): "
+                f"Mann-Whitney U p={r['p_value_hire_greater_than_no']:.4g}"
+            )
+        if coh["min_qualifications_vs_score"]:
+            q = coh["min_qualifications_vs_score"]
+            lines.append(
+                f"- meets_min_qualifications=True (n={q['meets_min_n']}, mean={q['meets_min_mean']:.1f}) vs "
+                f"False (n={q['fails_min_n']}, mean={q['fails_min_mean']:.1f}): "
+                f"Mann-Whitney U p={q['p_value_meets_greater_than_fails']:.4g}"
+            )
+    if abl:
+        lines += ["", "## Criteria-design ablation (concrete vs. vague Score criteria)", f"- n={abl['n_pairs']} sampled pairs"]
+        if abl["overall_fit_score"]["wilcoxon"]:
+            w = abl["overall_fit_score"]["wilcoxon"]
+            lines.append(
+                f"- overall_fit_score confidence (the one Score-type fixed question, directly affected by the criteria change): "
+                f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
+                f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
+                f"(<0.5: concrete {abl['overall_fit_score']['concrete_pct_below_0.5']:.0f}% vs vague {abl['overall_fit_score']['vague_pct_below_0.5']:.0f}%)"
+            )
+        if abl["unaffected_control"]["wilcoxon"]:
+            w = abl["unaffected_control"]["wilcoxon"]
+            lines.append(
+                f"- unaffected_control confidence (overall_recommendation + meets_min_qualifications, criteria "
+                f"NOT changed by the ablation -- expected null effect): "
+                f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
+                f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f}"
+            )
+        if abl["requirement_questions"]["wilcoxon"]:
+            w = abl["requirement_questions"]["wilcoxon"]
+            lines.append(
+                f"- Requirement questions confidence (n_obs={abl['requirement_questions']['n_observations']}): "
+                f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
+                f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
+                f"(<0.5: concrete {abl['requirement_questions']['concrete_pct_below_0.5']:.0f}% vs vague {abl['requirement_questions']['vague_pct_below_0.5']:.0f}%)"
+            )
+    noul_abl = report.get("noul_criteria_ablation")
+    if noul_abl:
+        lines += ["", "## Seniority/education Noul criteria ablation (circular vs. concrete)", f"- n={noul_abl['n_pairs']} paired pairs"]
+        for label, key in (("seniority", "seniority"), ("education", "education"), ("pooled", "pooled")):
+            bucket = noul_abl[key]
+            if bucket["wilcoxon"]:
+                w = bucket["wilcoxon"]
+                lines.append(
+                    f"- {label} confidence (n_obs={bucket['n_observations']}): "
+                    f"concrete mean={w['mean_first']:.3f} vs circular mean={w['mean_second']:.3f} "
+                    f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
+                    f"(<0.5: concrete {bucket['concrete_pct_below_0.5']:.0f}% vs circular {bucket['vague_pct_below_0.5']:.0f}%)"
+                )
+            else:
+                lines.append(f"- {label} confidence: insufficient paired data (n_obs={bucket['n_observations']})")
+
+    if tr:
+        lat = tr["latency_seconds"]
+        lines += [
+            "",
+            "## Efficiency",
+            f"- Measured Jev latency (this study, n={lat['n']} calls): mean={lat['mean']*1000:.0f}ms, "
+            f"median={lat['median']*1000:.0f}ms"
+            + (f", p95={lat['p95']*1000:.0f}ms" if lat["p95"] is not None else ""),
+            f"- Vendor-published (not independently verified against a reconstructed baseline in this study):",
+            f"  - {_VENDOR_PUBLISHED_LATENCY_CLAIM}",
+            f"  - vs. {_VENDOR_PUBLISHED_COMPARISON_CLAIM}",
+            f"  - claimed speedup: {_VENDOR_PUBLISHED_SPEEDUP_CLAIM}",
+        ]
+    lines.append("")
     return "\n".join(lines)
 
 
@@ -335,16 +390,24 @@ def main(run_id: str) -> None:
     jd_ids = manifest["jd_ids"]
 
     eval_dir = run_dir / "evaluation"
-    test_retest_records = json.loads((eval_dir / "test_retest.json").read_text(encoding="utf-8"))
-    ablation_records = json.loads((eval_dir / "ablation.json").read_text(encoding="utf-8"))
+    report: dict = {"run_id": run_id}
 
-    report = {
-        "run_id": run_id,
-        "test_retest": analyze_test_retest(test_retest_records),
-        "ranking_convergence": analyze_ranking_convergence(test_retest_records),
-        "internal_coherence": analyze_internal_coherence(run_dir, jd_ids),
-        "ablation": analyze_ablation(ablation_records),
-    }
+    test_retest_path = eval_dir / "test_retest.json"
+    if test_retest_path.exists():
+        test_retest_records = json.loads(test_retest_path.read_text(encoding="utf-8"))
+        report["test_retest"] = analyze_test_retest(test_retest_records)
+        report["ranking_convergence"] = analyze_ranking_convergence(test_retest_records)
+        report["internal_coherence"] = analyze_internal_coherence(run_dir, jd_ids)
+
+    ablation_path = eval_dir / "ablation.json"
+    if ablation_path.exists():
+        ablation_records = json.loads(ablation_path.read_text(encoding="utf-8"))
+        report["ablation"] = analyze_ablation(ablation_records)
+
+    noul_ablation_path = eval_dir / "noul_criteria_ablation.json"
+    if noul_ablation_path.exists():
+        noul_ablation_records = json.loads(noul_ablation_path.read_text(encoding="utf-8"))
+        report["noul_criteria_ablation"] = analyze_noul_criteria_ablation(noul_ablation_records)
 
     (eval_dir / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     markdown = render_markdown(report)
