@@ -148,7 +148,7 @@ def export_console_web_data(
 
         ranking = json.loads((run_dir / jd_id / "ranking.json").read_text(encoding="utf-8"))
         rank_by_cv_id = {row["candidate_id"]: row["rank"] for row in ranking["rankings"]}
-        utility_by_cv_id = {row["candidate_id"]: row["utility"] for row in ranking["rankings"]}
+        score_by_cv_id = {row["candidate_id"]: row["overall_fit_score"] for row in ranking["rankings"]}
 
         jd_assessments = {
             cv_id: entry for cv_id, entry in sorted(_load_jd_assessments(run_dir, jd_id).items())
@@ -167,14 +167,15 @@ def export_console_web_data(
                     "name": name if name else cv_id.upper(),
                     "initials": _initials_for(name, cv_id),
                     "rank": rank_by_cv_id.get(cv_id),
-                    "utility": utility_by_cv_id.get(cv_id),
+                    "utility": score_by_cv_id.get(cv_id),
                 }
             )
 
             assessments[row_id] = {
-                "strengths": assessment_entry["strengths"],
-                "weaknesses": assessment_entry["weaknesses"],
-                "additional_skills": assessment_entry.get("additional_skills", []),
+                "overall_fit_score": assessment_entry["overall_fit_score"],
+                "overall_recommendation": assessment_entry["overall_recommendation"],
+                "meets_min_qualifications": assessment_entry["meets_min_qualifications"],
+                "requirement_scores": assessment_entry.get("requirement_scores", {}),
             }
             exported_count += 1
 
