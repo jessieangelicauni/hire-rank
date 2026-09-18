@@ -1,13 +1,3 @@
-"""Statistical analysis for the Jev evaluation study: test-retest
-reliability, internal coherence, criteria-design ablation significance,
-and efficiency. Consumes the raw data written by
-run_jev_evaluation_study.py plus the run's own assessments.json files
-(for internal coherence, which needs no fresh Jev calls).
-
-Usage:
-    python scripts/analyze_jev_evaluation_study.py --run-id 20260918-072318
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -23,9 +13,6 @@ from scipy.stats import kendalltau, mannwhitneyu, spearmanr, wilcoxon
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
 
-# TypeSafe's own published numbers (typesafe.ai blog, "Introducing System
-# One Models & Jev", 2026-09-15) -- vendor-published, not independently
-# verified here against a reconstructed baseline. Reported for context only.
 _VENDOR_PUBLISHED_LATENCY_CLAIM = "70ms-500ms end-to-end (TypeSafe, self-reported, West Coast laptop)"
 _VENDOR_PUBLISHED_COMPARISON_CLAIM = "existing frontier LLMs: 3 to 329 seconds end-to-end (TypeSafe, self-reported)"
 _VENDOR_PUBLISHED_SPEEDUP_CLAIM = "40x-200x faster for comparable System One task intelligence (TypeSafe, self-reported)"
@@ -103,16 +90,6 @@ def analyze_test_retest(records: list[dict]) -> dict:
 
 
 def analyze_ranking_convergence(records: list[dict]) -> dict:
-    """Paper-1-equivalent ranking convergence metric. Paper 1's Kendall-tau
-    measures whether a job profile's candidate ordering stabilizes across
-    successive tournament iterations. Jev has no iterative ranking process
-    (each candidate is scored once per call, independently), so the
-    analogous question is: does the candidate ORDER within a job profile
-    hold up across repeated, independent Jev calls? For each job profile,
-    rank its candidates by overall_fit_score under each of the 3 repeats
-    separately, then compute the mean pairwise Kendall-tau across those
-    repeat-rankings -- same corpus scale as Paper 1 (all job profiles, all
-    shortlisted candidates, 3 repeats each)."""
     by_jd: dict[str, list[dict]] = {}
     for record in records:
         by_jd.setdefault(record["jd_id"], []).append(record)
@@ -213,10 +190,6 @@ def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
 
 
 _OVERALL_FIT_KEY = "overall_fit_score"
-# overall_recommendation (choice) and meets_min_qualifications (noul) never had
-# their criteria touched by the ablation -- they serve as a negative control,
-# not a "fixed questions" bucket. A null effect here is the expected result
-# and helps rule out the requirement-question effect being measurement noise.
 _UNAFFECTED_CONTROL_KEYS = ("overall_recommendation", "meets_min_qualifications")
 
 

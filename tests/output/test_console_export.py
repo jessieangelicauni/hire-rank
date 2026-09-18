@@ -20,8 +20,6 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
     cv_dir.mkdir(parents=True)
 
     (jd_dir / "jd-1.txt").write_text("Backend Engineer\n\nNeeds Python.", encoding="utf-8")
-    # load_candidates() only globs *.pdf and parses via pypdf, so the fixture CV
-    # must be a real (if minimal/blank) PDF, not a .txt file.
     writer = PdfWriter()
     writer.add_blank_page(width=200, height=200)
     with open(cv_dir / "cand-a.pdf", "wb") as f:

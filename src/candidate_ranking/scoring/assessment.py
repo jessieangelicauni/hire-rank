@@ -25,11 +25,6 @@ _MIN_QUALIFICATIONS_KEY = "meets_min_qualifications"
 _RETRY_ON_LOW_CONFIDENCE_KEYS = (_OVERALL_FIT_KEY, _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY)
 _CONFIDENCE_RETRY_THRESHOLD = 0.5
 
-# Matches Paper 1's stability_repeats=3 and this project's own evaluation
-# study: a single Jev call's score can fall within the noise floor of
-# similarly-scored peers, which destabilizes ranking order for tightly
-# clustered candidate pools. Averaging multiple independent calls reduces
-# that noise the same way the old tournament's repeated comparisons did.
 DEFAULT_N_CALLS = 3
 
 _OVERALL_FIT_CRITERIA = [
@@ -144,8 +139,6 @@ def _generate_single_assessment(
     model_name: str,
     questions: list[JevQuestion],
 ) -> Assessment:
-    """One Jev call (with its own retry-on-low-confidence). No cross-call
-    averaging -- see generate_assessment for that."""
     low_confidence_note = ""
     assessment: Assessment | None = None
     for _attempt in range(2):

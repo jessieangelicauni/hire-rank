@@ -1,19 +1,3 @@
-"""Validates whether averaging 3 independent Jev calls (the new production
-default in generate_assessment) actually improves ranking convergence vs.
-the raw single-call baseline measured in the evaluation study.
-
-Trial A reuses the existing test_retest.json (3 raw repeats already
-collected). Trials B and C each collect 3 fresh raw repeats. For each
-trial, every candidate's score is the mean of that trial's 3 raw repeats
-(mirroring what generate_assessment's n_calls=3 now produces in
-production) -- then Kendall-tau is computed pairwise across the three
-trials' rankings per job profile, the same way analyze_ranking_convergence
-does for raw single calls.
-
-Usage:
-    python scripts/validate_multi_call_averaging.py --run-id 20260918-072318
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -37,7 +21,6 @@ load_dotenv()
 
 
 def _trial_scores_by_jd(records: list[dict]) -> dict[str, dict[str, float]]:
-    """{jd_id: {candidate_id: mean_overall_fit_score_across_this_trial's_3_repeats}}"""
     by_jd: dict[str, dict[str, float]] = {}
     for record in records:
         scores = [rep["overall_fit_score"] for rep in record["repeats"]]

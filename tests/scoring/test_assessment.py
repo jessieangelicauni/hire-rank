@@ -107,14 +107,10 @@ def test_generate_assessment_wraps_jev_client_error():
 
 
 def test_generate_assessment_wraps_unusable_jev_response():
-    # A malformed-but-HTTP-200 Jev response must surface as AssessmentGenerationError
-    # (which the pipeline catches per-pair), not as a bare KeyError/ValidationError
-    # that would abort the whole run.
     missing_key_client = Mock()
     missing_key_client.evaluate.return_value = [
         JevAnswer(key="overall_fit_score", kind="score", value=3.0, confidence=0.9),
         JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
-        # "meets_min_qualifications" is missing from the response -> KeyError.
     ]
     with pytest.raises(AssessmentGenerationError, match="jd-1/cand-1"):
         generate_assessment(_jd(), _candidate(), missing_key_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
@@ -124,16 +120,12 @@ def test_generate_assessment_wraps_unusable_jev_response():
         JevAnswer(key="overall_fit_score", kind="score", value=3.0, confidence=0.9),
         JevAnswer(key="overall_recommendation", kind="choice", value="strongly_hire", confidence=0.85),
         JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
-        # "strongly_hire" isn't in Literal["hire", "maybe", "no"] -> ValidationError.
     ]
     with pytest.raises(AssessmentGenerationError, match="jd-1/cand-1"):
         generate_assessment(_jd(), _candidate(), invalid_value_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
 
 
 def test_generate_assessment_defaults_to_three_calls_and_averages():
-    # Three independent calls with different overall_fit_score/requirement
-    # scores; the default n_calls (no override) must call Jev 3 times and
-    # average the numeric fields.
     jev_client = Mock()
     jev_client.evaluate.side_effect = [
         [
@@ -205,6 +197,5 @@ def test_load_or_generate_assessment_cache_key_depends_on_n_calls(tmp_path: Path
     load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills(), n_calls=1)
     assert jev_client.evaluate.call_count == 1
 
-    # A different n_calls must not reuse the n_calls=1 cache entry.
     load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills(), n_calls=3)
     assert jev_client.evaluate.call_count == 4

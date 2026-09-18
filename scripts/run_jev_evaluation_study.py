@@ -1,13 +1,3 @@
-"""Collects raw data for the Jev evaluation study: test-retest reliability
-(repeat calls on every successfully-assessed pair from a run) and a
-criteria-design ablation (concrete vs. pre-fix vague Score criteria on a
-sampled subset). Internal-coherence analysis needs no new calls -- it runs
-directly against the run's existing assessments.json files.
-
-Usage:
-    python scripts/run_jev_evaluation_study.py --run-id 20260918-072318
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -36,11 +26,6 @@ _VAGUE_SCORE_CRITERIA = ["0", "25", "50", "75", "100"]
 
 
 def _vague_build_questions(jd_technical_skills: list[str] | None) -> list[JevQuestion]:
-    """Reconstructs the pre-fix question set (bare numeric Score criteria,
-    e.g. "0"/"25"/... with no situational description) for the
-    criteria-design ablation. Deliberately frozen and self-contained here
-    rather than sourced from assessment.py, which should only ever reflect
-    the current production question design."""
     questions = [
         JevQuestion(
             key="overall_fit_score", kind="score",
@@ -163,12 +148,9 @@ def collect_ablation(
         jd = jds_by_id[jd_id]
         candidate = candidates_by_id[candidate_id]
 
-        # Concrete arm: reuse the already-generated, already-cached assessment
-        # from this run instead of calling Jev again for it.
         cached = json.loads((run_dir / jd_id / "assessments.json").read_text(encoding="utf-8"))[candidate_id]
         concrete_confidence = cached["confidence"]
 
-        # Vague arm: fresh call against the frozen pre-fix criteria.
         vague_questions = _vague_build_questions(technical_skills_by_jd.get(jd_id))
         state = _build_state(jd, candidate)
         answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
