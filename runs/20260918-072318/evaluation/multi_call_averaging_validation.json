@@ -1,0 +1,45 @@
+{
+  "per_job_profile": {
+    "it-security-engineer": {
+      "n_candidates": 16,
+      "mean_kendall_tau": 0.8888888888888888
+    },
+    "ui-ux-designer": {
+      "n_candidates": 25,
+      "mean_kendall_tau": 0.9822222222222221
+    },
+    "backend-engineer": {
+      "n_candidates": 22,
+      "mean_kendall_tau": 0.9365079365079365
+    },
+    "java-developer": {
+      "n_candidates": 21,
+      "mean_kendall_tau": 0.980952380952381
+    },
+    "data-engineer": {
+      "n_candidates": 76,
+      "mean_kendall_tau": 0.9667836257309943
+    },
+    "data-scientist-engineer": {
+      "n_candidates": 27,
+      "mean_kendall_tau": 0.9354226020892689
+    },
+    "cloud-engineer": {
+      "n_candidates": 47,
+      "mean_kendall_tau": 0.9469626888683319
+    },
+    "full-stack-engineer": {
+      "n_candidates": 33,
+      "mean_kendall_tau": 0.9444444444444444
+    },
+    "frontend-engineer": {
+      "n_candidates": 13,
+      "mean_kendall_tau": 0.9145299145299143
+    },
+    "devops-engineer": {
+      "n_candidates": 58,
+      "mean_kendall_tau": 0.9499899173220406
+    }
+  },
+  "mean_kendall_tau_across_all_profiles": 0.9446704621556423
+}
