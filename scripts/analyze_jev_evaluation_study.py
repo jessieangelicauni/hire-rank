@@ -1,0 +1,322 @@
+"""Statistical analysis for the Jev evaluation study: test-retest
+reliability, internal coherence, criteria-design ablation significance,
+and efficiency. Consumes the raw data written by
+run_jev_evaluation_study.py plus the run's own assessments.json files
+(for internal coherence, which needs no fresh Jev calls).
+
+Usage:
+    python scripts/analyze_jev_evaluation_study.py --run-id 20260918-072318
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import statistics
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT / "src"))
+
+from scipy.stats import mannwhitneyu, spearmanr, wilcoxon
+
+from candidate_ranking.config import RunConfig, apply_env_overrides
+
+# TypeSafe's own published numbers (typesafe.ai blog, "Introducing System
+# One Models & Jev", 2026-09-15) -- vendor-published, not independently
+# verified here against a reconstructed baseline. Reported for context only.
+_VENDOR_PUBLISHED_LATENCY_CLAIM = "70ms-500ms end-to-end (TypeSafe, self-reported, West Coast laptop)"
+_VENDOR_PUBLISHED_COMPARISON_CLAIM = "existing frontier LLMs: 3 to 329 seconds end-to-end (TypeSafe, self-reported)"
+_VENDOR_PUBLISHED_SPEEDUP_CLAIM = "40x-200x faster for comparable System One task intelligence (TypeSafe, self-reported)"
+
+
+def _rank_biserial(first: list[float], second: list[float]) -> float:
+    n_first_higher = sum(1 for a, b in zip(first, second) if a > b)
+    n_second_higher = sum(1 for a, b in zip(first, second) if a < b)
+    n = len(first)
+    return (n_first_higher - n_second_higher) / n if n else 0.0
+
+
+def _wilcoxon_result(label: str, first: list[float], second: list[float]) -> dict | None:
+    if len(first) >= 1 and any(a != b for a, b in zip(first, second)):
+        stat, p_value = wilcoxon(first, second)
+        return {
+            "label": label,
+            "n_pairs": len(first),
+            "statistic": float(stat),
+            "p_value": float(p_value),
+            "rank_biserial_r": _rank_biserial(first, second),
+            "mean_first": statistics.mean(first),
+            "mean_second": statistics.mean(second),
+        }
+    return None
+
+
+def analyze_test_retest(records: list[dict]) -> dict:
+    score_stdevs: list[float] = []
+    requirement_score_stdevs: list[float] = []
+    recommendation_full_agreement = 0
+    latencies: list[float] = []
+
+    for record in records:
+        repeats = record["repeats"]
+        scores = [r["overall_fit_score"] for r in repeats]
+        if len(scores) >= 2:
+            score_stdevs.append(statistics.stdev(scores))
+
+        recommendations = {r["overall_recommendation"] for r in repeats}
+        if len(recommendations) == 1:
+            recommendation_full_agreement += 1
+
+        requirement_keys = set(repeats[0]["requirement_scores"])
+        for key in requirement_keys:
+            values = [r["requirement_scores"].get(key) for r in repeats if key in r["requirement_scores"]]
+            if len(values) >= 2:
+                requirement_score_stdevs.append(statistics.stdev(values))
+
+        latencies.extend(r["latency_seconds"] for r in repeats)
+
+    n = len(records)
+    return {
+        "n_pairs": n,
+        "n_repeats_per_pair": len(records[0]["repeats"]) if records else 0,
+        "overall_fit_score_stdev": {
+            "mean": statistics.mean(score_stdevs) if score_stdevs else None,
+            "median": statistics.median(score_stdevs) if score_stdevs else None,
+        },
+        "requirement_score_stdev": {
+            "mean": statistics.mean(requirement_score_stdevs) if requirement_score_stdevs else None,
+            "median": statistics.median(requirement_score_stdevs) if requirement_score_stdevs else None,
+            "n_requirement_observations": len(requirement_score_stdevs),
+        },
+        "recommendation_full_agreement_rate": recommendation_full_agreement / n if n else None,
+        "latency_seconds": {
+            "n": len(latencies),
+            "mean": statistics.mean(latencies) if latencies else None,
+            "median": statistics.median(latencies) if latencies else None,
+            "p95": statistics.quantiles(latencies, n=20)[18] if len(latencies) >= 20 else None,
+            "min": min(latencies) if latencies else None,
+            "max": max(latencies) if latencies else None,
+        },
+    }
+
+
+def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
+    assessments: list[dict] = []
+    for jd_id in jd_ids:
+        path = run_dir / jd_id / "assessments.json"
+        if not path.exists():
+            continue
+        assessments.extend(json.loads(path.read_text(encoding="utf-8")).values())
+
+    mean_requirement_scores = []
+    overall_scores_for_correlation = []
+    for a in assessments:
+        if a["requirement_scores"]:
+            mean_requirement_scores.append(statistics.mean(a["requirement_scores"].values()))
+            overall_scores_for_correlation.append(a["overall_fit_score"])
+
+    correlation = None
+    if len(mean_requirement_scores) >= 3:
+        rho, p_value = spearmanr(mean_requirement_scores, overall_scores_for_correlation)
+        correlation = {"spearman_rho": float(rho), "p_value": float(p_value), "n": len(mean_requirement_scores)}
+
+    hire_scores = [a["overall_fit_score"] for a in assessments if a["overall_recommendation"] == "hire"]
+    no_scores = [a["overall_fit_score"] for a in assessments if a["overall_recommendation"] == "no"]
+    recommendation_vs_score = None
+    if hire_scores and no_scores:
+        stat, p_value = mannwhitneyu(hire_scores, no_scores, alternative="greater")
+        recommendation_vs_score = {
+            "hire_mean": statistics.mean(hire_scores),
+            "hire_n": len(hire_scores),
+            "no_mean": statistics.mean(no_scores),
+            "no_n": len(no_scores),
+            "mannwhitneyu_statistic": float(stat),
+            "p_value_hire_greater_than_no": float(p_value),
+        }
+
+    meets_min_scores = [a["overall_fit_score"] for a in assessments if a["meets_min_qualifications"]]
+    fails_min_scores = [a["overall_fit_score"] for a in assessments if not a["meets_min_qualifications"]]
+    qualifications_vs_score = None
+    if meets_min_scores and fails_min_scores:
+        stat, p_value = mannwhitneyu(meets_min_scores, fails_min_scores, alternative="greater")
+        qualifications_vs_score = {
+            "meets_min_mean": statistics.mean(meets_min_scores),
+            "meets_min_n": len(meets_min_scores),
+            "fails_min_mean": statistics.mean(fails_min_scores),
+            "fails_min_n": len(fails_min_scores),
+            "mannwhitneyu_statistic": float(stat),
+            "p_value_meets_greater_than_fails": float(p_value),
+        }
+
+    return {
+        "n_assessments": len(assessments),
+        "requirement_vs_overall_score_correlation": correlation,
+        "recommendation_vs_score": recommendation_vs_score,
+        "min_qualifications_vs_score": qualifications_vs_score,
+    }
+
+
+_OVERALL_FIT_KEY = "overall_fit_score"
+# overall_recommendation (choice) and meets_min_qualifications (noul) never had
+# their criteria touched by the ablation -- they serve as a negative control,
+# not a "fixed questions" bucket. A null effect here is the expected result
+# and helps rule out the requirement-question effect being measurement noise.
+_UNAFFECTED_CONTROL_KEYS = ("overall_recommendation", "meets_min_qualifications")
+
+
+def _paired_bucket(concrete: list[float], vague: list[float], label: str) -> dict:
+    return {
+        "wilcoxon": _wilcoxon_result(label, concrete, vague),
+        "concrete_pct_below_0.5": 100 * sum(1 for v in concrete if v < 0.5) / len(concrete) if concrete else None,
+        "vague_pct_below_0.5": 100 * sum(1 for v in vague if v < 0.5) / len(vague) if vague else None,
+        "n_observations": len(concrete),
+    }
+
+
+def analyze_ablation(records: list[dict]) -> dict:
+    concrete_overall: list[float] = []
+    vague_overall: list[float] = []
+    concrete_control: list[float] = []
+    vague_control: list[float] = []
+    concrete_requirement: list[float] = []
+    vague_requirement: list[float] = []
+    vague_latencies: list[float] = []
+
+    for record in records:
+        concrete_conf = record["concrete_confidence"]
+        vague_conf = record["vague_confidence"]
+
+        if _OVERALL_FIT_KEY in concrete_conf and _OVERALL_FIT_KEY in vague_conf:
+            concrete_overall.append(concrete_conf[_OVERALL_FIT_KEY])
+            vague_overall.append(vague_conf[_OVERALL_FIT_KEY])
+
+        for key in _UNAFFECTED_CONTROL_KEYS:
+            if key in concrete_conf and key in vague_conf:
+                concrete_control.append(concrete_conf[key])
+                vague_control.append(vague_conf[key])
+
+        shared_requirement_keys = {
+            k for k in concrete_conf if k.startswith("requirement::")
+        } & {k for k in vague_conf if k.startswith("requirement::")}
+        for key in shared_requirement_keys:
+            concrete_requirement.append(concrete_conf[key])
+            vague_requirement.append(vague_conf[key])
+
+        vague_latencies.append(record["vague_latency_seconds"])
+
+    return {
+        "n_pairs": len(records),
+        "overall_fit_score": _paired_bucket(concrete_overall, vague_overall, "overall_fit_score_confidence"),
+        "unaffected_control": _paired_bucket(concrete_control, vague_control, "unaffected_control_confidence"),
+        "requirement_questions": _paired_bucket(concrete_requirement, vague_requirement, "requirement_confidence"),
+        "vague_latency_seconds_mean": statistics.mean(vague_latencies) if vague_latencies else None,
+    }
+
+
+def render_markdown(report: dict) -> str:
+    tr = report["test_retest"]
+    coh = report["internal_coherence"]
+    abl = report["ablation"]
+    lat = tr["latency_seconds"]
+
+    lines = [
+        f"# Jev Evaluation Study -- Run {report['run_id']}",
+        "",
+        "## Test-retest reliability",
+        f"- {tr['n_pairs']} pairs x {tr['n_repeats_per_pair']} repeats",
+        f"- overall_fit_score stdev across repeats: mean={tr['overall_fit_score_stdev']['mean']:.2f}, "
+        f"median={tr['overall_fit_score_stdev']['median']:.2f}",
+        f"- per-requirement score stdev: mean={tr['requirement_score_stdev']['mean']:.2f} "
+        f"(n={tr['requirement_score_stdev']['n_requirement_observations']} requirement observations)",
+        f"- recommendation full agreement rate: {tr['recommendation_full_agreement_rate']:.1%}",
+        "",
+        "## Internal coherence",
+        f"- n={coh['n_assessments']} assessments",
+    ]
+    if coh["requirement_vs_overall_score_correlation"]:
+        c = coh["requirement_vs_overall_score_correlation"]
+        lines.append(f"- mean(requirement_scores) vs overall_fit_score: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
+    if coh["recommendation_vs_score"]:
+        r = coh["recommendation_vs_score"]
+        lines.append(
+            f"- hire (n={r['hire_n']}, mean={r['hire_mean']:.1f}) vs no (n={r['no_n']}, mean={r['no_mean']:.1f}): "
+            f"Mann-Whitney U p={r['p_value_hire_greater_than_no']:.4g}"
+        )
+    if coh["min_qualifications_vs_score"]:
+        q = coh["min_qualifications_vs_score"]
+        lines.append(
+            f"- meets_min_qualifications=True (n={q['meets_min_n']}, mean={q['meets_min_mean']:.1f}) vs "
+            f"False (n={q['fails_min_n']}, mean={q['fails_min_mean']:.1f}): "
+            f"Mann-Whitney U p={q['p_value_meets_greater_than_fails']:.4g}"
+        )
+    lines += ["", "## Criteria-design ablation (concrete vs. vague Score criteria)", f"- n={abl['n_pairs']} sampled pairs"]
+    if abl["overall_fit_score"]["wilcoxon"]:
+        w = abl["overall_fit_score"]["wilcoxon"]
+        lines.append(
+            f"- overall_fit_score confidence (the one Score-type fixed question, directly affected by the criteria change): "
+            f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
+            f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
+            f"(<0.5: concrete {abl['overall_fit_score']['concrete_pct_below_0.5']:.0f}% vs vague {abl['overall_fit_score']['vague_pct_below_0.5']:.0f}%)"
+        )
+    if abl["unaffected_control"]["wilcoxon"]:
+        w = abl["unaffected_control"]["wilcoxon"]
+        lines.append(
+            f"- unaffected_control confidence (overall_recommendation + meets_min_qualifications, criteria "
+            f"NOT changed by the ablation -- expected null effect): "
+            f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
+            f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f}"
+        )
+    if abl["requirement_questions"]["wilcoxon"]:
+        w = abl["requirement_questions"]["wilcoxon"]
+        lines.append(
+            f"- Requirement questions confidence (n_obs={abl['requirement_questions']['n_observations']}): "
+            f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
+            f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
+            f"(<0.5: concrete {abl['requirement_questions']['concrete_pct_below_0.5']:.0f}% vs vague {abl['requirement_questions']['vague_pct_below_0.5']:.0f}%)"
+        )
+    lines += [
+        "",
+        "## Efficiency",
+        f"- Measured Jev latency (this study, n={lat['n']} calls): mean={lat['mean']*1000:.0f}ms, "
+        f"median={lat['median']*1000:.0f}ms"
+        + (f", p95={lat['p95']*1000:.0f}ms" if lat["p95"] is not None else ""),
+        f"- Vendor-published (not independently verified against a reconstructed baseline in this study):",
+        f"  - {_VENDOR_PUBLISHED_LATENCY_CLAIM}",
+        f"  - vs. {_VENDOR_PUBLISHED_COMPARISON_CLAIM}",
+        f"  - claimed speedup: {_VENDOR_PUBLISHED_SPEEDUP_CLAIM}",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def main(run_id: str) -> None:
+    cfg = apply_env_overrides(RunConfig.full(PROJECT_ROOT))
+    run_dir = cfg.runs_dir / run_id
+    manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
+    jd_ids = manifest["jd_ids"]
+
+    eval_dir = run_dir / "evaluation"
+    test_retest_records = json.loads((eval_dir / "test_retest.json").read_text(encoding="utf-8"))
+    ablation_records = json.loads((eval_dir / "ablation.json").read_text(encoding="utf-8"))
+
+    report = {
+        "run_id": run_id,
+        "test_retest": analyze_test_retest(test_retest_records),
+        "internal_coherence": analyze_internal_coherence(run_dir, jd_ids),
+        "ablation": analyze_ablation(ablation_records),
+    }
+
+    (eval_dir / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    markdown = render_markdown(report)
+    (eval_dir / "report.md").write_text(markdown, encoding="utf-8")
+    print(markdown)
+    print(f"\nWrote {eval_dir / 'report.json'} and {eval_dir / 'report.md'}")
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--run-id", required=True)
+    args = parser.parse_args()
+    main(args.run_id)

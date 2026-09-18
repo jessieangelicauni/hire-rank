@@ -1,0 +1,95 @@
+{
+  "run_id": "20260918-072318",
+  "test_retest": {
+    "n_pairs": 338,
+    "n_repeats_per_pair": 3,
+    "overall_fit_score_stdev": {
+      "mean": 0.797601852502788,
+      "median": 0.6614378277661477
+    },
+    "requirement_score_stdev": {
+      "mean": 0.4176971355219816,
+      "median": 0.14433756729740643,
+      "n_requirement_observations": 6957
+    },
+    "recommendation_full_agreement_rate": 0.9349112426035503,
+    "latency_seconds": {
+      "n": 1014,
+      "mean": 1.1831765970338275,
+      "median": 1.1622064635157585,
+      "p95": 1.7443348220549524,
+      "min": 0.6986571010202169,
+      "max": 3.128230845555663
+    }
+  },
+  "internal_coherence": {
+    "n_assessments": 338,
+    "requirement_vs_overall_score_correlation": {
+      "spearman_rho": 0.6672280114528897,
+      "p_value": 6.73599705310727e-45,
+      "n": 338
+    },
+    "recommendation_vs_score": {
+      "hire_mean": 83.86931818181819,
+      "hire_n": 44,
+      "no_mean": 24.16549295774648,
+      "no_n": 71,
+      "mannwhitneyu_statistic": 3124.0,
+      "p_value_hire_greater_than_no": 1.2469484877186408e-19
+    },
+    "min_qualifications_vs_score": {
+      "meets_min_mean": 79.04477611940298,
+      "meets_min_n": 67,
+      "fails_min_mean": 43.33394833948339,
+      "fails_min_n": 271,
+      "mannwhitneyu_statistic": 17695.0,
+      "p_value_meets_greater_than_fails": 1.2254451301878433e-33
+    }
+  },
+  "ablation": {
+    "n_pairs": 40,
+    "overall_fit_score": {
+      "wilcoxon": {
+        "label": "overall_fit_score_confidence",
+        "n_pairs": 40,
+        "statistic": 354.5,
+        "p_value": 0.45562135485950683,
+        "rank_biserial_r": -0.05,
+        "mean_first": 0.64075,
+        "mean_second": 0.6165
+      },
+      "concrete_pct_below_0.5": 27.5,
+      "vague_pct_below_0.5": 10.0,
+      "n_observations": 40
+    },
+    "unaffected_control": {
+      "wilcoxon": {
+        "label": "unaffected_control_confidence",
+        "n_pairs": 80,
+        "statistic": 915.0,
+        "p_value": 0.5235792680626901,
+        "rank_biserial_r": 0.0125,
+        "mean_first": 0.705625,
+        "mean_second": 0.702125
+      },
+      "concrete_pct_below_0.5": 16.25,
+      "vague_pct_below_0.5": 15.0,
+      "n_observations": 80
+    },
+    "requirement_questions": {
+      "wilcoxon": {
+        "label": "requirement_confidence",
+        "n_pairs": 873,
+        "statistic": 19946.0,
+        "p_value": 8.582676790534683e-100,
+        "rank_biserial_r": 0.7491408934707904,
+        "mean_first": 0.9018327605956472,
+        "mean_second": 0.7052119129438718
+      },
+      "concrete_pct_below_0.5": 3.7800687285223367,
+      "vague_pct_below_0.5": 24.054982817869416,
+      "n_observations": 873
+    },
+    "vague_latency_seconds_mean": 0.902048844168894
+  }
+}
