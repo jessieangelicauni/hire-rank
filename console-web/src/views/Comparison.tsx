@@ -6,12 +6,16 @@ interface Props {
   roles: Role[];
 }
 
+function numberOrNull(value: unknown): number | null {
+  return typeof value === 'number' ? value : null;
+}
+
 function metricFor(role: Role) {
-  const m = COMPARISON[role.id] ?? { jdId: role.id, meanFitScore: null, meetsMinRate: null, hireRate: null };
+  const m = COMPARISON[role.id];
   return {
-    meanFitScore: m.meanFitScore,
-    meetsMinRate: m.meetsMinRate,
-    hireRate: m.hireRate,
+    meanFitScore: numberOrNull(m?.meanFitScore),
+    meetsMinRate: numberOrNull(m?.meetsMinRate),
+    hireRate: numberOrNull(m?.hireRate),
   };
 }
 
