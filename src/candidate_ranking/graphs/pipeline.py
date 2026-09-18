@@ -115,10 +115,7 @@ def build_pipeline_graph(
         candidate = payload["candidate"]
         jd_skills = payload.get("jd_skills")
         try:
-            assessment = load_or_generate_assessment(
-                jd, candidate, jev_client, JEV_MODEL_NAME, cfg.cache_dir,
-                jd_skills=jd_skills,
-            )
+            assessment = load_or_generate_assessment(jd, candidate, jev_client, JEV_MODEL_NAME, cfg.cache_dir, jd_skills=jd_skills)
             result: AssessmentResult = {
                 "jd_id": jd.id, "candidate_id": candidate.id, "status": "ok",
                 "assessment": assessment, "error": None,

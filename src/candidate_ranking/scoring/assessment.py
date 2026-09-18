@@ -193,23 +193,12 @@ def _aggregate_recommendation(calls: list[Assessment]) -> str:
 
 
 def _aggregate_meets_min_qualifications(calls: list[Assessment]) -> bool:
-    true_count = sum(1 for a in calls if a.meets_min_qualifications)
-    false_count = len(calls) - true_count
-    if true_count == false_count:
-        return False  # conservative default on an exact tie
-    return true_count > false_count
+    return sum(a.meets_min_qualifications for a in calls) > len(calls) / 2
 
 
-def _aggregate_requirement_scores(calls: list[Assessment]) -> dict[str, float]:
-    keys = calls[0].requirement_scores.keys() if calls else []
-    return {key: statistics.mean(a.requirement_scores[key] for a in calls if key in a.requirement_scores) for key in keys}
-
-
-def _aggregate_confidence(calls: list[Assessment]) -> dict[str, float]:
-    keys: set[str] = set()
-    for a in calls:
-        keys.update(a.confidence)
-    return {key: statistics.mean(a.confidence[key] for a in calls if key in a.confidence) for key in keys}
+def _aggregate_mean_dict(calls: list[Assessment], field: str) -> dict[str, float]:
+    keys = {key for a in calls for key in getattr(a, field)}
+    return {key: statistics.mean(getattr(a, field)[key] for a in calls if key in getattr(a, field)) for key in keys}
 
 
 def generate_assessment(
@@ -226,10 +215,7 @@ def generate_assessment(
     jd_technical_skills = jd_skills.technical_skills if jd_skills is not None else None
     questions = _build_questions(jd_technical_skills)
 
-    calls = [
-        _generate_single_assessment(jd, candidate, jev_client, model_name, questions) for _ in range(n_calls)
-    ]
-
+    calls = [_generate_single_assessment(jd, candidate, jev_client, model_name, questions) for _ in range(n_calls)]
     if n_calls == 1:
         return calls[0]
 
@@ -240,8 +226,8 @@ def generate_assessment(
         overall_fit_score=statistics.mean(a.overall_fit_score for a in calls),
         overall_recommendation=_aggregate_recommendation(calls),
         meets_min_qualifications=_aggregate_meets_min_qualifications(calls),
-        requirement_scores=_aggregate_requirement_scores(calls),
-        confidence=_aggregate_confidence(calls),
+        requirement_scores=_aggregate_mean_dict(calls, "requirement_scores"),
+        confidence=_aggregate_mean_dict(calls, "confidence"),
     )
 
 
