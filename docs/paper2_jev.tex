@@ -90,6 +90,42 @@ Because Jev reports a separate score for every extracted requirement rather than
 \subsection{Experimental Setup}
 The pipeline is evaluated on the same corpus and shortlist configuration as the prior system \cite{ref2}: 501 resumes across 10 synthetically authored job profiles, shortlisted under a cosine-similarity threshold of 0.8 and a minimum of five matched distinct technical skills per job profile. Four evaluation procedures are applied to the resulting shortlisted (job, applicant) pairs: test-retest reliability, issuing three independent single calls per pair and measuring score variance and recommendation agreement across them; internal coherence, testing whether the model's own structured outputs agree with one another (per-requirement scores against the overall fit score via Spearman correlation; the categorical recommendation and the binary minimum-qualification answer against the overall fit score via Mann-Whitney U); ranking convergence, the Kendall-$\tau$ procedure described in Section III-D, computed both from single calls and from three-call averages; and the criteria-design ablation described in Section III-C. All statistical tests are two-sided except where a directional hypothesis (e.g., that a ``hire'' recommendation carries a higher score than a ``no'' recommendation) is explicitly stated, and all reported effect sizes accompany, rather than substitute for, the corresponding significance test.
 
+\begin{table}[!ht]
+\caption{Pipeline configuration used for all runs reported in this paper.}
+\label{tab_config}
+\centering
+\footnotesize
+\begin{tabular}{p{1.5in}p{1.6in}}
+\hline
+Parameter & Value\\
+\hline
+Assessment model & Jev (\texttt{jev-latest}), TypeSafe AI\\
+Skill/JD extraction model & Qwen2.5-14B-Instruct (4-bit, Ollama)\\
+Skill embedding model & sentence-transformers/all-MiniLM-L6-v2\\
+Corpus & 501 resumes, 10 job profiles\\
+Shortlisted (job, applicant) pairs & 338--346 across 10 profiles, run-to-run\\
+Skill-match threshold / min. matches & cosine $\geq$ 0.8 / $\geq$ 5 job skills\\
+Independent calls averaged per assessment ($n$) & 3\\
+Score question levels & 5 (concrete situational criteria)\\
+Test-retest repeats per pair & 3\\
+Ranking-convergence trials (averaged-score check) & 3 $\times$ 3 calls\\
+Criteria-design ablation sample & 40 pairs\\
+Ablation significance test & Wilcoxon signed-rank\\
+\hline
+\end{tabular}
+\end{table}
+
+Table I's values were held fixed across all evaluation runs reported in this paper; the shortlisted-pair count varies slightly run-to-run because the skill-extraction and shortlisting stages are themselves LLM-driven and re-run independently for each corpus pass.
+
+\section{Conclusion}
+This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing LLM-based applicant-ranking pipeline with Jev, TypeSafe AI's first System One Model, and proposed three architecture-level adaptations -- criteria-grounded question design, multi-call ensemble averaging, and structured score decomposition as a diagnostic signal -- each motivated by a concrete reliability limitation observed when the model was applied unmodified rather than by a purely theoretical concern. The criteria-grounded design principle, first validated for Score-type questions, was subsequently found to generalize to Noul-type questions as well: circular criteria that merely restate the question under evaluation degrade answer quality regardless of which of Jev's three primitives is asked, suggesting the finding is a property of the question-authoring discipline rather than of any single answer type. Structured score decomposition additionally proved useful for a purpose beyond assessing applicants: because the model reports a score per individual requirement rather than a single opaque judgment, the same output that ranks candidates can also surface upstream defects in the pipeline that produced the candidate pool being ranked, an audit path a free-text predecessor cannot offer without manual reading.
+
+\subsection{Limitations}
+Several limitations bound the claims made here. First, and most importantly, this study -- like the prior system it extends \cite{ref2} -- has not been validated against independent human-expert judgment; every metric reported is a measure of internal reliability, coherence, or convergence, not of hiring-decision correctness, and a highly self-consistent model can still be consistently wrong. Second, no fairness or demographic-bias audit was performed on the resulting rankings; the fairness literature reviewed in Section II-D evaluates a different, complementary question this paper does not attempt to answer. Third, measured end-to-end latency for realistic multi-question payloads (15--30 questions per call, driven by each job profile's extracted requirement count) was several times higher than the vendor's own published figures, which were obtained on payloads of three questions; the discrepancy is consistent with per-call latency scaling with question count, but this paper did not isolate that relationship experimentally. Fourth, several of the certification, seniority, and education comparisons reported in this paper's evaluation are confounded by small and imbalanced samples within individual job profiles (as few as one or two applicants on one side of a comparison), which limits how much can be concluded from those specific comparisons regardless of question or criteria design.
+
+\subsection{Future Work}
+Three directions follow directly from the limitations above: an independent human-expert validation study, ideally using the same rubric-agreement methodology as the closest prior system \cite{ref1}; a demographic fairness audit of the resulting rankings, following the methodology established for free-text LLM hiring systems \cite{ref8,ref9,ref10} but adapted to a structured-decision model's output; and a targeted latency study isolating the relationship between question count per call and end-to-end response time, to determine whether question-batching or -splitting strategies can recover latency closer to the vendor's published figures without sacrificing the reliability gains reported here.
+
 \begin{thebibliography}{10}
 
 \bibitem{ref1}
