@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import statistics
+from collections import Counter
 from pathlib import Path
 
 from pydantic import ValidationError
@@ -22,6 +24,13 @@ _RECOMMENDATION_KEY = "overall_recommendation"
 _MIN_QUALIFICATIONS_KEY = "meets_min_qualifications"
 _RETRY_ON_LOW_CONFIDENCE_KEYS = (_OVERALL_FIT_KEY, _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY)
 _CONFIDENCE_RETRY_THRESHOLD = 0.5
+
+# Matches Paper 1's stability_repeats=3 and this project's own evaluation
+# study: a single Jev call's score can fall within the noise floor of
+# similarly-scored peers, which destabilizes ranking order for tightly
+# clustered candidate pools. Averaging multiple independent calls reduces
+# that noise the same way the old tournament's repeated comparisons did.
+DEFAULT_N_CALLS = 3
 
 _OVERALL_FIT_CRITERIA = [
     "Shows almost no relevant skills or experience for this role",
@@ -128,16 +137,15 @@ def _answers_to_assessment(
     )
 
 
-def generate_assessment(
+def _generate_single_assessment(
     jd: JobDescription,
     candidate: Candidate,
     jev_client: JevClient,
-    model_name: str = JEV_MODEL_NAME,
-    jd_skills: JDSkills | None = None,
+    model_name: str,
+    questions: list[JevQuestion],
 ) -> Assessment:
-    jd_technical_skills = jd_skills.technical_skills if jd_skills is not None else None
-    questions = _build_questions(jd_technical_skills)
-
+    """One Jev call (with its own retry-on-low-confidence). No cross-call
+    averaging -- see generate_assessment for that."""
     low_confidence_note = ""
     assessment: Assessment | None = None
     for _attempt in range(2):
@@ -175,6 +183,75 @@ def generate_assessment(
     return assessment
 
 
+def _aggregate_recommendation(calls: list[Assessment]) -> str:
+    counts = Counter(a.overall_recommendation for a in calls)
+    top_count = max(counts.values())
+    tied = [label for label, count in counts.items() if count == top_count]
+    if len(tied) == 1:
+        return tied[0]
+
+    def mean_confidence_for(label: str) -> float:
+        confidences = [
+            a.confidence.get(_RECOMMENDATION_KEY, 0.0) for a in calls if a.overall_recommendation == label
+        ]
+        return statistics.mean(confidences) if confidences else 0.0
+
+    return max(tied, key=mean_confidence_for)
+
+
+def _aggregate_meets_min_qualifications(calls: list[Assessment]) -> bool:
+    true_count = sum(1 for a in calls if a.meets_min_qualifications)
+    false_count = len(calls) - true_count
+    if true_count == false_count:
+        return False  # conservative default on an exact tie
+    return true_count > false_count
+
+
+def _aggregate_requirement_scores(calls: list[Assessment]) -> dict[str, float]:
+    keys = calls[0].requirement_scores.keys() if calls else []
+    return {key: statistics.mean(a.requirement_scores[key] for a in calls if key in a.requirement_scores) for key in keys}
+
+
+def _aggregate_confidence(calls: list[Assessment]) -> dict[str, float]:
+    keys: set[str] = set()
+    for a in calls:
+        keys.update(a.confidence)
+    return {key: statistics.mean(a.confidence[key] for a in calls if key in a.confidence) for key in keys}
+
+
+def generate_assessment(
+    jd: JobDescription,
+    candidate: Candidate,
+    jev_client: JevClient,
+    model_name: str = JEV_MODEL_NAME,
+    jd_skills: JDSkills | None = None,
+    n_calls: int = DEFAULT_N_CALLS,
+) -> Assessment:
+    if n_calls < 1:
+        raise ValueError(f"n_calls must be >= 1, got {n_calls}")
+
+    jd_technical_skills = jd_skills.technical_skills if jd_skills is not None else None
+    questions = _build_questions(jd_technical_skills)
+
+    calls = [
+        _generate_single_assessment(jd, candidate, jev_client, model_name, questions) for _ in range(n_calls)
+    ]
+
+    if n_calls == 1:
+        return calls[0]
+
+    return Assessment(
+        job_description_id=jd.id,
+        candidate_id=candidate.id,
+        generated_by_model=model_name,
+        overall_fit_score=statistics.mean(a.overall_fit_score for a in calls),
+        overall_recommendation=_aggregate_recommendation(calls),
+        meets_min_qualifications=_aggregate_meets_min_qualifications(calls),
+        requirement_scores=_aggregate_requirement_scores(calls),
+        confidence=_aggregate_confidence(calls),
+    )
+
+
 def filter_assessable_candidates(candidates: list[Candidate]) -> list[Candidate]:
     assessable = [c for c in candidates if c.parse_status == "ok"]
     excluded_count = len(candidates) - len(assessable)
@@ -195,11 +272,12 @@ def _assessment_cache_key(
     candidate: Candidate,
     model_name: str,
     jd_skills: JDSkills | None = None,
+    n_calls: int = DEFAULT_N_CALLS,
 ) -> str:
     jd_technical_skills = jd_skills.technical_skills if jd_skills is not None else None
     state = _build_state(jd, candidate)
     questions_repr = repr([q.model_dump() for q in _build_questions(jd_technical_skills)])
-    digest_input = f"{state}||{questions_repr}||{model_name}".encode("utf-8")
+    digest_input = f"{state}||{questions_repr}||{model_name}||n_calls={n_calls}".encode("utf-8")
     return hashlib.sha256(digest_input).hexdigest()
 
 
@@ -237,14 +315,15 @@ def load_or_generate_assessment(
     model_name: str,
     cache_dir: Path,
     jd_skills: JDSkills | None = None,
+    n_calls: int = DEFAULT_N_CALLS,
 ) -> Assessment:
     path = _assessment_cache_path(cache_dir, jd.id, candidate.id)
-    key = _assessment_cache_key(jd, candidate, model_name, jd_skills)
+    key = _assessment_cache_key(jd, candidate, model_name, jd_skills, n_calls)
 
     cached = _read_cached_assessment(path, key)
     if cached is not None:
         return cached
 
-    assessment = generate_assessment(jd, candidate, jev_client, model_name, jd_skills)
+    assessment = generate_assessment(jd, candidate, jev_client, model_name, jd_skills, n_calls)
     _write_cached_assessment(path, key, assessment)
     return assessment
