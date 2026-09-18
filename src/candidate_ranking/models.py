@@ -38,10 +38,11 @@ class Assessment(BaseModel):
     job_description_id: str = Field(min_length=1)
     candidate_id: str = Field(min_length=1)
     generated_by_model: str = Field(min_length=1)
-    strengths: list[str] = Field(min_length=1)
-    weaknesses: list[str] = Field(default_factory=list)
-    additional_skills: list[str] = Field(default_factory=list)
-    reasoning: str | None = None
+    overall_fit_score: float = Field(ge=0, le=100)
+    overall_recommendation: Literal["hire", "maybe", "no"]
+    meets_min_qualifications: bool
+    requirement_scores: dict[str, float] = Field(default_factory=dict)
+    confidence: dict[str, float] = Field(default_factory=dict)
 
 
 class TournamentIterationRecord(BaseModel):
