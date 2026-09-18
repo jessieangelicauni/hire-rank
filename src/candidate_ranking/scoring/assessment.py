@@ -19,10 +19,15 @@ JEV_MODEL_NAME = JEV_MODEL_ID
 ASSESSMENT_SCOPE_VERSION = "jev-score-recommendation-v1"
 
 _REQUIREMENT_KEY_PREFIX = "requirement::"
+_CERTIFICATION_KEY_PREFIX = "certification::"
 _OVERALL_FIT_KEY = "overall_fit_score"
 _RECOMMENDATION_KEY = "overall_recommendation"
 _MIN_QUALIFICATIONS_KEY = "meets_min_qualifications"
-_RETRY_ON_LOW_CONFIDENCE_KEYS = (_OVERALL_FIT_KEY, _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY)
+_SENIORITY_KEY = "seniority"
+_EDUCATION_KEY = "education"
+_RETRY_ON_LOW_CONFIDENCE_KEYS = (
+    _OVERALL_FIT_KEY, _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY, _SENIORITY_KEY, _EDUCATION_KEY,
+)
 _CONFIDENCE_RETRY_THRESHOLD = 0.5
 
 DEFAULT_N_CALLS = 3
@@ -53,6 +58,10 @@ def _requirement_question_key(requirement: str) -> str:
     return f"{_REQUIREMENT_KEY_PREFIX}{requirement}"
 
 
+def _certification_question_key(certification: str) -> str:
+    return f"{_CERTIFICATION_KEY_PREFIX}{certification}"
+
+
 def _score_to_percent(raw_score: float) -> float:
     return max(0.0, min(100.0, raw_score * (100.0 / _SCORE_MAX_INDEX)))
 
@@ -70,7 +79,7 @@ def _build_state(jd: JobDescription, candidate: Candidate, low_confidence_note: 
     )
 
 
-def _build_questions(jd_technical_skills: list[str] | None) -> list[JevQuestion]:
+def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
     questions = [
         JevQuestion(
             key=_OVERALL_FIT_KEY,
@@ -98,13 +107,55 @@ def _build_questions(jd_technical_skills: list[str] | None) -> list[JevQuestion]
             },
         ),
     ]
-    for requirement in jd_technical_skills or []:
+    for requirement in jd_skills.technical_skills if jd_skills else []:
         questions.append(
             JevQuestion(
                 key=_requirement_question_key(requirement),
                 kind="score",
                 instructions=f"How well does the candidate's CV support the requirement '{requirement}'?",
                 criteria=_REQUIREMENT_FIT_CRITERIA,
+            )
+        )
+    for certification in jd_skills.certifications if jd_skills else []:
+        questions.append(
+            JevQuestion(
+                key=_certification_question_key(certification),
+                kind="noul",
+                instructions=f"Does the candidate's CV show possession of the certification '{certification}'?",
+                criteria={
+                    "true": f"The CV states the candidate holds the '{certification}' certification",
+                    "false": f"The CV does not state the candidate holds the '{certification}' certification",
+                },
+            )
+        )
+    if jd_skills and jd_skills.seniority_requirement:
+        questions.append(
+            JevQuestion(
+                key=_SENIORITY_KEY,
+                kind="noul",
+                instructions=(
+                    "Does the candidate meet the job description's stated seniority/experience "
+                    f"requirement: '{jd_skills.seniority_requirement}'?"
+                ),
+                criteria={
+                    "true": "The CV supports that the candidate meets this seniority/experience requirement",
+                    "false": "The CV does not support that the candidate meets this seniority/experience requirement",
+                },
+            )
+        )
+    if jd_skills and jd_skills.education_requirement:
+        questions.append(
+            JevQuestion(
+                key=_EDUCATION_KEY,
+                kind="noul",
+                instructions=(
+                    "Does the candidate meet the job description's stated education "
+                    f"requirement: '{jd_skills.education_requirement}'?"
+                ),
+                criteria={
+                    "true": "The CV supports that the candidate meets this education requirement",
+                    "false": "The CV does not support that the candidate meets this education requirement",
+                },
             )
         )
     return questions
@@ -120,6 +171,11 @@ def _answers_to_assessment(
         for key, a in by_key.items()
         if key.startswith(_REQUIREMENT_KEY_PREFIX)
     }
+    certification_results = {
+        key[len(_CERTIFICATION_KEY_PREFIX):]: a.value
+        for key, a in by_key.items()
+        if key.startswith(_CERTIFICATION_KEY_PREFIX)
+    }
     return Assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
@@ -129,6 +185,9 @@ def _answers_to_assessment(
         meets_min_qualifications=by_key[_MIN_QUALIFICATIONS_KEY].value,
         requirement_scores=requirement_scores,
         confidence=confidence,
+        certification_results=certification_results,
+        meets_seniority_requirement=by_key[_SENIORITY_KEY].value if _SENIORITY_KEY in by_key else None,
+        meets_education_requirement=by_key[_EDUCATION_KEY].value if _EDUCATION_KEY in by_key else None,
     )
 
 
@@ -201,6 +260,22 @@ def _aggregate_mean_dict(calls: list[Assessment], field: str) -> dict[str, float
     return {key: statistics.mean(getattr(a, field)[key] for a in calls if key in getattr(a, field)) for key in keys}
 
 
+def _aggregate_bool_dict(calls: list[Assessment], field: str) -> dict[str, bool]:
+    keys = {key for a in calls for key in getattr(a, field)}
+    result: dict[str, bool] = {}
+    for key in keys:
+        votes = [getattr(a, field)[key] for a in calls if key in getattr(a, field)]
+        result[key] = sum(votes) > len(votes) / 2
+    return result
+
+
+def _aggregate_optional_bool(calls: list[Assessment], field: str) -> bool | None:
+    votes = [v for a in calls if (v := getattr(a, field)) is not None]
+    if not votes:
+        return None
+    return sum(votes) > len(votes) / 2
+
+
 def generate_assessment(
     jd: JobDescription,
     candidate: Candidate,
@@ -212,8 +287,7 @@ def generate_assessment(
     if n_calls < 1:
         raise ValueError(f"n_calls must be >= 1, got {n_calls}")
 
-    jd_technical_skills = jd_skills.technical_skills if jd_skills is not None else None
-    questions = _build_questions(jd_technical_skills)
+    questions = _build_questions(jd_skills)
 
     calls = [_generate_single_assessment(jd, candidate, jev_client, model_name, questions) for _ in range(n_calls)]
     if n_calls == 1:
@@ -228,6 +302,9 @@ def generate_assessment(
         meets_min_qualifications=_aggregate_meets_min_qualifications(calls),
         requirement_scores=_aggregate_mean_dict(calls, "requirement_scores"),
         confidence=_aggregate_mean_dict(calls, "confidence"),
+        certification_results=_aggregate_bool_dict(calls, "certification_results"),
+        meets_seniority_requirement=_aggregate_optional_bool(calls, "meets_seniority_requirement"),
+        meets_education_requirement=_aggregate_optional_bool(calls, "meets_education_requirement"),
     )
 
 
@@ -253,9 +330,8 @@ def _assessment_cache_key(
     jd_skills: JDSkills | None = None,
     n_calls: int = DEFAULT_N_CALLS,
 ) -> str:
-    jd_technical_skills = jd_skills.technical_skills if jd_skills is not None else None
     state = _build_state(jd, candidate)
-    questions_repr = repr([q.model_dump() for q in _build_questions(jd_technical_skills)])
+    questions_repr = repr([q.model_dump() for q in _build_questions(jd_skills)])
     digest_input = f"{state}||{questions_repr}||{model_name}||n_calls={n_calls}".encode("utf-8")
     return hashlib.sha256(digest_input).hexdigest()
 

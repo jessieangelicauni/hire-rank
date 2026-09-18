@@ -3,7 +3,7 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 
-from candidate_ranking.models import Assessment
+from candidate_ranking.models import Assessment, JDSkills
 
 
 def test_assessment_accepts_new_score_based_fields():
@@ -50,3 +50,54 @@ def test_assessment_no_longer_has_free_text_fields():
     assert "weaknesses" not in Assessment.model_fields
     assert "reasoning" not in Assessment.model_fields
     assert "additional_skills" not in Assessment.model_fields
+
+
+def test_assessment_accepts_certification_seniority_education_fields():
+    assessment = Assessment(
+        job_description_id="jd-1",
+        candidate_id="cand-1",
+        generated_by_model="typesafe/jev",
+        overall_fit_score=87.5,
+        overall_recommendation="hire",
+        meets_min_qualifications=True,
+        certification_results={"AWS Certified Solutions Architect": True, "PMP": False},
+        meets_seniority_requirement=True,
+        meets_education_requirement=None,
+    )
+    assert assessment.certification_results["AWS Certified Solutions Architect"] is True
+    assert assessment.meets_seniority_requirement is True
+    assert assessment.meets_education_requirement is None
+
+
+def test_assessment_certification_and_seniority_default_empty():
+    assessment = Assessment(
+        job_description_id="jd-1",
+        candidate_id="cand-1",
+        generated_by_model="typesafe/jev",
+        overall_fit_score=50.0,
+        overall_recommendation="maybe",
+        meets_min_qualifications=False,
+    )
+    assert assessment.certification_results == {}
+    assert assessment.meets_seniority_requirement is None
+    assert assessment.meets_education_requirement is None
+
+
+def test_jd_skills_accepts_certifications_seniority_education():
+    jd_skills = JDSkills(
+        job_description_id="jd-1",
+        generated_by_model="qwen2.5:14b",
+        technical_skills=["Python"],
+        certifications=["AWS Certified Solutions Architect"],
+        seniority_requirement="5+ years of backend development experience",
+        education_requirement="Bachelor's degree in Computer Science or related field",
+    )
+    assert jd_skills.certifications == ["AWS Certified Solutions Architect"]
+    assert jd_skills.seniority_requirement == "5+ years of backend development experience"
+
+
+def test_jd_skills_certifications_seniority_education_default_empty():
+    jd_skills = JDSkills(job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=["Python"])
+    assert jd_skills.certifications == []
+    assert jd_skills.seniority_requirement is None
+    assert jd_skills.education_requirement is None

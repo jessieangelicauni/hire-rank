@@ -32,6 +32,9 @@ class JDSkills(BaseModel):
     job_description_id: str
     generated_by_model: str
     technical_skills: list[str] = Field(default_factory=list)
+    certifications: list[str] = Field(default_factory=list)
+    seniority_requirement: str | None = None
+    education_requirement: str | None = None
 
 
 class Assessment(BaseModel):
@@ -43,6 +46,9 @@ class Assessment(BaseModel):
     meets_min_qualifications: bool
     requirement_scores: dict[str, float] = Field(default_factory=dict)
     confidence: dict[str, float] = Field(default_factory=dict)
+    certification_results: dict[str, bool] = Field(default_factory=dict)
+    meets_seniority_requirement: bool | None = None
+    meets_education_requirement: bool | None = None
 
 
 class TournamentIterationRecord(BaseModel):

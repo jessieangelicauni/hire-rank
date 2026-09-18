@@ -22,18 +22,23 @@ JD_SKILL_EXTRACTION_PROMPT = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are an expert HR consultant extracting the technical skill vocabulary a job description asks for.\n\n"
+            "You are an expert HR consultant extracting structured requirements a job description asks for.\n\n"
             "Task:\n"
             "- Read the job title and description and identify every technology and technical subject explicitly mentioned.\n"
             "- Reason through the description section by section in the `reasoning` field before giving your final answer.\n"
-            "- Note which text backs each skill you identify.\n"
-            "- List the identified skills in the `technical_skills` field.\n\n"
+            "- Note which text backs each skill, certification, seniority requirement, or education requirement you identify.\n"
+            "- List the identified skills in the `technical_skills` field.\n"
+            "- List any named professional certifications (e.g. \"AWS Certified Solutions Architect\", \"PMP\") in the `certifications` field.\n"
+            "- If the description states a seniority or years-of-experience requirement, summarize it in one sentence in the `seniority_requirement` field; otherwise leave it null.\n"
+            "- If the description states an education requirement, summarize it in one sentence in the `education_requirement` field; otherwise leave it null.\n\n"
             "Constraints:\n"
             "- Name each skill as the single atomic technology or subject it refers to.\n"
             "- Write each skill the way it would appear as a standalone item on a resume.\n"
             "- Do not phrase a skill as a description of proficiency, usage, or context.\n"
             "- Omit generic process or methodology phrases that do not name a specific technology or subject.\n"
-            "- List required and nice-to-have skills together, without distinguishing between them.",
+            "- List required and nice-to-have skills together, without distinguishing between them.\n"
+            "- Do not name a certification as a technical skill, or a technical skill as a certification.\n"
+            "- A degree requirement belongs only in `education_requirement`, never in `technical_skills`.",
         ),
         ("human", "Job Title: {title}\n\nJob Description:\n{description}"),
     ]
@@ -43,6 +48,9 @@ JD_SKILL_EXTRACTION_PROMPT = ChatPromptTemplate.from_messages(
 class _GeneratedSkills(BaseModel):
     reasoning: str = Field(min_length=1)
     technical_skills: list[str] = Field(default_factory=list)
+    certifications: list[str] = Field(default_factory=list)
+    seniority_requirement: str | None = None
+    education_requirement: str | None = None
 
 
 class JDSkillsGenerationError(Exception):
@@ -83,6 +91,9 @@ def generate_jd_skills(
         job_description_id=jd.id,
         generated_by_model=model_name,
         technical_skills=result.technical_skills,
+        certifications=result.certifications,
+        seniority_requirement=result.seniority_requirement,
+        education_requirement=result.education_requirement,
     )
 
 

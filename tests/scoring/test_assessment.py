@@ -31,6 +31,17 @@ def _jd_skills() -> JDSkills:
     return JDSkills(job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=["Python", "SQL"])
 
 
+def _jd_skills_full() -> JDSkills:
+    return JDSkills(
+        job_description_id="jd-1",
+        generated_by_model="qwen2.5:14b",
+        technical_skills=["Python"],
+        certifications=["AWS Certified Solutions Architect"],
+        seniority_requirement="5+ years of backend development experience",
+        education_requirement="Bachelor's degree in Computer Science or related field",
+    )
+
+
 def _high_confidence_answers() -> list[JevAnswer]:
     return [
         JevAnswer(key="overall_fit_score", kind="score", value=3.0, confidence=0.9),
@@ -188,6 +199,78 @@ def test_load_or_generate_assessment_uses_cache_on_second_call(tmp_path: Path):
     assert cache_file.exists()
     cached = json.loads(cache_file.read_text(encoding="utf-8"))
     assert cached["assessment"]["overall_fit_score"] == 75.0
+
+
+def test_generate_assessment_builds_certification_seniority_education_questions():
+    jev_client = Mock()
+    jev_client.evaluate.return_value = [
+        JevAnswer(key="overall_fit_score", kind="score", value=3.0, confidence=0.9),
+        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
+        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
+        JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
+        JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=True, confidence=0.9),
+        JevAnswer(key="seniority", kind="noul", value=True, confidence=0.85),
+        JevAnswer(key="education", kind="noul", value=False, confidence=0.8),
+    ]
+
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills_full(), n_calls=1)
+
+    _, questions = jev_client.evaluate.call_args.args
+    question_keys = {q.key for q in questions}
+    assert "certification::AWS Certified Solutions Architect" in question_keys
+    assert "seniority" in question_keys
+    assert "education" in question_keys
+    assert assessment.certification_results == {"AWS Certified Solutions Architect": True}
+    assert assessment.meets_seniority_requirement is True
+    assert assessment.meets_education_requirement is False
+
+
+def test_generate_assessment_omits_seniority_education_questions_when_not_stated():
+    jev_client = Mock()
+    jev_client.evaluate.return_value = [
+        JevAnswer(key="overall_fit_score", kind="score", value=3.0, confidence=0.9),
+        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
+        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
+    ]
+
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+
+    _, questions = jev_client.evaluate.call_args.args
+    question_keys = {q.key for q in questions}
+    assert "seniority" not in question_keys
+    assert "education" not in question_keys
+    assert not any(k.startswith("certification::") for k in question_keys)
+    assert assessment.certification_results == {}
+    assert assessment.meets_seniority_requirement is None
+    assert assessment.meets_education_requirement is None
+
+
+def test_generate_assessment_aggregates_certification_and_seniority_across_calls():
+    jev_client = Mock()
+
+    def _answers(cert_value, seniority_value):
+        return [
+            JevAnswer(key="overall_fit_score", kind="score", value=3.0, confidence=0.9),
+            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.9),
+            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
+            JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=cert_value, confidence=0.9),
+            JevAnswer(key="seniority", kind="noul", value=seniority_value, confidence=0.9),
+        ]
+
+    jev_client.evaluate.side_effect = [
+        _answers(True, True),
+        _answers(True, False),
+        _answers(False, True),
+    ]
+
+    jd_skills = JDSkills(
+        job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=[],
+        certifications=["AWS Certified Solutions Architect"], seniority_requirement="5+ years",
+    )
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills)
+
+    assert assessment.certification_results == {"AWS Certified Solutions Architect": True}  # 2 of 3 votes
+    assert assessment.meets_seniority_requirement is True  # 2 of 3 votes
 
 
 def test_load_or_generate_assessment_cache_key_depends_on_n_calls(tmp_path: Path):
