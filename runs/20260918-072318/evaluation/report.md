@@ -6,6 +6,19 @@
 - per-requirement score stdev: mean=0.42 (n=6957 requirement observations)
 - recommendation full agreement rate: 93.5%
 
+## Ranking convergence (Paper-1-equivalent: candidate order stability across repeats)
+- mean Kendall-tau across all 10 job profiles: 0.906
+  - it-security-engineer (n=16): tau=0.778
+  - frontend-engineer (n=13): tau=0.846
+  - data-scientist-engineer (n=27): tau=0.886
+  - full-stack-engineer (n=33): tau=0.907
+  - cloud-engineer (n=47): tau=0.911
+  - devops-engineer (n=58): tau=0.924
+  - backend-engineer (n=22): tau=0.931
+  - data-engineer (n=76): tau=0.938
+  - java-developer (n=21): tau=0.962
+  - ui-ux-designer (n=25): tau=0.978
+
 ## Internal coherence
 - n=338 assessments
 - mean(requirement_scores) vs overall_fit_score: Spearman rho=0.667 (p=6.736e-45, n=338)

@@ -19,7 +19,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from scipy.stats import mannwhitneyu, spearmanr, wilcoxon
+from scipy.stats import kendalltau, mannwhitneyu, spearmanr, wilcoxon
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
 
@@ -99,6 +99,60 @@ def analyze_test_retest(records: list[dict]) -> dict:
             "min": min(latencies) if latencies else None,
             "max": max(latencies) if latencies else None,
         },
+    }
+
+
+def analyze_ranking_convergence(records: list[dict]) -> dict:
+    """Paper-1-equivalent ranking convergence metric. Paper 1's Kendall-tau
+    measures whether a job profile's candidate ordering stabilizes across
+    successive tournament iterations. Jev has no iterative ranking process
+    (each candidate is scored once per call, independently), so the
+    analogous question is: does the candidate ORDER within a job profile
+    hold up across repeated, independent Jev calls? For each job profile,
+    rank its candidates by overall_fit_score under each of the 3 repeats
+    separately, then compute the mean pairwise Kendall-tau across those
+    repeat-rankings -- same corpus scale as Paper 1 (all job profiles, all
+    shortlisted candidates, 3 repeats each)."""
+    by_jd: dict[str, list[dict]] = {}
+    for record in records:
+        by_jd.setdefault(record["jd_id"], []).append(record)
+
+    per_job_profile: dict[str, dict] = {}
+    all_mean_taus: list[float] = []
+
+    for jd_id, jd_records in by_jd.items():
+        candidate_ids = [r["candidate_id"] for r in jd_records]
+        n_repeats = len(jd_records[0]["repeats"]) if jd_records else 0
+        if len(candidate_ids) < 2 or n_repeats < 2:
+            per_job_profile[jd_id] = {"n_candidates": len(candidate_ids), "n_repeats": n_repeats, "mean_kendall_tau": None}
+            continue
+
+        rankings = []
+        for i in range(n_repeats):
+            scores = {r["candidate_id"]: r["repeats"][i]["overall_fit_score"] for r in jd_records}
+            rankings.append(sorted(candidate_ids, key=lambda cid: scores[cid], reverse=True))
+
+        pair_taus = []
+        for i in range(len(rankings)):
+            for j in range(i + 1, len(rankings)):
+                position_i = {cid: idx for idx, cid in enumerate(rankings[i])}
+                position_j = {cid: idx for idx, cid in enumerate(rankings[j])}
+                tau, _ = kendalltau(
+                    [position_i[cid] for cid in candidate_ids],
+                    [position_j[cid] for cid in candidate_ids],
+                )
+                if tau == tau:  # exclude NaN (e.g. all-tied scores)
+                    pair_taus.append(float(tau))
+
+        mean_tau = statistics.mean(pair_taus) if pair_taus else None
+        per_job_profile[jd_id] = {"n_candidates": len(candidate_ids), "n_repeats": n_repeats, "mean_kendall_tau": mean_tau}
+        if mean_tau is not None:
+            all_mean_taus.append(mean_tau)
+
+    return {
+        "per_job_profile": per_job_profile,
+        "mean_kendall_tau_across_all_profiles": statistics.mean(all_mean_taus) if all_mean_taus else None,
+        "min_kendall_tau_profile": min(per_job_profile.items(), key=lambda kv: (kv[1]["mean_kendall_tau"] is None, kv[1]["mean_kendall_tau"] or 0))[0] if per_job_profile else None,
     }
 
 
@@ -217,6 +271,7 @@ def analyze_ablation(records: list[dict]) -> dict:
 
 def render_markdown(report: dict) -> str:
     tr = report["test_retest"]
+    conv = report["ranking_convergence"]
     coh = report["internal_coherence"]
     abl = report["ablation"]
     lat = tr["latency_seconds"]
@@ -231,6 +286,15 @@ def render_markdown(report: dict) -> str:
         f"- per-requirement score stdev: mean={tr['requirement_score_stdev']['mean']:.2f} "
         f"(n={tr['requirement_score_stdev']['n_requirement_observations']} requirement observations)",
         f"- recommendation full agreement rate: {tr['recommendation_full_agreement_rate']:.1%}",
+        "",
+        "## Ranking convergence (Paper-1-equivalent: candidate order stability across repeats)",
+        f"- mean Kendall-tau across all {len(conv['per_job_profile'])} job profiles: "
+        f"{conv['mean_kendall_tau_across_all_profiles']:.3f}" if conv['mean_kendall_tau_across_all_profiles'] is not None else "- insufficient data",
+    ]
+    for jd_id, jd_conv in sorted(conv["per_job_profile"].items(), key=lambda kv: (kv[1]["mean_kendall_tau"] is None, kv[1]["mean_kendall_tau"] or 0)):
+        tau_str = f"{jd_conv['mean_kendall_tau']:.3f}" if jd_conv["mean_kendall_tau"] is not None else "N/A"
+        lines.append(f"  - {jd_id} (n={jd_conv['n_candidates']}): tau={tau_str}")
+    lines += [
         "",
         "## Internal coherence",
         f"- n={coh['n_assessments']} assessments",
@@ -304,6 +368,7 @@ def main(run_id: str) -> None:
     report = {
         "run_id": run_id,
         "test_retest": analyze_test_retest(test_retest_records),
+        "ranking_convergence": analyze_ranking_convergence(test_retest_records),
         "internal_coherence": analyze_internal_coherence(run_dir, jd_ids),
         "ablation": analyze_ablation(ablation_records),
     }
