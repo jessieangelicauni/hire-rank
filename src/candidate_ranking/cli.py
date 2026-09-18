@@ -49,10 +49,6 @@ _CHECKPOINT_ALLOWED_MSGPACK_MODULES = [
         "Candidate",
         "JDSkills",
         "Assessment",
-        "TournamentIterationRecord",
-        "TournamentResult",
-        "ConvergencePoint",
-        "JDEvaluation",
     )
 ]
 
