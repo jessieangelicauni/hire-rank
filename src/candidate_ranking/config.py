@@ -15,20 +15,14 @@ class RunConfig:
     runs_dir: Path
     max_jds: int | None
     max_candidates: int | None
-    tournament_iterations: int
-    stability_repeats: int
-    tournament_subset_size: int
-    num_subset_samples: int
-    num_mc_draws: int
-    pl_prior_variance: float
     ollama_model: str
     ollama_base_url: str
     ollama_num_parallel: int
+    cf_account_id: str
+    cf_api_token: str
     faithfulness_model: str | None = None
     skill_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     ollama_num_ctx: int = 8192
-    target_appearances_per_candidate: int | None = 8
-    tournament_iterations_min: int = 30
 
     @classmethod
     def full(cls, project_root: Path) -> "RunConfig":
@@ -40,15 +34,11 @@ class RunConfig:
             runs_dir=project_root / "runs",
             max_jds=None,
             max_candidates=None,
-            tournament_iterations=30,
-            stability_repeats=3,
-            tournament_subset_size=5,
-            num_subset_samples=30,
-            num_mc_draws=50,
-            pl_prior_variance=1.0,
             ollama_model="qwen2.5:14b-instruct-q4_K_M",
             ollama_base_url="http://localhost:11434",
             ollama_num_parallel=4,
+            cf_account_id="",
+            cf_api_token="",
             skill_embedding_model="sentence-transformers/all-MiniLM-L6-v2",
         )
 
@@ -60,20 +50,14 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_RUNS_DIR": ("runs_dir", Path),
     "CANDIDATE_RANKING_MAX_JDS": ("max_jds", int),
     "CANDIDATE_RANKING_MAX_CANDIDATES": ("max_candidates", int),
-    "CANDIDATE_RANKING_TOURNAMENT_ITERATIONS": ("tournament_iterations", int),
-    "CANDIDATE_RANKING_STABILITY_REPEATS": ("stability_repeats", int),
-    "CANDIDATE_RANKING_TOURNAMENT_SUBSET_SIZE": ("tournament_subset_size", int),
-    "CANDIDATE_RANKING_NUM_SUBSET_SAMPLES": ("num_subset_samples", int),
-    "CANDIDATE_RANKING_NUM_MC_DRAWS": ("num_mc_draws", int),
-    "CANDIDATE_RANKING_PL_PRIOR_VARIANCE": ("pl_prior_variance", float),
     "CANDIDATE_RANKING_MODEL": ("ollama_model", str),
     "CANDIDATE_RANKING_OLLAMA_BASE_URL": ("ollama_base_url", str),
     "CANDIDATE_RANKING_OLLAMA_NUM_PARALLEL": ("ollama_num_parallel", int),
     "CANDIDATE_RANKING_FAITHFULNESS_MODEL": ("faithfulness_model", str),
     "CANDIDATE_RANKING_OLLAMA_NUM_CTX": ("ollama_num_ctx", int),
     "CANDIDATE_RANKING_SKILL_EMBEDDING_MODEL": ("skill_embedding_model", str),
-    "CANDIDATE_RANKING_TARGET_APPEARANCES_PER_CANDIDATE": ("target_appearances_per_candidate", int),
-    "CANDIDATE_RANKING_TOURNAMENT_ITERATIONS_MIN": ("tournament_iterations_min", int),
+    "CANDIDATE_RANKING_CF_ACCOUNT_ID": ("cf_account_id", str),
+    "CANDIDATE_RANKING_CF_API_TOKEN": ("cf_api_token", str),
 }
 
 ENV_OVERRIDE_VARS: tuple[str, ...] = tuple(_ENV_OVERRIDES)
