@@ -5,8 +5,8 @@ from typing import Literal
 import requests
 from pydantic import BaseModel
 
-_ENDPOINT_TEMPLATE = "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run"
-JEV_MODEL_ID = "typesafe/jev"
+_ENDPOINT = "https://api.typesafe.ai/v1/systemone"
+JEV_MODEL_ID = "jev-latest"
 
 
 class JevQuestion(BaseModel):
@@ -44,26 +44,22 @@ def _parse_answer(key: str, raw: dict) -> JevAnswer:
 
 
 class JevClient:
-    def __init__(self, account_id: str, api_token: str, timeout: float = 30.0) -> None:
-        self._account_id = account_id
+    def __init__(self, api_token: str, timeout: float = 30.0) -> None:
         self._api_token = api_token
         self._timeout = timeout
 
     def evaluate(self, state: str, questions: list[JevQuestion]) -> list[JevAnswer]:
         payload = {
+            "state": state,
             "model": JEV_MODEL_ID,
-            "input": {
-                "state": state,
-                "questions": {
-                    q.key: {"type": q.kind, "instructions": q.instructions, "criteria": q.criteria}
-                    for q in questions
-                },
+            "questions": {
+                q.key: {"type": q.kind, "instructions": q.instructions, "criteria": q.criteria}
+                for q in questions
             },
         }
-        url = _ENDPOINT_TEMPLATE.format(account_id=self._account_id)
         try:
             response = requests.post(
-                url,
+                _ENDPOINT,
                 json=payload,
                 headers={"Authorization": f"Bearer {self._api_token}"},
                 timeout=self._timeout,

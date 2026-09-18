@@ -35,7 +35,7 @@ def test_evaluate_parses_noul_choice_and_score_answers(mock_post):
         }
     )
 
-    client = JevClient(account_id="acc123", api_token="token123")
+    client = JevClient(api_token="token123")
     questions = [
         JevQuestion(key="meets_min_qualifications", kind="noul", instructions="...", criteria={"true": "...", "false": "..."}),
         JevQuestion(key="overall_recommendation", kind="choice", instructions="...", criteria={"hire": "...", "maybe": "...", "no": "..."}),
@@ -57,9 +57,9 @@ def test_evaluate_parses_noul_choice_and_score_answers(mock_post):
 
     call_kwargs = mock_post.call_args.kwargs
     assert call_kwargs["headers"]["Authorization"] == "Bearer token123"
-    assert call_kwargs["json"]["model"] == "typesafe/jev"
-    assert call_kwargs["json"]["input"]["state"] == "some state text"
-    assert set(call_kwargs["json"]["input"]["questions"]) == {
+    assert call_kwargs["json"]["model"] == "jev-latest"
+    assert call_kwargs["json"]["state"] == "some state text"
+    assert set(call_kwargs["json"]["questions"]) == {
         "meets_min_qualifications", "overall_recommendation", "overall_fit_score",
     }
 
@@ -69,7 +69,7 @@ def test_evaluate_raises_jev_client_error_on_http_failure(mock_post):
     import requests
 
     mock_post.side_effect = requests.ConnectionError("boom")
-    client = JevClient(account_id="acc123", api_token="token123")
+    client = JevClient(api_token="token123")
 
     with pytest.raises(JevClientError, match="boom"):
         client.evaluate("state", [JevQuestion(key="k", kind="noul", instructions="i", criteria={"true": "t", "false": "f"})])
@@ -79,7 +79,7 @@ def test_evaluate_raises_jev_client_error_on_http_failure(mock_post):
 def test_evaluate_raises_jev_client_error_on_missing_answers_key(mock_post):
     mock_post.return_value = _fake_response({})
     mock_post.return_value.json = Mock(return_value={"model": "jev-1.13.0"})
-    client = JevClient(account_id="acc123", api_token="token123")
+    client = JevClient(api_token="token123")
 
     with pytest.raises(JevClientError, match="answers"):
         client.evaluate("state", [JevQuestion(key="k", kind="noul", instructions="i", criteria={"true": "t", "false": "f"})])

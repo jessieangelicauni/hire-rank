@@ -86,12 +86,11 @@ def run(
 
     llm = ChatOllama(model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx)
     jd_skills_chain = build_jd_skills_chain(llm)
-    if not cfg.cf_account_id or not cfg.cf_api_token:
+    if not cfg.jev_api_key:
         raise RuntimeError(
-            "Set CANDIDATE_RANKING_CF_ACCOUNT_ID and CANDIDATE_RANKING_CF_API_TOKEN "
-            "(e.g. in .env) before running."
+            "Set CANDIDATE_RANKING_JEV_API_KEY (e.g. in .env) before running."
         )
-    jev_client = JevClient(account_id=cfg.cf_account_id, api_token=cfg.cf_api_token)
+    jev_client = JevClient(api_token=cfg.jev_api_key)
     skill_extraction_chain = build_skill_extraction_chain(llm)
 
     candidates = enrich_candidates_with_skills(
