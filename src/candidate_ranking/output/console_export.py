@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import json
 import logging
+import statistics
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from langchain_ollama import ChatOllama
 
 from candidate_ranking.config import RunConfig
-from candidate_ranking.evaluation.evaluation import evaluate_run, load_manifest
+from candidate_ranking.evaluation.evaluation import load_manifest
 from candidate_ranking.ingestion.cv import build_name_extraction_chain, load_candidates, load_or_extract_candidate_name
 from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import JobDescription
@@ -24,19 +25,21 @@ def _role_stub(jd: JobDescription, candidate_count: int) -> dict:
 
 
 def _null_comparison(jd_id: str) -> dict:
-    return {"jdId": jd_id, "kendallTau": None, "deltaU": None, "faithfulness": None}
+    return {"jdId": jd_id, "meanFitScore": None, "meetsMinRate": None, "hireRate": None}
 
 
-def _load_faithfulness_per_jd(run_dir: Path) -> dict[str, float]:
-    path = run_dir / "ragas_faithfulness_report.json"
-    if not path.exists():
-        return {}
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        return dict(data["per_jd"])
-    except (json.JSONDecodeError, OSError, KeyError) as exc:
-        logger.warning("console-web export: discarding unreadable Ragas report %s: %s", path, exc)
-        return {}
+def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict]) -> dict:
+    if not jd_assessments:
+        return _null_comparison(jd_id)
+    fit_scores = [a["overall_fit_score"] for a in jd_assessments.values()]
+    meets_min_flags = [a["meets_min_qualifications"] for a in jd_assessments.values()]
+    recommendations = [a["overall_recommendation"] for a in jd_assessments.values()]
+    return {
+        "jdId": jd_id,
+        "meanFitScore": statistics.mean(fit_scores),
+        "meetsMinRate": sum(meets_min_flags) / len(meets_min_flags),
+        "hireRate": recommendations.count("hire") / len(recommendations),
+    }
 
 
 def _initials_for(name: str | None, cv_id: str) -> str:
@@ -135,9 +138,6 @@ def export_console_web_data(
     with ThreadPoolExecutor(max_workers=cfg.ollama_num_parallel) as executor:
         names_by_cv_id: dict[str, str | None] = dict(executor.map(_extract_name, target_candidate_ids))
 
-    jd_evaluations = {e.job_description_id: e for e in evaluate_run(cfg, run_id)}
-    faithfulness_per_jd = _load_faithfulness_per_jd(run_dir)
-
     roles: list[dict] = []
     candidates: list[dict] = []
     assessments: dict[str, dict] = {}
@@ -181,13 +181,7 @@ def export_console_web_data(
 
         roles.append(_role_stub(jd, candidate_count=exported_count))
 
-        evaluation = jd_evaluations.get(jd_id)
-        comparison_out[jd_id] = {
-            "jdId": jd_id,
-            "kendallTau": evaluation.mean_kendall_tau if evaluation else None,
-            "deltaU": evaluation.mean_abs_delta_u if evaluation else None,
-            "faithfulness": faithfulness_per_jd.get(jd_id),
-        }
+        comparison_out[jd_id] = _comparison_from_assessments(jd_id, jd_assessments)
 
     unprocessed_jd_ids = sorted(set(jds_by_id) - set(jd_ids))
     for jd_id in unprocessed_jd_ids:

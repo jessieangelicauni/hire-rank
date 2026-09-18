@@ -26,9 +26,9 @@ export interface Assessment {
 
 export interface ComparisonRow {
   jdId: string;
-  kendallTau: number | null;
-  deltaU: number | null;
-  faithfulness: number | null;
+  meanFitScore: number | null;
+  meetsMinRate: number | null;
+  hireRate: number | null;
 }
 
 interface RealData {

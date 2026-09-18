@@ -63,7 +63,6 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
         "candidate_ranking.output.console_export.build_name_extraction_chain", lambda llm: None
     )
     monkeypatch.setattr("candidate_ranking.output.console_export.ChatOllama", lambda **kwargs: None)
-    monkeypatch.setattr("candidate_ranking.output.console_export.evaluate_run", lambda cfg, run_id: [])
 
     return cfg, run_id
 
@@ -82,3 +81,7 @@ def test_export_console_web_data_maps_jev_scores(run_with_jev_ranking, tmp_path)
     assert assessment["overall_recommendation"] == "hire"
     assert assessment["requirement_scores"] == {"Python": 100.0}
     assert "strengths" not in assessment
+    comparison = data["comparison"]["jd-1"]
+    assert comparison["meanFitScore"] == 88.0
+    assert comparison["meetsMinRate"] == 1.0
+    assert comparison["hireRate"] == 1.0
