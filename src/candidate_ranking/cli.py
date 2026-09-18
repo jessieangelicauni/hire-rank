@@ -14,12 +14,8 @@ from langchain_ollama import ChatOllama
 from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from langgraph.checkpoint.sqlite import SqliteSaver
 
-from candidate_ranking.scoring.assessment import (
-    ASSESSMENT_SCOPE_VERSION,
-    build_assessment_chain,
-    filter_assessable_candidates,
-    write_retry_audit_report,
-)
+from candidate_ranking.scoring.assessment import ASSESSMENT_SCOPE_VERSION, JEV_MODEL_NAME, filter_assessable_candidates
+from candidate_ranking.scoring.jev_client import JevClient
 from candidate_ranking.config import RunConfig, apply_env_overrides
 from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
 from candidate_ranking.scoring.jd_skills import build_jd_skills_chain
@@ -30,10 +26,6 @@ from candidate_ranking.logging_setup import configure_logging
 from candidate_ranking.models import Candidate, JobDescription
 from candidate_ranking.output.run_output import write_run_output
 from candidate_ranking.scoring.skills import build_candidate_skill_index, build_skill_embedder
-from candidate_ranking.ranking.tournament import (
-    RANKING_PROMPT_VERSION,
-    build_listwise_ranking_chain,
-)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -94,8 +86,7 @@ def run(
 
     llm = ChatOllama(model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx)
     jd_skills_chain = build_jd_skills_chain(llm)
-    assessment_chain = build_assessment_chain(llm)
-    build_ranking_chain = build_listwise_ranking_chain(llm)
+    jev_client = JevClient(account_id=cfg.cf_account_id, api_token=cfg.cf_api_token)
     skill_extraction_chain = build_skill_extraction_chain(llm)
 
     candidates = enrich_candidates_with_skills(
@@ -108,11 +99,10 @@ def run(
     graph = build_pipeline_graph(
         cfg,
         jd_skills_chain,
-        assessment_chain,
+        jev_client,
         skill_index,
         skill_row_map,
         skill_embedder,
-        build_ranking_chain,
         run_id,
         skill_match_threshold=skill_match_threshold,
         min_skill_matches=min_skill_matches,
@@ -125,7 +115,6 @@ def run(
         "jd_skills": {},
         "shortlists": {},
         "assessment_results": [],
-        "tournament_results": [],
     }
 
     with sqlite_checkpointer(db_path) as saver:
@@ -161,7 +150,7 @@ def run(
         "run_id": run_id,
         "preset": cfg.preset,
         "ollama_model": cfg.ollama_model,
-        "ranking_prompt_version": RANKING_PROMPT_VERSION,
+        "jev_model": JEV_MODEL_NAME,
         "assessment_scope": ASSESSMENT_SCOPE_VERSION,
         "skill_embedding_model": cfg.skill_embedding_model,
         "skill_match_threshold": skill_match_threshold,
@@ -173,10 +162,6 @@ def run(
     run_dir = write_run_output(
         cfg.runs_dir, run_id, manifest, final_state["assessment_results"]
     )
-    retry_audits = [
-        r["retry_audit"] for r in final_state["assessment_results"] if r.get("retry_audit") is not None
-    ]
-    write_retry_audit_report(cfg.runs_dir, run_id, retry_audits)
 
     total_shortlisted = sum(len(v) for v in final_state["shortlists"].values())
     if total_shortlisted == 0:
