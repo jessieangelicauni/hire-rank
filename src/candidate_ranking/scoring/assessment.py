@@ -8,11 +8,11 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from candidate_ranking.models import Assessment, Candidate, JDSkills, JobDescription
-from candidate_ranking.scoring.jev_client import JevAnswer, JevClient, JevClientError, JevQuestion
+from candidate_ranking.scoring.jev_client import JEV_MODEL_ID, JevAnswer, JevClient, JevClientError, JevQuestion
 
 logger = logging.getLogger(__name__)
 
-JEV_MODEL_NAME = "typesafe/jev"
+JEV_MODEL_NAME = JEV_MODEL_ID
 
 ASSESSMENT_SCOPE_VERSION = "jev-score-recommendation-v1"
 
@@ -133,7 +133,12 @@ def generate_assessment(
         except JevClientError as exc:
             raise AssessmentGenerationError(str(exc)) from exc
 
-        assessment = _answers_to_assessment(jd, candidate, model_name, answers)
+        try:
+            assessment = _answers_to_assessment(jd, candidate, model_name, answers)
+        except (KeyError, ValidationError) as exc:
+            raise AssessmentGenerationError(
+                f"Jev response for {jd.id}/{candidate.id} was unusable: {exc}"
+            ) from exc
         low_confidence_keys = [
             key for key in _RETRY_ON_LOW_CONFIDENCE_KEYS
             if assessment.confidence.get(key, 1.0) < _CONFIDENCE_RETRY_THRESHOLD
@@ -149,7 +154,10 @@ def generate_assessment(
             f"low-confidence answers for: {', '.join(low_confidence_keys)}. Re-evaluate carefully."
         )
 
-    assert assessment is not None
+    if assessment is None:
+        raise AssessmentGenerationError(
+            f"Jev evaluation for {jd.id}/{candidate.id} produced no assessment"
+        )
     return assessment
 
 
