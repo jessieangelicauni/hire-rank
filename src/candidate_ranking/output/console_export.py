@@ -25,10 +25,10 @@ def _role_stub(jd: JobDescription, candidate_count: int) -> dict:
 
 
 def _null_comparison(jd_id: str) -> dict:
-    return {"jdId": jd_id, "meanFitScore": None, "meetsMinRate": None, "hireRate": None}
+    return {"jdId": jd_id, "meanFitScore": None, "meetsMinRate": None, "hireRate": None, "rankingStability": None}
 
 
-def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict]) -> dict:
+def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict], ranking_stability: float | None) -> dict:
     if not jd_assessments:
         return _null_comparison(jd_id)
     fit_scores = [a["overall_fit_score"] for a in jd_assessments.values()]
@@ -39,6 +39,45 @@ def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict]) ->
         "meanFitScore": statistics.mean(fit_scores),
         "meetsMinRate": sum(meets_min_flags) / len(meets_min_flags),
         "hireRate": recommendations.count("hire") / len(recommendations),
+        "rankingStability": ranking_stability,
+    }
+
+
+def _load_evaluation_report(run_dir: Path) -> dict | None:
+    path = run_dir / "evaluation" / "report.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        logger.warning("console-web export: discarding unreadable evaluation report %s: %s", path, exc)
+        return None
+
+
+def _ranking_stability_by_jd(report: dict | None) -> dict[str, float]:
+    if report is None:
+        return {}
+    per_job_profile = report.get("ranking_convergence", {}).get("per_job_profile", {})
+    return {
+        jd_id: stats["mean_kendall_tau"]
+        for jd_id, stats in per_job_profile.items()
+        if stats.get("mean_kendall_tau") is not None
+    }
+
+
+def _evaluation_summary(report: dict | None) -> dict | None:
+    if report is None:
+        return None
+    test_retest = report.get("test_retest", {})
+    ranking_convergence = report.get("ranking_convergence", {})
+    coherence = report.get("internal_coherence", {}).get("requirement_vs_overall_score_correlation")
+    return {
+        "nPairs": test_retest.get("n_pairs"),
+        "nRepeats": test_retest.get("n_repeats_per_pair"),
+        "recommendationAgreementRate": test_retest.get("recommendation_full_agreement_rate"),
+        "overallScoreStdev": test_retest.get("overall_fit_score_stdev", {}).get("mean"),
+        "meanRankingConvergence": ranking_convergence.get("mean_kendall_tau_across_all_profiles"),
+        "coherenceSpearmanRho": coherence.get("spearman_rho") if coherence else None,
     }
 
 
@@ -138,6 +177,9 @@ def export_console_web_data(
     with ThreadPoolExecutor(max_workers=cfg.ollama_num_parallel) as executor:
         names_by_cv_id: dict[str, str | None] = dict(executor.map(_extract_name, target_candidate_ids))
 
+    evaluation_report = _load_evaluation_report(run_dir)
+    ranking_stability_by_jd = _ranking_stability_by_jd(evaluation_report)
+
     roles: list[dict] = []
     candidates: list[dict] = []
     assessments: dict[str, dict] = {}
@@ -181,7 +223,9 @@ def export_console_web_data(
 
         roles.append(_role_stub(jd, candidate_count=exported_count))
 
-        comparison_out[jd_id] = _comparison_from_assessments(jd_id, jd_assessments)
+        comparison_out[jd_id] = _comparison_from_assessments(
+            jd_id, jd_assessments, ranking_stability_by_jd.get(jd_id)
+        )
 
     unprocessed_jd_ids = sorted(set(jds_by_id) - set(jd_ids))
     for jd_id in unprocessed_jd_ids:
@@ -192,7 +236,13 @@ def export_console_web_data(
     roles_by_id = {r["id"]: r for r in roles}
     roles = [roles_by_id[jd_id] for jd_id in jds_by_id if jd_id in roles_by_id]
 
-    output = {"roles": roles, "candidates": candidates, "assessments": assessments, "comparison": comparison_out}
+    output = {
+        "roles": roles,
+        "candidates": candidates,
+        "assessments": assessments,
+        "comparison": comparison_out,
+        "evaluationSummary": _evaluation_summary(evaluation_report),
+    }
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(output, indent=2), encoding="utf-8")

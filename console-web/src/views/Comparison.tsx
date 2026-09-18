@@ -1,4 +1,4 @@
-import { COMPARISON, type Role } from '../data';
+import { COMPARISON, EVALUATION_SUMMARY, type Role } from '../data';
 import { avatarColorOf, initialsOf } from '../lib/avatar';
 import { colorAccent, colorBorder, colorSurface, colorText, colorTextMuted, radius, radiusPill, shadowMicro } from '../tokens';
 
@@ -16,6 +16,7 @@ function metricFor(role: Role) {
     meanFitScore: numberOrNull(m?.meanFitScore),
     meetsMinRate: numberOrNull(m?.meetsMinRate),
     hireRate: numberOrNull(m?.hireRate),
+    rankingStability: numberOrNull(m?.rankingStability),
   };
 }
 
@@ -99,11 +100,42 @@ export default function Comparison({ roles }: Props) {
                   <RateBar value={m.hireRate} color={colorAccent} />
                   <span style={{ minWidth: 36, textAlign: 'right' }}>{m.hireRate !== null ? `${(m.hireRate * 100).toFixed(0)}%` : '—'}</span>
                 </div>
+                <span style={{ minWidth: 44, textAlign: 'right' }}>
+                  <span style={{ color: colorTextMuted }}>τ </span>
+                  <strong style={{ color: colorText, fontWeight: 600 }}>{m.rankingStability !== null ? m.rankingStability.toFixed(3) : '—'}</strong>
+                </span>
               </div>
             </div>
           );
         })}
       </div>
+
+      {EVALUATION_SUMMARY && (
+        <>
+          <div style={{ fontSize: 16, fontWeight: 700, color: colorText, margin: '28px 0 4px' }}>Reliability &amp; validation</div>
+          <p style={{ fontSize: 13, color: colorTextMuted, margin: '0 0 12px', maxWidth: 640, lineHeight: 1.5 }}>
+            From a dedicated evaluation study: {EVALUATION_SUMMARY.nPairs ?? '—'} pairs, each called {EVALUATION_SUMMARY.nRepeats ?? '—'}x independently.
+          </p>
+          <div style={{ display: 'flex', gap: 12 }}>
+            <StatCard
+              label="Recommendation agreement (repeat calls)"
+              value={EVALUATION_SUMMARY.recommendationAgreementRate !== null ? `${(EVALUATION_SUMMARY.recommendationAgreementRate * 100).toFixed(0)}%` : '—'}
+            />
+            <StatCard
+              label="Mean ranking stability (τ)"
+              value={EVALUATION_SUMMARY.meanRankingConvergence !== null ? EVALUATION_SUMMARY.meanRankingConvergence.toFixed(3) : '—'}
+            />
+            <StatCard
+              label="Score stdev across repeats"
+              value={EVALUATION_SUMMARY.overallScoreStdev !== null ? EVALUATION_SUMMARY.overallScoreStdev.toFixed(2) : '—'}
+            />
+            <StatCard
+              label="Requirement/overall coherence (ρ)"
+              value={EVALUATION_SUMMARY.coherenceSpearmanRho !== null ? EVALUATION_SUMMARY.coherenceSpearmanRho.toFixed(3) : '—'}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

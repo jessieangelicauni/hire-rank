@@ -85,3 +85,40 @@ def test_export_console_web_data_maps_jev_scores(run_with_jev_ranking, tmp_path)
     assert comparison["meanFitScore"] == 88.0
     assert comparison["meetsMinRate"] == 1.0
     assert comparison["hireRate"] == 1.0
+    assert comparison["rankingStability"] is None
+    assert data["evaluationSummary"] is None
+
+
+def test_export_console_web_data_includes_evaluation_summary_when_report_exists(run_with_jev_ranking, tmp_path):
+    cfg, run_id = run_with_jev_ranking
+    run_dir = cfg.runs_dir / run_id
+    eval_dir = run_dir / "evaluation"
+    eval_dir.mkdir(parents=True)
+    report = {
+        "run_id": run_id,
+        "test_retest": {
+            "n_pairs": 338, "n_repeats_per_pair": 3,
+            "overall_fit_score_stdev": {"mean": 0.8, "median": 0.66},
+            "recommendation_full_agreement_rate": 0.935,
+        },
+        "ranking_convergence": {
+            "per_job_profile": {"jd-1": {"n_candidates": 22, "n_repeats": 3, "mean_kendall_tau": 0.93}},
+            "mean_kendall_tau_across_all_profiles": 0.906,
+        },
+        "internal_coherence": {
+            "n_assessments": 338,
+            "requirement_vs_overall_score_correlation": {"spearman_rho": 0.667, "p_value": 6.7e-45, "n": 338},
+        },
+    }
+    (eval_dir / "report.json").write_text(json.dumps(report), encoding="utf-8")
+    output_path = tmp_path / "real-data.json"
+
+    export_console_web_data(cfg, run_id, output_path=output_path)
+
+    data = json.loads(output_path.read_text(encoding="utf-8"))
+    assert data["comparison"]["jd-1"]["rankingStability"] == 0.93
+    summary = data["evaluationSummary"]
+    assert summary["recommendationAgreementRate"] == 0.935
+    assert summary["meanRankingConvergence"] == 0.906
+    assert summary["overallScoreStdev"] == 0.8
+    assert summary["coherenceSpearmanRho"] == 0.667

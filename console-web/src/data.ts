@@ -29,6 +29,16 @@ export interface ComparisonRow {
   meanFitScore: number | null;
   meetsMinRate: number | null;
   hireRate: number | null;
+  rankingStability: number | null;
+}
+
+export interface EvaluationSummary {
+  nPairs: number | null;
+  nRepeats: number | null;
+  recommendationAgreementRate: number | null;
+  overallScoreStdev: number | null;
+  meanRankingConvergence: number | null;
+  coherenceSpearmanRho: number | null;
 }
 
 interface RealData {
@@ -36,6 +46,7 @@ interface RealData {
   candidates: Applicant[];
   assessments: Record<string, Assessment>;
   comparison: Record<string, ComparisonRow>;
+  evaluationSummary: EvaluationSummary | null;
 }
 
 const data = realData as unknown as RealData;
@@ -43,6 +54,7 @@ const data = realData as unknown as RealData;
 export const ROLES: Role[] = data.roles;
 export const APPLICANTS: Applicant[] = data.candidates;
 export const COMPARISON: Record<string, ComparisonRow> = data.comparison;
+export const EVALUATION_SUMMARY: EvaluationSummary | null = data.evaluationSummary ?? null;
 
 const EMPTY_ASSESSMENT: Assessment = {
   overall_fit_score: 0,
