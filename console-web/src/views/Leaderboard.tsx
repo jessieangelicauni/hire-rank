@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { assessmentFor, type Applicant, type Role } from '../data';
+import { assessmentFor, type Applicant, type Assessment, type Role } from '../data';
 import { avatarColorOf, initialsOf } from '../lib/avatar';
 import {
   colorAccent, colorAccentSoft, colorBorder, colorDanger, colorDangerSoft,
@@ -249,45 +249,78 @@ function DetailPanel({
         </div>
       </div>
 
-      <div style={{ display: 'flex', gap: 16, marginBottom: 20, alignItems: 'flex-start' }}>
-        <AssessmentColumn title="Strengths" icon="✓" items={assessment.strengths} accent={colorAccent} accentSoft={colorAccentSoft} />
-        <AssessmentColumn title="Weaknesses" icon="−" items={assessment.weaknesses} accent={colorDanger} accentSoft={colorDangerSoft} />
+      <ScoreSummary assessment={assessment} />
+      <RequirementScores requirementScores={assessment.requirement_scores} />
+    </div>
+  );
+}
+
+const RECOMMENDATION_LABEL: Record<Assessment['overall_recommendation'], string> = {
+  hire: 'Hire',
+  maybe: 'Maybe',
+  no: 'No',
+};
+
+function ScoreSummary({ assessment }: { assessment: Assessment }) {
+  const recommendationColor = assessment.overall_recommendation === 'hire'
+    ? colorAccent
+    : assessment.overall_recommendation === 'no' ? colorDanger : colorTextMuted;
+  const recommendationSoft = assessment.overall_recommendation === 'hire'
+    ? colorAccentSoft
+    : assessment.overall_recommendation === 'no' ? colorDangerSoft : colorSurfaceMuted;
+
+  return (
+    <div style={{
+      display: 'flex', gap: 16, alignItems: 'center', marginBottom: 20, padding: '16px 20px',
+      background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro,
+    }}>
+      <div>
+        <div style={{ fontSize: 32, fontWeight: 700, color: colorText, lineHeight: 1 }}>
+          {assessment.overall_fit_score.toFixed(0)}
+        </div>
+        <div style={{ fontSize: 12, color: colorTextMuted, marginTop: 4 }}>Overall fit score</div>
+      </div>
+      <div style={{
+        padding: '6px 14px', borderRadius: radiusPill, background: recommendationSoft,
+        color: recommendationColor, fontWeight: 700, fontSize: 13,
+      }}>
+        {RECOMMENDATION_LABEL[assessment.overall_recommendation]}
+      </div>
+      <div style={{ fontSize: 13, color: assessment.meets_min_qualifications ? colorAccent : colorDanger, fontWeight: 600 }}>
+        {assessment.meets_min_qualifications ? '✓ Meets minimum qualifications' : '✕ Does not meet minimum qualifications'}
       </div>
     </div>
   );
 }
 
-function AssessmentColumn({
-  title, icon, items, accent, accentSoft,
-}: {
-  title: string;
-  icon: string;
-  items: string[];
-  accent: string;
-  accentSoft: string;
-}) {
+function RequirementScores({ requirementScores }: { requirementScores: Record<string, number> }) {
+  const entries = Object.entries(requirementScores).sort(([, a], [, b]) => b - a);
+
   return (
-    <div style={{ flex: 1, minWidth: 0, background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden' }}>
+    <div style={{ background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden' }}>
       <div style={{ fontSize: 18, fontWeight: 700, color: colorText, padding: '16px 20px 12px' }}>
-        {title}
+        Requirement fit
       </div>
       <div>
-        {items.length === 0 ? (
-          <div style={{ padding: '4px 20px 20px', fontSize: 14, color: colorTextMuted }}>None identified.</div>
+        {entries.length === 0 ? (
+          <div style={{ padding: '4px 20px 20px', fontSize: 14, color: colorTextMuted }}>No per-requirement breakdown available.</div>
         ) : (
-          items.map((item, i) => (
+          entries.map(([requirement, score]) => (
             <div
-              key={i}
+              key={requirement}
               style={{
-                display: 'flex', gap: 12, padding: '12px 20px', fontSize: 14, color: colorText, lineHeight: 1.55,
+                display: 'flex', alignItems: 'center', gap: 12, padding: '10px 20px', fontSize: 14, color: colorText,
                 borderTop: `1px solid ${colorBorder}`,
               }}
             >
-              <span style={{
-                flexShrink: 0, width: 20, height: 20, borderRadius: radiusPill, background: accentSoft,
-                color: accent, fontWeight: 700, fontSize: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 1,
-              }}>{icon}</span>
-              <span>{item}</span>
+              <span style={{ flex: 1, minWidth: 0 }}>{requirement}</span>
+              <div style={{ flexShrink: 0, width: 100, height: 6, borderRadius: radiusPill, background: colorSurfaceMuted, overflow: 'hidden' }}>
+                <div style={{
+                  width: `${Math.max(0, Math.min(100, score))}%`, height: '100%', borderRadius: radiusPill,
+                  background: score >= 50 ? colorAccent : colorDanger,
+                }} />
+              </div>
+              <span style={{ flexShrink: 0, width: 32, textAlign: 'right', color: colorTextMuted, fontSize: 13 }}>{score.toFixed(0)}</span>
             </div>
           ))
         )}
