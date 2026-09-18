@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 from candidate_ranking.config import RunConfig, apply_env_overrides
 from candidate_ranking.ingestion.cv import load_candidates
 from candidate_ranking.ingestion.jd import load_job_descriptions
-from candidate_ranking.models import Candidate, JobDescription
+from candidate_ranking.models import Candidate, JDSkills, JobDescription
 from candidate_ranking.scoring.assessment import JEV_MODEL_NAME, _answers_to_assessment, _build_questions, _build_state
 from candidate_ranking.scoring.jev_client import JevAnswer, JevClient, JevQuestion
 
@@ -74,7 +74,7 @@ def load_run_pairs(run_dir: Path, jd_ids: list[str]) -> list[tuple[str, str]]:
 
 def load_corpus(
     cfg: RunConfig, jd_ids: list[str]
-) -> tuple[dict[str, JobDescription], dict[str, Candidate], dict[str, list[str]]]:
+) -> tuple[dict[str, JobDescription], dict[str, Candidate], dict[str, JDSkills]]:
     jds_by_id = {jd.id: jd for jd in load_job_descriptions(cfg.jd_dir) if jd.id in jd_ids}
     candidates_by_id = {c.id: c for c in load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")}
     cv_skills_cache = json.loads((cfg.cache_dir / "cv_skills.json").read_text(encoding="utf-8"))
@@ -82,10 +82,10 @@ def load_corpus(
         if cid in cv_skills_cache:
             candidates_by_id[cid] = candidate.model_copy(update={"skills": cv_skills_cache[cid]["skills"]})
     jd_skills_cache = json.loads((cfg.cache_dir / "jd_skills.json").read_text(encoding="utf-8"))
-    technical_skills_by_jd = {
-        jd_id: entry["jd_skills"]["technical_skills"] for jd_id, entry in jd_skills_cache.items() if jd_id in jd_ids
+    jd_skills_by_jd = {
+        jd_id: JDSkills.model_validate(entry["jd_skills"]) for jd_id, entry in jd_skills_cache.items() if jd_id in jd_ids
     }
-    return jds_by_id, candidates_by_id, technical_skills_by_jd
+    return jds_by_id, candidates_by_id, jd_skills_by_jd
 
 
 def _timed_evaluate(jev_client: JevClient, state: str, questions: list[JevQuestion]) -> tuple[list[JevAnswer], float]:
@@ -99,7 +99,7 @@ def collect_test_retest(
     jev_client: JevClient,
     jds_by_id: dict[str, JobDescription],
     candidates_by_id: dict[str, Candidate],
-    technical_skills_by_jd: dict[str, list[str]],
+    jd_skills_by_jd: dict[str, JDSkills],
     pairs: list[tuple[str, str]],
     repeats: int,
     max_workers: int,
@@ -108,7 +108,7 @@ def collect_test_retest(
         jd_id, candidate_id = pair
         jd = jds_by_id[jd_id]
         candidate = candidates_by_id[candidate_id]
-        questions = _build_questions(technical_skills_by_jd.get(jd_id))
+        questions = _build_questions(jd_skills_by_jd.get(jd_id))
         state = _build_state(jd, candidate)
 
         repeats_out = []
@@ -139,7 +139,7 @@ def collect_ablation(
     jev_client: JevClient,
     jds_by_id: dict[str, JobDescription],
     candidates_by_id: dict[str, Candidate],
-    technical_skills_by_jd: dict[str, list[str]],
+    jd_skills_by_jd: dict[str, JDSkills],
     run_dir: Path,
     sample_pairs: list[tuple[str, str]],
 ) -> list[dict]:
@@ -151,7 +151,8 @@ def collect_ablation(
         cached = json.loads((run_dir / jd_id / "assessments.json").read_text(encoding="utf-8"))[candidate_id]
         concrete_confidence = cached["confidence"]
 
-        vague_questions = _vague_build_questions(technical_skills_by_jd.get(jd_id))
+        jd_skills = jd_skills_by_jd.get(jd_id)
+        vague_questions = _vague_build_questions(jd_skills.technical_skills if jd_skills else None)
         state = _build_state(jd, candidate)
         answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
         vague_assessment = _answers_to_assessment(jd, candidate, JEV_MODEL_NAME, answers)
@@ -195,14 +196,14 @@ def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_wo
         raise RuntimeError("Set CANDIDATE_RANKING_JEV_API_KEY (e.g. in .env) before running.")
     jev_client = JevClient(api_token=cfg.jev_api_key)
 
-    jds_by_id, candidates_by_id, technical_skills_by_jd = load_corpus(cfg, jd_ids)
+    jds_by_id, candidates_by_id, jd_skills_by_jd = load_corpus(cfg, jd_ids)
 
     out_dir = run_dir / "evaluation"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"Collecting test-retest reliability data ({len(pairs)} pairs x {repeats} repeats)...")
     test_retest_results = collect_test_retest(
-        jev_client, jds_by_id, candidates_by_id, technical_skills_by_jd, pairs, repeats, max_workers
+        jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, pairs, repeats, max_workers
     )
     (out_dir / "test_retest.json").write_text(json.dumps(test_retest_results, indent=2), encoding="utf-8")
     print(f"Wrote {len(test_retest_results)} test-retest record(s) to {out_dir / 'test_retest.json'}")
@@ -211,7 +212,7 @@ def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_wo
     ablation_pairs = rng.sample(pairs, ablation_size)
     print(f"Collecting criteria-design ablation data ({len(ablation_pairs)} pairs)...")
     ablation_results = collect_ablation(
-        jev_client, jds_by_id, candidates_by_id, technical_skills_by_jd, run_dir, ablation_pairs
+        jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, run_dir, ablation_pairs
     )
     (out_dir / "ablation.json").write_text(json.dumps(ablation_results, indent=2), encoding="utf-8")
     print(f"Wrote {len(ablation_results)} ablation record(s) to {out_dir / 'ablation.json'}")

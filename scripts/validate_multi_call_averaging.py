@@ -85,13 +85,13 @@ def main(run_id: str, max_workers: int) -> None:
     jev_client = JevClient(api_token=cfg.jev_api_key)
 
     pairs = load_run_pairs(run_dir, jd_ids)
-    jds_by_id, candidates_by_id, technical_skills_by_jd = load_corpus(cfg, jd_ids)
+    jds_by_id, candidates_by_id, jd_skills_by_jd = load_corpus(cfg, jd_ids)
 
     trials = [trial_a]
     for trial_name in ("B", "C"):
         print(f"Collecting trial {trial_name}: {len(pairs)} pairs x 3 fresh repeats...")
         records = collect_test_retest(
-            jev_client, jds_by_id, candidates_by_id, technical_skills_by_jd, pairs, repeats=3, max_workers=max_workers
+            jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, pairs, repeats=3, max_workers=max_workers
         )
         (eval_dir / f"test_retest_trial_{trial_name}.json").write_text(json.dumps(records, indent=2), encoding="utf-8")
         trials.append(_trial_scores_by_jd(records))
