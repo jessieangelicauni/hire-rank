@@ -23,8 +23,22 @@ _MIN_QUALIFICATIONS_KEY = "meets_min_qualifications"
 _RETRY_ON_LOW_CONFIDENCE_KEYS = (_OVERALL_FIT_KEY, _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY)
 _CONFIDENCE_RETRY_THRESHOLD = 0.5
 
-_SCORE_CRITERIA = ["0", "25", "50", "75", "100"]
-_SCORE_MAX_INDEX = len(_SCORE_CRITERIA) - 1
+_OVERALL_FIT_CRITERIA = [
+    "Shows almost no relevant skills or experience for this role",
+    "Has some relevant skills but significant gaps in the role's core requirements",
+    "Meets roughly half of the role's core requirements with moderate relevant experience",
+    "Meets most of the role's core requirements with solid relevant experience",
+    "Meets or exceeds nearly all of the role's core requirements with strong, demonstrated experience",
+]
+_REQUIREMENT_FIT_CRITERIA = [
+    "Not mentioned anywhere in the CV",
+    "Mentioned only as a bare skill-list item, with no sentence describing real usage",
+    "Used with some described context, but limited depth, duration, or unclear proficiency",
+    "Used substantively in a real role or project with clear responsibility",
+    "Extensively and expertly demonstrated, with strong measurable outcomes or deep ownership",
+]
+assert len(_OVERALL_FIT_CRITERIA) == len(_REQUIREMENT_FIT_CRITERIA)
+_SCORE_MAX_INDEX = len(_OVERALL_FIT_CRITERIA) - 1
 
 
 class AssessmentGenerationError(Exception):
@@ -58,7 +72,7 @@ def _build_questions(jd_technical_skills: list[str] | None) -> list[JevQuestion]
             key=_OVERALL_FIT_KEY,
             kind="score",
             instructions="How well does this candidate's CV fit the job description overall?",
-            criteria=_SCORE_CRITERIA,
+            criteria=_OVERALL_FIT_CRITERIA,
         ),
         JevQuestion(
             key=_RECOMMENDATION_KEY,
@@ -86,7 +100,7 @@ def _build_questions(jd_technical_skills: list[str] | None) -> list[JevQuestion]
                 key=_requirement_question_key(requirement),
                 kind="score",
                 instructions=f"How well does the candidate's CV support the requirement '{requirement}'?",
-                criteria=_SCORE_CRITERIA,
+                criteria=_REQUIREMENT_FIT_CRITERIA,
             )
         )
     return questions
