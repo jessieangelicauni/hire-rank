@@ -41,12 +41,27 @@ export interface EvaluationSummary {
   coherenceSpearmanRho: number | null;
 }
 
+export interface ShortlistingFlaggedApplicant {
+  candidateId: string;
+  overallFitScore: number;
+  nearZeroRequirements: string[];
+}
+
+export interface ShortlistingAuditRow {
+  nCandidates: number;
+  nFlagged: number;
+  flaggedPoolFraction: number;
+  profileFlagged: boolean;
+  flaggedCandidates: ShortlistingFlaggedApplicant[];
+}
+
 interface RealData {
   roles: Role[];
   candidates: Applicant[];
   assessments: Record<string, Assessment>;
   comparison: Record<string, ComparisonRow>;
   evaluationSummary: EvaluationSummary | null;
+  shortlistingAudit: Record<string, ShortlistingAuditRow> | null;
 }
 
 const data = realData as unknown as RealData;
@@ -55,6 +70,7 @@ export const ROLES: Role[] = data.roles;
 export const APPLICANTS: Applicant[] = data.candidates;
 export const COMPARISON: Record<string, ComparisonRow> = data.comparison;
 export const EVALUATION_SUMMARY: EvaluationSummary | null = data.evaluationSummary ?? null;
+export const SHORTLISTING_AUDIT: Record<string, ShortlistingAuditRow> = data.shortlistingAudit ?? {};
 
 const EMPTY_ASSESSMENT: Assessment = {
   overall_fit_score: 0,
