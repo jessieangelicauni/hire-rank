@@ -245,7 +245,7 @@ function DetailPanel({
         </div>
         <div>
           <h1 style={{ fontSize: 20, fontWeight: 700, color: colorText, margin: 0 }}>{applicant.name}</h1>
-          <div style={{ fontSize: 13, color: colorTextMuted, marginTop: 2 }}>{rank !== null ? `Rank ${rank} of ${total}` : 'Not ranked (insufficient tournament comparisons)'}</div>
+          <div style={{ fontSize: 13, color: colorTextMuted, marginTop: 2 }}>{rank !== null ? `Rank ${rank} of ${total}` : 'Not ranked (no assessment available)'}</div>
         </div>
       </div>
 
