@@ -13708,5 +13708,138 @@
     "meanRankingConvergence": 0.900549696418341,
     "coherenceSpearmanRho": 0.6822631497211264
   },
-  "shortlistingAudit": {}
+  "shortlistingAudit": {
+    "backend-engineer": {
+      "nCandidates": 22,
+      "nFlagged": 0,
+      "flaggedPoolFraction": 0.0,
+      "profileFlagged": false,
+      "flaggedCandidates": []
+    },
+    "cloud-engineer": {
+      "nCandidates": 57,
+      "nFlagged": 1,
+      "flaggedPoolFraction": 0.017543859649122806,
+      "profileFlagged": false,
+      "flaggedCandidates": [
+        {
+          "candidateId": "cv-00539",
+          "overallFitScore": 60.0,
+          "nearZeroRequirements": [
+            "Kubernetes",
+            "cost optimization"
+          ]
+        }
+      ]
+    },
+    "data-engineer": {
+      "nCandidates": 76,
+      "nFlagged": 8,
+      "flaggedPoolFraction": 0.10526315789473684,
+      "profileFlagged": false,
+      "flaggedCandidates": [
+        {
+          "candidateId": "cv-00332",
+          "overallFitScore": 22.666666666666668,
+          "nearZeroRequirements": [
+            "Python"
+          ]
+        },
+        {
+          "candidateId": "cv-00228",
+          "overallFitScore": 23.5,
+          "nearZeroRequirements": [
+            "Python"
+          ]
+        },
+        {
+          "candidateId": "cv-00534",
+          "overallFitScore": 24.25,
+          "nearZeroRequirements": [
+            "Python"
+          ]
+        },
+        {
+          "candidateId": "cv-00626",
+          "overallFitScore": 24.25,
+          "nearZeroRequirements": [
+            "Python"
+          ]
+        },
+        {
+          "candidateId": "cv-00437",
+          "overallFitScore": 24.416666666666668,
+          "nearZeroRequirements": [
+            "Python"
+          ]
+        }
+      ]
+    },
+    "data-scientist-engineer": {
+      "nCandidates": 27,
+      "nFlagged": 0,
+      "flaggedPoolFraction": 0.0,
+      "profileFlagged": false,
+      "flaggedCandidates": []
+    },
+    "devops-engineer": {
+      "nCandidates": 58,
+      "nFlagged": 0,
+      "flaggedPoolFraction": 0.0,
+      "profileFlagged": false,
+      "flaggedCandidates": []
+    },
+    "frontend-engineer": {
+      "nCandidates": 13,
+      "nFlagged": 0,
+      "flaggedPoolFraction": 0.0,
+      "profileFlagged": false,
+      "flaggedCandidates": []
+    },
+    "full-stack-engineer": {
+      "nCandidates": 33,
+      "nFlagged": 2,
+      "flaggedPoolFraction": 0.06060606060606061,
+      "profileFlagged": false,
+      "flaggedCandidates": [
+        {
+          "candidateId": "cv-00345",
+          "overallFitScore": 20.666666666666668,
+          "nearZeroRequirements": [
+            "REST APIs",
+            "Node.js"
+          ]
+        },
+        {
+          "candidateId": "cv-00201",
+          "overallFitScore": 25.25,
+          "nearZeroRequirements": [
+            "REST APIs",
+            "Node.js"
+          ]
+        }
+      ]
+    },
+    "it-security-engineer": {
+      "nCandidates": 16,
+      "nFlagged": 0,
+      "flaggedPoolFraction": 0.0,
+      "profileFlagged": false,
+      "flaggedCandidates": []
+    },
+    "java-developer": {
+      "nCandidates": 21,
+      "nFlagged": 0,
+      "flaggedPoolFraction": 0.0,
+      "profileFlagged": false,
+      "flaggedCandidates": []
+    },
+    "ui-ux-designer": {
+      "nCandidates": 23,
+      "nFlagged": 0,
+      "flaggedPoolFraction": 0.0,
+      "profileFlagged": false,
+      "flaggedCandidates": []
+    }
+  }
 }
