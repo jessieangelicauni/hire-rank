@@ -133,6 +133,56 @@ def analyze_ranking_convergence(records: list[dict]) -> dict:
     }
 
 
+def analyze_score_decomposition_diagnostic(records: list[dict], ranking_convergence: dict) -> dict:
+    """Correlate each job profile's shortlisted-pool signal-to-noise ratio against its
+    ranking-convergence Kendall-tau, to test whether ranking instability traces to
+    genuine score-noise proximity between similarly qualified applicants rather than
+    to model unreliability (paper2_jev.tex, Section III-E)."""
+    by_jd: dict[str, list[dict]] = {}
+    for record in records:
+        by_jd.setdefault(record["jd_id"], []).append(record)
+
+    per_job_profile: dict[str, dict] = {}
+    snrs: list[float] = []
+    taus: list[float] = []
+
+    for jd_id, jd_records in by_jd.items():
+        candidate_means: list[float] = []
+        candidate_stdevs: list[float] = []
+        for r in jd_records:
+            scores = [rep["overall_fit_score"] for rep in r["repeats"]]
+            if len(scores) >= 2:
+                candidate_means.append(statistics.mean(scores))
+                candidate_stdevs.append(statistics.stdev(scores))
+
+        tau = ranking_convergence["per_job_profile"].get(jd_id, {}).get("mean_kendall_tau")
+
+        if len(candidate_means) < 2 or not candidate_stdevs:
+            per_job_profile[jd_id] = {
+                "n_candidates": len(candidate_means), "signal": None, "noise": None,
+                "snr": None, "mean_kendall_tau": tau,
+            }
+            continue
+
+        signal = statistics.stdev(candidate_means)
+        noise = statistics.mean(candidate_stdevs)
+        snr = signal / noise if noise > 0 else None
+        per_job_profile[jd_id] = {
+            "n_candidates": len(candidate_means), "signal": signal, "noise": noise,
+            "snr": snr, "mean_kendall_tau": tau,
+        }
+        if snr is not None and tau is not None:
+            snrs.append(snr)
+            taus.append(tau)
+
+    correlation = None
+    if len(snrs) >= 3:
+        rho, p_value = spearmanr(snrs, taus)
+        correlation = {"spearman_rho": float(rho), "p_value": float(p_value), "n": len(snrs)}
+
+    return {"per_job_profile": per_job_profile, "snr_vs_kendall_tau_correlation": correlation}
+
+
 def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
     assessments: list[dict] = []
     for jd_id in jd_ids:
@@ -350,6 +400,31 @@ def render_markdown(report: dict) -> str:
                 f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
                 f"(<0.5: concrete {abl['requirement_questions']['concrete_pct_below_0.5']:.0f}% vs vague {abl['requirement_questions']['vague_pct_below_0.5']:.0f}%)"
             )
+    snd = report.get("score_decomposition_diagnostic")
+    if snd:
+        lines += [
+            "",
+            "## Structured score decomposition diagnostic (signal-to-noise ratio vs. ranking convergence)",
+        ]
+        for jd_id, jd_snd in sorted(
+            snd["per_job_profile"].items(),
+            key=lambda kv: (kv[1]["snr"] is None, kv[1]["snr"] or 0),
+        ):
+            if jd_snd["snr"] is not None:
+                lines.append(
+                    f"  - {jd_id} (n={jd_snd['n_candidates']}): signal={jd_snd['signal']:.2f}, "
+                    f"noise={jd_snd['noise']:.2f}, snr={jd_snd['snr']:.2f}, "
+                    f"tau={jd_snd['mean_kendall_tau']:.3f}" if jd_snd["mean_kendall_tau"] is not None
+                    else f"  - {jd_id} (n={jd_snd['n_candidates']}): snr={jd_snd['snr']:.2f}, tau=N/A"
+                )
+            else:
+                lines.append(f"  - {jd_id} (n={jd_snd['n_candidates']}): insufficient data")
+        if snd["snr_vs_kendall_tau_correlation"]:
+            c = snd["snr_vs_kendall_tau_correlation"]
+            lines.append(f"- SNR vs. Kendall-tau: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
+        else:
+            lines.append("- SNR vs. Kendall-tau: insufficient data for correlation")
+
     noul_abl = report.get("noul_criteria_ablation")
     if noul_abl:
         lines += ["", "## Seniority/education Noul criteria ablation (circular vs. concrete)", f"- n={noul_abl['n_pairs']} paired pairs"]
@@ -398,6 +473,9 @@ def main(run_id: str) -> None:
         report["test_retest"] = analyze_test_retest(test_retest_records)
         report["ranking_convergence"] = analyze_ranking_convergence(test_retest_records)
         report["internal_coherence"] = analyze_internal_coherence(run_dir, jd_ids)
+        report["score_decomposition_diagnostic"] = analyze_score_decomposition_diagnostic(
+            test_retest_records, report["ranking_convergence"]
+        )
 
     ablation_path = eval_dir / "ablation.json"
     if ablation_path.exists():
