@@ -145,8 +145,13 @@ education fit using the same bar/number treatment as
 `RequirementScores`, only rendered when the value is non-null (job
 profile stated that requirement).
 
-**`Comparison.tsx`**: same fields surfaced wherever it currently reads
-`requirement_scores` for side-by-side comparison.
+**`Comparison.tsx`** (correction after inspecting the file): it does
+**not** read `requirement_scores` at all — it only shows role-level
+aggregates (`meanFitScore`, `meetsMinRate`, `hireRate`,
+`rankingStability`) from `COMPARISON`. There is no existing
+per-requirement display there to extend, so it is left untouched by
+this change; adding a new aggregate seniority/education stat card
+would be new scope beyond what was asked.
 
 ## Ablation Redesign (paper validation)
 
