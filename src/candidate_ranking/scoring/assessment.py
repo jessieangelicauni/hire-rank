@@ -78,6 +78,20 @@ def _certification_question_key(certification: str) -> str:
     return f"{_CERTIFICATION_KEY_PREFIX}{certification}"
 
 
+def _seniority_instructions(seniority_requirement: str) -> str:
+    return (
+        "How well does the candidate meet the job description's stated seniority/experience "
+        f"requirement: '{seniority_requirement}'?"
+    )
+
+
+def _education_instructions(education_requirement: str) -> str:
+    return (
+        "How well does the candidate meet the job description's stated education "
+        f"requirement: '{education_requirement}'?"
+    )
+
+
 def _score_to_percent(raw_score: float) -> float:
     return max(0.0, min(100.0, raw_score * (100.0 / _SCORE_MAX_INDEX)))
 
@@ -149,10 +163,7 @@ def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
             JevQuestion(
                 key=_SENIORITY_KEY,
                 kind="score",
-                instructions=(
-                    "How well does the candidate meet the job description's stated seniority/experience "
-                    f"requirement: '{jd_skills.seniority_requirement}'?"
-                ),
+                instructions=_seniority_instructions(jd_skills.seniority_requirement),
                 criteria=_SENIORITY_FIT_CRITERIA,
             )
         )
@@ -161,10 +172,7 @@ def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
             JevQuestion(
                 key=_EDUCATION_KEY,
                 kind="score",
-                instructions=(
-                    "How well does the candidate meet the job description's stated education "
-                    f"requirement: '{jd_skills.education_requirement}'?"
-                ),
+                instructions=_education_instructions(jd_skills.education_requirement),
                 criteria=_EDUCATION_FIT_CRITERIA,
             )
         )

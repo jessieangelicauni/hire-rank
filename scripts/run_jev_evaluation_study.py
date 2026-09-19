@@ -17,7 +17,14 @@ from candidate_ranking.config import RunConfig, apply_env_overrides
 from candidate_ranking.ingestion.cv import load_candidates
 from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import Candidate, JDSkills, JobDescription
-from candidate_ranking.scoring.assessment import JEV_MODEL_NAME, _answers_to_assessment, _build_questions, _build_state
+from candidate_ranking.scoring.assessment import (
+    JEV_MODEL_NAME,
+    _answers_to_assessment,
+    _build_questions,
+    _build_state,
+    _education_instructions,
+    _seniority_instructions,
+)
 from candidate_ranking.scoring.jev_client import JevAnswer, JevClient, JevQuestion
 
 load_dotenv()
@@ -67,10 +74,7 @@ def _vague_seniority_education_questions(jd_skills: JDSkills | None) -> list[Jev
         questions.append(
             JevQuestion(
                 key="seniority", kind="score",
-                instructions=(
-                    "How well does the candidate meet the job description's stated seniority/experience "
-                    f"requirement: '{jd_skills.seniority_requirement}'?"
-                ),
+                instructions=_seniority_instructions(jd_skills.seniority_requirement),
                 criteria=_VAGUE_SCORE_CRITERIA,
             )
         )
@@ -78,10 +82,7 @@ def _vague_seniority_education_questions(jd_skills: JDSkills | None) -> list[Jev
         questions.append(
             JevQuestion(
                 key="education", kind="score",
-                instructions=(
-                    "How well does the candidate meet the job description's stated education "
-                    f"requirement: '{jd_skills.education_requirement}'?"
-                ),
+                instructions=_education_instructions(jd_skills.education_requirement),
                 criteria=_VAGUE_SCORE_CRITERIA,
             )
         )

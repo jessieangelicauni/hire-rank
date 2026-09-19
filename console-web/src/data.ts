@@ -63,7 +63,7 @@ interface RealData {
   assessments: Record<string, Assessment>;
   comparison: Record<string, ComparisonRow>;
   evaluationSummary: EvaluationSummary | null;
-  shortlistingAudit: Record<string, ShortlistingAuditRow> | null;
+  shortlistingAudit: Record<string, ShortlistingAuditRow>;
 }
 
 const data = realData as unknown as RealData;
@@ -72,7 +72,7 @@ export const ROLES: Role[] = data.roles;
 export const APPLICANTS: Applicant[] = data.candidates;
 export const COMPARISON: Record<string, ComparisonRow> = data.comparison;
 export const EVALUATION_SUMMARY: EvaluationSummary | null = data.evaluationSummary ?? null;
-export const SHORTLISTING_AUDIT: Record<string, ShortlistingAuditRow> = data.shortlistingAudit ?? {};
+export const SHORTLISTING_AUDIT: Record<string, ShortlistingAuditRow> = data.shortlistingAudit;
 
 const EMPTY_ASSESSMENT: Assessment = {
   overall_fit_score: 0,

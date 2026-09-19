@@ -19,6 +19,16 @@ _VENDOR_PUBLISHED_SPEEDUP_CLAIM = "40x-200x faster for comparable System One tas
 
 
 def _rank_biserial(first: list[float], second: list[float]) -> float:
+    """Directional effect size for a paired comparison: (pairs where `first` wins minus
+    pairs where `second` wins) / n, ties excluded from neither count nor sign.
+
+    This is a sign-based proportion difference, not the matched-pairs rank-biserial
+    correlation derived from the Wilcoxon signed-rank statistic (which would weight each
+    pair by the magnitude-rank of its difference, via (W+ - W-)/(W+ + W-)). It ignores how
+    large each difference is, only its direction -- a deliberate simplification, reported
+    here (and in the paper, as "rank-biserial r") as an easily-interpreted companion to the
+    Wilcoxon p-value, not a drop-in replacement for the textbook statistic of that name.
+    """
     n_first_higher = sum(1 for a, b in zip(first, second) if a > b)
     n_second_higher = sum(1 for a, b in zip(first, second) if a < b)
     n = len(first)
