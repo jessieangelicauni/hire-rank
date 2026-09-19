@@ -292,33 +292,33 @@ def analyze_ablation(records: list[dict]) -> dict:
     }
 
 
-def analyze_noul_criteria_ablation(records: list[dict]) -> dict:
+def analyze_seniority_education_ablation(records: list[dict]) -> dict:
     concrete_by_key: dict[str, list[float]] = {"seniority": [], "education": []}
-    circular_by_key: dict[str, list[float]] = {"seniority": [], "education": []}
-    circular_latencies: list[float] = []
+    vague_by_key: dict[str, list[float]] = {"seniority": [], "education": []}
+    vague_latencies: list[float] = []
 
     for record in records:
         concrete_conf = record["concrete_confidence"]
-        circular_conf = record["circular_confidence"]
+        vague_conf = record["vague_confidence"]
         for key in ("seniority", "education"):
-            if key in concrete_conf and key in circular_conf:
+            if key in concrete_conf and key in vague_conf:
                 concrete_by_key[key].append(concrete_conf[key])
-                circular_by_key[key].append(circular_conf[key])
-        circular_latencies.append(record["circular_latency_seconds"])
+                vague_by_key[key].append(vague_conf[key])
+        vague_latencies.append(record["vague_latency_seconds"])
 
     buckets = {
-        key: _paired_bucket(concrete_by_key[key], circular_by_key[key], f"{key}_confidence")
+        key: _paired_bucket(concrete_by_key[key], vague_by_key[key], f"{key}_confidence")
         for key in ("seniority", "education")
     }
     concrete_pooled = concrete_by_key["seniority"] + concrete_by_key["education"]
-    circular_pooled = circular_by_key["seniority"] + circular_by_key["education"]
+    vague_pooled = vague_by_key["seniority"] + vague_by_key["education"]
 
     return {
         "n_pairs": len(records),
         "seniority": buckets["seniority"],
         "education": buckets["education"],
-        "pooled": _paired_bucket(concrete_pooled, circular_pooled, "seniority_education_pooled_confidence"),
-        "circular_latency_seconds_mean": statistics.mean(circular_latencies) if circular_latencies else None,
+        "pooled": _paired_bucket(concrete_pooled, vague_pooled, "seniority_education_pooled_confidence"),
+        "vague_latency_seconds_mean": statistics.mean(vague_latencies) if vague_latencies else None,
     }
 
 
@@ -425,18 +425,18 @@ def render_markdown(report: dict) -> str:
         else:
             lines.append("- SNR vs. Kendall-tau: insufficient data for correlation")
 
-    noul_abl = report.get("noul_criteria_ablation")
-    if noul_abl:
-        lines += ["", "## Seniority/education Noul criteria ablation (circular vs. concrete)", f"- n={noul_abl['n_pairs']} paired pairs"]
+    sen_edu_abl = report.get("seniority_education_ablation")
+    if sen_edu_abl:
+        lines += ["", "## Seniority/education criteria ablation (concrete vs. bare-label Score)", f"- n={sen_edu_abl['n_pairs']} eligible pairs"]
         for label, key in (("seniority", "seniority"), ("education", "education"), ("pooled", "pooled")):
-            bucket = noul_abl[key]
+            bucket = sen_edu_abl[key]
             if bucket["wilcoxon"]:
                 w = bucket["wilcoxon"]
                 lines.append(
                     f"- {label} confidence (n_obs={bucket['n_observations']}): "
-                    f"concrete mean={w['mean_first']:.3f} vs circular mean={w['mean_second']:.3f} "
+                    f"concrete mean={w['mean_first']:.3f} vs bare-label mean={w['mean_second']:.3f} "
                     f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
-                    f"(<0.5: concrete {bucket['concrete_pct_below_0.5']:.0f}% vs circular {bucket['vague_pct_below_0.5']:.0f}%)"
+                    f"(<0.5: concrete {bucket['concrete_pct_below_0.5']:.0f}% vs bare-label {bucket['vague_pct_below_0.5']:.0f}%)"
                 )
             else:
                 lines.append(f"- {label} confidence: insufficient paired data (n_obs={bucket['n_observations']})")
@@ -482,10 +482,10 @@ def main(run_id: str) -> None:
         ablation_records = json.loads(ablation_path.read_text(encoding="utf-8"))
         report["ablation"] = analyze_ablation(ablation_records)
 
-    noul_ablation_path = eval_dir / "noul_criteria_ablation.json"
-    if noul_ablation_path.exists():
-        noul_ablation_records = json.loads(noul_ablation_path.read_text(encoding="utf-8"))
-        report["noul_criteria_ablation"] = analyze_noul_criteria_ablation(noul_ablation_records)
+    seniority_education_ablation_path = eval_dir / "seniority_education_ablation.json"
+    if seniority_education_ablation_path.exists():
+        seniority_education_records = json.loads(seniority_education_ablation_path.read_text(encoding="utf-8"))
+        report["seniority_education_ablation"] = analyze_seniority_education_ablation(seniority_education_records)
 
     (eval_dir / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     markdown = render_markdown(report)
