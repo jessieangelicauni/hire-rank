@@ -22,6 +22,8 @@ export interface Assessment {
   overall_recommendation: 'hire' | 'maybe' | 'no';
   meets_min_qualifications: boolean;
   requirement_scores: Record<string, number>;
+  seniority_fit_score: number | null;
+  education_fit_score: number | null;
 }
 
 export interface ComparisonRow {
@@ -77,6 +79,8 @@ const EMPTY_ASSESSMENT: Assessment = {
   overall_recommendation: 'no',
   meets_min_qualifications: false,
   requirement_scores: {},
+  seniority_fit_score: null,
+  education_fit_score: null,
 };
 
 export function assessmentFor(applicantRowId: string): Assessment {

@@ -250,6 +250,7 @@ function DetailPanel({
       </div>
 
       <ScoreSummary assessment={assessment} />
+      <QualificationScores assessment={assessment} />
       <RequirementScores requirementScores={assessment.requirement_scores} />
     </div>
   );
@@ -288,6 +289,41 @@ function ScoreSummary({ assessment }: { assessment: Assessment }) {
       </div>
       <div style={{ fontSize: 13, color: assessment.meets_min_qualifications ? colorAccent : colorDanger, fontWeight: 600 }}>
         {assessment.meets_min_qualifications ? '✓ Meets minimum qualifications' : '✕ Does not meet minimum qualifications'}
+      </div>
+    </div>
+  );
+}
+
+function QualificationScores({ assessment }: { assessment: Assessment }) {
+  const entries: [string, number][] = [];
+  if (assessment.seniority_fit_score !== null) entries.push(['Seniority', assessment.seniority_fit_score]);
+  if (assessment.education_fit_score !== null) entries.push(['Education', assessment.education_fit_score]);
+  if (entries.length === 0) return null;
+
+  return (
+    <div style={{ background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden', marginBottom: 16 }}>
+      <div style={{ fontSize: 18, fontWeight: 700, color: colorText, padding: '16px 20px 12px' }}>
+        Qualification fit
+      </div>
+      <div>
+        {entries.map(([label, score]) => (
+          <div
+            key={label}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 12, padding: '10px 20px', fontSize: 14, color: colorText,
+              borderTop: `1px solid ${colorBorder}`,
+            }}
+          >
+            <span style={{ flex: 1, minWidth: 0 }}>{label}</span>
+            <div style={{ flexShrink: 0, width: 100, height: 6, borderRadius: radiusPill, background: colorSurfaceMuted, overflow: 'hidden' }}>
+              <div style={{
+                width: `${Math.max(0, Math.min(100, score))}%`, height: '100%', borderRadius: radiusPill,
+                background: score >= 50 ? colorAccent : colorDanger,
+              }} />
+            </div>
+            <span style={{ flexShrink: 0, width: 32, textAlign: 'right', color: colorTextMuted, fontSize: 13 }}>{score.toFixed(0)}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
