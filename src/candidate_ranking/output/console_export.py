@@ -54,6 +54,39 @@ def _load_evaluation_report(run_dir: Path) -> dict | None:
         return None
 
 
+def _load_shortlisting_audit(run_dir: Path) -> dict | None:
+    path = run_dir / "evaluation" / "shortlisting_audit.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        logger.warning("console-web export: discarding unreadable shortlisting audit %s: %s", path, exc)
+        return None
+
+
+def _shortlisting_audit_by_jd(audit: dict | None) -> dict[str, dict]:
+    if audit is None:
+        return {}
+    result = {}
+    for jd in audit.get("per_job_profile", []):
+        result[jd["jd_id"]] = {
+            "nCandidates": jd["n_candidates"],
+            "nFlagged": jd["n_flagged"],
+            "flaggedPoolFraction": jd["flagged_pool_fraction"],
+            "profileFlagged": jd["profile_flagged"],
+            "flaggedCandidates": [
+                {
+                    "candidateId": c["candidate_id"],
+                    "overallFitScore": c["overall_fit_score"],
+                    "nearZeroRequirements": c["near_zero_requirements"],
+                }
+                for c in jd["flagged_candidates"][:5]
+            ],
+        }
+    return result
+
+
 def _ranking_stability_by_jd(report: dict | None) -> dict[str, float]:
     if report is None:
         return {}
@@ -179,6 +212,7 @@ def export_console_web_data(
 
     evaluation_report = _load_evaluation_report(run_dir)
     ranking_stability_by_jd = _ranking_stability_by_jd(evaluation_report)
+    shortlisting_audit_by_jd = _shortlisting_audit_by_jd(_load_shortlisting_audit(run_dir))
 
     roles: list[dict] = []
     candidates: list[dict] = []
@@ -242,6 +276,7 @@ def export_console_web_data(
         "assessments": assessments,
         "comparison": comparison_out,
         "evaluationSummary": _evaluation_summary(evaluation_report),
+        "shortlistingAudit": shortlisting_audit_by_jd,
     }
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
