@@ -61,12 +61,12 @@ def test_assessment_accepts_certification_seniority_education_fields():
         overall_recommendation="hire",
         meets_min_qualifications=True,
         certification_results={"AWS Certified Solutions Architect": True, "PMP": False},
-        meets_seniority_requirement=True,
-        meets_education_requirement=None,
+        seniority_fit_score=75.0,
+        education_fit_score=None,
     )
     assert assessment.certification_results["AWS Certified Solutions Architect"] is True
-    assert assessment.meets_seniority_requirement is True
-    assert assessment.meets_education_requirement is None
+    assert assessment.seniority_fit_score == 75.0
+    assert assessment.education_fit_score is None
 
 
 def test_assessment_certification_and_seniority_default_empty():
@@ -79,8 +79,8 @@ def test_assessment_certification_and_seniority_default_empty():
         meets_min_qualifications=False,
     )
     assert assessment.certification_results == {}
-    assert assessment.meets_seniority_requirement is None
-    assert assessment.meets_education_requirement is None
+    assert assessment.seniority_fit_score is None
+    assert assessment.education_fit_score is None
 
 
 def test_jd_skills_accepts_certifications_seniority_education():
