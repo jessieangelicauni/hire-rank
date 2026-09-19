@@ -252,6 +252,8 @@ def export_console_web_data(
                 "overall_recommendation": assessment_entry["overall_recommendation"],
                 "meets_min_qualifications": assessment_entry["meets_min_qualifications"],
                 "requirement_scores": assessment_entry.get("requirement_scores", {}),
+                "seniority_fit_score": assessment_entry.get("seniority_fit_score"),
+                "education_fit_score": assessment_entry.get("education_fit_score"),
             }
             exported_count += 1
 
