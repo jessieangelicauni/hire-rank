@@ -56,6 +56,9 @@ A separate literature asks whether an LLM's stated confidence reflects its true 
 
 A third body of work examines AI hiring at the organizational and ethical level, not the architecture level: Soleimani et al.\ find, from interviews with 39 HR professionals and AI developers, that reducing bias in AI recruitment requires understanding the mechanism behind a judgment, not just auditing outputs \cite{ref15}, and Kwok et al.\ apply the OECD AI Principles to GenAI-assisted hiring, flagging transparency and accountability as the least-satisfied \cite{ref16} -- neither asks whether a judgment model's output shape itself affects either property. No paper reviewed here evaluates a System One Model; to the authors' knowledge this is the first independent study of this model class, whose own claims live only in vendor-controlled or community sources at the time of writing -- the announcement \cite{ref11}, an integration guide \cite{ref17}, a community write-up \cite{ref18}, and a release summary \cite{ref19} -- none peer-reviewed. This work sits in applicant ranking, already served by a directly comparable free-text predecessor \cite{ref1,ref2}, making an architecture-level comparison possible, not just a benchmark-level one.
 
+\subsection{Background: Jev as a System One Model}
+Jev is explicitly not a conventional language model. TypeSafe AI's own integration documentation states plainly: ``Jev is not a language model. You give it a text and typed questions, and it answers each one with a confidence. It does not write text'' \cite{ref20}. Where an LLM samples output tokens autoregressively, Jev takes a text state and a fixed set of typed questions (Noul, Choice, or Score) and returns, in one parallel pass, a calibrated probability distribution over each question's possible answers; no text is generated, and TypeSafe prices output tokens at zero because none are produced \cite{ref11}. TypeSafe places Jev in a new class it calls a ``System One Model,'' trained with a proprietary method the vendor names Reinforcement Learning for Calibrated Decisions (RLCD) and served through a purpose-built parallel sampler \cite{ref11}. The underlying neural architecture -- whether it is encoder-only, decoder-only, or some other design -- is not disclosed in any vendor or third-party source consulted for this paper. Jev's observed behavior is nonetheless consistent with a classifier-style, encoder-like model: it maps a fixed input directly to a distribution over a closed set of predefined answers in a single forward pass, rather than generating a variable-length sequence token by token. This is an inference from behavior, not a confirmed architectural fact, since TypeSafe has not published the underlying design. Jev was created by Diogo Almeida, TypeSafe AI's co-founder and CEO, who ``co-invented RLHF and InstructGPT, the methods that lead to ChatGPT and GPT4'' \cite{ref21} before founding TypeSafe, which launched Jev publicly on September 15, 2026 with a \$40M seed round \cite{ref11}. As used in this paper (\texttt{jev-latest}), Jev accepts up to 64{,}000 tokens per request, 32{,}000 of which may be the state plus the single longest question \cite{ref22}, responds in 70--500ms end-to-end, and is priced at \$0.042 per million input tokens with output tokens free \cite{ref11}.
+
 \section{Methodology}
 
 \subsection{Pipeline Overview}
@@ -303,6 +306,15 @@ P.~Burnhill, ``TypeSafe Jev -- Project Knowledge Resource,'' GitHub Gist, Sep.~1
 
 \bibitem{ref19}
 ``Jev -- TypeSafe's model returns typed decisions, not text,'' AI/TLDR, Sep.~15, 2026. [Online]. Available: https://ai-tldr.dev/releases/typesafe-jev/
+
+\bibitem{ref20}
+``TypeSafe (Jev),'' Pydantic AI Documentation. [Online]. Available: https://pydantic.dev/docs/ai/models/typesafe/
+
+\bibitem{ref21}
+``Team,'' TypeSafe AI, accessed Sep.~2026. [Online]. Available: https://typesafe.ai/team
+
+\bibitem{ref22}
+``Models,'' TypeSafe AI Documentation, accessed Sep.~2026. [Online]. Available: https://docs.typesafe.ai/models
 
 \end{thebibliography}
 
