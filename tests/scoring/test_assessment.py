@@ -210,8 +210,8 @@ def test_generate_assessment_builds_certification_seniority_education_questions(
         JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
         JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
         JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=True, confidence=0.9),
-        JevAnswer(key="seniority", kind="noul", value=True, confidence=0.85),
-        JevAnswer(key="education", kind="noul", value=False, confidence=0.8),
+        JevAnswer(key="seniority", kind="score", value=3.0, confidence=0.85),
+        JevAnswer(key="education", kind="score", value=1.0, confidence=0.8),
     ]
 
     assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills_full(), n_calls=1)
@@ -222,8 +222,8 @@ def test_generate_assessment_builds_certification_seniority_education_questions(
     assert "seniority" in question_keys
     assert "education" in question_keys
     assert assessment.certification_results == {"AWS Certified Solutions Architect": True}
-    assert assessment.meets_seniority_requirement is True
-    assert assessment.meets_education_requirement is False
+    assert assessment.seniority_fit_score == 75.0
+    assert assessment.education_fit_score == 25.0
 
 
 def test_generate_assessment_omits_seniority_education_questions_when_not_stated():
@@ -242,11 +242,11 @@ def test_generate_assessment_omits_seniority_education_questions_when_not_stated
     assert "education" not in question_keys
     assert not any(k.startswith("certification::") for k in question_keys)
     assert assessment.certification_results == {}
-    assert assessment.meets_seniority_requirement is None
-    assert assessment.meets_education_requirement is None
+    assert assessment.seniority_fit_score is None
+    assert assessment.education_fit_score is None
 
 
-def test_seniority_and_education_criteria_point_to_concrete_evidence_not_circular_restatement():
+def test_seniority_and_education_criteria_are_five_level_evidence_based_scores():
     jd_skills = JDSkills(
         job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=[],
         seniority_requirement="5+ years of backend experience",
@@ -255,18 +255,23 @@ def test_seniority_and_education_criteria_point_to_concrete_evidence_not_circula
     questions = _build_questions(jd_skills)
     by_key = {q.key: q for q in questions}
 
-    seniority_criteria = " ".join(by_key["seniority"].criteria.values()).lower()
-    education_criteria = " ".join(by_key["education"].criteria.values()).lower()
+    assert by_key["seniority"].kind == "score"
+    assert by_key["education"].kind == "score"
+    assert len(by_key["seniority"].criteria) == 5
+    assert len(by_key["education"].criteria) == 5
 
-    # The old criteria just restated the question ("supports"/"does not support" this
-    # requirement) -- circular, giving Jev no concrete evidence to look for. The fixed
-    # criteria must name the kind of evidence that should tip the judgment.
+    seniority_criteria = " ".join(by_key["seniority"].criteria).lower()
+    education_criteria = " ".join(by_key["education"].criteria).lower()
+
+    # The old Noul criteria just restated the question ("supports"/"does not support" this
+    # requirement) -- circular, giving Jev no concrete evidence to look for. The Score criteria
+    # must instead name the kind of evidence that distinguishes each level.
     for banned_phrase in ("supports that the candidate", "does not support that the candidate"):
         assert banned_phrase not in seniority_criteria
         assert banned_phrase not in education_criteria
 
-    assert any(term in seniority_criteria for term in ("years", "dates", "titles", "roles"))
-    assert any(term in education_criteria for term in ("degree", "field of study", "credential"))
+    assert any(term in seniority_criteria for term in ("years", "level", "domain", "role"))
+    assert any(term in education_criteria for term in ("degree", "field", "credential"))
 
 
 def test_generate_assessment_aggregates_certification_and_seniority_across_calls():
@@ -278,13 +283,13 @@ def test_generate_assessment_aggregates_certification_and_seniority_across_calls
             JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.9),
             JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
             JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=cert_value, confidence=0.9),
-            JevAnswer(key="seniority", kind="noul", value=seniority_value, confidence=0.9),
+            JevAnswer(key="seniority", kind="score", value=seniority_value, confidence=0.9),
         ]
 
     jev_client.evaluate.side_effect = [
-        _answers(True, True),
-        _answers(True, False),
-        _answers(False, True),
+        _answers(True, 4.0),
+        _answers(True, 2.0),
+        _answers(False, 3.0),
     ]
 
     jd_skills = JDSkills(
@@ -294,7 +299,7 @@ def test_generate_assessment_aggregates_certification_and_seniority_across_calls
     assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills)
 
     assert assessment.certification_results == {"AWS Certified Solutions Architect": True}  # 2 of 3 votes
-    assert assessment.meets_seniority_requirement is True  # 2 of 3 votes
+    assert assessment.seniority_fit_score == pytest.approx((100.0 + 50.0 + 75.0) / 3)  # mean of 4.0/2.0/3.0 -> percent
 
 
 def test_load_or_generate_assessment_cache_key_depends_on_n_calls(tmp_path: Path):

@@ -47,8 +47,8 @@ class Assessment(BaseModel):
     requirement_scores: dict[str, float] = Field(default_factory=dict)
     confidence: dict[str, float] = Field(default_factory=dict)
     certification_results: dict[str, bool] = Field(default_factory=dict)
-    meets_seniority_requirement: bool | None = None
-    meets_education_requirement: bool | None = None
+    seniority_fit_score: float | None = Field(default=None, ge=0, le=100)
+    education_fit_score: float | None = Field(default=None, ge=0, le=100)
 
 
 class TournamentIterationRecord(BaseModel):

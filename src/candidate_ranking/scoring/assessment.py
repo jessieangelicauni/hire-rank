@@ -46,7 +46,23 @@ _REQUIREMENT_FIT_CRITERIA = [
     "Used substantively in a real role or project with clear responsibility",
     "Extensively and expertly demonstrated, with strong measurable outcomes or deep ownership",
 ]
-assert len(_OVERALL_FIT_CRITERIA) == len(_REQUIREMENT_FIT_CRITERIA)
+_SENIORITY_FIT_CRITERIA = [
+    "No relevant experience or years mentioned toward this requirement",
+    "Some relevant experience but clearly short of the stated years/level, or relevant only "
+    "in an adjacent domain (e.g., internship-level, or senior experience in an unrelated field)",
+    "Close to but slightly under the stated years/level requirement, in a clearly related role",
+    "Meets the stated years/level requirement in a directly matching role",
+    "Exceeds the stated years/level requirement in a directly matching role, with demonstrated "
+    "seniority (e.g., ownership scope, leadership)",
+]
+_EDUCATION_FIT_CRITERIA = [
+    "No relevant education mentioned",
+    "Education mentioned but neither the field nor the degree level matches the requirement",
+    "Matches the requirement on field or degree level, but not both",
+    "Matches the requirement's field and degree level",
+    "Exceeds the requirement (higher degree level) in the same or a closely related field",
+]
+assert len(_OVERALL_FIT_CRITERIA) == len(_REQUIREMENT_FIT_CRITERIA) == len(_SENIORITY_FIT_CRITERIA) == len(_EDUCATION_FIT_CRITERIA)
 _SCORE_MAX_INDEX = len(_OVERALL_FIT_CRITERIA) - 1
 
 
@@ -132,42 +148,24 @@ def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
         questions.append(
             JevQuestion(
                 key=_SENIORITY_KEY,
-                kind="noul",
+                kind="score",
                 instructions=(
-                    "Does the candidate meet the job description's stated seniority/experience "
+                    "How well does the candidate meet the job description's stated seniority/experience "
                     f"requirement: '{jd_skills.seniority_requirement}'?"
                 ),
-                criteria={
-                    "true": (
-                        "The CV explicitly states years of experience, employment dates, or job "
-                        "titles/roles that satisfy this seniority/experience requirement"
-                    ),
-                    "false": (
-                        "The CV's stated years of experience, employment dates, or job titles/roles "
-                        "clearly fall short of this requirement, or no relevant experience is mentioned at all"
-                    ),
-                },
+                criteria=_SENIORITY_FIT_CRITERIA,
             )
         )
     if jd_skills and jd_skills.education_requirement:
         questions.append(
             JevQuestion(
                 key=_EDUCATION_KEY,
-                kind="noul",
+                kind="score",
                 instructions=(
-                    "Does the candidate meet the job description's stated education "
+                    "How well does the candidate meet the job description's stated education "
                     f"requirement: '{jd_skills.education_requirement}'?"
                 ),
-                criteria={
-                    "true": (
-                        "The CV explicitly states a degree, field of study, or educational credential "
-                        "that satisfies this requirement"
-                    ),
-                    "false": (
-                        "The CV's stated education clearly falls short of this requirement, "
-                        "or no relevant education is mentioned at all"
-                    ),
-                },
+                criteria=_EDUCATION_FIT_CRITERIA,
             )
         )
     return questions
@@ -198,8 +196,8 @@ def _answers_to_assessment(
         requirement_scores=requirement_scores,
         confidence=confidence,
         certification_results=certification_results,
-        meets_seniority_requirement=by_key[_SENIORITY_KEY].value if _SENIORITY_KEY in by_key else None,
-        meets_education_requirement=by_key[_EDUCATION_KEY].value if _EDUCATION_KEY in by_key else None,
+        seniority_fit_score=_score_to_percent(by_key[_SENIORITY_KEY].value) if _SENIORITY_KEY in by_key else None,
+        education_fit_score=_score_to_percent(by_key[_EDUCATION_KEY].value) if _EDUCATION_KEY in by_key else None,
     )
 
 
@@ -281,11 +279,11 @@ def _aggregate_bool_dict(calls: list[Assessment], field: str) -> dict[str, bool]
     return result
 
 
-def _aggregate_optional_bool(calls: list[Assessment], field: str) -> bool | None:
-    votes = [v for a in calls if (v := getattr(a, field)) is not None]
-    if not votes:
+def _aggregate_mean_optional(calls: list[Assessment], field: str) -> float | None:
+    values = [v for a in calls if (v := getattr(a, field)) is not None]
+    if not values:
         return None
-    return sum(votes) > len(votes) / 2
+    return statistics.mean(values)
 
 
 def generate_assessment(
@@ -315,8 +313,8 @@ def generate_assessment(
         requirement_scores=_aggregate_mean_dict(calls, "requirement_scores"),
         confidence=_aggregate_mean_dict(calls, "confidence"),
         certification_results=_aggregate_bool_dict(calls, "certification_results"),
-        meets_seniority_requirement=_aggregate_optional_bool(calls, "meets_seniority_requirement"),
-        meets_education_requirement=_aggregate_optional_bool(calls, "meets_education_requirement"),
+        seniority_fit_score=_aggregate_mean_optional(calls, "seniority_fit_score"),
+        education_fit_score=_aggregate_mean_optional(calls, "education_fit_score"),
     )
 
 
