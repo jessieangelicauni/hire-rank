@@ -191,6 +191,32 @@ Table~\ref{tab_convergence_diag} gives each profile's SNR (Equation~\ref{eq_snr}
 \subsection{Multi-Call Ensemble Averaging}
 $\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (Section III-D). As shown in Table~\ref{tab_convergence_diag}'s $\tau_1 \to \tau_3$ columns, three-call averaging raises mean convergence from 0.901 to 0.940, with 9 of 10 profiles improving (java-developer is unchanged at 0.949; largest gain: it-security-engineer, 0.778 $\to$ 0.900) -- improvement across nearly every profile confirms the aggregation recovers genuine stability, not just smoothing over disagreement.
 
+\subsection{Efficiency}
+Across all 1{,}038 calls in the test-retest data (346 pairs $\times$ 3 repeats), a single Jev call takes a mean of 1.20s (median 1.18s, p95 1.64s, range 0.73--3.33s), for a total of 20.7 minutes of compute time across the full corpus -- call latency only, not including skill/JD extraction. Table~\ref{tab_latency} breaks this down per job profile; mean latency ranges from 1.03s (ui-ux-designer) to 1.33s (cloud-engineer), with no clear relationship to shortlisted-pool size: the largest pool (data-engineer, 228 calls) is among the slower profiles, but the second-largest (devops-engineer, 174 calls) sits near the middle.
+
+\begin{table}[!ht]
+\caption{Mean Jev call latency by job profile ($n=1{,}038$ calls total).}
+\label{tab_latency}
+\centering
+\scriptsize
+\begin{tabular}{lcc}
+\hline
+Job profile & Calls & Mean latency (s)\\
+\hline
+ui-ux-designer & 69 & 1.03\\
+full-stack-engineer & 99 & 1.09\\
+frontend-engineer & 39 & 1.11\\
+it-security-engineer & 48 & 1.13\\
+devops-engineer & 174 & 1.13\\
+data-scientist-engineer & 81 & 1.15\\
+backend-engineer & 66 & 1.16\\
+data-engineer & 228 & 1.28\\
+java-developer & 63 & 1.31\\
+cloud-engineer & 171 & 1.33\\
+\hline
+\end{tabular}
+\end{table}
+
 \subsection{Comparison with the Prior Tournament-Based System}
 \begin{table}[!ht]
 \caption{Comparison against the closest prior published system \cite{ref2}.}
