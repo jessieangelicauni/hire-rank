@@ -78,7 +78,7 @@ $\downarrow$ \\[1pt]
 $\downarrow$ \\[1pt]
 \fbox{\begin{minipage}{0.85\columnwidth}\centering Ranking (sort by aggregated overall-fit score)\end{minipage}} \\[1pt]
 $\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Score Decomposition Diagnostic \textbf{[C2: SNR vs. Kendall-$\tau$]}\end{minipage}}
+\fbox{\begin{minipage}{0.85\columnwidth}\centering Score Decomposition Diagnostic \textbf{[C2: SNR compared with Kendall-$\tau$]}\end{minipage}}
 \end{tabular}
 \caption{End-to-end pipeline architecture, annotated with the three contributions (C1--C3) at their point of intervention.}
 \label{fig_pipeline}
@@ -138,13 +138,13 @@ Criteria-design ablation sample & 40 pairs (Score); 169 pairs (Noul)\\
 \section{Results and Discussion}
 
 \subsection{Test-Retest Reliability and Internal Coherence}
-Across 346 pairs $\times$ 3 repeats, the overall-fit score's within-pair standard deviation (0--100 scale) has mean 0.82 (median 0.66), and the recommendation is identical across all 3 repeats for 94.2\% of pairs -- both indicate low single-call noise before any aggregation. Per-requirement scores correlate with the overall fit score ($\rho=0.680$, $p<0.001$, $n=346$); a ``hire'' recommendation separates from ``no'' in the expected direction (mean 83.1 vs. 24.3, Mann-Whitney $p<0.001$), as does meeting minimum qualifications (mean 79.2 vs. 43.2, $p<0.001$).
+Across 346 pairs $\times$ 3 repeats, the overall-fit score's within-pair standard deviation (0--100 scale) has mean 0.82 (median 0.66), and the recommendation is identical across all 3 repeats for 94.2\% of pairs -- both indicate low single-call noise before any aggregation. Per-requirement scores correlate with the overall fit score ($\rho=0.680$, $p<0.001$, $n=346$); a ``hire'' recommendation separates from ``no'' in the expected direction (mean 83.1 compared with 24.3, Mann-Whitney $p<0.001$), as does meeting minimum qualifications (mean 79.2 compared with 43.2, $p<0.001$).
 
 Why is $\rho=0.680$ significant yet short of 1.0? Because of how the numbers are produced, not a reliability defect: Jev answers the overall-fit and every per-requirement question as independent items in the same call -- overall fit is never computed from the per-requirement scores, so they are two separate readings of the same evidence. Overall fit also weighs things an unweighted skill average cannot, such as seniority fit, and single-call noise pulls the correlation down further. A correlation near zero, not below 1.0, would signal incoherent judgments; $\rho=0.680$ is what two related but distinct judgments should look like.
 
 \subsection{Criteria-Grounded Question Design}
 \begin{table}[!ht]
-\caption{Criteria-design ablations: concrete vs.\ bare-label criteria, paired by (job, applicant) pair.}
+\caption{Criteria-design ablations: concrete compared with bare-label criteria, paired by (job, applicant) pair.}
 \label{tab_score_ablation}
 \centering
 \scriptsize
@@ -152,19 +152,19 @@ Why is $\rho=0.680$ significant yet short of 1.0? Because of how the numbers are
 \hline
 Question group & $n$ & Mean conf.\ (concrete / other) & $p$ ($r$)\\
 \hline
-\multicolumn{4}{l}{\textit{Score criteria (concrete vs.\ vague)}}\\
+\multicolumn{4}{l}{\textit{Score criteria (concrete compared with vague)}}\\
 Overall fit (affected) & 40 & 0.678 / 0.615 & 0.049 (0.05)\\
 Recomm.\ + min.\ qual.\ (control) & 80 & 0.699 / 0.699 & 0.634 ($-$0.09)\\
-Per-requirement (affected) & 869 & 0.891 / 0.695 & $<0.001$ (0.75)\\
+Per-requirement (affected) & 869 & 0.890 / 0.694 & $<0.001$ (0.74)\\
 \hline
-\multicolumn{4}{l}{\textit{Score criteria: seniority/education (concrete vs.\ bare-label)}}\\
+\multicolumn{4}{l}{\textit{Score criteria: seniority/education (concrete compared with bare-label)}}\\
 Seniority & 66 & 0.583 / 0.585 & 0.597 (0.17)\\
 Education & 146 & 0.760 / 0.679 & $<0.001$ (0.48)\\
 Pooled & 212 & 0.705 / 0.650 & $<0.001$ (0.38)\\
 \hline
 \end{tabular}
 \end{table}
-Each row pairs the same question asked twice under the two criteria designs and reports mean confidence under each plus the Wilcoxon result. As shown in Table~\ref{tab_score_ablation}, the design change does what it should: the Score criteria's unaffected control shows no effect ($p=0.634$), while both affected groups move as expected, most strongly for the many per-requirement questions ($r=0.747$, an order of magnitude larger than the single overall-fit question, $r=0.05$). The same principle holds for the seniority and education Score questions, reaching significance pooled and for education alone but not seniority alone ($p=0.597$, $n=66$); the direction matches the per-requirement Score result, but the pooled effect is smaller ($r=0.38$ vs.\ $r=0.75$) -- unlike the per-requirement questions, which pool many distinct skill-match judgments per pair, seniority and education each contribute a single judgment per pair, so a non-significant seniority effect on its own pulls the pooled effect size down.
+Each row pairs the same question asked twice under the two criteria designs and reports mean confidence under each plus the Wilcoxon result. As shown in Table~\ref{tab_score_ablation}, the design change does what it should: the Score criteria's unaffected control shows no effect ($p=0.634$), while both affected groups move as expected, most strongly for the many per-requirement questions ($r=0.743$, an order of magnitude larger than the single overall-fit question, $r=0.05$). The same principle holds for the seniority and education Score questions, reaching significance pooled and for education alone but not seniority alone ($p=0.597$, $n=66$); the direction matches the per-requirement Score result, but the pooled effect is smaller ($r=0.38$ compared with $r=0.743$) -- unlike the per-requirement questions, which pool many distinct skill-match judgments per pair, seniority and education each contribute a single judgment per pair, so a non-significant seniority effect on its own pulls the pooled effect size down.
 
 \subsection{Structured Score Decomposition Diagnostic}
 \begin{table}[!ht]
@@ -176,25 +176,25 @@ Each row pairs the same question asked twice under the two criteria designs and 
 \hline
 Job profile & $n$ & SNR & $\tau_1$ & $\tau_3$ \\
 \hline
-it-security-engineer & 16 & 6.28 & 0.811 & 0.844\\
-data-scientist-eng.\ & 27 & 5.55 & 0.818 & 0.886\\
-backend-engineer & 22 & 8.77 & 0.838 & 0.942\\
-frontend-engineer & 13 & 9.07 & 0.897 & 0.949\\
-devops-engineer & 58 & 13.70 & 0.929 & 0.960\\
-full-stack-engineer & 33 & 12.42 & 0.934 & 0.952\\
-data-engineer & 76 & 17.04 & 0.939 & 0.962\\
-ui-ux-designer & 23 & 30.54 & 0.947 & 0.974\\
-java-developer & 21 & 13.66 & 0.962 & 0.981\\
-cloud-engineer & 57 & 15.54 & 0.928 & 0.963\\
+it-security-engineer & 16 & 5.63 & 0.778 & 0.900\\
+data-scientist-eng.\ & 27 & 5.72 & 0.848 & 0.890\\
+backend-engineer & 22 & 10.05 & 0.896 & 0.954\\
+frontend-engineer & 13 & 13.98 & 0.880 & 0.897\\
+devops-engineer & 58 & 12.51 & 0.923 & 0.956\\
+full-stack-engineer & 33 & 10.63 & 0.914 & 0.944\\
+data-engineer & 76 & 17.79 & 0.937 & 0.958\\
+ui-ux-designer & 23 & 24.49 & 0.947 & 0.984\\
+java-developer & 21 & 13.33 & 0.949 & 0.949\\
+cloud-engineer & 57 & 17.30 & 0.933 & 0.963\\
 \hline
-Mean (all 10) & -- & -- & 0.900 & 0.941\\
+Mean (all 10) & -- & -- & 0.901 & 0.940\\
 \hline
 \end{tabular}
 \end{table}
-Table~\ref{tab_convergence_diag} gives each profile's SNR (Equation~\ref{eq_snr}) alongside its Kendall-$\tau$. SNR and $\tau_1$ correlate positively and significantly across the 10 profiles ($\rho=0.794$, $p=0.0061$): the three lowest-SNR profiles are also the three lowest-$\tau_1$, and the highest-SNR profile (ui-ux-designer, 30.5) is among the highest-$\tau_1$ -- support for reading low convergence as close-scoring applicants, not an unreliable judge. The diagnostic is also demonstrated concretely: the informative-requirement check flagged 8 of 76 data-engineer applicants (11\%) near-zero specifically on Python, and 2 of 33 full-stack-engineer applicants (6\%) near-zero on REST APIs and Node.js despite adequate scores elsewhere -- evidence the skill-matching stage, not Jev, admitted these applicants. With $n=10$ profiles, the correlation is suggestive, not conclusive, until replicated on more job profiles.
+Table~\ref{tab_convergence_diag} gives each profile's SNR (Equation~\ref{eq_snr}) alongside its Kendall-$\tau$. SNR and $\tau_1$ correlate positively and significantly across the 10 profiles ($\rho=0.770$, $p=0.0092$): the two lowest-SNR profiles (it-security-engineer, 5.63; data-scientist-engineer, 5.72) are also the two lowest-$\tau_1$, though the third-lowest-SNR profile (backend-engineer, 10.05) ranks fourth-lowest on $\tau_1$, just behind frontend-engineer; the highest-SNR profile (ui-ux-designer, 24.49) is among the highest-$\tau_1$ -- support for reading low convergence as close-scoring applicants, not an unreliable judge. The diagnostic is also demonstrated concretely: the informative-requirement check flagged 8 of 76 data-engineer applicants (11\%) near-zero specifically on Python, and 2 of 33 full-stack-engineer applicants (6\%) near-zero on REST APIs and Node.js despite adequate scores elsewhere -- evidence the skill-matching stage, not Jev, admitted these applicants. With $n=10$ profiles, the correlation is suggestive, not conclusive, until replicated on more job profiles.
 
 \subsection{Multi-Call Ensemble Averaging}
-$\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (Section III-D). As shown in Table~\ref{tab_convergence_diag}'s $\tau_1 \to \tau_3$ columns, three-call averaging raises mean convergence from 0.900 to 0.941, with every profile improving (largest gain: data-scientist-engineer, 0.818 $\to$ 0.886) -- consistent improvement across every profile confirms the aggregation recovers genuine stability, not just smoothing over disagreement.
+$\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (Section III-D). As shown in Table~\ref{tab_convergence_diag}'s $\tau_1 \to \tau_3$ columns, three-call averaging raises mean convergence from 0.901 to 0.940, with 9 of 10 profiles improving (java-developer is unchanged at 0.949; largest gain: it-security-engineer, 0.778 $\to$ 0.900) -- improvement across nearly every profile confirms the aggregation recovers genuine stability, not just smoothing over disagreement.
 
 \subsection{Comparison with the Prior Tournament-Based System}
 \begin{table}[!ht]
@@ -202,27 +202,33 @@ $\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (S
 \label{tab_comparison}
 \centering
 \scriptsize
-\begin{tabular}{p{0.85in}p{1.15in}p{1.15in}}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{p{0.8in}p{1.05in}p{1.15in}}
 \hline
 Dimension & Prior system \cite{ref2} & This work\\
 \hline
-Assessment & Free-text + retry-on-contradiction & Structured Score/Choice/Noul\\
+Assessment & Free-text strengths/weaknesses + retry-on-contradiction & Typed Score/Choice/Noul answered in one parallel pass\\
+Output shape & Free prose, validated against a schema after generation & Predefined typed answers; schema violation impossible by construction\\
+Hallucination handling & Live contradiction-check-and-regenerate loop & Not applicable: no free text to hallucinate\\
+Identifier robustness & Positional tokens + schema-constrained ranking + retry & Not needed: one call per applicant, no identifier passing\\
 Ranking & Iterative MC-KG tournament + Plackett-Luce & Direct sort on aggregated score\\
-Total calls & $\approx$2{,}061 (348 assess.\ + 1{,}713 tournament) & 1{,}038 (346$\times$3), 0 tournament\\
-Ranking convergence & 0.957 & 0.941 (3-call avg)\\
-Confidence signal & Faithfulness 0.880 (entailment) & Calibrated conf.\ 0.891 (requirement Qs); different construct\\
+Ranking convergence (Kendall-$\tau$) & 0.957 & 0.940 (3-call average)\\
+Calls per (job, applicant) pair & 1 assessment + share of the job's tournament rounds & 1 (all questions answered in parallel)\\
+Total calls (corpus) & $\approx$2{,}061 (348 assess.\ + 1{,}713 tournament) & 1{,}038 (346$\times$3), 0 tournament\\
+Generation model & Qwen2.5-14B-Instruct, 4-bit, local via Ollama & jev-latest, hosted by TypeSafe AI\\
+Confidence signal & Faithfulness 0.880 (entailment) & Calibrated confidence 0.890 (requirement questions); different construct\\
 Explanation & Strengths/weaknesses narrative & Score + confidence, no narrative\\
 \hline
 \end{tabular}
 \end{table}
-As shown in Table~\ref{tab_comparison}, this system does not win uniformly. It loses a little ranking accuracy, and does not win on groundedness either -- Faithfulness and per-answer confidence measure different things (entailment vs.\ decision stability), so the near-equal figures are not evidence either is ``more accurate.'' It wins clearly on architectural cost (half the calls, no tournament infrastructure, no schema-violating output possible vs.\ an empirical guarantee) and on a capability the prior system lacks entirely: native, per-answer calibrated confidence. One structural point favors it without a matching number to cite: the prior system's 1,713 tournament calls form a sequential chain, each iteration waiting on the last fit, while this work's calls are independent and parallelizable.
+As shown in Table~\ref{tab_comparison}, this system is not better in every way. It ranks slightly less accurately, and it does not improve groundedness either: Faithfulness checks whether a written claim is supported by the resume, while per-answer confidence measures how stable a decision is, so the two numbers measure different things and neither one proves the system is ``more accurate.'' Where it does win is cost: it uses half the calls, needs no tournament infrastructure, and its output cannot break the schema by construction, whereas the prior system could only reduce such failures in practice. It also offers something the prior system had no way to provide: a native, calibrated confidence for every answer. One further advantage has no number attached: the prior system's 1,713 tournament calls form a sequential chain in which each iteration waits for the previous one to finish, whereas this system's calls are independent and run in parallel.
 
 \section{Conclusion}
-This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- criteria-grounded question design, structured score decomposition as a diagnostic signal, and multi-call ensemble averaging -- each motivated by a reliability problem observed in practice. As Table~\ref{tab_comparison} makes clear, the result is not a uniform improvement over the prior system: it trades a little ranking accuracy and all free-text interpretability for roughly half the model calls, no tournament infrastructure, and a native calibrated confidence the prior system never had. Criteria-grounded design, validated first for the overall-fit and per-requirement Score questions, also holds for the seniority and education Score questions, though with a smaller effect size ($r=0.38$ vs.\ $r=0.75$ for per-requirement confidence), and score decomposition's diagnostic value is confirmed quantitatively, not just anecdotally, surfacing a shortlisting-stage defect the prior system could only have found by manual reading.
+This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- criteria-grounded question design, structured score decomposition as a diagnostic signal, and multi-call ensemble averaging -- each motivated by a reliability problem observed in practice. As Table~\ref{tab_comparison} makes clear, the result is not a uniform improvement over the prior system: it trades a little ranking accuracy and all free-text interpretability for roughly half the model calls, no tournament infrastructure, and a native calibrated confidence the prior system never had. Criteria-grounded design, validated first for the overall-fit and per-requirement Score questions, also holds for the seniority and education Score questions, though with a smaller effect size ($r=0.38$ compared with $r=0.743$ for per-requirement confidence), and score decomposition's diagnostic value is confirmed quantitatively, not just anecdotally, surfacing a shortlisting-stage defect the prior system could only have found by manual reading.
 
-This limitation is that this study, like \cite{ref2}, has not been validated against human-expert judgment; every metric here measures internal reliability, not hiring-decision correctness. A second is that the SNR-convergence correlation in Section V-C has only $n=10$ points: SNR and convergence are properties of a whole job profile's pool, not an individual applicant, so this correlation has at most one point per job profile regardless of applicant count -- significant, but suggestive until replicated on more job profiles. A third is that this work trades away the prior system's free-text interpretability: output is a score and a confidence value, not a narrative explaining why, and per-requirement scores only partly substitute -- a direct trade-off against the reliability gains reported here.
+A limitation is that the SNR-convergence correlation in Section V-C has only $n=10$ points: SNR and convergence are properties of a whole job profile's pool, not an individual applicant, so this correlation has at most one point per job profile regardless of applicant count -- significant, but suggestive until replicated on more job profiles. A second is that this work trades away the prior system's free-text interpretability: output is a score and a confidence value, not a narrative explaining why, and per-requirement scores only partly substitute -- a direct trade-off against the reliability gains reported here. A third is that the shortlisting stage, inherited unchanged from the prior system, treats every extracted skill equally: it counts matches toward a minimum number without distinguishing a role's core stack from peripheral, generic skills, so an applicant can be admitted by matching only utility skills (e.g., Docker, Kubernetes, AWS) while scoring near-zero on the role's core requirements -- the full-stack-engineer case Section III-C surfaces. Score decomposition detects this defect but does not correct it, since doing so would require modifying the upstream stage both pipelines share.
 
-The future work is a human-expert validation study using \cite{ref1}'s rubric-agreement methodology. A second is a targeted latency study isolating question count vs.\ response time. A third is a lightweight explanation layer -- surfacing the lowest-scoring items as a structured rationale -- to partially restore interpretability without reintroducing free text.
+The future work is a replication of the SNR-convergence correlation on more job profiles, since its current support rests on only $n=10$ points. A second is a lightweight explanation layer -- surfacing the lowest-scoring items as a structured rationale -- to partially restore the interpretability this work trades away, without reintroducing free text. A third is separating a role's core technical skills from peripheral, generic ones during JD skill extraction, so the shared shortlisting stage stops admitting applicants who match only utility skills.
 
 \section*{Acknowledgment}
 The authors acknowledge the use of NVIDIA GeForce RTX 4070 Ti SUPER GPU hardware for the local skill/JD-extraction stage, and the open-source LangGraph, sentence-transformers, and PyTorch libraries.
