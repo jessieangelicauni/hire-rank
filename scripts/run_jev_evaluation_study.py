@@ -61,34 +61,28 @@ def _vague_build_questions(jd_technical_skills: list[str] | None) -> list[JevQue
     return questions
 
 
-def _circular_noul_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
+def _vague_seniority_education_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
     questions = []
     if jd_skills and jd_skills.seniority_requirement:
         questions.append(
             JevQuestion(
-                key="seniority", kind="noul",
+                key="seniority", kind="score",
                 instructions=(
-                    "Does the candidate meet the job description's stated seniority/experience "
+                    "How well does the candidate meet the job description's stated seniority/experience "
                     f"requirement: '{jd_skills.seniority_requirement}'?"
                 ),
-                criteria={
-                    "true": "The CV supports that the candidate meets this seniority/experience requirement",
-                    "false": "The CV does not support that the candidate meets this seniority/experience requirement",
-                },
+                criteria=_VAGUE_SCORE_CRITERIA,
             )
         )
     if jd_skills and jd_skills.education_requirement:
         questions.append(
             JevQuestion(
-                key="education", kind="noul",
+                key="education", kind="score",
                 instructions=(
-                    "Does the candidate meet the job description's stated education "
+                    "How well does the candidate meet the job description's stated education "
                     f"requirement: '{jd_skills.education_requirement}'?"
                 ),
-                criteria={
-                    "true": "The CV supports that the candidate meets this education requirement",
-                    "false": "The CV does not support that the candidate meets this education requirement",
-                },
+                criteria=_VAGUE_SCORE_CRITERIA,
             )
         )
     return questions
@@ -207,7 +201,7 @@ def collect_ablation(
     return results
 
 
-def collect_noul_criteria_ablation(
+def collect_seniority_education_ablation(
     jev_client: JevClient,
     jds_by_id: dict[str, JobDescription],
     candidates_by_id: dict[str, Candidate],
@@ -218,7 +212,7 @@ def collect_noul_criteria_ablation(
     eligible_pairs = [
         pair
         for pair in pairs
-        if _circular_noul_questions(jd_skills_by_jd.get(pair[0]))
+        if _vague_seniority_education_questions(jd_skills_by_jd.get(pair[0]))
     ]
 
     def run_one(pair: tuple[str, str]) -> dict:
@@ -228,21 +222,21 @@ def collect_noul_criteria_ablation(
         jd_skills = jd_skills_by_jd.get(jd_id)
 
         cached = json.loads((run_dir / jd_id / "assessments.json").read_text(encoding="utf-8"))[candidate_id]
-        circular_questions = _circular_noul_questions(jd_skills)
+        vague_questions = _vague_seniority_education_questions(jd_skills)
         concrete_confidence = {
-            q.key: cached["confidence"][q.key] for q in circular_questions if q.key in cached["confidence"]
+            q.key: cached["confidence"][q.key] for q in vague_questions if q.key in cached["confidence"]
         }
 
         state = _build_state(jd, candidate)
-        answers, elapsed = _timed_evaluate(jev_client, state, circular_questions)
-        circular_confidence = {a.key: a.confidence for a in answers}
+        answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
+        vague_confidence = {a.key: a.confidence for a in answers}
 
         return {
             "jd_id": jd_id,
             "candidate_id": candidate_id,
             "concrete_confidence": concrete_confidence,
-            "circular_confidence": circular_confidence,
-            "circular_latency_seconds": elapsed,
+            "vague_confidence": vague_confidence,
+            "vague_latency_seconds": elapsed,
         }
 
     results: list[dict] = []
@@ -250,11 +244,11 @@ def collect_noul_criteria_ablation(
         for i, result in enumerate(executor.map(run_one, eligible_pairs), start=1):
             results.append(result)
             if i % 25 == 0 or i == len(eligible_pairs):
-                print(f"noul-criteria-ablation: {i}/{len(eligible_pairs)} pairs done")
+                print(f"seniority-education-ablation: {i}/{len(eligible_pairs)} pairs done")
     return results
 
 
-def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_workers: int, dry_run: bool, noul_criteria_only: bool) -> None:
+def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_workers: int, dry_run: bool, seniority_education_only: bool) -> None:
     cfg = apply_env_overrides(RunConfig.full(PROJECT_ROOT))
     run_dir = cfg.runs_dir / run_id
     manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
@@ -265,12 +259,12 @@ def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_wo
     print(f"Loaded {len(pairs)} successfully-assessed (jd, candidate) pair(s) from run {run_id}")
 
     jds_by_id, candidates_by_id, jd_skills_by_jd = load_corpus(cfg, jd_ids)
-    eligible_count = sum(1 for jd_id, _ in pairs if _circular_noul_questions(jd_skills_by_jd.get(jd_id)))
+    eligible_count = sum(1 for jd_id, _ in pairs if _vague_seniority_education_questions(jd_skills_by_jd.get(jd_id)))
 
     if dry_run:
-        if noul_criteria_only:
+        if seniority_education_only:
             print(
-                f"Dry run: would collect noul-criteria ablation for {eligible_count} pair(s) whose job "
+                f"Dry run: would collect seniority/education ablation for {eligible_count} pair(s) whose job "
                 f"description has a seniority or education requirement (out of {len(pairs)} total pairs)."
             )
         else:
@@ -288,13 +282,13 @@ def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_wo
     out_dir = run_dir / "evaluation"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    if noul_criteria_only:
-        print("Collecting noul-criteria-design ablation data (seniority/education, circular vs. concrete)...")
-        noul_results = collect_noul_criteria_ablation(
+    if seniority_education_only:
+        print("Collecting seniority/education criteria-design ablation data (concrete vs. bare-label Score)...")
+        sen_edu_results = collect_seniority_education_ablation(
             jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, run_dir, pairs
         )
-        (out_dir / "noul_criteria_ablation.json").write_text(json.dumps(noul_results, indent=2), encoding="utf-8")
-        print(f"Wrote {len(noul_results)} noul-criteria-ablation record(s) to {out_dir / 'noul_criteria_ablation.json'}")
+        (out_dir / "seniority_education_ablation.json").write_text(json.dumps(sen_edu_results, indent=2), encoding="utf-8")
+        print(f"Wrote {len(sen_edu_results)} seniority/education ablation record(s) to {out_dir / 'seniority_education_ablation.json'}")
         return
 
     print(f"Collecting test-retest reliability data ({len(pairs)} pairs x {repeats} repeats)...")
@@ -323,12 +317,12 @@ if __name__ == "__main__":
     parser.add_argument("--max-workers", type=int, default=8)
     parser.add_argument("--dry-run", action="store_true", help="Validate pair counts without calling Jev.")
     parser.add_argument(
-        "--noul-criteria-only", action="store_true",
-        help="Skip test-retest and score-criteria ablation; only collect the seniority/education "
-        "circular-vs-concrete Noul criteria ablation.",
+        "--seniority-education-only", action="store_true",
+        help="Skip test-retest and technical-requirement ablation; only collect the seniority/education "
+        "concrete-vs-bare-label Score criteria ablation, over all eligible pairs.",
     )
     args = parser.parse_args()
     main(
         args.run_id, args.repeats, args.ablation_sample_size, args.seed, args.max_workers, args.dry_run,
-        args.noul_criteria_only,
+        args.seniority_education_only,
     )
