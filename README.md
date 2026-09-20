@@ -25,7 +25,7 @@ per job description (JD) and/or per candidate where noted:
    extracted candidate skill into an index for fast similarity search.
 3. **Shortlisting** — per JD, candidates are shortlisted by cosine
    similarity between their extracted skills and the JD's extracted
-   technical skills (`--skill-match-threshold`, `--min-skill-matches`). Only
+   technical skills (`--skill-match-threshold`, `--min-skill-matches`, `--min-must-have-matches`). Only
    shortlisted candidates get assessed — this is what keeps the expensive
    LLM stages below from running against the whole CV corpus for every JD.
 4. **Assessment generation** — per shortlisted (JD, candidate) pair, an LLM
@@ -117,6 +117,7 @@ while in the background.
 | `--run-id ID` | new timestamp | Resume a prior run from its checkpoint instead of starting fresh. Pass the `Run ID` printed by the run you want to continue. |
 | `--skill-match-threshold FLOAT` | `0.8` | Cosine similarity at or above which a candidate's skill counts as matching a JD's technical skill. |
 | `--min-skill-matches INT` | `5` | Number of a JD's technical skills a candidate must match to be shortlisted for assessment (auto-reduced to the JD's total technical-skill count if that's smaller). |
+| `--min-must-have-matches INT` | `2` | Number of a JD's must-have technical skills a candidate must match to be shortlisted for assessment (auto-reduced to the JD's total must-have-skill count if that's smaller; has no effect if the JD has no classified must-have skills). |
 
 Most other pipeline parameters (tournament iterations, subset size, model
 names, concurrency, etc.) are set via environment variables — see
@@ -133,7 +134,7 @@ uv run python -m candidate_ranking.cli run --run-id 20260826-010039
 
 This restores pipeline state from `runs/_cache/checkpoints.db` and
 continues from the last completed stage. On resume, the original run's
-`--skill-match-threshold`/`--min-skill-matches` (read back from that run's
+`--skill-match-threshold`/`--min-skill-matches`/`--min-must-have-matches` (read back from that run's
 `manifest.json`) are preserved even if different values are passed on the
 command line.
 
