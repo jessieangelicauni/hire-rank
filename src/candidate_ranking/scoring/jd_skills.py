@@ -28,6 +28,7 @@ JD_SKILL_EXTRACTION_PROMPT = ChatPromptTemplate.from_messages(
             "- Reason through the description section by section in the `reasoning` field before giving your final answer.\n"
             "- Note which text backs each skill, certification, seniority requirement, or education requirement you identify.\n"
             "- List the identified skills in the `technical_skills` field.\n"
+            "- Of those, list in `must_have_skills` the subset the description states or clearly implies is required, mandatory, or essential; a skill mentioned as a plus, preferred, or with no importance qualifier at all is not must-have.\n"
             "- List any named professional certifications (e.g. \"AWS Certified Solutions Architect\", \"PMP\") in the `certifications` field.\n"
             "- If the description states a seniority or years-of-experience requirement, summarize it in one sentence in the `seniority_requirement` field; otherwise leave it null.\n"
             "- If the description states an education requirement, summarize it in one sentence in the `education_requirement` field; otherwise leave it null.\n\n"
@@ -36,7 +37,7 @@ JD_SKILL_EXTRACTION_PROMPT = ChatPromptTemplate.from_messages(
             "- Write each skill the way it would appear as a standalone item on a resume.\n"
             "- Do not phrase a skill as a description of proficiency, usage, or context.\n"
             "- Omit generic process or methodology phrases that do not name a specific technology or subject.\n"
-            "- List required and nice-to-have skills together, without distinguishing between them.\n"
+            "- Every entry in `must_have_skills` must also appear in `technical_skills`; do not name a must-have skill that isn't already in that list.\n"
             "- Do not name a certification as a technical skill, or a technical skill as a certification.\n"
             "- A degree requirement belongs only in `education_requirement`, never in `technical_skills`.",
         ),
@@ -48,6 +49,7 @@ JD_SKILL_EXTRACTION_PROMPT = ChatPromptTemplate.from_messages(
 class _GeneratedSkills(BaseModel):
     reasoning: str = Field(min_length=1)
     technical_skills: list[str] = Field(default_factory=list)
+    must_have_skills: list[str] = Field(default_factory=list)
     certifications: list[str] = Field(default_factory=list)
     seniority_requirement: str | None = None
     education_requirement: str | None = None
@@ -55,6 +57,20 @@ class _GeneratedSkills(BaseModel):
 
 class JDSkillsGenerationError(Exception):
     pass
+
+
+def _filter_must_have_skills(must_have_skills: list[str], technical_skills: list[str], jd_id: str) -> list[str]:
+    technical_normalized = {s.strip().lower() for s in technical_skills}
+    filtered: list[str] = []
+    for skill in must_have_skills:
+        if skill.strip().lower() in technical_normalized:
+            filtered.append(skill)
+        else:
+            logger.warning(
+                "Discarding must-have skill %r for JD %s: not present in extracted technical_skills",
+                skill, jd_id,
+            )
+    return filtered
 
 
 def build_jd_skills_chain(llm: BaseChatModel) -> Runnable:
@@ -91,6 +107,7 @@ def generate_jd_skills(
         job_description_id=jd.id,
         generated_by_model=model_name,
         technical_skills=result.technical_skills,
+        must_have_skills=_filter_must_have_skills(result.must_have_skills, result.technical_skills, jd.id),
         certifications=result.certifications,
         seniority_requirement=result.seniority_requirement,
         education_requirement=result.education_requirement,

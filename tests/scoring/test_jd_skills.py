@@ -47,3 +47,43 @@ def test_generate_jd_skills_handles_no_certifications_or_seniority():
     assert jd_skills.certifications == []
     assert jd_skills.seniority_requirement is None
     assert jd_skills.education_requirement is None
+
+
+def test_generate_jd_skills_extracts_must_have_skills():
+    chain = Mock()
+    chain.invoke.return_value = _GeneratedSkills(
+        reasoning="analysis",
+        technical_skills=["Python", "SQL"],
+        must_have_skills=["Python"],
+    )
+
+    jd_skills = generate_jd_skills(_jd(), chain, "qwen2.5:14b")
+
+    assert jd_skills.must_have_skills == ["Python"]
+
+
+def test_generate_jd_skills_filters_must_have_not_in_technical_skills(caplog):
+    chain = Mock()
+    chain.invoke.return_value = _GeneratedSkills(
+        reasoning="analysis",
+        technical_skills=["Python", "SQL"],
+        must_have_skills=["Python", "Rust"],
+    )
+
+    with caplog.at_level("WARNING"):
+        jd_skills = generate_jd_skills(_jd(), chain, "qwen2.5:14b")
+
+    assert jd_skills.must_have_skills == ["Python"]
+    assert "Rust" in caplog.text
+
+
+def test_generate_jd_skills_must_have_skills_defaults_empty():
+    chain = Mock()
+    chain.invoke.return_value = _GeneratedSkills(
+        reasoning="analysis",
+        technical_skills=["Python"],
+    )
+
+    jd_skills = generate_jd_skills(_jd(), chain, "qwen2.5:14b")
+
+    assert jd_skills.must_have_skills == []
