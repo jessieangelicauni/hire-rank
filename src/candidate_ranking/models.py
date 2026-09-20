@@ -32,6 +32,7 @@ class JDSkills(BaseModel):
     job_description_id: str
     generated_by_model: str
     technical_skills: list[str] = Field(default_factory=list)
+    must_have_skills: list[str] = Field(default_factory=list)
     certifications: list[str] = Field(default_factory=list)
     seniority_requirement: str | None = None
     education_requirement: str | None = None

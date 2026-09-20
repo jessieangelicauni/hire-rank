@@ -101,3 +101,18 @@ def test_jd_skills_certifications_seniority_education_default_empty():
     assert jd_skills.certifications == []
     assert jd_skills.seniority_requirement is None
     assert jd_skills.education_requirement is None
+
+
+def test_jd_skills_accepts_must_have_skills():
+    jd_skills = JDSkills(
+        job_description_id="jd-1",
+        generated_by_model="qwen2.5:14b",
+        technical_skills=["Python", "SQL"],
+        must_have_skills=["Python"],
+    )
+    assert jd_skills.must_have_skills == ["Python"]
+
+
+def test_jd_skills_must_have_skills_defaults_empty():
+    jd_skills = JDSkills(job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=["Python"])
+    assert jd_skills.must_have_skills == []
