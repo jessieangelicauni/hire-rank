@@ -65,6 +65,7 @@ def run(
     run_id: str | None = None,
     skill_match_threshold: float = 0.8,
     min_skill_matches: int = 5,
+    min_must_have_matches: int = 2,
 ) -> Path:
     cfg = RunConfig.full(PROJECT_ROOT)
     cfg = apply_env_overrides(cfg)
@@ -106,6 +107,7 @@ def run(
         run_id,
         skill_match_threshold=skill_match_threshold,
         min_skill_matches=min_skill_matches,
+        min_must_have_matches=min_must_have_matches,
     )
 
     db_path = cfg.cache_dir / "checkpoints.db"
@@ -127,7 +129,8 @@ def run(
         if len(final_state["shortlists"].get(jd.id, [])) == 0:
             print(
                 f"WARNING: JD {jd.id}'s skill-match shortlist is empty (skill_match_threshold="
-                f"{skill_match_threshold}, min_skill_matches={min_skill_matches}); no candidates will be "
+                f"{skill_match_threshold}, min_skill_matches={min_skill_matches}, "
+                f"min_must_have_matches={min_must_have_matches}); no candidates will be "
                 "assessed for this JD.",
                 file=sys.stderr,
             )
@@ -138,6 +141,7 @@ def run(
             prior_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             skill_match_threshold = prior_manifest.get("skill_match_threshold", skill_match_threshold)
             min_skill_matches = prior_manifest.get("min_skill_matches", min_skill_matches)
+            min_must_have_matches = prior_manifest.get("min_must_have_matches", min_must_have_matches)
         except (json.JSONDecodeError, OSError) as exc:
             print(
                 f"WARNING: could not read prior manifest at {manifest_path} to preserve original "
@@ -155,6 +159,7 @@ def run(
         "skill_embedding_model": cfg.skill_embedding_model,
         "skill_match_threshold": skill_match_threshold,
         "min_skill_matches": min_skill_matches,
+        "min_must_have_matches": min_must_have_matches,
         "shortlist_sizes": {jd_id: len(cids) for jd_id, cids in final_state["shortlists"].items()},
         "jd_ids": [jd.id for jd in jds],
         "candidate_ids": [c.id for c in candidates],
@@ -167,7 +172,8 @@ def run(
     if total_shortlisted == 0:
         raise RuntimeError(
             f"Run produced zero shortlisted candidates across all {len(jds)} JDs at "
-            f"skill_match_threshold={skill_match_threshold}, min_skill_matches={min_skill_matches} -- no "
+            f"skill_match_threshold={skill_match_threshold}, min_skill_matches={min_skill_matches}, "
+            f"min_must_have_matches={min_must_have_matches} -- no "
             "assessments were generated. Check extracted skill vocabularies or loosen the thresholds. "
             f"Run output (manifest, empty summary) was still written to {run_dir}."
         )
@@ -209,6 +215,16 @@ def main() -> None:
             "(default: 5; automatically reduced to the JD's total technical-skill count if that's smaller)."
         ),
     )
+    run_parser.add_argument(
+        "--min-must-have-matches",
+        type=int,
+        default=2,
+        help=(
+            "Number of a JD's must-have technical skills a candidate must match to be shortlisted for "
+            "assessment (default: 2; automatically reduced to the JD's total must-have-skill count if "
+            "that's smaller; has no effect if the JD has no classified must-have skills)."
+        ),
+    )
     args = parser.parse_args()
 
     if args.command == "run":
@@ -216,6 +232,7 @@ def main() -> None:
             run_id=args.run_id,
             skill_match_threshold=args.skill_match_threshold,
             min_skill_matches=args.min_skill_matches,
+            min_must_have_matches=args.min_must_have_matches,
         )
         print(f"Run complete: {run_dir / 'summary.json'}")
 

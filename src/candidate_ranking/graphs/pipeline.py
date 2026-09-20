@@ -60,6 +60,7 @@ def build_pipeline_graph(
     run_id: str,
     skill_match_threshold: float = 0.8,
     min_skill_matches: int = 5,
+    min_must_have_matches: int = 2,
 ) -> StateGraph:
     jd_skills_cache_path = cfg.cache_dir / "jd_skills.json"
 
@@ -96,6 +97,7 @@ def build_pipeline_graph(
             skill_embedder,
             threshold=skill_match_threshold,
             min_matches=min_skill_matches,
+            min_must_have_matches=min_must_have_matches,
         )
         return {"shortlists": {jd.id: candidate_ids}}
 

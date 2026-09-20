@@ -71,3 +71,19 @@ def test_build_pipeline_graph_has_no_tournament_nodes(tmp_path: Path):
     node_names = set(graph.nodes)
     assert "rank_and_format_jd_node" in node_names
     assert not any("tournament" in name for name in node_names)
+
+
+def test_build_pipeline_graph_accepts_min_must_have_matches(tmp_path: Path):
+    cfg = RunConfig.full(tmp_path)
+    graph = build_pipeline_graph(
+        cfg,
+        jd_skills_chain=None,
+        jev_client=None,
+        skill_index=np.zeros(0),
+        skill_row_map=[],
+        skill_embedder=lambda texts: np.zeros((len(texts), 0)),
+        run_id="run-1",
+        min_must_have_matches=3,
+    )
+
+    assert "build_shortlist_for_jd" in set(graph.nodes)
