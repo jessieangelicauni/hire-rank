@@ -193,7 +193,32 @@ $\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (S
 The diagnostic value of per-requirement decomposition is demonstrated concretely: the informative-requirement check flagged 8 of 76 data-engineer applicants (11\%) near-zero specifically on Python, and 2 of 33 full-stack-engineer applicants (6\%) near-zero on REST APIs and Node.js despite adequate scores elsewhere -- evidence the skill-matching stage, not Jev, admitted these applicants.
 
 \subsection{Must-Have/Nice-to-Have Shortlisting Correction}
-Applied to the full 501-resume, 10-job-profile corpus, the must-have gate (Section III-E) excludes 24 of the 259 candidates who would have passed the prior total-only rule (9.3\%), most sharply for full-stack-engineer -- the motivating case above -- at 9 of 33 (27\%), followed by frontend-engineer (3 of 20, 15\%), backend-engineer, data-scientist-engineer, and java-developer (each 14\%), data-engineer (2 of 16, 13\%), and cloud-engineer (3 of 47, 6\%); devops-engineer, it-security-engineer, and ui-ux-designer saw no change. Across the corpus, 76 of 167 deduplicated technical skills (46\%) were classified must-have, and every job profile retained at least one nice-to-have skill.
+Applied to the full 501-resume, 10-job-profile corpus, the must-have gate (Section III-E) excludes 24 of the 259 candidates who would have passed the prior total-only rule (9.3\%); Table~\ref{tab_must_have_effect} breaks this down by job profile. Across the corpus, 76 of 167 deduplicated technical skills (46\%) were classified must-have, and every job profile retained at least one nice-to-have skill.
+
+\begin{table}[!ht]
+\caption{Must-have gate effect by job profile: shortlisted candidates before (total-match only) and after (must-have gate added).}
+\label{tab_must_have_effect}
+\centering
+\scriptsize
+\begin{tabular}{lccc}
+\hline
+Job profile & Before & After & Excluded \\
+\hline
+full-stack-engineer & 33 & 24 & 9 (27\%)\\
+frontend-engineer & 20 & 17 & 3 (15\%)\\
+backend-engineer & 22 & 19 & 3 (14\%)\\
+data-scientist-engineer & 21 & 18 & 3 (14\%)\\
+java-developer & 7 & 6 & 1 (14\%)\\
+data-engineer & 16 & 14 & 2 (13\%)\\
+cloud-engineer & 47 & 44 & 3 (6\%)\\
+devops-engineer & 50 & 50 & 0\\
+it-security-engineer & 19 & 19 & 0\\
+ui-ux-designer & 24 & 24 & 0\\
+\hline
+Total (all 10) & 259 & 235 & 24 (9.3\%)\\
+\hline
+\end{tabular}
+\end{table}
 
 Repeating the full reliability evaluation (test-retest, criteria-design ablation, ranking convergence, and internal coherence) on this smaller, must-have-filtered pool ($n=235$ pairs) reproduces some findings and not others. Ranking convergence is essentially unchanged (mean $\tau=0.887$ vs.\ $0.901$) and the per-requirement criteria-grounded confidence gain remains large ($r=0.877$, $p<0.001$, $n=756$, vs.\ $r=0.844$, $n=869$). Internal coherence is lower ($\rho=0.524$, $p<0.001$, $n=235$, vs.\ $\rho=0.682$, $n=346$), and the seniority/education ablation, already marginal in the main study, loses significance pooled ($r=0.155$, $p=0.167$, $n=106$, vs.\ $r=0.34$, $p<0.001$, $n=212$). Both are consistent with restriction of range: excluding candidates on peripheral-skill grounds leaves a more uniformly-qualified pool, in which scores that once spanned the full range now cluster more tightly, shrinking correlations and the power to detect smaller effects at this pool's reduced $n$. Measured Jev latency across this replication's 705 calls (mean 1.20s, median 1.08s, p95 1.67s) matches the main study. Shortlisting correction therefore does not degrade Jev's core reliability properties, though its effect on properties that depend on score variance across the pool is a genuine, not merely apparent, consequence of a more selective shortlist.
 
