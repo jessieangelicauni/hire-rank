@@ -6,8 +6,10 @@ Requirements:
 - Experience designing and consuming REST APIs.
 - Working knowledge of PostgreSQL and ORMs such as Prisma.
 - Comfortable with Git-based workflows and code review.
-- Experience with Docker for containerized development and deployment.
-- Experience deploying applications to cloud platforms such as AWS or GCP.
-- Familiarity with CI/CD pipelines (GitHub Actions).
 - A pragmatic, product-minded approach to engineering trade-offs.
-- Nice to have: experience with Stripe payment integrations and Kubernetes.
+
+Nice to have (not required, but a plus):
+- Familiarity with Docker for containerized development and deployment.
+- Some exposure to deploying applications to a cloud platform such as AWS or GCP.
+- Familiarity with CI/CD pipelines (GitHub Actions).
+- Experience with Stripe payment integrations and Kubernetes.
