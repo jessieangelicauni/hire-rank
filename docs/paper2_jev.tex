@@ -24,7 +24,7 @@ $^{2}$Faculty of Artificial Intelligence \& Frontier Technologies, UNITAR Intern
 \maketitle
 
 \begin{abstract}
-LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, an approach that needs extra machinery against hallucinated claims and provides no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by construction. No independent evaluation of this model class exists yet. The objective of this study is to close that gap by proposing and validating three architecture-level adaptations for the reliability problems an unmodified Jev introduces: criteria-grounded question design, multi-call ensemble averaging, and must-have/nice-to-have skill classification for shortlisting correction. The research method rebuilds an existing LLM-and-tournament applicant-ranking pipeline around Jev and evaluates it on 346 shortlisted (job, applicant) pairs across 10 job profiles. The results show that criteria-grounded design raises per-requirement answer confidence from 0.694 to 0.890 ($n=869$, rank-biserial $r=0.844$) and pooled seniority/education confidence from 0.650 to 0.705; that three-call ensemble averaging, run independently and in parallel, recovers ranking convergence from 0.901 to 0.940 -- close to the prior tournament-based system's 0.957 -- using half as many model calls, with internal coherence holding throughout ($\rho=0.682$). Overall, a non-autoregressive structured-decision model can replace free-text assessment without losing reliability, provided its question design and aggregation match its architecture.
+LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, an approach that needs extra machinery against hallucinated claims and provides no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by construction. No independent evaluation of this model class exists yet. The objective of this study is to close that gap by proposing and validating three architecture-level adaptations for the reliability problems an unmodified Jev introduces: criteria-grounded question design, multi-call ensemble averaging, and must-have/nice-to-have skill classification for shortlisting correction. The research method rebuilds an existing LLM-and-tournament applicant-ranking pipeline around Jev and evaluates it on 346 shortlisted (job, applicant) pairs across 10 job profiles. The results show that criteria-grounded design raises per-requirement answer confidence from 0.659 to 0.874 ($n=798$, rank-biserial $r=0.86$) and pooled seniority/education confidence from 0.585 to 0.694; that three-call ensemble averaging, run independently and in parallel, recovers ranking convergence from 0.901 to 0.940 -- close to the prior tournament-based system's 0.957 -- using half as many model calls, with internal coherence holding throughout ($\rho=0.682$). Overall, a non-autoregressive structured-decision model can replace free-text assessment without losing reliability, provided its question design and aggregation match its architecture.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -93,7 +93,7 @@ An initial implementation defined every Score question's five levels with bare n
 
 To check that this fix, not sampling noise, caused the confidence gain, a paired ablation compared the two designs on identical input: for a sampled subset of already-assessed pairs, a second call was issued against the same state under the original bare-label design, and confidence compared pairwise. The concrete side is the confidence already recorded in production (a mean across 3 calls); the bare-label side is a single fresh call -- this shrinks the concrete side's variance but does not bias either mean, so it cannot manufacture the gain reported. The primary comparison is the per-technical-requirement questions, with enough paired observations to detect the effect reliably; a Wilcoxon signed-rank test with rank-biserial effect size was applied.
 
-The same fix generalizes to the seniority and education Score questions, which had the same bare-label problem. Rewriting the levels to name concrete evidence -- years/level, domain, or role match for seniority; field and degree-level match for education -- follows the same logic, tested with a second paired ablation on all pairs whose job profile states either requirement. One alternative was rejected: generating levels per job profile with an LLM, since that reintroduces free-text generation and makes scores incomparable across differently worded job profiles.
+The same fix generalizes to the education Score question, which had the same bare-label problem: field and degree-level match are rewritten as concrete evidence, tested with a second paired ablation on all pairs whose job profile states an education requirement. The seniority question had an additional problem beyond bare labels: it forced Jev to judge years of experience, domain relevance, and role match in one ordinal answer. This is split into two questions instead -- a years-of-experience match, asked only when the job profile states an explicit minimum (extracted as \texttt{seniority\_min\_years} during skill extraction), and a domain-relevancy match independent of years -- so concrete criteria can be evaluated separately for each. One alternative was rejected throughout: generating levels per job profile with an LLM, since that reintroduces free-text generation and makes scores incomparable across differently worded job profiles.
 
 \subsection{Multi-Call Ensemble Averaging}
 A single Jev call is a single sample, carrying noise that can shift a ranking. Since calls are independent and cheap, the pipeline issues $n$ calls per pair -- three by default, matching \cite{ref2}'s stability-repeat count -- combined per field: numeric fields by arithmetic mean, the recommendation by majority vote (ties toward higher mean confidence), and binary answers by simple majority, defaulting to the conservative (negative) outcome on a tie.
@@ -130,7 +130,7 @@ Must-have skill-match minimum & $\geq$ 2 (auto-reduced to the job profile's must
 Independent calls averaged per assessment ($n$) & 3\\
 Score question levels & 5 (concrete situational criteria)\\
 Test-retest repeats per pair & 3\\
-Criteria-design ablation sample & 40 pairs (Score); 169 pairs (seniority/education Score)\\
+Criteria-design ablation sample & 40 pairs (Score); 114 pairs (seniority/education Score)\\
 \hline
 \end{tabular}
 \end{table}
@@ -153,14 +153,15 @@ $\rho=0.682$ falls short of 1.0 not from a reliability defect but from how the n
 \hline
 Question group & $n$ & Conf.\ (concrete/other) & $p$ ($r$)\\
 \hline
-Per-requirement & 869 & 0.890 / 0.694 & $<0.001$ (0.84)\\
-Seniority & 66 & 0.583 / 0.585 & 0.597 (0.08)\\
-Education & 146 & 0.760 / 0.679 & $<0.001$ (0.45)\\
-Pooled (sen.\ + edu.) & 212 & 0.705 / 0.650 & $<0.001$ (0.34)\\
+Per-requirement & 798 & 0.874 / 0.659 & $<0.001$ (0.86)\\
+Seniority (years) & 43 & 0.541 / 0.391 & 0.090 (0.30)\\
+Seniority (relevancy) & 43 & 0.627 / 0.556 & $<0.001$ (0.59)\\
+Education & 103 & 0.786 / 0.679 & $<0.001$ (0.53)\\
+Pooled (sen.\ + edu.) & 189 & 0.694 / 0.585 & $<0.001$ (0.45)\\
 \hline
 \end{tabular}
 \end{table}
-Table~\ref{tab_score_ablation} pairs each question asked twice under the two criteria designs and reports mean confidence under each plus the Wilcoxon result. The per-requirement questions show a large gain ($r=0.844$, $n=869$). Seniority and education reach significance pooled and for education alone but not seniority alone ($n=66$); the direction matches, but the pooled effect is smaller ($r=0.34$ vs.\ $r=0.844$), since per-requirement pools many skill-match judgments per pair while seniority and education contribute only one each, so seniority's null result pulls the pooled effect down. That null result is not noise: education's criteria check explicit facts a resume states or does not (a degree, a field), which concrete wording sharpens directly, while seniority requires inferring years of experience and domain relevance at once -- a harder judgment bare labels do not meaningfully worsen.
+Table~\ref{tab_score_ablation} pairs each question asked twice under the two criteria designs and reports mean confidence under each plus the Wilcoxon result. The per-requirement questions show a large gain ($r=0.86$, $n=798$). Splitting the original combined seniority question into a years-of-experience match and a domain-relevancy match (Section III-B) shows the earlier null result was not a failure of concrete criteria for seniority-type judgments in general: relevancy alone reaches significance with a large effect ($r=0.59$, $n=43$), comparable to or larger than education's ($r=0.53$, $n=103$), while years alone remains marginal ($r=0.30$, $n=43$) -- consistent with years still requiring Jev to infer a number from CV date ranges regardless of how clearly the criteria levels are worded. Pooled across all three seniority/education buckets, the effect is significant ($r=0.45$, $n=189$).
 
 \subsection{Multi-Call Ensemble Averaging}
 \begin{table}[!ht]
@@ -190,7 +191,7 @@ Mean (all 10) & -- & 0.901 & 0.940\\
 $\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (Section III-C). As shown in Table~\ref{tab_convergence_diag}'s $\tau_1 \to \tau_3$ columns, three-call averaging raises mean convergence from 0.901 to 0.940, with 9 of 10 profiles improving (one unchanged) -- improvement across nearly every profile confirms the aggregation recovers genuine stability, not just smoothing over disagreement.
 
 \subsection{Must-Have/Nice-to-Have Shortlisting Correction}
-Applied to the full 501-resume, 10-job-profile corpus, the must-have gate (Section III-E) excludes 24 of the 259 candidates who would have passed the prior total-only rule (9.3\%); Table~\ref{tab_must_have_effect} breaks this down by job profile. Across the corpus, 76 of 167 deduplicated technical skills (46\%) were classified must-have, and every job profile retained at least one nice-to-have skill.
+Applied to the full 501-resume, 10-job-profile corpus, the must-have gate (Section III-E) excludes 44 of 303 candidates who would have passed the prior total-only rule (14.5\%); Table~\ref{tab_must_have_effect} breaks this down by job profile. Across the corpus, 67 of 172 deduplicated technical skills (39\%) were classified must-have, and every job profile retained at least one nice-to-have skill.
 
 \begin{table}[!ht]
 \caption{Must-have gate effect by job profile: shortlisted candidates before (total-match only) and after (must-have gate added).}
@@ -201,23 +202,23 @@ Applied to the full 501-resume, 10-job-profile corpus, the must-have gate (Secti
 \hline
 Job profile & Before & After & Excluded \\
 \hline
+data-scientist-engineer & 27 & 16 & 11 (41\%)\\
 full-stack-engineer & 33 & 24 & 9 (27\%)\\
-frontend-engineer & 20 & 17 & 3 (15\%)\\
-backend-engineer & 22 & 19 & 3 (14\%)\\
-data-scientist-engineer & 21 & 18 & 3 (14\%)\\
-java-developer & 7 & 6 & 1 (14\%)\\
-data-engineer & 16 & 14 & 2 (13\%)\\
-cloud-engineer & 47 & 44 & 3 (6\%)\\
-devops-engineer & 50 & 50 & 0\\
+data-engineer & 66 & 55 & 11 (17\%)\\
+frontend-engineer & 13 & 11 & 2 (15\%)\\
+java-developer & 13 & 11 & 2 (15\%)\\
+ui-ux-designer & 13 & 11 & 2 (15\%)\\
+cloud-engineer & 47 & 42 & 5 (11\%)\\
+backend-engineer & 22 & 21 & 1 (5\%)\\
+devops-engineer & 50 & 49 & 1 (2\%)\\
 it-security-engineer & 19 & 19 & 0\\
-ui-ux-designer & 24 & 24 & 0\\
 \hline
-Total (all 10) & 259 & 235 & 24 (9.3\%)\\
+Total (all 10) & 303 & 259 & 44 (14.5\%)\\
 \hline
 \end{tabular}
 \end{table}
 
-Repeating the full reliability evaluation (test-retest, criteria-design ablation, ranking convergence, and internal coherence) on this smaller, must-have-filtered pool ($n=235$ pairs) reproduces some findings and not others. Ranking convergence ($\tau=0.887$) and the per-requirement criteria-grounded confidence gain ($r=0.877$) hold. Internal coherence is lower ($\rho=0.524$ vs.\ $0.682$), and the seniority/education ablation, already marginal in the main study, loses significance pooled ($r=0.155$ vs.\ $0.34$). Both are consistent with restriction of range: excluding candidates on peripheral-skill grounds leaves a more uniformly-qualified pool, in which scores that once spanned the full range now cluster more tightly, shrinking correlations and the power to detect smaller effects at this pool's reduced $n$. Measured Jev latency across this replication's 705 calls (mean 1.20s, median 1.08s, p95 1.67s) matches the main study. Shortlisting correction therefore does not degrade Jev's core reliability properties, though its effect on properties that depend on score variance across the pool is a genuine, not merely apparent, consequence of a more selective shortlist.
+Repeating the full reliability evaluation (test-retest, criteria-design ablation, ranking convergence, and internal coherence) on this must-have-filtered pool ($n=259$ pairs) reproduces some findings and not others. Ranking convergence ($\tau=0.904$) holds, and the criteria-grounded ablation findings are reported in Table~\ref{tab_score_ablation} above -- including a pooled seniority/education effect that is now significant once the seniority question is split (Section III-B), unlike the original combined-question main study's pooled effect ($r=0.34$). Internal coherence is lower ($\rho=0.638$ vs.\ $0.682$ in the main study), consistent with restriction of range: excluding candidates on peripheral-skill grounds leaves a more uniformly-qualified pool, in which scores that once spanned the full range now cluster more tightly. Measured Jev latency across this pool's 777 calls (mean 1.24s, median 1.12s, p95 2.05s) is broadly consistent with the main study. Shortlisting correction and the seniority split therefore do not degrade Jev's core reliability properties.
 
 \subsection{Efficiency}
 Across all 1{,}038 calls in the test-retest data (346 pairs $\times$ 3 repeats), a single Jev call takes a mean of 1.20s (range 0.73--3.33s), for a total of 20.7 minutes of compute time across the full corpus -- call latency only, not skill/job profile extraction.
@@ -249,7 +250,7 @@ Explanation & Strengths/weaknesses narrative & Score + confidence, no narrative\
 As shown in Table~\ref{tab_comparison}, this system is not better in every way: its ranking is slightly less stable, and Faithfulness and per-answer confidence measure different things (groundedness vs.\ decision stability), so neither proves it is ``more accurate.'' It wins on cost -- half the calls, no tournament infrastructure, schema violation impossible by construction rather than merely reduced -- and offers a native, calibrated confidence the prior system had no way to provide. It also parallelizes: the prior system's 1,713 tournament calls form a sequential chain, each iteration waiting on the last, while this system's calls are independent.
 
 \section{Conclusion}
-This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- criteria-grounded question design, multi-call ensemble averaging, and must-have/nice-to-have skill classification for shortlisting correction -- each motivated by a reliability problem observed in practice. The result is not a uniform improvement (Table~\ref{tab_comparison}): it trades a little ranking stability and all free-text interpretability for roughly half the model calls, no tournament infrastructure, and a native calibrated confidence the prior system never had. Criteria-grounded design is strongly validated for the per-requirement Score questions ($r=0.844$, $n=869$) and, with a smaller pooled effect, for seniority and education ($r=0.34$); the single, low-$n$ overall-fit question does not reach significance alone. This paper also corrects a shortlisting-stage defect, found using per-requirement score decomposition, by classifying each job profile's technical skills as must-have or nice-to-have during extraction and gating shortlisting on the must-have subset, so a candidate can no longer be admitted on peripheral skills alone.
+This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- criteria-grounded question design, multi-call ensemble averaging, and must-have/nice-to-have skill classification for shortlisting correction -- each motivated by a reliability problem observed in practice. The result is not a uniform improvement (Table~\ref{tab_comparison}): it trades a little ranking stability and all free-text interpretability for roughly half the model calls, no tournament infrastructure, and a native calibrated confidence the prior system never had. Criteria-grounded design is strongly validated for the per-requirement Score questions ($r=0.86$, $n=798$) and, once seniority is split into a years match and a domain-relevancy match (Section III-B), for relevancy and education alike ($r=0.59$ and $r=0.53$); years alone remains marginal, since it still depends on Jev inferring a number from CV date ranges. The single, low-$n$ overall-fit question does not reach significance alone. This paper also corrects a shortlisting-stage defect, found using per-requirement score decomposition, by classifying each job profile's technical skills as must-have or nice-to-have during extraction and gating shortlisting on the must-have subset, so a candidate can no longer be admitted on peripheral skills alone.
 A limitation is that this work trades away the prior system's free-text interpretability -- a score and a confidence, not a narrative, and per-requirement scores only partly substitute. A second is that the must-have/nice-to-have classification (Section III-E) is itself an unvalidated LLM judgment made once during skill extraction, with no ground truth to check it against; Section III-E addresses the alternative of having HR authors tag importance directly, but does not resolve whether the LLM's inferred split matches what a hiring manager would actually intend for a given job profile.
 Future work includes a lightweight explanation layer -- surfacing the lowest-scoring items as a structured rationale -- to partially restore interpretability without reintroducing free text; and validating the must-have/nice-to-have classification itself, e.g., against human-labeled job profiles, to quantify how often it misclassifies a peripheral skill as core.
 
