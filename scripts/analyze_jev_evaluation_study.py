@@ -9,7 +9,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from scipy.stats import kendalltau, mannwhitneyu, spearmanr, wilcoxon
+from scipy.stats import kendalltau, mannwhitneyu, rankdata, spearmanr, wilcoxon
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
 
@@ -19,20 +19,19 @@ _VENDOR_PUBLISHED_SPEEDUP_CLAIM = "40x-200x faster for comparable System One tas
 
 
 def _rank_biserial(first: list[float], second: list[float]) -> float:
-    """Directional effect size for a paired comparison: (pairs where `first` wins minus
-    pairs where `second` wins) / n, ties excluded from neither count nor sign.
-
-    This is a sign-based proportion difference, not the matched-pairs rank-biserial
-    correlation derived from the Wilcoxon signed-rank statistic (which would weight each
-    pair by the magnitude-rank of its difference, via (W+ - W-)/(W+ + W-)). It ignores how
-    large each difference is, only its direction -- a deliberate simplification, reported
-    here (and in the paper, as "rank-biserial r") as an easily-interpreted companion to the
-    Wilcoxon p-value, not a drop-in replacement for the textbook statistic of that name.
+    """Matched-pairs rank-biserial correlation, the standard effect size companion to the
+    Wilcoxon signed-rank test: (W+ - W-)/(W+ + W-), where W+/W- are the sums of the
+    signed-rank magnitudes of pairs where `first` exceeds `second` and vice versa. Zero
+    differences are excluded from the ranking, per the standard Wilcoxon convention.
     """
-    n_first_higher = sum(1 for a, b in zip(first, second) if a > b)
-    n_second_higher = sum(1 for a, b in zip(first, second) if a < b)
-    n = len(first)
-    return (n_first_higher - n_second_higher) / n if n else 0.0
+    diffs = [a - b for a, b in zip(first, second) if a != b]
+    if not diffs:
+        return 0.0
+    ranks = rankdata([abs(d) for d in diffs])
+    w_pos = sum(r for r, d in zip(ranks, diffs) if d > 0)
+    w_neg = sum(r for r, d in zip(ranks, diffs) if d < 0)
+    total = w_pos + w_neg
+    return (w_pos - w_neg) / total if total else 0.0
 
 
 def _wilcoxon_result(label: str, first: list[float], second: list[float]) -> dict | None:
@@ -143,54 +142,66 @@ def analyze_ranking_convergence(records: list[dict]) -> dict:
     }
 
 
+def _icc_1_1(values_by_subject: list[list[float]]) -> float | None:
+    """One-way random-effects intraclass correlation, ICC(1,1) (Shrout & Fleiss 1979 /
+    McGraw & Wong 1996 Case 1): the fraction of total score variance that is between-subject
+    rather than within-subject repeat noise, for a balanced design (every subject has the
+    same number of repeated measurements).
+    """
+    ks = {len(v) for v in values_by_subject}
+    if len(ks) != 1:
+        return None
+    n = len(values_by_subject)
+    k = ks.pop()
+    if n < 2 or k < 2:
+        return None
+    all_values = [v for subject in values_by_subject for v in subject]
+    grand_mean = statistics.mean(all_values)
+    subject_means = [statistics.mean(subject) for subject in values_by_subject]
+    ssb = k * sum((m - grand_mean) ** 2 for m in subject_means)
+    ssw = sum((v - m) ** 2 for subject, m in zip(values_by_subject, subject_means) for v in subject)
+    msb = ssb / (n - 1)
+    msw = ssw / (n * (k - 1))
+    denom = msb + (k - 1) * msw
+    return (msb - msw) / denom if denom else None
+
+
 def analyze_score_decomposition_diagnostic(records: list[dict], ranking_convergence: dict) -> dict:
-    """Correlate each job profile's shortlisted-pool signal-to-noise ratio against its
-    ranking-convergence Kendall-tau, to test whether ranking instability traces to
-    genuine score-noise proximity between similarly qualified applicants rather than
-    to model unreliability (paper2_jev.tex, Section III-E)."""
+    """Correlate each job profile's shortlisted-pool intraclass correlation coefficient
+    (ICC(1,1): between-applicant score variance relative to within-applicant repeat noise)
+    against its ranking-convergence Kendall-tau, to test whether ranking instability traces
+    to genuine score proximity between similarly qualified applicants rather than to model
+    unreliability (paper2_jev.tex, Section III-D)."""
     by_jd: dict[str, list[dict]] = {}
     for record in records:
         by_jd.setdefault(record["jd_id"], []).append(record)
 
     per_job_profile: dict[str, dict] = {}
-    snrs: list[float] = []
+    iccs: list[float] = []
     taus: list[float] = []
 
     for jd_id, jd_records in by_jd.items():
-        candidate_means: list[float] = []
-        candidate_stdevs: list[float] = []
-        for r in jd_records:
-            scores = [rep["overall_fit_score"] for rep in r["repeats"]]
-            if len(scores) >= 2:
-                candidate_means.append(statistics.mean(scores))
-                candidate_stdevs.append(statistics.stdev(scores))
-
+        candidate_scores = [
+            [rep["overall_fit_score"] for rep in r["repeats"]]
+            for r in jd_records
+            if len(r["repeats"]) >= 2
+        ]
         tau = ranking_convergence["per_job_profile"].get(jd_id, {}).get("mean_kendall_tau")
+        icc = _icc_1_1(candidate_scores) if len(candidate_scores) >= 2 else None
 
-        if len(candidate_means) < 2 or not candidate_stdevs:
-            per_job_profile[jd_id] = {
-                "n_candidates": len(candidate_means), "signal": None, "noise": None,
-                "snr": None, "mean_kendall_tau": tau,
-            }
-            continue
-
-        signal = statistics.stdev(candidate_means)
-        noise = statistics.mean(candidate_stdevs)
-        snr = signal / noise if noise > 0 else None
         per_job_profile[jd_id] = {
-            "n_candidates": len(candidate_means), "signal": signal, "noise": noise,
-            "snr": snr, "mean_kendall_tau": tau,
+            "n_candidates": len(candidate_scores), "icc": icc, "mean_kendall_tau": tau,
         }
-        if snr is not None and tau is not None:
-            snrs.append(snr)
+        if icc is not None and tau is not None:
+            iccs.append(icc)
             taus.append(tau)
 
     correlation = None
-    if len(snrs) >= 3:
-        rho, p_value = spearmanr(snrs, taus)
-        correlation = {"spearman_rho": float(rho), "p_value": float(p_value), "n": len(snrs)}
+    if len(iccs) >= 3:
+        rho, p_value = spearmanr(iccs, taus)
+        correlation = {"spearman_rho": float(rho), "p_value": float(p_value), "n": len(iccs)}
 
-    return {"per_job_profile": per_job_profile, "snr_vs_kendall_tau_correlation": correlation}
+    return {"per_job_profile": per_job_profile, "icc_vs_kendall_tau_correlation": correlation}
 
 
 def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
@@ -414,26 +425,25 @@ def render_markdown(report: dict) -> str:
     if snd:
         lines += [
             "",
-            "## Structured score decomposition diagnostic (signal-to-noise ratio vs. ranking convergence)",
+            "## Structured score decomposition diagnostic (ICC vs. ranking convergence)",
         ]
         for jd_id, jd_snd in sorted(
             snd["per_job_profile"].items(),
-            key=lambda kv: (kv[1]["snr"] is None, kv[1]["snr"] or 0),
+            key=lambda kv: (kv[1]["icc"] is None, kv[1]["icc"] or 0),
         ):
-            if jd_snd["snr"] is not None:
+            if jd_snd["icc"] is not None:
                 lines.append(
-                    f"  - {jd_id} (n={jd_snd['n_candidates']}): signal={jd_snd['signal']:.2f}, "
-                    f"noise={jd_snd['noise']:.2f}, snr={jd_snd['snr']:.2f}, "
+                    f"  - {jd_id} (n={jd_snd['n_candidates']}): icc={jd_snd['icc']:.3f}, "
                     f"tau={jd_snd['mean_kendall_tau']:.3f}" if jd_snd["mean_kendall_tau"] is not None
-                    else f"  - {jd_id} (n={jd_snd['n_candidates']}): snr={jd_snd['snr']:.2f}, tau=N/A"
+                    else f"  - {jd_id} (n={jd_snd['n_candidates']}): icc={jd_snd['icc']:.3f}, tau=N/A"
                 )
             else:
                 lines.append(f"  - {jd_id} (n={jd_snd['n_candidates']}): insufficient data")
-        if snd["snr_vs_kendall_tau_correlation"]:
-            c = snd["snr_vs_kendall_tau_correlation"]
-            lines.append(f"- SNR vs. Kendall-tau: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
+        if snd["icc_vs_kendall_tau_correlation"]:
+            c = snd["icc_vs_kendall_tau_correlation"]
+            lines.append(f"- ICC vs. Kendall-tau: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
         else:
-            lines.append("- SNR vs. Kendall-tau: insufficient data for correlation")
+            lines.append("- ICC vs. Kendall-tau: insufficient data for correlation")
 
     sen_edu_abl = report.get("seniority_education_ablation")
     if sen_edu_abl:

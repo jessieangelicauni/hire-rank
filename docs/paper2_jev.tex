@@ -24,7 +24,7 @@ $^{2}$Faculty of Artificial Intelligence \& Frontier Technologies, UNITAR Intern
 \maketitle
 
 \begin{abstract}
-LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, which needs extra machinery against hallucinated claims and gives no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by construction. No independent evaluation of this model class exists yet. This study closes that gap, proposing and validating three architecture-level adaptations -- criteria-grounded question design, structured score decomposition as a diagnostic signal, and multi-call ensemble averaging -- that address the reliability problems Jev introduces unmodified. The method rebuilds an existing LLM-and-tournament applicant-ranking pipeline around Jev, evaluated on 346 shortlisted (job, applicant) pairs across 10 job profiles. Criteria-grounded design raises per-requirement answer confidence from 0.694 to 0.890 ($n=869$, $p<0.001$, rank-biserial $r=0.743$) and pooled seniority/education confidence from 0.650 to 0.705 ($p<0.001$). A job profile's score signal-to-noise ratio correlates with its ranking convergence ($\rho=0.770$, $p=0.0092$), indicating that per-requirement decomposition diagnoses genuine applicant proximity rather than model unreliability. Three-call ensemble averaging recovers ranking convergence from 0.901 to 0.940, close to the prior tournament-based system's 0.957, using half as many model calls, run independently and in parallel. Internal coherence holds throughout ($\rho=0.682$, $p<0.001$). A non-autoregressive structured-decision model can therefore replace free-text assessment without losing reliability, provided its question design and aggregation match its architecture.
+LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, an approach that needs extra machinery against hallucinated claims and provides no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by construction. No independent evaluation of this model class exists yet. The objective of this study is to close that gap by proposing and validating three architecture-level adaptations for the reliability problems an unmodified Jev introduces: criteria-grounded question design, multi-call ensemble averaging, and structured score decomposition as a diagnostic signal. The research method rebuilds an existing LLM-and-tournament applicant-ranking pipeline around Jev and evaluates it on 346 shortlisted (job, applicant) pairs across 10 job profiles. The results show that criteria-grounded design raises per-requirement answer confidence from 0.694 to 0.890 ($n=869$, $p<0.001$, rank-biserial $r=0.844$) and pooled seniority/education confidence from 0.650 to 0.705 ($p<0.001$); that three-call ensemble averaging, run independently and in parallel, recovers ranking convergence from 0.901 to 0.940 -- close to the prior tournament-based system's 0.957 -- using half as many model calls, with internal coherence holding throughout ($\rho=0.682$, $p<0.001$); and that per-requirement score decomposition detects upstream shortlisting defects a single aggregate score cannot, flagging shortlisted applicants who score near-zero on a role's core skill despite adequate scores elsewhere. Overall, a non-autoregressive structured-decision model can replace free-text assessment without losing reliability, provided its question design and aggregation match its architecture.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -34,7 +34,7 @@ Applicant Ranking, Confidence Calibration, Human Resources, Large Language Model
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-\IEEEPARstart{R}{ecruitment} platforms increasingly use large language models (LLMs) to read resumes, summarize applicant fit, and compare applicants against a job profile (JP), in place of manual screening or keyword search \cite{ref1,ref2,ref3,ref4}. These systems are useful for the same reason they are risky: they generate free text that can assert a strength or weakness the source resume never supports. Prior work mitigates this with prompt-level constraints, retry-on-contradiction loops, post-hoc auditing \cite{ref2}, and iterative listwise tournaments with Plackett-Luce aggregation to turn per-applicant judgments into a defensible ranking \cite{ref1,ref2}. Both exist because next-token sampling over an open vocabulary gives no structural guarantee against an ungrounded claim, and no native signal of the model's confidence.
+\IEEEPARstart{R}{ecruitment} platforms increasingly use large language models (LLMs) to read resumes, summarize applicant fit, and compare applicants against a job profile, in place of manual screening or keyword search \cite{ref1,ref2,ref3,ref4}. These systems are useful for the same reason they are risky: they generate free text that can assert a strength or weakness the source resume never supports. Prior work mitigates this with prompt-level constraints, retry-on-contradiction loops, post-hoc auditing \cite{ref2}, and iterative listwise tournaments with Plackett-Luce aggregation to turn per-applicant judgments into a defensible ranking \cite{ref1,ref2}. Both exist because next-token sampling over an open vocabulary gives no structural guarantee against an ungrounded claim, and no native signal of the model's confidence.
 
 This paper asks whether answering predefined, typed questions instead of generating open text can replace free-text assessment without reintroducing the reliability problems it is meant to solve. Two gaps motivate this study. First, no independent, peer-reviewed evaluation of System One Models exists yet -- Jev's release \cite{ref11} predates this manuscript by days -- so every reliability claim currently comes from the vendor. Second, the recent literature on LLM calibration and self-consistency \cite{ref5,ref6,ref7} targets autoregressive judges that produce a scalar score or a free-text verdict; none addresses a model whose primitive outputs are a bounded probability (Noul), a categorical distribution (Choice), or an ordinal distribution (Score) answered in one parallel pass, so its diagnostics and mitigations do not transfer directly.
 
@@ -42,8 +42,8 @@ This paper makes three architecture-level contributions, each validated empirica
 
 \begin{enumerate}
 \item \textbf{Criteria-Grounded Question Design}: writing Score-type questions with concrete, situational evidence instead of bare ordinal labels. A paired ablation shows this raises confidence for the per-requirement and pooled seniority/education Score questions; the single, low-$n$ overall-fit question does not reach significance alone. A separate internal-coherence check confirms per-requirement and overall-fit judgments agree.
-\item \textbf{Structured Score Decomposition as a Diagnostic Signal}: per-requirement score granularity, unavailable to a monolithic free-text judgment, that detects and localizes a pre-existing upstream shortlisting defect a prose-only system could only find by manual inspection.
 \item \textbf{Multi-Call Ensemble Averaging}: combining several independent Jev calls per applicant -- arithmetic mean for score-valued answers, confidence-weighted majority vote for categorical ones -- to recover most of an iterative tournament's ranking-order stability at roughly half the model calls, with no iterative ranking process needed.
+\item \textbf{Structured Score Decomposition as a Diagnostic Signal}: per-requirement score granularity, unavailable to a monolithic free-text judgment, that detects and localizes a pre-existing upstream shortlisting defect a prose-only system could only find by manual inspection.
 \end{enumerate}
 
 Section II reviews related work. Section III details the proposed pipeline's architecture and the procedure behind each contribution. Section IV describes the experimental setup. Section V reports results, discusses them, and compares this system against the closest prior published system. Section VI concludes.
@@ -61,26 +61,26 @@ No paper reviewed here evaluates a System One Model; to the authors' knowledge t
 \section{Methodology}
 
 \subsection{Pipeline Overview}
-Fig.~\ref{fig_pipeline} shows the end-to-end pipeline, with C1--C3 marking where each contribution intervenes. Its first three stages are unchanged from the prior system \cite{ref2}, since none generate free text: JPs are loaded as plain text and resumes parsed from PDF, an LLM (Qwen2.5-14B-Instruct) extracts a normalized skill list including any certification, seniority, and education requirement, and an applicant is shortlisted only if enough technical skills match by cosine similarity above a fixed threshold.
+Fig.~\ref{fig_pipeline} shows the end-to-end pipeline, with C1--C3 marking where each contribution intervenes. Its first three stages are unchanged from the prior system \cite{ref2}, since none generate free text: Job profiles are loaded as plain text and resumes parsed from PDF, an LLM (Qwen2.5-14B-Instruct) extracts a normalized skill list including any certification, seniority, and education requirement, and an applicant is shortlisted only if enough technical skills match by cosine similarity above a fixed threshold.
 
-The pipeline changes at the next stage, where the prior system's free text lived: instead of a free-text assessment ranked by an iterative tournament, it sends $n$ independent calls to Jev per shortlisted pair. Each call gives Jev one state (JP title and description, extracted skills, resume text) and typed questions answered in one pass: an overall-fit Score, a hiring-recommendation Choice, a minimum-qualifications Noul, one Score per technical requirement, one Score per stated seniority or education requirement, and one Noul per stated certification. Every Score question offers a fixed set of ordinal levels (Section III-B), linearly mapped to 0--100 for reporting -- this range is the mapping's resolution, not a continuous per-call judgment. The $n$ calls are combined (Section III-D), applicants ranked by the combined score, and a diagnostic check (Section III-C) reads per-requirement scores afterward for upstream errors. Skill/JP extraction runs on a conventional autoregressive LLM; Jev does not -- it samples no tokens, only typed answers in one forward pass.
+The pipeline changes at the next stage, where the prior system's free text lived: instead of a free-text assessment ranked by an iterative tournament, it sends $n$ independent calls to Jev per shortlisted pair. Each call gives Jev one state (job profile title and description, extracted skills, resume text) and typed questions answered in one pass: an overall-fit Score, a hiring-recommendation Choice, a minimum-qualifications Noul, one Score per technical requirement, one Score per stated seniority or education requirement, and one Noul per stated certification. Every Score question offers a fixed set of ordinal levels (Section III-B), linearly mapped to 0--100 for reporting -- this range is the mapping's resolution, not a continuous per-call judgment. The $n$ calls are combined (Section III-C), applicants ranked by the combined score, and a diagnostic check (Section III-D) reads per-requirement scores afterward for upstream errors. Skill/job profile extraction runs on a conventional autoregressive LLM; Jev does not -- it samples no tokens, only typed answers in one forward pass.
 
 \begin{figure}[!ht]
 \centering
 \scriptsize
 \setlength{\fboxsep}{2pt}
 \begin{tabular}{c}
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Ingestion \& Skill/JP Extraction (LLM)\end{minipage}} \\[1pt]
+\fbox{\begin{minipage}{0.85\columnwidth}\centering Ingestion \& Skill/job profile Extraction (LLM)\end{minipage}} \\[1pt]
 $\downarrow$ \\[1pt]
 \fbox{\begin{minipage}{0.85\columnwidth}\centering Shortlisting (cosine $\geq$ 0.8, $\geq$ 5 skills)\end{minipage}} \\[1pt]
 $\downarrow$ \\[1pt]
 \fbox{\begin{minipage}{0.85\columnwidth}\centering Structured Assessment via Jev, $n{=}3$ calls \textbf{[C1: Criteria-Grounded Design]}\end{minipage}} \\[1pt]
 $\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Multi-Call Ensemble Aggregation \textbf{[C3: Ensemble Averaging]}\end{minipage}} \\[1pt]
+\fbox{\begin{minipage}{0.85\columnwidth}\centering Multi-Call Ensemble Aggregation \textbf{[C2: Ensemble Averaging]}\end{minipage}} \\[1pt]
 $\downarrow$ \\[1pt]
 \fbox{\begin{minipage}{0.85\columnwidth}\centering Ranking (sort by aggregated overall-fit score)\end{minipage}} \\[1pt]
 $\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Score Decomposition Diagnostic \textbf{[C2: SNR compared with Kendall-$\tau$]}\end{minipage}}
+\fbox{\begin{minipage}{0.85\columnwidth}\centering Score Decomposition Diagnostic \textbf{[C3: Per-Requirement Score Inspection]}\end{minipage}}
 \end{tabular}
 \caption{End-to-end pipeline architecture, annotated with the three contributions (C1--C3) at their point of intervention.}
 \label{fig_pipeline}
@@ -91,27 +91,18 @@ An initial implementation defined every Score question's five levels with bare n
 
 To check that this fix, not sampling noise, caused the confidence gain, a paired ablation compared the two designs on identical input: for a sampled subset of already-assessed pairs, a second call was issued against the same state under the original bare-label design, and confidence compared pairwise. The concrete side is the confidence already recorded in production (a mean across 3 calls); the bare-label side is a single fresh call -- this shrinks the concrete side's variance but does not bias either mean, so it cannot manufacture the gain reported. The primary comparison is the per-technical-requirement questions, with enough paired observations to detect the effect reliably; a Wilcoxon signed-rank test with rank-biserial effect size was applied.
 
-The same fix generalizes to the seniority and education Score questions, which had the same bare-label problem. Rewriting the levels to name concrete evidence -- years/level, domain, or role match for seniority; field and degree-level match for education -- follows the same logic, tested with a second paired ablation on all pairs whose JP states either requirement. One alternative was rejected: generating levels per JP with an LLM, since that reintroduces free-text generation and makes scores incomparable across differently worded JPs.
-
-\subsection{Structured Score Decomposition as a Diagnostic Signal}
-Because Jev reports a separate score per extracted requirement rather than a single free-text verdict, a JP's shortlisted pool can be inspected at the level of individual skills, not only an aggregate score. This granularity is used diagnostically in two ways.
-
-The first asks whether an unstable ranking means the model is unreliable, or simply that applicants score too close together to rank apart: genuinely differing applicants should spread out more than repeat-question noise, similar ones should not. This is a signal-to-noise ratio per JP:
-\begin{equation}
-\mathrm{SNR} = \frac{\mathrm{std}_i(\bar{s}_i)}{\frac{1}{N}\sum_{i=1}^{N}\mathrm{std}_k(s_{i,k})},
-\label{eq_snr}
-\end{equation}
-where $s_{i,k}$ is applicant $i$'s overall-fit score on call $k$ (of $K$), $\bar{s}_i=\frac{1}{K}\sum_{k=1}^{K}s_{i,k}$ its mean, and $N$ the pool size -- numerator is between-applicant signal, denominator mean within-applicant noise. This is correlated (Spearman) against the profile's Kendall-$\tau$ (Section III-D): low convergence tracking low SNR supports genuine proximity over model unreliability.
-
-The second asks whether shortlisting, before Jev is involved, let through applicants who do not actually fit the role. A requirement is informative only if the pool's median score on it is reasonably high; an applicant scoring near-zero on most informative requirements, despite being shortlisted, is flagged -- not because Jev judged them harshly, but because peers could clear a bar this applicant could not.
+The same fix generalizes to the seniority and education Score questions, which had the same bare-label problem. Rewriting the levels to name concrete evidence -- years/level, domain, or role match for seniority; field and degree-level match for education -- follows the same logic, tested with a second paired ablation on all pairs whose job profile states either requirement. One alternative was rejected: generating levels per job profile with an LLM, since that reintroduces free-text generation and makes scores incomparable across differently worded job profiles.
 
 \subsection{Multi-Call Ensemble Averaging}
 A single Jev call is a single sample, carrying noise that can shift a ranking. Since calls are independent and cheap, the pipeline issues $n$ calls per pair -- three by default, matching \cite{ref2}'s stability-repeat count -- combined per field: numeric fields by arithmetic mean, the recommendation by majority vote (ties toward higher mean confidence), and binary answers by simple majority, defaulting to the conservative (negative) outcome on a tie.
 
 Averaging could also hide real disagreement rather than remove noise: ranking convergence was measured both from single, unaggregated calls (Kendall-$\tau$ across three per-pair rankings) and from three three-call averages. If averaging only hid disagreement, the second would not consistently beat the first.
 
+\subsection{Structured Score Decomposition as a Diagnostic Signal}
+Because Jev reports a separate score per extracted requirement rather than a single free-text verdict, a job profile's shortlisted pool can be inspected at the level of individual skills, not only an aggregate score. This granularity is used diagnostically: a requirement is informative only if the pool's median score on it is reasonably high; an applicant scoring near-zero on most informative requirements, despite being shortlisted, is flagged -- not because Jev judged them harshly, but because peers could clear a bar this applicant could not.
+
 \section{Experimental Setup}
-The pipeline is evaluated on the prior system's corpus and shortlist configuration \cite{ref2}: 501 resumes across 10 synthetically authored JPs, shortlisted at a cosine-similarity threshold of 0.8 and a minimum of five matched technical skills, yielding 346 shortlisted (job, applicant) pairs. Table~\ref{tab_config} lists the full pipeline configuration; these settings were held fixed across every evaluation, isolating the assessment-stage change as the one independent variable between the two systems. Four evaluation procedures are applied: test-retest reliability (three independent single calls per pair); internal coherence (per-requirement scores against overall fit via Spearman correlation); ranking convergence (Kendall-$\tau$, Section III-D, from single calls and three-call averages); and the criteria-design ablations of Section III-B. All tests are two-sided except where a directional hypothesis is stated explicitly, and every effect size accompanies, rather than substitutes for, its significance test.
+The pipeline is evaluated on the prior system's corpus and shortlist configuration \cite{ref2}: 501 resumes across 10 synthetically authored job profiles, shortlisted at a cosine-similarity threshold of 0.8 and a minimum of five matched technical skills, yielding 346 shortlisted (job, applicant) pairs. Table~\ref{tab_config} lists the full pipeline configuration; these settings were held fixed across every evaluation, isolating the assessment-stage change as the one independent variable between the two systems. Four evaluation procedures are applied: test-retest reliability (three independent single calls per pair); internal coherence (per-requirement scores against overall fit via Spearman correlation); ranking convergence (Kendall-$\tau$, Section III-C, from single calls and three-call averages); and the criteria-design ablations of Section III-B. All tests are two-sided except where a directional hypothesis is stated explicitly, and every effect size accompanies, rather than substitutes for, its significance test.
 
 \begin{table}[!ht]
 \caption{Pipeline configuration.}
@@ -123,9 +114,9 @@ The pipeline is evaluated on the prior system's corpus and shortlist configurati
 Parameter & Value\\
 \hline
 Assessment model & Jev (\texttt{jev-latest}), TypeSafe AI\\
-Skill/JP extraction model & Qwen2.5-14B-Instruct (4-bit, Ollama)\\
+Skill/job profile extraction model & Qwen2.5-14B-Instruct (4-bit, Ollama)\\
 Skill embedding model & sentence-transformers/all-MiniLM-L6-v2\\
-Corpus & 501 resumes, 10 JPs\\
+Corpus & 501 resumes, 10 job profiles\\
 Shortlisted (job, applicant) pairs & 346 (338--346 run-to-run)\\
 Skill-match threshold / min. matches & cosine $\geq$ 0.8 / $\geq$ 5 job skills\\
 Independent calls averaged per assessment ($n$) & 3\\
@@ -154,47 +145,47 @@ $\rho=0.682$ falls short of 1.0 not from a reliability defect but from how the n
 \hline
 Question group & $n$ & Conf.\ (concrete/other) & $p$ ($r$)\\
 \hline
-Per-requirement & 869 & 0.890 / 0.694 & $<0.001$ (0.74)\\
-Seniority & 66 & 0.583 / 0.585 & 0.597 (0.17)\\
-Education & 146 & 0.760 / 0.679 & $<0.001$ (0.48)\\
-Pooled (sen.\ + edu.) & 212 & 0.705 / 0.650 & $<0.001$ (0.38)\\
+Per-requirement & 869 & 0.890 / 0.694 & $<0.001$ (0.84)\\
+Seniority & 66 & 0.583 / 0.585 & 0.597 (0.08)\\
+Education & 146 & 0.760 / 0.679 & $<0.001$ (0.45)\\
+Pooled (sen.\ + edu.) & 212 & 0.705 / 0.650 & $<0.001$ (0.34)\\
 \hline
 \end{tabular}
 \end{table}
-Table~\ref{tab_score_ablation} pairs each question asked twice under the two criteria designs and reports mean confidence under each plus the Wilcoxon result. The per-requirement questions show a large, highly significant gain ($r=0.743$, $p<0.001$, $n=869$). Seniority and education reach significance pooled and for education alone but not seniority alone ($p=0.597$, $n=66$); the direction matches, but the pooled effect is smaller ($r=0.38$ vs.\ $r=0.743$), since per-requirement pools many skill-match judgments per pair while seniority and education contribute only one each, so seniority's null result pulls the pooled effect down. That null result is not noise: education's criteria check explicit facts a resume states or does not (a degree, a field), which concrete wording sharpens directly, while seniority requires inferring years of experience and domain relevance at once -- a harder judgment bare labels do not meaningfully worsen.
+Table~\ref{tab_score_ablation} pairs each question asked twice under the two criteria designs and reports mean confidence under each plus the Wilcoxon result. The per-requirement questions show a large, highly significant gain ($r=0.844$, $p<0.001$, $n=869$). Seniority and education reach significance pooled and for education alone but not seniority alone ($p=0.597$, $n=66$); the direction matches, but the pooled effect is smaller ($r=0.34$ vs.\ $r=0.844$), since per-requirement pools many skill-match judgments per pair while seniority and education contribute only one each, so seniority's null result pulls the pooled effect down. That null result is not noise: education's criteria check explicit facts a resume states or does not (a degree, a field), which concrete wording sharpens directly, while seniority requires inferring years of experience and domain relevance at once -- a harder judgment bare labels do not meaningfully worsen.
 
-\subsection{Structured Score Decomposition Diagnostic}
+\subsection{Multi-Call Ensemble Averaging}
 \begin{table}[!ht]
-\caption{Signal-to-noise ratio (SNR) and ranking convergence (Kendall-$\tau$) by JP, single-call and 3-call-averaged.}
+\caption{Ranking convergence (Kendall-$\tau$) by job profile, single-call and 3-call-averaged.}
 \label{tab_convergence_diag}
 \centering
 \scriptsize
-\begin{tabular}{lccccc}
+\begin{tabular}{lccc}
 \hline
-Job profile & $n$ & SNR & $\tau_1$ & $\tau_3$ \\
+Job profile & $n$ & $\tau_1$ & $\tau_3$ \\
 \hline
-it-security-engineer & 16 & 5.63 & 0.778 & 0.900\\
-data-scientist-eng.\ & 27 & 5.72 & 0.848 & 0.890\\
-backend-engineer & 22 & 10.05 & 0.896 & 0.954\\
-frontend-engineer & 13 & 13.98 & 0.880 & 0.897\\
-devops-engineer & 58 & 12.51 & 0.923 & 0.956\\
-full-stack-engineer & 33 & 10.63 & 0.914 & 0.944\\
-data-engineer & 76 & 17.79 & 0.937 & 0.958\\
-ui-ux-designer & 23 & 24.49 & 0.947 & 0.984\\
-java-developer & 21 & 13.33 & 0.949 & 0.949\\
-cloud-engineer & 57 & 17.30 & 0.933 & 0.963\\
+it-security-engineer & 16 & 0.778 & 0.900\\
+data-scientist-eng.\ & 27 & 0.848 & 0.890\\
+backend-engineer & 22 & 0.896 & 0.954\\
+frontend-engineer & 13 & 0.880 & 0.897\\
+devops-engineer & 58 & 0.923 & 0.956\\
+full-stack-engineer & 33 & 0.914 & 0.944\\
+data-engineer & 76 & 0.937 & 0.958\\
+ui-ux-designer & 23 & 0.947 & 0.984\\
+java-developer & 21 & 0.949 & 0.949\\
+cloud-engineer & 57 & 0.933 & 0.963\\
 \hline
-Mean (all 10) & -- & -- & 0.901 & 0.940\\
+Mean (all 10) & -- & 0.901 & 0.940\\
 \hline
 \end{tabular}
 \end{table}
-Table~\ref{tab_convergence_diag} gives each profile's SNR (Equation~\ref{eq_snr}) alongside its Kendall-$\tau$. SNR and $\tau_1$ correlate positively and significantly across the 10 profiles ($\rho=0.770$, $p=0.0092$) -- support for reading low convergence as close-scoring applicants, not an unreliable judge. The diagnostic is also demonstrated concretely: the informative-requirement check flagged 8 of 76 data-engineer applicants (11\%) near-zero specifically on Python, and 2 of 33 full-stack-engineer applicants (6\%) near-zero on REST APIs and Node.js despite adequate scores elsewhere -- evidence the skill-matching stage, not Jev, admitted these applicants.
+$\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (Section III-C). As shown in Table~\ref{tab_convergence_diag}'s $\tau_1 \to \tau_3$ columns, three-call averaging raises mean convergence from 0.901 to 0.940, with 9 of 10 profiles improving (one unchanged) -- improvement across nearly every profile confirms the aggregation recovers genuine stability, not just smoothing over disagreement.
 
-\subsection{Multi-Call Ensemble Averaging}
-$\tau_1$ is from single unaggregated calls, $\tau_3$ from three-call averages (Section III-D). As shown in Table~\ref{tab_convergence_diag}'s $\tau_1 \to \tau_3$ columns, three-call averaging raises mean convergence from 0.901 to 0.940, with 9 of 10 profiles improving (one unchanged) -- improvement across nearly every profile confirms the aggregation recovers genuine stability, not just smoothing over disagreement.
+\subsection{Structured Score Decomposition Diagnostic}
+The diagnostic value of per-requirement decomposition is demonstrated concretely: the informative-requirement check flagged 8 of 76 data-engineer applicants (11\%) near-zero specifically on Python, and 2 of 33 full-stack-engineer applicants (6\%) near-zero on REST APIs and Node.js despite adequate scores elsewhere -- evidence the skill-matching stage, not Jev, admitted these applicants.
 
 \subsection{Efficiency}
-Across all 1{,}038 calls in the test-retest data (346 pairs $\times$ 3 repeats), a single Jev call takes a mean of 1.20s (range 0.73--3.33s), for a total of 20.7 minutes of compute time across the full corpus -- call latency only, not skill/JP extraction.
+Across all 1{,}038 calls in the test-retest data (346 pairs $\times$ 3 repeats), a single Jev call takes a mean of 1.20s (range 0.73--3.33s), for a total of 20.7 minutes of compute time across the full corpus -- call latency only, not skill/job profile extraction.
 
 \subsection{Comparison with the Prior Tournament-Based System}
 \begin{table}[!ht]
@@ -223,14 +214,14 @@ Explanation & Strengths/weaknesses narrative & Score + confidence, no narrative\
 As shown in Table~\ref{tab_comparison}, this system is not better in every way: its ranking is slightly less stable, and Faithfulness and per-answer confidence measure different things (groundedness vs.\ decision stability), so neither proves it is ``more accurate.'' It wins on cost -- half the calls, no tournament infrastructure, schema violation impossible by construction rather than merely reduced -- and offers a native, calibrated confidence the prior system had no way to provide. It also parallelizes: the prior system's 1,713 tournament calls form a sequential chain, each iteration waiting on the last, while this system's calls are independent.
 
 \section{Conclusion}
-This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- criteria-grounded question design, structured score decomposition as a diagnostic signal, and multi-call ensemble averaging -- each motivated by a reliability problem observed in practice. The result is not a uniform improvement (Table~\ref{tab_comparison}): it trades a little ranking stability and all free-text interpretability for roughly half the model calls, no tournament infrastructure, and a native calibrated confidence the prior system never had. Criteria-grounded design is strongly validated for the per-requirement Score questions ($r=0.743$, $p<0.001$, $n=869$) and, with a smaller pooled effect, for seniority and education ($r=0.38$); the single, low-$n$ overall-fit question does not reach significance alone. Score decomposition's diagnostic value is confirmed quantitatively, surfacing a shortlisting-stage defect the prior system could only have found by manual reading.
+This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- criteria-grounded question design, multi-call ensemble averaging, and structured score decomposition as a diagnostic signal -- each motivated by a reliability problem observed in practice. The result is not a uniform improvement (Table~\ref{tab_comparison}): it trades a little ranking stability and all free-text interpretability for roughly half the model calls, no tournament infrastructure, and a native calibrated confidence the prior system never had. Criteria-grounded design is strongly validated for the per-requirement Score questions ($r=0.844$, $p<0.001$, $n=869$) and, with a smaller pooled effect, for seniority and education ($r=0.34$); the single, low-$n$ overall-fit question does not reach significance alone. Score decomposition's diagnostic value is confirmed quantitatively, surfacing a shortlisting-stage defect the prior system could only have found by manual reading.
 
-A limitation is that the SNR-convergence correlation (Section V-C, $n=10$) is suggestive, not conclusive: SNR and convergence are pool-level properties, so there is at most one point per JP regardless of applicant count. A second is that this work trades away the prior system's free-text interpretability -- a score and a confidence, not a narrative, and per-requirement scores only partly substitute. A third is that the shortlisting stage, inherited unchanged from the prior system, counts skill matches toward a minimum without distinguishing a role's core stack from peripheral skills, so an applicant can be admitted on utility skills alone (e.g., Docker, Kubernetes, AWS) while scoring near-zero on the role's core requirements -- the full-stack-engineer case in Section V-C. Score decomposition detects this defect but cannot correct it, since fixing it would require modifying the shortlisting stage both pipelines share.
+A limitation is that this work trades away the prior system's free-text interpretability -- a score and a confidence, not a narrative, and per-requirement scores only partly substitute. A second is that the shortlisting stage, inherited unchanged from the prior system, counts skill matches toward a minimum without distinguishing a role's core stack from peripheral skills, so an applicant can be admitted on utility skills alone (e.g., Docker, Kubernetes, AWS) while scoring near-zero on the role's core requirements -- the full-stack-engineer case in Section V-D. Score decomposition detects this defect but cannot correct it, since fixing it would require modifying the shortlisting stage both pipelines share.
 
-Future work includes replicating the SNR-convergence correlation on more JPs ($n=10$ currently); a lightweight explanation layer -- surfacing the lowest-scoring items as a structured rationale -- to partially restore interpretability without reintroducing free text; and separating a role's core technical skills from peripheral ones during JP extraction, so shortlisting stops admitting applicants on utility skills alone.
+Future work includes a lightweight explanation layer -- surfacing the lowest-scoring items as a structured rationale -- to partially restore interpretability without reintroducing free text; and separating a role's core technical skills from peripheral ones during job profile extraction, so shortlisting stops admitting applicants on utility skills alone.
 
 \section*{Acknowledgment}
-The authors acknowledge the use of NVIDIA GeForce RTX 4070 Ti SUPER GPU hardware for the local skill/JP-extraction stage, and the open-source LangGraph, sentence-transformers, and PyTorch libraries.
+The authors acknowledge the use of NVIDIA GeForce RTX 4070 Ti SUPER GPU hardware for the local skill/job profile-extraction stage, and the open-source LangGraph, sentence-transformers, and PyTorch libraries.
 
 \begin{thebibliography}{10}
 
