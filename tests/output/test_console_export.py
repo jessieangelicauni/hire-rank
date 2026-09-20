@@ -49,7 +49,7 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
             "job_description_id": "jd-1", "candidate_id": "cand-a", "generated_by_model": "typesafe/jev",
             "overall_fit_score": 88.0, "overall_recommendation": "hire", "meets_min_qualifications": True,
             "requirement_scores": {"Python": 100.0}, "confidence": {"overall_fit_score": 0.9},
-            "seniority_fit_score": 75.0, "education_fit_score": None,
+            "seniority_years_fit_score": 75.0, "seniority_relevancy_fit_score": 100.0, "education_fit_score": None,
         }
     }
     (run_dir / "jd-1" / "assessments.json").write_text(json.dumps(assessments), encoding="utf-8")
@@ -81,7 +81,8 @@ def test_export_console_web_data_maps_jev_scores(run_with_jev_ranking, tmp_path)
     assert assessment["overall_fit_score"] == 88.0
     assert assessment["overall_recommendation"] == "hire"
     assert assessment["requirement_scores"] == {"Python": 100.0}
-    assert assessment["seniority_fit_score"] == 75.0
+    assert assessment["seniority_years_fit_score"] == 75.0
+    assert assessment["seniority_relevancy_fit_score"] == 100.0
     assert assessment["education_fit_score"] is None
     assert "strengths" not in assessment
     comparison = data["comparison"]["jd-1"]

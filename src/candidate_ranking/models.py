@@ -35,6 +35,7 @@ class JDSkills(BaseModel):
     must_have_skills: list[str] = Field(default_factory=list)
     certifications: list[str] = Field(default_factory=list)
     seniority_requirement: str | None = None
+    seniority_min_years: float | None = Field(default=None, ge=0)
     education_requirement: str | None = None
 
 
@@ -48,7 +49,8 @@ class Assessment(BaseModel):
     requirement_scores: dict[str, float] = Field(default_factory=dict)
     confidence: dict[str, float] = Field(default_factory=dict)
     certification_results: dict[str, bool] = Field(default_factory=dict)
-    seniority_fit_score: float | None = Field(default=None, ge=0, le=100)
+    seniority_years_fit_score: float | None = Field(default=None, ge=0, le=100)
+    seniority_relevancy_fit_score: float | None = Field(default=None, ge=0, le=100)
     education_fit_score: float | None = Field(default=None, ge=0, le=100)
 
 

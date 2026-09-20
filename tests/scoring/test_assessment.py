@@ -39,6 +39,7 @@ def _jd_skills_full() -> JDSkills:
         technical_skills=["Python"],
         certifications=["AWS Certified Solutions Architect"],
         seniority_requirement="5+ years of backend development experience",
+        seniority_min_years=5.0,
         education_requirement="Bachelor's degree in Computer Science or related field",
     )
 
@@ -210,7 +211,8 @@ def test_generate_assessment_builds_certification_seniority_education_questions(
         JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
         JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
         JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=True, confidence=0.9),
-        JevAnswer(key="seniority", kind="score", value=3.0, confidence=0.85),
+        JevAnswer(key="seniority_years", kind="score", value=3.0, confidence=0.85),
+        JevAnswer(key="seniority_relevancy", kind="score", value=4.0, confidence=0.85),
         JevAnswer(key="education", kind="score", value=1.0, confidence=0.8),
     ]
 
@@ -219,10 +221,12 @@ def test_generate_assessment_builds_certification_seniority_education_questions(
     _, questions = jev_client.evaluate.call_args.args
     question_keys = {q.key for q in questions}
     assert "certification::AWS Certified Solutions Architect" in question_keys
-    assert "seniority" in question_keys
+    assert "seniority_years" in question_keys
+    assert "seniority_relevancy" in question_keys
     assert "education" in question_keys
     assert assessment.certification_results == {"AWS Certified Solutions Architect": True}
-    assert assessment.seniority_fit_score == 75.0
+    assert assessment.seniority_years_fit_score == 75.0
+    assert assessment.seniority_relevancy_fit_score == 100.0
     assert assessment.education_fit_score == 25.0
 
 
@@ -238,11 +242,13 @@ def test_generate_assessment_omits_seniority_education_questions_when_not_stated
 
     _, questions = jev_client.evaluate.call_args.args
     question_keys = {q.key for q in questions}
-    assert "seniority" not in question_keys
+    assert "seniority_years" not in question_keys
+    assert "seniority_relevancy" not in question_keys
     assert "education" not in question_keys
     assert not any(k.startswith("certification::") for k in question_keys)
     assert assessment.certification_results == {}
-    assert assessment.seniority_fit_score is None
+    assert assessment.seniority_years_fit_score is None
+    assert assessment.seniority_relevancy_fit_score is None
     assert assessment.education_fit_score is None
 
 
@@ -250,27 +256,33 @@ def test_seniority_and_education_criteria_are_five_level_evidence_based_scores()
     jd_skills = JDSkills(
         job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=[],
         seniority_requirement="5+ years of backend experience",
+        seniority_min_years=5.0,
         education_requirement="Bachelor's degree in Computer Science",
     )
     questions = _build_questions(jd_skills)
     by_key = {q.key: q for q in questions}
 
-    assert by_key["seniority"].kind == "score"
+    assert by_key["seniority_years"].kind == "score"
+    assert by_key["seniority_relevancy"].kind == "score"
     assert by_key["education"].kind == "score"
-    assert len(by_key["seniority"].criteria) == 5
+    assert len(by_key["seniority_years"].criteria) == 5
+    assert len(by_key["seniority_relevancy"].criteria) == 5
     assert len(by_key["education"].criteria) == 5
 
-    seniority_criteria = " ".join(by_key["seniority"].criteria).lower()
+    seniority_years_criteria = " ".join(by_key["seniority_years"].criteria).lower()
+    seniority_relevancy_criteria = " ".join(by_key["seniority_relevancy"].criteria).lower()
     education_criteria = " ".join(by_key["education"].criteria).lower()
 
     # The old Noul criteria just restated the question ("supports"/"does not support" this
     # requirement) -- circular, giving Jev no concrete evidence to look for. The Score criteria
     # must instead name the kind of evidence that distinguishes each level.
     for banned_phrase in ("supports that the candidate", "does not support that the candidate"):
-        assert banned_phrase not in seniority_criteria
+        assert banned_phrase not in seniority_years_criteria
+        assert banned_phrase not in seniority_relevancy_criteria
         assert banned_phrase not in education_criteria
 
-    assert any(term in seniority_criteria for term in ("years", "level", "domain", "role"))
+    assert any(term in seniority_years_criteria for term in ("years", "required"))
+    assert any(term in seniority_relevancy_criteria for term in ("domain", "role"))
     assert any(term in education_criteria for term in ("degree", "field", "credential"))
 
 
@@ -283,7 +295,7 @@ def test_generate_assessment_aggregates_certification_and_seniority_across_calls
             JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.9),
             JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
             JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=cert_value, confidence=0.9),
-            JevAnswer(key="seniority", kind="score", value=seniority_value, confidence=0.9),
+            JevAnswer(key="seniority_years", kind="score", value=seniority_value, confidence=0.9),
         ]
 
     jev_client.evaluate.side_effect = [
@@ -295,11 +307,12 @@ def test_generate_assessment_aggregates_certification_and_seniority_across_calls
     jd_skills = JDSkills(
         job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=[],
         certifications=["AWS Certified Solutions Architect"], seniority_requirement="5+ years",
+        seniority_min_years=5.0,
     )
     assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills)
 
     assert assessment.certification_results == {"AWS Certified Solutions Architect": True}  # 2 of 3 votes
-    assert assessment.seniority_fit_score == pytest.approx((100.0 + 50.0 + 75.0) / 3)  # mean of 4.0/2.0/3.0 -> percent
+    assert assessment.seniority_years_fit_score == pytest.approx((100.0 + 50.0 + 75.0) / 3)  # mean of 4.0/2.0/3.0 -> percent
 
 
 def test_load_or_generate_assessment_cache_key_depends_on_n_calls(tmp_path: Path):

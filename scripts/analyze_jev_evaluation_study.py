@@ -313,15 +313,18 @@ def analyze_ablation(records: list[dict]) -> dict:
     }
 
 
+_SENIORITY_EDUCATION_KEYS = ("seniority_years", "seniority_relevancy", "education")
+
+
 def analyze_seniority_education_ablation(records: list[dict]) -> dict:
-    concrete_by_key: dict[str, list[float]] = {"seniority": [], "education": []}
-    vague_by_key: dict[str, list[float]] = {"seniority": [], "education": []}
+    concrete_by_key: dict[str, list[float]] = {key: [] for key in _SENIORITY_EDUCATION_KEYS}
+    vague_by_key: dict[str, list[float]] = {key: [] for key in _SENIORITY_EDUCATION_KEYS}
     vague_latencies: list[float] = []
 
     for record in records:
         concrete_conf = record["concrete_confidence"]
         vague_conf = record["vague_confidence"]
-        for key in ("seniority", "education"):
+        for key in _SENIORITY_EDUCATION_KEYS:
             if key in concrete_conf and key in vague_conf:
                 concrete_by_key[key].append(concrete_conf[key])
                 vague_by_key[key].append(vague_conf[key])
@@ -329,14 +332,15 @@ def analyze_seniority_education_ablation(records: list[dict]) -> dict:
 
     buckets = {
         key: _paired_bucket(concrete_by_key[key], vague_by_key[key], f"{key}_confidence")
-        for key in ("seniority", "education")
+        for key in _SENIORITY_EDUCATION_KEYS
     }
-    concrete_pooled = concrete_by_key["seniority"] + concrete_by_key["education"]
-    vague_pooled = vague_by_key["seniority"] + vague_by_key["education"]
+    concrete_pooled = [v for key in _SENIORITY_EDUCATION_KEYS for v in concrete_by_key[key]]
+    vague_pooled = [v for key in _SENIORITY_EDUCATION_KEYS for v in vague_by_key[key]]
 
     return {
         "n_pairs": len(records),
-        "seniority": buckets["seniority"],
+        "seniority_years": buckets["seniority_years"],
+        "seniority_relevancy": buckets["seniority_relevancy"],
         "education": buckets["education"],
         "pooled": _paired_bucket(concrete_pooled, vague_pooled, "seniority_education_pooled_confidence"),
         "vague_latency_seconds_mean": statistics.mean(vague_latencies) if vague_latencies else None,
@@ -448,7 +452,10 @@ def render_markdown(report: dict) -> str:
     sen_edu_abl = report.get("seniority_education_ablation")
     if sen_edu_abl:
         lines += ["", "## Seniority/education criteria ablation (concrete vs. bare-label Score)", f"- n={sen_edu_abl['n_pairs']} eligible pairs"]
-        for label, key in (("seniority", "seniority"), ("education", "education"), ("pooled", "pooled")):
+        for label, key in (
+            ("seniority_years", "seniority_years"), ("seniority_relevancy", "seniority_relevancy"),
+            ("education", "education"), ("pooled", "pooled"),
+        ):
             bucket = sen_edu_abl[key]
             if bucket["wilcoxon"]:
                 w = bucket["wilcoxon"]

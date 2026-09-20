@@ -296,7 +296,8 @@ function ScoreSummary({ assessment }: { assessment: Assessment }) {
 
 function QualificationScores({ assessment }: { assessment: Assessment }) {
   const entries: [string, number][] = [];
-  if (assessment.seniority_fit_score != null) entries.push(['Seniority', assessment.seniority_fit_score]);
+  if (assessment.seniority_years_fit_score != null) entries.push(['Seniority (years)', assessment.seniority_years_fit_score]);
+  if (assessment.seniority_relevancy_fit_score != null) entries.push(['Seniority (relevancy)', assessment.seniority_relevancy_fit_score]);
   if (assessment.education_fit_score != null) entries.push(['Education', assessment.education_fit_score]);
   if (entries.length === 0) return null;
 

@@ -23,7 +23,8 @@ from candidate_ranking.scoring.assessment import (
     _build_questions,
     _build_state,
     _education_instructions,
-    _seniority_instructions,
+    _seniority_relevancy_instructions,
+    _seniority_years_instructions,
 )
 from candidate_ranking.scoring.jev_client import JevAnswer, JevClient, JevQuestion
 
@@ -71,10 +72,20 @@ def _vague_build_questions(jd_technical_skills: list[str] | None) -> list[JevQue
 def _vague_seniority_education_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
     questions = []
     if jd_skills and jd_skills.seniority_requirement:
+        if jd_skills.seniority_min_years is not None:
+            questions.append(
+                JevQuestion(
+                    key="seniority_years", kind="score",
+                    instructions=_seniority_years_instructions(
+                        jd_skills.seniority_requirement, jd_skills.seniority_min_years
+                    ),
+                    criteria=_VAGUE_SCORE_CRITERIA,
+                )
+            )
         questions.append(
             JevQuestion(
-                key="seniority", kind="score",
-                instructions=_seniority_instructions(jd_skills.seniority_requirement),
+                key="seniority_relevancy", kind="score",
+                instructions=_seniority_relevancy_instructions(jd_skills.seniority_requirement),
                 criteria=_VAGUE_SCORE_CRITERIA,
             )
         )

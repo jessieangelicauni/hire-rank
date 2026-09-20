@@ -31,6 +31,7 @@ JD_SKILL_EXTRACTION_PROMPT = ChatPromptTemplate.from_messages(
             "- Classify the must-have subset of those skills into `must_have_skills` (see Must-Have Classification below).\n"
             "- List any named professional certifications (e.g. \"AWS Certified Solutions Architect\", \"PMP\") in the `certifications` field.\n"
             "- If the description states a seniority or years-of-experience requirement, summarize it in one sentence in the `seniority_requirement` field; otherwise leave it null.\n"
+            "- If that requirement states an explicit minimum number of years, put that number in `seniority_min_years` (e.g., \"5+ years\" or \"3-5 years\" both give 5 and 3 respectively -- use the minimum stated); otherwise leave it null.\n"
             "- If the description states an education requirement, summarize it in one sentence in the `education_requirement` field; otherwise leave it null.\n\n"
             "Must-Have Classification:\n"
             "- `must_have_skills` is the small core the role is built around: the main language(s) plus 1-3 defining frameworks or platforms.\n"
@@ -56,6 +57,7 @@ class _GeneratedSkills(BaseModel):
     must_have_skills: list[str] = Field(default_factory=list)
     certifications: list[str] = Field(default_factory=list)
     seniority_requirement: str | None = None
+    seniority_min_years: float | None = None
     education_requirement: str | None = None
 
 
@@ -114,6 +116,7 @@ def generate_jd_skills(
         must_have_skills=_filter_must_have_skills(result.must_have_skills, result.technical_skills, jd.id),
         certifications=result.certifications,
         seniority_requirement=result.seniority_requirement,
+        seniority_min_years=result.seniority_min_years,
         education_requirement=result.education_requirement,
     )
 
