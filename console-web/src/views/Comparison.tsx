@@ -63,7 +63,7 @@ export default function Comparison({ roles }: Props) {
       </p>
 
       <div style={{ display: 'flex', gap: 12, marginBottom: 24 }}>
-        <StatCard label="Avg. fit score across roles" value={avgFitScore !== null ? avgFitScore.toFixed(1) : '—'} />
+        <StatCard label="Avg. fit score across roles" value={avgFitScore !== null ? `${avgFitScore.toFixed(1)}/100` : '—'} />
         <StatCard label="Avg. meets-minimum rate" value={avgMeetsMinRate !== null ? `${(avgMeetsMinRate * 100).toFixed(0)}%` : '—'} />
         <StatCard label="Avg. hire-recommendation rate" value={avgHireRate !== null ? `${(avgHireRate * 100).toFixed(0)}%` : '—'} />
       </div>
@@ -97,8 +97,8 @@ export default function Comparison({ roles }: Props) {
                 {role.title}
               </div>
               <div style={{ flex: '0 0 auto', display: 'flex', alignItems: 'center', gap: 20, fontSize: 13, color: colorTextMuted, fontVariantNumeric: 'tabular-nums' }}>
-                <span style={{ minWidth: 56, textAlign: 'right' }}>
-                  <strong style={{ color: colorText, fontWeight: 600 }}>{m.meanFitScore !== null ? m.meanFitScore.toFixed(1) : '—'}</strong> fit
+                <span style={{ minWidth: 76, textAlign: 'right' }}>
+                  <strong style={{ color: colorText, fontWeight: 600 }}>{m.meanFitScore !== null ? `${m.meanFitScore.toFixed(1)}/100` : '—'}</strong> fit
                 </span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   <RateBar value={m.meetsMinRate} color={colorAccent} />
@@ -136,8 +136,8 @@ export default function Comparison({ roles }: Props) {
               value={EVALUATION_SUMMARY.meanRankingConvergence !== null ? EVALUATION_SUMMARY.meanRankingConvergence.toFixed(3) : '—'}
             />
             <StatCard
-              label="Score stdev across repeats"
-              value={EVALUATION_SUMMARY.compositeScoreStdev !== null ? EVALUATION_SUMMARY.compositeScoreStdev.toFixed(2) : '—'}
+              label="Composite-score stdev across repeats (0-100 scale)"
+              value={EVALUATION_SUMMARY.compositeScoreStdev !== null ? `${EVALUATION_SUMMARY.compositeScoreStdev.toFixed(2)} pts` : '—'}
             />
             <StatCard
               label="Requirement/composite coherence (ρ)"
@@ -159,10 +159,10 @@ function RoleBreakdownPanel({ role }: { role: Role }) {
       {(seniorityMean !== null || educationMean !== null) && (
         <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
           {seniorityMean !== null && (
-            <StatCard label="Avg. years-of-experience score" value={seniorityMean.toFixed(1)} />
+            <StatCard label="Avg. years-of-experience match" value={`${seniorityMean.toFixed(1)}/100`} />
           )}
           {educationMean !== null && (
-            <StatCard label="Avg. education score" value={educationMean.toFixed(1)} />
+            <StatCard label="Avg. education match" value={`${educationMean.toFixed(1)}/100`} />
           )}
         </div>
       )}
@@ -195,7 +195,7 @@ function RoleBreakdownPanel({ role }: { role: Role }) {
                   background: score >= 50 ? colorAccent : colorDanger,
                 }} />
               </div>
-              <span style={{ flexShrink: 0, width: 32, textAlign: 'right', color: colorTextMuted, fontSize: 12 }}>{score.toFixed(0)}</span>
+              <span style={{ flexShrink: 0, width: 52, textAlign: 'right', color: colorTextMuted, fontSize: 12 }}>{score.toFixed(0)}/100</span>
             </div>
           ))}
         </div>

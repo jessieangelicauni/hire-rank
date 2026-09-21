@@ -279,6 +279,7 @@ function ScoreSummary({ assessment }: { assessment: Assessment }) {
       <div>
         <div style={{ fontSize: 32, fontWeight: 700, color: colorText, lineHeight: 1 }}>
           {assessment.composite_fit_score.toFixed(0)}
+          <span style={{ fontSize: 16, fontWeight: 500, color: colorTextMuted }}>/100</span>
         </div>
         <div style={{ fontSize: 12, color: colorTextMuted, marginTop: 4 }}>Composite fit score</div>
       </div>
@@ -297,8 +298,8 @@ function ScoreSummary({ assessment }: { assessment: Assessment }) {
 
 function QualificationScores({ assessment }: { assessment: Assessment }) {
   const entries: [string, number][] = [];
-  if (assessment.seniority_years_fit_score != null) entries.push(['Years of experience', assessment.seniority_years_fit_score]);
-  if (assessment.education_fit_score != null) entries.push(['Education', assessment.education_fit_score]);
+  if (assessment.seniority_years_fit_score != null) entries.push(['Years-of-experience match', assessment.seniority_years_fit_score]);
+  if (assessment.education_fit_score != null) entries.push(['Education match', assessment.education_fit_score]);
   if (entries.length === 0) return null;
 
   return (
@@ -322,7 +323,7 @@ function QualificationScores({ assessment }: { assessment: Assessment }) {
                 background: score >= 50 ? colorAccent : colorDanger,
               }} />
             </div>
-            <span style={{ flexShrink: 0, width: 32, textAlign: 'right', color: colorTextMuted, fontSize: 13 }}>{score.toFixed(0)}</span>
+            <span style={{ flexShrink: 0, width: 52, textAlign: 'right', color: colorTextMuted, fontSize: 13 }}>{score.toFixed(0)}/100</span>
           </div>
         ))}
       </div>
@@ -357,7 +358,7 @@ function RequirementScores({ requirementScores }: { requirementScores: Record<st
                   background: score >= 50 ? colorAccent : colorDanger,
                 }} />
               </div>
-              <span style={{ flexShrink: 0, width: 32, textAlign: 'right', color: colorTextMuted, fontSize: 13 }}>{score.toFixed(0)}</span>
+              <span style={{ flexShrink: 0, width: 52, textAlign: 'right', color: colorTextMuted, fontSize: 13 }}>{score.toFixed(0)}/100</span>
             </div>
           ))
         )}
@@ -391,7 +392,7 @@ function RepeatabilitySample({ samples }: { samples: RepeatSample[] }) {
               }}
             >
               <span style={{ flex: 1, minWidth: 0 }}>Call {i + 1}</span>
-              <span style={{ fontWeight: 700, color: colorText }}>{sample.compositeFitScore.toFixed(1)}</span>
+              <span style={{ fontWeight: 700, color: colorText }}>{sample.compositeFitScore.toFixed(1)}/100</span>
               <span style={{ flexShrink: 0, width: 60, textAlign: 'right', color, fontWeight: 600, fontSize: 13 }}>
                 {RECOMMENDATION_LABEL[sample.overallRecommendation]}
               </span>
