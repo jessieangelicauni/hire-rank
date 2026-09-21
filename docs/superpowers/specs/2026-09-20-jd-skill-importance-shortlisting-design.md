@@ -20,7 +20,7 @@ on Python despite being shortlisted, and 2 of 33 full-stack-engineer
 applicants (6%) were near-zero on REST APIs and Node.js while scoring
 adequately on peripheral tools (Docker, Kubernetes, AWS). The paper's
 Future Work section names the fix directly: "separating a role's core
-technical skills from peripheral ones during JP extraction, so
+technical skills from peripheral ones during job profile extraction, so
 shortlisting stops admitting applicants on utility skills alone."
 
 This design implements that fix.
@@ -134,9 +134,9 @@ A candidate is shortlisted only if **both** hold:
 
 `required_must_have = min(min_must_have_matches, len(must_have_normalized))`
 mirrors the existing `required = min(min_matches, deduplicated_count)`
-pattern exactly: if a JP's must-have set is smaller than the
+pattern exactly: if a job profile's must-have set is smaller than the
 configured threshold, the threshold shrinks to match rather than
-making the JP unshortlistable. When `must_have_skills` is empty
+making the job profile unshortlistable. When `must_have_skills` is empty
 (old-format JDSkills, or a JD the LLM classified with no must-haves),
 `required_must_have` is 0 and every candidate automatically satisfies
 the must-have gate — today's behavior is preserved exactly.

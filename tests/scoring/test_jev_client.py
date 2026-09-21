@@ -25,7 +25,7 @@ def test_evaluate_parses_noul_choice_and_score_answers(mock_post):
                 "confidence": 0.8,
                 "probabilities": {"hire": 0.8, "maybe": 0.15, "no": 0.05},
             },
-            "overall_fit_score": {
+            "seniority_years": {
                 "type": "score",
                 "score": 3.0,
                 "confidence": 0.9,
@@ -39,7 +39,7 @@ def test_evaluate_parses_noul_choice_and_score_answers(mock_post):
     questions = [
         JevQuestion(key="meets_min_qualifications", kind="noul", instructions="...", criteria={"true": "...", "false": "..."}),
         JevQuestion(key="overall_recommendation", kind="choice", instructions="...", criteria={"hire": "...", "maybe": "...", "no": "..."}),
-        JevQuestion(key="overall_fit_score", kind="score", instructions="...", criteria=["0", "25", "50", "75", "100"]),
+        JevQuestion(key="seniority_years", kind="score", instructions="...", criteria=["0", "25", "50", "75", "100"]),
     ]
 
     answers = client.evaluate("some state text", questions)
@@ -51,8 +51,8 @@ def test_evaluate_parses_noul_choice_and_score_answers(mock_post):
     assert by_key["overall_recommendation"] == JevAnswer(
         key="overall_recommendation", kind="choice", value="hire", confidence=0.8
     )
-    assert by_key["overall_fit_score"] == JevAnswer(
-        key="overall_fit_score", kind="score", value=3.0, confidence=0.9
+    assert by_key["seniority_years"] == JevAnswer(
+        key="seniority_years", kind="score", value=3.0, confidence=0.9
     )
 
     call_kwargs = mock_post.call_args.kwargs
@@ -60,7 +60,7 @@ def test_evaluate_parses_noul_choice_and_score_answers(mock_post):
     assert call_kwargs["json"]["model"] == "jev-latest"
     assert call_kwargs["json"]["state"] == "some state text"
     assert set(call_kwargs["json"]["questions"]) == {
-        "meets_min_qualifications", "overall_recommendation", "overall_fit_score",
+        "meets_min_qualifications", "overall_recommendation", "seniority_years",
     }
 
 

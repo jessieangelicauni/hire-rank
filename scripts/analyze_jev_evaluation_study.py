@@ -57,7 +57,7 @@ def analyze_test_retest(records: list[dict]) -> dict:
 
     for record in records:
         repeats = record["repeats"]
-        scores = [r["overall_fit_score"] for r in repeats]
+        scores = [r["composite_fit_score"] for r in repeats]
         if len(scores) >= 2:
             score_stdevs.append(statistics.stdev(scores))
 
@@ -77,7 +77,7 @@ def analyze_test_retest(records: list[dict]) -> dict:
     return {
         "n_pairs": n,
         "n_repeats_per_pair": len(records[0]["repeats"]) if records else 0,
-        "overall_fit_score_stdev": {
+        "composite_fit_score_stdev": {
             "mean": statistics.mean(score_stdevs) if score_stdevs else None,
             "median": statistics.median(score_stdevs) if score_stdevs else None,
         },
@@ -115,7 +115,7 @@ def analyze_ranking_convergence(records: list[dict]) -> dict:
 
         rankings = []
         for i in range(n_repeats):
-            scores = {r["candidate_id"]: r["repeats"][i]["overall_fit_score"] for r in jd_records}
+            scores = {r["candidate_id"]: r["repeats"][i]["composite_fit_score"] for r in jd_records}
             rankings.append(sorted(candidate_ids, key=lambda cid: scores[cid], reverse=True))
 
         pair_taus = []
@@ -182,7 +182,7 @@ def analyze_score_decomposition_diagnostic(records: list[dict], ranking_converge
 
     for jd_id, jd_records in by_jd.items():
         candidate_scores = [
-            [rep["overall_fit_score"] for rep in r["repeats"]]
+            [rep["composite_fit_score"] for rep in r["repeats"]]
             for r in jd_records
             if len(r["repeats"]) >= 2
         ]
@@ -213,19 +213,19 @@ def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
         assessments.extend(json.loads(path.read_text(encoding="utf-8")).values())
 
     mean_requirement_scores = []
-    overall_scores_for_correlation = []
+    composite_scores_for_correlation = []
     for a in assessments:
         if a["requirement_scores"]:
             mean_requirement_scores.append(statistics.mean(a["requirement_scores"].values()))
-            overall_scores_for_correlation.append(a["overall_fit_score"])
+            composite_scores_for_correlation.append(a["composite_fit_score"])
 
     correlation = None
     if len(mean_requirement_scores) >= 3:
-        rho, p_value = spearmanr(mean_requirement_scores, overall_scores_for_correlation)
+        rho, p_value = spearmanr(mean_requirement_scores, composite_scores_for_correlation)
         correlation = {"spearman_rho": float(rho), "p_value": float(p_value), "n": len(mean_requirement_scores)}
 
-    hire_scores = [a["overall_fit_score"] for a in assessments if a["overall_recommendation"] == "hire"]
-    no_scores = [a["overall_fit_score"] for a in assessments if a["overall_recommendation"] == "no"]
+    hire_scores = [a["composite_fit_score"] for a in assessments if a["overall_recommendation"] == "hire"]
+    no_scores = [a["composite_fit_score"] for a in assessments if a["overall_recommendation"] == "no"]
     recommendation_vs_score = None
     if hire_scores and no_scores:
         stat, p_value = mannwhitneyu(hire_scores, no_scores, alternative="greater")
@@ -238,8 +238,8 @@ def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
             "p_value_hire_greater_than_no": float(p_value),
         }
 
-    meets_min_scores = [a["overall_fit_score"] for a in assessments if a["meets_min_qualifications"]]
-    fails_min_scores = [a["overall_fit_score"] for a in assessments if not a["meets_min_qualifications"]]
+    meets_min_scores = [a["composite_fit_score"] for a in assessments if a["meets_min_qualifications"]]
+    fails_min_scores = [a["composite_fit_score"] for a in assessments if not a["meets_min_qualifications"]]
     qualifications_vs_score = None
     if meets_min_scores and fails_min_scores:
         stat, p_value = mannwhitneyu(meets_min_scores, fails_min_scores, alternative="greater")
@@ -254,13 +254,12 @@ def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
 
     return {
         "n_assessments": len(assessments),
-        "requirement_vs_overall_score_correlation": correlation,
+        "requirement_vs_composite_score_correlation": correlation,
         "recommendation_vs_score": recommendation_vs_score,
         "min_qualifications_vs_score": qualifications_vs_score,
     }
 
 
-_OVERALL_FIT_KEY = "overall_fit_score"
 _UNAFFECTED_CONTROL_KEYS = ("overall_recommendation", "meets_min_qualifications")
 
 
@@ -274,8 +273,6 @@ def _paired_bucket(concrete: list[float], vague: list[float], label: str) -> dic
 
 
 def analyze_ablation(records: list[dict]) -> dict:
-    concrete_overall: list[float] = []
-    vague_overall: list[float] = []
     concrete_control: list[float] = []
     vague_control: list[float] = []
     concrete_requirement: list[float] = []
@@ -285,10 +282,6 @@ def analyze_ablation(records: list[dict]) -> dict:
     for record in records:
         concrete_conf = record["concrete_confidence"]
         vague_conf = record["vague_confidence"]
-
-        if _OVERALL_FIT_KEY in concrete_conf and _OVERALL_FIT_KEY in vague_conf:
-            concrete_overall.append(concrete_conf[_OVERALL_FIT_KEY])
-            vague_overall.append(vague_conf[_OVERALL_FIT_KEY])
 
         for key in _UNAFFECTED_CONTROL_KEYS:
             if key in concrete_conf and key in vague_conf:
@@ -306,14 +299,13 @@ def analyze_ablation(records: list[dict]) -> dict:
 
     return {
         "n_pairs": len(records),
-        "overall_fit_score": _paired_bucket(concrete_overall, vague_overall, "overall_fit_score_confidence"),
         "unaffected_control": _paired_bucket(concrete_control, vague_control, "unaffected_control_confidence"),
         "requirement_questions": _paired_bucket(concrete_requirement, vague_requirement, "requirement_confidence"),
         "vague_latency_seconds_mean": statistics.mean(vague_latencies) if vague_latencies else None,
     }
 
 
-_SENIORITY_EDUCATION_KEYS = ("seniority_years", "seniority_relevancy", "education")
+_SENIORITY_EDUCATION_KEYS = ("seniority_years", "education")
 
 
 def analyze_seniority_education_ablation(records: list[dict]) -> dict:
@@ -340,7 +332,6 @@ def analyze_seniority_education_ablation(records: list[dict]) -> dict:
     return {
         "n_pairs": len(records),
         "seniority_years": buckets["seniority_years"],
-        "seniority_relevancy": buckets["seniority_relevancy"],
         "education": buckets["education"],
         "pooled": _paired_bucket(concrete_pooled, vague_pooled, "seniority_education_pooled_confidence"),
         "vague_latency_seconds_mean": statistics.mean(vague_latencies) if vague_latencies else None,
@@ -361,8 +352,8 @@ def render_markdown(report: dict) -> str:
             "",
             "## Test-retest reliability",
             f"- {tr['n_pairs']} pairs x {tr['n_repeats_per_pair']} repeats",
-            f"- overall_fit_score stdev across repeats: mean={tr['overall_fit_score_stdev']['mean']:.2f}, "
-            f"median={tr['overall_fit_score_stdev']['median']:.2f}",
+            f"- composite_fit_score stdev across repeats: mean={tr['composite_fit_score_stdev']['mean']:.2f}, "
+            f"median={tr['composite_fit_score_stdev']['median']:.2f}",
             f"- per-requirement score stdev: mean={tr['requirement_score_stdev']['mean']:.2f} "
             f"(n={tr['requirement_score_stdev']['n_requirement_observations']} requirement observations)",
             f"- recommendation full agreement rate: {tr['recommendation_full_agreement_rate']:.1%}",
@@ -383,9 +374,9 @@ def render_markdown(report: dict) -> str:
             "## Internal coherence",
             f"- n={coh['n_assessments']} assessments",
         ]
-        if coh["requirement_vs_overall_score_correlation"]:
-            c = coh["requirement_vs_overall_score_correlation"]
-            lines.append(f"- mean(requirement_scores) vs overall_fit_score: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
+        if coh["requirement_vs_composite_score_correlation"]:
+            c = coh["requirement_vs_composite_score_correlation"]
+            lines.append(f"- mean(requirement_scores) vs composite_fit_score: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
         if coh["recommendation_vs_score"]:
             r = coh["recommendation_vs_score"]
             lines.append(
@@ -401,14 +392,6 @@ def render_markdown(report: dict) -> str:
             )
     if abl:
         lines += ["", "## Criteria-design ablation (concrete vs. vague Score criteria)", f"- n={abl['n_pairs']} sampled pairs"]
-        if abl["overall_fit_score"]["wilcoxon"]:
-            w = abl["overall_fit_score"]["wilcoxon"]
-            lines.append(
-                f"- overall_fit_score confidence (the one Score-type fixed question, directly affected by the criteria change): "
-                f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
-                f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f} "
-                f"(<0.5: concrete {abl['overall_fit_score']['concrete_pct_below_0.5']:.0f}% vs vague {abl['overall_fit_score']['vague_pct_below_0.5']:.0f}%)"
-            )
         if abl["unaffected_control"]["wilcoxon"]:
             w = abl["unaffected_control"]["wilcoxon"]
             lines.append(
@@ -453,7 +436,7 @@ def render_markdown(report: dict) -> str:
     if sen_edu_abl:
         lines += ["", "## Seniority/education criteria ablation (concrete vs. bare-label Score)", f"- n={sen_edu_abl['n_pairs']} eligible pairs"]
         for label, key in (
-            ("seniority_years", "seniority_years"), ("seniority_relevancy", "seniority_relevancy"),
+            ("seniority_years", "seniority_years"),
             ("education", "education"), ("pooled", "pooled"),
         ):
             bucket = sen_edu_abl[key]

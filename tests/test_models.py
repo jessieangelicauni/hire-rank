@@ -11,14 +11,38 @@ def test_assessment_accepts_new_score_based_fields():
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_fit_score=87.5,
         overall_recommendation="hire",
         meets_min_qualifications=True,
         requirement_scores={"python": 100.0, "sql": 50.0},
-        confidence={"overall_fit_score": 0.9},
+        confidence={"overall_recommendation": 0.9},
     )
-    assert assessment.overall_fit_score == 87.5
     assert assessment.requirement_scores["python"] == 100.0
+
+
+def test_assessment_composite_fit_score_is_mean_of_sub_scores():
+    assessment = Assessment(
+        job_description_id="jd-1",
+        candidate_id="cand-1",
+        generated_by_model="typesafe/jev",
+        overall_recommendation="hire",
+        meets_min_qualifications=True,
+        requirement_scores={"python": 80.0, "sql": 60.0},
+        seniority_years_fit_score=100.0,
+        education_fit_score=40.0,
+    )
+    assert assessment.composite_fit_score == (80.0 + 60.0 + 100.0 + 40.0) / 4
+
+
+def test_assessment_composite_fit_score_ignores_missing_optional_scores():
+    assessment = Assessment(
+        job_description_id="jd-1",
+        candidate_id="cand-1",
+        generated_by_model="typesafe/jev",
+        overall_recommendation="maybe",
+        meets_min_qualifications=True,
+        requirement_scores={"python": 80.0},
+    )
+    assert assessment.composite_fit_score == 80.0
 
 
 def test_assessment_rejects_score_out_of_range():
@@ -27,7 +51,7 @@ def test_assessment_rejects_score_out_of_range():
             job_description_id="jd-1",
             candidate_id="cand-1",
             generated_by_model="typesafe/jev",
-            overall_fit_score=150.0,
+            seniority_years_fit_score=150.0,
             overall_recommendation="hire",
             meets_min_qualifications=True,
         )
@@ -39,7 +63,6 @@ def test_assessment_rejects_unknown_recommendation():
             job_description_id="jd-1",
             candidate_id="cand-1",
             generated_by_model="typesafe/jev",
-            overall_fit_score=50.0,
             overall_recommendation="strongly_hire",
             meets_min_qualifications=True,
         )
@@ -57,17 +80,14 @@ def test_assessment_accepts_certification_seniority_education_fields():
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_fit_score=87.5,
         overall_recommendation="hire",
         meets_min_qualifications=True,
         certification_results={"AWS Certified Solutions Architect": True, "PMP": False},
         seniority_years_fit_score=75.0,
-        seniority_relevancy_fit_score=100.0,
         education_fit_score=None,
     )
     assert assessment.certification_results["AWS Certified Solutions Architect"] is True
     assert assessment.seniority_years_fit_score == 75.0
-    assert assessment.seniority_relevancy_fit_score == 100.0
     assert assessment.education_fit_score is None
 
 
@@ -76,14 +96,13 @@ def test_assessment_certification_and_seniority_default_empty():
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_fit_score=50.0,
         overall_recommendation="maybe",
         meets_min_qualifications=False,
     )
     assert assessment.certification_results == {}
     assert assessment.seniority_years_fit_score is None
-    assert assessment.seniority_relevancy_fit_score is None
     assert assessment.education_fit_score is None
+    assert assessment.composite_fit_score == 0.0
 
 
 def test_jd_skills_accepts_certifications_seniority_education():

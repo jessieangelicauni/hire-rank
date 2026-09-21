@@ -17,7 +17,8 @@ def _ok_result(jd_id: str, candidate_id: str, score: float) -> dict:
         "status": "ok",
         "assessment": Assessment(
             job_description_id=jd_id, candidate_id=candidate_id, generated_by_model="typesafe/jev",
-            overall_fit_score=score, overall_recommendation="hire", meets_min_qualifications=True,
+            overall_recommendation="hire", meets_min_qualifications=True,
+            requirement_scores={"python": score},
         ),
         "error": None,
     }
@@ -38,7 +39,7 @@ def test_assessments_by_jd_groups_ok_results_and_skips_failed():
     grouped = assessments_by_jd(results)
 
     assert set(grouped["jd-1"]) == {"cand-a", "cand-b"}
-    assert grouped["jd-1"]["cand-a"].overall_fit_score == 80.0
+    assert grouped["jd-1"]["cand-a"].composite_fit_score == 80.0
 
 
 def test_rank_and_format_jd_writes_ranking_files(tmp_path: Path):
@@ -46,7 +47,8 @@ def test_rank_and_format_jd_writes_ranking_files(tmp_path: Path):
     assessments = {
         "cand-a": Assessment(
             job_description_id="jd-1", candidate_id="cand-a", generated_by_model="typesafe/jev",
-            overall_fit_score=80.0, overall_recommendation="hire", meets_min_qualifications=True,
+            overall_recommendation="hire", meets_min_qualifications=True,
+            requirement_scores={"python": 80.0},
         )
     }
 

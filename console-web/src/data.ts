@@ -18,12 +18,11 @@ export interface Applicant {
 }
 
 export interface Assessment {
-  overall_fit_score: number;
+  composite_fit_score: number;
   overall_recommendation: 'hire' | 'maybe' | 'no';
   meets_min_qualifications: boolean;
   requirement_scores: Record<string, number>;
   seniority_years_fit_score: number | null;
-  seniority_relevancy_fit_score: number | null;
   education_fit_score: number | null;
 }
 
@@ -39,23 +38,9 @@ export interface EvaluationSummary {
   nPairs: number | null;
   nRepeats: number | null;
   recommendationAgreementRate: number | null;
-  overallScoreStdev: number | null;
+  compositeScoreStdev: number | null;
   meanRankingConvergence: number | null;
   coherenceSpearmanRho: number | null;
-}
-
-export interface ShortlistingFlaggedApplicant {
-  candidateId: string;
-  overallFitScore: number;
-  nearZeroRequirements: string[];
-}
-
-export interface ShortlistingAuditRow {
-  nCandidates: number;
-  nFlagged: number;
-  flaggedPoolFraction: number;
-  profileFlagged: boolean;
-  flaggedCandidates: ShortlistingFlaggedApplicant[];
 }
 
 interface RealData {
@@ -64,7 +49,6 @@ interface RealData {
   assessments: Record<string, Assessment>;
   comparison: Record<string, ComparisonRow>;
   evaluationSummary: EvaluationSummary | null;
-  shortlistingAudit: Record<string, ShortlistingAuditRow>;
 }
 
 const data = realData as unknown as RealData;
@@ -73,15 +57,13 @@ export const ROLES: Role[] = data.roles;
 export const APPLICANTS: Applicant[] = data.candidates;
 export const COMPARISON: Record<string, ComparisonRow> = data.comparison;
 export const EVALUATION_SUMMARY: EvaluationSummary | null = data.evaluationSummary ?? null;
-export const SHORTLISTING_AUDIT: Record<string, ShortlistingAuditRow> = data.shortlistingAudit;
 
 const EMPTY_ASSESSMENT: Assessment = {
-  overall_fit_score: 0,
+  composite_fit_score: 0,
   overall_recommendation: 'no',
   meets_min_qualifications: false,
   requirement_scores: {},
   seniority_years_fit_score: null,
-  seniority_relevancy_fit_score: null,
   education_fit_score: null,
 };
 

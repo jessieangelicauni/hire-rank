@@ -36,7 +36,7 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
         "job_description_id": "jd-1",
         "rankings": [
             {
-                "rank": 1, "candidate_id": "cand-a", "overall_fit_score": 88.0,
+                "rank": 1, "candidate_id": "cand-a", "composite_fit_score": 87.5,
                 "overall_recommendation": "hire", "meets_min_qualifications": True,
                 "requirement_scores": {"Python": 100.0},
             }
@@ -47,9 +47,9 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
     assessments = {
         "cand-a": {
             "job_description_id": "jd-1", "candidate_id": "cand-a", "generated_by_model": "typesafe/jev",
-            "overall_fit_score": 88.0, "overall_recommendation": "hire", "meets_min_qualifications": True,
-            "requirement_scores": {"Python": 100.0}, "confidence": {"overall_fit_score": 0.9},
-            "seniority_years_fit_score": 75.0, "seniority_relevancy_fit_score": 100.0, "education_fit_score": None,
+            "composite_fit_score": 87.5, "overall_recommendation": "hire", "meets_min_qualifications": True,
+            "requirement_scores": {"Python": 100.0}, "confidence": {"overall_recommendation": 0.9},
+            "seniority_years_fit_score": 75.0, "education_fit_score": None,
         }
     }
     (run_dir / "jd-1" / "assessments.json").write_text(json.dumps(assessments), encoding="utf-8")
@@ -76,17 +76,16 @@ def test_export_console_web_data_maps_jev_scores(run_with_jev_ranking, tmp_path)
 
     assert result_path == output_path
     data = json.loads(output_path.read_text(encoding="utf-8"))
-    assert data["candidates"][0]["utility"] == 88.0
+    assert data["candidates"][0]["utility"] == 87.5
     assessment = data["assessments"]["cand-a::jd-1"]
-    assert assessment["overall_fit_score"] == 88.0
+    assert assessment["composite_fit_score"] == 87.5
     assert assessment["overall_recommendation"] == "hire"
     assert assessment["requirement_scores"] == {"Python": 100.0}
     assert assessment["seniority_years_fit_score"] == 75.0
-    assert assessment["seniority_relevancy_fit_score"] == 100.0
     assert assessment["education_fit_score"] is None
     assert "strengths" not in assessment
     comparison = data["comparison"]["jd-1"]
-    assert comparison["meanFitScore"] == 88.0
+    assert comparison["meanFitScore"] == 87.5
     assert comparison["meetsMinRate"] == 1.0
     assert comparison["hireRate"] == 1.0
     assert comparison["rankingStability"] is None
@@ -102,7 +101,7 @@ def test_export_console_web_data_includes_evaluation_summary_when_report_exists(
         "run_id": run_id,
         "test_retest": {
             "n_pairs": 338, "n_repeats_per_pair": 3,
-            "overall_fit_score_stdev": {"mean": 0.8, "median": 0.66},
+            "composite_fit_score_stdev": {"mean": 0.8, "median": 0.66},
             "recommendation_full_agreement_rate": 0.935,
         },
         "ranking_convergence": {
@@ -111,7 +110,7 @@ def test_export_console_web_data_includes_evaluation_summary_when_report_exists(
         },
         "internal_coherence": {
             "n_assessments": 338,
-            "requirement_vs_overall_score_correlation": {"spearman_rho": 0.667, "p_value": 6.7e-45, "n": 338},
+            "requirement_vs_composite_score_correlation": {"spearman_rho": 0.667, "p_value": 6.7e-45, "n": 338},
         },
     }
     (eval_dir / "report.json").write_text(json.dumps(report), encoding="utf-8")
@@ -124,5 +123,5 @@ def test_export_console_web_data_includes_evaluation_summary_when_report_exists(
     summary = data["evaluationSummary"]
     assert summary["recommendationAgreementRate"] == 0.935
     assert summary["meanRankingConvergence"] == 0.906
-    assert summary["overallScoreStdev"] == 0.8
+    assert summary["compositeScoreStdev"] == 0.8
     assert summary["coherenceSpearmanRho"] == 0.667

@@ -20,27 +20,18 @@ ASSESSMENT_SCOPE_VERSION = "jev-score-recommendation-v1"
 
 _REQUIREMENT_KEY_PREFIX = "requirement::"
 _CERTIFICATION_KEY_PREFIX = "certification::"
-_OVERALL_FIT_KEY = "overall_fit_score"
 _RECOMMENDATION_KEY = "overall_recommendation"
 _MIN_QUALIFICATIONS_KEY = "meets_min_qualifications"
 _SENIORITY_YEARS_KEY = "seniority_years"
-_SENIORITY_RELEVANCY_KEY = "seniority_relevancy"
 _EDUCATION_KEY = "education"
 _RETRY_ON_LOW_CONFIDENCE_KEYS = (
-    _OVERALL_FIT_KEY, _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY,
-    _SENIORITY_YEARS_KEY, _SENIORITY_RELEVANCY_KEY, _EDUCATION_KEY,
+    _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY,
+    _SENIORITY_YEARS_KEY, _EDUCATION_KEY,
 )
 _CONFIDENCE_RETRY_THRESHOLD = 0.5
 
 DEFAULT_N_CALLS = 3
 
-_OVERALL_FIT_CRITERIA = [
-    "Shows almost no relevant skills or experience for this role",
-    "Has some relevant skills but significant gaps in the role's core requirements",
-    "Meets roughly half of the role's core requirements with moderate relevant experience",
-    "Meets most of the role's core requirements with solid relevant experience",
-    "Meets or exceeds nearly all of the role's core requirements with strong, demonstrated experience",
-]
 _REQUIREMENT_FIT_CRITERIA = [
     "Not mentioned anywhere in the CV",
     "Mentioned only as a bare skill-list item, with no sentence describing real usage",
@@ -49,18 +40,11 @@ _REQUIREMENT_FIT_CRITERIA = [
     "Extensively and expertly demonstrated, with strong measurable outcomes or deep ownership",
 ]
 _SENIORITY_YEARS_FIT_CRITERIA = [
-    "No years of relevant experience stated or inferable from the CV",
-    "Fewer than half the required years of relevant experience",
-    "At least half but still below the required years of relevant experience",
-    "Meets the required years of relevant experience",
-    "Exceeds the required years of relevant experience",
-]
-_SENIORITY_RELEVANCY_FIT_CRITERIA = [
-    "Experience is in an unrelated domain to this role",
-    "Experience is in a loosely related domain, with limited overlap in responsibilities",
-    "Experience is in an adjacent domain with moderate overlap in responsibilities",
-    "Experience is in a directly matching domain and role type",
-    "Experience is in a directly matching domain and role type, with responsibilities exceeding this role's scope",
+    "No years of total experience stated or inferable from the CV",
+    "Fewer than half the required years of total experience",
+    "At least half but still below the required years of total experience",
+    "Meets the required years of total experience",
+    "Exceeds the required years of total experience",
 ]
 _EDUCATION_FIT_CRITERIA = [
     "No relevant education mentioned",
@@ -70,10 +54,10 @@ _EDUCATION_FIT_CRITERIA = [
     "Exceeds the requirement (higher degree level) in the same or a closely related field",
 ]
 assert (
-    len(_OVERALL_FIT_CRITERIA) == len(_REQUIREMENT_FIT_CRITERIA) == len(_SENIORITY_YEARS_FIT_CRITERIA)
-    == len(_SENIORITY_RELEVANCY_FIT_CRITERIA) == len(_EDUCATION_FIT_CRITERIA)
+    len(_REQUIREMENT_FIT_CRITERIA) == len(_SENIORITY_YEARS_FIT_CRITERIA)
+    == len(_EDUCATION_FIT_CRITERIA)
 )
-_SCORE_MAX_INDEX = len(_OVERALL_FIT_CRITERIA) - 1
+_SCORE_MAX_INDEX = len(_REQUIREMENT_FIT_CRITERIA) - 1
 
 
 class AssessmentGenerationError(Exception):
@@ -90,16 +74,9 @@ def _certification_question_key(certification: str) -> str:
 
 def _seniority_years_instructions(seniority_requirement: str, min_years: float) -> str:
     return (
-        f"The job requires at least {min_years:g} years of relevant experience "
-        f"(stated as: '{seniority_requirement}'). How many years of relevant experience does the "
+        f"The job requires at least {min_years:g} years of total experience "
+        f"(stated as: '{seniority_requirement}'). How many total years of experience does the "
         "candidate's CV show?"
-    )
-
-
-def _seniority_relevancy_instructions(seniority_requirement: str) -> str:
-    return (
-        "Independent of years of experience, how relevant is the candidate's experience to the job "
-        f"description's stated seniority/experience requirement: '{seniority_requirement}'?"
     )
 
 
@@ -129,12 +106,6 @@ def _build_state(jd: JobDescription, candidate: Candidate, low_confidence_note: 
 
 def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
     questions = [
-        JevQuestion(
-            key=_OVERALL_FIT_KEY,
-            kind="score",
-            instructions="How well does this candidate's CV fit the job description overall?",
-            criteria=_OVERALL_FIT_CRITERIA,
-        ),
         JevQuestion(
             key=_RECOMMENDATION_KEY,
             kind="choice",
@@ -188,14 +159,6 @@ def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
                     criteria=_SENIORITY_YEARS_FIT_CRITERIA,
                 )
             )
-        questions.append(
-            JevQuestion(
-                key=_SENIORITY_RELEVANCY_KEY,
-                kind="score",
-                instructions=_seniority_relevancy_instructions(jd_skills.seniority_requirement),
-                criteria=_SENIORITY_RELEVANCY_FIT_CRITERIA,
-            )
-        )
     if jd_skills and jd_skills.education_requirement:
         questions.append(
             JevQuestion(
@@ -227,7 +190,6 @@ def _answers_to_assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
         generated_by_model=model_name,
-        overall_fit_score=_score_to_percent(by_key[_OVERALL_FIT_KEY].value),
         overall_recommendation=by_key[_RECOMMENDATION_KEY].value,
         meets_min_qualifications=by_key[_MIN_QUALIFICATIONS_KEY].value,
         requirement_scores=requirement_scores,
@@ -235,9 +197,6 @@ def _answers_to_assessment(
         certification_results=certification_results,
         seniority_years_fit_score=(
             _score_to_percent(by_key[_SENIORITY_YEARS_KEY].value) if _SENIORITY_YEARS_KEY in by_key else None
-        ),
-        seniority_relevancy_fit_score=(
-            _score_to_percent(by_key[_SENIORITY_RELEVANCY_KEY].value) if _SENIORITY_RELEVANCY_KEY in by_key else None
         ),
         education_fit_score=_score_to_percent(by_key[_EDUCATION_KEY].value) if _EDUCATION_KEY in by_key else None,
     )
@@ -349,14 +308,12 @@ def generate_assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
         generated_by_model=model_name,
-        overall_fit_score=statistics.mean(a.overall_fit_score for a in calls),
         overall_recommendation=_aggregate_recommendation(calls),
         meets_min_qualifications=_aggregate_meets_min_qualifications(calls),
         requirement_scores=_aggregate_mean_dict(calls, "requirement_scores"),
         confidence=_aggregate_mean_dict(calls, "confidence"),
         certification_results=_aggregate_bool_dict(calls, "certification_results"),
         seniority_years_fit_score=_aggregate_mean_optional(calls, "seniority_years_fit_score"),
-        seniority_relevancy_fit_score=_aggregate_mean_optional(calls, "seniority_relevancy_fit_score"),
         education_fit_score=_aggregate_mean_optional(calls, "education_fit_score"),
     )
 

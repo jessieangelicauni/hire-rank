@@ -24,6 +24,15 @@ def _role_stub(jd: JobDescription, candidate_count: int) -> dict:
     return {"id": jd.id, "title": jd.title, "description": jd.raw_text, "candidateCount": candidate_count}
 
 
+def _composite_fit_score(entry: dict) -> float:
+    components = list(entry.get("requirement_scores", {}).values())
+    for key in ("seniority_years_fit_score", "education_fit_score"):
+        value = entry.get(key)
+        if value is not None:
+            components.append(value)
+    return statistics.mean(components) if components else 0.0
+
+
 def _null_comparison(jd_id: str) -> dict:
     return {"jdId": jd_id, "meanFitScore": None, "meetsMinRate": None, "hireRate": None, "rankingStability": None}
 
@@ -31,7 +40,7 @@ def _null_comparison(jd_id: str) -> dict:
 def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict], ranking_stability: float | None) -> dict:
     if not jd_assessments:
         return _null_comparison(jd_id)
-    fit_scores = [a["overall_fit_score"] for a in jd_assessments.values()]
+    fit_scores = [_composite_fit_score(a) for a in jd_assessments.values()]
     meets_min_flags = [a["meets_min_qualifications"] for a in jd_assessments.values()]
     recommendations = [a["overall_recommendation"] for a in jd_assessments.values()]
     return {
@@ -78,7 +87,7 @@ def _shortlisting_audit_by_jd(audit: dict | None) -> dict[str, dict]:
             "flaggedCandidates": [
                 {
                     "candidateId": c["candidate_id"],
-                    "overallFitScore": c["overall_fit_score"],
+                    "compositeFitScore": c["composite_fit_score"],
                     "nearZeroRequirements": c["near_zero_requirements"],
                 }
                 for c in jd["flagged_candidates"][:5]
@@ -103,12 +112,12 @@ def _evaluation_summary(report: dict | None) -> dict | None:
         return None
     test_retest = report.get("test_retest", {})
     ranking_convergence = report.get("ranking_convergence", {})
-    coherence = report.get("internal_coherence", {}).get("requirement_vs_overall_score_correlation")
+    coherence = report.get("internal_coherence", {}).get("requirement_vs_composite_score_correlation")
     return {
         "nPairs": test_retest.get("n_pairs"),
         "nRepeats": test_retest.get("n_repeats_per_pair"),
         "recommendationAgreementRate": test_retest.get("recommendation_full_agreement_rate"),
-        "overallScoreStdev": test_retest.get("overall_fit_score_stdev", {}).get("mean"),
+        "compositeScoreStdev": test_retest.get("composite_fit_score_stdev", {}).get("mean"),
         "meanRankingConvergence": ranking_convergence.get("mean_kendall_tau_across_all_profiles"),
         "coherenceSpearmanRho": coherence.get("spearman_rho") if coherence else None,
     }
@@ -224,7 +233,7 @@ def export_console_web_data(
 
         ranking = json.loads((run_dir / jd_id / "ranking.json").read_text(encoding="utf-8"))
         rank_by_cv_id = {row["candidate_id"]: row["rank"] for row in ranking["rankings"]}
-        score_by_cv_id = {row["candidate_id"]: row["overall_fit_score"] for row in ranking["rankings"]}
+        score_by_cv_id = {row["candidate_id"]: row["composite_fit_score"] for row in ranking["rankings"]}
 
         jd_assessments = {
             cv_id: entry for cv_id, entry in sorted(_load_jd_assessments(run_dir, jd_id).items())
@@ -248,12 +257,11 @@ def export_console_web_data(
             )
 
             assessments[row_id] = {
-                "overall_fit_score": assessment_entry["overall_fit_score"],
+                "composite_fit_score": _composite_fit_score(assessment_entry),
                 "overall_recommendation": assessment_entry["overall_recommendation"],
                 "meets_min_qualifications": assessment_entry["meets_min_qualifications"],
                 "requirement_scores": assessment_entry.get("requirement_scores", {}),
                 "seniority_years_fit_score": assessment_entry.get("seniority_years_fit_score"),
-                "seniority_relevancy_fit_score": assessment_entry.get("seniority_relevancy_fit_score"),
                 "education_fit_score": assessment_entry.get("education_fit_score"),
             }
             exported_count += 1

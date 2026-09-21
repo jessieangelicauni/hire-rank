@@ -3,7 +3,7 @@ from __future__ import annotations
 import re
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, computed_field
 
 
 def slugify(text: str) -> str:
@@ -43,15 +43,23 @@ class Assessment(BaseModel):
     job_description_id: str = Field(min_length=1)
     candidate_id: str = Field(min_length=1)
     generated_by_model: str = Field(min_length=1)
-    overall_fit_score: float = Field(ge=0, le=100)
     overall_recommendation: Literal["hire", "maybe", "no"]
     meets_min_qualifications: bool
     requirement_scores: dict[str, float] = Field(default_factory=dict)
     confidence: dict[str, float] = Field(default_factory=dict)
     certification_results: dict[str, bool] = Field(default_factory=dict)
     seniority_years_fit_score: float | None = Field(default=None, ge=0, le=100)
-    seniority_relevancy_fit_score: float | None = Field(default=None, ge=0, le=100)
     education_fit_score: float | None = Field(default=None, ge=0, le=100)
+
+    @computed_field
+    @property
+    def composite_fit_score(self) -> float:
+        components = list(self.requirement_scores.values())
+        if self.seniority_years_fit_score is not None:
+            components.append(self.seniority_years_fit_score)
+        if self.education_fit_score is not None:
+            components.append(self.education_fit_score)
+        return sum(components) / len(components) if components else 0.0
 
 
 class TournamentIterationRecord(BaseModel):

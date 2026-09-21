@@ -16,11 +16,10 @@ def _assessment(candidate_id: str, score: float, recommendation: str, meets_min:
         job_description_id="jd-1",
         candidate_id=candidate_id,
         generated_by_model="typesafe/jev",
-        overall_fit_score=score,
         overall_recommendation=recommendation,
         meets_min_qualifications=meets_min,
         requirement_scores={"Python": score},
-        confidence={"overall_fit_score": 0.9},
+        confidence={"overall_recommendation": 0.9},
     )
 
 
@@ -36,7 +35,7 @@ def test_format_jd_ranking_sorts_descending_by_score():
     rows = json_payload["rankings"]
     assert [row["candidate_id"] for row in rows] == ["cand-b", "cand-c", "cand-a"]
     assert [row["rank"] for row in rows] == [1, 2, 3]
-    assert rows[0]["overall_fit_score"] == 90.0
+    assert rows[0]["composite_fit_score"] == 90.0
     assert rows[0]["overall_recommendation"] == "hire"
     assert rows[0]["meets_min_qualifications"] is True
     assert rows[0]["requirement_scores"] == {"Python": 90.0}

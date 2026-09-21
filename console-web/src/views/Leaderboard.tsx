@@ -277,9 +277,9 @@ function ScoreSummary({ assessment }: { assessment: Assessment }) {
     }}>
       <div>
         <div style={{ fontSize: 32, fontWeight: 700, color: colorText, lineHeight: 1 }}>
-          {assessment.overall_fit_score.toFixed(0)}
+          {assessment.composite_fit_score.toFixed(0)}
         </div>
-        <div style={{ fontSize: 12, color: colorTextMuted, marginTop: 4 }}>Overall fit score</div>
+        <div style={{ fontSize: 12, color: colorTextMuted, marginTop: 4 }}>Composite fit score</div>
       </div>
       <div style={{
         padding: '6px 14px', borderRadius: radiusPill, background: recommendationSoft,
@@ -296,8 +296,7 @@ function ScoreSummary({ assessment }: { assessment: Assessment }) {
 
 function QualificationScores({ assessment }: { assessment: Assessment }) {
   const entries: [string, number][] = [];
-  if (assessment.seniority_years_fit_score != null) entries.push(['Seniority (years)', assessment.seniority_years_fit_score]);
-  if (assessment.seniority_relevancy_fit_score != null) entries.push(['Seniority (relevancy)', assessment.seniority_relevancy_fit_score]);
+  if (assessment.seniority_years_fit_score != null) entries.push(['Years of experience', assessment.seniority_years_fit_score]);
   if (assessment.education_fit_score != null) entries.push(['Education', assessment.education_fit_score]);
   if (entries.length === 0) return null;
 

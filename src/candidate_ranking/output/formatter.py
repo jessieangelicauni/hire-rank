@@ -7,7 +7,7 @@ from candidate_ranking.models import Assessment, JobDescription
 
 
 def format_jd_ranking(jd: JobDescription, assessments: dict[str, Assessment]) -> tuple[str, dict]:
-    ranked = sorted(assessments, key=lambda cid: assessments[cid].overall_fit_score, reverse=True)
+    ranked = sorted(assessments, key=lambda cid: assessments[cid].composite_fit_score, reverse=True)
 
     lines = [
         f"# Ranking: {jd.title} ({jd.id})",
@@ -19,7 +19,7 @@ def format_jd_ranking(jd: JobDescription, assessments: dict[str, Assessment]) ->
     for rank, candidate_id in enumerate(ranked, start=1):
         assessment = assessments[candidate_id]
         lines.append(
-            f"{rank}. **{candidate_id}** (score={assessment.overall_fit_score:.1f}, "
+            f"{rank}. **{candidate_id}** (score={assessment.composite_fit_score:.1f}, "
             f"{assessment.overall_recommendation}) — meets_min_qualifications="
             f"{assessment.meets_min_qualifications}"
         )
@@ -27,7 +27,7 @@ def format_jd_ranking(jd: JobDescription, assessments: dict[str, Assessment]) ->
             {
                 "rank": rank,
                 "candidate_id": candidate_id,
-                "overall_fit_score": assessment.overall_fit_score,
+                "composite_fit_score": assessment.composite_fit_score,
                 "overall_recommendation": assessment.overall_recommendation,
                 "meets_min_qualifications": assessment.meets_min_qualifications,
                 "requirement_scores": assessment.requirement_scores,

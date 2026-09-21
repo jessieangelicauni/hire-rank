@@ -127,10 +127,10 @@ export default function Comparison({ roles }: Props) {
             />
             <StatCard
               label="Score stdev across repeats"
-              value={EVALUATION_SUMMARY.overallScoreStdev !== null ? EVALUATION_SUMMARY.overallScoreStdev.toFixed(2) : '—'}
+              value={EVALUATION_SUMMARY.compositeScoreStdev !== null ? EVALUATION_SUMMARY.compositeScoreStdev.toFixed(2) : '—'}
             />
             <StatCard
-              label="Requirement/overall coherence (ρ)"
+              label="Requirement/composite coherence (ρ)"
               value={EVALUATION_SUMMARY.coherenceSpearmanRho !== null ? EVALUATION_SUMMARY.coherenceSpearmanRho.toFixed(3) : '—'}
             />
           </div>

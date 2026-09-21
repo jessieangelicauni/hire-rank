@@ -23,7 +23,7 @@ load_dotenv()
 def _trial_scores_by_jd(records: list[dict]) -> dict[str, dict[str, float]]:
     by_jd: dict[str, dict[str, float]] = {}
     for record in records:
-        scores = [rep["overall_fit_score"] for rep in record["repeats"]]
+        scores = [rep["composite_fit_score"] for rep in record["repeats"]]
         by_jd.setdefault(record["jd_id"], {})[record["candidate_id"]] = statistics.mean(scores)
     return by_jd
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import statistics
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -19,11 +20,11 @@ from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import Candidate, JDSkills, JobDescription
 from candidate_ranking.scoring.assessment import (
     JEV_MODEL_NAME,
+    _aggregate_mean_dict,
     _answers_to_assessment,
     _build_questions,
     _build_state,
     _education_instructions,
-    _seniority_relevancy_instructions,
     _seniority_years_instructions,
 )
 from candidate_ranking.scoring.jev_client import JevAnswer, JevClient, JevQuestion
@@ -35,11 +36,6 @@ _VAGUE_SCORE_CRITERIA = ["0", "25", "50", "75", "100"]
 
 def _vague_build_questions(jd_technical_skills: list[str] | None) -> list[JevQuestion]:
     questions = [
-        JevQuestion(
-            key="overall_fit_score", kind="score",
-            instructions="How well does this candidate's CV fit the job description overall?",
-            criteria=_VAGUE_SCORE_CRITERIA,
-        ),
         JevQuestion(
             key="overall_recommendation", kind="choice",
             instructions="What is the hiring recommendation for this candidate against this job description?",
@@ -82,13 +78,6 @@ def _vague_seniority_education_questions(jd_skills: JDSkills | None) -> list[Jev
                     criteria=_VAGUE_SCORE_CRITERIA,
                 )
             )
-        questions.append(
-            JevQuestion(
-                key="seniority_relevancy", kind="score",
-                instructions=_seniority_relevancy_instructions(jd_skills.seniority_requirement),
-                criteria=_VAGUE_SCORE_CRITERIA,
-            )
-        )
     if jd_skills and jd_skills.education_requirement:
         questions.append(
             JevQuestion(
@@ -156,7 +145,7 @@ def collect_test_retest(
             assessment = _answers_to_assessment(jd, candidate, JEV_MODEL_NAME, answers)
             repeats_out.append(
                 {
-                    "overall_fit_score": assessment.overall_fit_score,
+                    "composite_fit_score": assessment.composite_fit_score,
                     "overall_recommendation": assessment.overall_recommendation,
                     "meets_min_qualifications": assessment.meets_min_qualifications,
                     "requirement_scores": assessment.requirement_scores,
@@ -181,6 +170,7 @@ def collect_ablation(
     jd_skills_by_jd: dict[str, JDSkills],
     run_dir: Path,
     sample_pairs: list[tuple[str, str]],
+    n_calls: int = 3,
 ) -> list[dict]:
     def run_one(pair: tuple[str, str]) -> dict:
         jd_id, candidate_id = pair
@@ -193,15 +183,21 @@ def collect_ablation(
         jd_skills = jd_skills_by_jd.get(jd_id)
         vague_questions = _vague_build_questions(jd_skills.technical_skills if jd_skills else None)
         state = _build_state(jd, candidate)
-        answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
-        vague_assessment = _answers_to_assessment(jd, candidate, JEV_MODEL_NAME, answers)
+
+        vague_calls = []
+        total_elapsed = 0.0
+        for _ in range(n_calls):
+            answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
+            vague_calls.append(_answers_to_assessment(jd, candidate, JEV_MODEL_NAME, answers))
+            total_elapsed += elapsed
+        vague_confidence = _aggregate_mean_dict(vague_calls, "confidence")
 
         return {
             "jd_id": jd_id,
             "candidate_id": candidate_id,
             "concrete_confidence": concrete_confidence,
-            "vague_confidence": vague_assessment.confidence,
-            "vague_latency_seconds": elapsed,
+            "vague_confidence": vague_confidence,
+            "vague_latency_seconds": total_elapsed,
         }
 
     results: list[dict] = []
@@ -220,6 +216,7 @@ def collect_seniority_education_ablation(
     jd_skills_by_jd: dict[str, JDSkills],
     run_dir: Path,
     pairs: list[tuple[str, str]],
+    n_calls: int = 3,
 ) -> list[dict]:
     eligible_pairs = [
         pair
@@ -240,15 +237,23 @@ def collect_seniority_education_ablation(
         }
 
         state = _build_state(jd, candidate)
-        answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
-        vague_confidence = {a.key: a.confidence for a in answers}
+        vague_call_confidences: list[dict[str, float]] = []
+        total_elapsed = 0.0
+        for _ in range(n_calls):
+            answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
+            vague_call_confidences.append({a.key: a.confidence for a in answers})
+            total_elapsed += elapsed
+        keys = {key for call in vague_call_confidences for key in call}
+        vague_confidence = {
+            key: statistics.mean(call[key] for call in vague_call_confidences if key in call) for key in keys
+        }
 
         return {
             "jd_id": jd_id,
             "candidate_id": candidate_id,
             "concrete_confidence": concrete_confidence,
             "vague_confidence": vague_confidence,
-            "vague_latency_seconds": elapsed,
+            "vague_latency_seconds": total_elapsed,
         }
 
     results: list[dict] = []
@@ -260,7 +265,10 @@ def collect_seniority_education_ablation(
     return results
 
 
-def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_workers: int, dry_run: bool, seniority_education_only: bool) -> None:
+def main(
+    run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_workers: int, dry_run: bool,
+    seniority_education_only: bool, technical_ablation_only: bool, vague_n_calls: int,
+) -> None:
     cfg = apply_env_overrides(RunConfig.full(PROJECT_ROOT))
     run_dir = cfg.runs_dir / run_id
     manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
@@ -277,13 +285,19 @@ def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_wo
         if seniority_education_only:
             print(
                 f"Dry run: would collect seniority/education ablation for {eligible_count} pair(s) whose job "
-                f"description has a seniority or education requirement (out of {len(pairs)} total pairs)."
+                f"description has a seniority or education requirement (out of {len(pairs)} total pairs), "
+                f"{vague_n_calls} bare-label call(s) each ({eligible_count * vague_n_calls} call(s))."
+            )
+        elif technical_ablation_only:
+            print(
+                f"Dry run: would collect ablation for {ablation_size} pair(s), "
+                f"{vague_n_calls} bare-label call(s) each ({ablation_size * vague_n_calls} call(s))."
             )
         else:
             print(
                 f"Dry run: would collect test-retest for {len(pairs)} pair(s) x {repeats} repeat(s) "
-                f"({len(pairs) * repeats} call(s)), plus ablation for {ablation_size} pair(s) "
-                f"({ablation_size} call(s))."
+                f"({len(pairs) * repeats} call(s)), plus ablation for {ablation_size} pair(s), "
+                f"{vague_n_calls} bare-label call(s) each ({ablation_size * vague_n_calls} call(s))."
             )
         return
 
@@ -295,26 +309,33 @@ def main(run_id: str, repeats: int, ablation_sample_size: int, seed: int, max_wo
     out_dir.mkdir(parents=True, exist_ok=True)
 
     if seniority_education_only:
-        print("Collecting seniority/education criteria-design ablation data (concrete vs. bare-label Score)...")
+        print(
+            f"Collecting seniority/education criteria-design ablation data "
+            f"(concrete vs. {vague_n_calls}-call-averaged bare-label Score)..."
+        )
         sen_edu_results = collect_seniority_education_ablation(
-            jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, run_dir, pairs
+            jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, run_dir, pairs, vague_n_calls
         )
         (out_dir / "seniority_education_ablation.json").write_text(json.dumps(sen_edu_results, indent=2), encoding="utf-8")
         print(f"Wrote {len(sen_edu_results)} seniority/education ablation record(s) to {out_dir / 'seniority_education_ablation.json'}")
         return
 
-    print(f"Collecting test-retest reliability data ({len(pairs)} pairs x {repeats} repeats)...")
-    test_retest_results = collect_test_retest(
-        jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, pairs, repeats, max_workers
-    )
-    (out_dir / "test_retest.json").write_text(json.dumps(test_retest_results, indent=2), encoding="utf-8")
-    print(f"Wrote {len(test_retest_results)} test-retest record(s) to {out_dir / 'test_retest.json'}")
+    if not technical_ablation_only:
+        print(f"Collecting test-retest reliability data ({len(pairs)} pairs x {repeats} repeats)...")
+        test_retest_results = collect_test_retest(
+            jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, pairs, repeats, max_workers
+        )
+        (out_dir / "test_retest.json").write_text(json.dumps(test_retest_results, indent=2), encoding="utf-8")
+        print(f"Wrote {len(test_retest_results)} test-retest record(s) to {out_dir / 'test_retest.json'}")
 
     rng = random.Random(seed)
     ablation_pairs = rng.sample(pairs, ablation_size)
-    print(f"Collecting criteria-design ablation data ({len(ablation_pairs)} pairs)...")
+    print(
+        f"Collecting criteria-design ablation data ({len(ablation_pairs)} pairs, "
+        f"{vague_n_calls}-call-averaged bare-label side)..."
+    )
     ablation_results = collect_ablation(
-        jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, run_dir, ablation_pairs
+        jev_client, jds_by_id, candidates_by_id, jd_skills_by_jd, run_dir, ablation_pairs, vague_n_calls
     )
     (out_dir / "ablation.json").write_text(json.dumps(ablation_results, indent=2), encoding="utf-8")
     print(f"Wrote {len(ablation_results)} ablation record(s) to {out_dir / 'ablation.json'}")
@@ -333,8 +354,17 @@ if __name__ == "__main__":
         help="Skip test-retest and technical-requirement ablation; only collect the seniority/education "
         "concrete-vs-bare-label Score criteria ablation, over all eligible pairs.",
     )
+    parser.add_argument(
+        "--technical-ablation-only", action="store_true",
+        help="Skip test-retest; only (re-)collect the technical-requirement criteria-design ablation.",
+    )
+    parser.add_argument(
+        "--vague-n-calls", type=int, default=3,
+        help="Number of independent bare-label calls averaged per pair in the criteria-design ablations, "
+        "matching the concrete side's ensemble size.",
+    )
     args = parser.parse_args()
     main(
         args.run_id, args.repeats, args.ablation_sample_size, args.seed, args.max_workers, args.dry_run,
-        args.seniority_education_only,
+        args.seniority_education_only, args.technical_ablation_only, args.vague_n_calls,
     )
