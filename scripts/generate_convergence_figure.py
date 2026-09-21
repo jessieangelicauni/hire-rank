@@ -1,10 +1,10 @@
-"""Render Table III (ranking convergence by job profile) as a grouped bar figure.
+"""Render Table III (ranking convergence by job profile) as a line-chart figure.
 
 Reads the same underlying data the table's numbers come from -- tau_1 (single
 unaggregated calls) from the no-must-have-gate run's evaluation report, and
 tau_3 (three-call averages) from its multi-call-averaging validation -- and
-plots them side by side per job profile, using seaborn's default theme (no
-custom palette/styling).
+plots them per job profile, using seaborn's default theme (no custom
+palette/styling).
 """
 from __future__ import annotations
 
@@ -13,7 +13,6 @@ import json
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-import numpy as np
 import seaborn as sns
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -37,30 +36,25 @@ def load_convergence(run_id: str) -> list[tuple[str, int, float, float]]:
 
 def main(run_id: str, output_path: Path) -> None:
     rows = load_convergence(run_id)
-    labels = [jd_id for jd_id, _, _, _ in rows] + ["Mean (all 10)"]
+    labels = [jd_id for jd_id, _, _, _ in rows]
     tau1 = [t1 for _, _, t1, _ in rows]
     tau3 = [t3 for _, _, _, t3 in rows]
-    tau1.append(float(np.mean(tau1)))
-    tau3.append(float(np.mean(tau3)))
 
-    sns.set_theme()
+    sns.set_theme(style="whitegrid")
 
-    x = np.arange(len(labels))
-    width = 0.35
-
-    fig, ax = plt.subplots(figsize=(7, 4))
-    ax.bar(x - width / 2, tau1, width, label=r"$\tau_1$ (single call)")
-    ax.bar(x + width / 2, tau3, width, label=r"$\tau_3$ (3-call average)")
+    fig, ax = plt.subplots(figsize=(6.5, 5))
+    ax.plot(labels, tau1, marker="o", label=r"$\tau_1$ (single call)")
+    ax.plot(labels, tau3, marker="o", label=r"$\tau_3$ (3-call average)")
 
     ax.set_ylabel("Kendall-tau")
     ax.set_title("Ranking convergence by job profile")
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels, rotation=45, ha="right")
-    ax.legend()
+    ax.set_xticks(range(len(labels)))
+    ax.set_xticklabels(labels, rotation=90)
+    ax.legend(loc="lower right")
     fig.tight_layout()
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path)
+    fig.savefig(output_path, dpi=200)
     print(f"Wrote {output_path}")
 
 
