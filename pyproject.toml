@@ -28,6 +28,8 @@ eval = [
     "pandas",
     # ragas has no upper bound on this; 0.4.2 removed a module ragas 0.4.3 still imports -- see commit 867e713
     "langchain-community<0.4.2",
+    "matplotlib>=3.9.0",
+    "seaborn>=0.13.0",
 ]
 
 [build-system]

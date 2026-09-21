@@ -158,31 +158,13 @@ Pooled (sen.\ + edu.) & 146 & 0.782 / 0.646 & $<0.001$ (0.59)\\
 Table~\ref{tab_score_ablation} shows each question asked twice under the two criteria designs, with mean confidence under each and the Wilcoxon result. The per-requirement questions show a large gain. The rewritten, unfiltered seniority question (Section III-B) shows the confidence problem in the original combined design was not a ceiling on seniority-type judgments in general: asked as a single total-years-of-experience match, it reaches a large effect, comparable to education's. Pooled across both seniority and education, the gain remains significant with a large effect size.
 
 \subsection{Multi-Call Ensemble Averaging}
-\begin{table}[!ht]
-\caption{Ranking convergence (Kendall-$\tau$) by job profile, single-call and 3-call-averaged.}
-\label{tab_convergence_diag}
+\begin{figure}[!ht]
 \centering
-\scriptsize
-\begin{tabular}{lccc}
-\hline
-Job profile & $n$ & $\tau_1$ & $\tau_3$ \\
-\hline
-it-security-engineer & 19 & 0.938 & 0.984\\
-data-scientist-eng.\ & 27 & 0.939 & 0.970\\
-java-developer & 13 & 0.949 & 1.000\\
-cloud-engineer & 47 & 0.956 & 0.979\\
-data-engineer & 66 & 0.961 & 0.976\\
-full-stack-engineer & 33 & 0.967 & 0.975\\
-devops-engineer & 50 & 0.970 & 0.977\\
-backend-engineer & 22 & 0.977 & 0.977\\
-frontend-engineer & 13 & 0.983 & 1.000\\
-ui-ux-designer & 13 & 1.000 & 0.983\\
-\hline
-Mean (all 10) & -- & 0.964 & 0.982\\
-\hline
-\end{tabular}
-\end{table}
-Table~\ref{tab_convergence_diag} shows $\tau_1$ (single unaggregated calls) and $\tau_3$ (three-call averages, Section III-C) per job profile: three-call averaging raises mean convergence, with nearly every profile improving. The one exception, ui-ux-designer, already sits at a perfect single-call score and stays close to it under averaging -- consistent with the aggregation recovering genuine stability rather than merely smoothing over disagreement.
+\includegraphics[width=\columnwidth]{fig_convergence}
+\caption{Ranking convergence (Kendall-$\tau$) by job profile, single-call ($\tau_1$) vs.\ three-call-averaged ($\tau_3$).}
+\label{fig_convergence_diag}
+\end{figure}
+Fig.~\ref{fig_convergence_diag} shows $\tau_1$ (single unaggregated calls) and $\tau_3$ (three-call averages, Section III-C) per job profile: three-call averaging raises mean convergence, with nearly every profile improving. The one exception, ui-ux-designer, already sits at a perfect single-call score and stays close to it under averaging -- consistent with the aggregation recovering genuine stability rather than merely smoothing over disagreement.
 
 \subsection{Must-Have/Nice-to-Have Shortlisting Correction}
 Applied to the full corpus, the must-have gate (Section III-D) excludes a meaningful share of candidates who would have passed the prior total-only rule: 44 of 303 previously-shortlisted candidates (14.5\%) are excluded. The gate is driven by classifying each job profile's technical skills as must-have or nice-to-have during extraction, of which 39\% were classified must-have.
