@@ -10003,5 +10003,4410 @@
       "profileFlagged": false,
       "flaggedCandidates": []
     }
+  },
+  "repeatSamples": {
+    "cv-00224::backend-engineer": [
+      {
+        "compositeFitScore": 30.84722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.041666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.958333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00271::backend-engineer": [
+      {
+        "compositeFitScore": 29.208333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 29.305555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 29.055555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00302::backend-engineer": [
+      {
+        "compositeFitScore": 29.22222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.916666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 29.180555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00337::backend-engineer": [
+      {
+        "compositeFitScore": 35.5,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 35.72222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 36.083333333333336,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00369::backend-engineer": [
+      {
+        "compositeFitScore": 34.34722222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.69444444444444,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.72222222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00382::backend-engineer": [
+      {
+        "compositeFitScore": 33.30555555555556,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 33.361111111111114,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 33.43055555555556,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00392::backend-engineer": [
+      {
+        "compositeFitScore": 36.47222222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 35.861111111111114,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 36.27777777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00413::backend-engineer": [
+      {
+        "compositeFitScore": 31.27777777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.11111111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.0,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00420::backend-engineer": [
+      {
+        "compositeFitScore": 35.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 34.97222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 34.888888888888886,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00427::backend-engineer": [
+      {
+        "compositeFitScore": 37.708333333333336,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 37.75,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 38.208333333333336,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00432::backend-engineer": [
+      {
+        "compositeFitScore": 37.90277777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 37.84722222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 38.138888888888886,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00444::backend-engineer": [
+      {
+        "compositeFitScore": 25.90277777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.27777777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.36111111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00471::backend-engineer": [
+      {
+        "compositeFitScore": 40.18055555555556,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 39.56944444444444,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 39.541666666666664,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00484::backend-engineer": [
+      {
+        "compositeFitScore": 25.09722222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.77777777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.305555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00488::backend-engineer": [
+      {
+        "compositeFitScore": 24.63888888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.694444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.75,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00534::backend-engineer": [
+      {
+        "compositeFitScore": 30.11111111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.27777777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.791666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00592::backend-engineer": [
+      {
+        "compositeFitScore": 27.180555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.944444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.791666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00626::backend-engineer": [
+      {
+        "compositeFitScore": 36.09722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 35.791666666666664,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 35.44444444444444,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00676::backend-engineer": [
+      {
+        "compositeFitScore": 40.041666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 39.80555555555556,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 40.125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00694::backend-engineer": [
+      {
+        "compositeFitScore": 25.833333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.73611111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.90277777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00695::backend-engineer": [
+      {
+        "compositeFitScore": 33.736111111111114,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 33.47222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 33.59722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00211::cloud-engineer": [
+      {
+        "compositeFitScore": 12.318965517241379,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.431034482758621,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.612068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00212::cloud-engineer": [
+      {
+        "compositeFitScore": 15.112068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.258620689655173,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.025862068965518,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00226::cloud-engineer": [
+      {
+        "compositeFitScore": 15.232758620689655,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 15.724137931034482,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 15.413793103448276,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00227::cloud-engineer": [
+      {
+        "compositeFitScore": 8.974137931034482,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.931034482758621,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.982758620689655,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00245::cloud-engineer": [
+      {
+        "compositeFitScore": 8.267241379310345,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 8.206896551724139,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 8.327586206896552,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00253::cloud-engineer": [
+      {
+        "compositeFitScore": 14.112068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.577586206896552,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.112068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00268::cloud-engineer": [
+      {
+        "compositeFitScore": 13.172413793103448,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.232758620689655,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.10344827586207,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00283::cloud-engineer": [
+      {
+        "compositeFitScore": 7.525862068965517,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 7.517241379310345,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 7.4655172413793105,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00286::cloud-engineer": [
+      {
+        "compositeFitScore": 15.39655172413793,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 15.301724137931034,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 15.422413793103448,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00296::cloud-engineer": [
+      {
+        "compositeFitScore": 17.67241379310345,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.586206896551722,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.698275862068964,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00299::cloud-engineer": [
+      {
+        "compositeFitScore": 10.448275862068966,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.362068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.448275862068966,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00301::cloud-engineer": [
+      {
+        "compositeFitScore": 14.189655172413794,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.077586206896552,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.655172413793103,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00308::cloud-engineer": [
+      {
+        "compositeFitScore": 10.775862068965518,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.64655172413793,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.612068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00336::cloud-engineer": [
+      {
+        "compositeFitScore": 17.79310344827586,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.75,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.81896551724138,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00342::cloud-engineer": [
+      {
+        "compositeFitScore": 7.818965517241379,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 7.827586206896552,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 7.982758620689655,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00343::cloud-engineer": [
+      {
+        "compositeFitScore": 12.301724137931034,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.129310344827585,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.525862068965518,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00345::cloud-engineer": [
+      {
+        "compositeFitScore": 13.413793103448276,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.46551724137931,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.267241379310345,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00357::cloud-engineer": [
+      {
+        "compositeFitScore": 17.78448275862069,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 17.67241379310345,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 18.06896551724138,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00359::cloud-engineer": [
+      {
+        "compositeFitScore": 11.672413793103448,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.439655172413794,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.474137931034482,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00361::cloud-engineer": [
+      {
+        "compositeFitScore": 6.448275862068965,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 6.767241379310345,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 6.258620689655173,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00376::cloud-engineer": [
+      {
+        "compositeFitScore": 11.431034482758621,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.586206896551724,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.439655172413794,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00408::cloud-engineer": [
+      {
+        "compositeFitScore": 14.379310344827585,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.60344827586207,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.793103448275861,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00428::cloud-engineer": [
+      {
+        "compositeFitScore": 9.543103448275861,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.655172413793103,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.5,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00445::cloud-engineer": [
+      {
+        "compositeFitScore": 9.10344827586207,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.232758620689655,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.086206896551724,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00449::cloud-engineer": [
+      {
+        "compositeFitScore": 11.78448275862069,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.939655172413794,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.956896551724139,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00460::cloud-engineer": [
+      {
+        "compositeFitScore": 10.543103448275861,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.543103448275861,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.129310344827585,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00485::cloud-engineer": [
+      {
+        "compositeFitScore": 8.612068965517242,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 8.844827586206897,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 8.517241379310345,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00489::cloud-engineer": [
+      {
+        "compositeFitScore": 14.025862068965518,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.094827586206897,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.844827586206897,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00497::cloud-engineer": [
+      {
+        "compositeFitScore": 15.224137931034482,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.267241379310345,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.53448275862069,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00539::cloud-engineer": [
+      {
+        "compositeFitScore": 15.112068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.017241379310345,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.241379310344827,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00552::cloud-engineer": [
+      {
+        "compositeFitScore": 8.120689655172415,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.232758620689655,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.181034482758621,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00573::cloud-engineer": [
+      {
+        "compositeFitScore": 6.594827586206897,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 6.672413793103448,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 6.681034482758621,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00579::cloud-engineer": [
+      {
+        "compositeFitScore": 9.620689655172415,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 9.46551724137931,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 9.775862068965518,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00582::cloud-engineer": [
+      {
+        "compositeFitScore": 9.767241379310345,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.931034482758621,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.112068965517242,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00584::cloud-engineer": [
+      {
+        "compositeFitScore": 9.491379310344827,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.422413793103448,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.439655172413794,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00603::cloud-engineer": [
+      {
+        "compositeFitScore": 17.586206896551722,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.525862068965516,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.862068965517242,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00640::cloud-engineer": [
+      {
+        "compositeFitScore": 10.275862068965518,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.293103448275861,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.120689655172415,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00653::cloud-engineer": [
+      {
+        "compositeFitScore": 12.181034482758621,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 12.698275862068966,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 12.28448275862069,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00655::cloud-engineer": [
+      {
+        "compositeFitScore": 10.370689655172415,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.344827586206897,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00673::cloud-engineer": [
+      {
+        "compositeFitScore": 15.594827586206897,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.577586206896552,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.71551724137931,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00680::cloud-engineer": [
+      {
+        "compositeFitScore": 15.655172413793103,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.06896551724138,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.991379310344827,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00691::cloud-engineer": [
+      {
+        "compositeFitScore": 12.732758620689655,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.46551724137931,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.75,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00206::data-engineer": [
+      {
+        "compositeFitScore": 13.34375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.166666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.333333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00209::data-engineer": [
+      {
+        "compositeFitScore": 16.239583333333332,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.09375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.260416666666668,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00213::data-engineer": [
+      {
+        "compositeFitScore": 12.854166666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.885416666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.96875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00215::data-engineer": [
+      {
+        "compositeFitScore": 12.333333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.145833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.208333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00223::data-engineer": [
+      {
+        "compositeFitScore": 14.9375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.09375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.729166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00224::data-engineer": [
+      {
+        "compositeFitScore": 11.666666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.59375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.635416666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00228::data-engineer": [
+      {
+        "compositeFitScore": 12.40625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.75,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.645833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00237::data-engineer": [
+      {
+        "compositeFitScore": 11.020833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.916666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.9375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00242::data-engineer": [
+      {
+        "compositeFitScore": 15.09375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.447916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.364583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00264::data-engineer": [
+      {
+        "compositeFitScore": 14.53125,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.21875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.510416666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00280::data-engineer": [
+      {
+        "compositeFitScore": 10.03125,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.791666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.96875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00298::data-engineer": [
+      {
+        "compositeFitScore": 9.760416666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.854166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.03125,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00310::data-engineer": [
+      {
+        "compositeFitScore": 11.177083333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.145833333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.145833333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00330::data-engineer": [
+      {
+        "compositeFitScore": 15.0625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.010416666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.34375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00352::data-engineer": [
+      {
+        "compositeFitScore": 13.177083333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.291666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.260416666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00363::data-engineer": [
+      {
+        "compositeFitScore": 9.958333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.75,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.0,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00377::data-engineer": [
+      {
+        "compositeFitScore": 10.15625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.708333333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00384::data-engineer": [
+      {
+        "compositeFitScore": 15.78125,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.645833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.541666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00385::data-engineer": [
+      {
+        "compositeFitScore": 14.947916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.71875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.833333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00395::data-engineer": [
+      {
+        "compositeFitScore": 16.822916666666668,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.40625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.677083333333332,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00399::data-engineer": [
+      {
+        "compositeFitScore": 16.4375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.479166666666668,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.302083333333332,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00403::data-engineer": [
+      {
+        "compositeFitScore": 14.822916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.96875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.864583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00414::data-engineer": [
+      {
+        "compositeFitScore": 13.708333333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.75,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.5625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00427::data-engineer": [
+      {
+        "compositeFitScore": 23.135416666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.947916666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.885416666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00431::data-engineer": [
+      {
+        "compositeFitScore": 8.552083333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.427083333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.4375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00438::data-engineer": [
+      {
+        "compositeFitScore": 14.041666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.885416666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.927083333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00468::data-engineer": [
+      {
+        "compositeFitScore": 9.8125,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.802083333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00491::data-engineer": [
+      {
+        "compositeFitScore": 9.854166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.71875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.604166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00496::data-engineer": [
+      {
+        "compositeFitScore": 13.572916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.520833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.5625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00503::data-engineer": [
+      {
+        "compositeFitScore": 16.625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.385416666666668,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.791666666666668,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00509::data-engineer": [
+      {
+        "compositeFitScore": 9.572916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 9.572916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00511::data-engineer": [
+      {
+        "compositeFitScore": 17.416666666666668,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.0625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.072916666666668,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00534::data-engineer": [
+      {
+        "compositeFitScore": 13.958333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.083333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.802083333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00543::data-engineer": [
+      {
+        "compositeFitScore": 11.354166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.947916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 11.229166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00547::data-engineer": [
+      {
+        "compositeFitScore": 15.40625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.520833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.666666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00574::data-engineer": [
+      {
+        "compositeFitScore": 12.958333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.791666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.0,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00577::data-engineer": [
+      {
+        "compositeFitScore": 12.875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.916666666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.78125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00578::data-engineer": [
+      {
+        "compositeFitScore": 16.739583333333332,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.489583333333332,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.614583333333332,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00583::data-engineer": [
+      {
+        "compositeFitScore": 13.21875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.96875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.114583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00590::data-engineer": [
+      {
+        "compositeFitScore": 15.864583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.90625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.833333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00606::data-engineer": [
+      {
+        "compositeFitScore": 16.739583333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.822916666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.354166666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00611::data-engineer": [
+      {
+        "compositeFitScore": 10.875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.864583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.84375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00613::data-engineer": [
+      {
+        "compositeFitScore": 13.020833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.989583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.8125,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00620::data-engineer": [
+      {
+        "compositeFitScore": 14.739583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.572916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.604166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00626::data-engineer": [
+      {
+        "compositeFitScore": 15.458333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.416666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.989583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00627::data-engineer": [
+      {
+        "compositeFitScore": 12.15625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.083333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.083333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00637::data-engineer": [
+      {
+        "compositeFitScore": 14.041666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.979166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.864583333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00638::data-engineer": [
+      {
+        "compositeFitScore": 13.197916666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.09375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.34375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00649::data-engineer": [
+      {
+        "compositeFitScore": 20.1875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.28125,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.479166666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00654::data-engineer": [
+      {
+        "compositeFitScore": 15.010416666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.041666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.104166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00657::data-engineer": [
+      {
+        "compositeFitScore": 12.104166666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.177083333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.1875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00669::data-engineer": [
+      {
+        "compositeFitScore": 14.375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.75,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.479166666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00694::data-engineer": [
+      {
+        "compositeFitScore": 13.541666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.0,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.90625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00695::data-engineer": [
+      {
+        "compositeFitScore": 13.583333333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.416666666666666,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 13.645833333333334,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "daniel-adif-nugroho::data-engineer": [
+      {
+        "compositeFitScore": 18.46875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.5,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.260416666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00270::data-scientist-engineer": [
+      {
+        "compositeFitScore": 27.083333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 27.15,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.35,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00272::data-scientist-engineer": [
+      {
+        "compositeFitScore": 26.3,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.15,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.366666666666667,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00310::data-scientist-engineer": [
+      {
+        "compositeFitScore": 25.583333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.316666666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.933333333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00326::data-scientist-engineer": [
+      {
+        "compositeFitScore": 22.516666666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.35,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00374::data-scientist-engineer": [
+      {
+        "compositeFitScore": 23.5,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.216666666666665,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.083333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00414::data-scientist-engineer": [
+      {
+        "compositeFitScore": 18.966666666666665,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.1,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.066666666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00455::data-scientist-engineer": [
+      {
+        "compositeFitScore": 22.533333333333335,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.583333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.283333333333335,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00458::data-scientist-engineer": [
+      {
+        "compositeFitScore": 29.7,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 30.033333333333335,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 29.85,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00477::data-scientist-engineer": [
+      {
+        "compositeFitScore": 24.616666666666667,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.616666666666667,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.633333333333333,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00483::data-scientist-engineer": [
+      {
+        "compositeFitScore": 17.733333333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.833333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.5,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00525::data-scientist-engineer": [
+      {
+        "compositeFitScore": 24.7,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.333333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.166666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00554::data-scientist-engineer": [
+      {
+        "compositeFitScore": 24.983333333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.4,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.266666666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00566::data-scientist-engineer": [
+      {
+        "compositeFitScore": 28.45,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.55,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.3,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00606::data-scientist-engineer": [
+      {
+        "compositeFitScore": 21.533333333333335,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 21.983333333333334,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 22.1,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00650::data-scientist-engineer": [
+      {
+        "compositeFitScore": 26.6,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.466666666666665,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.066666666666666,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "daniel-adif-nugroho::data-scientist-engineer": [
+      {
+        "compositeFitScore": 22.333333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.35,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.366666666666667,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00208::devops-engineer": [
+      {
+        "compositeFitScore": 15.902777777777779,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 15.819444444444445,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00211::devops-engineer": [
+      {
+        "compositeFitScore": 28.555555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.069444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.430555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00212::devops-engineer": [
+      {
+        "compositeFitScore": 30.97222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.11111111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00226::devops-engineer": [
+      {
+        "compositeFitScore": 26.569444444444443,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 26.194444444444443,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 26.416666666666668,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00227::devops-engineer": [
+      {
+        "compositeFitScore": 18.84722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.90277777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.38888888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00240::devops-engineer": [
+      {
+        "compositeFitScore": 29.194444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 29.09722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00245::devops-engineer": [
+      {
+        "compositeFitScore": 30.02777777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 29.65277777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 29.63888888888889,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00253::devops-engineer": [
+      {
+        "compositeFitScore": 31.97222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.76388888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 32.083333333333336,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00268::devops-engineer": [
+      {
+        "compositeFitScore": 30.98611111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 30.73611111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.805555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00283::devops-engineer": [
+      {
+        "compositeFitScore": 22.48611111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.98611111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.805555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00286::devops-engineer": [
+      {
+        "compositeFitScore": 35.0,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.80555555555556,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.666666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00296::devops-engineer": [
+      {
+        "compositeFitScore": 37.72222222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 37.15277777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 37.416666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00299::devops-engineer": [
+      {
+        "compositeFitScore": 24.875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 25.305555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 25.333333333333332,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00301::devops-engineer": [
+      {
+        "compositeFitScore": 29.75,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 29.02777777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 29.26388888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00308::devops-engineer": [
+      {
+        "compositeFitScore": 17.944444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.90277777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.86111111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00336::devops-engineer": [
+      {
+        "compositeFitScore": 31.708333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.88888888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.694444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00342::devops-engineer": [
+      {
+        "compositeFitScore": 26.13888888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.27777777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.305555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00345::devops-engineer": [
+      {
+        "compositeFitScore": 39.416666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 39.041666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 38.875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00357::devops-engineer": [
+      {
+        "compositeFitScore": 32.59722222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.013888888888886,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.541666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00359::devops-engineer": [
+      {
+        "compositeFitScore": 24.84722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.416666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.22222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00376::devops-engineer": [
+      {
+        "compositeFitScore": 34.541666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 33.861111111111114,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 33.875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00408::devops-engineer": [
+      {
+        "compositeFitScore": 28.166666666666668,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.11111111111111,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 29.0,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00416::devops-engineer": [
+      {
+        "compositeFitScore": 23.51388888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.76388888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.694444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00423::devops-engineer": [
+      {
+        "compositeFitScore": 24.833333333333332,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 24.90277777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 24.680555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00428::devops-engineer": [
+      {
+        "compositeFitScore": 29.166666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.944444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.833333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00448::devops-engineer": [
+      {
+        "compositeFitScore": 33.013888888888886,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 33.541666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 34.15277777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00449::devops-engineer": [
+      {
+        "compositeFitScore": 24.09722222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 24.430555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 24.791666666666668,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00460::devops-engineer": [
+      {
+        "compositeFitScore": 22.13888888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.555555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.63888888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00480::devops-engineer": [
+      {
+        "compositeFitScore": 19.52777777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.444444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.541666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00485::devops-engineer": [
+      {
+        "compositeFitScore": 35.09722222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.94444444444444,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.72222222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00489::devops-engineer": [
+      {
+        "compositeFitScore": 28.625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.416666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 28.40277777777778,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00494::devops-engineer": [
+      {
+        "compositeFitScore": 33.861111111111114,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.40277777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.19444444444444,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00497::devops-engineer": [
+      {
+        "compositeFitScore": 39.27777777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 39.638888888888886,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 39.291666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00514::devops-engineer": [
+      {
+        "compositeFitScore": 17.194444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.51388888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.458333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00539::devops-engineer": [
+      {
+        "compositeFitScore": 32.05555555555556,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00542::devops-engineer": [
+      {
+        "compositeFitScore": 24.22222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.083333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.38888888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00549::devops-engineer": [
+      {
+        "compositeFitScore": 31.944444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.958333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 32.236111111111114,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00552::devops-engineer": [
+      {
+        "compositeFitScore": 24.583333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.09722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.416666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00573::devops-engineer": [
+      {
+        "compositeFitScore": 30.305555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 30.555555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 30.555555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00579::devops-engineer": [
+      {
+        "compositeFitScore": 32.875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.583333333333336,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.52777777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00584::devops-engineer": [
+      {
+        "compositeFitScore": 21.0,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.666666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.23611111111111,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00590::devops-engineer": [
+      {
+        "compositeFitScore": 25.51388888888889,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.444444444444443,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.59722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00599::devops-engineer": [
+      {
+        "compositeFitScore": 31.01388888888889,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.208333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.65277777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00603::devops-engineer": [
+      {
+        "compositeFitScore": 36.291666666666664,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 36.486111111111114,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 37.34722222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00640::devops-engineer": [
+      {
+        "compositeFitScore": 27.430555555555557,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.22222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.833333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00652::devops-engineer": [
+      {
+        "compositeFitScore": 25.84722222222222,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 25.98611111111111,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 25.555555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00653::devops-engineer": [
+      {
+        "compositeFitScore": 31.63888888888889,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 31.680555555555557,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.25,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00673::devops-engineer": [
+      {
+        "compositeFitScore": 30.72222222222222,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 30.708333333333332,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.666666666666668,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00680::devops-engineer": [
+      {
+        "compositeFitScore": 34.52777777777778,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.69444444444444,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.666666666666664,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00243::frontend-engineer": [
+      {
+        "compositeFitScore": 26.692307692307693,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.326923076923077,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.846153846153847,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00331::frontend-engineer": [
+      {
+        "compositeFitScore": 30.884615384615383,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.28846153846154,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.807692307692307,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00350::frontend-engineer": [
+      {
+        "compositeFitScore": 17.903846153846153,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.596153846153847,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.942307692307693,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00371::frontend-engineer": [
+      {
+        "compositeFitScore": 14.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.596153846153847,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.211538461538462,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00380::frontend-engineer": [
+      {
+        "compositeFitScore": 18.326923076923077,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.384615384615383,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.942307692307693,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00426::frontend-engineer": [
+      {
+        "compositeFitScore": 21.615384615384617,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.115384615384617,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.173076923076923,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00434::frontend-engineer": [
+      {
+        "compositeFitScore": 16.76923076923077,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.596153846153847,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00461::frontend-engineer": [
+      {
+        "compositeFitScore": 27.557692307692307,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.692307692307693,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.71153846153846,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00492::frontend-engineer": [
+      {
+        "compositeFitScore": 19.653846153846153,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.442307692307693,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.26923076923077,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00594::frontend-engineer": [
+      {
+        "compositeFitScore": 17.26923076923077,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.346153846153847,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.153846153846153,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00631::frontend-engineer": [
+      {
+        "compositeFitScore": 19.173076923076923,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.942307692307693,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.78846153846154,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00221::full-stack-engineer": [
+      {
+        "compositeFitScore": 25.890625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.78125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.34375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00254::full-stack-engineer": [
+      {
+        "compositeFitScore": 20.671875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.75,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.671875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00275::full-stack-engineer": [
+      {
+        "compositeFitScore": 16.703125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.546875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.5625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00281::full-stack-engineer": [
+      {
+        "compositeFitScore": 10.234375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.359375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00304::full-stack-engineer": [
+      {
+        "compositeFitScore": 22.5625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.90625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.703125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00328::full-stack-engineer": [
+      {
+        "compositeFitScore": 8.90625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.796875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 8.828125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00331::full-stack-engineer": [
+      {
+        "compositeFitScore": 19.25,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.515625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 19.71875,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00337::full-stack-engineer": [
+      {
+        "compositeFitScore": 20.625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.96875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.84375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00361::full-stack-engineer": [
+      {
+        "compositeFitScore": 27.734375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.53125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.828125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00392::full-stack-engineer": [
+      {
+        "compositeFitScore": 22.46875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.859375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.984375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00420::full-stack-engineer": [
+      {
+        "compositeFitScore": 25.59375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.234375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00427::full-stack-engineer": [
+      {
+        "compositeFitScore": 22.703125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.734375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 22.6875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00438::full-stack-engineer": [
+      {
+        "compositeFitScore": 12.0625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.109375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 12.140625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00444::full-stack-engineer": [
+      {
+        "compositeFitScore": 25.609375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.859375,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.40625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00445::full-stack-engineer": [
+      {
+        "compositeFitScore": 23.59375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.359375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.15625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00471::full-stack-engineer": [
+      {
+        "compositeFitScore": 26.65625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.5625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.0,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00484::full-stack-engineer": [
+      {
+        "compositeFitScore": 16.96875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.890625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 17.015625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00511::full-stack-engineer": [
+      {
+        "compositeFitScore": 10.265625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.515625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 10.390625,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00534::full-stack-engineer": [
+      {
+        "compositeFitScore": 25.671875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.046875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00572::full-stack-engineer": [
+      {
+        "compositeFitScore": 25.5,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.578125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.515625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00582::full-stack-engineer": [
+      {
+        "compositeFitScore": 18.359375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.609375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.28125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00590::full-stack-engineer": [
+      {
+        "compositeFitScore": 27.296875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.34375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.015625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00622::full-stack-engineer": [
+      {
+        "compositeFitScore": 24.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.09375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.21875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00626::full-stack-engineer": [
+      {
+        "compositeFitScore": 31.859375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 30.515625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.265625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00217::it-security-engineer": [
+      {
+        "compositeFitScore": 27.140625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 27.4375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 27.484375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00251::it-security-engineer": [
+      {
+        "compositeFitScore": 30.859375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 30.5625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 30.265625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00255::it-security-engineer": [
+      {
+        "compositeFitScore": 26.296875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 25.734375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 26.375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00273::it-security-engineer": [
+      {
+        "compositeFitScore": 35.640625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 35.515625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 35.578125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00289::it-security-engineer": [
+      {
+        "compositeFitScore": 32.15625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.5,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.890625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00307::it-security-engineer": [
+      {
+        "compositeFitScore": 32.953125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.671875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 32.703125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00353::it-security-engineer": [
+      {
+        "compositeFitScore": 29.03125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 28.828125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 29.046875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00400::it-security-engineer": [
+      {
+        "compositeFitScore": 27.484375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.640625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.078125,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00430::it-security-engineer": [
+      {
+        "compositeFitScore": 28.828125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 29.8125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 28.921875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00470::it-security-engineer": [
+      {
+        "compositeFitScore": 26.921875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.6875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 27.6875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00478::it-security-engineer": [
+      {
+        "compositeFitScore": 26.515625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 26.046875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 26.53125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00487::it-security-engineer": [
+      {
+        "compositeFitScore": 35.609375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 35.421875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 35.75,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00495::it-security-engineer": [
+      {
+        "compositeFitScore": 23.734375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.90625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.8125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00518::it-security-engineer": [
+      {
+        "compositeFitScore": 34.15625,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 33.96875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 34.25,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00619::it-security-engineer": [
+      {
+        "compositeFitScore": 24.234375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 23.875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 23.828125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00624::it-security-engineer": [
+      {
+        "compositeFitScore": 17.71875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 16.96875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 18.046875,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00630::it-security-engineer": [
+      {
+        "compositeFitScore": 23.25,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 23.671875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 23.375,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00677::it-security-engineer": [
+      {
+        "compositeFitScore": 14.140625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.109375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 14.234375,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00693::it-security-engineer": [
+      {
+        "compositeFitScore": 24.78125,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 24.765625,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.421875,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00234::java-developer": [
+      {
+        "compositeFitScore": 25.43421052631579,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.38157894736842,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.592105263157894,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00271::java-developer": [
+      {
+        "compositeFitScore": 20.723684210526315,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.710526315789473,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.605263157894736,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00302::java-developer": [
+      {
+        "compositeFitScore": 18.18421052631579,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.210526315789473,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 18.394736842105264,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00304::java-developer": [
+      {
+        "compositeFitScore": 32.25,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 32.223684210526315,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 32.30263157894737,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00382::java-developer": [
+      {
+        "compositeFitScore": 23.276315789473685,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.157894736842106,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 23.19736842105263,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00403::java-developer": [
+      {
+        "compositeFitScore": 21.61842105263158,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.894736842105264,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 21.80263157894737,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00432::java-developer": [
+      {
+        "compositeFitScore": 31.657894736842106,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.592105263157894,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 31.67105263157895,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00472::java-developer": [
+      {
+        "compositeFitScore": 20.842105263157894,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.539473684210527,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 20.69736842105263,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00534::java-developer": [
+      {
+        "compositeFitScore": 27.18421052631579,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.38157894736842,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.92105263157895,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00602::java-developer": [
+      {
+        "compositeFitScore": 25.44736842105263,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.55263157894737,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 25.82894736842105,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00609::java-developer": [
+      {
+        "compositeFitScore": 27.67105263157895,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 26.776315789473685,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 27.210526315789473,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00210::ui-ux-designer": [
+      {
+        "compositeFitScore": 49.81818181818182,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 50.65909090909091,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 50.65909090909091,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00232::ui-ux-designer": [
+      {
+        "compositeFitScore": 49.0,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 48.61363636363637,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 48.72727272727273,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00402::ui-ux-designer": [
+      {
+        "compositeFitScore": 68.20454545454545,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 68.18181818181819,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 67.63636363636364,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00426::ui-ux-designer": [
+      {
+        "compositeFitScore": 34.04545454545455,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 34.11363636363637,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 34.34090909090909,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00465::ui-ux-designer": [
+      {
+        "compositeFitScore": 72.25,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 71.06818181818181,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 70.45454545454545,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ],
+    "cv-00492::ui-ux-designer": [
+      {
+        "compositeFitScore": 42.40909090909091,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 42.75,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 42.52272727272727,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00508::ui-ux-designer": [
+      {
+        "compositeFitScore": 33.27272727272727,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 33.0,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 32.5,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00546::ui-ux-designer": [
+      {
+        "compositeFitScore": 68.3409090909091,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 68.52272727272727,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 68.70454545454545,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00570::ui-ux-designer": [
+      {
+        "compositeFitScore": 45.06818181818182,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 45.61363636363637,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 45.34090909090909,
+        "overallRecommendation": "maybe",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00688::ui-ux-designer": [
+      {
+        "compositeFitScore": 40.77272727272727,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 40.72727272727273,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      },
+      {
+        "compositeFitScore": 41.68181818181818,
+        "overallRecommendation": "no",
+        "meetsMinQualifications": false
+      }
+    ],
+    "cv-00692::ui-ux-designer": [
+      {
+        "compositeFitScore": 64.9090909090909,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 65.04545454545455,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      },
+      {
+        "compositeFitScore": 65.0,
+        "overallRecommendation": "hire",
+        "meetsMinQualifications": true
+      }
+    ]
   }
 }

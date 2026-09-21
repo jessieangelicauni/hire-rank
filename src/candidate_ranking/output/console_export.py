@@ -74,6 +74,34 @@ def _load_shortlisting_audit(run_dir: Path) -> dict | None:
         return None
 
 
+def _load_test_retest(run_dir: Path) -> list[dict] | None:
+    path = run_dir / "evaluation" / "test_retest.json"
+    if not path.exists():
+        return None
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        logger.warning("console-web export: discarding unreadable test-retest data %s: %s", path, exc)
+        return None
+
+
+def _repeat_samples_by_row(records: list[dict] | None) -> dict[str, list[dict]]:
+    if records is None:
+        return {}
+    result: dict[str, list[dict]] = {}
+    for record in records:
+        row_id = f"{record['candidate_id']}::{record['jd_id']}"
+        result[row_id] = [
+            {
+                "compositeFitScore": repeat["composite_fit_score"],
+                "overallRecommendation": repeat["overall_recommendation"],
+                "meetsMinQualifications": repeat["meets_min_qualifications"],
+            }
+            for repeat in record["repeats"]
+        ]
+    return result
+
+
 def _shortlisting_audit_by_jd(audit: dict | None) -> dict[str, dict]:
     if audit is None:
         return {}
@@ -222,6 +250,7 @@ def export_console_web_data(
     evaluation_report = _load_evaluation_report(run_dir)
     ranking_stability_by_jd = _ranking_stability_by_jd(evaluation_report)
     shortlisting_audit_by_jd = _shortlisting_audit_by_jd(_load_shortlisting_audit(run_dir))
+    repeat_samples_by_row = _repeat_samples_by_row(_load_test_retest(run_dir))
 
     roles: list[dict] = []
     candidates: list[dict] = []
@@ -288,6 +317,7 @@ def export_console_web_data(
         "comparison": comparison_out,
         "evaluationSummary": _evaluation_summary(evaluation_report),
         "shortlistingAudit": shortlisting_audit_by_jd,
+        "repeatSamples": repeat_samples_by_row,
     }
 
     output_path.parent.mkdir(parents=True, exist_ok=True)

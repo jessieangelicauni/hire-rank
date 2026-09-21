@@ -125,3 +125,53 @@ def test_export_console_web_data_includes_evaluation_summary_when_report_exists(
     assert summary["meanRankingConvergence"] == 0.906
     assert summary["compositeScoreStdev"] == 0.8
     assert summary["coherenceSpearmanRho"] == 0.667
+
+
+def test_export_console_web_data_includes_repeat_samples_when_test_retest_exists(run_with_jev_ranking, tmp_path):
+    cfg, run_id = run_with_jev_ranking
+    run_dir = cfg.runs_dir / run_id
+    eval_dir = run_dir / "evaluation"
+    eval_dir.mkdir(parents=True)
+    test_retest = [
+        {
+            "jd_id": "jd-1",
+            "candidate_id": "cand-a",
+            "repeats": [
+                {
+                    "composite_fit_score": 86.0, "overall_recommendation": "hire",
+                    "meets_min_qualifications": True, "requirement_scores": {"Python": 95.0},
+                    "latency_seconds": 1.1,
+                },
+                {
+                    "composite_fit_score": 88.5, "overall_recommendation": "hire",
+                    "meets_min_qualifications": True, "requirement_scores": {"Python": 100.0},
+                    "latency_seconds": 1.0,
+                },
+                {
+                    "composite_fit_score": 87.0, "overall_recommendation": "maybe",
+                    "meets_min_qualifications": True, "requirement_scores": {"Python": 98.0},
+                    "latency_seconds": 1.3,
+                },
+            ],
+        }
+    ]
+    (eval_dir / "test_retest.json").write_text(json.dumps(test_retest), encoding="utf-8")
+    output_path = tmp_path / "real-data.json"
+
+    export_console_web_data(cfg, run_id, output_path=output_path)
+
+    data = json.loads(output_path.read_text(encoding="utf-8"))
+    samples = data["repeatSamples"]["cand-a::jd-1"]
+    assert len(samples) == 3
+    assert samples[0] == {"compositeFitScore": 86.0, "overallRecommendation": "hire", "meetsMinQualifications": True}
+    assert samples[2]["overallRecommendation"] == "maybe"
+
+
+def test_export_console_web_data_repeat_samples_empty_when_no_test_retest(run_with_jev_ranking, tmp_path):
+    cfg, run_id = run_with_jev_ranking
+    output_path = tmp_path / "real-data.json"
+
+    export_console_web_data(cfg, run_id, output_path=output_path)
+
+    data = json.loads(output_path.read_text(encoding="utf-8"))
+    assert data["repeatSamples"] == {}
