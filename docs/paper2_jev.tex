@@ -188,57 +188,7 @@ Mean (all 10) & -- & 0.964 & 0.982\\
 Table~\ref{tab_convergence_diag} shows $\tau_1$ (single unaggregated calls) and $\tau_3$ (three-call averages, Section III-C) per job profile: three-call averaging raises mean convergence from 0.964 to 0.982, with 9 of 10 profiles improving. The tenth, ui-ux-designer, already sits at a perfect single-call $\tau_1=1.000$ ($n=13$) and stays within 0.02 of it under averaging -- consistent with the aggregation recovering genuine stability rather than merely smoothing over disagreement.
 
 \subsection{Must-Have/Nice-to-Have Shortlisting Correction}
-Applied to the full 501-resume, 10-job-profile corpus, the must-have gate (Section III-E) excludes a meaningful share of candidates who would have passed the prior total-only rule; Table~\ref{tab_must_have_effect} shows this breakdown by job profile. Table~\ref{tab_must_have_skills} shows the underlying technical-skill classification by job profile that drives the gate; every job profile retained at least one nice-to-have skill.
-
-\begin{table}[!ht]
-\caption{Must-have gate effect by job profile: shortlisted candidates before (total-match only) and after (must-have gate added).}
-\label{tab_must_have_effect}
-\centering
-\scriptsize
-\begin{tabular}{lccc}
-\hline
-Job profile & Before & After & Excluded \\
-\hline
-data-scientist-engineer & 27 & 16 & 11 (41\%)\\
-full-stack-engineer & 33 & 24 & 9 (27\%)\\
-data-engineer & 66 & 55 & 11 (17\%)\\
-frontend-engineer & 13 & 11 & 2 (15\%)\\
-java-developer & 13 & 11 & 2 (15\%)\\
-ui-ux-designer & 13 & 11 & 2 (15\%)\\
-cloud-engineer & 47 & 42 & 5 (11\%)\\
-backend-engineer & 22 & 21 & 1 (5\%)\\
-devops-engineer & 50 & 49 & 1 (2\%)\\
-it-security-engineer & 19 & 19 & 0\\
-\hline
-Total (all 10) & 303 & 259 & 44 (14.5\%)\\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[!ht]
-\caption{Technical-skill classification by job profile (skill requirements counted once per job profile they appear in, so a skill shared across profiles is counted in each).}
-\label{tab_must_have_skills}
-\centering
-\scriptsize
-\begin{tabular}{lccc}
-\hline
-Job profile & Technical skills & Must-have & Nice-to-have \\
-\hline
-backend-engineer & 16 & 7 & 9\\
-cloud-engineer & 29 & 7 & 22\\
-data-engineer & 23 & 8 & 15\\
-data-scientist-engineer & 14 & 3 & 11\\
-devops-engineer & 18 & 11 & 7\\
-frontend-engineer & 13 & 3 & 10\\
-full-stack-engineer & 16 & 7 & 9\\
-it-security-engineer & 16 & 11 & 5\\
-java-developer & 17 & 7 & 10\\
-ui-ux-designer & 10 & 3 & 7\\
-\hline
-Total (all 10) & 172 & 67 (39\%) & 105 (61\%)\\
-\hline
-\end{tabular}
-\end{table}
+Applied to the full 501-resume, 10-job-profile corpus, the must-have gate (Section III-E) excludes a meaningful share of candidates who would have passed the prior total-only rule: 44 of 303 previously-shortlisted candidates (14.5\%) are excluded, ranging from 0\% (it-security-engineer) to 41\% (data-scientist-engineer) across the 10 job profiles. The gate is driven by classifying each job profile's technical skills as must-have or nice-to-have during extraction: across the corpus, 67 of 172 technical-skill requirements (39\%) were classified must-have, and every job profile retained at least one nice-to-have skill.
 
 Repeating the repeatability and ranking-convergence evaluation on this must-have-filtered pool ($n=259$ pairs) shows shortlisting correction and the rewritten seniority question do not degrade Jev's core reliability properties: recommendation agreement across repeats is comparable (95.4\% vs.\ 94.1\% on the unfiltered $n=303$ pool), composite-score repeat stdev is essentially unchanged (0.19 on both, 0--100 scale), and single-call ranking convergence is only slightly lower (0.958 vs.\ 0.964) -- consistent with restriction of range: excluding candidates on peripheral-skill grounds leaves a more uniformly-qualified pool, in which similarly-qualified candidates are intrinsically harder to rank apart consistently. The criteria-grounding findings hold, reported in Table~\ref{tab_score_ablation} above, which is itself computed on this same must-have-filtered pool.
 
