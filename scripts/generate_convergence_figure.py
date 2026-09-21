@@ -42,7 +42,7 @@ def main(run_id: str, output_path: Path) -> None:
 
     sns.set_theme(style="whitegrid")
 
-    fig, ax = plt.subplots(figsize=(6.5, 5))
+    fig, ax = plt.subplots(figsize=(10, 5))
     ax.plot(labels, tau1, marker="o", label=r"$\tau_1$ (single call)")
     ax.plot(labels, tau3, marker="o", label=r"$\tau_3$ (3-call average)")
 
