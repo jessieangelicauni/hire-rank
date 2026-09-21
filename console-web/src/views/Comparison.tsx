@@ -1,6 +1,11 @@
+import { Fragment, useState } from 'react';
 import { COMPARISON, EVALUATION_SUMMARY, type Role } from '../data';
 import { avatarColorOf, initialsOf } from '../lib/avatar';
-import { colorAccent, colorBorder, colorSurface, colorText, colorTextMuted, radius, radiusPill, shadowMicro } from '../tokens';
+import { roleBreakdownFor } from '../lib/roleBreakdown';
+import {
+  colorAccent, colorBorder, colorDanger, colorSurface, colorSurfaceMuted,
+  colorText, colorTextMuted, colorTextSoft, radius, radiusPill, shadowMicro,
+} from '../tokens';
 
 interface Props {
   roles: Role[];
@@ -41,6 +46,7 @@ function RateBar({ value, color }: { value: number | null; color: string }) {
 }
 
 export default function Comparison({ roles }: Props) {
+  const [expandedRoleId, setExpandedRoleId] = useState<string | null>(null);
   const metrics = roles.map(metricFor);
   const fitScores = metrics.map((m) => m.meanFitScore).filter((v): v is number => v !== null);
   const meetsMinRates = metrics.map((m) => m.meetsMinRate).filter((v): v is number => v !== null);
@@ -66,12 +72,14 @@ export default function Comparison({ roles }: Props) {
       <div style={{ background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden' }}>
         {roles.map((role, i) => {
           const m = metricFor(role);
+          const isExpanded = expandedRoleId === role.id;
           return (
+            <Fragment key={role.id}>
             <div
-              key={role.id}
               className="row-hover"
+              onClick={() => setExpandedRoleId(isExpanded ? null : role.id)}
               style={{
-                display: 'flex', alignItems: 'center', gap: 14, padding: '14px 20px',
+                display: 'flex', alignItems: 'center', gap: 14, padding: '14px 20px', cursor: 'pointer',
                 borderTop: i === 0 ? undefined : `1px solid ${colorBorder}`,
               }}
             >
@@ -106,6 +114,8 @@ export default function Comparison({ roles }: Props) {
                 </span>
               </div>
             </div>
+            {isExpanded && <RoleBreakdownPanel role={role} />}
+            </Fragment>
           );
         })}
       </div>
@@ -135,6 +145,60 @@ export default function Comparison({ roles }: Props) {
             />
           </div>
         </>
+      )}
+    </div>
+  );
+}
+
+function RoleBreakdownPanel({ role }: { role: Role }) {
+  const { seniorityMean, educationMean, recommendationCounts, requirementMeans } = roleBreakdownFor(role);
+  const totalRecommendations = recommendationCounts.hire + recommendationCounts.maybe + recommendationCounts.no;
+
+  return (
+    <div style={{ padding: '16px 20px 20px', background: colorSurfaceMuted, borderTop: `1px solid ${colorBorder}` }}>
+      {(seniorityMean !== null || educationMean !== null) && (
+        <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
+          {seniorityMean !== null && (
+            <StatCard label="Avg. years-of-experience score" value={seniorityMean.toFixed(1)} />
+          )}
+          {educationMean !== null && (
+            <StatCard label="Avg. education score" value={educationMean.toFixed(1)} />
+          )}
+        </div>
+      )}
+
+      {totalRecommendations > 0 && (
+        <div style={{ marginBottom: 16 }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: colorText, marginBottom: 6 }}>Recommendation breakdown</div>
+          <div style={{ display: 'flex', height: 8, borderRadius: radiusPill, overflow: 'hidden', marginBottom: 6 }}>
+            <div style={{ width: `${(recommendationCounts.hire / totalRecommendations) * 100}%`, background: colorAccent }} />
+            <div style={{ width: `${(recommendationCounts.maybe / totalRecommendations) * 100}%`, background: colorTextSoft }} />
+            <div style={{ width: `${(recommendationCounts.no / totalRecommendations) * 100}%`, background: colorDanger }} />
+          </div>
+          <div style={{ display: 'flex', gap: 16, fontSize: 12, color: colorTextMuted }}>
+            <span>Hire: {recommendationCounts.hire}</span>
+            <span>Maybe: {recommendationCounts.maybe}</span>
+            <span>No: {recommendationCounts.no}</span>
+          </div>
+        </div>
+      )}
+
+      {requirementMeans.length > 0 && (
+        <div>
+          <div style={{ fontSize: 13, fontWeight: 700, color: colorText, marginBottom: 6 }}>Avg. score per requirement</div>
+          {requirementMeans.map(([requirement, score]) => (
+            <div key={requirement} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '6px 0', fontSize: 13, color: colorText }}>
+              <span style={{ flex: 1, minWidth: 0 }}>{requirement}</span>
+              <div style={{ flexShrink: 0, width: 100, height: 6, borderRadius: radiusPill, background: colorBorder, overflow: 'hidden' }}>
+                <div style={{
+                  width: `${Math.max(0, Math.min(100, score))}%`, height: '100%', borderRadius: radiusPill,
+                  background: score >= 50 ? colorAccent : colorDanger,
+                }} />
+              </div>
+              <span style={{ flexShrink: 0, width: 32, textAlign: 'right', color: colorTextMuted, fontSize: 12 }}>{score.toFixed(0)}</span>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
