@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { assessmentFor, type Applicant, type Assessment, type Role } from '../data';
+import { assessmentFor, repeatSamplesFor, type Applicant, type Assessment, type RepeatSample, type Role } from '../data';
 import { avatarColorOf, initialsOf } from '../lib/avatar';
 import {
   colorAccent, colorAccentSoft, colorBorder, colorDanger, colorDangerSoft,
@@ -252,6 +252,7 @@ function DetailPanel({
       <ScoreSummary assessment={assessment} />
       <QualificationScores assessment={assessment} />
       <RequirementScores requirementScores={assessment.requirement_scores} />
+      <RepeatabilitySample samples={repeatSamplesFor(applicant.id)} />
     </div>
   );
 }
@@ -360,6 +361,43 @@ function RequirementScores({ requirementScores }: { requirementScores: Record<st
             </div>
           ))
         )}
+      </div>
+    </div>
+  );
+}
+
+function RepeatabilitySample({ samples }: { samples: RepeatSample[] }) {
+  if (samples.length === 0) return null;
+
+  return (
+    <div style={{ background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden', marginTop: 16 }}>
+      <div style={{ fontSize: 18, fontWeight: 700, color: colorText, padding: '16px 20px 4px' }}>
+        Repeatability sample (3 independent calls)
+      </div>
+      <div style={{ fontSize: 12, color: colorTextMuted, padding: '0 20px 12px', lineHeight: 1.5 }}>
+        From a separate reliability study, not the exact calls behind the score above -- its average may differ slightly.
+      </div>
+      <div>
+        {samples.map((sample, i) => {
+          const color = sample.overallRecommendation === 'hire'
+            ? colorAccent
+            : sample.overallRecommendation === 'no' ? colorDanger : colorTextMuted;
+          return (
+            <div
+              key={i}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 12, padding: '10px 20px', fontSize: 14, color: colorText,
+                borderTop: `1px solid ${colorBorder}`,
+              }}
+            >
+              <span style={{ flex: 1, minWidth: 0 }}>Call {i + 1}</span>
+              <span style={{ fontWeight: 700, color: colorText }}>{sample.compositeFitScore.toFixed(1)}</span>
+              <span style={{ flexShrink: 0, width: 60, textAlign: 'right', color, fontWeight: 600, fontSize: 13 }}>
+                {RECOMMENDATION_LABEL[sample.overallRecommendation]}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
