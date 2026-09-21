@@ -108,6 +108,8 @@ Because Jev reports a separate score per extracted requirement rather than a sin
 This motivates a direct correction at the source: during skill extraction (Section III-A), each job profile's technical skills are also classified as must-have or nice-to-have -- the small core the role is built around versus general-purpose tooling and infrastructure that supports but does not define it. Shortlisting then requires a candidate to match a minimum number of must-have skills, not only a minimum total.
 
 \section{Experimental Setup}
+The pipeline is evaluated on the prior system's corpus and shortlist configuration \cite{ref2}, with every setting held fixed across evaluations so the assessment-stage change is the one independent variable between the two systems; Table~\ref{tab_config} shows the full configuration.
+
 \begin{table}[H]
 \caption{Pipeline configuration.}
 \label{tab_config}
@@ -132,7 +134,7 @@ Bare-label calls averaged per ablation side & 3 (matches concrete side)\\
 \hline
 \end{tabular}
 \end{table}
-The pipeline is evaluated on the prior system's corpus and shortlist configuration \cite{ref2}, with every setting held fixed across evaluations so the assessment-stage change is the one independent variable between the two systems; Table~\ref{tab_config} shows the full configuration. Three evaluation procedures are applied: repeatability (three independent single calls per pair); ranking convergence (Kendall-$\tau$, Section III-C, from single calls and three-call averages); and the criteria-design ablations of Section III-B. Spearman is used wherever the size of a score gap carries meaning, such as the per-requirement score diagnostic of Section III-D; Kendall-$\tau$ is used only for ranking convergence, where relative candidate order is what matters, not the magnitude of any score. All tests are two-sided except where a directional hypothesis is stated explicitly.
+Three evaluation procedures are applied: repeatability (three independent single calls per pair); ranking convergence (Kendall-$\tau$, Section III-C, from single calls and three-call averages); and the criteria-design ablations of Section III-B. Spearman is used wherever the size of a score gap carries meaning, such as the per-requirement score diagnostic of Section III-D; Kendall-$\tau$ is used only for ranking convergence, where relative candidate order is what matters, not the magnitude of any score. All tests are two-sided except where a directional hypothesis is stated explicitly.
 
 \section{Results and Discussion}
 
