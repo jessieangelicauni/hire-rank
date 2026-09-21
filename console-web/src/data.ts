@@ -26,6 +26,12 @@ export interface Assessment {
   education_fit_score: number | null;
 }
 
+export interface RepeatSample {
+  compositeFitScore: number;
+  overallRecommendation: Assessment['overall_recommendation'];
+  meetsMinQualifications: boolean;
+}
+
 export interface ComparisonRow {
   jdId: string;
   meanFitScore: number | null;
@@ -49,6 +55,7 @@ interface RealData {
   assessments: Record<string, Assessment>;
   comparison: Record<string, ComparisonRow>;
   evaluationSummary: EvaluationSummary | null;
+  repeatSamples: Record<string, RepeatSample[]>;
 }
 
 const data = realData as unknown as RealData;
@@ -69,4 +76,10 @@ const EMPTY_ASSESSMENT: Assessment = {
 
 export function assessmentFor(applicantRowId: string): Assessment {
   return data.assessments[applicantRowId] ?? EMPTY_ASSESSMENT;
+}
+
+export const REPEAT_SAMPLES: Record<string, RepeatSample[]> = data.repeatSamples ?? {};
+
+export function repeatSamplesFor(applicantRowId: string): RepeatSample[] {
+  return REPEAT_SAMPLES[applicantRowId] ?? [];
 }
