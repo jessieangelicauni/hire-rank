@@ -372,7 +372,7 @@ function RepeatabilitySample({ samples }: { samples: RepeatSample[] }) {
   return (
     <div style={{ background: colorSurface, border: `1px solid ${colorBorder}`, borderRadius: radius, boxShadow: shadowMicro, overflow: 'hidden', marginTop: 16 }}>
       <div style={{ fontSize: 18, fontWeight: 700, color: colorText, padding: '16px 20px 4px' }}>
-        Repeatability sample (3 independent calls)
+        Repeatability sample ({samples.length} independent calls)
       </div>
       <div style={{ fontSize: 12, color: colorTextMuted, padding: '0 20px 12px', lineHeight: 1.5 }}>
         From a separate reliability study, not the exact calls behind the score above -- its average may differ slightly.
