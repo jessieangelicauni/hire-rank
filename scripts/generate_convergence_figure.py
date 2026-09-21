@@ -46,10 +46,12 @@ def main(run_id: str, output_path: Path) -> None:
     ax.plot(labels, tau1, marker="o", label=r"$\tau_1$ (single call)")
     ax.plot(labels, tau3, marker="o", label=r"$\tau_3$ (3-call average)")
 
+    wrapped_labels = [label.replace("-", "\n") for label in labels]
+
     ax.set_ylabel("Kendall-tau")
     ax.set_title("Ranking convergence by job profile")
     ax.set_xticks(range(len(labels)))
-    ax.set_xticklabels(labels, rotation=90)
+    ax.set_xticklabels(wrapped_labels, rotation=0, fontsize=8)
     ax.legend(loc="lower right")
     fig.tight_layout()
 
