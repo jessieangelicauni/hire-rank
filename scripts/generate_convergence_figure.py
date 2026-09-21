@@ -51,7 +51,7 @@ def main(run_id: str, output_path: Path) -> None:
     ax.set_ylabel("Kendall-tau")
     ax.set_title("Ranking convergence by job profile")
     ax.set_xticks(range(len(labels)))
-    ax.set_xticklabels(wrapped_labels, rotation=0, fontsize=8)
+    ax.set_xticklabels(wrapped_labels, rotation=0, fontsize=11)
     ax.legend(loc="lower right")
     fig.tight_layout()
 
