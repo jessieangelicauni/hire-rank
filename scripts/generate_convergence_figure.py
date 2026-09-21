@@ -67,6 +67,6 @@ def main(run_id: str, output_path: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-id", default="20260921-nomusthave-195128")
-    parser.add_argument("--output", default=str(PROJECT_ROOT / "docs" / "fig_convergence.pdf"))
+    parser.add_argument("--output", default=str(PROJECT_ROOT / "docs" / "fig_convergence.png"))
     args = parser.parse_args()
     main(args.run_id, Path(args.output))
