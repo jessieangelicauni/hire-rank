@@ -1,14 +1,21 @@
 from __future__ import annotations
 
+from unittest.mock import Mock
+
 import pytest
 
 from candidate_ranking.evaluation.criteria_optimization import (
     REQUIREMENT_LEVEL_COUNT,
     RequirementTriple,
+    build_requirement_question,
+    evaluate_criteria,
     load_requirement_triples,
     triple_key,
     validate_criteria_shape,
+    CriteriaEvalRecord,
 )
+from candidate_ranking.models import Candidate, JobDescription
+from candidate_ranking.scoring.jev_client import JevAnswer
 
 
 def test_requirement_level_count_is_five():
@@ -58,3 +65,43 @@ def test_load_requirement_triples_extracts_requirement_keys_only():
     assert RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="Python") in triples
     assert RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="SQL") in triples
     assert RequirementTriple(job_description_id="jd-1", candidate_id="cand-2", requirement="Python") in triples
+
+
+_CRITERIA = ["never", "rarely", "sometimes", "often", "always"]
+
+
+def test_build_requirement_question_matches_existing_instructions_format():
+    question = build_requirement_question("Python", _CRITERIA)
+    assert question.key == "requirement::Python"
+    assert question.kind == "score"
+    assert question.instructions == "How well does the candidate's CV support the requirement 'Python'?"
+    assert question.criteria == _CRITERIA
+
+
+def test_build_requirement_question_rejects_bad_shape():
+    with pytest.raises(ValueError, match="exactly 5"):
+        build_requirement_question("Python", ["only", "two"])
+
+
+def test_evaluate_criteria_calls_jev_once_per_triple_and_maps_results():
+    jd = JobDescription(id="jd-1", title="Backend Engineer", raw_text="Needs Python.", source_path="jd.pdf")
+    candidate = Candidate(
+        id="cand-1", source_path="cv.pdf", raw_text="I know Python.", num_pages=1, char_count=20,
+        parse_status="ok",
+    )
+    triples = [RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="Python")]
+    jev_client = Mock()
+    jev_client.evaluate.return_value = [
+        JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.85)
+    ]
+
+    records = evaluate_criteria(_CRITERIA, triples, {"jd-1": jd}, {"cand-1": candidate}, jev_client)
+
+    assert records == [
+        CriteriaEvalRecord(triple=triples[0], score=3.0, confidence=0.85)
+    ]
+    jev_client.evaluate.assert_called_once()
+    call_state, call_questions = jev_client.evaluate.call_args.args
+    assert "Needs Python." in call_state
+    assert "I know Python." in call_state
+    assert call_questions[0].key == "requirement::Python"
