@@ -9,8 +9,10 @@ from candidate_ranking.evaluation.criteria_optimization import (
     CriteriaEvalRecord,
     RequirementTriple,
     build_requirement_question,
+    compute_metric,
     evaluate_criteria,
     load_requirement_triples,
+    select_hard_triples,
     triple_key,
     validate_criteria_shape,
 )
@@ -105,3 +107,60 @@ def test_evaluate_criteria_calls_jev_once_per_triple_and_maps_results():
     assert "Needs Python." in call_state
     assert "I know Python." in call_state
     assert call_questions[0].key == "requirement::Python"
+
+
+# Tests for compute_metric and select_hard_triples
+
+
+def _record(jd_id: str, cand_id: str, requirement: str, score: float, confidence: float) -> CriteriaEvalRecord:
+    return CriteriaEvalRecord(
+        triple=RequirementTriple(job_description_id=jd_id, candidate_id=cand_id, requirement=requirement),
+        score=score,
+        confidence=confidence,
+    )
+
+
+def test_compute_metric_credits_confidence_only_when_agreeing_with_proxy_label():
+    correct = _record("jd-1", "c-1", "Python", score=3.0, confidence=0.9)
+    wrong = _record("jd-1", "c-2", "Python", score=0.0, confidence=0.9)
+    proxy_labels = {
+        triple_key(correct.triple): 3,  # agrees (within 1): credited
+        triple_key(wrong.triple): 4,    # disagrees by 4: not credited
+    }
+
+    metric = compute_metric([correct, wrong], proxy_labels)
+
+    assert metric == pytest.approx((0.9 + 0.0) / 2)
+
+
+def test_compute_metric_confidently_wrong_scores_lower_than_confidently_right():
+    right = _record("jd-1", "c-1", "Python", score=3.0, confidence=0.9)
+    wrong = _record("jd-1", "c-2", "Python", score=0.0, confidence=0.9)
+    labels_all_right = {triple_key(right.triple): 3, triple_key(wrong.triple): 0}
+    labels_one_wrong = {triple_key(right.triple): 3, triple_key(wrong.triple): 4}
+
+    metric_both_right = compute_metric([right, wrong], labels_all_right)
+    metric_one_wrong = compute_metric([right, wrong], labels_one_wrong)
+
+    assert metric_one_wrong < metric_both_right
+
+
+def test_compute_metric_empty_records_returns_zero():
+    assert compute_metric([], {}) == 0.0
+
+
+def test_select_hard_triples_returns_k_lowest_confidence():
+    records = [
+        _record("jd-1", "c-1", "Python", score=3.0, confidence=0.9),
+        _record("jd-1", "c-2", "Python", score=2.0, confidence=0.3),
+        _record("jd-1", "c-3", "Python", score=1.0, confidence=0.6),
+    ]
+
+    hardest_two = select_hard_triples(records, k=2)
+
+    assert hardest_two == [records[1].triple, records[2].triple]
+
+
+def test_select_hard_triples_k_larger_than_records_returns_all():
+    records = [_record("jd-1", "c-1", "Python", score=3.0, confidence=0.5)]
+    assert select_hard_triples(records, k=5) == [records[0].triple]
