@@ -17,8 +17,6 @@ dependencies = [
     "numpy>=2.5.2",
     "scipy>=1.14.0",
     "python-dotenv>=1.2.3",
-    "dspy>=2.6.0",
-    "anthropic>=0.40.0",
 ]
 
 [dependency-groups]
