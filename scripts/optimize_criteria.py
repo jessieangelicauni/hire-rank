@@ -39,6 +39,20 @@ from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import Candidate, JobDescription
 
 
+def _write_result(out_path: Path, best_criteria: list[str], history: list, test_triples: list) -> None:
+    out_path.write_text(
+        json.dumps(
+            {
+                "best_criteria": best_criteria,
+                "history": [round_.model_dump() for round_ in history],
+                "test_triples": [t.model_dump() for t in test_triples],
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+
+
 def load_corpus(cfg: RunConfig, jd_ids: list[str]) -> tuple[dict[str, JobDescription], dict[str, Candidate]]:
     jds_by_id = {jd.id: jd for jd in load_job_descriptions(cfg.jd_dir) if jd.id in jd_ids}
     candidates_by_id = {c.id: c for c in load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")}
@@ -98,15 +112,26 @@ def main(
 
     jds_by_id, candidates_by_id = load_corpus(cfg, jd_ids)
 
+    all_labeling_triples = train_triples + validation_triples + test_triples
     proxy_labels: dict[str, int] = {}
-    for triple in train_triples + validation_triples + test_triples:
+    for i, triple in enumerate(all_labeling_triples, start=1):
         jd = jds_by_id[triple.job_description_id]
         candidate = candidates_by_id[triple.candidate_id]
         proxy_labels[triple_key(triple)] = proxy_labeler.label(triple, jd, candidate)
+        if i % 25 == 0 or i == len(all_labeling_triples):
+            print(f"proxy labeling: {i}/{len(all_labeling_triples)} done")
     print(f"Collected {len(proxy_labels)} proxy label(s)")
 
     def bound_propose_fn(current_criteria: list[str], hard_case_summaries: list[str]) -> list[str]:
         return propose_criteria(current_criteria, hard_case_summaries, proposer_chain)
+
+    out_dir = run_dir / "evaluation"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "criteria_optimization.json"
+
+    def on_round(best_criteria_so_far: list[str], history_so_far: list) -> None:
+        _write_result(out_path, best_criteria_so_far, history_so_far, test_triples)
+        print(f"Checkpointed progress to {out_path} ({len(history_so_far)} round(s) so far)")
 
     best_criteria, history = run_optimization(
         seed_criteria=_REQUIREMENT_FIT_CRITERIA,
@@ -120,22 +145,10 @@ def main(
         max_rounds=max_rounds,
         hard_case_count=hard_case_count,
         patience=patience,
+        on_round=on_round,
     )
 
-    out_dir = run_dir / "evaluation"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "criteria_optimization.json"
-    out_path.write_text(
-        json.dumps(
-            {
-                "best_criteria": best_criteria,
-                "history": [round_.model_dump() for round_ in history],
-                "test_triples": [t.model_dump() for t in test_triples],
-            },
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
+    _write_result(out_path, best_criteria, history, test_triples)
     print(f"Wrote optimization result to {out_path}")
 
 

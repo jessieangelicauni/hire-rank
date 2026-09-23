@@ -274,3 +274,45 @@ def test_run_optimization_stops_early_after_patience_rounds_without_improvement(
     )
 
     assert len(history) == 2  # round 0 (baseline), round 1 (no improvement, patience=1 stops after this)
+
+
+def test_run_optimization_calls_on_round_callback_each_round():
+    from candidate_ranking.evaluation.criteria_optimization import run_optimization
+
+    jd = JobDescription(id="jd-1", title="Backend Engineer", raw_text="Needs Python.", source_path="jd.pdf")
+    candidate = Candidate(
+        id="cand-1", source_path="cv.pdf", raw_text="I know Python.", num_pages=1, char_count=20,
+        parse_status="ok",
+    )
+    triples = [RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="Python")]
+    proxy_labels = {triple_key(triples[0]): 3}
+    seed = ["never", "rarely", "sometimes", "often", "always"]
+
+    jev_client = Mock()
+    jev_client.evaluate.return_value = [
+        JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.5)
+    ]
+    propose_fn = Mock(return_value=seed)
+    on_round = Mock()
+
+    run_optimization(
+        seed_criteria=seed,
+        train_triples=triples,
+        validation_triples=triples,
+        jds_by_id={"jd-1": jd},
+        candidates_by_id={"cand-1": candidate},
+        jev_client=jev_client,
+        proxy_labels=proxy_labels,
+        propose_fn=propose_fn,
+        max_rounds=10,
+        hard_case_count=1,
+        patience=1,
+        on_round=on_round,
+    )
+
+    assert on_round.call_count == 2  # round 0 (baseline), round 1 (no improvement, patience=1 stops after)
+    first_call_args = on_round.call_args_list[0].args
+    assert first_call_args[0] == seed  # best_criteria after round 0
+    assert len(first_call_args[1]) == 1  # history has 1 entry after round 0
+    second_call_args = on_round.call_args_list[1].args
+    assert len(second_call_args[1]) == 2  # history has 2 entries after round 1

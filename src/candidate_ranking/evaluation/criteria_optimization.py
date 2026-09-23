@@ -75,7 +75,7 @@ def evaluate_criteria(
     jev_client: JevClient,
 ) -> list[CriteriaEvalRecord]:
     records: list[CriteriaEvalRecord] = []
-    for triple in triples:
+    for i, triple in enumerate(triples, start=1):
         jd = jds_by_id[triple.job_description_id]
         candidate = candidates_by_id[triple.candidate_id]
         state = _build_state(jd, candidate)
@@ -83,6 +83,8 @@ def evaluate_criteria(
         answers = jev_client.evaluate(state, [question])
         answer = answers[0]
         records.append(CriteriaEvalRecord(triple=triple, score=float(answer.value), confidence=answer.confidence))
+        if i % 25 == 0 or i == len(triples):
+            print(f"evaluate_criteria: {i}/{len(triples)} triple(s) done")
     return records
 
 
@@ -136,6 +138,7 @@ def run_optimization(
     max_rounds: int,
     hard_case_count: int,
     patience: int,
+    on_round: Callable[[list[str], list[OptimizationRound]], None] | None = None,
 ) -> tuple[list[str], list[OptimizationRound]]:
     history: list[OptimizationRound] = []
     best_metric: float | None = None
@@ -163,6 +166,10 @@ def run_optimization(
             rounds_without_improvement = 0
         else:
             rounds_without_improvement += 1
+
+        if on_round is not None:
+            on_round(best_criteria, list(history))
+        print(f"round {round_index}: metric={round_metric:.4f}, best={best_metric:.4f}")
 
         if rounds_without_improvement >= patience:
             break
