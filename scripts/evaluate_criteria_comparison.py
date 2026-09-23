@@ -14,17 +14,20 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
 import anthropic
-from scipy.stats import wilcoxon
+from dotenv import load_dotenv
+from scipy.stats import rankdata, wilcoxon
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
 from candidate_ranking.evaluation.criteria_optimization import (
     CriteriaEvalRecord,
     RequirementTriple,
     evaluate_criteria,
-    load_assessments_by_jd,
     triple_key,
 )
 from candidate_ranking.evaluation.proxy_labeler import ProxyLabelClient
+
+load_dotenv()
+
 from candidate_ranking.ingestion.cv import load_candidates
 from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import Candidate, JobDescription
@@ -38,11 +41,19 @@ def _accuracy(records: list[CriteriaEvalRecord], proxy_labels: dict[str, int]) -
 
 
 def _rank_biserial(first: list[float], second: list[float]) -> float:
-    diffs = [b - a for a, b in zip(first, second)]
-    positive = sum(1 for d in diffs if d > 0)
-    negative = sum(1 for d in diffs if d < 0)
-    total = positive + negative
-    return (positive - negative) / total if total else 0.0
+    """Matched-pairs rank-biserial correlation, the standard effect size companion to the
+    Wilcoxon signed-rank test: (W+ - W-)/(W+ + W-), where W+/W- are the sums of the
+    signed-rank magnitudes of pairs where `first` exceeds `second` and vice versa. Zero
+    differences are excluded from the ranking, per the standard Wilcoxon convention.
+    """
+    diffs = [a - b for a, b in zip(first, second) if a != b]
+    if not diffs:
+        return 0.0
+    ranks = rankdata([abs(d) for d in diffs])
+    w_pos = sum(r for r, d in zip(ranks, diffs) if d > 0)
+    w_neg = sum(r for r, d in zip(ranks, diffs) if d < 0)
+    total = w_pos + w_neg
+    return (w_pos - w_neg) / total if total else 0.0
 
 
 def load_corpus(cfg: RunConfig, jd_ids: list[str]) -> tuple[dict[str, JobDescription], dict[str, Candidate]]:
@@ -99,7 +110,6 @@ def main(run_id: str) -> None:
     optimized_criteria = opt_result["best_criteria"]
 
     manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
-    assessments_by_jd = load_assessments_by_jd(run_dir, manifest["jd_ids"])
 
     if not cfg.jev_api_key:
         raise RuntimeError("Set CANDIDATE_RANKING_JEV_API_KEY before running.")

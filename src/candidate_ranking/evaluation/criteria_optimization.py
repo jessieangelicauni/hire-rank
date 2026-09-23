@@ -153,8 +153,7 @@ def run_optimization(
             ]
             candidate_criteria = propose_fn(best_criteria, hard_case_summaries)
 
-        train_sample = train_triples + hard_triples
-        train_records = evaluate_criteria(candidate_criteria, train_sample, jds_by_id, candidates_by_id, jev_client)
+        train_records = evaluate_criteria(candidate_criteria, train_triples, jds_by_id, candidates_by_id, jev_client)
         round_metric = compute_metric(train_records, proxy_labels)
         history.append(OptimizationRound(round_index=round_index, criteria=candidate_criteria, metric=round_metric))
 
@@ -165,12 +164,12 @@ def run_optimization(
         else:
             rounds_without_improvement += 1
 
+        if rounds_without_improvement >= patience:
+            break
+
         validation_records = evaluate_criteria(
             best_criteria, validation_triples, jds_by_id, candidates_by_id, jev_client
         )
         hard_triples = select_hard_triples(validation_records, hard_case_count)
-
-        if rounds_without_improvement >= patience:
-            break
 
     return best_criteria, history

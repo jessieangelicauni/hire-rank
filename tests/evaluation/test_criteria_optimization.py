@@ -209,8 +209,7 @@ def test_run_optimization_returns_best_criteria_and_full_history():
     jev_client.evaluate.side_effect = [
         [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.9)],   # round 0 train
         [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.9)],   # round 0 validation
-        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.4)],   # round 1 train (first triple)
-        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.4)],   # round 1 train (second triple from hard case)
+        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.4)],   # round 1 train
         [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.4)],   # round 1 validation
     ]
 
