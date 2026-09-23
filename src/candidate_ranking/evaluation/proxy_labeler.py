@@ -43,10 +43,9 @@ class ProxyLabelClient:
             messages=[{"role": "user", "content": prompt}],
         )
         text = response.content[0].text.strip()
-        try:
-            level = int(text[0])
-        except (ValueError, IndexError) as exc:
-            raise ValueError(f"proxy label response not parseable as 0-4: {text!r}") from exc
+        if not text.isdigit():
+            raise ValueError(f"proxy label response not parseable as 0-4: {text!r}")
+        level = int(text)
         if not (0 <= level <= REQUIREMENT_LEVEL_COUNT - 1):
             raise ValueError(f"proxy label out of range: {level}")
         return level

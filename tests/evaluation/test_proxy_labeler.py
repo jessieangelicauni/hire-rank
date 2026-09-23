@@ -84,3 +84,28 @@ def test_label_raises_on_out_of_range_level(tmp_path):
 
     with pytest.raises(ValueError, match="out of range"):
         labeler.label(triple, _jd(), _candidate())
+
+
+def test_label_reuses_cache_across_client_instances(tmp_path):
+    cache_path = tmp_path / "cache.json"
+    client = Mock()
+    client.messages.create.return_value = _anthropic_response("2")
+    labeler1 = ProxyLabelClient(client, cache_path=cache_path, model="claude-opus-5")
+    triple = RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="Python")
+    labeler1.label(triple, _jd(), _candidate())
+
+    labeler2 = ProxyLabelClient(client, cache_path=cache_path, model="claude-opus-5")
+    result = labeler2.label(triple, _jd(), _candidate())
+
+    assert result == 2
+    client.messages.create.assert_called_once()
+
+
+def test_label_raises_on_multi_digit_malformed_response(tmp_path):
+    client = Mock()
+    client.messages.create.return_value = _anthropic_response("10")
+    labeler = ProxyLabelClient(client, cache_path=tmp_path / "cache.json", model="claude-opus-5")
+    triple = RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="Python")
+
+    with pytest.raises(ValueError, match="out of range"):
+        labeler.label(triple, _jd(), _candidate())
