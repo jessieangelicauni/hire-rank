@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import statistics
 from pathlib import Path
+from typing import Callable
 
 from pydantic import BaseModel
 
@@ -115,3 +116,61 @@ def load_assessments_by_jd(run_dir: Path, jd_ids: list[str]) -> dict[str, dict]:
             continue
         assessments_by_jd[jd_id] = json.loads(path.read_text(encoding="utf-8"))
     return assessments_by_jd
+
+
+class OptimizationRound(BaseModel):
+    round_index: int
+    criteria: list[str]
+    metric: float
+
+
+def run_optimization(
+    seed_criteria: list[str],
+    train_triples: list[RequirementTriple],
+    validation_triples: list[RequirementTriple],
+    jds_by_id: dict[str, JobDescription],
+    candidates_by_id: dict[str, Candidate],
+    jev_client: JevClient,
+    proxy_labels: dict[str, int],
+    propose_fn: Callable[[list[str], list[str]], list[str]],
+    max_rounds: int,
+    hard_case_count: int,
+    patience: int,
+) -> tuple[list[str], list[OptimizationRound]]:
+    history: list[OptimizationRound] = []
+    best_metric: float | None = None
+    best_criteria = seed_criteria
+    hard_triples: list[RequirementTriple] = []
+    rounds_without_improvement = 0
+
+    for round_index in range(max_rounds):
+        if round_index == 0:
+            candidate_criteria = seed_criteria
+        else:
+            hard_case_summaries = [
+                f"requirement={t.requirement}, jd={t.job_description_id}, candidate={t.candidate_id}"
+                for t in hard_triples
+            ]
+            candidate_criteria = propose_fn(best_criteria, hard_case_summaries)
+
+        train_sample = train_triples + hard_triples
+        train_records = evaluate_criteria(candidate_criteria, train_sample, jds_by_id, candidates_by_id, jev_client)
+        round_metric = compute_metric(train_records, proxy_labels)
+        history.append(OptimizationRound(round_index=round_index, criteria=candidate_criteria, metric=round_metric))
+
+        if best_metric is None or round_metric > best_metric:
+            best_metric = round_metric
+            best_criteria = candidate_criteria
+            rounds_without_improvement = 0
+        else:
+            rounds_without_improvement += 1
+
+        validation_records = evaluate_criteria(
+            best_criteria, validation_triples, jds_by_id, candidates_by_id, jev_client
+        )
+        hard_triples = select_hard_triples(validation_records, hard_case_count)
+
+        if rounds_without_improvement >= patience:
+            break
+
+    return best_criteria, history

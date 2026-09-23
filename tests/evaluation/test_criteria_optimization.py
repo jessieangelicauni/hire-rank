@@ -184,3 +184,94 @@ def test_load_assessments_by_jd_skips_missing_files(tmp_path):
     result = load_assessments_by_jd(tmp_path, ["jd-missing"])
 
     assert result == {}
+
+
+def test_run_optimization_returns_best_criteria_and_full_history():
+    from typing import Callable
+
+    from candidate_ranking.evaluation.criteria_optimization import OptimizationRound, run_optimization
+
+    jd = JobDescription(id="jd-1", title="Backend Engineer", raw_text="Needs Python.", source_path="jd.pdf")
+    candidate = Candidate(
+        id="cand-1", source_path="cv.pdf", raw_text="I know Python.", num_pages=1, char_count=20,
+        parse_status="ok",
+    )
+    triples = [RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="Python")]
+    proxy_labels = {triple_key(triples[0]): 3}
+
+    seed = ["never", "rarely", "sometimes", "often", "always"]
+    proposed_round_1 = ["a", "b", "c", "d", "e"]
+
+    jev_client = Mock()
+    # Round 0 uses seed criteria (metric-worthy: score matches label, high confidence).
+    # Round 1 uses proposed criteria (worse: score matches label, but lower confidence).
+    # Validation call after each round reuses the same triple.
+    jev_client.evaluate.side_effect = [
+        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.9)],   # round 0 train
+        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.9)],   # round 0 validation
+        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.4)],   # round 1 train (first triple)
+        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.4)],   # round 1 train (second triple from hard case)
+        [JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.4)],   # round 1 validation
+    ]
+
+    propose_fn: Callable[[list[str], list[str]], list[str]] = Mock(return_value=proposed_round_1)
+
+    best_criteria, history = run_optimization(
+        seed_criteria=seed,
+        train_triples=triples,
+        validation_triples=triples,
+        jds_by_id={"jd-1": jd},
+        candidates_by_id={"cand-1": candidate},
+        jev_client=jev_client,
+        proxy_labels=proxy_labels,
+        propose_fn=propose_fn,
+        max_rounds=2,
+        hard_case_count=1,
+        patience=5,
+    )
+
+    assert best_criteria == seed  # round 0's higher confidence wins
+    assert len(history) == 2
+    assert history[0].round_index == 0
+    assert history[0].criteria == seed
+    assert history[0].metric == pytest.approx(0.9)
+    assert history[1].round_index == 1
+    assert history[1].criteria == proposed_round_1
+    assert history[1].metric == pytest.approx(0.4)
+
+
+def test_run_optimization_stops_early_after_patience_rounds_without_improvement():
+    from typing import Callable
+
+    from candidate_ranking.evaluation.criteria_optimization import OptimizationRound, run_optimization
+
+    jd = JobDescription(id="jd-1", title="Backend Engineer", raw_text="Needs Python.", source_path="jd.pdf")
+    candidate = Candidate(
+        id="cand-1", source_path="cv.pdf", raw_text="I know Python.", num_pages=1, char_count=20,
+        parse_status="ok",
+    )
+    triples = [RequirementTriple(job_description_id="jd-1", candidate_id="cand-1", requirement="Python")]
+    proxy_labels = {triple_key(triples[0]): 3}
+    seed = ["never", "rarely", "sometimes", "often", "always"]
+
+    jev_client = Mock()
+    jev_client.evaluate.return_value = [
+        JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.5)
+    ]
+    propose_fn = Mock(return_value=seed)
+
+    _best, history = run_optimization(
+        seed_criteria=seed,
+        train_triples=triples,
+        validation_triples=triples,
+        jds_by_id={"jd-1": jd},
+        candidates_by_id={"cand-1": candidate},
+        jev_client=jev_client,
+        proxy_labels=proxy_labels,
+        propose_fn=propose_fn,
+        max_rounds=10,
+        hard_case_count=1,
+        patience=1,
+    )
+
+    assert len(history) == 2  # round 0 (baseline), round 1 (no improvement, patience=1 stops after this)
