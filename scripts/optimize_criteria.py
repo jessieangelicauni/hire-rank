@@ -65,6 +65,13 @@ def main(
     rng = random.Random(seed)
     shuffled = all_triples[:]
     rng.shuffle(shuffled)
+
+    if train_fraction + validation_fraction > 1.0:
+        raise ValueError(
+            f"train_fraction ({train_fraction}) + validation_fraction ({validation_fraction}) "
+            "must not exceed 1.0"
+        )
+
     n_train = int(len(shuffled) * train_fraction)
     n_val = int(len(shuffled) * validation_fraction)
     train_triples = shuffled[:n_train]
