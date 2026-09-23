@@ -130,8 +130,11 @@ def main(
     out_path = out_dir / "criteria_optimization.json"
 
     def on_round(best_criteria_so_far: list[str], history_so_far: list) -> None:
-        _write_result(out_path, best_criteria_so_far, history_so_far, test_triples)
-        print(f"Checkpointed progress to {out_path} ({len(history_so_far)} round(s) so far)")
+        try:
+            _write_result(out_path, best_criteria_so_far, history_so_far, test_triples)
+            print(f"Checkpointed progress to {out_path} ({len(history_so_far)} round(s) so far)")
+        except OSError as exc:
+            print(f"Warning: failed to checkpoint round {len(history_so_far) - 1} to {out_path}: {exc}")
 
     best_criteria, history = run_optimization(
         seed_criteria=_REQUIREMENT_FIT_CRITERIA,
