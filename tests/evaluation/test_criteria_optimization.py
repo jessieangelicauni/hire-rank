@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from unittest.mock import Mock
 
 import pytest
@@ -164,3 +165,25 @@ def test_select_hard_triples_returns_k_lowest_confidence():
 def test_select_hard_triples_k_larger_than_records_returns_all():
     records = [_record("jd-1", "c-1", "Python", score=3.0, confidence=0.5)]
     assert select_hard_triples(records, k=5) == [records[0].triple]
+
+
+def test_load_assessments_by_jd_reads_each_jd_file(tmp_path):
+    from candidate_ranking.evaluation.criteria_optimization import load_assessments_by_jd
+
+    jd_dir = tmp_path / "jd-1"
+    jd_dir.mkdir()
+    (jd_dir / "assessments.json").write_text(
+        json.dumps({"cand-1": {"confidence": {"requirement::Python": 0.9}}}), encoding="utf-8"
+    )
+
+    result = load_assessments_by_jd(tmp_path, ["jd-1"])
+
+    assert result == {"jd-1": {"cand-1": {"confidence": {"requirement::Python": 0.9}}}}
+
+
+def test_load_assessments_by_jd_skips_missing_files(tmp_path):
+    from candidate_ranking.evaluation.criteria_optimization import load_assessments_by_jd
+
+    result = load_assessments_by_jd(tmp_path, ["jd-missing"])
+
+    assert result == {}
