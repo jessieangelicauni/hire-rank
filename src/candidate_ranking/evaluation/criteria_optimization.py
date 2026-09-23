@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import statistics
+
 from pydantic import BaseModel
 
 from candidate_ranking.models import Candidate, JobDescription
@@ -79,3 +81,25 @@ def evaluate_criteria(
         answer = answers[0]
         records.append(CriteriaEvalRecord(triple=triple, score=float(answer.value), confidence=answer.confidence))
     return records
+
+
+def compute_metric(records: list[CriteriaEvalRecord], proxy_labels: dict[str, int]) -> float:
+    """Anti-Goodhart metric that credits Jev confidence only when Jev's picked level
+    agrees with an independent Claude proxy label within 1 level. A confidently-wrong
+    answer must NOT be rewarded."""
+    if not records:
+        return 0.0
+    credited_confidences = []
+    for record in records:
+        label = proxy_labels[triple_key(record.triple)]
+        agrees = abs(record.score - label) <= 1
+        credited_confidences.append(record.confidence if agrees else 0.0)
+    return statistics.mean(credited_confidences)
+
+
+def select_hard_triples(records: list[CriteriaEvalRecord], k: int) -> list[RequirementTriple]:
+    """Confidence-based hard-case mining: the K lowest-confidence triples under the
+    current best criteria. A standard, well-established technique -- not an adversarial
+    agent, and not claimed as novel on its own (see the design spec's Motivation)."""
+    ordered = sorted(records, key=lambda record: record.confidence)
+    return [record.triple for record in ordered[:k]]
