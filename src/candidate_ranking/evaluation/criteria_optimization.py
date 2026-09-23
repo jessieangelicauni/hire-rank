@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 import statistics
+from pathlib import Path
 
 from pydantic import BaseModel
 
@@ -103,3 +105,13 @@ def select_hard_triples(records: list[CriteriaEvalRecord], k: int) -> list[Requi
     agent, and not claimed as novel on its own (see the design spec's Motivation)."""
     ordered = sorted(records, key=lambda record: record.confidence)
     return [record.triple for record in ordered[:k]]
+
+
+def load_assessments_by_jd(run_dir: Path, jd_ids: list[str]) -> dict[str, dict]:
+    assessments_by_jd: dict[str, dict] = {}
+    for jd_id in jd_ids:
+        path = run_dir / jd_id / "assessments.json"
+        if not path.exists():
+            continue
+        assessments_by_jd[jd_id] = json.loads(path.read_text(encoding="utf-8"))
+    return assessments_by_jd
