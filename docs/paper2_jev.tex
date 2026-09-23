@@ -46,7 +46,7 @@ This paper makes the following three architecture-level contributions:
 \begin{enumerate}
 \item \textbf{Criteria-Grounded Question Design}: the first large-sample statistical test of TypeSafe's own criteria-grounded Score-question guidance \cite{ref23}, extended to seniority and education Score questions, each validated with concrete-situation criteria in place of bare ordinal labels.
 \item \textbf{Multi-Call Ensemble Averaging}: combining several independent Jev calls per applicant -- arithmetic mean for score-valued answers, confidence-weighted majority vote for categorical ones -- to match or exceed an iterative tournament's ranking-order stability at well under half the model calls, with no iterative ranking process needed.
-\item \textbf{Must-Have/Nice-to-Have Shortlisting Correction}: classifying each job profile's technical skills by importance during extraction and gating shortlisting on the must-have subset, closing a gap that per-requirement score decomposition exposed -- candidates shortlisted almost entirely on nice-to-have skills.
+\item \textbf{Must-Have/Nice-to-Have Shortlisting Correction}: classifying each job profile's technical skills by importance during extraction and gating shortlisting on the must-have subset, closing a gap that a per-requirement score breakdown exposed -- candidates shortlisted almost entirely on nice-to-have skills.
 \end{enumerate}
 
 \section{Literature Review}
@@ -79,7 +79,7 @@ $\downarrow$ \\[1pt]
 $\downarrow$ \\[1pt]
 \fbox{\begin{minipage}{0.85\columnwidth}\centering Ranking (sort by aggregated composite fit score)\end{minipage}} \\[1pt]
 $\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Score Decomposition Diagnostic (motivates C3)\end{minipage}}
+\fbox{\begin{minipage}{0.85\columnwidth}\centering Score Breakdown Diagnostic (motivates C3)\end{minipage}}
 \end{tabular}
 \caption{End-to-end pipeline architecture, annotated with the three contributions (C1--C3) at their point of intervention.}
 \label{fig_pipeline}
@@ -158,6 +158,23 @@ Pooled (sen.\ + edu.) & 146 & 0.782 / 0.646 & $<0.001$ (0.59)\\
 \end{table}
 Table~\ref{tab_score_ablation} shows each question asked twice under the two criteria designs, with mean confidence under each and the Wilcoxon result. The per-requirement questions show a large gain. Pooled across both seniority and education, the gain remains significant with a large effect size.
 
+\subsection{Automated, Accuracy-Guarded Criteria Optimization}
+% RUN BEFORE FILLING IN THIS SECTION:
+%   1. python scripts/optimize_criteria.py --run-id <run-id>
+%   2. python scripts/evaluate_criteria_comparison.py --run-id <run-id>
+%   3. Read runs/<run-id>/evaluation/criteria_comparison.json for the numbers below.
+Manually written criteria (Section~III-B) were validated once, after the fact,
+following TypeSafe's own guidance for writing Score-question criteria. This
+section reports an automated alternative: a round-based propose/evaluate loop
+(Section~III-C) that revises the per-requirement criteria under a
+confidence-plus-independent-proxy-label metric, guarded against rewarding
+confident-but-wrong answers, refreshed each round by mining the lowest-
+confidence validation pairs -- a standard technique, not claimed as novel on
+its own. What is reported here as new is the automated optimization method
+itself: no public source on Jev describes a process for automatically
+discovering better Score-question criteria, only static human-facing
+guidance for writing them by hand.
+
 \subsection{Multi-Call Ensemble Averaging}
 \begin{figure}[H]
 \centering
@@ -201,7 +218,7 @@ Explanation & Strengths/weaknesses narrative & Score + confidence, no narrative\
 Table~\ref{tab_comparison} shows this system is not a strict win on every axis: Faithfulness and per-answer confidence measure different constructs (groundedness vs.\ decision stability), so neither proves it is ``more accurate.'' But on the axis both systems share -- ranking-order stability -- nothing is traded away: three-call-averaged convergence now exceeds the prior tournament-based system's. It also wins on cost -- well under half the calls, no tournament infrastructure -- and offers a native, calibrated confidence the prior system had no way to provide. Its calls also parallelize, unlike the prior system's tournament, where each iteration waits on the last.
 
 \section{Conclusion}
-This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- an empirical, large-sample test of TypeSafe's own criteria-grounded question design guidance, multi-call ensemble averaging, and must-have/nice-to-have skill classification for shortlisting correction -- each motivated by a reliability problem observed in practice. The result is not a uniform improvement (Table~\ref{tab_comparison}): it trades all free-text interpretability for well under half the model calls, no tournament infrastructure, ranking convergence that now exceeds the prior tournament-based system's (0.982 vs.\ 0.957), and a native calibrated confidence the prior system never had. Criteria-grounded design is strongly validated at scale for the per-requirement Score questions and, for the seniority question designed as a single total-years-of-experience judgment (Section III-B), for seniority and education alike. This paper also corrects a shortlisting-stage defect, found using per-requirement score decomposition, by classifying each job profile's technical skills as must-have or nice-to-have during extraction and gating shortlisting on the must-have subset.
+This paper replaced the free-text assessment and iterative tournament-ranking stages of an existing pipeline with Jev, TypeSafe AI's first System One Model, and validated three adaptations -- an empirical, large-sample test of TypeSafe's own criteria-grounded question design guidance, multi-call ensemble averaging, and must-have/nice-to-have skill classification for shortlisting correction -- each motivated by a reliability problem observed in practice. The result is not a uniform improvement (Table~\ref{tab_comparison}): it trades all free-text interpretability for well under half the model calls, no tournament infrastructure, ranking convergence that now exceeds the prior tournament-based system's (0.982 vs.\ 0.957), and a native calibrated confidence the prior system never had. Criteria-grounded design is strongly validated at scale for the per-requirement Score questions and, for the seniority question designed as a single total-years-of-experience judgment (Section III-B), for seniority and education alike. This paper also corrects a shortlisting-stage defect, found using a per-requirement score breakdown, by classifying each job profile's technical skills as must-have or nice-to-have during extraction and gating shortlisting on the must-have subset.
 A limitation is that this work trades away the prior system's free-text interpretability -- a score and a confidence, not a narrative, and per-requirement scores only partly substitute. A second is that the must-have/nice-to-have classification (Section III-D) is itself an unvalidated LLM judgment made once during skill extraction, with no ground truth to confirm it matches what a hiring manager would actually intend.
 Future work includes a lightweight explanation layer -- surfacing the lowest-scoring items as a structured rationale -- to partially restore interpretability without reintroducing free text; and validating the must-have/nice-to-have classification itself, e.g., against human-labeled job profiles, to quantify how often it misclassifies a nice-to-have skill as core.
 
