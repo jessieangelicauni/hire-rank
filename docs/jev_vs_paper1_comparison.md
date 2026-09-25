@@ -27,8 +27,8 @@ old pipeline (see "On head-to-head reproduction" below for why).
 |---|---|---|
 | Mean Faithfulness (strengths, LLM-judge groundedness) | **0.880** (n=300 stratified items, 10 job profiles) | N/A -- no free text to audit |
 | Kendall-tau convergence (rank stability across tournament iterations) | **0.957** mean, range 0.930 (frontend-engineer, n=7) -- 0.979 (data-engineer, n=77) | N/A -- no iterative ranking process |
-| Test-retest reliability (repeat-call stability) | Not measured | Recommendation agreement 93.5%; overall_fit_score stdev mean=0.80 (0-100 scale) across 338 pairs x 3 repeats |
-| Internal coherence | Not measured directly (contradiction audit is the closest analog) | Spearman rho=0.667 (mean requirement score vs. overall score, p=6.7e-45); hire vs. no score separation p=1.2e-19 |
+| Test-retest reliability (repeat-call stability) | Not measured | overall_fit_score stdev mean=0.80 (0-100 scale) across 338 pairs x 3 repeats |
+| Internal coherence | Not measured directly (contradiction audit is the closest analog) | Spearman rho=0.667 (mean requirement score vs. overall score, p=6.7e-45) |
 | Generation failure rate | 0/1,713 tournament ranking calls invalid; 0/1,268 residual weakness contradictions after retry | 0/338 assessment failures in the full-corpus run (`runs/20260918-072318/summary.json`) |
 | Corpus | 500 resumes, 10 job profiles -> 348 shortlisted pairs (237 distinct applicants) | 501 CVs, 10 job profiles -> 338 shortlisted pairs |
 | Human-expert validation | Not performed (explicitly named as future work) | Not performed |

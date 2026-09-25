@@ -239,8 +239,8 @@ uv run python scripts/analyze_jev_evaluation_study.py --run-id 20260918-104531
   education Noul criteria ablation (concrete vs. circular). Output goes to
   `runs/<run_id>/evaluation/*.json`.
 - `analyze_jev_evaluation_study.py` computes the actual statistics (Kendall-
-  tau ranking convergence, Spearman internal coherence, Mann-Whitney U
-  group separation, Wilcoxon signed-rank ablation effects) from that raw
+  tau ranking convergence, Spearman internal coherence, Wilcoxon
+  signed-rank ablation effects) from that raw
   data and writes `runs/<run_id>/evaluation/report.{json,md}`.
 
 Each script requires `CANDIDATE_RANKING_JEV_API_KEY` except
