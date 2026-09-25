@@ -104,10 +104,6 @@ export default function Comparison({ roles }: Props) {
           </p>
           <div style={{ display: 'flex', gap: 12 }}>
             <StatCard
-              label="Recommendation agreement (repeat calls)"
-              value={EVALUATION_SUMMARY.recommendationAgreementRate !== null ? `${(EVALUATION_SUMMARY.recommendationAgreementRate * 100).toFixed(0)}%` : '—'}
-            />
-            <StatCard
               label="Mean ranking stability (τ)"
               value={EVALUATION_SUMMARY.meanRankingConvergence !== null ? EVALUATION_SUMMARY.meanRankingConvergence.toFixed(3) : '—'}
             />

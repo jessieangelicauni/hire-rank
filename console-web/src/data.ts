@@ -37,7 +37,6 @@ export interface ComparisonRow {
 export interface EvaluationSummary {
   nPairs: number | null;
   nRepeats: number | null;
-  recommendationAgreementRate: number | null;
   compositeScoreStdev: number | null;
   meanRankingConvergence: number | null;
   coherenceSpearmanRho: number | null;
