@@ -4,9 +4,8 @@ LLM-driven agentic candidate ranking research: given a folder of job
 descriptions and a folder of CVs, the pipeline shortlists candidates by skill
 overlap, then assesses each shortlisted candidate against the job
 description using Jev, TypeSafe AI's non-autoregressive "System One Model."
-Jev answers a fixed set of typed questions (an overall fit score, a hiring
-recommendation, a minimum-qualifications judgment, and one score per
-extracted requirement) in a single parallel pass per call, with a
+Jev answers a fixed set of typed questions (an overall fit score, and
+one score per extracted requirement) in a single parallel pass per call, with a
 model-reported confidence on every answer. Because the output space is
 predefined (Noul/Choice/Score), a schema violation is impossible by
 construction rather than statistically reduced -- there is no free-text
@@ -39,9 +38,8 @@ per job description (JD) and/or per candidate where noted:
    LLM/Jev stages below from running against the whole CV corpus for every
    JD.
 4. **Structured assessment via Jev** — per shortlisted (JD, candidate) pair,
-   one Jev call is issued (answering the recommendation,
-   minimum-qualifications, per-requirement, and any
-   certification/seniority/education questions in one parallel pass),
+   one Jev call is issued (answering the per-requirement, and any
+   seniority/education questions in one parallel pass),
    producing a single assessment (cached per JD/candidate under
    `runs/_cache/assessments/`).
 5. **Ranking** — per JD, candidates are ranked by sorting directly on the

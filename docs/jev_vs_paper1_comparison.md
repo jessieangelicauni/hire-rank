@@ -14,7 +14,7 @@ old pipeline (see "On head-to-head reproduction" below for why).
 | Dimension | Paper 1 (prior system) | Jev (current system) |
 |---|---|---|
 | Core mechanism | Free-text LLM generation (Qwen2.5-14B-Instruct, Ollama) + active listwise tournament + Plackett-Luce aggregation | Single-call structured decision model (Noul / Choice / Score) |
-| Output shape | Prose: strengths, weaknesses, additional skills | Structured: overall_fit_score, overall_recommendation, meets_min_qualifications, per-requirement scores, confidence |
+| Output shape | Prose: strengths, weaknesses, additional skills | Structured: overall_fit_score, per-requirement scores, confidence |
 | Hallucination handling | Live contradiction-check-and-retry loop (lexical + embedding heuristic against the applicant's own extracted skills) | Not applicable by construction -- output space is predefined, so a schema violation is impossible rather than statistically reduced |
 | Applicant-identifier robustness | Positional tokens + schema-constrained decoding + retry (needed because free-text identifiers were unreliable with a 14B local model) | Not applicable -- one call per candidate, no multi-candidate identifier passing |
 | Ranking | Iterative: MC-KG subset sampling -> LLM listwise judgment -> Plackett-Luce refit, repeated until convergence or budget exhausted | Direct: sort by `overall_fit_score` from a single call per candidate |
@@ -46,8 +46,7 @@ independent human-expert ranking, which neither system currently has.
 Paper 1's per-role Faithfulness scores rank **full-stack-engineer lowest**
 (0.764, vs. a 0.880 run-wide mean). Independently, the Jev evaluation on
 this repo's current corpus also found full-stack-engineer among the
-weakest roles: mean `overall_fit_score` 34.2 and 0% of its shortlisted
-candidates meeting minimum qualifications (see the shortlisting
+weakest roles: mean `overall_fit_score` 34.2 (see the shortlisting
 investigation in this session -- shortlisted candidates matched generic
 skills like GitHub Actions/Kubernetes/AWS but scored zero on React/Next.js/
 PostgreSQL, the role's actual core skills).
