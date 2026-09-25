@@ -27,7 +27,7 @@ $^{3}$Research Center for Artificial Intelligence and Cyber Security - National 
 \maketitle
 
 \begin{abstract}
-LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, an approach that needs extra machinery against hallucinated claims and provides no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by construction. This research's objective is to propose two architecture-level mechanisms for reliably deploying Jev in a real applicant-ranking pipeline: criteria-grounded question design, and cost/latency efficiency from a single parallel pass outperforming an iterative tournament. The research method transforms an existing LLM-and-tournament applicant-ranking pipeline, stage by stage, into a fully structured typed-question architecture built on Jev and these two mechanisms, evaluated on 273 shortlisted (job, applicant) pairs across 10 job profiles. The results show that criteria-grounded design raises per-requirement answer confidence from 0.672 to 0.894 and pooled seniority/education confidence from 0.636 to 0.766; and that the direct-sort pipeline uses well under half as many model calls and roughly 6--10$\times$ lower per-candidate latency than the prior tournament-based system. Overall, a non-autoregressive structured-decision model can outperform free-text assessment in reliability, provided its question design and aggregation match its architecture.
+LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, an approach that needs extra machinery against hallucinated claims and provides no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by construction. This research's objective is to propose two architecture-level mechanisms for reliably deploying Jev in a real applicant-ranking pipeline: criteria-grounded question design, and cost/latency efficiency from a single parallel pass outperforming an iterative tournament. The research method transforms an existing LLM-and-tournament applicant-ranking pipeline, stage by stage, into a fully structured typed-question architecture built on Jev and these two mechanisms, evaluated on 273 shortlisted (job, applicant) pairs across 10 job profiles. The results show that criteria-grounded design raises per-requirement answer confidence from 0.672 to 0.894 and pooled seniority/education confidence from 0.635 to 0.766; and that the direct-sort pipeline uses well under half as many model calls and roughly 6--10$\times$ lower per-candidate latency than the prior tournament-based system. Overall, a non-autoregressive structured-decision model can outperform free-text assessment in reliability, provided its question design and aggregation match its architecture.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -144,9 +144,9 @@ Table~\ref{tab_config} shows the full configuration. The criteria-design ablatio
 Question group & $n$ & Conf.\ (concrete/ordinal 0--100) & $p$ ($r$)\\
 \hline
 Per-requirement & 772 & 0.894 / 0.672 & $<0.001$ (0.89)\\
-Seniority (years) & 40 & 0.789 / 0.543 & $<0.001$ (0.76)\\
-Education & 116 & 0.759 / 0.668 & $<0.001$ (0.48)\\
-Pooled (sen.\ + edu.) & 156 & 0.766 / 0.636 & $<0.001$ (0.58)\\
+Seniority (years) & 40 & 0.789 / 0.536 & $<0.001$ (0.77)\\
+Education & 116 & 0.759 / 0.669 & $<0.001$ (0.47)\\
+Pooled (sen.\ + edu.) & 156 & 0.766 / 0.635 & $<0.001$ (0.58)\\
 \hline
 \end{tabular}
 \end{table}
@@ -158,7 +158,7 @@ Applied to the full corpus, the must-have gate (Section III-C) excludes 44 of 30
 The criteria-grounding findings hold on this pool too, reported in Table~\ref{tab_score_ablation} above, which is itself computed on this same must-have-gated pool.
 
 \subsection{Cost and Latency Efficiency (C2) and Comparison with the Prior Tournament-Based System}
-This section reports the results of Stage 4's direct sort outperforming the iterative tournament (C2, Section III-E). Across 819 timed Jev calls (273 pairs, 3 independent calls each), a single call takes a mean of 1.11s, for a total of 15.2 minutes of compute time across the full corpus -- call latency only, not skill/job profile extraction.
+This section reports the results of Stage 4's direct sort outperforming the iterative tournament (C2, Section III-E). Across 819 timed Jev calls (273 pairs, 3 independent calls each), a single call takes a mean of 1.04s, for a total of 14.2 minutes of compute time across the full corpus -- call latency only, not skill/job profile extraction.
 
 \begin{table}[H]
 \caption{Comparison against the closest prior published system \cite{ref2}.}
