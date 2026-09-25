@@ -9,7 +9,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "src"))
 
-from scipy.stats import kendalltau, mannwhitneyu, rankdata, spearmanr, wilcoxon
+from scipy.stats import kendalltau, rankdata, spearmanr, wilcoxon
 
 from candidate_ranking.config import RunConfig, apply_env_overrides
 
@@ -218,39 +218,9 @@ def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
         rho, p_value = spearmanr(mean_requirement_scores, composite_scores_for_correlation)
         correlation = {"spearman_rho": float(rho), "p_value": float(p_value), "n": len(mean_requirement_scores)}
 
-    hire_scores = [a["composite_fit_score"] for a in assessments if a["overall_recommendation"] == "hire"]
-    no_scores = [a["composite_fit_score"] for a in assessments if a["overall_recommendation"] == "no"]
-    recommendation_vs_score = None
-    if hire_scores and no_scores:
-        stat, p_value = mannwhitneyu(hire_scores, no_scores, alternative="greater")
-        recommendation_vs_score = {
-            "hire_mean": statistics.mean(hire_scores),
-            "hire_n": len(hire_scores),
-            "no_mean": statistics.mean(no_scores),
-            "no_n": len(no_scores),
-            "mannwhitneyu_statistic": float(stat),
-            "p_value_hire_greater_than_no": float(p_value),
-        }
-
-    meets_min_scores = [a["composite_fit_score"] for a in assessments if a["meets_min_qualifications"]]
-    fails_min_scores = [a["composite_fit_score"] for a in assessments if not a["meets_min_qualifications"]]
-    qualifications_vs_score = None
-    if meets_min_scores and fails_min_scores:
-        stat, p_value = mannwhitneyu(meets_min_scores, fails_min_scores, alternative="greater")
-        qualifications_vs_score = {
-            "meets_min_mean": statistics.mean(meets_min_scores),
-            "meets_min_n": len(meets_min_scores),
-            "fails_min_mean": statistics.mean(fails_min_scores),
-            "fails_min_n": len(fails_min_scores),
-            "mannwhitneyu_statistic": float(stat),
-            "p_value_meets_greater_than_fails": float(p_value),
-        }
-
     return {
         "n_assessments": len(assessments),
         "requirement_vs_composite_score_correlation": correlation,
-        "recommendation_vs_score": recommendation_vs_score,
-        "min_qualifications_vs_score": qualifications_vs_score,
     }
 
 
@@ -359,19 +329,6 @@ def render_markdown(report: dict) -> str:
         if coh["requirement_vs_composite_score_correlation"]:
             c = coh["requirement_vs_composite_score_correlation"]
             lines.append(f"- mean(requirement_scores) vs composite_fit_score: Spearman rho={c['spearman_rho']:.3f} (p={c['p_value']:.4g}, n={c['n']})")
-        if coh["recommendation_vs_score"]:
-            r = coh["recommendation_vs_score"]
-            lines.append(
-                f"- hire (n={r['hire_n']}, mean={r['hire_mean']:.1f}) vs no (n={r['no_n']}, mean={r['no_mean']:.1f}): "
-                f"Mann-Whitney U p={r['p_value_hire_greater_than_no']:.4g}"
-            )
-        if coh["min_qualifications_vs_score"]:
-            q = coh["min_qualifications_vs_score"]
-            lines.append(
-                f"- meets_min_qualifications=True (n={q['meets_min_n']}, mean={q['meets_min_mean']:.1f}) vs "
-                f"False (n={q['fails_min_n']}, mean={q['fails_min_mean']:.1f}): "
-                f"Mann-Whitney U p={q['p_value_meets_greater_than_fails']:.4g}"
-            )
     if abl:
         lines += ["", "## Criteria-design ablation (concrete vs. vague Score criteria)", f"- n={abl['n_pairs']} sampled pairs"]
         if abl["requirement_questions"]["wilcoxon"]:
