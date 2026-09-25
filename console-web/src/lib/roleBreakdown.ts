@@ -3,7 +3,6 @@ import { APPLICANTS, assessmentFor, type Assessment, type Role } from '../data';
 export interface RoleBreakdown {
   seniorityMean: number | null;
   educationMean: number | null;
-  recommendationCounts: { hire: number; maybe: number; no: number };
   requirementMeans: [string, number][];
 }
 
@@ -23,9 +22,6 @@ export function roleBreakdownFor(role: Role): RoleBreakdown {
     .map((a) => a.education_fit_score)
     .filter((v): v is number => v !== null);
 
-  const recommendationCounts = { hire: 0, maybe: 0, no: 0 };
-  for (const a of assessments) recommendationCounts[a.overall_recommendation] += 1;
-
   const requirementValues = new Map<string, number[]>();
   for (const a of assessments) {
     for (const [requirement, score] of Object.entries(a.requirement_scores)) {
@@ -41,7 +37,6 @@ export function roleBreakdownFor(role: Role): RoleBreakdown {
   return {
     seniorityMean: mean(seniorityValues),
     educationMean: mean(educationValues),
-    recommendationCounts,
     requirementMeans,
   };
 }

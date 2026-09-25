@@ -19,8 +19,6 @@ export interface Applicant {
 
 export interface Assessment {
   composite_fit_score: number;
-  overall_recommendation: 'hire' | 'maybe' | 'no';
-  meets_min_qualifications: boolean;
   requirement_scores: Record<string, number>;
   seniority_years_fit_score: number | null;
   education_fit_score: number | null;
@@ -28,15 +26,11 @@ export interface Assessment {
 
 export interface RepeatSample {
   compositeFitScore: number;
-  overallRecommendation: Assessment['overall_recommendation'];
-  meetsMinQualifications: boolean;
 }
 
 export interface ComparisonRow {
   jdId: string;
   meanFitScore: number | null;
-  meetsMinRate: number | null;
-  hireRate: number | null;
   rankingStability: number | null;
 }
 
@@ -58,7 +52,7 @@ interface RealData {
   repeatSamples: Record<string, RepeatSample[]>;
 }
 
-const data = realData as unknown as RealData;
+const data = realData as RealData;
 
 export const ROLES: Role[] = data.roles;
 export const APPLICANTS: Applicant[] = data.candidates;
@@ -67,8 +61,6 @@ export const EVALUATION_SUMMARY: EvaluationSummary | null = data.evaluationSumma
 
 const EMPTY_ASSESSMENT: Assessment = {
   composite_fit_score: 0,
-  overall_recommendation: 'no',
-  meets_min_qualifications: false,
   requirement_scores: {},
   seniority_years_fit_score: null,
   education_fit_score: null,
