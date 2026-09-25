@@ -34,25 +34,7 @@ _VAGUE_SCORE_CRITERIA = ["0", "25", "50", "75", "100"]
 
 
 def _vague_build_questions(jd_technical_skills: list[str] | None) -> list[JevQuestion]:
-    questions = [
-        JevQuestion(
-            key="overall_recommendation", kind="choice",
-            instructions="What is the hiring recommendation for this candidate against this job description?",
-            criteria={
-                "hire": "Candidate clearly meets or exceeds the role's requirements",
-                "maybe": "Candidate partially meets the role's requirements",
-                "no": "Candidate does not meet the role's requirements",
-            },
-        ),
-        JevQuestion(
-            key="meets_min_qualifications", kind="noul",
-            instructions="Does the candidate meet the job description's minimum qualifications?",
-            criteria={
-                "true": "Meets every minimum qualification stated in the job description",
-                "false": "Fails at least one minimum qualification stated in the job description",
-            },
-        ),
-    ]
+    questions: list[JevQuestion] = []
     for requirement in jd_technical_skills or []:
         questions.append(
             JevQuestion(
@@ -145,8 +127,6 @@ def collect_test_retest(
             repeats_out.append(
                 {
                     "composite_fit_score": assessment.composite_fit_score,
-                    "overall_recommendation": assessment.overall_recommendation,
-                    "meets_min_qualifications": assessment.meets_min_qualifications,
                     "requirement_scores": assessment.requirement_scores,
                     "latency_seconds": elapsed,
                 }

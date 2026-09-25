@@ -52,7 +52,6 @@ def _wilcoxon_result(label: str, first: list[float], second: list[float]) -> dic
 def analyze_test_retest(records: list[dict]) -> dict:
     score_stdevs: list[float] = []
     requirement_score_stdevs: list[float] = []
-    recommendation_full_agreement = 0
     latencies: list[float] = []
 
     for record in records:
@@ -60,10 +59,6 @@ def analyze_test_retest(records: list[dict]) -> dict:
         scores = [r["composite_fit_score"] for r in repeats]
         if len(scores) >= 2:
             score_stdevs.append(statistics.stdev(scores))
-
-        recommendations = {r["overall_recommendation"] for r in repeats}
-        if len(recommendations) == 1:
-            recommendation_full_agreement += 1
 
         requirement_keys = set(repeats[0]["requirement_scores"])
         for key in requirement_keys:
@@ -86,7 +81,6 @@ def analyze_test_retest(records: list[dict]) -> dict:
             "median": statistics.median(requirement_score_stdevs) if requirement_score_stdevs else None,
             "n_requirement_observations": len(requirement_score_stdevs),
         },
-        "recommendation_full_agreement_rate": recommendation_full_agreement / n if n else None,
         "latency_seconds": {
             "n": len(latencies),
             "mean": statistics.mean(latencies) if latencies else None,
@@ -260,9 +254,6 @@ def analyze_internal_coherence(run_dir: Path, jd_ids: list[str]) -> dict:
     }
 
 
-_UNAFFECTED_CONTROL_KEYS = ("overall_recommendation", "meets_min_qualifications")
-
-
 def _paired_bucket(concrete: list[float], vague: list[float], label: str) -> dict:
     return {
         "wilcoxon": _wilcoxon_result(label, concrete, vague),
@@ -273,8 +264,6 @@ def _paired_bucket(concrete: list[float], vague: list[float], label: str) -> dic
 
 
 def analyze_ablation(records: list[dict]) -> dict:
-    concrete_control: list[float] = []
-    vague_control: list[float] = []
     concrete_requirement: list[float] = []
     vague_requirement: list[float] = []
     vague_latencies: list[float] = []
@@ -282,11 +271,6 @@ def analyze_ablation(records: list[dict]) -> dict:
     for record in records:
         concrete_conf = record["concrete_confidence"]
         vague_conf = record["vague_confidence"]
-
-        for key in _UNAFFECTED_CONTROL_KEYS:
-            if key in concrete_conf and key in vague_conf:
-                concrete_control.append(concrete_conf[key])
-                vague_control.append(vague_conf[key])
 
         shared_requirement_keys = {
             k for k in concrete_conf if k.startswith("requirement::")
@@ -299,7 +283,6 @@ def analyze_ablation(records: list[dict]) -> dict:
 
     return {
         "n_pairs": len(records),
-        "unaffected_control": _paired_bucket(concrete_control, vague_control, "unaffected_control_confidence"),
         "requirement_questions": _paired_bucket(concrete_requirement, vague_requirement, "requirement_confidence"),
         "vague_latency_seconds_mean": statistics.mean(vague_latencies) if vague_latencies else None,
     }
@@ -356,7 +339,6 @@ def render_markdown(report: dict) -> str:
             f"median={tr['composite_fit_score_stdev']['median']:.2f}",
             f"- per-requirement score stdev: mean={tr['requirement_score_stdev']['mean']:.2f} "
             f"(n={tr['requirement_score_stdev']['n_requirement_observations']} requirement observations)",
-            f"- recommendation full agreement rate: {tr['recommendation_full_agreement_rate']:.1%}",
         ]
     if conv:
         lines += [
@@ -392,14 +374,6 @@ def render_markdown(report: dict) -> str:
             )
     if abl:
         lines += ["", "## Criteria-design ablation (concrete vs. vague Score criteria)", f"- n={abl['n_pairs']} sampled pairs"]
-        if abl["unaffected_control"]["wilcoxon"]:
-            w = abl["unaffected_control"]["wilcoxon"]
-            lines.append(
-                f"- unaffected_control confidence (overall_recommendation + meets_min_qualifications, criteria "
-                f"NOT changed by the ablation -- expected null effect): "
-                f"concrete mean={w['mean_first']:.3f} vs vague mean={w['mean_second']:.3f} "
-                f"-- Wilcoxon p={w['p_value']:.4g}, r={w['rank_biserial_r']:.3f}"
-            )
         if abl["requirement_questions"]["wilcoxon"]:
             w = abl["requirement_questions"]["wilcoxon"]
             lines.append(
