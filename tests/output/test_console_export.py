@@ -37,7 +37,6 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
         "rankings": [
             {
                 "rank": 1, "candidate_id": "cand-a", "composite_fit_score": 87.5,
-                "overall_recommendation": "hire", "meets_min_qualifications": True,
                 "requirement_scores": {"Python": 100.0},
             }
         ],
@@ -47,8 +46,8 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
     assessments = {
         "cand-a": {
             "job_description_id": "jd-1", "candidate_id": "cand-a", "generated_by_model": "typesafe/jev",
-            "composite_fit_score": 87.5, "overall_recommendation": "hire", "meets_min_qualifications": True,
-            "requirement_scores": {"Python": 100.0}, "confidence": {"overall_recommendation": 0.9},
+            "composite_fit_score": 87.5,
+            "requirement_scores": {"Python": 100.0}, "confidence": {"requirement::Python": 0.9},
             "seniority_years_fit_score": 75.0, "education_fit_score": None,
         }
     }
@@ -79,15 +78,16 @@ def test_export_console_web_data_maps_jev_scores(run_with_jev_ranking, tmp_path)
     assert data["candidates"][0]["utility"] == 87.5
     assessment = data["assessments"]["cand-a::jd-1"]
     assert assessment["composite_fit_score"] == 87.5
-    assert assessment["overall_recommendation"] == "hire"
+    assert "overall_recommendation" not in assessment
+    assert "meets_min_qualifications" not in assessment
     assert assessment["requirement_scores"] == {"Python": 100.0}
     assert assessment["seniority_years_fit_score"] == 75.0
     assert assessment["education_fit_score"] is None
     assert "strengths" not in assessment
     comparison = data["comparison"]["jd-1"]
     assert comparison["meanFitScore"] == 87.5
-    assert comparison["meetsMinRate"] == 1.0
-    assert comparison["hireRate"] == 1.0
+    assert "meetsMinRate" not in comparison
+    assert "hireRate" not in comparison
     assert comparison["rankingStability"] is None
     assert data["evaluationSummary"] is None
 
@@ -163,8 +163,8 @@ def test_export_console_web_data_includes_repeat_samples_when_test_retest_exists
     data = json.loads(output_path.read_text(encoding="utf-8"))
     samples = data["repeatSamples"]["cand-a::jd-1"]
     assert len(samples) == 3
-    assert samples[0] == {"compositeFitScore": 86.0, "overallRecommendation": "hire", "meetsMinQualifications": True}
-    assert samples[2]["overallRecommendation"] == "maybe"
+    assert samples[0] == {"compositeFitScore": 86.0}
+    assert samples[2] == {"compositeFitScore": 87.0}
 
 
 def test_export_console_web_data_repeat_samples_empty_when_no_test_retest(run_with_jev_ranking, tmp_path):

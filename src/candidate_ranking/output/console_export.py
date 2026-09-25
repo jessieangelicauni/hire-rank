@@ -34,20 +34,16 @@ def _composite_fit_score(entry: dict) -> float:
 
 
 def _null_comparison(jd_id: str) -> dict:
-    return {"jdId": jd_id, "meanFitScore": None, "meetsMinRate": None, "hireRate": None, "rankingStability": None}
+    return {"jdId": jd_id, "meanFitScore": None, "rankingStability": None}
 
 
 def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict], ranking_stability: float | None) -> dict:
     if not jd_assessments:
         return _null_comparison(jd_id)
     fit_scores = [_composite_fit_score(a) for a in jd_assessments.values()]
-    meets_min_flags = [a["meets_min_qualifications"] for a in jd_assessments.values()]
-    recommendations = [a["overall_recommendation"] for a in jd_assessments.values()]
     return {
         "jdId": jd_id,
         "meanFitScore": statistics.mean(fit_scores),
-        "meetsMinRate": sum(meets_min_flags) / len(meets_min_flags),
-        "hireRate": recommendations.count("hire") / len(recommendations),
         "rankingStability": ranking_stability,
     }
 
@@ -92,11 +88,7 @@ def _repeat_samples_by_row(records: list[dict] | None) -> dict[str, list[dict]]:
     for record in records:
         row_id = f"{record['candidate_id']}::{record['jd_id']}"
         result[row_id] = [
-            {
-                "compositeFitScore": repeat["composite_fit_score"],
-                "overallRecommendation": repeat["overall_recommendation"],
-                "meetsMinQualifications": repeat["meets_min_qualifications"],
-            }
+            {"compositeFitScore": repeat["composite_fit_score"]}
             for repeat in record["repeats"]
         ]
     return result
@@ -287,8 +279,6 @@ def export_console_web_data(
 
             assessments[row_id] = {
                 "composite_fit_score": _composite_fit_score(assessment_entry),
-                "overall_recommendation": assessment_entry["overall_recommendation"],
-                "meets_min_qualifications": assessment_entry["meets_min_qualifications"],
                 "requirement_scores": assessment_entry.get("requirement_scores", {}),
                 "seniority_years_fit_score": assessment_entry.get("seniority_years_fit_score"),
                 "education_fit_score": assessment_entry.get("education_fit_score"),
