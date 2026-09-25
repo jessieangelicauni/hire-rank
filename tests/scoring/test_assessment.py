@@ -57,7 +57,7 @@ def test_generate_assessment_maps_jev_answers_onto_assessment():
     jev_client = Mock()
     jev_client.evaluate.return_value = _high_confidence_answers()
 
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
 
     assert assessment.job_description_id == "jd-1"
     assert assessment.candidate_id == "cand-1"
@@ -85,7 +85,7 @@ def test_generate_assessment_skips_requirement_scores_without_jd_skills():
         JevAnswer(key="meets_min_qualifications", kind="noul", value=False, confidence=0.8),
     ]
 
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills=None, n_calls=1)
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills=None)
 
     assert assessment.requirement_scores == {}
     assert assessment.composite_fit_score == 0.0
@@ -101,7 +101,7 @@ def test_generate_assessment_retries_once_on_low_confidence_then_accepts():
     ]
     jev_client.evaluate.side_effect = [low_confidence_answers, _high_confidence_answers()]
 
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
 
     assert jev_client.evaluate.call_count == 2
     assert assessment.confidence["meets_min_qualifications"] == 0.95
@@ -114,7 +114,7 @@ def test_generate_assessment_wraps_jev_client_error():
     jev_client.evaluate.side_effect = JevClientError("network down")
 
     with pytest.raises(AssessmentGenerationError, match="network down"):
-        generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+        generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
 
 
 def test_generate_assessment_wraps_unusable_jev_response():
@@ -123,7 +123,7 @@ def test_generate_assessment_wraps_unusable_jev_response():
         JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
     ]
     with pytest.raises(AssessmentGenerationError, match="jd-1/cand-1"):
-        generate_assessment(_jd(), _candidate(), missing_key_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+        generate_assessment(_jd(), _candidate(), missing_key_client, JEV_MODEL_NAME, _jd_skills())
 
     invalid_value_client = Mock()
     invalid_value_client.evaluate.return_value = [
@@ -131,43 +131,10 @@ def test_generate_assessment_wraps_unusable_jev_response():
         JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
     ]
     with pytest.raises(AssessmentGenerationError, match="jd-1/cand-1"):
-        generate_assessment(_jd(), _candidate(), invalid_value_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+        generate_assessment(_jd(), _candidate(), invalid_value_client, JEV_MODEL_NAME, _jd_skills())
 
 
-def test_generate_assessment_defaults_to_three_calls_and_averages():
-    jev_client = Mock()
-    jev_client.evaluate.side_effect = [
-        [
-            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.9),
-            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
-            JevAnswer(key="requirement::Python", kind="score", value=2.0, confidence=0.8),
-            JevAnswer(key="requirement::SQL", kind="score", value=0.0, confidence=0.8),
-        ],
-        [
-            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.9),
-            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
-            JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.8),
-            JevAnswer(key="requirement::SQL", kind="score", value=2.0, confidence=0.8),
-        ],
-        [
-            JevAnswer(key="overall_recommendation", kind="choice", value="maybe", confidence=0.9),
-            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
-            JevAnswer(key="requirement::Python", kind="score", value=3.0, confidence=0.8),
-            JevAnswer(key="requirement::SQL", kind="score", value=1.0, confidence=0.8),
-        ],
-    ]
-
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
-
-    assert jev_client.evaluate.call_count == 3
-    assert assessment.overall_recommendation == "hire"  # 2 of 3 votes
-    assert assessment.meets_min_qualifications is True  # unanimous
-    assert assessment.requirement_scores["Python"] == pytest.approx((50.0 + 100.0 + 75.0) / 3)
-    assert assessment.requirement_scores["SQL"] == pytest.approx((0.0 + 50.0 + 25.0) / 3)
-    assert assessment.composite_fit_score == pytest.approx((assessment.requirement_scores["Python"] + assessment.requirement_scores["SQL"]) / 2)
-
-
-def test_generate_assessment_single_call_preserves_probability_distributions():
+def test_generate_assessment_preserves_probability_distributions():
     jev_client = Mock()
     jev_client.evaluate.return_value = [
         JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.8,
@@ -177,7 +144,7 @@ def test_generate_assessment_single_call_preserves_probability_distributions():
                    probabilities={"0": 0, "1": 0, "2": 0, "3": 0.1, "4": 0.9}),
     ]
 
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
 
     assert assessment.recommendation_probabilities == {"hire": 0.8, "maybe": 0.15, "no": 0.05}
     assert assessment.requirement_probabilities["Python"] == {"0": 0, "1": 0, "2": 0, "3": 0.1, "4": 0.9}
@@ -185,53 +152,12 @@ def test_generate_assessment_single_call_preserves_probability_distributions():
     assert assessment.education_probabilities is None
 
 
-def test_generate_assessment_averages_probability_distributions_across_calls():
-    jev_client = Mock()
-    jev_client.evaluate.side_effect = [
-        [
-            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.8,
-                       probabilities={"hire": 0.8, "maybe": 0.1, "no": 0.1}),
-            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
-            JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9,
-                       probabilities={"0": 0, "1": 0, "2": 0, "3": 0.2, "4": 0.8}),
-        ],
-        [
-            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.6,
-                       probabilities={"hire": 0.6, "maybe": 0.3, "no": 0.1}),
-            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
-            JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.7,
-                       probabilities={"0": 0, "1": 0, "2": 0, "3": 0.4, "4": 0.6}),
-        ],
-    ]
-
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=2)
-
-    assert assessment.recommendation_probabilities["hire"] == pytest.approx((0.8 + 0.6) / 2)
-    assert assessment.recommendation_probabilities["maybe"] == pytest.approx((0.1 + 0.3) / 2)
-    assert assessment.requirement_probabilities["Python"]["3"] == pytest.approx((0.2 + 0.4) / 2)
-    assert assessment.requirement_probabilities["Python"]["4"] == pytest.approx((0.8 + 0.6) / 2)
-
-
-def test_generate_assessment_n_calls_one_skips_averaging():
-    jev_client = Mock()
-    jev_client.evaluate.return_value = _high_confidence_answers()
-
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
-
-    jev_client.evaluate.assert_called_once()
-    assert assessment.composite_fit_score == 62.5
-
-
 def test_load_or_generate_assessment_uses_cache_on_second_call(tmp_path: Path):
     jev_client = Mock()
     jev_client.evaluate.return_value = _high_confidence_answers()
 
-    first = load_or_generate_assessment(
-        _jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills(), n_calls=1
-    )
-    second = load_or_generate_assessment(
-        _jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills(), n_calls=1
-    )
+    first = load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills())
+    second = load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills())
 
     assert first == second
     jev_client.evaluate.assert_called_once()
@@ -252,7 +178,7 @@ def test_generate_assessment_builds_certification_seniority_education_questions(
         JevAnswer(key="education", kind="score", value=1.0, confidence=0.8),
     ]
 
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills_full(), n_calls=1)
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills_full())
 
     _, questions = jev_client.evaluate.call_args.args
     question_keys = {q.key for q in questions}
@@ -271,7 +197,7 @@ def test_generate_assessment_omits_seniority_education_questions_when_not_stated
         JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
     ]
 
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
 
     _, questions = jev_client.evaluate.call_args.args
     question_keys = {q.key for q in questions}
@@ -310,42 +236,3 @@ def test_seniority_and_education_criteria_are_five_level_evidence_based_scores()
 
     assert any(term in seniority_years_criteria for term in ("total experience", "years"))
     assert any(term in education_criteria for term in ("degree", "field", "credential"))
-
-
-def test_generate_assessment_aggregates_certification_and_seniority_across_calls():
-    jev_client = Mock()
-
-    def _answers(cert_value, seniority_value):
-        return [
-            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.9),
-            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
-            JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=cert_value, confidence=0.9),
-            JevAnswer(key="seniority_years", kind="score", value=seniority_value, confidence=0.9),
-        ]
-
-    jev_client.evaluate.side_effect = [
-        _answers(True, 4.0),
-        _answers(True, 2.0),
-        _answers(False, 3.0),
-    ]
-
-    jd_skills = JDSkills(
-        job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=[],
-        certifications=["AWS Certified Solutions Architect"], seniority_requirement="5+ years",
-        seniority_min_years=5.0,
-    )
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills)
-
-    assert assessment.certification_results == {"AWS Certified Solutions Architect": True}  # 2 of 3 votes
-    assert assessment.seniority_years_fit_score == pytest.approx((100.0 + 50.0 + 75.0) / 3)  # mean of 4.0/2.0/3.0 -> percent
-
-
-def test_load_or_generate_assessment_cache_key_depends_on_n_calls(tmp_path: Path):
-    jev_client = Mock()
-    jev_client.evaluate.return_value = _high_confidence_answers()
-
-    load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills(), n_calls=1)
-    assert jev_client.evaluate.call_count == 1
-
-    load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills(), n_calls=3)
-    assert jev_client.evaluate.call_count == 4

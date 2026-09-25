@@ -3,8 +3,6 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
-import statistics
-from collections import Counter
 from pathlib import Path
 
 from pydantic import ValidationError
@@ -29,8 +27,6 @@ _RETRY_ON_LOW_CONFIDENCE_KEYS = (
     _SENIORITY_YEARS_KEY, _EDUCATION_KEY,
 )
 _CONFIDENCE_RETRY_THRESHOLD = 0.5
-
-DEFAULT_N_CALLS = 3
 
 _REQUIREMENT_FIT_CRITERIA = [
     "Not mentioned anywhere in the CV",
@@ -258,104 +254,16 @@ def _generate_single_assessment(
     return assessment, answers
 
 
-def _aggregate_recommendation(calls: list[Assessment]) -> str:
-    counts = Counter(a.overall_recommendation for a in calls)
-    top_count = max(counts.values())
-    tied = [label for label, count in counts.items() if count == top_count]
-    if len(tied) == 1:
-        return tied[0]
-
-    def mean_confidence_for(label: str) -> float:
-        confidences = [
-            a.confidence.get(_RECOMMENDATION_KEY, 0.0) for a in calls if a.overall_recommendation == label
-        ]
-        return statistics.mean(confidences) if confidences else 0.0
-
-    return max(tied, key=mean_confidence_for)
-
-
-def _aggregate_meets_min_qualifications(calls: list[Assessment]) -> bool:
-    return sum(a.meets_min_qualifications for a in calls) > len(calls) / 2
-
-
-def _aggregate_mean_dict(calls: list[Assessment], field: str) -> dict[str, float]:
-    keys = {key for a in calls for key in getattr(a, field)}
-    return {key: statistics.mean(getattr(a, field)[key] for a in calls if key in getattr(a, field)) for key in keys}
-
-
-def _aggregate_bool_dict(calls: list[Assessment], field: str) -> dict[str, bool]:
-    keys = {key for a in calls for key in getattr(a, field)}
-    result: dict[str, bool] = {}
-    for key in keys:
-        votes = [getattr(a, field)[key] for a in calls if key in getattr(a, field)]
-        result[key] = sum(votes) > len(votes) / 2
-    return result
-
-
-def _aggregate_mean_optional(calls: list[Assessment], field: str) -> float | None:
-    values = [v for a in calls if (v := getattr(a, field)) is not None]
-    if not values:
-        return None
-    return statistics.mean(values)
-
-
-def _aggregate_mean_nested_dict(calls: list[Assessment], field: str) -> dict[str, dict[str, float]]:
-    outer_keys = {key for a in calls for key in getattr(a, field)}
-    result: dict[str, dict[str, float]] = {}
-    for outer_key in outer_keys:
-        inner_dicts = [getattr(a, field)[outer_key] for a in calls if outer_key in getattr(a, field)]
-        inner_keys = {k for d in inner_dicts for k in d}
-        result[outer_key] = {
-            inner_key: statistics.mean(d[inner_key] for d in inner_dicts if inner_key in d)
-            for inner_key in inner_keys
-        }
-    return result
-
-
-def _aggregate_mean_optional_dict(calls: list[Assessment], field: str) -> dict[str, float] | None:
-    dicts = [d for a in calls if (d := getattr(a, field)) is not None]
-    if not dicts:
-        return None
-    keys = {k for d in dicts for k in d}
-    return {key: statistics.mean(d[key] for d in dicts if key in d) for key in keys}
-
-
 def generate_assessment(
     jd: JobDescription,
     candidate: Candidate,
     jev_client: JevClient,
     model_name: str = JEV_MODEL_NAME,
     jd_skills: JDSkills | None = None,
-    n_calls: int = DEFAULT_N_CALLS,
 ) -> Assessment:
-    if n_calls < 1:
-        raise ValueError(f"n_calls must be >= 1, got {n_calls}")
-
     questions = _build_questions(jd_skills)
-
-    calls = [
-        _generate_single_assessment(jd, candidate, jev_client, model_name, questions)[0]
-        for _ in range(n_calls)
-    ]
-    if n_calls == 1:
-        return calls[0]
-
-    return Assessment(
-        job_description_id=jd.id,
-        candidate_id=candidate.id,
-        generated_by_model=model_name,
-        overall_recommendation=_aggregate_recommendation(calls),
-        meets_min_qualifications=_aggregate_meets_min_qualifications(calls),
-        requirement_scores=_aggregate_mean_dict(calls, "requirement_scores"),
-        confidence=_aggregate_mean_dict(calls, "confidence"),
-        certification_results=_aggregate_bool_dict(calls, "certification_results"),
-        seniority_years_fit_score=_aggregate_mean_optional(calls, "seniority_years_fit_score"),
-        education_fit_score=_aggregate_mean_optional(calls, "education_fit_score"),
-        recommendation_probabilities=_aggregate_mean_dict(calls, "recommendation_probabilities"),
-        requirement_probabilities=_aggregate_mean_nested_dict(calls, "requirement_probabilities"),
-        seniority_probabilities=_aggregate_mean_optional_dict(calls, "seniority_probabilities"),
-        education_probabilities=_aggregate_mean_optional_dict(calls, "education_probabilities"),
-    )
+    assessment, _answers = _generate_single_assessment(jd, candidate, jev_client, model_name, questions)
+    return assessment
 
 
 def filter_assessable_candidates(candidates: list[Candidate]) -> list[Candidate]:
@@ -378,11 +286,10 @@ def _assessment_cache_key(
     candidate: Candidate,
     model_name: str,
     jd_skills: JDSkills | None = None,
-    n_calls: int = DEFAULT_N_CALLS,
 ) -> str:
     state = _build_state(jd, candidate)
     questions_repr = repr([q.model_dump() for q in _build_questions(jd_skills)])
-    digest_input = f"{state}||{questions_repr}||{model_name}||n_calls={n_calls}".encode("utf-8")
+    digest_input = f"{state}||{questions_repr}||{model_name}".encode("utf-8")
     return hashlib.sha256(digest_input).hexdigest()
 
 
@@ -420,15 +327,14 @@ def load_or_generate_assessment(
     model_name: str,
     cache_dir: Path,
     jd_skills: JDSkills | None = None,
-    n_calls: int = DEFAULT_N_CALLS,
 ) -> Assessment:
     path = _assessment_cache_path(cache_dir, jd.id, candidate.id)
-    key = _assessment_cache_key(jd, candidate, model_name, jd_skills, n_calls)
+    key = _assessment_cache_key(jd, candidate, model_name, jd_skills)
 
     cached = _read_cached_assessment(path, key)
     if cached is not None:
         return cached
 
-    assessment = generate_assessment(jd, candidate, jev_client, model_name, jd_skills, n_calls)
+    assessment = generate_assessment(jd, candidate, jev_client, model_name, jd_skills)
     _write_cached_assessment(path, key, assessment)
     return assessment
