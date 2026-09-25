@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { assessmentFor, repeatSamplesFor, type Applicant, type Assessment, type RepeatSample, type Role } from '../data';
 import { avatarColorOf, initialsOf } from '../lib/avatar';
 import {
-  colorAccent, colorAccentSoft, colorBorder, colorDanger, colorDangerSoft,
+  colorAccent, colorAccentSoft, colorBorder, colorDanger,
   colorSurface, colorSurfaceMuted, colorText, colorTextMuted, colorTextSoft,
   radius, radiusPill, radiusSm, shadowMicro,
 } from '../tokens';
@@ -257,20 +257,7 @@ function DetailPanel({
   );
 }
 
-const RECOMMENDATION_LABEL: Record<Assessment['overall_recommendation'], string> = {
-  hire: 'Hire',
-  maybe: 'Maybe',
-  no: 'No',
-};
-
 function ScoreSummary({ assessment }: { assessment: Assessment }) {
-  const recommendationColor = assessment.overall_recommendation === 'hire'
-    ? colorAccent
-    : assessment.overall_recommendation === 'no' ? colorDanger : colorTextMuted;
-  const recommendationSoft = assessment.overall_recommendation === 'hire'
-    ? colorAccentSoft
-    : assessment.overall_recommendation === 'no' ? colorDangerSoft : colorSurfaceMuted;
-
   return (
     <div style={{
       display: 'flex', gap: 16, alignItems: 'center', marginBottom: 20, padding: '16px 20px',
@@ -282,15 +269,6 @@ function ScoreSummary({ assessment }: { assessment: Assessment }) {
           <span style={{ fontSize: 16, fontWeight: 500, color: colorTextMuted }}>/100</span>
         </div>
         <div style={{ fontSize: 12, color: colorTextMuted, marginTop: 4 }}>Composite fit score</div>
-      </div>
-      <div style={{
-        padding: '6px 14px', borderRadius: radiusPill, background: recommendationSoft,
-        color: recommendationColor, fontWeight: 700, fontSize: 13,
-      }}>
-        {RECOMMENDATION_LABEL[assessment.overall_recommendation]}
-      </div>
-      <div style={{ fontSize: 13, color: assessment.meets_min_qualifications ? colorAccent : colorDanger, fontWeight: 600 }}>
-        {assessment.meets_min_qualifications ? '✓ Meets minimum qualifications' : '✕ Does not meet minimum qualifications'}
       </div>
     </div>
   );
@@ -379,26 +357,18 @@ function RepeatabilitySample({ samples }: { samples: RepeatSample[] }) {
         From a separate reliability study, not the exact calls behind the score above -- its average may differ slightly.
       </div>
       <div>
-        {samples.map((sample, i) => {
-          const color = sample.overallRecommendation === 'hire'
-            ? colorAccent
-            : sample.overallRecommendation === 'no' ? colorDanger : colorTextMuted;
-          return (
-            <div
-              key={i}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 12, padding: '10px 20px', fontSize: 14, color: colorText,
-                borderTop: `1px solid ${colorBorder}`,
-              }}
-            >
-              <span style={{ flex: 1, minWidth: 0 }}>Call {i + 1}</span>
-              <span style={{ fontWeight: 700, color: colorText }}>{sample.compositeFitScore.toFixed(1)}/100</span>
-              <span style={{ flexShrink: 0, width: 60, textAlign: 'right', color, fontWeight: 600, fontSize: 13 }}>
-                {RECOMMENDATION_LABEL[sample.overallRecommendation]}
-              </span>
-            </div>
-          );
-        })}
+        {samples.map((sample, i) => (
+          <div
+            key={i}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 12, padding: '10px 20px', fontSize: 14, color: colorText,
+              borderTop: `1px solid ${colorBorder}`,
+            }}
+          >
+            <span style={{ flex: 1, minWidth: 0 }}>Call {i + 1}</span>
+            <span style={{ fontWeight: 700, color: colorText }}>{sample.compositeFitScore.toFixed(1)}/100</span>
+          </div>
+        ))}
       </div>
     </div>
   );
