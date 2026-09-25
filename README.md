@@ -231,7 +231,6 @@ cached data (it never touches the production pipeline):
 ```bash
 uv run python scripts/run_jev_evaluation_study.py --run-id 20260918-104531
 uv run python scripts/analyze_jev_evaluation_study.py --run-id 20260918-104531
-uv run python scripts/validate_multi_call_averaging.py --run-id 20260918-104531
 ```
 
 - `run_jev_evaluation_study.py` collects raw data: test-retest reliability
@@ -244,10 +243,6 @@ uv run python scripts/validate_multi_call_averaging.py --run-id 20260918-104531
   tau ranking convergence, Spearman internal coherence, Mann-Whitney U
   group separation, Wilcoxon signed-rank ablation effects) from that raw
   data and writes `runs/<run_id>/evaluation/report.{json,md}`.
-- `validate_multi_call_averaging.py` collects two more independent 3-call
-  trials on top of the test-retest data, then compares single-call ranking
-  convergence against 3-call-averaged ranking convergence, writing
-  `runs/<run_id>/evaluation/multi_call_averaging_validation.json`.
 
 Each script requires `CANDIDATE_RANKING_JEV_API_KEY` except
 `analyze_jev_evaluation_study.py`, which only reads already-collected data.
@@ -262,7 +257,7 @@ src/candidate_ranking/
   graphs/pipeline.py         # the LangGraph pipeline definition
   ingestion/                  # JD/CV loading and CV skill/name extraction
   scoring/                      # JD skill extraction, skill matching, and Jev-based
-                                  # structured assessment + multi-call aggregation
+                                  # structured assessment
   ranking/                        # tournament ranking, Plackett-Luce fitting, Monte
                                     # Carlo knowledge-gradient subset selection --
                                     # from the prior free-text pipeline (docs/paper1.tex),
@@ -275,7 +270,6 @@ src/candidate_ranking/
 scripts/
   run_jev_evaluation_study.py       # collects test-retest + ablation raw data, see above
   analyze_jev_evaluation_study.py    # computes statistics from that raw data
-  validate_multi_call_averaging.py    # single-call vs. 3-call-averaged ranking convergence
 console-web/                # React dashboard for browsing a run's results
 job-description/, cv/       # sample input corpus
 runs/                        # run outputs and cross-run caches (generated)
