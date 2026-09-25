@@ -42,12 +42,6 @@ def test_assessments_by_jd_groups_ok_results_and_skips_failed():
     assert grouped["jd-1"]["cand-a"].composite_fit_score == 80.0
 
 
-@pytest.mark.xfail(
-    reason="formatter.py still reads Assessment.overall_recommendation/meets_min_qualifications, "
-    "removed in sub-project 1/5 of docs/superpowers/specs/2026-09-25-remove-recommendation-"
-    "qualifications-certification-core-design.md -- fixed by sub-project 2/5 (output layer)",
-    strict=False,
-)
 def test_rank_and_format_jd_writes_ranking_files(tmp_path: Path):
     jd = JobDescription(id="jd-1", title="Backend Engineer", raw_text="...", source_path="jd.pdf")
     assessments = {

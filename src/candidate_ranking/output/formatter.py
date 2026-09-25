@@ -12,24 +12,18 @@ def format_jd_ranking(jd: JobDescription, assessments: dict[str, Assessment]) ->
     lines = [
         f"# Ranking: {jd.title} ({jd.id})",
         "",
-        "> Scores, recommendations, and per-requirement fit are produced directly by Jev.",
+        "> Scores and per-requirement fit are produced directly by Jev.",
         "",
     ]
     rows = []
     for rank, candidate_id in enumerate(ranked, start=1):
         assessment = assessments[candidate_id]
-        lines.append(
-            f"{rank}. **{candidate_id}** (score={assessment.composite_fit_score:.1f}, "
-            f"{assessment.overall_recommendation}) — meets_min_qualifications="
-            f"{assessment.meets_min_qualifications}"
-        )
+        lines.append(f"{rank}. **{candidate_id}** (score={assessment.composite_fit_score:.1f})")
         rows.append(
             {
                 "rank": rank,
                 "candidate_id": candidate_id,
                 "composite_fit_score": assessment.composite_fit_score,
-                "overall_recommendation": assessment.overall_recommendation,
-                "meets_min_qualifications": assessment.meets_min_qualifications,
                 "requirement_scores": assessment.requirement_scores,
             }
         )
