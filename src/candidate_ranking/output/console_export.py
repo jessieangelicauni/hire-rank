@@ -136,7 +136,6 @@ def _evaluation_summary(report: dict | None) -> dict | None:
     return {
         "nPairs": test_retest.get("n_pairs"),
         "nRepeats": test_retest.get("n_repeats_per_pair"),
-        "recommendationAgreementRate": test_retest.get("recommendation_full_agreement_rate"),
         "compositeScoreStdev": test_retest.get("composite_fit_score_stdev", {}).get("mean"),
         "meanRankingConvergence": ranking_convergence.get("mean_kendall_tau_across_all_profiles"),
         "coherenceSpearmanRho": coherence.get("spearman_rho") if coherence else None,

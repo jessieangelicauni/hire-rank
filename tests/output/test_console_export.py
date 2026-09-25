@@ -102,7 +102,6 @@ def test_export_console_web_data_includes_evaluation_summary_when_report_exists(
         "test_retest": {
             "n_pairs": 338, "n_repeats_per_pair": 3,
             "composite_fit_score_stdev": {"mean": 0.8, "median": 0.66},
-            "recommendation_full_agreement_rate": 0.935,
         },
         "ranking_convergence": {
             "per_job_profile": {"jd-1": {"n_candidates": 22, "n_repeats": 3, "mean_kendall_tau": 0.93}},
@@ -121,7 +120,7 @@ def test_export_console_web_data_includes_evaluation_summary_when_report_exists(
     data = json.loads(output_path.read_text(encoding="utf-8"))
     assert data["comparison"]["jd-1"]["rankingStability"] == 0.93
     summary = data["evaluationSummary"]
-    assert summary["recommendationAgreementRate"] == 0.935
+    assert "recommendationAgreementRate" not in summary
     assert summary["meanRankingConvergence"] == 0.906
     assert summary["compositeScoreStdev"] == 0.8
     assert summary["coherenceSpearmanRho"] == 0.667
