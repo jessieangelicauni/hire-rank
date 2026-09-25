@@ -186,6 +186,11 @@ def _answers_to_assessment(
         for key, a in by_key.items()
         if key.startswith(_CERTIFICATION_KEY_PREFIX)
     }
+    requirement_probabilities = {
+        key[len(_REQUIREMENT_KEY_PREFIX):]: a.probabilities
+        for key, a in by_key.items()
+        if key.startswith(_REQUIREMENT_KEY_PREFIX) and a.probabilities
+    }
     return Assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
@@ -199,6 +204,12 @@ def _answers_to_assessment(
             _score_to_percent(by_key[_SENIORITY_YEARS_KEY].value) if _SENIORITY_YEARS_KEY in by_key else None
         ),
         education_fit_score=_score_to_percent(by_key[_EDUCATION_KEY].value) if _EDUCATION_KEY in by_key else None,
+        recommendation_probabilities=by_key[_RECOMMENDATION_KEY].probabilities or {},
+        requirement_probabilities=requirement_probabilities,
+        seniority_probabilities=(
+            by_key[_SENIORITY_YEARS_KEY].probabilities if _SENIORITY_YEARS_KEY in by_key else None
+        ),
+        education_probabilities=by_key[_EDUCATION_KEY].probabilities if _EDUCATION_KEY in by_key else None,
     )
 
 
@@ -208,9 +219,10 @@ def _generate_single_assessment(
     jev_client: JevClient,
     model_name: str,
     questions: list[JevQuestion],
-) -> Assessment:
+) -> tuple[Assessment, list[JevAnswer]]:
     low_confidence_note = ""
     assessment: Assessment | None = None
+    answers: list[JevAnswer] = []
     for _attempt in range(2):
         state = _build_state(jd, candidate, low_confidence_note)
         try:
@@ -243,7 +255,7 @@ def _generate_single_assessment(
         raise AssessmentGenerationError(
             f"Jev evaluation for {jd.id}/{candidate.id} produced no assessment"
         )
-    return assessment
+    return assessment, answers
 
 
 def _aggregate_recommendation(calls: list[Assessment]) -> str:
@@ -287,6 +299,27 @@ def _aggregate_mean_optional(calls: list[Assessment], field: str) -> float | Non
     return statistics.mean(values)
 
 
+def _aggregate_mean_nested_dict(calls: list[Assessment], field: str) -> dict[str, dict[str, float]]:
+    outer_keys = {key for a in calls for key in getattr(a, field)}
+    result: dict[str, dict[str, float]] = {}
+    for outer_key in outer_keys:
+        inner_dicts = [getattr(a, field)[outer_key] for a in calls if outer_key in getattr(a, field)]
+        inner_keys = {k for d in inner_dicts for k in d}
+        result[outer_key] = {
+            inner_key: statistics.mean(d[inner_key] for d in inner_dicts if inner_key in d)
+            for inner_key in inner_keys
+        }
+    return result
+
+
+def _aggregate_mean_optional_dict(calls: list[Assessment], field: str) -> dict[str, float] | None:
+    dicts = [d for a in calls if (d := getattr(a, field)) is not None]
+    if not dicts:
+        return None
+    keys = {k for d in dicts for k in d}
+    return {key: statistics.mean(d[key] for d in dicts if key in d) for key in keys}
+
+
 def generate_assessment(
     jd: JobDescription,
     candidate: Candidate,
@@ -300,7 +333,10 @@ def generate_assessment(
 
     questions = _build_questions(jd_skills)
 
-    calls = [_generate_single_assessment(jd, candidate, jev_client, model_name, questions) for _ in range(n_calls)]
+    calls = [
+        _generate_single_assessment(jd, candidate, jev_client, model_name, questions)[0]
+        for _ in range(n_calls)
+    ]
     if n_calls == 1:
         return calls[0]
 
@@ -315,6 +351,10 @@ def generate_assessment(
         certification_results=_aggregate_bool_dict(calls, "certification_results"),
         seniority_years_fit_score=_aggregate_mean_optional(calls, "seniority_years_fit_score"),
         education_fit_score=_aggregate_mean_optional(calls, "education_fit_score"),
+        recommendation_probabilities=_aggregate_mean_dict(calls, "recommendation_probabilities"),
+        requirement_probabilities=_aggregate_mean_nested_dict(calls, "requirement_probabilities"),
+        seniority_probabilities=_aggregate_mean_optional_dict(calls, "seniority_probabilities"),
+        education_probabilities=_aggregate_mean_optional_dict(calls, "education_probabilities"),
     )
 
 

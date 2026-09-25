@@ -167,6 +167,51 @@ def test_generate_assessment_defaults_to_three_calls_and_averages():
     assert assessment.composite_fit_score == pytest.approx((assessment.requirement_scores["Python"] + assessment.requirement_scores["SQL"]) / 2)
 
 
+def test_generate_assessment_single_call_preserves_probability_distributions():
+    jev_client = Mock()
+    jev_client.evaluate.return_value = [
+        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.8,
+                   probabilities={"hire": 0.8, "maybe": 0.15, "no": 0.05}),
+        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
+        JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9,
+                   probabilities={"0": 0, "1": 0, "2": 0, "3": 0.1, "4": 0.9}),
+    ]
+
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=1)
+
+    assert assessment.recommendation_probabilities == {"hire": 0.8, "maybe": 0.15, "no": 0.05}
+    assert assessment.requirement_probabilities["Python"] == {"0": 0, "1": 0, "2": 0, "3": 0.1, "4": 0.9}
+    assert assessment.seniority_probabilities is None
+    assert assessment.education_probabilities is None
+
+
+def test_generate_assessment_averages_probability_distributions_across_calls():
+    jev_client = Mock()
+    jev_client.evaluate.side_effect = [
+        [
+            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.8,
+                       probabilities={"hire": 0.8, "maybe": 0.1, "no": 0.1}),
+            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
+            JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9,
+                       probabilities={"0": 0, "1": 0, "2": 0, "3": 0.2, "4": 0.8}),
+        ],
+        [
+            JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.6,
+                       probabilities={"hire": 0.6, "maybe": 0.3, "no": 0.1}),
+            JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
+            JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.7,
+                       probabilities={"0": 0, "1": 0, "2": 0, "3": 0.4, "4": 0.6}),
+        ],
+    ]
+
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills(), n_calls=2)
+
+    assert assessment.recommendation_probabilities["hire"] == pytest.approx((0.8 + 0.6) / 2)
+    assert assessment.recommendation_probabilities["maybe"] == pytest.approx((0.1 + 0.3) / 2)
+    assert assessment.requirement_probabilities["Python"]["3"] == pytest.approx((0.2 + 0.4) / 2)
+    assert assessment.requirement_probabilities["Python"]["4"] == pytest.approx((0.8 + 0.6) / 2)
+
+
 def test_generate_assessment_n_calls_one_skips_averaging():
     jev_client = Mock()
     jev_client.evaluate.return_value = _high_confidence_answers()

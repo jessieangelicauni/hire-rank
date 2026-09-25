@@ -46,13 +46,15 @@ def test_evaluate_parses_noul_choice_and_score_answers(mock_post):
 
     by_key = {a.key: a for a in answers}
     assert by_key["meets_min_qualifications"] == JevAnswer(
-        key="meets_min_qualifications", kind="noul", value=True, confidence=0.95
+        key="meets_min_qualifications", kind="noul", value=True, confidence=0.95, probabilities=None
     )
     assert by_key["overall_recommendation"] == JevAnswer(
-        key="overall_recommendation", kind="choice", value="hire", confidence=0.8
+        key="overall_recommendation", kind="choice", value="hire", confidence=0.8,
+        probabilities={"hire": 0.8, "maybe": 0.15, "no": 0.05},
     )
     assert by_key["seniority_years"] == JevAnswer(
-        key="seniority_years", kind="score", value=3.0, confidence=0.9
+        key="seniority_years", kind="score", value=3.0, confidence=0.9,
+        probabilities={"0": 0.0, "1": 0.0, "2": 0.1, "3": 0.9, "4": 0.0},
     )
 
     call_kwargs = mock_post.call_args.kwargs

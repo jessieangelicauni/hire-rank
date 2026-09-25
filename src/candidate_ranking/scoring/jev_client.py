@@ -21,10 +21,18 @@ class JevAnswer(BaseModel):
     kind: Literal["noul", "choice", "score"]
     value: bool | str | float
     confidence: float
+    probabilities: dict[str, float] | None = None
 
 
 class JevClientError(Exception):
     pass
+
+
+def _parse_probabilities(raw: dict) -> dict[str, float] | None:
+    probabilities = raw.get("probabilities")
+    if not probabilities:
+        return None
+    return {k: float(v) for k, v in probabilities.items()}
 
 
 def _parse_answer(key: str, raw: dict) -> JevAnswer:
@@ -35,9 +43,15 @@ def _parse_answer(key: str, raw: dict) -> JevAnswer:
             confidence = probability_true if probability_true >= 0.5 else 1.0 - probability_true
             return JevAnswer(key=key, kind="noul", value=probability_true >= 0.5, confidence=confidence)
         if kind == "choice":
-            return JevAnswer(key=key, kind="choice", value=raw["choice"], confidence=float(raw["confidence"]))
+            return JevAnswer(
+                key=key, kind="choice", value=raw["choice"], confidence=float(raw["confidence"]),
+                probabilities=_parse_probabilities(raw),
+            )
         if kind == "score":
-            return JevAnswer(key=key, kind="score", value=float(raw["score"]), confidence=float(raw["confidence"]))
+            return JevAnswer(
+                key=key, kind="score", value=float(raw["score"]), confidence=float(raw["confidence"]),
+                probabilities=_parse_probabilities(raw),
+            )
     except KeyError as exc:
         raise JevClientError(f"Jev answer for {key!r} is missing expected field: {exc}") from exc
     raise JevClientError(f"Jev answer for {key!r} has unrecognized type: {kind!r}")

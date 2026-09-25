@@ -50,6 +50,15 @@ class Assessment(BaseModel):
     certification_results: dict[str, bool] = Field(default_factory=dict)
     seniority_years_fit_score: float | None = Field(default=None, ge=0, le=100)
     education_fit_score: float | None = Field(default=None, ge=0, le=100)
+    # Full per-level/per-option probability distributions Jev returns alongside the collapsed
+    # value/confidence above (see JevAnswer.probabilities) -- kept on Assessment itself, not just
+    # the raw per-call JevAnswer list, so this detail survives into the standard pipeline output
+    # (assessments.json) rather than being discarded whenever no separate raw-answer capture is
+    # in play.
+    recommendation_probabilities: dict[str, float] = Field(default_factory=dict)
+    requirement_probabilities: dict[str, dict[str, float]] = Field(default_factory=dict)
+    seniority_probabilities: dict[str, float] | None = None
+    education_probabilities: dict[str, float] | None = None
 
     @computed_field
     @property
