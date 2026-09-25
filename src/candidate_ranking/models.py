@@ -43,19 +43,14 @@ class Assessment(BaseModel):
     job_description_id: str = Field(min_length=1)
     candidate_id: str = Field(min_length=1)
     generated_by_model: str = Field(min_length=1)
-    overall_recommendation: Literal["hire", "maybe", "no"]
-    meets_min_qualifications: bool
     requirement_scores: dict[str, float] = Field(default_factory=dict)
     confidence: dict[str, float] = Field(default_factory=dict)
-    certification_results: dict[str, bool] = Field(default_factory=dict)
     seniority_years_fit_score: float | None = Field(default=None, ge=0, le=100)
     education_fit_score: float | None = Field(default=None, ge=0, le=100)
-    # Full per-level/per-option probability distributions Jev returns alongside the collapsed
-    # value/confidence above (see JevAnswer.probabilities) -- kept on Assessment itself, not just
-    # the raw per-call JevAnswer list, so this detail survives into the standard pipeline output
-    # (assessments.json) rather than being discarded whenever no separate raw-answer capture is
-    # in play.
-    recommendation_probabilities: dict[str, float] = Field(default_factory=dict)
+    # Full per-level probability distributions Jev returns alongside the collapsed value/confidence
+    # above (see JevAnswer.probabilities) -- kept on Assessment itself, not just the raw per-call
+    # JevAnswer list, so this detail survives into the standard pipeline output (assessments.json)
+    # rather than being discarded whenever no separate raw-answer capture is in play.
     requirement_probabilities: dict[str, dict[str, float]] = Field(default_factory=dict)
     seniority_probabilities: dict[str, float] | None = None
     education_probabilities: dict[str, float] | None = None

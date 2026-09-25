@@ -6,7 +6,7 @@ from unittest.mock import Mock
 
 import pytest
 
-from candidate_ranking.models import Candidate, JDSkills, JobDescription
+from candidate_ranking.models import Assessment, Candidate, JDSkills, JobDescription
 from candidate_ranking.scoring.assessment import (
     AssessmentGenerationError,
     JEV_MODEL_NAME,
@@ -46,8 +46,6 @@ def _jd_skills_full() -> JDSkills:
 
 def _high_confidence_answers() -> list[JevAnswer]:
     return [
-        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
-        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
         JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
         JevAnswer(key="requirement::SQL", kind="score", value=1.0, confidence=0.8),
     ]
@@ -62,49 +60,49 @@ def test_generate_assessment_maps_jev_answers_onto_assessment():
     assert assessment.job_description_id == "jd-1"
     assert assessment.candidate_id == "cand-1"
     assert assessment.generated_by_model == JEV_MODEL_NAME
-    assert assessment.overall_recommendation == "hire"
-    assert assessment.meets_min_qualifications is True
     assert assessment.requirement_scores == {"Python": 100.0, "SQL": 25.0}
     assert assessment.composite_fit_score == 62.5  # mean(100, 25)
-    assert assessment.confidence["overall_recommendation"] == 0.85
+    assert assessment.confidence["requirement::Python"] == 0.9
     jev_client.evaluate.assert_called_once()
     state, questions = jev_client.evaluate.call_args.args
     assert "Backend Engineer" in state
     assert "I know Python." in state
     question_keys = {q.key for q in questions}
-    assert question_keys == {
-        "overall_recommendation", "meets_min_qualifications",
-        "requirement::Python", "requirement::SQL",
-    }
+    assert question_keys == {"requirement::Python", "requirement::SQL"}
 
 
 def test_generate_assessment_skips_requirement_scores_without_jd_skills():
     jev_client = Mock()
-    jev_client.evaluate.return_value = [
-        JevAnswer(key="overall_recommendation", kind="choice", value="maybe", confidence=0.7),
-        JevAnswer(key="meets_min_qualifications", kind="noul", value=False, confidence=0.8),
-    ]
+    jev_client.evaluate.return_value = []
 
     assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills=None)
 
     assert assessment.requirement_scores == {}
     assert assessment.composite_fit_score == 0.0
     _, questions = jev_client.evaluate.call_args.args
-    assert all(not q.key.startswith("requirement::") for q in questions)
+    assert questions == []
 
 
 def test_generate_assessment_retries_once_on_low_confidence_then_accepts():
     jev_client = Mock()
+    jd_skills = JDSkills(
+        job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=["Python"],
+        seniority_requirement="5+ years", seniority_min_years=5.0,
+    )
     low_confidence_answers = [
-        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
-        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.3),
+        JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
+        JevAnswer(key="seniority_years", kind="score", value=3.0, confidence=0.3),
     ]
-    jev_client.evaluate.side_effect = [low_confidence_answers, _high_confidence_answers()]
+    high_confidence_answers = [
+        JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
+        JevAnswer(key="seniority_years", kind="score", value=3.0, confidence=0.9),
+    ]
+    jev_client.evaluate.side_effect = [low_confidence_answers, high_confidence_answers]
 
-    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
+    assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, jd_skills)
 
     assert jev_client.evaluate.call_count == 2
-    assert assessment.confidence["meets_min_qualifications"] == 0.95
+    assert assessment.confidence["seniority_years"] == 0.9
     second_state, _ = jev_client.evaluate.call_args_list[1].args
     assert "low-confidence" in second_state
 
@@ -117,36 +115,15 @@ def test_generate_assessment_wraps_jev_client_error():
         generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
 
 
-def test_generate_assessment_wraps_unusable_jev_response():
-    missing_key_client = Mock()
-    missing_key_client.evaluate.return_value = [
-        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
-    ]
-    with pytest.raises(AssessmentGenerationError, match="jd-1/cand-1"):
-        generate_assessment(_jd(), _candidate(), missing_key_client, JEV_MODEL_NAME, _jd_skills())
-
-    invalid_value_client = Mock()
-    invalid_value_client.evaluate.return_value = [
-        JevAnswer(key="overall_recommendation", kind="choice", value="strongly_hire", confidence=0.85),
-        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
-    ]
-    with pytest.raises(AssessmentGenerationError, match="jd-1/cand-1"):
-        generate_assessment(_jd(), _candidate(), invalid_value_client, JEV_MODEL_NAME, _jd_skills())
-
-
 def test_generate_assessment_preserves_probability_distributions():
     jev_client = Mock()
     jev_client.evaluate.return_value = [
-        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.8,
-                   probabilities={"hire": 0.8, "maybe": 0.15, "no": 0.05}),
-        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.9),
         JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9,
                    probabilities={"0": 0, "1": 0, "2": 0, "3": 0.1, "4": 0.9}),
     ]
 
     assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
 
-    assert assessment.recommendation_probabilities == {"hire": 0.8, "maybe": 0.15, "no": 0.05}
     assert assessment.requirement_probabilities["Python"] == {"0": 0, "1": 0, "2": 0, "3": 0.1, "4": 0.9}
     assert assessment.seniority_probabilities is None
     assert assessment.education_probabilities is None
@@ -178,13 +155,10 @@ def test_load_or_generate_assessment_cache_key_depends_on_jd_skills(tmp_path: Pa
     assert jev_client.evaluate.call_count == 2
 
 
-def test_generate_assessment_builds_certification_seniority_education_questions():
+def test_generate_assessment_builds_seniority_education_questions():
     jev_client = Mock()
     jev_client.evaluate.return_value = [
-        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
-        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
         JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
-        JevAnswer(key="certification::AWS Certified Solutions Architect", kind="noul", value=True, confidence=0.9),
         JevAnswer(key="seniority_years", kind="score", value=3.0, confidence=0.85),
         JevAnswer(key="education", kind="score", value=1.0, confidence=0.8),
     ]
@@ -193,10 +167,9 @@ def test_generate_assessment_builds_certification_seniority_education_questions(
 
     _, questions = jev_client.evaluate.call_args.args
     question_keys = {q.key for q in questions}
-    assert "certification::AWS Certified Solutions Architect" in question_keys
     assert "seniority_years" in question_keys
     assert "education" in question_keys
-    assert assessment.certification_results == {"AWS Certified Solutions Architect": True}
+    assert not any(k.startswith("certification::") for k in question_keys)
     assert assessment.seniority_years_fit_score == 75.0
     assert assessment.education_fit_score == 25.0
 
@@ -204,8 +177,8 @@ def test_generate_assessment_builds_certification_seniority_education_questions(
 def test_generate_assessment_omits_seniority_education_questions_when_not_stated():
     jev_client = Mock()
     jev_client.evaluate.return_value = [
-        JevAnswer(key="overall_recommendation", kind="choice", value="hire", confidence=0.85),
-        JevAnswer(key="meets_min_qualifications", kind="noul", value=True, confidence=0.95),
+        JevAnswer(key="requirement::Python", kind="score", value=4.0, confidence=0.9),
+        JevAnswer(key="requirement::SQL", kind="score", value=1.0, confidence=0.8),
     ]
 
     assessment = generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, _jd_skills())
@@ -215,7 +188,6 @@ def test_generate_assessment_omits_seniority_education_questions_when_not_stated
     assert "seniority_years" not in question_keys
     assert "education" not in question_keys
     assert not any(k.startswith("certification::") for k in question_keys)
-    assert assessment.certification_results == {}
     assert assessment.seniority_years_fit_score is None
     assert assessment.education_fit_score is None
 
@@ -238,12 +210,32 @@ def test_seniority_and_education_criteria_are_five_level_evidence_based_scores()
     seniority_years_criteria = " ".join(by_key["seniority_years"].criteria).lower()
     education_criteria = " ".join(by_key["education"].criteria).lower()
 
-    # The old Noul criteria just restated the question ("supports"/"does not support" this
-    # requirement) -- circular, giving Jev no concrete evidence to look for. The Score criteria
-    # must instead name the kind of evidence that distinguishes each level.
     for banned_phrase in ("supports that the candidate", "does not support that the candidate"):
         assert banned_phrase not in seniority_years_criteria
         assert banned_phrase not in education_criteria
 
     assert any(term in seniority_years_criteria for term in ("total experience", "years"))
     assert any(term in education_criteria for term in ("degree", "field", "credential"))
+
+
+def test_build_questions_never_includes_recommendation_qualifications_certification():
+    questions = _build_questions(
+        JDSkills(
+            job_description_id="jd-1", generated_by_model="qwen2.5:14b", technical_skills=["Python"],
+            certifications=["PMP"], seniority_requirement="5+ years", seniority_min_years=5.0,
+            education_requirement="Bachelor's degree",
+        )
+    )
+    question_keys = {q.key for q in questions}
+    assert "overall_recommendation" not in question_keys
+    assert "meets_min_qualifications" not in question_keys
+    assert not any(k.startswith("certification::") for k in question_keys)
+    assert all(q.kind == "score" for q in questions)
+
+
+def test_assessment_model_has_no_recommendation_qualifications_certification_fields():
+    removed_fields = {
+        "overall_recommendation", "meets_min_qualifications",
+        "certification_results", "recommendation_probabilities",
+    }
+    assert removed_fields.isdisjoint(Assessment.model_fields)

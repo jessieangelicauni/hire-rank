@@ -11,10 +11,8 @@ def test_assessment_accepts_new_score_based_fields():
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_recommendation="hire",
-        meets_min_qualifications=True,
         requirement_scores={"python": 100.0, "sql": 50.0},
-        confidence={"overall_recommendation": 0.9},
+        confidence={"requirement::python": 0.9},
     )
     assert assessment.requirement_scores["python"] == 100.0
 
@@ -24,8 +22,6 @@ def test_assessment_composite_fit_score_is_mean_of_sub_scores():
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_recommendation="hire",
-        meets_min_qualifications=True,
         requirement_scores={"python": 80.0, "sql": 60.0},
         seniority_years_fit_score=100.0,
         education_fit_score=40.0,
@@ -38,8 +34,6 @@ def test_assessment_composite_fit_score_ignores_missing_optional_scores():
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_recommendation="maybe",
-        meets_min_qualifications=True,
         requirement_scores={"python": 80.0},
     )
     assert assessment.composite_fit_score == 80.0
@@ -52,19 +46,6 @@ def test_assessment_rejects_score_out_of_range():
             candidate_id="cand-1",
             generated_by_model="typesafe/jev",
             seniority_years_fit_score=150.0,
-            overall_recommendation="hire",
-            meets_min_qualifications=True,
-        )
-
-
-def test_assessment_rejects_unknown_recommendation():
-    with pytest.raises(ValidationError):
-        Assessment(
-            job_description_id="jd-1",
-            candidate_id="cand-1",
-            generated_by_model="typesafe/jev",
-            overall_recommendation="strongly_hire",
-            meets_min_qualifications=True,
         )
 
 
@@ -75,31 +56,32 @@ def test_assessment_no_longer_has_free_text_fields():
     assert "additional_skills" not in Assessment.model_fields
 
 
-def test_assessment_accepts_certification_seniority_education_fields():
+def test_assessment_no_longer_has_recommendation_qualifications_certification_fields():
+    removed_fields = {
+        "overall_recommendation", "meets_min_qualifications",
+        "certification_results", "recommendation_probabilities",
+    }
+    assert removed_fields.isdisjoint(Assessment.model_fields)
+
+
+def test_assessment_accepts_seniority_education_fields():
     assessment = Assessment(
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_recommendation="hire",
-        meets_min_qualifications=True,
-        certification_results={"AWS Certified Solutions Architect": True, "PMP": False},
         seniority_years_fit_score=75.0,
         education_fit_score=None,
     )
-    assert assessment.certification_results["AWS Certified Solutions Architect"] is True
     assert assessment.seniority_years_fit_score == 75.0
     assert assessment.education_fit_score is None
 
 
-def test_assessment_certification_and_seniority_default_empty():
+def test_assessment_seniority_and_education_default_empty():
     assessment = Assessment(
         job_description_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="typesafe/jev",
-        overall_recommendation="maybe",
-        meets_min_qualifications=False,
     )
-    assert assessment.certification_results == {}
     assert assessment.seniority_years_fit_score is None
     assert assessment.education_fit_score is None
     assert assessment.composite_fit_score == 0.0

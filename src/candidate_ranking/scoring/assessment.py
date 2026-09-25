@@ -14,16 +14,12 @@ logger = logging.getLogger(__name__)
 
 JEV_MODEL_NAME = JEV_MODEL_ID
 
-ASSESSMENT_SCOPE_VERSION = "jev-score-recommendation-v1"
+ASSESSMENT_SCOPE_VERSION = "jev-score-only-v1"
 
 _REQUIREMENT_KEY_PREFIX = "requirement::"
-_CERTIFICATION_KEY_PREFIX = "certification::"
-_RECOMMENDATION_KEY = "overall_recommendation"
-_MIN_QUALIFICATIONS_KEY = "meets_min_qualifications"
 _SENIORITY_YEARS_KEY = "seniority_years"
 _EDUCATION_KEY = "education"
 _RETRY_ON_LOW_CONFIDENCE_KEYS = (
-    _RECOMMENDATION_KEY, _MIN_QUALIFICATIONS_KEY,
     _SENIORITY_YEARS_KEY, _EDUCATION_KEY,
 )
 _CONFIDENCE_RETRY_THRESHOLD = 0.5
@@ -64,10 +60,6 @@ def _requirement_question_key(requirement: str) -> str:
     return f"{_REQUIREMENT_KEY_PREFIX}{requirement}"
 
 
-def _certification_question_key(certification: str) -> str:
-    return f"{_CERTIFICATION_KEY_PREFIX}{certification}"
-
-
 def _seniority_years_instructions(seniority_requirement: str, min_years: float) -> str:
     return (
         f"The job requires at least {min_years:g} years of total experience "
@@ -101,27 +93,7 @@ def _build_state(jd: JobDescription, candidate: Candidate, low_confidence_note: 
 
 
 def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
-    questions = [
-        JevQuestion(
-            key=_RECOMMENDATION_KEY,
-            kind="choice",
-            instructions="What is the hiring recommendation for this candidate against this job description?",
-            criteria={
-                "hire": "Candidate clearly meets or exceeds the role's requirements",
-                "maybe": "Candidate partially meets the role's requirements",
-                "no": "Candidate does not meet the role's requirements",
-            },
-        ),
-        JevQuestion(
-            key=_MIN_QUALIFICATIONS_KEY,
-            kind="noul",
-            instructions="Does the candidate meet the job description's minimum qualifications?",
-            criteria={
-                "true": "Meets every minimum qualification stated in the job description",
-                "false": "Fails at least one minimum qualification stated in the job description",
-            },
-        ),
-    ]
+    questions: list[JevQuestion] = []
     for requirement in jd_skills.technical_skills if jd_skills else []:
         questions.append(
             JevQuestion(
@@ -129,18 +101,6 @@ def _build_questions(jd_skills: JDSkills | None) -> list[JevQuestion]:
                 kind="score",
                 instructions=f"How well does the candidate's CV support the requirement '{requirement}'?",
                 criteria=_REQUIREMENT_FIT_CRITERIA,
-            )
-        )
-    for certification in jd_skills.certifications if jd_skills else []:
-        questions.append(
-            JevQuestion(
-                key=_certification_question_key(certification),
-                kind="noul",
-                instructions=f"Does the candidate's CV show possession of the certification '{certification}'?",
-                criteria={
-                    "true": f"The CV states the candidate holds the '{certification}' certification",
-                    "false": f"The CV does not state the candidate holds the '{certification}' certification",
-                },
             )
         )
     if jd_skills and jd_skills.seniority_requirement:
@@ -177,11 +137,6 @@ def _answers_to_assessment(
         for key, a in by_key.items()
         if key.startswith(_REQUIREMENT_KEY_PREFIX)
     }
-    certification_results = {
-        key[len(_CERTIFICATION_KEY_PREFIX):]: a.value
-        for key, a in by_key.items()
-        if key.startswith(_CERTIFICATION_KEY_PREFIX)
-    }
     requirement_probabilities = {
         key[len(_REQUIREMENT_KEY_PREFIX):]: a.probabilities
         for key, a in by_key.items()
@@ -191,16 +146,12 @@ def _answers_to_assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
         generated_by_model=model_name,
-        overall_recommendation=by_key[_RECOMMENDATION_KEY].value,
-        meets_min_qualifications=by_key[_MIN_QUALIFICATIONS_KEY].value,
         requirement_scores=requirement_scores,
         confidence=confidence,
-        certification_results=certification_results,
         seniority_years_fit_score=(
             _score_to_percent(by_key[_SENIORITY_YEARS_KEY].value) if _SENIORITY_YEARS_KEY in by_key else None
         ),
         education_fit_score=_score_to_percent(by_key[_EDUCATION_KEY].value) if _EDUCATION_KEY in by_key else None,
-        recommendation_probabilities=by_key[_RECOMMENDATION_KEY].probabilities or {},
         requirement_probabilities=requirement_probabilities,
         seniority_probabilities=(
             by_key[_SENIORITY_YEARS_KEY].probabilities if _SENIORITY_YEARS_KEY in by_key else None
