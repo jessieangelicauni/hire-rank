@@ -20,7 +20,6 @@ from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import Candidate, JDSkills, JobDescription
 from candidate_ranking.scoring.assessment import (
     JEV_MODEL_NAME,
-    _aggregate_mean_dict,
     _answers_to_assessment,
     _build_questions,
     _build_state,
@@ -190,7 +189,11 @@ def collect_ablation(
             answers, elapsed = _timed_evaluate(jev_client, state, vague_questions)
             vague_calls.append(_answers_to_assessment(jd, candidate, JEV_MODEL_NAME, answers))
             total_elapsed += elapsed
-        vague_confidence = _aggregate_mean_dict(vague_calls, "confidence")
+        confidence_keys = {key for call in vague_calls for key in call.confidence}
+        vague_confidence = {
+            key: statistics.mean(call.confidence[key] for call in vague_calls if key in call.confidence)
+            for key in confidence_keys
+        }
 
         return {
             "jd_id": jd_id,

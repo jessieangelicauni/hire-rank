@@ -10,10 +10,9 @@ extracted requirement) in a single parallel pass per call, with a
 model-reported confidence on every answer. Because the output space is
 predefined (Noul/Choice/Score), a schema violation is impossible by
 construction rather than statistically reduced -- there is no free-text
-generation to hallucinate. Three independent Jev calls per (job, candidate)
-pair are aggregated (mean for numeric fields, confidence-weighted majority
-vote for the recommendation, simple majority for binary judgments) and
-candidates are ranked per job by sorting on the resulting overall fit score.
+generation to hallucinate. Each shortlisted (job, candidate) pair gets one
+Jev call, and candidates are ranked per job by sorting on the resulting
+overall fit score.
 See `docs/paper2_jev.tex` for the full write-up, and
 `docs/jev_vs_paper1_comparison.md` for how this compares to the prior
 free-text + tournament system documented in `docs/paper1.tex`.
@@ -40,13 +39,13 @@ per job description (JD) and/or per candidate where noted:
    LLM/Jev stages below from running against the whole CV corpus for every
    JD.
 4. **Structured assessment via Jev** — per shortlisted (JD, candidate) pair,
-   3 independent Jev calls are issued (each answering the recommendation,
+   one Jev call is issued (answering the recommendation,
    minimum-qualifications, per-requirement, and any
-   certification/seniority/education questions in one parallel pass) and
-   aggregated into a single assessment (cached per JD/candidate under
+   certification/seniority/education questions in one parallel pass),
+   producing a single assessment (cached per JD/candidate under
    `runs/_cache/assessments/`).
 5. **Ranking** — per JD, candidates are ranked by sorting directly on the
-   aggregated `composite_fit_score` (the mean of the per-requirement,
+   `composite_fit_score` (the mean of the per-requirement,
    seniority-years, and education sub-scores). There is no iterative
    tournament stage; Jev's structured output makes one removable.
 6. **Console export** — after every run, `console-web/src/data/real-data.json`
@@ -107,8 +106,8 @@ uv run python -m candidate_ranking.cli run
 ```
 
 This prints a `Run ID` (a UTC timestamp, e.g. `20260826-010039`) and writes
-everything to `runs/<run_id>/`. A full run over a real corpus makes 3 Jev
-calls per shortlisted candidate (plus one LLM call each for skill/JD
+everything to `runs/<run_id>/`. A full run over a real corpus makes 1 Jev
+call per shortlisted candidate (plus one LLM call each for skill/JD
 extraction) — expect it to take a while for a large corpus, though each Jev
 call itself is fast (low seconds, see `docs/paper2_jev.tex` Section IV for
 measured latency).
@@ -161,7 +160,7 @@ runs/<run_id>/
   failures.json            # assessment generation failures, if any
   warnings.json            # full WARNING+ log for this run
   <jd_id>/
-    assessments.json         # every candidate's aggregated Jev assessment for this JD, keyed by candidate id
+    assessments.json         # every candidate's Jev assessment for this JD, keyed by candidate id
     ranking.md               # human-readable final ranking for this JD
     ranking.json              # same ranking, structured
   evaluation/                # only present after running the Jev evaluation study, see below
@@ -170,7 +169,7 @@ runs/_cache/                # cross-run caches (safe to keep between runs, keyed
   cv.json                    # parsed CV text
   cv_skills.json               # extracted candidate skill lists
   jd_skills.json                # extracted JD technical-skill/certification/seniority/education lists
-  assessments/<jd_id>/<cv_id>.json  # generated (aggregated) assessments
+  assessments/<jd_id>/<cv_id>.json  # generated assessments
   checkpoints.db                # LangGraph resumability checkpoint
 ```
 

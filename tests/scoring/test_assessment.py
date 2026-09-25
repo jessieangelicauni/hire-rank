@@ -167,6 +167,17 @@ def test_load_or_generate_assessment_uses_cache_on_second_call(tmp_path: Path):
     assert cached["assessment"]["composite_fit_score"] == 62.5
 
 
+def test_load_or_generate_assessment_cache_key_depends_on_jd_skills(tmp_path: Path):
+    jev_client = Mock()
+    jev_client.evaluate.return_value = _high_confidence_answers()
+
+    load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, _jd_skills())
+    assert jev_client.evaluate.call_count == 1
+
+    load_or_generate_assessment(_jd(), _candidate(), jev_client, JEV_MODEL_NAME, tmp_path, jd_skills=None)
+    assert jev_client.evaluate.call_count == 2
+
+
 def test_generate_assessment_builds_certification_seniority_education_questions():
     jev_client = Mock()
     jev_client.evaluate.return_value = [
