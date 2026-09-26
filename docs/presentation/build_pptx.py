@@ -141,7 +141,7 @@ add_bullets(
     slide, Inches(1.1), Inches(2.3), SLIDE_W - Inches(2.2), Inches(3.5),
     [
         "Free-text assessment can assert a strength or weakness the resume never supports — a hallucination — with no built-in confidence signal.",
-        "In September 2026, TypeSafe released Jev, the first \"System One Model.\"",
+        "In September 2026, TypeSafe released Jev, the first \u201cSystem One Model.\u201d",
         "No independent, peer-reviewed evaluation of it existed before this paper.",
     ],
     size=20,
