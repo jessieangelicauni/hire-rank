@@ -131,6 +131,50 @@ add_textbox(
     size=17, italic=True, align=PP_ALIGN.CENTER,
 )
 
+# ---------------------------------------------------------------------------
+# Slide 2: Motivation & Gap
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Introduction")
+add_title(slide, "Motivation & Gap")
+add_bullets(
+    slide, Inches(1.1), Inches(2.3), SLIDE_W - Inches(2.2), Inches(3.5),
+    [
+        "Free-text assessment can assert a strength or weakness the resume never supports — a hallucination — with no built-in confidence signal.",
+        "In September 2026, TypeSafe released Jev, the first \"System One Model.\"",
+        "No independent, peer-reviewed evaluation of it existed before this paper.",
+    ],
+    size=20,
+)
+add_footer(slide, "Section I — Introduction")
+
+# ---------------------------------------------------------------------------
+# Slide 3: Objective
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Introduction")
+add_title(slide, "Objective")
+labels = [
+    "Criteria-Grounded\nQuestion Design",
+    "Cost & Latency\nEfficiency",
+    "Repeat-to-Repeat\nReliability",
+]
+box_w = Inches(3.7)
+gap = Inches(0.4)
+total_w = box_w * 3 + gap * 2
+x0 = (SLIDE_W - total_w) / 2
+top = Inches(2.3)
+box_h = Inches(2.2)
+for i, label in enumerate(labels):
+    x = x0 + i * (box_w + gap)
+    outline_box(slide, x, top, box_w, box_h, text=label, size=17, bold=True)
+add_textbox(
+    slide, Inches(1.0), top + box_h + Inches(0.5), SLIDE_W - Inches(2.0), Inches(0.8),
+    "Three contributions for deploying Jev reliably in a real applicant-ranking pipeline.",
+    size=16, align=PP_ALIGN.CENTER, color=GRAY, italic=True,
+)
+add_footer(slide, "Section I — Introduction")
+
 out_path = Path(__file__).parent / "icaides2026_jev.pptx"
 prs.save(out_path)
 print("Saved", out_path, "with", len(prs.slides), "slides")
