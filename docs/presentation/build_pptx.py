@@ -334,6 +334,58 @@ add_textbox(
 )
 add_footer(slide, "Section IV — Experimental Setup")
 
+def add_hero(slide, big_text, caption, sub=None):
+    add_textbox(slide, Inches(0.8), Inches(2.3), SLIDE_W - Inches(1.6), Inches(1.6),
+                big_text, size=64, bold=True, align=PP_ALIGN.CENTER)
+    add_textbox(slide, Inches(1.3), Inches(4.05), SLIDE_W - Inches(2.6), Inches(0.7),
+                caption, size=20, align=PP_ALIGN.CENTER)
+    if sub:
+        add_textbox(slide, Inches(1.5), Inches(4.85), SLIDE_W - Inches(3.0), Inches(1.3),
+                    sub, size=14, align=PP_ALIGN.CENTER, color=GRAY, italic=True)
+
+
+# ---------------------------------------------------------------------------
+# Slide 10: Result - Confidence Gain
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Results")
+add_title(slide, "Result: Confidence Gain")
+add_hero(
+    slide,
+    "0.672 → 0.894",
+    "Per-requirement answer confidence, bare scale vs. criteria-grounded design",
+    sub="Also 0.635 → 0.766 for pooled seniority/education confidence.",
+)
+add_footer(slide, "Section V — Results and Discussion")
+
+# ---------------------------------------------------------------------------
+# Slide 11: Result - Efficiency
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Results")
+add_title(slide, "Result: Efficiency")
+add_hero(
+    slide,
+    "273 vs. ~2,061",
+    "Model calls, this pipeline vs. the prior tournament-based system",
+    sub="~4.5× lower per-candidate latency. Output priced at zero by design — not billed per generated token (TypeSafe's claim on price, not independently measured).",
+)
+add_footer(slide, "Section V — Results and Discussion")
+
+# ---------------------------------------------------------------------------
+# Slide 12: Result - Calibration & Stability
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Results")
+add_title(slide, "Result: Calibration & Stability")
+add_hero(
+    slide,
+    "0.965 vs. ≈0.957",
+    "Kendall's τ ranking stability across 3 independent repeats, this system vs. the prior one",
+    sub="Native calibrated confidence 0.894 vs. the prior system's Faithfulness 0.880 — different constructs, not a claim of higher accuracy.",
+)
+add_footer(slide, "Section V — Results and Discussion")
+
 out_path = Path(__file__).parent / "icaides2026_jev.pptx"
 prs.save(out_path)
 print("Saved", out_path, "with", len(prs.slides), "slides")
