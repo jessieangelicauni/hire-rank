@@ -386,6 +386,50 @@ add_hero(
 )
 add_footer(slide, "Section V — Results and Discussion")
 
+# ---------------------------------------------------------------------------
+# Slide 13: Conclusion
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Conclusion")
+add_title(slide, "Conclusion")
+add_textbox(slide, Inches(0.9), Inches(2.0), SLIDE_W - Inches(1.8), Inches(0.4),
+            "Key Takeaways", size=18, bold=True, underline=True)
+add_bullets(
+    slide, Inches(1.1), Inches(2.5), SLIDE_W - Inches(2.2), Inches(1.8),
+    [
+        "Confidence: 0.672 → 0.894 per requirement",
+        "273 vs. ~2,061 model calls, ~4.5× lower latency",
+        "Ranking stability: Kendall's τ = 0.965 vs. ≈0.957",
+    ],
+    size=16,
+)
+add_textbox(slide, Inches(0.9), Inches(4.5), SLIDE_W - Inches(1.8), Inches(0.4),
+            "Limitations & Future Work", size=18, bold=True, underline=True)
+add_bullets(
+    slide, Inches(1.1), Inches(5.0), SLIDE_W - Inches(2.2), Inches(1.8),
+    [
+        "Calibration ≠ correctness — test against ground truth next",
+        "Only a 5-level scale tested; Jev supports up to 10",
+        "One pipeline — independent replication would strengthen the case",
+    ],
+    size=16,
+)
+add_footer(slide, "Section VI — Conclusion")
+
+# ---------------------------------------------------------------------------
+# Slide 14: Thank You
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_textbox(slide, Inches(0.8), Inches(2.6), SLIDE_W - Inches(1.6), Inches(1.2),
+            "Thank You", size=48, bold=True, align=PP_ALIGN.CENTER)
+add_textbox(slide, Inches(0.8), Inches(3.9), SLIDE_W - Inches(1.6), Inches(0.6),
+            "Questions & Discussion", size=22, color=GRAY, align=PP_ALIGN.CENTER)
+add_textbox(
+    slide, Inches(0.8), Inches(5.1), SLIDE_W - Inches(1.6), Inches(1.0),
+    "Jessie Angelica · President University\nfahmi.zuhri@unitar.my",
+    size=15, color=GRAY, align=PP_ALIGN.CENTER,
+)
+
 out_path = Path(__file__).parent / "icaides2026_jev.pptx"
 prs.save(out_path)
 print("Saved", out_path, "with", len(prs.slides), "slides")
