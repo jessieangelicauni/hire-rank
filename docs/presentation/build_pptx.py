@@ -247,6 +247,93 @@ add_textbox(
 )
 add_footer(slide, "Section III — Methodology")
 
+
+def add_compare(slide, left_title, left_items, right_title, right_items,
+                 top=Inches(2.0), height=Inches(4.0)):
+    box_w = Inches(5.3)
+    left_x = Inches(0.8)
+    right_x = SLIDE_W - Inches(0.8) - box_w
+
+    outline_box(slide, left_x, top, box_w, height)
+    add_textbox(slide, left_x + Inches(0.2), top + Inches(0.15), box_w - Inches(0.4), Inches(0.5),
+                left_title, size=18, bold=True, align=PP_ALIGN.CENTER)
+    add_bullets(slide, left_x + Inches(0.3), top + Inches(0.85), box_w - Inches(0.6),
+                height - Inches(1.0), left_items, size=15)
+
+    outline_box(slide, right_x, top, box_w, height)
+    add_textbox(slide, right_x + Inches(0.2), top + Inches(0.15), box_w - Inches(0.4), Inches(0.5),
+                right_title, size=18, bold=True, align=PP_ALIGN.CENTER)
+    add_bullets(slide, right_x + Inches(0.3), top + Inches(0.85), box_w - Inches(0.6),
+                height - Inches(1.0), right_items, size=15)
+
+    arrow_x = left_x + box_w
+    arrow_w = right_x - arrow_x
+    add_textbox(slide, arrow_x, top + height / 2 - Inches(0.3), arrow_w, Inches(0.6),
+                "→", size=28, align=PP_ALIGN.CENTER)
+
+
+# ---------------------------------------------------------------------------
+# Slide 7: Contribution 1 - Criteria-Grounded Question Design
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Methodology — Contribution 1")
+add_title(slide, "Criteria-Grounded Question Design")
+add_compare(
+    slide,
+    "Bare Ordinal Scale",
+    ["0, 25, 50, 75, 100", "Each level judged alone", "No evidence to check against"],
+    "Concrete Situation",
+    ["“Skill only listed” vs. “used in a real role”",
+     "Each level still judged alone", "Gives Jev resume evidence to match"],
+)
+add_footer(slide, "Result: per-requirement confidence 0.672 → 0.894 (Results, ahead)")
+
+# ---------------------------------------------------------------------------
+# Slide 8: Contribution 2 - Direct Sort Ranking
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Methodology — Contribution 2")
+add_title(slide, "Direct Sort Ranking")
+add_compare(
+    slide,
+    "Iterative Tournament",
+    ["Bayesian Plackett-Luce", "Round-by-round, waits on each iteration", "No parallelism"],
+    "Direct Sort",
+    ["One score per candidate", "Sort directly — no tournament", "Fully parallel"],
+)
+add_footer(slide, "Result: well under half the model calls, ~4.5× lower latency (Results, ahead)")
+
+# ---------------------------------------------------------------------------
+# Slide 9: Experimental Setup
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Experimental Setup")
+add_title(slide, "Experimental Setup")
+stats = [
+    ("273", "shortlisted (job, applicant) pairs"),
+    ("10", "job profiles"),
+    ("501", "resumes (500 synthetic + 1 real)"),
+    ("3×", "independent repeats per pair"),
+]
+box_w = Inches(2.9)
+gap = Inches(0.3)
+total_w = box_w * 4 + gap * 3
+x0 = (SLIDE_W - total_w) / 2
+top = Inches(2.2)
+box_h = Inches(2.0)
+for i, (num, label) in enumerate(stats):
+    x = x0 + i * (box_w + gap)
+    outline_box(slide, x, top, box_w, box_h)
+    add_textbox(slide, x, top + Inches(0.3), box_w, Inches(0.9), num, size=36, bold=True, align=PP_ALIGN.CENTER)
+    add_textbox(slide, x + Inches(0.15), top + Inches(1.2), box_w - Inches(0.3), Inches(0.7),
+                label, size=13, align=PP_ALIGN.CENTER, color=GRAY)
+add_textbox(
+    slide, Inches(1.0), top + box_h + Inches(0.5), SLIDE_W - Inches(2.0), Inches(0.8),
+    "One variable changed between systems: the assessment step. 46.1% of extracted required skills were classified must-have.",
+    size=15, align=PP_ALIGN.CENTER, color=GRAY, italic=True,
+)
+add_footer(slide, "Section IV — Experimental Setup")
+
 out_path = Path(__file__).parent / "icaides2026_jev.pptx"
 prs.save(out_path)
 print("Saved", out_path, "with", len(prs.slides), "slides")
