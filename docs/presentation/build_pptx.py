@@ -109,6 +109,30 @@ def outline_box(slide, x, y, w, h, text=None, size=15, bold=False, align=PP_ALIG
     return shape
 
 
+def add_compare(slide, left_title, left_items, right_title, right_items,
+                 top=Inches(2.0), height=Inches(4.0)):
+    box_w = Inches(5.3)
+    left_x = Inches(0.8)
+    right_x = SLIDE_W - Inches(0.8) - box_w
+
+    outline_box(slide, left_x, top, box_w, height)
+    add_textbox(slide, left_x + Inches(0.2), top + Inches(0.15), box_w - Inches(0.4), Inches(0.5),
+                left_title, size=18, bold=True, align=PP_ALIGN.CENTER)
+    add_bullets(slide, left_x + Inches(0.3), top + Inches(0.85), box_w - Inches(0.6),
+                height - Inches(1.0), left_items, size=15)
+
+    outline_box(slide, right_x, top, box_w, height)
+    add_textbox(slide, right_x + Inches(0.2), top + Inches(0.15), box_w - Inches(0.4), Inches(0.5),
+                right_title, size=18, bold=True, align=PP_ALIGN.CENTER)
+    add_bullets(slide, right_x + Inches(0.3), top + Inches(0.85), box_w - Inches(0.6),
+                height - Inches(1.0), right_items, size=15)
+
+    arrow_x = left_x + box_w
+    arrow_w = right_x - arrow_x
+    add_textbox(slide, arrow_x, top + height / 2 - Inches(0.3), arrow_w, Inches(0.6),
+                "→", size=28, align=PP_ALIGN.CENTER)
+
+
 # ---------------------------------------------------------------------------
 # Slide 1: Title
 # ---------------------------------------------------------------------------
@@ -137,14 +161,20 @@ add_textbox(
 slide = new_slide()
 add_kicker(slide, "Introduction")
 add_title(slide, "Motivation & Gap")
-add_bullets(
-    slide, Inches(1.1), Inches(2.3), SLIDE_W - Inches(2.2), Inches(3.5),
+add_compare(
+    slide,
+    "Free-Text Assessment",
     [
-        "Free-text assessment can assert a strength or weakness the resume never supports — a hallucination — with no built-in confidence signal.",
-        "In September 2026, TypeSafe released Jev, the first “System One Model.”",
-        "No independent, peer-reviewed evaluation of it existed before this paper.",
+        "Writes a paragraph verdict per candidate",
+        "Can assert a strength the resume never supports",
+        "No built-in confidence signal",
     ],
-    size=20,
+    "The Gap",
+    [
+        "TypeSafe released Jev in September 2026",
+        "The first “System One Model”",
+        "No independent evaluation existed before this paper",
+    ],
 )
 add_footer(slide, "Section I — Introduction")
 
@@ -195,15 +225,29 @@ def add_pipeline(slide, stages, top=Inches(1.5)):
 slide = new_slide()
 add_kicker(slide, "Background")
 add_title(slide, "What Is a System One Model")
-add_bullets(
-    slide, Inches(1.1), Inches(2.3), SLIDE_W - Inches(2.2), Inches(3.5),
-    [
-        "Non-autoregressive: answers typed questions in one parallel pass — no generated tokens.",
-        "Three typed primitives: Noul (yes/no + confidence), Choice (multiple-choice), Score (ordinal scale).",
-        "This paper's questions all use Score.",
-    ],
-    size=20,
+add_textbox(
+    slide, Inches(1.0), Inches(2.0), SLIDE_W - Inches(2.0), Inches(0.7),
+    "Non-autoregressive: answers typed questions in one parallel pass — no generated tokens.",
+    size=18, align=PP_ALIGN.CENTER,
 )
+primitives = [
+    ("Noul", "yes/no\n+ confidence", False),
+    ("Choice", "multiple-\nchoice", False),
+    ("Score", "ordinal scale\n(used here)", True),
+]
+box_w = Inches(3.5)
+gap = Inches(0.4)
+total_w = box_w * 3 + gap * 2
+x0 = (SLIDE_W - total_w) / 2
+top = Inches(3.1)
+box_h = Inches(2.0)
+for i, (name, desc, selected) in enumerate(primitives):
+    x = x0 + i * (box_w + gap)
+    outline_box(slide, x, top, box_w, box_h)
+    add_textbox(slide, x, top + Inches(0.3), box_w, Inches(0.6), name,
+                size=22, bold=selected, underline=selected, align=PP_ALIGN.CENTER)
+    add_textbox(slide, x + Inches(0.2), top + Inches(1.1), box_w - Inches(0.4), Inches(0.8), desc,
+                size=14, align=PP_ALIGN.CENTER, color=GRAY)
 add_footer(slide, "Section II — Literature Review")
 
 # ---------------------------------------------------------------------------
@@ -212,14 +256,24 @@ add_footer(slide, "Section II — Literature Review")
 slide = new_slide()
 add_kicker(slide, "Background")
 add_title(slide, "Why It Works")
-add_bullets(
-    slide, Inches(1.1), Inches(2.3), SLIDE_W - Inches(2.2), Inches(3.5),
-    [
-        "Each Score level is judged alone — no view of neighboring levels, so a bare number carries no signal.",
-        "A concrete situation gives the model resume evidence to check against.",
-        "Trained via RLCD, a reward for calibration — not human preference (RLHF) or a verifiable outcome (RLVR).",
-    ],
-    size=20,
+box_w = Inches(4.6)
+gap = Inches(0.6)
+total_w = box_w * 2 + gap
+x0 = (SLIDE_W - total_w) / 2
+top = Inches(2.1)
+box_h = Inches(2.2)
+outline_box(slide, x0, top, box_w, box_h,
+            text="“50”\n\njudged alone, no neighbors to compare — no signal to check",
+            size=15)
+outline_box(slide, x0 + box_w + gap, top, box_w, box_h,
+            text="“Used substantively in a real project”\n\nresume evidence Jev can check",
+            size=15)
+add_textbox(slide, x0 + box_w, top + box_h / 2 - Inches(0.3), gap, Inches(0.6), "→",
+            size=26, align=PP_ALIGN.CENTER)
+add_textbox(
+    slide, Inches(1.0), top + box_h + Inches(0.4), SLIDE_W - Inches(2.0), Inches(1.0),
+    "Trained via RLCD, a reward for calibration — not human preference (RLHF) or a verifiable outcome (RLVR). Calibration ≠ correctness.",
+    size=16, align=PP_ALIGN.CENTER, color=GRAY, italic=True,
 )
 add_footer(slide, "Section II — Literature Review")
 
@@ -246,30 +300,6 @@ add_textbox(
     size=15, align=PP_ALIGN.CENTER, color=GRAY, italic=True,
 )
 add_footer(slide, "Section III — Methodology")
-
-
-def add_compare(slide, left_title, left_items, right_title, right_items,
-                 top=Inches(2.0), height=Inches(4.0)):
-    box_w = Inches(5.3)
-    left_x = Inches(0.8)
-    right_x = SLIDE_W - Inches(0.8) - box_w
-
-    outline_box(slide, left_x, top, box_w, height)
-    add_textbox(slide, left_x + Inches(0.2), top + Inches(0.15), box_w - Inches(0.4), Inches(0.5),
-                left_title, size=18, bold=True, align=PP_ALIGN.CENTER)
-    add_bullets(slide, left_x + Inches(0.3), top + Inches(0.85), box_w - Inches(0.6),
-                height - Inches(1.0), left_items, size=15)
-
-    outline_box(slide, right_x, top, box_w, height)
-    add_textbox(slide, right_x + Inches(0.2), top + Inches(0.15), box_w - Inches(0.4), Inches(0.5),
-                right_title, size=18, bold=True, align=PP_ALIGN.CENTER)
-    add_bullets(slide, right_x + Inches(0.3), top + Inches(0.85), box_w - Inches(0.6),
-                height - Inches(1.0), right_items, size=15)
-
-    arrow_x = left_x + box_w
-    arrow_w = right_x - arrow_x
-    add_textbox(slide, arrow_x, top + height / 2 - Inches(0.3), arrow_w, Inches(0.6),
-                "→", size=28, align=PP_ALIGN.CENTER)
 
 
 # ---------------------------------------------------------------------------
@@ -392,28 +422,42 @@ add_footer(slide, "Section V — Results and Discussion")
 slide = new_slide()
 add_kicker(slide, "Conclusion")
 add_title(slide, "Conclusion")
-add_textbox(slide, Inches(0.9), Inches(2.0), SLIDE_W - Inches(1.8), Inches(0.4),
+add_textbox(slide, Inches(0.9), Inches(1.85), SLIDE_W - Inches(1.8), Inches(0.4),
             "Key Takeaways", size=18, bold=True, underline=True)
-add_bullets(
-    slide, Inches(1.1), Inches(2.5), SLIDE_W - Inches(2.2), Inches(1.8),
-    [
-        "Confidence: 0.672 → 0.894 per requirement",
-        "273 vs. ~2,061 model calls, ~4.5× lower latency",
-        "Ranking stability: Kendall's τ = 0.965 vs. ≈0.957",
-    ],
-    size=16,
-)
-add_textbox(slide, Inches(0.9), Inches(4.5), SLIDE_W - Inches(1.8), Inches(0.4),
+takeaways = [
+    ("0.672 → 0.894", "confidence per requirement"),
+    ("273 vs. ~2,061", "model calls, ~4.5× faster"),
+    ("0.965 vs. ≈0.957", "ranking stability (Kendall's τ)"),
+]
+box_w = Inches(3.7)
+gap = Inches(0.3)
+total_w = box_w * 3 + gap * 2
+x0 = (SLIDE_W - total_w) / 2
+top = Inches(2.4)
+box_h = Inches(1.5)
+for i, (num, label) in enumerate(takeaways):
+    x = x0 + i * (box_w + gap)
+    outline_box(slide, x, top, box_w, box_h)
+    add_textbox(slide, x, top + Inches(0.15), box_w, Inches(0.6), num, size=19, bold=True, align=PP_ALIGN.CENTER)
+    add_textbox(slide, x + Inches(0.15), top + Inches(0.85), box_w - Inches(0.3), Inches(0.6), label,
+                size=12, align=PP_ALIGN.CENTER, color=GRAY)
+
+add_textbox(slide, Inches(0.9), Inches(4.2), SLIDE_W - Inches(1.8), Inches(0.4),
             "Limitations & Future Work", size=18, bold=True, underline=True)
-add_bullets(
-    slide, Inches(1.1), Inches(5.0), SLIDE_W - Inches(2.2), Inches(1.8),
-    [
-        "Calibration ≠ correctness — test against ground truth next",
-        "Only a 5-level scale tested; Jev supports up to 10",
-        "One pipeline — independent replication would strengthen the case",
-    ],
-    size=16,
-)
+limitations = [
+    ("Calibration ≠ correctness", "test against ground truth next"),
+    ("5 levels tested", "Jev supports up to 10"),
+    ("One pipeline", "replication would strengthen the case"),
+]
+top2 = Inches(4.75)
+box_h2 = Inches(1.7)
+for i, (label, sub) in enumerate(limitations):
+    x = x0 + i * (box_w + gap)
+    outline_box(slide, x, top2, box_w, box_h2)
+    add_textbox(slide, x + Inches(0.15), top2 + Inches(0.2), box_w - Inches(0.3), Inches(0.7), label,
+                size=15, bold=True, align=PP_ALIGN.CENTER)
+    add_textbox(slide, x + Inches(0.15), top2 + Inches(0.95), box_w - Inches(0.3), Inches(0.7), sub,
+                size=12, align=PP_ALIGN.CENTER, color=GRAY)
 add_footer(slide, "Section VI — Conclusion")
 
 # ---------------------------------------------------------------------------
