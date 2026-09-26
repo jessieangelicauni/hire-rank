@@ -175,6 +175,78 @@ add_textbox(
 )
 add_footer(slide, "Section I — Introduction")
 
+def add_pipeline(slide, stages, top=Inches(1.5)):
+    box_w = Inches(7.8)
+    box_h = Inches(0.58)
+    seg = Inches(0.36)
+    x = (SLIDE_W - box_w) / 2
+    y = top
+    for i, (label, bold) in enumerate(stages):
+        outline_box(slide, x, y, box_w, box_h, text=label, size=14, bold=bold)
+        y += box_h
+        if i < len(stages) - 1:
+            add_textbox(slide, x, y, box_w, seg, "↓", size=16, align=PP_ALIGN.CENTER)
+            y += seg
+
+
+# ---------------------------------------------------------------------------
+# Slide 4: Background - What Is a System One Model
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Background")
+add_title(slide, "What Is a System One Model")
+add_bullets(
+    slide, Inches(1.1), Inches(2.3), SLIDE_W - Inches(2.2), Inches(3.5),
+    [
+        "Non-autoregressive: answers typed questions in one parallel pass — no generated tokens.",
+        "Three typed primitives: Noul (yes/no + confidence), Choice (multiple-choice), Score (ordinal scale).",
+        "This paper's questions all use Score.",
+    ],
+    size=20,
+)
+add_footer(slide, "Section II — Literature Review")
+
+# ---------------------------------------------------------------------------
+# Slide 5: Background - Why It Works
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Background")
+add_title(slide, "Why It Works")
+add_bullets(
+    slide, Inches(1.1), Inches(2.3), SLIDE_W - Inches(2.2), Inches(3.5),
+    [
+        "Each Score level is judged alone — no view of neighboring levels, so a bare number carries no signal.",
+        "A concrete situation gives the model resume evidence to check against.",
+        "Trained via RLCD, a reward for calibration — not human preference (RLHF) or a verifiable outcome (RLVR).",
+    ],
+    size=20,
+)
+add_footer(slide, "Section II — Literature Review")
+
+# ---------------------------------------------------------------------------
+# Slide 6: Architecture
+# ---------------------------------------------------------------------------
+slide = new_slide()
+add_kicker(slide, "Methodology")
+add_title(slide, "Architecture")
+add_pipeline(
+    slide,
+    [
+        ("Extraction & Skill Classification", False),
+        ("Shortlisting", False),
+        ("Structured Assessment via Jev — parallel calls", True),
+        ("Direct Sort", True),
+        ("Score Breakdown Test (offline)", False),
+    ],
+    top=Inches(1.5),
+)
+add_textbox(
+    slide, Inches(1.0), Inches(6.05), SLIDE_W - Inches(2.0), Inches(0.6),
+    "Steps 1–2 are unchanged from the prior system. Contributions 1 and 2 are steps 3 and 4.",
+    size=15, align=PP_ALIGN.CENTER, color=GRAY, italic=True,
+)
+add_footer(slide, "Section III — Methodology")
+
 out_path = Path(__file__).parent / "icaides2026_jev.pptx"
 prs.save(out_path)
 print("Saved", out_path, "with", len(prs.slides), "slides")
