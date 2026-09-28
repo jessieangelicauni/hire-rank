@@ -171,7 +171,7 @@ Applied to the full corpus, the must-have gate excludes 32 of 305 candidates (10
 The criteria-grounding findings hold on this same must-have-gated pool, already reflected in Figure~\ref{fig_score_ablation}.
 
 \subsection{Cost and Latency Efficiency and Comparison with the Prior Tournament-Based System}
-This section reports the results of the direct sort outperforming the iterative tournament. Across 819 timed Jev calls (273 pairs, 3 independent calls each), a single call takes a mean of 1.04s, for a total of 14.2 minutes of compute time across the full corpus -- call latency only, not skill/job profile extraction.
+This section reports the results of the direct sort outperforming the iterative tournament. The production pipeline issues 273 Jev calls, one per shortlisted pair; a separate reliability-test measurement (Section III-D) repeats each pair's call three times independently for 819 timed Jev calls total, to test repeat-to-repeat stability rather than to represent the pipeline's own per-corpus cost. A single call takes a mean of 1.04s. Summed sequentially, the 819 reliability-test calls take 14.2 minutes of compute time -- call latency only, not skill/job profile extraction; at the reliability-test script's concurrency (8 concurrent calls), this corresponds to roughly 1.8 minutes of wall-clock time for the corpus, and at the production pipeline's own concurrency (4 concurrent calls, Section III), the 273-call pipeline corresponds to roughly 1.2 minutes of wall-clock time.
 
 \begin{table}[H]
 \caption{Results compared against the closest prior published system \cite{ref2}.}
