@@ -174,7 +174,7 @@ The criteria-grounding findings hold on this same must-have-gated pool, already 
 This section reports the results of the direct sort outperforming the iterative tournament. The production pipeline issues 273 Jev calls, one per shortlisted pair; a separate reliability-test measurement (Section III-D) repeats each pair's call three times independently for 819 timed Jev calls total, to test repeat-to-repeat stability rather than to represent the pipeline's own per-corpus cost. A single call takes a mean of 1.04s. Summed sequentially, the 819 reliability-test calls take 14.2 minutes of compute time -- call latency only, not skill/job profile extraction; at the reliability-test script's concurrency (8 concurrent calls), this corresponds to roughly 1.8 minutes of wall-clock time for the corpus, and at the production pipeline's own concurrency (4 concurrent calls, Section III), the 273-call pipeline corresponds to roughly 1.2 minutes of wall-clock time.
 
 \begin{table}[H]
-\caption{Results compared against the closest prior published system \cite{ref2}.}
+\caption{Results compared against the closest prior system \cite{ref2}.}
 \label{tab_comparison_results}
 \centering
 \scriptsize
@@ -183,14 +183,16 @@ This section reports the results of the direct sort outperforming the iterative 
 \hline
 Metric & \emph{Hallucination-Aware Self-Correction for LLM-Based Applicant Assessment} \cite{ref2} & Proposed Work\\
 \hline
-Total calls (corpus) & $\approx$2{,}061 & 273, 0 tournament\\
-Confidence signal & Faithfulness 0.880 & Calibrated confidence 0.894\\
+Total calls (corpus)$^{\ddagger}$ & $\approx$2{,}061 & 273, 0 tournament\\
+Confidence signal$^{\dagger}$ & Faithfulness 0.880 & Calibrated confidence 0.894\\
 Ranking stability ($\tau$) & $\approx$0.957 (range 0.93--0.98) & 0.965 (range 0.943--1.000)\\
 Latency (per call) & Not reported & Mean 1.04s\\
-Total compute time (corpus) & Not reported & 14.2 minutes\\
+Total compute time (corpus)$^{\ddagger}$ & Not reported & 14.2 min (819 calls, sequential); $\approx$1.2 min (273-call pipeline, wall-clock)\\
 End-to-end time per candidate ($n=8$) & 74.3s & 16.5s\\
 \hline
 \end{tabular}
+\vspace{2pt}
+{\footnotesize $^{\dagger}$Faithfulness and calibrated confidence measure different constructs (groundedness vs.\ decision stability) and are not on a shared scale; neither number should be read as ``higher accuracy.'' $^{\ddagger}$819 calls (273 pairs $\times$ 3 repeats) were used only for the repeat-to-repeat reliability-test measurement (Section III-D, V); the deployed pipeline itself issues 273 calls, one per shortlisted pair.}
 \end{table}
 Table~\ref{tab_comparison_results} shows this comparison is not a strict win on every axis: Faithfulness and per-answer confidence measure different constructs (groundedness vs.\ decision stability), so neither proves it is ``more accurate.'' It wins on cost -- well under half the calls, no tournament infrastructure -- and offers a native, calibrated confidence the prior system had no way to provide. Its calls also parallelize, unlike the prior system's tournament, where each iteration waits on the last.
 
