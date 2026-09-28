@@ -181,7 +181,7 @@ Applied to the full corpus, the must-have gate excludes 32 of 305 candidates (10
 The criteria-grounding findings hold on this same must-have-gated pool, already reflected in Figure~\ref{fig_score_ablation}.
 
 \subsection{Cost and Latency Efficiency and Comparison with the Prior Tournament-Based System}
-The production pipeline issues 273 Jev calls, one per shortlisted pair; a separate reliability-test measurement (Section III-E) repeats each pair's call three times, for 819 timed calls total, to measure repeat-to-repeat stability rather than the pipeline's own per-corpus cost. Table~\ref{tab_comparison_results} reports per-call latency and total compute time at the pipeline's configured concurrency (4 parallel calls).
+The production pipeline issues 273 Jev calls, one per shortlisted pair; a separate reliability-test measurement repeats each pair's call three times, for 819 timed calls total, to measure repeat-to-repeat stability rather than the pipeline's own per-corpus cost. Table~\ref{tab_comparison_results} reports per-call latency and total compute time at the pipeline's configured concurrency (4 parallel calls).
 
 \begin{table}[H]
 \caption{Results compared against the closest prior system \cite{ref2}.}
@@ -202,7 +202,7 @@ End-to-end time per candidate ($n=8$) & 74.3s & 16.5s\\
 \hline
 \end{tabular}
 \end{table}
-This comparison is not a strict win on every axis, since Faithfulness and calibrated confidence are not directly comparable (Section III). It wins on cost -- well under half the calls, no tournament infrastructure -- and its calls parallelize, unlike the prior system's tournament, where each iteration waits on the last.
+This comparison is not a strict win on every axis, since Faithfulness and calibrated confidence are not directly comparable. It wins on cost -- well under half the calls, no tournament infrastructure -- and its calls parallelize, unlike the prior system's tournament, where each iteration waits on the last.
 
 The per-candidate times in Table~\ref{tab_comparison_results} come from a live, single-profile check (frontend-engineer, same 500-CV pool, 8 candidates per side, skill extraction run fresh for both systems).
 
@@ -211,14 +211,14 @@ These tests measure Jev's repeat-to-repeat decision stability, using the same re
 
 \textbf{Overall-score and per-requirement stability.} Across the three repeats, the overall fit score varies little per pair, and is noticeably more stable than the individual per-technical-requirement scores that feed it, so averaging across the requirements in a call cancels most of the per-question noise before ranking ever sees it.
 
-\textbf{Repeat reliability (ICC).} ICC(1,1) measures what fraction of the score variance across the three repeats comes from real differences between applicants, rather than from noise in repeating the same call. Computed per job profile from the three repeats' overall fit scores, the corpus mean is ICC$=0.998$: almost all of the variance is applicant signal, not repeat noise.
+\textbf{Ranking stability.} Ranking stability tests whether the applicant order implied by repeated calls agrees, not just the underlying scores: for each job profile, every pair of the three repeats' rankings is compared by Kendall's $\tau$, then averaged across pairs and profiles.
 
-\textbf{Ranking stability.} While the repeat reliability results show the repeats' scores agree, ranking stability tests whether the resulting applicant order does too: for each job profile, every pair of the three repeats' rankings is compared by Kendall's $\tau$, then averaged across pairs and profiles.
+\textbf{Repeat reliability (ICC).} ICC(1,1) measures what fraction of the score variance across the three repeats comes from real differences between applicants, rather than from noise in repeating the same call. Computed per job profile from the three repeats' overall fit scores, the corpus mean is ICC$=0.998$: almost all of the variance is applicant signal, not repeat noise.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\columnwidth]{ranking_stability_chart.png}
-\caption{Per-job-profile repeat-to-repeat ranking stability (Kendall's $\tau$), 3 repeats per pair; $n$ ranges from 8 (Java developer) to 55 (Data engineer) pairs per profile, 273 total.}
+\caption{Per-job-profile repeat-to-repeat ranking stability (Kendall's $\tau$), 3 repeats per pair.}
 \label{fig_ranking_stability}
 \end{figure}
 Figure~\ref{fig_ranking_stability} shows, per job profile, the mean Kendall's $\tau$ between the candidate orderings implied by each of the three repeats; the corpus-wide mean ranking stability is $\tau=0.965$. These tests constitute this paper's third contribution: repeat-to-repeat evidence that a single-call architecture's practical reliability holds up.

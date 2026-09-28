@@ -69,7 +69,7 @@ def ranking_stability_bar_chart(filename: str = "ranking_stability_chart.png"):
     ]
     tau = [0.943, 0.948, 0.951, 0.952, 0.960, 0.965, 0.965, 0.969, 1.000, 1.000]
 
-    fig, ax = plt.subplots(figsize=(12, 4.2))
+    fig, ax = plt.subplots(figsize=(12, 7.2))
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
     bars = ax.bar(profiles, tau, width=0.6)
