@@ -1,9 +1,6 @@
 .claude/
 .superpowers/
 .venv/
-docs/
-runs/
-scripts/
 __pycache__/
 *.pyc
 .env
