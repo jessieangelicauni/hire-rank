@@ -26,7 +26,7 @@ def score_ablation_line_chart(filename: str = "score_ablation_chart.png"):
     concrete = [0.894, 0.789, 0.759, 0.766]
     ordinal = [0.672, 0.536, 0.669, 0.635]
 
-    fig, ax = plt.subplots(figsize=(6.4, 4.2))
+    fig, ax = plt.subplots(figsize=(6.4, 3.6))
     fig.patch.set_facecolor("white")
     ax.set_facecolor("white")
     ax.plot(groups, concrete, marker="o", label="Concrete situational criteria")
