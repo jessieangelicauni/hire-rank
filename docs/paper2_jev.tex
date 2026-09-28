@@ -152,7 +152,7 @@ Score question levels & 5 (concrete situational criteria)\\
 \hline
 \end{tabular}
 \end{table}
-Table~\ref{tab_config} shows the full configuration: which models perform assessment and extraction, the corpus and shortlist sizes, the thresholds that determine who is shortlisted, and the five-level Score design used in every Jev call -- the same values used throughout both the direct-sort pipeline and the tournament baseline it is compared against.
+Table~\ref{tab_config} shows the full configuration: which models perform assessment and extraction, the corpus and shortlist sizes, the thresholds that determine who is shortlisted, and the five-level Score design used in every Jev call -- the same values used throughout both the direct-sort pipeline and the tournament baseline it is compared against. TypeSafe's API accepts only a \texttt{jev-latest} alias; it returns no versioned snapshot identifier in its response, and the pipeline does not log one, so exact model reproducibility cannot be guaranteed if TypeSafe updates the alias's underlying model.
 
 \section{Results and Discussion}
 
