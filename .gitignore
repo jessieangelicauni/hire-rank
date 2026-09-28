@@ -7,3 +7,7 @@ __pycache__/
 *.db
 *.sqlite
 
+# LaTeX build artifacts
+*.aux
+*.log
+
