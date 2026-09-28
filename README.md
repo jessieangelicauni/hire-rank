@@ -244,6 +244,24 @@ uv run python scripts/analyze_jev_evaluation_study.py --run-id 20260918-104531
 Each script requires `CANDIDATE_RANKING_JEV_API_KEY` except
 `analyze_jev_evaluation_study.py`, which only reads already-collected data.
 
+## Auditing shortlisting quality
+
+`scripts/audit_shortlisting_quality.py` is a standalone, read-only check
+over an already-completed run's cached assessments — it flags candidates
+(and whole job profiles) that were shortlisted but scored near-zero on
+most of a profile's "informative" requirements (the ones where the
+shortlisted pool's own median score is high enough that scoring near-zero
+is a real outlier, not just a hard/rare skill nobody has):
+
+```bash
+uv run python scripts/audit_shortlisting_quality.py --run-id 20260826-010039
+```
+
+Writes `runs/<run_id>/shortlisting_audit.{json,md}` and prints the Markdown
+report. Tunable via `--min-pool-median`, `--near-zero-threshold`,
+`--flag-fraction`, and `--profile-flag-fraction` (each has a default;
+see `--help`).
+
 ## Project layout
 
 ```
@@ -267,6 +285,7 @@ src/candidate_ranking/
 scripts/
   run_jev_evaluation_study.py       # collects test-retest + ablation raw data, see above
   analyze_jev_evaluation_study.py    # computes statistics from that raw data
+  audit_shortlisting_quality.py       # flags poorly-shortlisted candidates/profiles, see above
 console-web/                # React dashboard for browsing a run's results
 job-description/, cv/       # sample input corpus
 runs/                        # run outputs and cross-run caches (generated)
