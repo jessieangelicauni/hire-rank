@@ -2,17 +2,21 @@
 
 \usepackage{amsmath}
 \usepackage{graphicx}
+\graphicspath{{figures/}}
 \usepackage{cite}
 \usepackage{url}
 \usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, backgrounds}
 
 \hyphenation{op-tical net-works semi-conduc-tor}
 \renewcommand{\arraystretch}{0.85}
 \def\IEEEkeywordsname{Keywords}
+\renewcommand{\figurename}{Figure}
 
 \begin{document}
 
-\title{Reliable Structured-Decision LLMs for Applicant Ranking with a Non-Autoregressive System One Model}
+\title{Reliable Structured-Decision Applicant Ranking with a Non-Autoregressive System One Model}
 
 \author{Jessie~Angelica$^{1}$, Hasanul~Fahmi~Zuhri$^{1,2,*}$, Rusdianto~Roestam$^{1}$,
 Muhammad-Arief$^{3}$\\[0.5em]
@@ -21,93 +25,114 @@ $^{2}$Faculty of Artificial Intelligence \& Frontier Technologies, UNITAR Intern
 $^{3}$Research Center for Artificial Intelligence and Cyber Security - National Research and Innovation Agency, Indonesia}%
 \thanks{*Corresponding author: fahmi.zuhri@unitar.my.}}
 
-\markboth{Reliable Structured-Decision LLMs for Applicant Ranking}%
-{Angelica \MakeLowercase{\textit{et al.}}: Reliable Structured-Decision LLMs for Applicant Ranking}
+\markboth{Reliable Structured-Decision Applicant Ranking}%
+{Angelica \MakeLowercase{\textit{et al.}}: Reliable Structured-Decision Applicant Ranking}
 
 \maketitle
 
 \begin{abstract}
-LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, an approach that needs extra machinery against hallucinated claims and provides no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by construction. This research's objective is to propose two architecture-level mechanisms for reliably deploying Jev in a real applicant-ranking pipeline: criteria-grounded question design, and cost/latency efficiency from a single parallel pass outperforming an iterative tournament. The research method transforms an existing LLM-and-tournament applicant-ranking pipeline, stage by stage, into a fully structured typed-question architecture built on Jev and these two mechanisms, evaluated on 273 shortlisted (job, applicant) pairs across 10 job profiles. The results show that criteria-grounded design raises per-requirement answer confidence from 0.672 to 0.894 and pooled seniority/education confidence from 0.635 to 0.766; and that the direct-sort pipeline uses well under half as many model calls and roughly 6--10$\times$ lower per-candidate latency than the prior tournament-based system. Overall, a non-autoregressive structured-decision model can outperform free-text assessment in reliability, provided its question design and aggregation match its architecture.
+LLM pipelines for applicant ranking typically combine free-text assessment with iterative listwise comparison, an approach that needs extra machinery against hallucinated claims and provides no built-in confidence signal. In September 2026, TypeSafe AI released Jev, the first ``System One Model'': a non-autoregressive architecture that answers typed questions in one parallel pass and reports a calibrated confidence per answer, removing free-text generation and its hallucination risk by design. This research objective aims to reliably deploy Jev in a real applicant-ranking pipeline through three contributions: criteria-grounded question design, cost/latency efficiency from a single parallel pass outperforming an iterative tournament, and repeat-to-repeat reliability tests of that single-call architecture. The research method transforms an existing LLM-and-tournament applicant-ranking pipeline into a fully structured typed-question architecture, evaluated on 273 shortlisted (job, applicant) pairs across 10 job profiles against the closest prior system. The results show that criteria-grounded design raises per-requirement answer confidence from 0.672 to 0.894 and pooled seniority/education confidence from 0.635 to 0.766; that the pipeline uses well under half as many model calls -- 273 versus roughly 2,061 -- and roughly 4.5$\times$ lower per-candidate latency than the prior system, with output priced at zero by design rather than billed per generated token, and a native calibrated confidence of 0.894 against the prior system's Faithfulness of 0.880; and that repeat-to-repeat tests show ranking stability at least matching the prior system's (Kendall's $\tau=0.965$ versus $\approx$0.957). Overall, a non-autoregressive structured-decision model can outperform free-text assessment in reliability, provided its question design, cost and latency, and repeat-to-repeat stability match its architecture.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Applicant Ranking, Human Resources, Large Language Models, RLCD, Structured Decision Models, System One Models.
+Applicant Ranking, Human Resources, Large Language Models, Reinforcement Learning, Structured Decision, System One Models.
 \end{IEEEkeywords}
 
 \IEEEpeerreviewmaketitle
 
 \section{Introduction}
-\IEEEPARstart{R}{ecruitment} platforms increasingly use large language models (LLMs) to read resumes, summarize applicant fit, and compare applicants against a job profile, in place of manual screening or keyword search \cite{ref1,ref2,ref3,ref4}. These systems are useful for the same reason they are risky: they generate free text that can assert a strength or weakness the source resume never supports. Prior work mitigates this with prompt-level constraints, retry-on-contradiction loops, post-hoc auditing \cite{ref2}, and iterative listwise tournaments with Plackett-Luce aggregation to turn per-applicant judgments into a defensible ranking \cite{ref1,ref2}. Both exist because next-token sampling over an open vocabulary gives no structural guarantee against an ungrounded claim, and no native signal of the model's confidence.
+\IEEEPARstart{R}{ecruitment} platforms increasingly use large language models (LLMs) to read resumes, summarize applicant fit, and compare applicants against a job profile, in place of manual screening or keyword search \cite{ref1,ref2,ref3,ref4}. These systems are useful for the same reason they are risky: they generate free text that can assert a strength or weakness the source resume never supports. Prior work mitigates this with prompt-level constraints, retry-on-contradiction loops, and post-hoc auditing \cite{ref2} -- typically scored with a groundedness metric such as Faithfulness, which checks whether a generated claim is actually supported by the source resume -- alongside iterative listwise tournaments with Plackett-Luce aggregation to turn per-applicant judgments into a defensible ranking \cite{ref1,ref2}. Both exist because next-token sampling over an open vocabulary gives no structural guarantee against an ungrounded claim, and no native signal of the model's confidence.
 
-This paper asks whether answering predefined, typed questions instead of generating open text can outperform free-text assessment without reintroducing the reliability problems it is meant to solve. Two gaps motivate this study: first, no independent, peer-reviewed evaluation of System One Models exists yet -- Jev's release \cite{ref11} appeared only days before this paper -- so every reliability claim currently comes from TypeSafe-controlled or community sources \cite{ref11,ref17,ref18,ref19,ref20}; second, the recent literature on LLM calibration and self-consistency \cite{ref5,ref6,ref7} targets autoregressive judges that produce a scalar score or a free-text verdict, and none addresses a model whose fundamental outputs are a bounded probability (Noul), a categorical distribution (Choice), or an ordinal distribution (Score) answered in one parallel pass, so its diagnostics and mitigations do not transfer directly.
+This paper asks whether answering predefined, typed questions instead of generating open text can outperform free-text assessment without reintroducing the reliability problems it is meant to solve. Two gaps motivate this study: first, no independent, peer-reviewed evaluation of System One Models exists yet -- Jev's release \cite{ref5} appeared only days before this paper -- so every reliability claim currently comes from TypeSafe-controlled or community sources \cite{ref5,ref6,ref7,ref8,ref9}; second, the recent literature on LLM calibration and self-consistency \cite{ref10,ref11,ref12,ref13} targets autoregressive judges that produce a scalar score or a free-text verdict, and none addresses a model whose fundamental outputs are a bounded probability (Noul), a categorical distribution (Choice), or an ordinal distribution (Score) answered in one parallel pass, so its tests and mitigations do not transfer directly.
 
-Beyond the primitive specifications, TypeSafe and early adopters document implementation guidance largely absent from the academic literature on structured-output LLMs: decomposing a multi-factor judgment into one field per factor and combining them deterministically in code, rather than asking the model for a single blended judgment \cite{ref17,ref18}; a documented aggregation pattern that normalizes each Score to its $[0,1]$ position before combining fields \cite{ref17,ref18}; and a generic harness that routes each typed decision to act automatically, route for human review, or escalate to a reasoning model, framed along six suitability dimensions -- judgment call, bounded, atomic, context-contained, faster than a human, machine-consumed \cite{ref17}. This paper's design choices (Section III) follow these principles directly.
-
-This paper makes the following two architecture-level contributions:
+Beyond the primitive specifications, TypeSafe and early adopters document implementation guidance largely absent from the academic literature on structured-output LLMs: decomposing a multi-factor judgment into one field per factor and combining them deterministically in code, rather than asking the model for a single blended judgment; and a documented aggregation pattern that normalizes each Score to its $[0,1]$ position before combining fields \cite{ref6,ref7}.
+This paper makes the following three architecture-level contributions:
 
 \begin{enumerate}
 \item \textbf{Criteria-Grounded Question Design}: the first large-sample statistical test of TypeSafe's own criteria-grounded Score-question guidance, extended to seniority and education Score questions, each validated with concrete-situation criteria in place of bare ordinal labels.
-\item \textbf{Cost and Latency Efficiency}: a direct sort on Jev's per-call composite score outperforming the prior system's iterative listwise tournament -- no iterative ranking process, all calls parallelize, total model calls cut to well under half, and per-candidate wall-clock latency lower by roughly 6--10$\times$.
+\item \textbf{Cost and Latency Efficiency}: a direct sort on Jev's per-call overall score outperforming the prior system's iterative listwise tournament -- no iterative ranking process, all calls parallelize, total model calls cut well below the prior system's, and per-candidate wall-clock latency substantially lower.
+\item \textbf{Reliability Tests}: repeat-to-repeat evidence that Jev's single-call architecture is stable enough to support a direct-sort ranking, with no iterative or ensemble correction -- high ranking stability and strong score consistency between per-requirement scores and the derived overall score.
 \end{enumerate}
 
-The pipeline also includes a must-have/nice-to-have skill classification used by the shortlisting stage, its necessity validated by a diagnostic; it is described in Section III as part of the pipeline's stage-by-stage methodology rather than as a third contribution.
+The remainder of this paper is organized as follows: Section II reviews related work; Section III details the pipeline; Section IV describes the experimental setup; Section V reports results against the closest prior system; and Section VI concludes with limitations and future work.
 
 \section{Literature Review}
 
-The system this paper extends combines LLM-driven free-text assessment with an active listwise tournament aggregated via Bayesian Plackett-Luce under Monte Carlo knowledge-gradient subset selection \cite{ref1,ref2}. Other systems apply LLMs to resume extraction and pointwise scoring inside retrieval-augmented or multi-agent architectures, without a comparative ranking step \cite{ref3,ref4}. None of this work departs from free text or free-form JSON as its output mode, so all of it inherits the hallucination-mitigation burden \cite{ref2} addresses with a retry loop, and none reports a native confidence that could distinguish a well-supported judgment from a guess.
+The system this paper extends combines LLM-driven free-text assessment with an active listwise tournament aggregated via Bayesian Plackett-Luce under Monte Carlo knowledge-gradient subset selection, which its authors report yields rankings that are globally coherent and sample-efficient \cite{ref1,ref2}. Other systems apply LLMs to resume extraction and pointwise scoring inside retrieval-augmented or multi-agent architectures, without a comparative ranking step: a RAG-based recruitment support system reports a Context Recall of 0.9183, a Faithfulness of 0.882, a Factual Correctness of 0.753, and a Semantic Similarity of 0.827 on its test set \cite{ref3}, and a multi-agent RAG-LLM resume screener evaluated against HR-professional ratings on anonymized resumes reports its findings as demonstrating the potential of such systems for scalable hiring workflows \cite{ref4}, alongside a transformer-based O*NET job-matching approach reported to outperform its baselines in both evaluated scenarios \cite{ref14}. None of this work departs from free text or free-form JSON as its output mode, so all of it inherits the hallucination-mitigation burden \cite{ref2} addresses with a retry loop -- a burden also targeted by non-generative hallucination detectors \cite{ref15} -- and none reports a native confidence that could distinguish a well-supported judgment from a guess.
 
-A separate literature asks whether an LLM's stated confidence reflects its true correctness probability. Yaldiz et al.~\cite{ref5} find RL from verifiable rewards (RLVR) improves accuracy but makes decision-making LLMs overconfident. Wang et al.~\cite{ref6} find structured-output reliability varies sharply across models and prompts under a fixed schema. Haldar and Hockenmaier~\cite{ref7} document substantial self-inconsistency in LLM-as-a-judge frameworks, mitigated by averaging judgments; a survey by Gu et al.\ catalogs reliability strategies for such judges, but every one surveyed still targets a free-text or scalar-score judge \cite{ref14}. All of it treats the model as autoregressive, estimating confidence from token probabilities or resampling -- an assumption Jev's natively-trained, non-autoregressive confidence field does not share, so these findings cannot be assumed to transfer.
+A separate literature asks whether an LLM's stated confidence reflects its true correctness probability. Yaldiz et al.~\cite{ref10} find RL from verifiable rewards (RLVR) improves accuracy but makes decision-making LLMs overconfident. Wang et al.~\cite{ref11} find structured-output reliability varies sharply across models and prompts under a fixed schema. Haldar and Hockenmaier~\cite{ref12} document substantial self-inconsistency in LLM-as-a-judge frameworks, mitigated by averaging judgments; a survey by Gu et al.\ catalogs reliability strategies for such judges, but every one surveyed still targets a free-text or scalar-score judge \cite{ref16}. All of it treats the model as autoregressive, estimating confidence from token probabilities or resampling -- an assumption Jev's natively-trained, non-autoregressive confidence field does not share, so these findings cannot be assumed to transfer.
 
-Jev is explicitly not a conventional language model: TypeSafe's own documentation states plainly that ``Jev is not a language model. You give it a text and typed questions, and it answers each one with a confidence. It does not write text'' \cite{ref20}. Mechanically, it replaces autoregressive sampling with a parallel sampler: for every typed question, the possible outputs are enumerated in advance and scored in one pass over the state, so schema conformance is guaranteed by construction rather than achieved by sampling and validating -- no tokens are generated, and output is priced at zero accordingly \cite{ref11}. Every question in a call is answered independently against the same state, so adding a question to a call costs negligibly more than the call alone \cite{ref11}.
+Jev is explicitly not a conventional language model: TypeSafe's own documentation states plainly that ``Jev is not a language model. You give it a text and typed questions, and it answers each one with a confidence. It does not write text'' \cite{ref9}. Mechanically, it replaces autoregressive sampling with a parallel sampler: for every typed question, the possible outputs are enumerated in advance and scored in one pass over the state, so the output always matches the expected format by design, rather than being checked and fixed after generation -- no tokens are generated, and output is priced at zero accordingly \cite{ref5}. Every question in a call is answered independently against the same state, so adding a question to a call costs negligibly more than the call alone \cite{ref5}.
 
-The three typed primitives differ in shape, not just label. \emph{Noul} returns a single calibrated value in $[0,1]$, the probability of ``yes''; there is no separate confidence field, since the probability itself is the whole answer. \emph{Choice} supports up to 255 mutually exclusive options, with confidence computed from how concentrated the returned probability mass is across them. \emph{Score} supports 2--10 ordinal levels and returns a probability-weighted mean position, a confidence derived the same way, and the full per-level probability vector; for every primitive, reported confidence is a derived margin from a decision threshold, not a raw output probability \cite{ref20}. Critically, each Score level is scored independently -- the model is not shown the level's number or its neighbors -- so a level distinguished only by an implicit numeric position (e.g., ``50'' next to ``75'') carries no information the model can act on, while a level described as a concrete situation gives it resume evidence to match against directly. This is the mechanistic basis, not just an empirical correlation, for TypeSafe's own recommendation to write Score-question criteria as concrete situations rather than bare ordinal labels.
+This paper's typed questions all use the \emph{Score} primitive: it supports 2--10 ordinal levels and returns a probability-weighted mean position, with confidence derived as a margin from a decision threshold rather than a raw output probability \cite{ref9}. Critically, each Score level is scored independently -- the model is not shown the level's number or its neighbors -- so a level distinguished only by an implicit numeric position (e.g., ``50'' next to ``75'') carries no information the model can act on, while a level described as a concrete situation gives it resume evidence to match against directly. This explains, rather than merely correlates with, TypeSafe's own recommendation to write Score-question criteria as concrete situations.
 
-TypeSafe calls this a ``System One Model,'' trained with a proprietary method it names Reinforcement Learning for Calibrated Decisions (RLCD), which optimizes for calibration directly rather than for a human-preference reward (RLHF) or a programmatically verifiable outcome reward (RLVR -- the paradigm Yaldiz et al.\ \cite{ref5} show becomes overconfident even as it grows more accurate) \cite{ref11}. Calibration is a narrower guarantee than correctness: as TypeSafe's own community documentation puts it, ``calibration does not mean that an individual prediction is guaranteed to be correct'' \cite{ref18} -- it means reported confidence tracks the true hit rate across many predictions, which is what the confidence-based diagnostics used throughout this pipeline (Section III) rely on. The underlying architecture (encoder-only, decoder-only, or otherwise) is undisclosed in every source consulted, including TypeSafe's own. As used here, it accepts up to 64{,}000 tokens per request (32{,}000 for the state plus the longest question), with reported accuracy degrading as irrelevant context is added to the state.
+TypeSafe calls this a ``System One Model,'' trained with a proprietary method it names Reinforcement Learning for Calibrated Decisions (RLCD), which optimizes for calibration directly rather than for a human-preference reward (RLHF) or a programmatically verifiable outcome reward (RLVR -- the paradigm Yaldiz et al.\ \cite{ref10} show becomes overconfident even as it grows more accurate) \cite{ref5}. Calibration is a narrower guarantee than correctness: as TypeSafe's own community documentation puts it, ``calibration does not mean that an individual prediction is guaranteed to be correct'' \cite{ref7} -- it means reported confidence tracks the true hit rate across many predictions, which is what the confidence-based tests used throughout this pipeline rely on. The underlying architecture (encoder-only, decoder-only, or otherwise) is undisclosed in every source consulted, including TypeSafe's own.
 
 \section{Methodology}
 
 \subsection{Pipeline Overview}
 \begin{figure}[H]
 \centering
-\scriptsize
-\setlength{\fboxsep}{2pt}
-\begin{tabular}{c}
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Stage 1: Ingestion \& Skill/job profile Extraction, incl.\ Must-Have/Nice-to-Have Classification (LLM)\end{minipage}} \\[1pt]
-$\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Stage 2: Shortlisting (cosine $\geq$ 0.8, $\geq$ 5 skills, $\geq$ 2 must-have)\end{minipage}} \\[1pt]
-$\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Stage 3: Structured Assessment via Jev \textbf{[C1: Criteria-Grounded Design]}\end{minipage}} \\[1pt]
-$\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Stage 4: Ranking, direct sort, no tournament \textbf{[C2: Cost/Latency Efficiency]}\end{minipage}} \\[1pt]
-$\downarrow$ \\[1pt]
-\fbox{\begin{minipage}{0.85\columnwidth}\centering Stage 5: Score Breakdown Diagnostic\end{minipage}}
-\end{tabular}
-\caption{End-to-end pipeline architecture, presented stage by stage, with the two contributions (C1--C2) annotated at their point of intervention.}
+\begin{tikzpicture}[
+  node distance=3mm and 3mm,
+  box/.style={draw, rounded corners, align=center, text width=0.75\columnwidth, font=\scriptsize, inner sep=4pt, fill=white},
+  arr/.style={-{Latex[length=2mm]}, thick},
+]
+\node[box] (s1) {Ingestion \& Skill/job profile Extraction, incl.\ Must-Have/Nice-to-Have Classification (LLM)};
+\node[box, below=of s1] (s2) {Shortlisting (cosine $\geq$0.8, $\geq$5 skills, $\geq$2 must-have)};
+\node[box, below=of s2] (s3) {Structured Assessment via Jev -- one parallel call per shortlisted pair, no iterative dependency \textbf{[Criteria-Grounded Question Design]}};
+\node[box, below=of s3] (s4) {Ranking, direct sort, no tournament \textbf{[Cost and Latency Efficiency]}};
+\begin{pgfonlayer}{background}
+\draw[rounded corners, draw=black!55] ([xshift=2.5pt,yshift=-2.5pt]s3.south west) rectangle ([xshift=2.5pt,yshift=-2.5pt]s3.north east);
+\draw[rounded corners, draw=black!30] ([xshift=5pt,yshift=-5pt]s3.south west) rectangle ([xshift=5pt,yshift=-5pt]s3.north east);
+\end{pgfonlayer}
+\draw[arr] (s1) -- (s2);
+\draw[arr] (s2) -- (s3);
+\draw[arr] (s3) -- (s4);
+\end{tikzpicture}
+\caption{End-to-end pipeline architecture.}
 \label{fig_pipeline}
 \end{figure}
-Fig.~\ref{fig_pipeline} shows the end-to-end pipeline as five sequential stages, described in turn in Sections III-B--III-F; C1--C2 mark where each contribution intervenes. Stage 1 (extraction) and Stage 2 (shortlisting) are unchanged in kind from the prior system \cite{ref2}, since neither generates free text. The pipeline diverges from Stage 3 onward, where typed, single-pass calls to Jev and a direct sort outperform the prior system's free-text assessment and iterative tournament, most directly on cost and latency (C2). Skill/job profile extraction runs throughout on a conventional autoregressive LLM (Qwen2.5-14B-Instruct), unlike Jev.
+Figure~\ref{fig_pipeline} shows the end-to-end pipeline, described in turn below; Criteria-Grounded Question Design and Cost and Latency Efficiency mark where each contribution intervenes. Extraction and shortlisting are unchanged in kind from \emph{Hallucination-Aware Self-Correction for LLM-Based Applicant Assessment} \cite{ref2}, since neither generates free text. The pipeline diverges from the assessment step onward, where typed calls to Jev are issued once in parallel per shortlisted pair and a direct sort replaces the prior system's free-text assessment and iterative tournament, most directly benefiting cost and latency.
 
-\subsection{Stage 1: Ingestion and Skill/Job Profile Extraction}
-Job profiles and resumes are ingested as plain text, and an autoregressive LLM (Qwen2.5-14B-Instruct) extracts a normalized skill list, each technical skill additionally classified as must-have or nice-to-have for use by shortlisting (Section III-C). This stage does not use Jev and is not one of this paper's two contributions; its output feeds Stage 3.
+\subsection{Ingestion and Skill/Job Profile Extraction}
+Job profiles and resumes are ingested as plain text, and an autoregressive LLM (Qwen2.5-14B-Instruct) extracts a normalized skill list, each technical skill additionally classified as must-have or nice-to-have for use by shortlisting. This step does not use Jev and is not one of this paper's three contributions; its output feeds the assessment step.
 
-\subsection{Stage 2: Shortlisting}
-An applicant is shortlisted only if enough extracted skills match the job profile's by cosine similarity above a fixed threshold, and enough of those matches are must-have skills (thresholds in Table~\ref{tab_config}); requiring must-have coverage, not only a total count, keeps a shortlisted candidate from being admitted almost entirely on nice-to-have skills. Section III-F validates this requirement against a total-only baseline. Shortlisting, like extraction, does not use Jev.
+\subsection{Shortlisting}
+An applicant is shortlisted only if at least 5 extracted skills match the job profile's by cosine similarity $\geq$0.8, and at least 2 of those matches are must-have skills (auto-reduced to the job profile's must-have count if smaller); requiring must-have coverage, not only a total count, keeps a shortlisted candidate from being admitted almost entirely on nice-to-have skills. Shortlisting, like extraction, does not use Jev.
 
-\subsection{Stage 3: Structured Assessment via Jev (Criteria-Grounded Question Design)}
-Where the prior system's free text lived, the pipeline sends one call to Jev per shortlisted pair (C1). Each call gives Jev one state (job profile, extracted skills, resume text) and typed Score questions answered in one pass: one Score per technical requirement, and one Score per stated seniority or education requirement -- one judgment per field, combined afterward. Each answer is retained in full, including its per-level probability distribution alongside the collapsed value and confidence, so downstream stages can use either representation.
+\subsection{Structured Assessment via Jev (Criteria-Grounded Question Design)}
+Where the prior system's free text lived, the pipeline sends one call to Jev per shortlisted pair, all issued in parallel with no dependency between pairs. Each call gives Jev one state (job profile, extracted skills, resume text) and typed Score questions answered in one pass: one Score per technical requirement, and one Score per stated seniority or education requirement -- one judgment per field, combined afterward.
+Match-degree questions use Score, not Choice, since match degree is a spectrum position. Each Score question's five levels (within TypeSafe's 2--10 range) are written as concrete situations, not bare ordinal labels, exploiting the per-level independence from Section II: e.g., ``mentioned only as a bare skill-list item'' versus ``used substantively in a real role or project with clear responsibility.'' Education follows the same design. The seniority question -- asked only when the job profile states an explicit minimum -- is a single, objective years-of-experience match, kept separate from the subjective per-requirement judgment. Section V validates this design at scale against a bare ordinal-number (0/25/50/75/100) baseline.
 
-Match-degree questions use Score, not Choice, since a match degree is a position on a spectrum. Every Score question's five levels (within TypeSafe's documented 2--10 range) are written as concrete situations rather than bare ordinal labels, exploiting the per-level independence described in Section II: e.g., a requirement ``mentioned only as a bare skill-list item'' versus one ``used substantively in a real role or project with clear responsibility.'' The same design applies to education; the seniority question, asked only when the job profile states an explicit minimum, is a single objective years-of-experience match kept separate from the subjective per-requirement fit judgment. Section V-A validates this design at scale against a bare ordinal-number (0/25/50/75/100) baseline.
+An overall fit score is then computed following TypeSafe's documented aggregation pattern described earlier: each Score normalized to its $[0,1]$ position, and the overall score is the unweighted mean of every technical-requirement, seniority, and education Score in the call.
 
-A composite fit score is then computed following TypeSafe's documented aggregation pattern (Section I): each Score normalized to its $[0,1]$ position, and the composite is the unweighted mean of every technical-requirement, seniority, and education Score in the call.
-
-\subsection{Stage 4: Ranking}
-Stage 3 (Section III-D) yields one composite score per (job, applicant) pair; applicants are ranked by a direct sort on this score. This direct sort outperforms the prior system's iterative Monte Carlo knowledge-gradient tournament with Bayesian Plackett-Luce aggregation: no ranking process, no waiting on a prior iteration's result. Because Jev's calls need no iterative dependency, they also parallelize, unlike the prior system's tournament (C2); Section V-C quantifies the resulting reduction in model calls and wall-clock latency. The ranked output then feeds a diagnostic check (Section III-F) that reads per-requirement scores afterward for upstream errors.
-
-\subsection{Stage 5: Score Breakdown Diagnostic}
-Because Jev reports a separate score per extracted requirement rather than a single free-text verdict, a job profile's shortlisted pool can be inspected at the level of individual skills, not only an aggregate score. A requirement is informative only if the pool's median score on it is reasonably high; a shortlisted applicant scoring near-zero on most informative requirements is flagged -- not because Jev judged them harshly, but because peers could clear a bar this applicant could not. Applied under a total-only shortlisting baseline (Stage 2's cosine threshold without the must-have gate), this diagnostic quantifies the must-have gate's necessity; Section V-B reports the corpus-wide result. This diagnostic validates Stage 2's must-have gate; it is not one of this paper's two architecture-level contributions.
+\subsection{Ranking}
+The assessment step yields one overall score per (job, applicant) pair; applicants are ranked by a direct sort on this score. This direct sort outperforms the prior system's iterative Monte Carlo knowledge-gradient tournament with Bayesian Plackett-Luce aggregation: no ranking process, no waiting on a prior iteration's result. Because Jev's calls need no iterative dependency, they also parallelize, unlike the prior system's tournament, quantified later in the results as a reduction in model calls and wall-clock latency. Repeating that assessment call three times per pair, independently, measures how stable the resulting ranking is to repetition (Reliability Tests), also reported later in the results. The ranked output then feeds the must-have gate validation in Section V, which reads per-requirement scores for upstream errors.
 
 \section{Experimental Setup}
-The pipeline is evaluated on the prior system's corpus and shortlist configuration \cite{ref2}, with every setting held fixed across evaluations so the assessment-stage change is the one independent variable between the two systems.
+The pipeline is evaluated on the corpus and shortlist configuration of \emph{Hallucination-Aware Self-Correction for LLM-Based Applicant Assessment} \cite{ref2}, with every setting held fixed across evaluations so the assessment-stage change is the one independent variable between the two systems. Of the 501 resumes, 500 are sampled from the EraMatch CV Parsing Benchmark v3.0 synthetic resume dataset \cite{ref17}, matching that same corpus \cite{ref2}; the remaining resume is a real, non-synthetic submission included alongside the synthetic sample. The 10 job profiles are synthetic, authored by the paper's own authors \cite{ref2}.
+
+\begin{table}[H]
+\caption{Experimental setup compared against the closest prior published system \cite{ref2}.}
+\label{tab_comparison_setup}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{p{0.8in}p{1.05in}p{1.15in}}
+\hline
+Dimension & \emph{Hallucination-Aware Self-Correction for LLM-Based Applicant Assessment} \cite{ref2} & Proposed Work\\
+\hline
+Assessment & Free-text strengths/weaknesses + retry-on-contradiction & Typed Score answered in one parallel pass\\
+Output shape & Free prose, validated against a schema after generation & Predefined typed answers; schema violation impossible by design\\
+Hallucination handling & Live contradiction-check-and-regenerate loop & Not applicable: no free text to hallucinate\\
+Identifier robustness & Positional tokens + schema-constrained ranking + retry & Not needed: one call per applicant, no identifier passing\\
+Ranking & Iterative MC-KG tournament + Plackett-Luce & Direct sort on overall score\\
+Explanation & Strengths/weaknesses narrative & Score + confidence, no narrative\\
+\hline
+\end{tabular}
+\end{table}
+Table~\ref{tab_comparison_setup} shows the architectural setup compared against the prior system. The criteria-design ablations are the evaluation procedure used to validate the assessment step's question design.
 
 \begin{table}[H]
 \caption{Pipeline configuration.}
@@ -118,76 +143,80 @@ The pipeline is evaluated on the prior system's corpus and shortlist configurati
 \hline
 Parameter & Value\\
 \hline
-Assessment model & Jev (\texttt{jev-latest}), TypeSafe AI\\
+Assessment model & Jev (jev-latest), TypeSafe AI\\
 Skill/job profile extraction model & Qwen2.5-14B-Instruct (4-bit, Ollama)\\
 Corpus & 501 resumes, 10 job profiles\\
-Shortlisted (job, applicant) pairs & 273\\
 Skill-match threshold / min. matches & cosine $\geq$ 0.8 / $\geq$ 5 job skills\\
 Must-have skill-match minimum & $\geq$ 2 (auto-reduced to the job profile's must-have count if smaller)\\
 Score question levels & 5 (concrete situational criteria)\\
 \hline
 \end{tabular}
 \end{table}
-Table~\ref{tab_config} shows the full configuration. The criteria-design ablations are the evaluation procedure used to validate Stage 3's question design (Section III-D); Spearman is used wherever the size of a score gap carries meaning, such as the per-requirement score diagnostic of Section III-F.
+Table~\ref{tab_config} shows the full configuration: which models perform assessment and extraction, the corpus and shortlist sizes, the thresholds that determine who is shortlisted, and the five-level Score design used in every Jev call -- the same values used throughout both the direct-sort pipeline and the tournament baseline it is compared against.
 
 \section{Results and Discussion}
 
-\subsection{Criteria-Grounded Question Design (C1)}
-\begin{table}[H]
-\caption{Criteria-design ablations: concrete situational criteria compared with bare ordinal-number (0/25/50/75/100) criteria.}
-\label{tab_score_ablation}
+\subsection{Criteria-Grounded Question Design}
+\begin{figure}[H]
 \centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\begin{tabular}{lccc}
-\hline
-Question group & $n$ & Conf.\ (concrete/ordinal 0--100) & $p$ ($r$)\\
-\hline
-Per-requirement & 772 & 0.894 / 0.672 & $<0.001$ (0.89)\\
-Seniority (years) & 40 & 0.789 / 0.536 & $<0.001$ (0.77)\\
-Education & 116 & 0.759 / 0.669 & $<0.001$ (0.47)\\
-Pooled (sen.\ + edu.) & 156 & 0.766 / 0.635 & $<0.001$ (0.58)\\
-\hline
-\end{tabular}
-\end{table}
-Table~\ref{tab_score_ablation} shows each question asked twice under the two criteria designs, with mean confidence under each and the Wilcoxon result. The per-requirement questions show a large gain. The seniority question (Section III-D), asked as a single total-years-of-experience match under concrete situational criteria rather than bare ordinal-number (0/25/50/75/100) labels, reaches a large effect, exceeding education's medium-to-large effect, confirming the confidence gain is not specific to per-requirement questions. Pooled across both seniority and education, the gain remains significant with a large effect size.
+\includegraphics[width=\columnwidth]{score_ablation_chart.png}
+\caption{Criteria-design ablations: mean confidence under concrete situational criteria versus bare ordinal-number (0/25/50/75/100) criteria, by question group.}
+\label{fig_score_ablation}
+\end{figure}
+Figure~\ref{fig_score_ablation} shows each question asked twice under the two criteria designs, with mean confidence under each and the Wilcoxon result: all differences are significant by Wilcoxon signed-rank test ($p<0.001$; $n=772$ per-requirement, $n=40$ seniority, $n=116$ education, $n=156$ pooled). The per-requirement questions show a large gain. The seniority question, part of the assessment step's design, asked as a single total-years-of-experience match under concrete situational criteria rather than bare ordinal-number (0/25/50/75/100) labels, reaches a large effect, exceeding education's medium-to-large effect, confirming the confidence gain is not specific to per-requirement questions. Pooled across both seniority and education, the gain remains significant with a large effect size.
 
-\subsection{Must-Have Gate: Diagnostic Validation}
-Applied to the full corpus, the must-have gate (Section III-C) excludes 44 of 303 candidates (14.5\%) that a total-only baseline (Section III-F) would shortlist: candidates who matched enough skills in total but not enough must-have skills. The gate is driven by classifying each job profile's technical skills as must-have or nice-to-have during extraction, of which 39\% were classified must-have. This gate is a pipeline design validated using C1's per-requirement granularity (Section III-F), not one of this paper's two architecture-level contributions.
+\subsection{Must-Have Gate: Test Validation}
+Applied to the full corpus, the must-have gate excludes 32 of 305 candidates (10.5\%) that a total-only baseline would shortlist: candidates who matched enough skills in total but not enough must-have skills. The gate is driven by classifying each job profile's technical skills as must-have or nice-to-have during extraction, of which 46.1\% were classified must-have. This gate is a pipeline design validated using Criteria-Grounded Question Design's per-requirement detail, not one of this paper's three architecture-level contributions.
 
-The criteria-grounding findings hold on this pool too, reported in Table~\ref{tab_score_ablation} above, which is itself computed on this same must-have-gated pool.
+The criteria-grounding findings hold on this same must-have-gated pool, already reflected in Figure~\ref{fig_score_ablation}.
 
-\subsection{Cost and Latency Efficiency (C2) and Comparison with the Prior Tournament-Based System}
-This section reports the results of Stage 4's direct sort outperforming the iterative tournament (C2, Section III-E). Across 819 timed Jev calls (273 pairs, 3 independent calls each), a single call takes a mean of 1.04s, for a total of 14.2 minutes of compute time across the full corpus -- call latency only, not skill/job profile extraction.
+\subsection{Cost and Latency Efficiency and Comparison with the Prior Tournament-Based System}
+This section reports the results of the direct sort outperforming the iterative tournament. Across 819 timed Jev calls (273 pairs, 3 independent calls each), a single call takes a mean of 1.04s, for a total of 14.2 minutes of compute time across the full corpus -- call latency only, not skill/job profile extraction.
 
 \begin{table}[H]
-\caption{Comparison against the closest prior published system \cite{ref2}.}
-\label{tab_comparison}
+\caption{Results compared against the closest prior published system \cite{ref2}.}
+\label{tab_comparison_results}
 \centering
 \scriptsize
 \setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{p{0.8in}p{1.05in}p{1.15in}}
 \hline
-Dimension & Prior system \cite{ref2} & This work\\
+Metric & \emph{Hallucination-Aware Self-Correction for LLM-Based Applicant Assessment} \cite{ref2} & Proposed Work\\
 \hline
-Assessment & Free-text strengths/weaknesses + retry-on-contradiction & Typed Score answered in one parallel pass\\
-Output shape & Free prose, validated against a schema after generation & Predefined typed answers; schema violation impossible by construction\\
-Hallucination handling & Live contradiction-check-and-regenerate loop & Not applicable: no free text to hallucinate\\
-Identifier robustness & Positional tokens + schema-constrained ranking + retry & Not needed: one call per applicant, no identifier passing\\
-Ranking & Iterative MC-KG tournament + Plackett-Luce & Direct sort on composite score\\
-Total calls (corpus) & $\approx$2{,}061 (348 assess.\ + 1{,}713 tournament) & 273, 0 tournament\\
-Generation model & Qwen2.5-14B-Instruct, 4-bit, local via Ollama & jev-latest, hosted by TypeSafe AI\\
+Total calls (corpus) & $\approx$2{,}061 & 273, 0 tournament\\
 Confidence signal & Faithfulness 0.880 & Calibrated confidence 0.894\\
-Explanation & Strengths/weaknesses narrative & Score + confidence, no narrative\\
+Ranking stability ($\tau$) & $\approx$0.957 (range 0.93--0.98) & 0.965 (range 0.943--1.000)\\
+Latency (per call) & Not reported & Mean 1.04s\\
+Total compute time (corpus) & Not reported & 14.2 minutes\\
+End-to-end time per candidate ($n=8$) & 74.3s & 16.5s\\
 \hline
 \end{tabular}
 \end{table}
-Table~\ref{tab_comparison} shows this system is not a strict win on every axis: Faithfulness and per-answer confidence measure different constructs (groundedness vs.\ decision stability), so neither proves it is ``more accurate.'' It wins on cost -- well under half the calls, no tournament infrastructure -- and offers a native, calibrated confidence the prior system had no way to provide. Its calls also parallelize, unlike the prior system's tournament, where each iteration waits on the last.
+Table~\ref{tab_comparison_results} shows this comparison is not a strict win on every axis: Faithfulness and per-answer confidence measure different constructs (groundedness vs.\ decision stability), so neither proves it is ``more accurate.'' It wins on cost -- well under half the calls, no tournament infrastructure -- and offers a native, calibrated confidence the prior system had no way to provide. Its calls also parallelize, unlike the prior system's tournament, where each iteration waits on the last.
 
-As a live, single-job-profile check on end-to-end wall-clock time -- distinct from the corpus-wide call counts above -- both systems were run head-to-head on the frontend-engineer profile against the same 501-CV pool, with candidate skill extraction pre-cached identically for both: the prior system completed shortlisting, assessment, and tournament ranking in 558.7s (8 shortlisted candidates), against 14.2s for Jev (2 shortlisted candidates). The shortlist sizes differ because the two systems' job-profile skill extraction is not identical, not because of the must-have gate (disabling it left the Jev count unchanged), so the fairer statistic is per-candidate cost: 558.7/8 $\approx$ 69.8s for the prior system versus 14.2/2 $\approx$ 7.1s for Jev -- a roughly 6--10$\times$ per-candidate speedup, consistent in direction with the corpus-wide call-count reduction above.
+A live, single-job-profile check on end-to-end wall-clock time (frontend-engineer profile, same 501-CV pool, 8 candidates on each side, skill extraction performed fresh for both systems) measured 74.3s per candidate for the prior system versus 16.5s per candidate for Jev -- a $\approx$4.5$\times$ per-candidate speedup.
+
+Beyond call count and latency, TypeSafe's own documentation states that Jev generates no tokens and so is priced at zero for output, unlike a conventional autoregressive LLM API, which is billed per generated token \cite{ref5}. This is reported as an architectural property of Jev's pricing model, not a cost this paper measured directly: the prior system's autoregressive model ran on self-hosted infrastructure rather than a metered API, so no head-to-head USD comparison is available.
+
+\subsection{Reliability Tests}
+This section reports three corpus-wide tests of Jev's repeat-to-repeat decision stability, collected alongside the Cost and Latency Efficiency timing measurements from those same repeated calls, but separate from either contribution: they characterize how consistent a single Jev call is with itself, not a design choice this paper varies.
+
+\textbf{Overall-score and per-requirement stability.} Across the three repeats, the overall fit score varies little per pair, and is noticeably more stable than the individual per-technical-requirement scores that feed it, so averaging across the requirements in a call cancels most of the per-question noise before ranking ever sees it.
+
+\textbf{Score consistency.} The per-requirement scores and the derived overall score are not just averaged but consistent with each other: across all 273 pairs, the mean of a pair's per-requirement scores correlates with its overall fit score at Spearman $\rho=0.972$, confirming the ranking input reflects the same per-requirement evidence the score breakdown check inspects separately.
+
+\textbf{Ranking stability.} While score consistency shows the inputs agree, ranking stability tests whether the resulting applicant order does too: for each job profile, every pair of the three repeats' rankings is compared by Kendall's $\tau$, then averaged across pairs and profiles.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\columnwidth]{ranking_stability_chart.png}
+\caption{Per-job-profile repeat-to-repeat ranking stability (Kendall's $\tau$), 3 repeats per pair; $n$ ranges from 8 (Java developer) to 55 (Data engineer) pairs per profile, 273 total.}
+\label{fig_ranking_stability}
+\end{figure}
+Figure~\ref{fig_ranking_stability} shows, per job profile, the mean Kendall's $\tau$ between the candidate orderings implied by each of the three repeats; the corpus-wide mean ranking stability is $\tau=0.965$. These tests constitute this paper's third contribution: repeat-to-repeat evidence that a single-call architecture's practical reliability holds up.
 
 \section{Conclusion}
-This paper shows Jev, TypeSafe AI's first System One Model, outperforming the free-text assessment and iterative tournament-ranking stages of an existing pipeline, and validates two adaptations, presented stage by stage in Section III -- an empirical, large-sample test and extension of TypeSafe's own criteria-grounded question design guidance, and cost/latency efficiency from a single parallel pass outperforming the iterative tournament -- each motivated by a reliability problem observed in practice. The result is not a uniform improvement (Table~\ref{tab_comparison}): it trades all free-text interpretability for well under half the model calls, no tournament infrastructure, and a native calibrated confidence the prior system never had. Criteria-grounded design is strongly validated at scale for the per-requirement Score questions, and for seniority (asked as a single, unfiltered total-years-of-experience judgment, Section III-D) and education alike. As a secondary pipeline detail rather than a third contribution, the pipeline also classifies each job profile's technical skills as must-have or nice-to-have during extraction and gates shortlisting on the must-have subset, its necessity validated with a per-requirement score breakdown.
+This paper compares Jev, TypeSafe AI's first System One Model, against the authors' own \emph{Hallucination-Aware Self-Correction for LLM-Based Applicant Assessment} \cite{ref2} -- an LLM-driven (Qwen2.5-14B-Instruct) free-text assessment with an iterative Monte Carlo knowledge-gradient tournament and Bayesian Plackett-Luce ranking -- and validates three adaptations for deploying Jev reliably in its place: an empirical, large-sample test and extension of TypeSafe's own criteria-grounded question design guidance; cost/latency efficiency from a single parallel pass outperforming the iterative tournament; and repeat-to-repeat reliability tests of that single-call architecture. Against that prior system, this work's advantages are: hallucination risk removed by design, since typed answers replace free text with nothing left to hallucinate; well under half the model calls (273 versus approximately 2,061), with no tournament infrastructure to maintain and roughly 4.5$\times$ lower per-candidate wall-clock latency; output priced at zero by design, unlike a token-billed autoregressive LLM \cite{ref5}; and a native calibrated confidence of 0.894, where the prior system could only offer a separately-computed Faithfulness score. Criteria-grounded design further raises per-requirement answer confidence from 0.672 to 0.894 at scale, with the same pattern holding for seniority and education. Reliability tests confirm the single-call architecture's outputs are stable enough to support the pipeline's direct-sort ranking, with ranking stability at least matching the prior system's (Kendall's $\tau=0.965$ versus $\approx$0.957).
 A limitation is that this work trades away the prior system's free-text interpretability -- a score and a confidence, not a narrative, and per-requirement scores only partly substitute.
 Future work includes independently testing RLCD's calibration guarantee against ground-truth correctness rather than self-consistency alone, since calibration does not itself guarantee any individual prediction is correct; and testing whether the per-level independence property behind criteria-grounded design holds across TypeSafe's full documented 2--10 level range, not only the five used here.
 
@@ -209,31 +238,52 @@ A.~C. Tran and N.~C. Tran, ``A recruitment support system based on Large Languag
 F.~P.-W. Lo, J.~Qiu, Z.~Wang, H.~Yu, Y.~Chen, G.~Zhang, and B.~Lo, ``AI Hiring with LLMs: A Context-Aware and Explainable Multi-Agent Framework for Resume Screening,'' arXiv:2504.02870, 2025.
 
 \bibitem{ref5}
-D.~N. Yaldiz, E.~Spiliopoulou, Z.~Qi, S.~Varia, S.~Doss, and N.~Pappas, ``Balancing Classification and Calibration Performance in Decision-Making LLMs via Calibration Aware Reinforcement Learning,'' arXiv:2601.13284, 2026.
-
-\bibitem{ref6}
-G.~Wang, J.~Yu, X.~Zhang, D.~Jiang, Y.~Song, T.~Deb, X.~Liu, and P.~He, ``STED and Consistency Scoring: A Framework for Evaluating LLM Structured Output Reliability,'' arXiv:2512.23712, 2025.
-
-\bibitem{ref7}
-R.~Haldar and J.~Hockenmaier, ``Rating Roulette: Self-Inconsistency in LLM-As-A-Judge Frameworks,'' in \emph{Findings of the Assoc.\ Comput.\ Linguistics: EMNLP 2025}, 2025.
-
-\bibitem{ref11}
 D.~Almeida, ``Introducing System One Models \& Jev,'' TypeSafe AI Company Blog, Sep.~15, 2026. [Online]. Available: https://typesafe.ai/blog/introducing-system-one-models-and-jev
 
+\bibitem{ref6}
+S.~Runkle and H.~Lovell, ``Building a Harness with Jev,'' LangChain Blog, Sep.~17, 2026. [Online]. Available: https://www.langchain.com/blog/building-a-harness-with-jev
+
+\bibitem{ref7}
+P.~Burnhill, ``TypeSafe Jev -- Project Knowledge Resource,'' GitHub Gist, Sep.~16, 2026. [Online]. Available: https://gist.github.com/pjburnhill/adf8d28efcad9df037bfdece178ef965
+
+\bibitem{ref8}
+``Jev -- TypeSafe's model returns typed decisions, not text,'' AI/TLDR, Sep.~15, 2026. [Online]. Available: https://ai-tldr.dev/releases/typesafe-jev/
+
+\bibitem{ref9}
+``TypeSafe (Jev),'' Pydantic AI Documentation. [Online]. Available: https://pydantic.dev/docs/ai/models/typesafe/
+
+\bibitem{ref10}
+D.~N. Yaldiz, E.~Spiliopoulou, Z.~Qi, S.~Varia, S.~Doss, and N.~Pappas, ``Balancing Classification and Calibration Performance in Decision-Making LLMs via Calibration Aware Reinforcement Learning,'' arXiv:2601.13284, 2026.
+
+\bibitem{ref11}
+G.~Wang, J.~Yu, X.~Zhang, D.~Jiang, Y.~Song, T.~Deb, X.~Liu, and P.~He, ``STED and Consistency Scoring: A Framework for Evaluating LLM Structured Output Reliability,'' arXiv:2512.23712, 2025.
+
+\bibitem{ref12}
+R.~Haldar and J.~Hockenmaier, ``Rating Roulette: Self-Inconsistency in LLM-As-A-Judge Frameworks,'' in \emph{Findings of the Assoc.\ Comput.\ Linguistics: EMNLP 2025}, 2025.
+
+\bibitem{ref13}
+J.~Dong, Z.~Jiang, D.~Pan, Z.~Chen, Q.~Guan, H.~Zhang, G.~Gui, and W.~Gui, ``A survey on confidence calibration of deep learning-based classification models under class imbalance data,'' \emph{IEEE Trans.\ Neural Netw.\ Learn.\ Syst.}, vol.~36, no.~9, pp.~15664--15684, 2025, doi: 10.1109/TNNLS.2025.3565159.
+
 \bibitem{ref14}
+R.~Alonso, D.~Dess\'i, A.~Meloni, and D.~Reforgiato Recupero, ``A novel approach for job matching and skill recommendation using transformers and the O*NET database,'' \emph{Big Data Research}, vol.~39, art.~100509, 2025, doi: 10.1016/j.bdr.2025.100509.
+
+\bibitem{ref15}
+L.~Kong, Y.~Zhang, X.~Zhong, H.~Fu, Y.~Wang, and H.~Liu, ``HaluGNN: Hallucination detection in large language models using graph neural network,'' \emph{Expert Systems with Applications}, vol.~306, art.~130857, 2026, doi: 10.1016/j.eswa.2025.130857.
+
+\bibitem{ref16}
 J.~Gu \emph{et al.}, ``A survey on LLM-as-a-judge,'' \emph{The Innovation}, vol.~7, no.~6, art.\ 101253, 2026.
 
 \bibitem{ref17}
-S.~Runkle and H.~Lovell, ``Building a Harness with Jev,'' LangChain Blog, Sep.~17, 2026. [Online]. Available: https://www.langchain.com/blog/building-a-harness-with-jev
+A.~Ahmad, ``EraMatch CV Parsing Benchmark v3.0,'' Kaggle, 2025. Accessed: Sep.~1, 2026. [Online]. Available: https://www.kaggle.com/datasets/anasahmad25/cv-parsing-eramatch/data
 
 \bibitem{ref18}
-P.~Burnhill, ``TypeSafe Jev -- Project Knowledge Resource,'' GitHub Gist, Sep.~16, 2026. [Online]. Available: https://gist.github.com/pjburnhill/adf8d28efcad9df037bfdece178ef965
+G.~Zhang, L.~Pan, F.~Tang, and F.~Yao, ``Explainable artificial intelligence in the talent recruitment process -- a literature review,'' \emph{Cogent Business \& Management}, vol.~12, no.~1, art.~2570881, 2025, doi: 10.1080/23311975.2025.2570881.
 
 \bibitem{ref19}
-``Jev -- TypeSafe's model returns typed decisions, not text,'' AI/TLDR, Sep.~15, 2026. [Online]. Available: https://ai-tldr.dev/releases/typesafe-jev/
+M.~Albashrawi, ``Generative AI for decision-making: A multidisciplinary perspective,'' \emph{Journal of Innovation \& Knowledge}, vol.~10, no.~4, art.~100751, 2025, doi: 10.1016/j.jik.2025.100751.
 
 \bibitem{ref20}
-``TypeSafe (Jev),'' Pydantic AI Documentation. [Online]. Available: https://pydantic.dev/docs/ai/models/typesafe/
+M.-T.~Huynh, ``Using generative AI as decision-support tools: Unraveling users' trust and AI appreciation,'' \emph{Journal of Decision Systems}, 2024, doi: 10.1080/12460125.2024.2428166.
 
 \end{thebibliography}
 
