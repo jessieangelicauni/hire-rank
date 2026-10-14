@@ -18,10 +18,11 @@ class RunConfig:
     ollama_model: str
     ollama_base_url: str
     ollama_num_parallel: int
-    jev_api_key: str
     faithfulness_model: str | None = None
     skill_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     ollama_num_ctx: int = 8192
+    ranking_temperature: float = 0.4
+    ranking_pool_threshold: int = 20
 
     @classmethod
     def full(cls, project_root: Path) -> "RunConfig":
@@ -36,7 +37,6 @@ class RunConfig:
             ollama_model="qwen2.5:14b-instruct-q4_K_M",
             ollama_base_url="http://localhost:11434",
             ollama_num_parallel=4,
-            jev_api_key="",
             skill_embedding_model="sentence-transformers/all-MiniLM-L6-v2",
         )
 
@@ -54,7 +54,8 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_FAITHFULNESS_MODEL": ("faithfulness_model", str),
     "CANDIDATE_RANKING_OLLAMA_NUM_CTX": ("ollama_num_ctx", int),
     "CANDIDATE_RANKING_SKILL_EMBEDDING_MODEL": ("skill_embedding_model", str),
-    "CANDIDATE_RANKING_JEV_API_KEY": ("jev_api_key", str),
+    "CANDIDATE_RANKING_RANKING_TEMPERATURE": ("ranking_temperature", float),
+    "CANDIDATE_RANKING_RANKING_POOL_THRESHOLD": ("ranking_pool_threshold", int),
 }
 
 ENV_OVERRIDE_VARS: tuple[str, ...] = tuple(_ENV_OVERRIDES)
