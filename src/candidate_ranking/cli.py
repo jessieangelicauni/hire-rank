@@ -1,3 +1,4 @@
+# src/candidate_ranking/cli.py
 from __future__ import annotations
 
 import argparse
@@ -14,42 +15,41 @@ from langchain_ollama import ChatOllama
 from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from langgraph.checkpoint.sqlite import SqliteSaver
 
-from candidate_ranking.scoring.assessment import ASSESSMENT_SCOPE_VERSION, JEV_MODEL_NAME, filter_assessable_candidates
-from candidate_ranking.scoring.jev_client import JevClient
 from candidate_ranking.config import RunConfig, apply_env_overrides
-from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
-from candidate_ranking.scoring.jd_skills import build_jd_skills_chain
 from candidate_ranking.graphs.pipeline import build_pipeline_graph
 from candidate_ranking.ingestion.cv import build_skill_extraction_chain, enrich_candidates_with_skills, load_candidates
 from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.logging_setup import configure_logging
-from candidate_ranking.models import Candidate, JobDescription
+from candidate_ranking.models import Assessment, Candidate, JDRequirements, JobDescription
+from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
 from candidate_ranking.output.run_output import write_run_output
+from candidate_ranking.scoring.jd_requirements import build_jd_requirements_chain
+from candidate_ranking.scoring.jd_skills import build_jd_skills_chain
+from candidate_ranking.scoring.llm_assessment import (
+    build_qualification_chain,
+    build_ranking_chain_factory,
+    filter_assessable_candidates,
+)
 from candidate_ranking.scoring.skills import build_candidate_skill_index, build_skill_embedder
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+ASSESSMENT_SCOPE_VERSION = "llm-qualification-gate-v1"
 
 
 def load_corpus(cfg: RunConfig) -> tuple[list[JobDescription], list[Candidate]]:
     jds = load_job_descriptions(cfg.jd_dir)
     candidates = load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")
-
     if cfg.max_jds is not None:
         jds = jds[: cfg.max_jds]
     if cfg.max_candidates is not None:
         candidates = candidates[: cfg.max_candidates]
-
     return jds, candidates
 
 
 _CHECKPOINT_ALLOWED_MSGPACK_MODULES = [
     ("candidate_ranking.models", name)
-    for name in (
-        "JobDescription",
-        "Candidate",
-        "JDSkills",
-        "Assessment",
-    )
+    for name in ("JobDescription", "Candidate", "JDSkills", "Assessment", "JDRequirements")
 ]
 
 
@@ -81,30 +81,37 @@ def run(
         print(f"WARNING: console-web role seeding failed: {exc}", file=sys.stderr)
     candidates = filter_assessable_candidates(candidates)
 
-    llm = ChatOllama(model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx)
-    jd_skills_chain = build_jd_skills_chain(llm)
-    if not cfg.jev_api_key:
-        raise RuntimeError(
-            "Set CANDIDATE_RANKING_JEV_API_KEY (e.g. in .env) before running."
-        )
-    jev_client = JevClient(api_token=cfg.jev_api_key)
-    skill_extraction_chain = build_skill_extraction_chain(llm)
+    llm = ChatOllama(
+        model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx
+    )
+    llm_ranking = ChatOllama(
+        model=cfg.ollama_model, base_url=cfg.ollama_base_url,
+        temperature=cfg.ranking_temperature, num_ctx=cfg.ollama_num_ctx,
+    )
 
+    jd_skills_chain = build_jd_skills_chain(llm)
+    jd_requirements_chain = build_jd_requirements_chain(llm)
+    qualification_chain = build_qualification_chain(llm)
+    build_ranking_chain = build_ranking_chain_factory(llm_ranking)
+
+    skill_extraction_chain = build_skill_extraction_chain(llm)
     candidates = enrich_candidates_with_skills(
-        candidates, skill_extraction_chain, cfg.ollama_model, cfg.cache_dir / "cv_skills.json",
-        max_workers=cfg.ollama_num_parallel,
+        candidates, skill_extraction_chain, cfg.ollama_model,
+        cfg.cache_dir / "cv_skills.json", max_workers=cfg.ollama_num_parallel,
     )
     skill_embedder = build_skill_embedder(cfg.skill_embedding_model)
     skill_index, skill_row_map = build_candidate_skill_index(candidates, skill_embedder)
 
     graph = build_pipeline_graph(
-        cfg,
-        jd_skills_chain,
-        jev_client,
-        skill_index,
-        skill_row_map,
-        skill_embedder,
-        run_id,
+        cfg=cfg,
+        jd_skills_chain=jd_skills_chain,
+        jd_requirements_chain=jd_requirements_chain,
+        qualification_chain=qualification_chain,
+        build_ranking_chain=build_ranking_chain,
+        skill_index=skill_index,
+        skill_row_map=skill_row_map,
+        skill_embedder=skill_embedder,
+        run_id=run_id,
         skill_match_threshold=skill_match_threshold,
         min_skill_matches=min_skill_matches,
         min_must_have_matches=min_must_have_matches,
@@ -115,6 +122,7 @@ def run(
         "jds": jds,
         "candidates": candidates,
         "jd_skills": {},
+        "jd_requirements": {},
         "shortlists": {},
         "assessment_results": [],
     }
@@ -128,10 +136,7 @@ def run(
     for jd in jds:
         if len(final_state["shortlists"].get(jd.id, [])) == 0:
             print(
-                f"WARNING: JD {jd.id}'s skill-match shortlist is empty (skill_match_threshold="
-                f"{skill_match_threshold}, min_skill_matches={min_skill_matches}, "
-                f"min_must_have_matches={min_must_have_matches}); no candidates will be "
-                "assessed for this JD.",
+                f"WARNING: JD {jd.id}'s shortlist is empty — no candidates assessed.",
                 file=sys.stderr,
             )
 
@@ -142,48 +147,36 @@ def run(
             skill_match_threshold = prior_manifest.get("skill_match_threshold", skill_match_threshold)
             min_skill_matches = prior_manifest.get("min_skill_matches", min_skill_matches)
             min_must_have_matches = prior_manifest.get("min_must_have_matches", min_must_have_matches)
-        except (json.JSONDecodeError, OSError) as exc:
-            print(
-                f"WARNING: could not read prior manifest at {manifest_path} to preserve original "
-                f"skill-shortlist thresholds on resume; using the values passed to this invocation "
-                f"instead: {exc}",
-                file=sys.stderr,
-            )
+        except (json.JSONDecodeError, OSError):
+            pass
 
     manifest = {
         "run_id": run_id,
         "preset": cfg.preset,
         "ollama_model": cfg.ollama_model,
-        "jev_model": JEV_MODEL_NAME,
         "assessment_scope": ASSESSMENT_SCOPE_VERSION,
         "skill_embedding_model": cfg.skill_embedding_model,
         "skill_match_threshold": skill_match_threshold,
         "min_skill_matches": min_skill_matches,
         "min_must_have_matches": min_must_have_matches,
+        "ranking_temperature": cfg.ranking_temperature,
+        "ranking_pool_threshold": cfg.ranking_pool_threshold,
         "shortlist_sizes": {jd_id: len(cids) for jd_id, cids in final_state["shortlists"].items()},
         "jd_ids": [jd.id for jd in jds],
         "candidate_ids": [c.id for c in candidates],
     }
-    run_dir = write_run_output(
-        cfg.runs_dir, run_id, manifest, final_state["assessment_results"]
-    )
+    run_dir = write_run_output(cfg.runs_dir, run_id, manifest, final_state["assessment_results"])
 
     total_shortlisted = sum(len(v) for v in final_state["shortlists"].values())
     if total_shortlisted == 0:
         raise RuntimeError(
-            f"Run produced zero shortlisted candidates across all {len(jds)} JDs at "
-            f"skill_match_threshold={skill_match_threshold}, min_skill_matches={min_skill_matches}, "
-            f"min_must_have_matches={min_must_have_matches} -- no "
-            "assessments were generated. Check extracted skill vocabularies or loosen the thresholds. "
-            f"Run output (manifest, empty summary) was still written to {run_dir}."
+            f"Run produced zero shortlisted candidates across {len(jds)} JDs — no assessments generated."
         )
 
     try:
         exported_path = export_console_web_data(cfg, run_id)
-        if exported_path is not None:
+        if exported_path:
             print(f"Exported console-web data to {exported_path}")
-        else:
-            print("INFO: console-web export skipped (see warnings above for the reason, if any)")
     except Exception as exc:
         print(f"WARNING: console-web export failed: {exc}", file=sys.stderr)
 
@@ -195,36 +188,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(prog="candidate_ranking.cli")
     subparsers = parser.add_subparsers(dest="command", required=True)
     run_parser = subparsers.add_parser("run")
-    run_parser.add_argument(
-        "--run-id",
-        default=None,
-        help="Reuse a prior run's id to resume it from its checkpoint. Defaults to a new timestamped id.",
-    )
-    run_parser.add_argument(
-        "--skill-match-threshold",
-        type=float,
-        default=0.8,
-        help="Cosine similarity at or above which a candidate's skill counts as matching a JD's technical skill (default: 0.8).",
-    )
-    run_parser.add_argument(
-        "--min-skill-matches",
-        type=int,
-        default=5,
-        help=(
-            "Number of a JD's technical skills a candidate must match to be shortlisted for assessment "
-            "(default: 5; automatically reduced to the JD's total technical-skill count if that's smaller)."
-        ),
-    )
-    run_parser.add_argument(
-        "--min-must-have-matches",
-        type=int,
-        default=2,
-        help=(
-            "Number of a JD's must-have technical skills a candidate must match to be shortlisted for "
-            "assessment (default: 2; automatically reduced to the JD's total must-have-skill count if "
-            "that's smaller; has no effect if the JD has no classified must-have skills)."
-        ),
-    )
+    run_parser.add_argument("--run-id", default=None)
+    run_parser.add_argument("--skill-match-threshold", type=float, default=0.8)
+    run_parser.add_argument("--min-skill-matches", type=int, default=5)
+    run_parser.add_argument("--min-must-have-matches", type=int, default=2)
     args = parser.parse_args()
 
     if args.command == "run":
