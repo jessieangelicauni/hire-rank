@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import logging
-import statistics
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -24,13 +23,11 @@ def _role_stub(jd: JobDescription, candidate_count: int) -> dict:
     return {"id": jd.id, "title": jd.title, "description": jd.raw_text, "candidateCount": candidate_count}
 
 
-def _composite_fit_score(entry: dict) -> float:
-    components = list(entry.get("requirement_scores", {}).values())
-    for key in ("seniority_years_fit_score", "education_fit_score"):
-        value = entry.get(key)
-        if value is not None:
-            components.append(value)
-    return statistics.mean(components) if components else 0.0
+def _utility_from_ranking(ranking_rows: list[dict], cv_id: str) -> float | None:
+    for row in ranking_rows:
+        if row.get("candidate_id") == cv_id:
+            return row.get("utility")
+    return None
 
 
 def _null_comparison(jd_id: str) -> dict:
@@ -40,10 +37,11 @@ def _null_comparison(jd_id: str) -> dict:
 def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict], ranking_stability: float | None) -> dict:
     if not jd_assessments:
         return _null_comparison(jd_id)
-    fit_scores = [_composite_fit_score(a) for a in jd_assessments.values()]
+    qualified_count = sum(1 for a in jd_assessments.values() if a.get("qualified"))
     return {
         "jdId": jd_id,
-        "meanFitScore": statistics.mean(fit_scores),
+        "qualifiedCount": qualified_count,
+        "totalAssessed": len(jd_assessments),
         "rankingStability": ranking_stability,
     }
 
@@ -253,7 +251,8 @@ def export_console_web_data(
 
         ranking = json.loads((run_dir / jd_id / "ranking.json").read_text(encoding="utf-8"))
         rank_by_cv_id = {row["candidate_id"]: row["rank"] for row in ranking["rankings"]}
-        score_by_cv_id = {row["candidate_id"]: row["composite_fit_score"] for row in ranking["rankings"]}
+        ranking_rows = ranking.get("rankings", [])
+        score_by_cv_id = {row["candidate_id"]: row.get("utility", 0.0) for row in ranking_rows}
 
         jd_assessments = {
             cv_id: entry for cv_id, entry in sorted(_load_jd_assessments(run_dir, jd_id).items())
@@ -277,10 +276,19 @@ def export_console_web_data(
             )
 
             assessments[row_id] = {
-                "composite_fit_score": _composite_fit_score(assessment_entry),
-                "requirement_scores": assessment_entry.get("requirement_scores", {}),
-                "seniority_years_fit_score": assessment_entry.get("seniority_years_fit_score"),
-                "education_fit_score": assessment_entry.get("education_fit_score"),
+                "qualified": assessment_entry.get("qualified"),
+                "total_relevant_years": assessment_entry.get("total_relevant_years", 0),
+                "must_have_met": sum(
+                    1 for ev in assessment_entry.get("must_have_evaluations", [])
+                    if ev.get("verdict") == "MET"
+                ),
+                "nice_to_have_met": sum(
+                    1 for ev in assessment_entry.get("nice_to_have_evaluations", [])
+                    if ev.get("verdict") == "MET"
+                ),
+                "has_multinational_experience": (
+                    assessment_entry.get("career_trajectory") or {}
+                ).get("has_multinational_experience"),
             }
             exported_count += 1
 

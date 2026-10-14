@@ -36,8 +36,7 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
         "job_description_id": "jd-1",
         "rankings": [
             {
-                "rank": 1, "candidate_id": "cand-a", "composite_fit_score": 87.5,
-                "requirement_scores": {"Python": 100.0},
+                "rank": 1, "candidate_id": "cand-a", "utility": 87.5,
             }
         ],
     }
@@ -45,10 +44,19 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
 
     assessments = {
         "cand-a": {
-            "job_description_id": "jd-1", "candidate_id": "cand-a", "generated_by_model": "typesafe/jev",
-            "composite_fit_score": 87.5,
-            "requirement_scores": {"Python": 100.0}, "confidence": {"requirement::Python": 0.9},
-            "seniority_years_fit_score": 75.0, "education_fit_score": None,
+            "job_description_id": "jd-1",
+            "candidate_id": "cand-a",
+            "generated_by_model": "typesafe/jev",
+            "qualified": True,
+            "total_relevant_years": 3,
+            "must_have_evaluations": [
+                {"requirement": "Python", "verdict": "MET"},
+                {"requirement": "Django", "verdict": "MET"},
+            ],
+            "nice_to_have_evaluations": [
+                {"requirement": "Docker", "verdict": "MET"},
+            ],
+            "career_trajectory": {"has_multinational_experience": False},
         }
     }
     (run_dir / "jd-1" / "assessments.json").write_text(json.dumps(assessments), encoding="utf-8")
@@ -77,15 +85,20 @@ def test_export_console_web_data_maps_jev_scores(run_with_jev_ranking, tmp_path)
     data = json.loads(output_path.read_text(encoding="utf-8"))
     assert data["candidates"][0]["utility"] == 87.5
     assessment = data["assessments"]["cand-a::jd-1"]
-    assert assessment["composite_fit_score"] == 87.5
-    assert "overall_recommendation" not in assessment
-    assert "meets_min_qualifications" not in assessment
-    assert assessment["requirement_scores"] == {"Python": 100.0}
-    assert assessment["seniority_years_fit_score"] == 75.0
-    assert assessment["education_fit_score"] is None
+    assert assessment["qualified"] is True
+    assert assessment["total_relevant_years"] == 3
+    assert assessment["must_have_met"] == 2
+    assert assessment["nice_to_have_met"] == 1
+    assert assessment["has_multinational_experience"] is False
+    assert "composite_fit_score" not in assessment
+    assert "requirement_scores" not in assessment
+    assert "seniority_years_fit_score" not in assessment
+    assert "education_fit_score" not in assessment
     assert "strengths" not in assessment
     comparison = data["comparison"]["jd-1"]
-    assert comparison["meanFitScore"] == 87.5
+    assert comparison["qualifiedCount"] == 1
+    assert comparison["totalAssessed"] == 1
+    assert "meanFitScore" not in comparison
     assert "meetsMinRate" not in comparison
     assert "hireRate" not in comparison
     assert comparison["rankingStability"] is None
