@@ -3,6 +3,8 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import threading
+import uuid
 from pathlib import Path
 
 from langchain_core.language_models import BaseChatModel
@@ -17,6 +19,8 @@ from candidate_ranking.models import (
 )
 
 logger = logging.getLogger(__name__)
+
+_cache_lock = threading.Lock()
 
 # ── Prompt 2: Qualification Gate ─────────────────────────────────────────────
 
@@ -189,25 +193,33 @@ def generate_assessment(
     )
 
     def validate(result: _QualificationOutput) -> str | None:
-        if not result.must_have_evaluations:
+        # Only enforce non-empty evaluations when requirements were actually provided;
+        # if jd_requirements is None the LLM received empty lists and may return no evals.
+        if jd_requirements and not result.must_have_evaluations:
             return "must_have_evaluations is empty"
         return None
 
-    try:
-        result = invoke_and_validate(
-            chain,
-            {
-                "jd_title": jd.title,
-                "must_have_json": must_have_json,
-                "nice_to_have_json": nice_to_have_json,
-                "cv_text": candidate.raw_text,
-            },
-            _QualificationOutput,
-            validate,
-            log_context=f"Qualification gate for {jd.id}/{candidate.id}",
-        )
-    except GenerationError as exc:
-        raise AssessmentGenerationError(str(exc)) from exc
+    log_context = f"Qualification gate for {jd.id}/{candidate.id}"
+    last_error: Exception | None = None
+    for attempt in range(2):
+        try:
+            result = invoke_and_validate(
+                chain,
+                {
+                    "jd_title": jd.title,
+                    "must_have_json": must_have_json,
+                    "nice_to_have_json": nice_to_have_json,
+                    "cv_text": candidate.raw_text,
+                },
+                _QualificationOutput,
+                validate,
+                log_context=f"{log_context} (attempt {attempt + 1}/2)",
+            )
+            break
+        except Exception as exc:  # noqa: BLE001 — translate ALL failures to domain error
+            last_error = exc
+    else:
+        raise AssessmentGenerationError(str(last_error)) from last_error
 
     return _output_to_assessment(jd, candidate, model_name, result)
 
@@ -238,23 +250,27 @@ def load_or_generate_assessment(
     path = _assessment_cache_path(cache_dir, jd.id, candidate.id)
     key = _assessment_cache_key(jd, candidate, jd_requirements, model_name)
 
-    if path.exists():
-        try:
-            data = json.loads(path.read_text(encoding="utf-8"))
-            if data.get("cache_key") == key:
-                return Assessment.model_validate(data["assessment"])
-        except (json.JSONDecodeError, KeyError, ValidationError, OSError) as exc:
-            logger.warning("Discarding unreadable assessment cache %s: %s", path, exc)
+    with _cache_lock:
+        if path.exists():
+            try:
+                data = json.loads(path.read_text(encoding="utf-8"))
+                if data.get("cache_key") == key:
+                    return Assessment.model_validate(data["assessment"])
+            except (json.JSONDecodeError, KeyError, ValidationError, OSError) as exc:
+                logger.warning("Discarding unreadable assessment cache %s: %s", path, exc)
 
+    # LLM call happens outside the lock to avoid blocking other threads.
     assessment = generate_assessment(jd, candidate, jd_requirements, chain, model_name)
 
-    path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = path.with_suffix(path.suffix + ".tmp")
-    tmp.write_text(
-        json.dumps({"cache_key": key, "assessment": assessment.model_dump()}, indent=2),
-        encoding="utf-8",
-    )
-    tmp.replace(path)
+    with _cache_lock:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        # uuid suffix avoids collision when multiple processes write concurrently.
+        tmp = path.with_suffix(f"{path.suffix}.{uuid.uuid4().hex}.tmp")
+        tmp.write_text(
+            json.dumps({"cache_key": key, "assessment": assessment.model_dump()}, indent=2),
+            encoding="utf-8",
+        )
+        tmp.replace(path)
     return assessment
 
 
