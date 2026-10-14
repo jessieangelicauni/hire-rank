@@ -3,20 +3,23 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import random
 import threading
 import uuid
 from pathlib import Path
+from typing import Callable
 
 from langchain_core.language_models import BaseChatModel
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import BaseModel, Field, ValidationError, create_model
 
 from candidate_ranking.generation import GenerationError, invoke_and_validate
 from candidate_ranking.models import (
     Assessment, Candidate, CareerTrajectory, JDRequirements,
     JobDescription, RedFlag, RequirementEvaluation,
 )
+from candidate_ranking.ranking.plackett_luce import fit_utilities
 
 logger = logging.getLogger(__name__)
 
@@ -280,3 +283,141 @@ def filter_assessable_candidates(candidates: list[Candidate]) -> list[Candidate]
     if excluded > 0:
         logger.warning("Excluded %d candidate(s) with failed CV parsing", excluded)
     return assessable
+
+
+# ── Prompt 3: Listwise Ranking ────────────────────────────────────────────────
+
+LISTWISE_RANKING_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        (
+            "system",
+            "You are a panel of senior HR professionals making a final ranking decision.\n\n"
+            "All candidates below have already passed qualification screening — they all meet the minimum requirements.\n"
+            "Rank them from STRONGEST to WEAKEST fit for this specific role.\n\n"
+            "RANKING CRITERIA (in order of importance):\n"
+            "1. Relevance — whose experience most directly matches what this role does daily\n"
+            "2. Evidence quality — concrete achievements and measurable impact over vague responsibilities\n"
+            "3. Career trajectory — growing scope, promotions, increasing seniority over time\n"
+            "4. Recency — recent hands-on experience with core stack outweighs older exposure\n"
+            "5. Nice-to-have coverage — breadth of preferred skills as a tiebreaker\n\n"
+            "RULES:\n"
+            "- Rank ALL candidates. No ties. Forced ordering.\n"
+            "- Candidates are numbered starting at 1. `ranking` must contain every listed number exactly once.\n"
+            "- Judge only on information provided. Do not assume unlisted skills.\n"
+            "- When two candidates feel equal: 'Who would I call for interview first?' — that person ranks higher.",
+        ),
+        (
+            "human",
+            "ROLE: {jd_title}\n\nJOB SUMMARY: {jd_summary}\n\nCANDIDATES:\n{candidates_text}",
+        ),
+    ]
+)
+
+
+def _extract_jd_summary(jd: JobDescription) -> str:
+    words = jd.raw_text.split()
+    return f"{jd.title}\n\n" + " ".join(words[:200])
+
+
+def _render_evidence_for_ranking(candidate_ids: list[str], assessments: dict[str, Assessment]) -> str:
+    blocks = []
+    for index, candidate_id in enumerate(candidate_ids, start=1):
+        a = assessments[candidate_id]
+        must_text = "\n".join(
+            f"    [{ev.verdict}] {ev.requirement} ({ev.evidence_strength}, {ev.years_demonstrated}yr): {ev.evidence}"
+            for ev in a.must_have_evaluations
+        ) or "    (none)"
+        met_nice = [ev for ev in a.nice_to_have_evaluations if ev.verdict in ("MET", "PARTIALLY_MET")]
+        nice_text = ", ".join(f"{ev.requirement} [{ev.verdict}]" for ev in met_nice) or "(none)"
+        ach_text = "\n".join(f"    - {ach}" for ach in a.strongest_achievements) or "    (none)"
+        traj = a.career_trajectory
+        traj_text = (
+            f"{traj.direction}, avg {traj.average_tenure_months}mo/role"
+            + (", multinational exp." if traj.has_multinational_experience else "")
+        ) if traj else "unknown"
+        blocks.append(
+            f"{index}:\n"
+            f"  Must-have evaluations:\n{must_text}\n"
+            f"  Nice-to-have met: {nice_text}\n"
+            f"  Achievements:\n{ach_text}\n"
+            f"  Trajectory: {traj_text} | Relevant years: {a.total_relevant_years}"
+        )
+    return "\n\n".join(blocks)
+
+
+def _ranking_model(size: int) -> type[BaseModel]:
+    return create_model(
+        "_RankingResult",
+        ranking=(list[int], Field(min_length=size, max_length=size)),
+        overall_reasoning=(str, Field(min_length=1)),
+    )
+
+
+def build_ranking_chain_factory(llm: BaseChatModel) -> Callable[[type[BaseModel]], Runnable]:
+    """Returns a factory that builds a size-specific chain per ranking run."""
+    def _build(ranking_model: type[BaseModel]) -> Runnable:
+        return LISTWISE_RANKING_PROMPT | llm.with_structured_output(ranking_model)
+    return _build
+
+
+def _single_ranking_run(
+    jd: JobDescription,
+    candidate_ids: list[str],
+    assessments: dict[str, Assessment],
+    build_chain: Callable[[type[BaseModel]], Runnable],
+) -> list[str]:
+    """Returns candidate_ids ordered from best (rank 1) to worst."""
+    size = len(candidate_ids)
+    token_to_id = {i + 1: cid for i, cid in enumerate(candidate_ids)}
+    expected_tokens = set(token_to_id)
+    ranking_model = _ranking_model(size)
+    chain = build_chain(ranking_model)
+
+    def validate(result: BaseModel) -> str | None:
+        ranking = result.ranking  # type: ignore[attr-defined]
+        if set(ranking) != expected_tokens or len(ranking) != size:
+            return f"ranking is not a permutation of {sorted(expected_tokens)}, got {ranking}"
+        return None
+
+    try:
+        result = invoke_and_validate(
+            chain,
+            {
+                "jd_title": jd.title,
+                "jd_summary": _extract_jd_summary(jd),
+                "candidates_text": _render_evidence_for_ranking(candidate_ids, assessments),
+            },
+            ranking_model,
+            validate,
+            log_context=f"Listwise ranking for {jd.id} ({size} candidates)",
+        )
+    except GenerationError as exc:
+        logger.warning("Listwise ranking run failed for %s: %s — using input order as fallback", jd.id, exc)
+        return list(candidate_ids)
+
+    return [token_to_id[token] for token in result.ranking]  # type: ignore[attr-defined]
+
+
+def rank_one_shot(
+    jd: JobDescription,
+    assessments: dict[str, Assessment],
+    build_chain: Callable[[type[BaseModel]], Runnable],
+    n_runs: int = 3,
+    pl_prior_variance: float = 1.0,
+    rng_seed: int | None = None,
+) -> list[str]:
+    """One-shot listwise ranking × n_runs with P-L aggregation. Returns sorted candidate_ids best→worst."""
+    candidate_ids = list(assessments.keys())
+    if len(candidate_ids) <= 1:
+        return candidate_ids
+
+    rng = random.Random(rng_seed)
+    rankings: list[list[str]] = []
+    for _ in range(n_runs):
+        shuffled = candidate_ids.copy()
+        rng.shuffle(shuffled)
+        ranking = _single_ranking_run(jd, shuffled, assessments, build_chain)
+        rankings.append(ranking)
+
+    utilities = fit_utilities(rankings, candidate_ids, pl_prior_variance)
+    return [cid for cid, _ in sorted(zip(candidate_ids, utilities), key=lambda x: -x[1])]

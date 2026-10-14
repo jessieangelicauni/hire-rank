@@ -150,3 +150,59 @@ def test_filter_assessable_candidates_excludes_failed_parse():
     result = filter_assessable_candidates(candidates)
     assert len(result) == 1
     assert result[0].id == "cand-1"
+
+
+# --- Prompt 3 tests ---
+
+from candidate_ranking.scoring.llm_assessment import (
+    build_ranking_chain_factory,
+    rank_one_shot,
+)
+
+
+def _qualified_assessment(candidate_id: str, years: int = 3) -> Assessment:
+    from candidate_ranking.models import RequirementEvaluation
+    return Assessment(
+        job_description_id="jd-1", candidate_id=candidate_id,
+        generated_by_model="qwen2.5:14b", qualified=True,
+        total_relevant_years=years,
+        must_have_evaluations=[
+            RequirementEvaluation(
+                requirement="Python", verdict="MET", evidence=f"FastAPI at {candidate_id}",
+                evidence_strength="strong", recency="current", years_demonstrated=years,
+            )
+        ],
+    )
+
+
+def test_rank_one_shot_returns_all_candidate_ids():
+    jd = _jd()
+    assessments = {
+        "cand-a": _qualified_assessment("cand-a"),
+        "cand-b": _qualified_assessment("cand-b"),
+        "cand-c": _qualified_assessment("cand-c"),
+    }
+
+    call_count = [0]
+    def _build_chain(ranking_model):
+        chain = MagicMock()
+        def _invoke(payload):
+            call_count[0] += 1
+            size = len(assessments)
+            return ranking_model(ranking=list(range(1, size + 1)), overall_reasoning="ok")
+        chain.invoke.side_effect = _invoke
+        return chain
+
+    result = rank_one_shot(jd, assessments, _build_chain, n_runs=3)
+    assert len(result) == 3
+    assert set(result) == {"cand-a", "cand-b", "cand-c"}
+    assert call_count[0] == 3  # 3 independent runs
+
+
+def test_rank_one_shot_single_candidate_returns_immediately():
+    jd = _jd()
+    assessments = {"cand-a": _qualified_assessment("cand-a")}
+    build_chain = MagicMock()
+    result = rank_one_shot(jd, assessments, build_chain, n_runs=3)
+    assert result == ["cand-a"]
+    build_chain.assert_not_called()
