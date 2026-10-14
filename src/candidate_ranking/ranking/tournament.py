@@ -24,19 +24,17 @@ from candidate_ranking.ranking.plackett_luce import fit_utilities, laplace_covar
 
 logger = logging.getLogger(__name__)
 
-RANKING_PROMPT_VERSION = "strengths-weaknesses-additional_skills"
+RANKING_PROMPT_VERSION = "must-have-evaluations-achievements-trajectory"
 
 LISTWISE_RANKING_PROMPT = ChatPromptTemplate.from_messages(
     [
         (
             "system",
-            "You are an expert hiring panel member ranking a small group of candidates for a role.\n\n"
+            "You are an expert hiring panel member ranking a small group of qualified candidates for a role.\n\n"
             "Task:\n"
-            "- Read the job description and each candidate's strengths and weaknesses.\n"
-            "- Reason through each candidate in turn in the `reasoning` field.\n"
-            "- Weigh each candidate's strengths against their weaknesses.\n"
-            "- Judge how well each candidate fits the role overall.\n"
-            "- Compare the candidates against each other.\n"
+            "- Read the job description and each candidate's qualification evidence.\n"
+            "- Reason through each candidate in the `reasoning` field.\n"
+            "- Compare candidates against each other on: relevance, evidence quality, trajectory, recency, nice-to-have coverage.\n"
             "- Order the candidates from strongest to weakest overall fit.\n"
             "- Put only the candidates' numbers, in that order, in the `ranking` field.\n\n"
             "Constraints:\n"
@@ -72,20 +70,25 @@ def build_listwise_ranking_chain(llm: BaseChatModel) -> Callable[[type[BaseModel
 def _render_candidates_text(subset: tuple[str, ...], assessments: dict[str, Assessment]) -> str:
     blocks = []
     for index, candidate_id in enumerate(subset, start=1):
-        assessment = assessments[candidate_id]
-        strengths_text = (
-            "\n".join(f"    - {s}" for s in assessment.strengths) if assessment.strengths else "    (none identified)"
-        )
-        weaknesses_text = (
-            "\n".join(f"    - {w}" for w in assessment.weaknesses) if assessment.weaknesses else "    (none identified)"
-        )
-        additional_skills_text = (
-            "\n".join(f"    - {s}" for s in assessment.additional_skills)
-            if assessment.additional_skills else "    (none identified)"
-        )
+        a = assessments[candidate_id]
+        must_text = "\n".join(
+            f"    [{ev.verdict}] {ev.requirement} ({ev.evidence_strength}, {ev.years_demonstrated}yr): {ev.evidence}"
+            for ev in a.must_have_evaluations
+        ) or "    (none)"
+        met_nice = [ev for ev in a.nice_to_have_evaluations if ev.verdict in ("MET", "PARTIALLY_MET")]
+        nice_text = ", ".join(f"{ev.requirement} [{ev.verdict}]" for ev in met_nice) or "(none)"
+        ach_text = "\n".join(f"    - {ach}" for ach in a.strongest_achievements) or "    (none)"
+        traj = a.career_trajectory
+        traj_text = (
+            f"{traj.direction}, avg {traj.average_tenure_months}mo/role"
+            + (", multinational exp." if traj.has_multinational_experience else "")
+        ) if traj else "unknown"
         blocks.append(
-            f"{index}:\n  Strengths:\n{strengths_text}\n  Weaknesses:\n{weaknesses_text}"
-            f"\n  Additional skills mentioned (no further detail in CV):\n{additional_skills_text}"
+            f"{index}:\n"
+            f"  Must-have evaluations:\n{must_text}\n"
+            f"  Nice-to-have met: {nice_text}\n"
+            f"  Achievements:\n{ach_text}\n"
+            f"  Trajectory: {traj_text} | Relevant years: {a.total_relevant_years}"
         )
     return "\n\n".join(blocks)
 
