@@ -1,3 +1,4 @@
+# src/candidate_ranking/graphs/pipeline.py
 from __future__ import annotations
 
 import logging
@@ -9,13 +10,22 @@ import numpy as np
 from langchain_core.runnables import Runnable
 from langgraph.graph import END, StateGraph
 from langgraph.types import Send
+from pydantic import BaseModel
 
-from candidate_ranking.scoring.assessment import AssessmentGenerationError, JEV_MODEL_NAME, load_or_generate_assessment
-from candidate_ranking.scoring.jev_client import JevClient
 from candidate_ranking.config import RunConfig
-from candidate_ranking.scoring.jd_skills import JDSkillsGenerationError, load_or_generate_jd_skills
+from candidate_ranking.models import Assessment, Candidate, JDRequirements, JDSkills, JobDescription
 from candidate_ranking.output.formatter import write_jd_ranking
-from candidate_ranking.models import Assessment, Candidate, JDSkills, JobDescription
+from candidate_ranking.ranking.tournament import run_tournament_for_jd_repeat
+from candidate_ranking.scoring.jd_requirements import (
+    JDRequirementsGenerationError,
+    load_or_generate_jd_requirements,
+)
+from candidate_ranking.scoring.jd_skills import JDSkillsGenerationError, load_or_generate_jd_skills
+from candidate_ranking.scoring.llm_assessment import (
+    AssessmentGenerationError,
+    load_or_generate_assessment,
+    rank_one_shot,
+)
 from candidate_ranking.scoring.skills import shortlist_candidates
 
 logger = logging.getLogger(__name__)
@@ -33,6 +43,7 @@ class PipelineState(TypedDict):
     jds: list[JobDescription]
     candidates: list[Candidate]
     jd_skills: Annotated[dict[str, JDSkills], operator.or_]
+    jd_requirements: Annotated[dict[str, JDRequirements], operator.or_]
     shortlists: Annotated[dict[str, list[str]], operator.or_]
     assessment_results: Annotated[list[AssessmentResult], operator.add]
 
@@ -46,14 +57,12 @@ def assessments_by_jd(assessment_results: list[AssessmentResult]) -> dict[str, d
     return grouped
 
 
-def rank_and_format_jd(runs_dir: Path, run_id: str, jd: JobDescription, assessments: dict[str, Assessment]) -> None:
-    write_jd_ranking(runs_dir / run_id, jd, assessments)
-
-
 def build_pipeline_graph(
     cfg: RunConfig,
     jd_skills_chain: Runnable,
-    jev_client: JevClient,
+    jd_requirements_chain: Runnable,
+    qualification_chain: Runnable,
+    build_ranking_chain: Callable[[type[BaseModel]], Runnable],
     skill_index: np.ndarray,
     skill_row_map: list[tuple[str, str]],
     skill_embedder: Callable[[list[str]], np.ndarray],
@@ -63,6 +72,7 @@ def build_pipeline_graph(
     min_must_have_matches: int = 2,
 ) -> StateGraph:
     jd_skills_cache_path = cfg.cache_dir / "jd_skills.json"
+    jd_requirements_cache_path = cfg.cache_dir / "jd_requirements.json"
 
     def _noop(state: PipelineState) -> dict:
         return {}
@@ -79,45 +89,56 @@ def build_pipeline_graph(
             return {}
         return {"jd_skills": {jd.id: jd_skills}}
 
-    def fanout_shortlist(state: PipelineState) -> list[Send]:
-        return [
-            Send("build_shortlist_for_jd", {"jd": jd, "jd_skills": state["jd_skills"][jd.id]})
-            for jd in state["jds"]
-            if jd.id in state["jd_skills"]
-        ]
+    def fanout_shortlist_and_requirements(state: PipelineState) -> list[Send]:
+        sends = []
+        for jd in state["jds"]:
+            if jd.id in state["jd_skills"]:
+                sends.append(Send("build_shortlist_for_jd", {"jd": jd, "jd_skills": state["jd_skills"][jd.id]}))
+                sends.append(Send("extract_requirements_for_jd", {"jd": jd}))
+        return sends
 
     def build_shortlist_for_jd(payload: dict) -> dict:
-        jd = payload["jd"]
-        jd_skills = payload["jd_skills"]
+        jd, jd_skills = payload["jd"], payload["jd_skills"]
         candidate_ids = shortlist_candidates(
-            jd,
-            jd_skills,
-            skill_index,
-            skill_row_map,
-            skill_embedder,
-            threshold=skill_match_threshold,
-            min_matches=min_skill_matches,
+            jd, jd_skills, skill_index, skill_row_map, skill_embedder,
+            threshold=skill_match_threshold, min_matches=min_skill_matches,
             min_must_have_matches=min_must_have_matches,
         )
         return {"shortlists": {jd.id: candidate_ids}}
+
+    def extract_requirements_for_jd(payload: dict) -> dict:
+        jd = payload["jd"]
+        try:
+            jd_requirements = load_or_generate_jd_requirements(
+                jd, jd_requirements_chain, cfg.ollama_model, jd_requirements_cache_path
+            )
+        except JDRequirementsGenerationError as exc:
+            logger.warning("Skipping requirements for %s: %s", jd.id, exc)
+            return {}
+        return {"jd_requirements": {jd.id: jd_requirements}}
 
     def fanout_assessments(state: PipelineState) -> list[Send]:
         candidates_by_id = {c.id: c for c in state["candidates"]}
         return [
             Send(
                 "generate_assessment_for_pair",
-                {"jd": jd, "candidate": candidates_by_id[candidate_id], "jd_skills": state["jd_skills"].get(jd.id)},
+                {
+                    "jd": jd,
+                    "candidate": candidates_by_id[cid],
+                    "jd_requirements": state["jd_requirements"].get(jd.id),
+                },
             )
             for jd in state["jds"]
-            for candidate_id in state["shortlists"].get(jd.id, [])
+            for cid in state["shortlists"].get(jd.id, [])
         ]
 
     def generate_assessment_for_pair(payload: dict) -> dict:
-        jd = payload["jd"]
-        candidate = payload["candidate"]
-        jd_skills = payload.get("jd_skills")
+        jd, candidate = payload["jd"], payload["candidate"]
+        jd_requirements = payload.get("jd_requirements")
         try:
-            assessment = load_or_generate_assessment(jd, candidate, jev_client, JEV_MODEL_NAME, cfg.cache_dir, jd_skills=jd_skills)
+            assessment = load_or_generate_assessment(
+                jd, candidate, jd_requirements, qualification_chain, cfg.ollama_model, cfg.cache_dir
+            )
             result: AssessmentResult = {
                 "jd_id": jd.id, "candidate_id": candidate.id, "status": "ok",
                 "assessment": assessment, "error": None,
@@ -131,16 +152,46 @@ def build_pipeline_graph(
 
     def fanout_rank_and_format(state: PipelineState) -> list[Send]:
         grouped = assessments_by_jd(state["assessment_results"])
-        sends = []
-        for jd in state["jds"]:
-            jd_assessments = grouped.get(jd.id, {})
-            if not jd_assessments:
-                continue
-            sends.append(Send("rank_and_format_jd_node", {"jd": jd, "assessments": jd_assessments}))
-        return sends
+        return [
+            Send("rank_and_format_jd_node", {"jd": jd, "assessments": grouped.get(jd.id, {})})
+            for jd in state["jds"] if grouped.get(jd.id)
+        ]
 
     def rank_and_format_jd_node(payload: dict) -> dict:
-        rank_and_format_jd(cfg.runs_dir, run_id, payload["jd"], payload["assessments"])
+        jd: JobDescription = payload["jd"]
+        all_assessments: dict[str, Assessment] = payload["assessments"]
+
+        qualified = {cid: a for cid, a in all_assessments.items() if a.qualified}
+        disqualified_count = len(all_assessments) - len(qualified)
+        if disqualified_count > 0:
+            logger.info("JD %s: %d/%d candidates disqualified", jd.id, disqualified_count, len(all_assessments))
+
+        if not qualified:
+            logger.warning("No qualified candidates for JD %s — skipping ranking", jd.id)
+            write_jd_ranking(cfg.runs_dir / run_id, jd, {}, {})
+            return {}
+
+        if len(qualified) <= cfg.ranking_pool_threshold:
+            utilities_list = rank_one_shot(jd, qualified, build_ranking_chain)
+            utilities = {cid: float(len(qualified) - i) for i, cid in enumerate(utilities_list)}
+        else:
+            checkpoint_path = cfg.cache_dir / "tournament" / jd.id / "0.json"
+            result = run_tournament_for_jd_repeat(
+                jd=jd,
+                assessments=qualified,
+                repeat_index=0,
+                tournament_iterations=35,
+                tournament_subset_size=10,
+                num_subset_samples=50,
+                num_mc_draws=100,
+                pl_prior_variance=1.0,
+                build_ranking_chain=build_ranking_chain,
+                checkpoint_path=checkpoint_path,
+                rng_seed=42,
+            )
+            utilities = result.final_utilities
+
+        write_jd_ranking(cfg.runs_dir / run_id, jd, qualified, utilities)
         return {}
 
     graph = StateGraph(PipelineState)
@@ -148,7 +199,8 @@ def build_pipeline_graph(
     graph.add_node("extract_skills_for_jd", extract_skills_for_jd)
     graph.add_node("skills_barrier", _noop)
     graph.add_node("build_shortlist_for_jd", build_shortlist_for_jd)
-    graph.add_node("shortlist_barrier", _noop)
+    graph.add_node("extract_requirements_for_jd", extract_requirements_for_jd)
+    graph.add_node("shortlist_requirements_barrier", _noop)
     graph.add_node("generate_assessment_for_pair", generate_assessment_for_pair)
     graph.add_node("assessments_barrier", _noop)
     graph.add_node("rank_and_format_jd_node", rank_and_format_jd_node)
@@ -156,9 +208,14 @@ def build_pipeline_graph(
     graph.set_entry_point("start")
     graph.add_conditional_edges("start", fanout_skill_extraction, ["extract_skills_for_jd"])
     graph.add_edge("extract_skills_for_jd", "skills_barrier")
-    graph.add_conditional_edges("skills_barrier", fanout_shortlist, ["build_shortlist_for_jd"])
-    graph.add_edge("build_shortlist_for_jd", "shortlist_barrier")
-    graph.add_conditional_edges("shortlist_barrier", fanout_assessments, ["generate_assessment_for_pair"])
+    graph.add_conditional_edges(
+        "skills_barrier",
+        fanout_shortlist_and_requirements,
+        ["build_shortlist_for_jd", "extract_requirements_for_jd"],
+    )
+    graph.add_edge("build_shortlist_for_jd", "shortlist_requirements_barrier")
+    graph.add_edge("extract_requirements_for_jd", "shortlist_requirements_barrier")
+    graph.add_conditional_edges("shortlist_requirements_barrier", fanout_assessments, ["generate_assessment_for_pair"])
     graph.add_edge("generate_assessment_for_pair", "assessments_barrier")
     graph.add_conditional_edges("assessments_barrier", fanout_rank_and_format, ["rank_and_format_jd_node"])
     graph.add_edge("rank_and_format_jd_node", END)
