@@ -247,7 +247,7 @@ def main() -> None:
         print(sep)
         print(f"{'JD':<35} {'Candidates':>10}  {'τ':>6}")
         for jd_id, tau in sorted(report.per_jd.items()):
-            n = len([a for a in cached[jd_id].values() if a.qualified])
+            n = len(cached[jd_id])
             print(f"{jd_id:<35} {n:>10}  {tau:>6.3f}")
         print(sep)
         print(f"Mean τ : {report.mean_tau:.3f}")

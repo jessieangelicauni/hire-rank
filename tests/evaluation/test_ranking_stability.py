@@ -95,7 +95,7 @@ def test_run_stability_report_aggregates_correctly():
     assert report.mean_tau == pytest.approx(sum(report.per_jd.values()) / 2)
 
 
-def test_run_stability_report_raises_when_no_qualified_candidates():
+def test_run_stability_report_raises_when_fewer_than_two_candidates():
     jd = _jd()
     jd_assessments = {"jd-1": (jd, {"cand-a": _assessment("cand-a")})}
     with pytest.raises(ValueError, match="No JDs"):

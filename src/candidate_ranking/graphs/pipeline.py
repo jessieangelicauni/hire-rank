@@ -161,19 +161,14 @@ def build_pipeline_graph(
         jd: JobDescription = payload["jd"]
         all_assessments: dict[str, Assessment] = payload["assessments"]
 
-        qualified = {cid: a for cid, a in all_assessments.items() if a.qualified}
-        disqualified_count = len(all_assessments) - len(qualified)
-        if disqualified_count > 0:
-            logger.info("JD %s: %d/%d candidates disqualified", jd.id, disqualified_count, len(all_assessments))
-
-        if not qualified:
-            logger.warning("No qualified candidates for JD %s — skipping ranking", jd.id)
+        if not all_assessments:
+            logger.warning("No assessed candidates for JD %s — skipping ranking", jd.id)
             write_jd_ranking(cfg.runs_dir / run_id, jd, {}, {})
             return {}
 
         utilities = rank_active_listwise(
             jd,
-            qualified,
+            all_assessments,
             ranking_llm,
             subset_size=cfg.ranking_subset_size,
             max_iterations=cfg.ranking_max_iterations,
@@ -181,7 +176,7 @@ def build_pipeline_graph(
             pl_prior_variance=cfg.ranking_pl_prior_variance,
         )
 
-        write_jd_ranking(cfg.runs_dir / run_id, jd, qualified, utilities)
+        write_jd_ranking(cfg.runs_dir / run_id, jd, all_assessments, utilities)
         return {}
 
     graph = StateGraph(PipelineState)

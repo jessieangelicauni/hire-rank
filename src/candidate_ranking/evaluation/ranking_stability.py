@@ -58,14 +58,13 @@ def run_stability_report(
 ) -> StabilityReport:
     per_jd: dict[str, float] = {}
     for jd_id, (jd, assessments) in jd_assessments.items():
-        qualified = {cid: a for cid, a in assessments.items() if a.qualified}
-        if len(qualified) < 2:
-            logger.info("Skipping JD %s: fewer than 2 qualified candidates", jd_id)
+        if len(assessments) < 2:
+            logger.info("Skipping JD %s: fewer than 2 assessed candidates", jd_id)
             continue
-        per_jd[jd_id] = evaluate_jd_stability(jd, qualified, build_chain, window_size, step, seeds)
+        per_jd[jd_id] = evaluate_jd_stability(jd, assessments, build_chain, window_size, step, seeds)
 
     if not per_jd:
-        raise ValueError("No JDs with ≥ 2 qualified candidates found")
+        raise ValueError("No JDs with ≥ 2 assessed candidates found")
 
     min_jd = min(per_jd, key=per_jd.__getitem__)
     return StabilityReport(
