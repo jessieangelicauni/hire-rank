@@ -70,6 +70,23 @@ def test_llm_failure_does_not_crash():
     assert set(result) == set(assessments)
 
 
+def test_empty_evidence_does_not_crash_bm25_warm_start():
+    assessments = {
+        f"c{i}": Assessment(
+            job_description_id="jd-t", candidate_id=f"c{i}", generated_by_model="test",
+        )
+        for i in range(5)
+    }
+
+    def mock_rank(jd, subset_ids, asmt, llm):
+        return list(subset_ids)
+
+    with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
+        result = rank_active_listwise(_jd(), assessments, MagicMock(), subset_size=8)
+
+    assert set(result) == set(assessments)
+
+
 def test_consistent_ranking_orders_candidates():
     assessments = {f"c{i}": _assessment(f"c{i}", years=i + 1) for i in range(10)}
 

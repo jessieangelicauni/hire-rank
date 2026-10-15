@@ -54,6 +54,14 @@ def _bm25_sort(jd: JobDescription, assessments: dict[str, Assessment]) -> list[s
         parts += [f"{ev.requirement} {ev.evidence}" for ev in a.nice_to_have_evaluations if ev.verdict in ("MET", "PARTIALLY_MET")]
         parts += a.strongest_achievements
         corpus.append(" ".join(parts).lower().split())
+
+    if not any(corpus):
+        # BM25Okapi divides by its vocabulary size while fitting; every candidate's
+        # evidence tokenizing to nothing (e.g. a JD whose requirement extraction came
+        # back empty) leaves that vocabulary empty and raises ZeroDivisionError.
+        logger.warning("JD %s: no evidence text to warm-start BM25 — using arbitrary initial order", jd.id)
+        return cids
+
     scores = BM25Okapi(corpus).get_scores(jd.raw_text.lower().split())
     return [cid for cid, _ in sorted(zip(cids, scores), key=lambda x: -x[1])]
 
