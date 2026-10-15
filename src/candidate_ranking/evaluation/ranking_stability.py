@@ -4,13 +4,13 @@ import json
 import logging
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable
-
-from langchain_core.runnables import Runnable
-from pydantic import BaseModel
+from typing import TYPE_CHECKING
 
 from candidate_ranking.models import Assessment, JobDescription
-from candidate_ranking.scoring.sliding_window_ranking import rank_sliding_window
+from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise
+
+if TYPE_CHECKING:
+    from langchain_core.language_models import BaseChatModel
 
 logger = logging.getLogger(__name__)
 
@@ -39,29 +39,33 @@ def kendall_tau(
 def evaluate_jd_stability(
     jd: JobDescription,
     assessments: dict[str, Assessment],
-    build_chain: Callable[[type[BaseModel]], Runnable],
-    window_size: int = 15,
-    step: int = 7,
-    seeds: tuple[int, int] = (42, 137),
+    llm: "BaseChatModel",
+    subset_size: int = 8,
+    max_iterations: int = 40,
+    min_delta_u: float = 0.01,
+    pl_prior_variance: float = 1.0,
 ) -> float:
-    run_a = rank_sliding_window(jd, assessments, build_chain, window_size, step, rng_seed=seeds[0])
-    run_b = rank_sliding_window(jd, assessments, build_chain, window_size, step, rng_seed=seeds[1])
+    run_a = rank_active_listwise(jd, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance)
+    run_b = rank_active_listwise(jd, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance)
     return kendall_tau(run_a, run_b)
 
 
 def run_stability_report(
     jd_assessments: dict[str, tuple[JobDescription, dict[str, Assessment]]],
-    build_chain: Callable[[type[BaseModel]], Runnable],
-    window_size: int = 15,
-    step: int = 7,
-    seeds: tuple[int, int] = (42, 137),
+    llm: "BaseChatModel",
+    subset_size: int = 8,
+    max_iterations: int = 40,
+    min_delta_u: float = 0.01,
+    pl_prior_variance: float = 1.0,
 ) -> StabilityReport:
     per_jd: dict[str, float] = {}
     for jd_id, (jd, assessments) in jd_assessments.items():
         if len(assessments) < 2:
             logger.info("Skipping JD %s: fewer than 2 assessed candidates", jd_id)
             continue
-        per_jd[jd_id] = evaluate_jd_stability(jd, assessments, build_chain, window_size, step, seeds)
+        per_jd[jd_id] = evaluate_jd_stability(
+            jd, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance
+        )
 
     if not per_jd:
         raise ValueError("No JDs with ≥ 2 assessed candidates found")

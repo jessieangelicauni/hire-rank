@@ -21,8 +21,6 @@ class RunConfig:
     skill_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     ollama_num_ctx: int = 16384
     ranking_temperature: float = 0.4
-    sliding_window_size: int = 15
-    sliding_window_step: int = 7
     ranking_pl_prior_variance: float = 1.0
     ranking_subset_size: int = 8
     ranking_max_iterations: int = 40
@@ -58,8 +56,6 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_OLLAMA_NUM_CTX": ("ollama_num_ctx", int),
     "CANDIDATE_RANKING_SKILL_EMBEDDING_MODEL": ("skill_embedding_model", str),
     "CANDIDATE_RANKING_RANKING_TEMPERATURE": ("ranking_temperature", float),
-    "CANDIDATE_RANKING_SLIDING_WINDOW_SIZE": ("sliding_window_size", int),
-    "CANDIDATE_RANKING_SLIDING_WINDOW_STEP": ("sliding_window_step", int),
     "CANDIDATE_RANKING_RANKING_PL_PRIOR_VARIANCE": ("ranking_pl_prior_variance", float),
     "CANDIDATE_RANKING_SUBSET_SIZE": ("ranking_subset_size", int),
     "CANDIDATE_RANKING_MAX_ITERATIONS": ("ranking_max_iterations", int),

@@ -29,7 +29,6 @@ from candidate_ranking.scoring.llm_assessment import (
     build_qualification_chain,
     filter_assessable_candidates,
 )
-from candidate_ranking.scoring.sliding_window_ranking import build_sliding_window_chain_factory
 from candidate_ranking.evaluation.ranking_stability import (
     load_cached_assessments,
     run_stability_report,
@@ -194,10 +193,7 @@ def main() -> None:
     run_parser.add_argument("--min-skill-matches", type=int, default=5)
     run_parser.add_argument("--min-must-have-matches", type=int, default=2)
 
-    stability_parser = subparsers.add_parser("evaluate-stability")
-    stability_parser.add_argument("--window-size", type=int, default=None)
-    stability_parser.add_argument("--step", type=int, default=None)
-    stability_parser.add_argument("--seeds", type=int, nargs=2, default=[42, 137])
+    subparsers.add_parser("evaluate-stability")
 
     args = parser.parse_args()
 
@@ -212,19 +208,13 @@ def main() -> None:
 
     elif args.command == "evaluate-stability":
         import json as _json
-        import sys as _sys
         cfg = RunConfig.full(PROJECT_ROOT)
         cfg = apply_env_overrides(cfg)
-
-        window_size = args.window_size or cfg.sliding_window_size
-        step = args.step or cfg.sliding_window_step
-        seeds = tuple(args.seeds)
 
         llm_ranking = ChatOllama(
             model=cfg.ollama_model, base_url=cfg.ollama_base_url,
             temperature=cfg.ranking_temperature, num_ctx=cfg.ollama_num_ctx,
         )
-        build_chain = build_sliding_window_chain_factory(llm_ranking)
 
         jds = load_job_descriptions(cfg.jd_dir)
         jd_map = {jd.id: jd for jd in jds}
@@ -239,11 +229,15 @@ def main() -> None:
             print("No cached assessments found. Run the pipeline first.", file=sys.stderr)
             sys.exit(1)
 
-        report = run_stability_report(jd_assessments, build_chain, window_size, step, seeds)
+        report = run_stability_report(
+            jd_assessments, llm_ranking,
+            cfg.ranking_subset_size, cfg.ranking_max_iterations,
+            cfg.ranking_min_delta_u, cfg.ranking_pl_prior_variance,
+        )
 
         sep = "─" * 56
         print(f"\nRanking Stability Report")
-        print(f"window_size={window_size}  step={step}  seeds={list(seeds)}")
+        print(f"subset_size={cfg.ranking_subset_size}  max_iterations={cfg.ranking_max_iterations}")
         print(sep)
         print(f"{'JD':<35} {'Candidates':>10}  {'τ':>6}")
         for jd_id, tau in sorted(report.per_jd.items()):
@@ -259,7 +253,7 @@ def main() -> None:
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(
             _json.dumps({
-                "window_size": window_size, "step": step, "seeds": list(seeds),
+                "subset_size": cfg.ranking_subset_size, "max_iterations": cfg.ranking_max_iterations,
                 "per_jd": report.per_jd, "mean_tau": report.mean_tau,
                 "min_tau": report.min_tau, "min_tau_jd": report.min_tau_jd,
             }, indent=2),

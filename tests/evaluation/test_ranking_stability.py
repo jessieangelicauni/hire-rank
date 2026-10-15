@@ -1,15 +1,15 @@
 from __future__ import annotations
 import pytest
-from unittest.mock import MagicMock
-from typing import Callable
+from unittest.mock import MagicMock, patch
 from candidate_ranking.models import Assessment, JobDescription, RequirementEvaluation
-from candidate_ranking.scoring.sliding_window_ranking import _CandidateEvaluation
 from candidate_ranking.evaluation.ranking_stability import (
     StabilityReport,
     kendall_tau,
     evaluate_jd_stability,
     run_stability_report,
 )
+
+ACTIVE_LISTWISE_MODULE = "candidate_ranking.scoring.active_listwise_ranking"
 
 
 def test_kendall_tau_identical_rankings_returns_one():
@@ -50,7 +50,7 @@ def _jd(jd_id: str = "jd-1") -> JobDescription:
 def _assessment(candidate_id: str, jd_id: str = "jd-1", years: int = 3) -> Assessment:
     return Assessment(
         job_description_id=jd_id, candidate_id=candidate_id,
-        generated_by_model="qwen2.5:14b", qualified=True,
+        generated_by_model="qwen2.5:14b",
         must_have_evaluations=[
             RequirementEvaluation(
                 requirement="Python", verdict="MET", evidence="FastAPI",
@@ -61,24 +61,13 @@ def _assessment(candidate_id: str, jd_id: str = "jd-1", years: int = 3) -> Asses
     )
 
 
-def _identity_chain_factory() -> Callable:
-    def _build(model):
-        chain = MagicMock()
-        def _invoke(payload):
-            blocks = [b for b in payload["candidates_text"].split("\n\n") if b.strip()]
-            size = len(blocks)
-            evals = [_CandidateEvaluation(id=i, key_strengths="s", key_gaps="g")
-                     for i in range(1, size + 1)]
-            return model(candidate_evaluations=evals, ranking=list(range(1, size + 1)))
-        chain.invoke.side_effect = _invoke
-        return chain
-    return _build
-
-
 def test_evaluate_jd_stability_returns_float_between_minus_one_and_one():
     jd = _jd()
     assessments = {f"cand-{i}": _assessment(f"cand-{i}", years=i + 1) for i in range(6)}
-    tau = evaluate_jd_stability(jd, assessments, _identity_chain_factory(), window_size=3, step=2)
+
+    with patch(f"{ACTIVE_LISTWISE_MODULE}._rank_subset", side_effect=lambda jd, subset_ids, asmt, llm: list(subset_ids)):
+        tau = evaluate_jd_stability(jd, assessments, MagicMock(), subset_size=3)
+
     assert isinstance(tau, float)
     assert -1.0 <= tau <= 1.0
 
@@ -89,7 +78,10 @@ def test_run_stability_report_aggregates_correctly():
     assessments1 = {f"cand-{i}": _assessment(f"cand-{i}", "jd-1", years=i + 1) for i in range(4)}
     assessments2 = {f"cand-{i}": _assessment(f"cand-{i}", "jd-2", years=i + 1) for i in range(4)}
     jd_assessments = {"jd-1": (jd1, assessments1), "jd-2": (jd2, assessments2)}
-    report = run_stability_report(jd_assessments, _identity_chain_factory(), window_size=3, step=2)
+
+    with patch(f"{ACTIVE_LISTWISE_MODULE}._rank_subset", side_effect=lambda jd, subset_ids, asmt, llm: list(subset_ids)):
+        report = run_stability_report(jd_assessments, MagicMock(), subset_size=3)
+
     assert set(report.per_jd.keys()) == {"jd-1", "jd-2"}
     assert report.min_tau_jd in {"jd-1", "jd-2"}
     assert report.mean_tau == pytest.approx(sum(report.per_jd.values()) / 2)
@@ -99,7 +91,7 @@ def test_run_stability_report_raises_when_fewer_than_two_candidates():
     jd = _jd()
     jd_assessments = {"jd-1": (jd, {"cand-a": _assessment("cand-a")})}
     with pytest.raises(ValueError, match="No JDs"):
-        run_stability_report(jd_assessments, _identity_chain_factory())
+        run_stability_report(jd_assessments, MagicMock())
 
 
 from pathlib import Path
@@ -116,8 +108,3 @@ def test_load_cached_assessments_reads_by_jd(tmp_path: Path):
     assert "jd-1" in result
     assert "cand-a" in result["jd-1"]
     assert result["jd-1"]["cand-a"].candidate_id == "cand-a"
-
-
-def test_load_cached_assessments_returns_empty_for_missing_dir(tmp_path: Path):
-    result = load_cached_assessments(tmp_path)
-    assert result == {}

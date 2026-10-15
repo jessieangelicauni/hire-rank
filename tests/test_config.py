@@ -19,24 +19,6 @@ def test_env_overrides_apply_ranking_temperature(monkeypatch):
     assert cfg.ranking_temperature == 0.8
 
 
-def test_full_config_has_sliding_window_defaults():
-    cfg = RunConfig.full(Path("/tmp/project"))
-    assert cfg.sliding_window_size == 15
-    assert cfg.sliding_window_step == 7
-
-
-def test_env_override_sliding_window_size(monkeypatch):
-    monkeypatch.setenv("CANDIDATE_RANKING_SLIDING_WINDOW_SIZE", "20")
-    cfg = apply_env_overrides(RunConfig.full(Path("/tmp/project")))
-    assert cfg.sliding_window_size == 20
-
-
-def test_env_override_sliding_window_step(monkeypatch):
-    monkeypatch.setenv("CANDIDATE_RANKING_SLIDING_WINDOW_STEP", "3")
-    cfg = apply_env_overrides(RunConfig.full(Path("/tmp/project")))
-    assert cfg.sliding_window_step == 3
-
-
 def test_full_config_has_active_ranking_defaults():
     cfg = RunConfig.full(Path("/tmp/project"))
     assert cfg.ranking_subset_size == 8
