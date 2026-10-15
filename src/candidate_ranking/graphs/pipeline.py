@@ -3,13 +3,15 @@ from __future__ import annotations
 
 import logging
 import operator
-from typing import Annotated, Callable, Literal, TypedDict
+from typing import TYPE_CHECKING, Annotated, Callable, Literal, TypedDict
 
 import numpy as np
 from langchain_core.runnables import Runnable
 from langgraph.graph import END, StateGraph
 from langgraph.types import Send
-from pydantic import BaseModel
+
+if TYPE_CHECKING:
+    from langchain_core.language_models import BaseChatModel
 
 from candidate_ranking.config import RunConfig
 from candidate_ranking.models import Assessment, Candidate, JDRequirements, JDSkills, JobDescription
@@ -23,7 +25,7 @@ from candidate_ranking.scoring.llm_assessment import (
     AssessmentGenerationError,
     load_or_generate_assessment,
 )
-from candidate_ranking.scoring.sliding_window_ranking import rank_sliding_window_ensemble
+from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise
 from candidate_ranking.scoring.skills import shortlist_candidates
 
 logger = logging.getLogger(__name__)
@@ -60,7 +62,7 @@ def build_pipeline_graph(
     jd_skills_chain: Runnable,
     jd_requirements_chain: Runnable,
     qualification_chain: Runnable,
-    build_sliding_window_chain: Callable[[type[BaseModel]], Runnable],
+    ranking_llm: "BaseChatModel",
     skill_index: np.ndarray,
     skill_row_map: list[tuple[str, str]],
     skill_embedder: Callable[[list[str]], np.ndarray],
@@ -169,13 +171,13 @@ def build_pipeline_graph(
             write_jd_ranking(cfg.runs_dir / run_id, jd, {}, {})
             return {}
 
-        utilities = rank_sliding_window_ensemble(
+        utilities = rank_active_listwise(
             jd,
             qualified,
-            build_sliding_window_chain,
-            window_size=cfg.sliding_window_size,
-            step=cfg.sliding_window_step,
-            seeds=cfg.ranking_ensemble_seeds,
+            ranking_llm,
+            subset_size=cfg.ranking_subset_size,
+            max_iterations=cfg.ranking_max_iterations,
+            min_delta_u=cfg.ranking_min_delta_u,
             pl_prior_variance=cfg.ranking_pl_prior_variance,
         )
 

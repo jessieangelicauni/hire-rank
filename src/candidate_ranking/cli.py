@@ -96,8 +96,6 @@ def run(
     jd_skills_chain = build_jd_skills_chain(llm)
     jd_requirements_chain = build_jd_requirements_chain(llm)
     qualification_chain = build_qualification_chain(llm)
-    build_sliding_window_chain = build_sliding_window_chain_factory(llm_ranking)
-
     skill_extraction_chain = build_skill_extraction_chain(llm)
     candidates = enrich_candidates_with_skills(
         candidates, skill_extraction_chain, cfg.ollama_model,
@@ -111,7 +109,7 @@ def run(
         jd_skills_chain=jd_skills_chain,
         jd_requirements_chain=jd_requirements_chain,
         qualification_chain=qualification_chain,
-        build_sliding_window_chain=build_sliding_window_chain,
+        ranking_llm=llm_ranking,
         skill_index=skill_index,
         skill_row_map=skill_row_map,
         skill_embedder=skill_embedder,
