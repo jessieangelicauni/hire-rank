@@ -9,7 +9,12 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
 from pydantic import BaseModel, Field, create_model
 
+from candidate_ranking.generation import GenerationError, invoke_and_validate
 from candidate_ranking.models import Assessment, JobDescription
+from candidate_ranking.scoring.llm_assessment import (
+    _extract_jd_summary,
+    _render_evidence_for_ranking,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -66,3 +71,53 @@ def build_sliding_window_chain_factory(
     def _build(model: type[BaseModel]) -> Runnable:
         return SLIDING_WINDOW_RANKING_PROMPT | llm.with_structured_output(model)
     return _build
+
+
+def _initial_sort(assessments: dict[str, Assessment]) -> list[str]:
+    def _key(cid: str) -> tuple[int, int]:
+        a = assessments[cid]
+        strong_met = sum(
+            1 for ev in a.must_have_evaluations
+            if ev.verdict == "MET" and ev.evidence_strength == "strong"
+        )
+        return (-strong_met, -a.total_relevant_years)
+    return sorted(assessments, key=_key)
+
+
+def _rank_window(
+    jd: JobDescription,
+    window_ids: list[str],
+    assessments: dict[str, Assessment],
+    build_chain: Callable[[type[BaseModel]], Runnable],
+) -> list[str]:
+    size = len(window_ids)
+    token_to_id = {i + 1: cid for i, cid in enumerate(window_ids)}
+    expected_tokens = set(token_to_id)
+    model = _sliding_window_model(size)
+    chain = build_chain(model)
+
+    def validate(result: BaseModel) -> str | None:
+        ranking = result.ranking  # type: ignore[attr-defined]
+        if set(ranking) != expected_tokens or len(ranking) != size:
+            return f"ranking must be a permutation of {sorted(expected_tokens)}, got {ranking}"
+        return None
+
+    try:
+        result = invoke_and_validate(
+            chain,
+            {
+                "jd_title": jd.title,
+                "jd_summary": _extract_jd_summary(jd),
+                "candidates_text": _render_evidence_for_ranking(window_ids, assessments),
+            },
+            model,
+            validate,
+            log_context=f"Sliding window for {jd.id} (size={size})",
+        )
+    except GenerationError as exc:
+        logger.warning(
+            "Sliding window failed for %s: %s — keeping original order", jd.id, exc
+        )
+        return list(window_ids)
+
+    return [token_to_id[token] for token in result.ranking]  # type: ignore[attr-defined]
