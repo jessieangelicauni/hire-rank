@@ -60,26 +60,16 @@ def generate_jd_requirements(
     chain: Runnable,
     model_name: str,
 ) -> JDRequirements:
-    def validate(result: _JDRequirementsOutput) -> str | None:
-        if not result.must_have:
-            return "generated an empty must_have list — at least one must-have requirement expected"
-        return None
-
-    last_error: GenerationError | None = None
-    for attempt in range(2):
-        try:
-            result = invoke_and_validate(
-                chain,
-                {"title": jd.title, "description": jd.raw_text},
-                _JDRequirementsOutput,
-                validate,
-                log_context=f"JD requirements extraction for {jd.id} (attempt {attempt + 1}/2)",
-            )
-            break
-        except GenerationError as exc:
-            last_error = exc
-    else:
-        raise JDRequirementsGenerationError(str(last_error)) from last_error
+    try:
+        result = invoke_and_validate(
+            chain,
+            {"title": jd.title, "description": jd.raw_text},
+            _JDRequirementsOutput,
+            lambda _: None,
+            log_context=f"JD requirements extraction for {jd.id}",
+        )
+    except GenerationError as exc:
+        raise JDRequirementsGenerationError(str(exc)) from exc
 
     return JDRequirements(
         job_description_id=jd.id,
