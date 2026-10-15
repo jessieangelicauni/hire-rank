@@ -113,73 +113,55 @@ def build_qualification_chain(llm: BaseChatModel) -> Runnable:
     return QUALIFICATION_GATE_PROMPT | llm.with_structured_output(_QualificationOutput)
 
 
-def _to_requirement_evaluation(ev: _RequirementEvaluationOutput) -> RequirementEvaluation:
-    # LLM output casing is unreliable (e.g. the prompt's "STRONG/ADEQUATE/WEAK" evidence
-    # labels vs. the lowercase Literal here) — normalize before validating against the
-    # strict Literal types instead of crashing the whole run on a casing mismatch.
-    return RequirementEvaluation(
-        requirement=ev.requirement,
-        verdict=ev.verdict.strip().upper(),  # type: ignore[arg-type]
-        evidence=ev.evidence,
-        evidence_strength=ev.evidence_strength.strip().lower(),  # type: ignore[arg-type]
-        recency=ev.recency.strip().lower(),  # type: ignore[arg-type]
-        years_demonstrated=ev.years_demonstrated,
-    )
-
-
-_RED_FLAG_TYPE_SYNONYMS = {
-    "missing_experience": "skill_mismatch",
-    "insufficient_experience": "skill_mismatch",
-    "experience_gap": "employment_gap",
-    "career_regression": "regression",
-    "frequent_job_changes": "job_hopping",
-}
-_RED_FLAG_SEVERITY_SYNONYMS = {"low": "minor", "medium": "moderate", "med": "moderate", "high": "major"}
-_RED_FLAG_VALID_TYPES = {"employment_gap", "skill_mismatch", "regression", "job_hopping", "other"}
-_RED_FLAG_VALID_SEVERITIES = {"minor", "moderate", "major"}
-
-
-def _to_red_flag(rf: _RedFlagOutput) -> RedFlag:
-    # Same unreliable-casing problem as evidence_strength, plus the LLM sometimes invents
-    # categories/severities outside the fixed vocabulary — normalize and fall back instead
-    # of crashing the whole run on one red flag's wording.
-    raw_type = rf.type.strip().lower()
-    raw_type = _RED_FLAG_TYPE_SYNONYMS.get(raw_type, raw_type)
-    red_flag_type = raw_type if raw_type in _RED_FLAG_VALID_TYPES else "other"
-
-    raw_severity = rf.severity.strip().lower()
-    raw_severity = _RED_FLAG_SEVERITY_SYNONYMS.get(raw_severity, raw_severity)
-    severity = raw_severity if raw_severity in _RED_FLAG_VALID_SEVERITIES else "moderate"
-
-    return RedFlag(
-        type=red_flag_type,  # type: ignore[arg-type]
-        detail=rf.detail,
-        duration_months=rf.duration_months,
-        severity=severity,  # type: ignore[arg-type]
-    )
-
-
 def _output_to_assessment(
     jd: JobDescription,
     candidate: Candidate,
     model_name: str,
     output: _QualificationOutput,
 ) -> Assessment:
-    must_have_evals = [_to_requirement_evaluation(ev) for ev in output.must_have_evaluations]
-    nice_to_have_evals = [_to_requirement_evaluation(ev) for ev in output.nice_to_have_evaluations]
+    must_have_evals = [
+        RequirementEvaluation(
+            requirement=ev.requirement,
+            verdict=ev.verdict,
+            evidence=ev.evidence,
+            evidence_strength=ev.evidence_strength,
+            recency=ev.recency,
+            years_demonstrated=ev.years_demonstrated,
+        )
+        for ev in output.must_have_evaluations
+    ]
+    nice_to_have_evals = [
+        RequirementEvaluation(
+            requirement=ev.requirement,
+            verdict=ev.verdict,
+            evidence=ev.evidence,
+            evidence_strength=ev.evidence_strength,
+            recency=ev.recency,
+            years_demonstrated=ev.years_demonstrated,
+        )
+        for ev in output.nice_to_have_evaluations
+    ]
     traj = None
     if output.career_trajectory:
         t = output.career_trajectory
         traj = CareerTrajectory(
-            direction=t.direction,  # type: ignore[arg-type]
+            direction=t.direction,
             evidence=t.evidence,
-            tenure_pattern=t.tenure_pattern,  # type: ignore[arg-type]
+            tenure_pattern=t.tenure_pattern,
             average_tenure_months=t.average_tenure_months,
             most_recent_role_duration_months=t.most_recent_role_duration_months,
             has_multinational_experience=t.has_multinational_experience,
             multinational_evidence=t.multinational_evidence,
         )
-    red_flags = [_to_red_flag(rf) for rf in output.red_flags]
+    red_flags = [
+        RedFlag(
+            type=rf.type,
+            detail=rf.detail,
+            duration_months=rf.duration_months,
+            severity=rf.severity,
+        )
+        for rf in output.red_flags
+    ]
     return Assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
