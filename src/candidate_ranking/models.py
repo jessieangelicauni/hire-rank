@@ -28,29 +28,6 @@ class Candidate(BaseModel):
     skills: list[str] = Field(default_factory=list)
 
 
-class JDSkills(BaseModel):
-    job_description_id: str
-    generated_by_model: str
-    technical_skills: list[str] = Field(default_factory=list)
-    must_have_skills: list[str] = Field(default_factory=list)
-    certifications: list[str] = Field(default_factory=list)
-    seniority_requirement: str | None = None
-    seniority_min_years: float | None = Field(default=None, ge=0)
-    education_requirement: str | None = None
-
-
-class JDRequirement(BaseModel):
-    requirement: str
-    context: str
-
-
-class JDRequirements(BaseModel):
-    job_description_id: str
-    generated_by_model: str
-    must_have: list[JDRequirement] = Field(default_factory=list)
-    nice_to_have: list[JDRequirement] = Field(default_factory=list)
-
-
 class JobProfile(BaseModel):
     job_description_id: str
     generated_by_model: str

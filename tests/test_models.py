@@ -2,8 +2,7 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 from candidate_ranking.models import (
-    Assessment, CareerTrajectory, JDRequirement, JDRequirements,
-    JDSkills, JobProfile, RedFlag, RequirementEvaluation,
+    Assessment, CareerTrajectory, JobProfile, RedFlag, RequirementEvaluation,
 )
 
 def _req_eval(verdict="MET") -> RequirementEvaluation:
@@ -57,27 +56,6 @@ def test_career_trajectory_roundtrips():
 def test_red_flag_duration_optional():
     rf = RedFlag(type="employment_gap", detail="6-month gap", severity="minor")
     assert rf.duration_months is None
-
-def test_jd_requirements_lists():
-    jdr = JDRequirements(
-        job_description_id="jd-1", generated_by_model="qwen2.5:14b",
-        must_have=[JDRequirement(requirement="Python", context="Primary language")],
-        nice_to_have=[JDRequirement(requirement="Docker", context="Preferred")],
-    )
-    assert len(jdr.must_have) == 1
-    assert jdr.must_have[0].requirement == "Python"
-
-def test_jd_requirements_defaults_empty():
-    jdr = JDRequirements(job_description_id="jd-1", generated_by_model="qwen2.5:14b")
-    assert jdr.must_have == []
-    assert jdr.nice_to_have == []
-
-def test_jd_skills_unchanged():
-    jds = JDSkills(
-        job_description_id="jd-1", generated_by_model="qwen2.5:14b",
-        technical_skills=["Python"], must_have_skills=["Python"],
-    )
-    assert jds.must_have_skills == ["Python"]
 
 def test_job_profile_defaults_empty():
     jp = JobProfile(job_description_id="jd-1", generated_by_model="qwen2.5:14b")
