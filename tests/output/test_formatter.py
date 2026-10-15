@@ -2,7 +2,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from candidate_ranking.models import Assessment, JobDescription, RequirementEvaluation
-from candidate_ranking.output.formatter import format_jd_ranking, write_jd_ranking
+from candidate_ranking.output.writer import format_jd_ranking, write_jd_ranking
 
 
 def _jd() -> JobDescription:

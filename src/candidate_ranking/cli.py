@@ -22,7 +22,7 @@ from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.logging_setup import configure_logging
 from candidate_ranking.models import Assessment, Candidate, JDRequirements, JobDescription
 from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
-from candidate_ranking.output.run_output import write_run_output
+from candidate_ranking.output.writer import write_run_output
 from candidate_ranking.scoring.jd_requirements import build_jd_requirements_chain
 from candidate_ranking.scoring.jd_skills import build_jd_skills_chain
 from candidate_ranking.scoring.llm_assessment import (

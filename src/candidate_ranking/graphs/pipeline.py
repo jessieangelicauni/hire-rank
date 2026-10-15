@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 from candidate_ranking.config import RunConfig
 from candidate_ranking.models import Assessment, Candidate, JDRequirements, JDSkills, JobDescription
-from candidate_ranking.output.formatter import write_jd_ranking
+from candidate_ranking.output.writer import write_jd_ranking
 from candidate_ranking.scoring.jd_requirements import (
     JDRequirementsGenerationError,
     load_or_generate_jd_requirements,
