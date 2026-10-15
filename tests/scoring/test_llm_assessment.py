@@ -3,8 +3,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 import pytest
 from candidate_ranking.models import (
-    Assessment, Candidate, JDRequirement, JDRequirements, JobDescription,
-    RequirementEvaluation,
+    Assessment, Candidate, JobDescription, JobProfile, RequirementEvaluation,
 )
 from candidate_ranking.scoring.llm_assessment import (
     AssessmentGenerationError,
@@ -24,11 +23,10 @@ def _candidate(parse_status="ok") -> Candidate:
                      num_pages=1, char_count=30, parse_status=parse_status)
 
 
-def _jd_requirements() -> JDRequirements:
-    return JDRequirements(
+def _job_profile() -> JobProfile:
+    return JobProfile(
         job_description_id="jd-1", generated_by_model="qwen2.5:14b",
-        must_have=[JDRequirement(requirement="Python", context="Primary language")],
-        nice_to_have=[JDRequirement(requirement="Docker", context="Preferred")],
+        must_have_skills=["Python"], nice_to_have_skills=["Docker"],
     )
 
 
@@ -83,7 +81,7 @@ def _mock_chain(qualified: bool = True) -> MagicMock:
 
 
 def test_generate_assessment_returns_qualified_assessment():
-    result = generate_assessment(_jd(), _candidate(), _jd_requirements(), _mock_chain(), "qwen2.5:14b")
+    result = generate_assessment(_jd(), _candidate(), _job_profile(), _mock_chain(), "qwen2.5:14b")
     assert isinstance(result, Assessment)
     assert result.qualified is True
     assert result.must_have_evaluations[0].requirement == "Python"
@@ -91,7 +89,7 @@ def test_generate_assessment_returns_qualified_assessment():
 
 
 def test_generate_assessment_returns_disqualified_assessment():
-    result = generate_assessment(_jd(), _candidate(), _jd_requirements(), _mock_chain(False), "qwen2.5:14b")
+    result = generate_assessment(_jd(), _candidate(), _job_profile(), _mock_chain(False), "qwen2.5:14b")
     assert result.qualified is False
     assert result.disqualification_reason is not None
 
@@ -101,7 +99,7 @@ def test_generate_assessment_raises_on_chain_error():
     chain = MagicMock()
     chain.invoke.side_effect = ValueError("schema violation")
     with pytest.raises(AssessmentGenerationError):
-        generate_assessment(_jd(), _candidate(), _jd_requirements(), chain, "qwen2.5:14b")
+        generate_assessment(_jd(), _candidate(), _job_profile(), chain, "qwen2.5:14b")
 
 
 def test_generate_assessment_raises_on_unexpected_exception():
@@ -109,7 +107,7 @@ def test_generate_assessment_raises_on_unexpected_exception():
     chain = MagicMock()
     chain.invoke.side_effect = RuntimeError("connection refused")
     with pytest.raises(AssessmentGenerationError):
-        generate_assessment(_jd(), _candidate(), _jd_requirements(), chain, "qwen2.5:14b")
+        generate_assessment(_jd(), _candidate(), _job_profile(), chain, "qwen2.5:14b")
 
 
 def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
@@ -118,26 +116,26 @@ def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
         "candidate_ranking.scoring.llm_assessment.generate_assessment",
         return_value=_assessment(),
     ) as mock_gen:
-        first = load_or_generate_assessment(_jd(), _candidate(), _jd_requirements(), MagicMock(), "qwen2.5:14b", tmp_path)
-        second = load_or_generate_assessment(_jd(), _candidate(), _jd_requirements(), MagicMock(), "qwen2.5:14b", tmp_path)
+        first = load_or_generate_assessment(_jd(), _candidate(), _job_profile(), MagicMock(), "qwen2.5:14b", tmp_path)
+        second = load_or_generate_assessment(_jd(), _candidate(), _job_profile(), MagicMock(), "qwen2.5:14b", tmp_path)
     assert first == second
     assert mock_gen.call_count == 1
     assert (tmp_path / "assessments" / "jd-1" / "cand-1.json").exists()
 
 
-def test_load_or_generate_assessment_regenerates_when_requirements_change(tmp_path: Path):
-    """Changing requirements must invalidate the cache and trigger a new LLM call."""
-    reqs_v1 = _jd_requirements()
-    reqs_v2 = JDRequirements(
+def test_load_or_generate_assessment_regenerates_when_profile_changes(tmp_path: Path):
+    """Changing the job profile must invalidate the cache and trigger a new LLM call."""
+    profile_v1 = _job_profile()
+    profile_v2 = JobProfile(
         job_description_id="jd-1", generated_by_model="qwen2.5:14b",
-        must_have=[JDRequirement(requirement="Go", context="Changed")],
+        must_have_skills=["Go"],
     )
     with patch(
         "candidate_ranking.scoring.llm_assessment.generate_assessment",
         return_value=_assessment(),
     ) as mock_gen:
-        load_or_generate_assessment(_jd(), _candidate(), reqs_v1, MagicMock(), "qwen2.5:14b", tmp_path)
-        load_or_generate_assessment(_jd(), _candidate(), reqs_v2, MagicMock(), "qwen2.5:14b", tmp_path)
+        load_or_generate_assessment(_jd(), _candidate(), profile_v1, MagicMock(), "qwen2.5:14b", tmp_path)
+        load_or_generate_assessment(_jd(), _candidate(), profile_v2, MagicMock(), "qwen2.5:14b", tmp_path)
     assert mock_gen.call_count == 2
 
 

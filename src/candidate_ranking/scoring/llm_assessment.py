@@ -14,8 +14,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from candidate_ranking.utils import invoke_and_validate
 from candidate_ranking.models import (
-    Assessment, Candidate, CareerTrajectory, JDRequirements,
-    JobDescription, RedFlag, RequirementEvaluation,
+    Assessment, Candidate, CareerTrajectory, JobDescription, JobProfile, RedFlag, RequirementEvaluation,
 )
 logger = logging.getLogger(__name__)
 
@@ -181,23 +180,29 @@ def _output_to_assessment(
 def generate_assessment(
     jd: JobDescription,
     candidate: Candidate,
-    jd_requirements: JDRequirements | None,
+    profile: JobProfile | None,
     chain: Runnable,
     model_name: str,
 ) -> Assessment:
     must_have_json = (
-        json.dumps([{"requirement": r.requirement, "context": r.context} for r in jd_requirements.must_have], indent=2)
-        if jd_requirements else "[]"
+        json.dumps(
+            [{"requirement": s, "context": "Core skill required by the job description"} for s in profile.must_have_skills],
+            indent=2,
+        )
+        if profile else "[]"
     )
     nice_to_have_json = (
-        json.dumps([{"requirement": r.requirement, "context": r.context} for r in jd_requirements.nice_to_have], indent=2)
-        if jd_requirements else "[]"
+        json.dumps(
+            [{"requirement": s, "context": "Skill mentioned in the job description"} for s in profile.nice_to_have_skills],
+            indent=2,
+        )
+        if profile else "[]"
     )
 
     def validate(result: _QualificationOutput) -> str | None:
-        # Only enforce non-empty evaluations when requirements were actually provided;
-        # if jd_requirements is None the LLM received empty lists and may return no evals.
-        if jd_requirements and not result.must_have_evaluations:
+        # Only enforce non-empty evaluations when a profile was actually provided;
+        # if profile is None the LLM received empty lists and may return no evals.
+        if profile and not result.must_have_evaluations:
             return "must_have_evaluations is empty"
         return None
 
@@ -233,24 +238,24 @@ def _assessment_cache_path(cache_dir: Path, jd_id: str, candidate_id: str) -> Pa
 def _assessment_cache_key(
     jd: JobDescription,
     candidate: Candidate,
-    jd_requirements: JDRequirements | None,
+    profile: JobProfile | None,
     model_name: str,
 ) -> str:
-    reqs_repr = jd_requirements.model_dump_json() if jd_requirements else "null"
-    digest_input = f"{jd.id}||{jd.raw_text}||{candidate.id}||{candidate.raw_text}||{reqs_repr}||{model_name}"
+    profile_repr = profile.model_dump_json() if profile else "null"
+    digest_input = f"{jd.id}||{jd.raw_text}||{candidate.id}||{candidate.raw_text}||{profile_repr}||{model_name}"
     return hashlib.sha256(digest_input.encode("utf-8")).hexdigest()
 
 
 def load_or_generate_assessment(
     jd: JobDescription,
     candidate: Candidate,
-    jd_requirements: JDRequirements | None,
+    profile: JobProfile | None,
     chain: Runnable,
     model_name: str,
     cache_dir: Path,
 ) -> Assessment:
     path = _assessment_cache_path(cache_dir, jd.id, candidate.id)
-    key = _assessment_cache_key(jd, candidate, jd_requirements, model_name)
+    key = _assessment_cache_key(jd, candidate, profile, model_name)
 
     with _cache_lock:
         if path.exists():
@@ -262,7 +267,7 @@ def load_or_generate_assessment(
                 logger.warning("Discarding unreadable assessment cache %s: %s", path, exc)
 
     # LLM call happens outside the lock to avoid blocking other threads.
-    assessment = generate_assessment(jd, candidate, jd_requirements, chain, model_name)
+    assessment = generate_assessment(jd, candidate, profile, chain, model_name)
 
     with _cache_lock:
         path.parent.mkdir(parents=True, exist_ok=True)
