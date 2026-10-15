@@ -10,7 +10,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
 from pydantic import BaseModel, Field, create_model
 
-from candidate_ranking.generation import GenerationError, invoke_and_validate
+from candidate_ranking.utils import GenerationError, invoke_and_validate
 from candidate_ranking.models import Assessment, JobDescription
 from candidate_ranking.ranking.plackett_luce import fit_utilities
 from candidate_ranking.scoring.render import _extract_jd_summary, _render_evidence_for_ranking

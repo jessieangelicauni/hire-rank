@@ -14,8 +14,7 @@ from langchain_core.runnables import Runnable
 from pydantic import BaseModel, Field, ValidationError
 from pypdf import PdfReader
 
-from candidate_ranking.generation import GenerationError, invoke_and_validate
-from candidate_ranking.json_cache import load_json_cache, save_json_cache
+from candidate_ranking.utils import GenerationError, invoke_and_validate, load_json_cache, save_json_cache
 from candidate_ranking.models import Candidate, slugify
 
 logger = logging.getLogger(__name__)

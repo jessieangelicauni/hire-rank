@@ -11,7 +11,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
 from pydantic import BaseModel, Field, ValidationError
 
-from candidate_ranking.generation import invoke_and_validate
+from candidate_ranking.utils import invoke_and_validate
 from candidate_ranking.models import (
     Assessment, Candidate, CareerTrajectory, JDRequirements,
     JobDescription, RedFlag, RequirementEvaluation,
