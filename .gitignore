@@ -1,5 +1,3 @@
-.claude/
-.superpowers/
 .venv/
 __pycache__/
 *.pyc
