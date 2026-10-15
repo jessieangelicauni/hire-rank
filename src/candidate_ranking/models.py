@@ -51,6 +51,16 @@ class JDRequirements(BaseModel):
     nice_to_have: list[JDRequirement] = Field(default_factory=list)
 
 
+class JobProfile(BaseModel):
+    job_description_id: str
+    generated_by_model: str
+    must_have_skills: list[str] = Field(default_factory=list)
+    nice_to_have_skills: list[str] = Field(default_factory=list)
+    education_requirement: str | None = None
+    seniority_requirement: str | None = None
+    other_requirements: list[str] = Field(default_factory=list)
+
+
 class RequirementEvaluation(BaseModel):
     requirement: str
     verdict: Literal["MET", "PARTIALLY_MET", "NOT_MET"]

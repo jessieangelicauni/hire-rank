@@ -3,7 +3,7 @@ import pytest
 from pydantic import ValidationError
 from candidate_ranking.models import (
     Assessment, CareerTrajectory, JDRequirement, JDRequirements,
-    JDSkills, RedFlag, RequirementEvaluation,
+    JDSkills, JobProfile, RedFlag, RequirementEvaluation,
 )
 
 def _req_eval(verdict="MET") -> RequirementEvaluation:
@@ -78,3 +78,24 @@ def test_jd_skills_unchanged():
         technical_skills=["Python"], must_have_skills=["Python"],
     )
     assert jds.must_have_skills == ["Python"]
+
+def test_job_profile_defaults_empty():
+    jp = JobProfile(job_description_id="jd-1", generated_by_model="qwen2.5:14b")
+    assert jp.must_have_skills == []
+    assert jp.nice_to_have_skills == []
+    assert jp.education_requirement is None
+    assert jp.seniority_requirement is None
+    assert jp.other_requirements == []
+
+def test_job_profile_fields_roundtrip():
+    jp = JobProfile(
+        job_description_id="jd-1", generated_by_model="qwen2.5:14b",
+        must_have_skills=["Python"], nice_to_have_skills=["Docker"],
+        education_requirement="Bachelor's degree", seniority_requirement="5+ years",
+        other_requirements=["AWS Certified Solutions Architect"],
+    )
+    assert jp.must_have_skills == ["Python"]
+    assert jp.nice_to_have_skills == ["Docker"]
+    assert jp.education_requirement == "Bachelor's degree"
+    assert jp.seniority_requirement == "5+ years"
+    assert jp.other_requirements == ["AWS Certified Solutions Architect"]
