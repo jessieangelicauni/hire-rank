@@ -30,6 +30,10 @@ from candidate_ranking.scoring.llm_assessment import (
     filter_assessable_candidates,
 )
 from candidate_ranking.scoring.sliding_window_ranking import build_sliding_window_chain_factory
+from candidate_ranking.evaluation.ranking_stability import (
+    load_cached_assessments,
+    run_stability_report,
+)
 from candidate_ranking.scoring.skills import build_candidate_skill_index, build_skill_embedder
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -192,6 +196,12 @@ def main() -> None:
     run_parser.add_argument("--skill-match-threshold", type=float, default=0.8)
     run_parser.add_argument("--min-skill-matches", type=int, default=5)
     run_parser.add_argument("--min-must-have-matches", type=int, default=2)
+
+    stability_parser = subparsers.add_parser("evaluate-stability")
+    stability_parser.add_argument("--window-size", type=int, default=None)
+    stability_parser.add_argument("--step", type=int, default=None)
+    stability_parser.add_argument("--seeds", type=int, nargs=2, default=[42, 137])
+
     args = parser.parse_args()
 
     if args.command == "run":
@@ -202,6 +212,63 @@ def main() -> None:
             min_must_have_matches=args.min_must_have_matches,
         )
         print(f"Run complete: {run_dir / 'summary.json'}")
+
+    elif args.command == "evaluate-stability":
+        import json as _json
+        import sys as _sys
+        cfg = RunConfig.full(PROJECT_ROOT)
+        cfg = apply_env_overrides(cfg)
+
+        window_size = args.window_size or cfg.sliding_window_size
+        step = args.step or cfg.sliding_window_step
+        seeds = tuple(args.seeds)
+
+        llm_ranking = ChatOllama(
+            model=cfg.ollama_model, base_url=cfg.ollama_base_url,
+            temperature=cfg.ranking_temperature, num_ctx=cfg.ollama_num_ctx,
+        )
+        build_chain = build_sliding_window_chain_factory(llm_ranking)
+
+        jds = load_job_descriptions(cfg.jd_dir)
+        jd_map = {jd.id: jd for jd in jds}
+        cached = load_cached_assessments(cfg.cache_dir)
+
+        jd_assessments = {
+            jd_id: (jd_map[jd_id], assessments)
+            for jd_id, assessments in cached.items()
+            if jd_id in jd_map
+        }
+        if not jd_assessments:
+            print("No cached assessments found. Run the pipeline first.", file=sys.stderr)
+            sys.exit(1)
+
+        report = run_stability_report(jd_assessments, build_chain, window_size, step, seeds)
+
+        sep = "─" * 56
+        print(f"\nRanking Stability Report")
+        print(f"window_size={window_size}  step={step}  seeds={list(seeds)}")
+        print(sep)
+        print(f"{'JD':<35} {'Candidates':>10}  {'τ':>6}")
+        for jd_id, tau in sorted(report.per_jd.items()):
+            n = len([a for a in cached[jd_id].values() if a.qualified])
+            print(f"{jd_id:<35} {n:>10}  {tau:>6.3f}")
+        print(sep)
+        print(f"Mean τ : {report.mean_tau:.3f}")
+        print(f"Min  τ : {report.min_tau:.3f}  ({report.min_tau_jd})")
+        print(sep)
+        print("Interpretation: τ ≥ 0.90 = stable, 0.75–0.90 = moderate, < 0.75 = unstable\n")
+
+        report_path = cfg.cache_dir / "stability_report.json"
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(
+            _json.dumps({
+                "window_size": window_size, "step": step, "seeds": list(seeds),
+                "per_jd": report.per_jd, "mean_tau": report.mean_tau,
+                "min_tau": report.min_tau, "min_tau_jd": report.min_tau_jd,
+            }, indent=2),
+            encoding="utf-8",
+        )
+        print(f"Saved to {report_path}")
 
 
 if __name__ == "__main__":
