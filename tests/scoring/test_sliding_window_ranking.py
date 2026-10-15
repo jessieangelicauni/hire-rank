@@ -42,6 +42,7 @@ def test_build_sliding_window_chain_factory_builds_chain():
     model = _sliding_window_model(3)
     chain = factory(model)
     assert chain is not None
+    llm.with_structured_output.assert_called_once_with(model)
 
 
 def test_sliding_window_prompt_has_required_input_variables():
