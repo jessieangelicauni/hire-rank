@@ -23,6 +23,8 @@ class RunConfig:
     ollama_num_ctx: int = 8192
     ranking_temperature: float = 0.4
     ranking_pool_threshold: int = 20
+    sliding_window_size: int = 10
+    sliding_window_step: int = 5
 
     @classmethod
     def full(cls, project_root: Path) -> "RunConfig":
@@ -56,6 +58,8 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_SKILL_EMBEDDING_MODEL": ("skill_embedding_model", str),
     "CANDIDATE_RANKING_RANKING_TEMPERATURE": ("ranking_temperature", float),
     "CANDIDATE_RANKING_RANKING_POOL_THRESHOLD": ("ranking_pool_threshold", int),
+    "CANDIDATE_RANKING_SLIDING_WINDOW_SIZE": ("sliding_window_size", int),
+    "CANDIDATE_RANKING_SLIDING_WINDOW_STEP": ("sliding_window_step", int),
 }
 
 ENV_OVERRIDE_VARS: tuple[str, ...] = tuple(_ENV_OVERRIDES)
