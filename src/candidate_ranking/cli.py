@@ -27,9 +27,9 @@ from candidate_ranking.scoring.jd_requirements import build_jd_requirements_chai
 from candidate_ranking.scoring.jd_skills import build_jd_skills_chain
 from candidate_ranking.scoring.llm_assessment import (
     build_qualification_chain,
-    build_ranking_chain_factory,
     filter_assessable_candidates,
 )
+from candidate_ranking.scoring.sliding_window_ranking import build_sliding_window_chain_factory
 from candidate_ranking.scoring.skills import build_candidate_skill_index, build_skill_embedder
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -92,7 +92,7 @@ def run(
     jd_skills_chain = build_jd_skills_chain(llm)
     jd_requirements_chain = build_jd_requirements_chain(llm)
     qualification_chain = build_qualification_chain(llm)
-    build_ranking_chain = build_ranking_chain_factory(llm_ranking)
+    build_sliding_window_chain = build_sliding_window_chain_factory(llm_ranking)
 
     skill_extraction_chain = build_skill_extraction_chain(llm)
     candidates = enrich_candidates_with_skills(
@@ -107,7 +107,7 @@ def run(
         jd_skills_chain=jd_skills_chain,
         jd_requirements_chain=jd_requirements_chain,
         qualification_chain=qualification_chain,
-        build_ranking_chain=build_ranking_chain,
+        build_sliding_window_chain=build_sliding_window_chain,
         skill_index=skill_index,
         skill_row_map=skill_row_map,
         skill_embedder=skill_embedder,
