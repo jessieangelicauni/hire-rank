@@ -78,23 +78,42 @@ def _assessment(candidate_id: str, strong_met: int = 1, years: int = 3) -> Asses
     )
 
 
-def test_initial_sort_orders_by_strong_met_count():
-    assessments = {
-        "cand-a": _assessment("cand-a", strong_met=0, years=5),
-        "cand-b": _assessment("cand-b", strong_met=2, years=1),
-        "cand-c": _assessment("cand-c", strong_met=1, years=3),
-    }
-    result = _initial_sort(assessments)
-    assert result == ["cand-b", "cand-c", "cand-a"]
+def _assessment_with_evidence(candidate_id: str, evidence: str) -> Assessment:
+    return Assessment(
+        job_description_id="jd-1", candidate_id=candidate_id,
+        generated_by_model="qwen2.5:14b", qualified=True,
+        must_have_evaluations=[
+            RequirementEvaluation(
+                requirement="Backend", verdict="MET", evidence=evidence,
+                evidence_strength="strong", recency="current", years_demonstrated=3,
+            )
+        ],
+        total_relevant_years=3,
+    )
 
 
-def test_initial_sort_breaks_ties_by_years():
+def test_initial_sort_ranks_relevant_candidate_higher():
+    jd = JobDescription(
+        id="jd-1", title="Python Backend Engineer",
+        raw_text="Python FastAPI PostgreSQL backend engineer required.",
+        source_path="jd.pdf",
+    )
+    # Need ≥3 documents so BM25 IDF assigns positive scores to unique terms
     assessments = {
-        "cand-a": _assessment("cand-a", strong_met=1, years=2),
-        "cand-b": _assessment("cand-b", strong_met=1, years=5),
+        "cand-python": _assessment_with_evidence("cand-python", "Python FastAPI PostgreSQL"),
+        "cand-java": _assessment_with_evidence("cand-java", "Java Spring Boot MySQL"),
+        "cand-php": _assessment_with_evidence("cand-php", "PHP Laravel Redis"),
     }
-    result = _initial_sort(assessments)
-    assert result[0] == "cand-b"
+    result = _initial_sort(jd, assessments)
+    assert result[0] == "cand-python"
+
+
+def test_initial_sort_returns_all_candidates():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}") for i in range(5)}
+    result = _initial_sort(jd, assessments)
+    assert set(result) == set(assessments.keys())
+    assert len(result) == 5
 
 
 def _rank_window_chain(ordering: list[int]) -> Callable:
@@ -185,16 +204,20 @@ def test_rank_sliding_window_single_candidate_no_chain_call():
 
 
 def test_rank_sliding_window_utilities_reflect_initial_sort():
-    jd = _jd()
+    jd = JobDescription(
+        id="jd-1", title="Python Backend",
+        raw_text="Python FastAPI PostgreSQL Celery Redis backend engineer.",
+        source_path="jd.pdf",
+    )
+    # cand-top has unique keyword overlap with JD → BM25 ranks it first
     assessments = {
-        "cand-a": _assessment("cand-a", strong_met=0, years=1),
-        "cand-b": _assessment("cand-b", strong_met=2, years=5),
-        "cand-c": _assessment("cand-c", strong_met=1, years=3),
+        "cand-top": _assessment_with_evidence("cand-top", "Python FastAPI PostgreSQL Celery Redis"),
+        "cand-mid": _assessment_with_evidence("cand-mid", "JavaScript Node.js MongoDB"),
+        "cand-low": _assessment_with_evidence("cand-low", "Cobol FORTRAN Assembly"),
     }
-    # identity chain preserves order → initial sort determines final order
-    # initial sort: cand-b (2 strong) > cand-c (1 strong) > cand-a (0 strong)
     result = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2)
-    assert result["cand-b"] > result["cand-c"] > result["cand-a"]
+    assert result["cand-top"] > result["cand-mid"]
+    assert result["cand-top"] > result["cand-low"]
 
 
 def test_rank_sliding_window_rng_seed_same_seed_reproducible():

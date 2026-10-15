@@ -74,15 +74,28 @@ def build_sliding_window_chain_factory(
     return _build
 
 
-def _initial_sort(assessments: dict[str, Assessment]) -> list[str]:
-    def _key(cid: str) -> tuple[int, int]:
-        a = assessments[cid]
-        strong_met = sum(
-            1 for ev in a.must_have_evaluations
-            if ev.verdict == "MET" and ev.evidence_strength == "strong"
-        )
-        return (-strong_met, -a.total_relevant_years)
-    return sorted(assessments, key=_key)
+def _candidate_bm25_text(assessment: Assessment) -> str:
+    parts = [
+        f"{ev.requirement} {ev.evidence}"
+        for ev in assessment.must_have_evaluations
+    ]
+    parts += [
+        f"{ev.requirement} {ev.evidence}"
+        for ev in assessment.nice_to_have_evaluations
+        if ev.verdict in ("MET", "PARTIALLY_MET")
+    ]
+    parts += assessment.strongest_achievements
+    return " ".join(parts)
+
+
+def _initial_sort(jd: JobDescription, assessments: dict[str, Assessment]) -> list[str]:
+    from rank_bm25 import BM25Okapi
+
+    cids = list(assessments)
+    corpus = [_candidate_bm25_text(assessments[cid]).lower().split() for cid in cids]
+    query = jd.raw_text.lower().split()
+    scores = BM25Okapi(corpus).get_scores(query)
+    return [cid for cid, _ in sorted(zip(cids, scores), key=lambda x: -x[1])]
 
 
 def _rank_window(
@@ -133,7 +146,7 @@ def rank_sliding_window(
     rng_seed: int | None = None,
 ) -> dict[str, float]:
     """2-pass sliding window LLM ranking. Returns utility per candidate_id (higher = better)."""
-    ordered = _initial_sort(assessments)
+    ordered = _initial_sort(jd, assessments)
     if rng_seed is not None:
         random.Random(rng_seed).shuffle(ordered)
     n = len(ordered)
