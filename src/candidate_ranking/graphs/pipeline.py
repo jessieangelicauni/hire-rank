@@ -23,7 +23,7 @@ from candidate_ranking.scoring.llm_assessment import (
     AssessmentGenerationError,
     load_or_generate_assessment,
 )
-from candidate_ranking.scoring.sliding_window_ranking import rank_sliding_window
+from candidate_ranking.scoring.sliding_window_ranking import rank_sliding_window_ensemble
 from candidate_ranking.scoring.skills import shortlist_candidates
 
 logger = logging.getLogger(__name__)
@@ -169,12 +169,14 @@ def build_pipeline_graph(
             write_jd_ranking(cfg.runs_dir / run_id, jd, {}, {})
             return {}
 
-        utilities = rank_sliding_window(
+        utilities = rank_sliding_window_ensemble(
             jd,
             qualified,
             build_sliding_window_chain,
             window_size=cfg.sliding_window_size,
             step=cfg.sliding_window_step,
+            seeds=cfg.ranking_ensemble_seeds,
+            pl_prior_variance=cfg.ranking_pl_prior_variance,
         )
 
         write_jd_ranking(cfg.runs_dir / run_id, jd, qualified, utilities)
