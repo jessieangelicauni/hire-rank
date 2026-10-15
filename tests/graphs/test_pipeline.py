@@ -10,7 +10,7 @@ from candidate_ranking.graphs.pipeline import (
     assessments_by_jd,
     build_pipeline_graph,
 )
-from candidate_ranking.models import Assessment, JDRequirements, JobDescription, RequirementEvaluation
+from candidate_ranking.models import Assessment, JobDescription, RequirementEvaluation
 
 
 def _qualified_assessment(jd_id: str, candidate_id: str) -> Assessment:
@@ -36,8 +36,8 @@ def _failed_result(jd_id: str, candidate_id: str) -> dict:
             "assessment": None, "error": "boom"}
 
 
-def test_pipeline_state_has_jd_requirements_key():
-    assert "jd_requirements" in PipelineState.__annotations__
+def test_pipeline_state_has_job_profiles_key():
+    assert "job_profiles" in PipelineState.__annotations__
 
 
 def test_pipeline_state_has_no_jev_fields():
@@ -52,12 +52,11 @@ def test_assessments_by_jd_groups_ok_and_skips_failed():
     assert grouped["jd-1"]["a"].qualified is True
 
 
-def test_build_pipeline_graph_has_requirements_and_no_jev_nodes(tmp_path: Path):
+def test_build_pipeline_graph_has_profile_node_and_no_jev_nodes(tmp_path: Path):
     cfg = RunConfig.full(tmp_path)
     graph = build_pipeline_graph(
         cfg=cfg,
-        jd_skills_chain=MagicMock(),
-        jd_requirements_chain=MagicMock(),
+        job_profile_chain=MagicMock(),
         qualification_chain=MagicMock(),
         ranking_llm=MagicMock(),
         skill_index=np.zeros((1, 10)),
@@ -66,7 +65,9 @@ def test_build_pipeline_graph_has_requirements_and_no_jev_nodes(tmp_path: Path):
         run_id="test-run",
     )
     node_names = set(graph.nodes)
-    assert "extract_requirements_for_jd" in node_names
+    assert "extract_job_profile_for_jd" in node_names
     assert "generate_assessment_for_pair" in node_names
     assert "rank_and_format_jd_node" in node_names
+    assert "extract_skills_for_jd" not in node_names
+    assert "extract_requirements_for_jd" not in node_names
     assert not any("jev" in n.lower() for n in node_names)
