@@ -6,7 +6,7 @@ from typing import Callable
 
 import numpy as np
 
-from candidate_ranking.models import Candidate, JDSkills, JobDescription
+from candidate_ranking.models import Candidate, JobDescription, JobProfile
 
 logger = logging.getLogger(__name__)
 
@@ -108,18 +108,19 @@ def build_candidate_skill_index(
 
 
 def match_candidate_skills(
-    jd_skills: JDSkills,
+    profile: JobProfile,
     index: np.ndarray,
     row_map: list[tuple[str, str]],
     embedder: Callable[[list[str]], np.ndarray],
     threshold: float = 0.8,
 ) -> dict[str, set[str]]:
-    if not jd_skills.technical_skills:
+    all_skills = profile.must_have_skills + profile.nice_to_have_skills
+    if not all_skills:
         return {}
 
     deduplicated_skills: list[str] = []
     seen: set[str] = set()
-    for skill in jd_skills.technical_skills:
+    for skill in all_skills:
         normalized = skill.strip().lower()
         if normalized not in seen:
             seen.add(normalized)
@@ -138,7 +139,7 @@ def match_candidate_skills(
 
 def shortlist_candidates(
     jd: JobDescription,
-    jd_skills: JDSkills,
+    profile: JobProfile,
     index: np.ndarray,
     row_map: list[tuple[str, str]],
     embedder: Callable[[list[str]], np.ndarray],
@@ -146,16 +147,17 @@ def shortlist_candidates(
     min_matches: int = 2,
     min_must_have_matches: int = 2,
 ) -> list[str]:
-    if not jd_skills.technical_skills:
+    all_skills = profile.must_have_skills + profile.nice_to_have_skills
+    if not all_skills:
         logger.warning("JD %s has no extracted technical skills; shortlist is empty", jd.id)
         return []
 
-    matched = match_candidate_skills(jd_skills, index, row_map, embedder, threshold)
+    matched = match_candidate_skills(profile, index, row_map, embedder, threshold)
 
-    deduplicated_count = len({s.strip().lower() for s in jd_skills.technical_skills})
+    deduplicated_count = len({s.strip().lower() for s in all_skills})
     required = min(min_matches, deduplicated_count)
 
-    must_have_normalized = {s.strip().lower() for s in jd_skills.must_have_skills}
+    must_have_normalized = {s.strip().lower() for s in profile.must_have_skills}
     required_must_have = min(min_must_have_matches, len(must_have_normalized))
 
     def must_have_match_count(skills: set[str]) -> int:
