@@ -25,6 +25,8 @@ class RunConfig:
     ranking_pool_threshold: int = 20
     sliding_window_size: int = 15
     sliding_window_step: int = 7
+    ranking_ensemble_seeds: tuple[int, ...] = (42, 137, 271)
+    ranking_pl_prior_variance: float = 1.0
 
     @classmethod
     def full(cls, project_root: Path) -> "RunConfig":
@@ -41,6 +43,10 @@ class RunConfig:
             ollama_num_parallel=4,
             skill_embedding_model="sentence-transformers/all-MiniLM-L6-v2",
         )
+
+
+def _parse_seeds(s: str) -> tuple[int, ...]:
+    return tuple(int(x.strip()) for x in s.split(",") if x.strip())
 
 
 _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
@@ -60,6 +66,8 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_RANKING_POOL_THRESHOLD": ("ranking_pool_threshold", int),
     "CANDIDATE_RANKING_SLIDING_WINDOW_SIZE": ("sliding_window_size", int),
     "CANDIDATE_RANKING_SLIDING_WINDOW_STEP": ("sliding_window_step", int),
+    "CANDIDATE_RANKING_ENSEMBLE_SEEDS": ("ranking_ensemble_seeds", _parse_seeds),
+    "CANDIDATE_RANKING_RANKING_PL_PRIOR_VARIANCE": ("ranking_pl_prior_variance", float),
 }
 
 ENV_OVERRIDE_VARS: tuple[str, ...] = tuple(_ENV_OVERRIDES)

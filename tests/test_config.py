@@ -41,3 +41,21 @@ def test_env_override_sliding_window_step(monkeypatch):
     monkeypatch.setenv("CANDIDATE_RANKING_SLIDING_WINDOW_STEP", "3")
     cfg = apply_env_overrides(RunConfig.full(Path("/tmp/project")))
     assert cfg.sliding_window_step == 3
+
+
+def test_full_config_has_ensemble_defaults():
+    cfg = RunConfig.full(Path("/tmp/project"))
+    assert cfg.ranking_ensemble_seeds == (42, 137, 271)
+    assert cfg.ranking_pl_prior_variance == 1.0
+
+
+def test_env_override_ensemble_seeds(monkeypatch):
+    monkeypatch.setenv("CANDIDATE_RANKING_ENSEMBLE_SEEDS", "1,2,3")
+    cfg = apply_env_overrides(RunConfig.full(Path("/tmp/project")))
+    assert cfg.ranking_ensemble_seeds == (1, 2, 3)
+
+
+def test_env_override_pl_prior_variance(monkeypatch):
+    monkeypatch.setenv("CANDIDATE_RANKING_RANKING_PL_PRIOR_VARIANCE", "2.0")
+    cfg = apply_env_overrides(RunConfig.full(Path("/tmp/project")))
+    assert cfg.ranking_pl_prior_variance == 2.0
