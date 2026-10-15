@@ -18,9 +18,8 @@ class RunConfig:
     ollama_model: str
     ollama_base_url: str
     ollama_num_parallel: int
-    faithfulness_model: str | None = None
     skill_embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
-    ollama_num_ctx: int = 8192
+    ollama_num_ctx: int = 16384
     ranking_temperature: float = 0.4
     sliding_window_size: int = 15
     sliding_window_step: int = 7
@@ -58,7 +57,6 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_MODEL": ("ollama_model", str),
     "CANDIDATE_RANKING_OLLAMA_BASE_URL": ("ollama_base_url", str),
     "CANDIDATE_RANKING_OLLAMA_NUM_PARALLEL": ("ollama_num_parallel", int),
-    "CANDIDATE_RANKING_FAITHFULNESS_MODEL": ("faithfulness_model", str),
     "CANDIDATE_RANKING_OLLAMA_NUM_CTX": ("ollama_num_ctx", int),
     "CANDIDATE_RANKING_SKILL_EMBEDDING_MODEL": ("skill_embedding_model", str),
     "CANDIDATE_RANKING_RANKING_TEMPERATURE": ("ranking_temperature", float),

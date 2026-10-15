@@ -26,8 +26,8 @@ def invoke_and_validate(
 ) -> T:
     try:
         result = chain.invoke(payload)
-    except ValueError as exc:
-        logger.warning("%s failed schema validation: %s", log_context, exc)
+    except Exception as exc:  # noqa: BLE001 — translate ALL LLM/network/parse errors to domain error
+        logger.warning("%s failed: %s", log_context, exc)
         raise GenerationError(f"{log_context} failed: {exc}") from exc
 
     if not isinstance(result, expected_type):

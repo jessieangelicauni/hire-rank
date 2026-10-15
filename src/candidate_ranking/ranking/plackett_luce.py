@@ -47,6 +47,11 @@ def fit_utilities(rankings: list[list[str]], item_ids: list[str], prior_variance
         jac=_negative_log_posterior_gradient,
         method="L-BFGS-B",
     )
+    if not result.success:
+        import logging
+        logging.getLogger(__name__).warning(
+            "Plackett-Luce optimization did not fully converge: %s", result.message
+        )
     return result.x
 
 
