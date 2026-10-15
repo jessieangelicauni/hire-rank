@@ -168,7 +168,7 @@ def rank_sliding_window_ensemble(
     build_chain: Callable[[type[BaseModel]], Runnable],
     window_size: int = 15,
     step: int = 7,
-    seeds: tuple[int, ...] = (42, 137, 271),
+    seeds: tuple[int, ...] = (42,),
     pl_prior_variance: float = 1.0,
 ) -> dict[str, float]:
     """K-run ensemble with Plackett-Luce aggregation. Higher utility = better fit."""

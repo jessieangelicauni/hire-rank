@@ -23,7 +23,7 @@ class RunConfig:
     ranking_temperature: float = 0.4
     sliding_window_size: int = 15
     sliding_window_step: int = 7
-    ranking_ensemble_seeds: tuple[int, ...] = (42, 137, 271)
+    ranking_ensemble_seeds: tuple[int, ...] = (42,)
     ranking_pl_prior_variance: float = 1.0
 
     @classmethod

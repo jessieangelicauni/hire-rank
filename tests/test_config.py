@@ -39,7 +39,7 @@ def test_env_override_sliding_window_step(monkeypatch):
 
 def test_full_config_has_ensemble_defaults():
     cfg = RunConfig.full(Path("/tmp/project"))
-    assert cfg.ranking_ensemble_seeds == (42, 137, 271)
+    assert cfg.ranking_ensemble_seeds == (42,)
     assert cfg.ranking_pl_prior_variance == 1.0
 
 
