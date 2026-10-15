@@ -164,7 +164,6 @@ def run(
         "min_skill_matches": min_skill_matches,
         "min_must_have_matches": min_must_have_matches,
         "ranking_temperature": cfg.ranking_temperature,
-        "ranking_pool_threshold": cfg.ranking_pool_threshold,
         "shortlist_sizes": {jd_id: len(cids) for jd_id, cids in final_state["shortlists"].items()},
         "jd_ids": [jd.id for jd in jds],
         "candidate_ids": [c.id for c in candidates],

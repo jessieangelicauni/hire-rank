@@ -8,7 +8,6 @@ from pathlib import Path
 from langchain_ollama import ChatOllama
 
 from candidate_ranking.config import RunConfig
-from candidate_ranking.evaluation.evaluation import load_manifest
 from candidate_ranking.ingestion.cv import build_name_extraction_chain, load_candidates, load_or_extract_candidate_name
 from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.models import JobDescription
@@ -193,7 +192,7 @@ def export_console_web_data(
         )
         return None
 
-    manifest = load_manifest(run_dir)
+    manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
 
     jds_by_id = {jd.id: jd for jd in load_job_descriptions(cfg.jd_dir)}
     run_jd_ids = sorted(p.name for p in run_dir.iterdir() if p.is_dir() and (p / "assessments.json").is_file())

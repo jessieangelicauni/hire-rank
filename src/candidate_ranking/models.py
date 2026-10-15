@@ -92,34 +92,3 @@ class Assessment(BaseModel):
     disqualification_reason: str | None = None
 
 
-class TournamentIterationRecord(BaseModel):
-    iteration: int = Field(ge=0)
-    subset_candidate_ids: list[str] = Field(min_length=1)
-    ranking: list[str] = Field(min_length=1)
-    delta_u: float
-
-
-class TournamentResult(BaseModel):
-    job_description_id: str = Field(min_length=1)
-    repeat_index: int = Field(ge=0)
-    candidate_ids: list[str]
-    final_utilities: dict[str, float]
-    final_utility_variance: dict[str, float] = Field(default_factory=dict)
-    iteration_history: list[TournamentIterationRecord]
-    status: Literal["ok", "failed"]
-    stop_reason: Literal["budget_exhausted", "no_unseen_subset"] | None = None
-
-
-class ConvergencePoint(BaseModel):
-    iteration: int = Field(ge=0)
-    kendall_tau: float | None = Field(default=None, ge=-1.0, le=1.0)
-    delta_u: float
-
-
-class JDEvaluation(BaseModel):
-    job_description_id: str = Field(min_length=1)
-    convergence_trace: list[ConvergencePoint] = Field(default_factory=list)
-    mean_kendall_tau: float | None = Field(default=None, ge=-1.0, le=1.0)
-    mean_abs_delta_u: float | None = None
-    kendall_tau_std: float | None = Field(default=None, ge=0.0)
-    abs_delta_u_std: float | None = Field(default=None, ge=0.0)
