@@ -138,7 +138,7 @@ def build_pipeline_graph(
         grouped = assessments_by_jd(state["assessment_results"])
         return [
             Send("rank_and_format_jd_node", {"jd": jd, "assessments": grouped.get(jd.id, {})})
-            for jd in state["jds"] if grouped.get(jd.id)
+            for jd in state["jds"]
         ]
 
     def rank_and_format_jd_node(payload: dict) -> dict:

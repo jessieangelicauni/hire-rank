@@ -7,6 +7,7 @@ from candidate_ranking.models import JobDescription, JobProfile
 from candidate_ranking.scoring.job_profile import (
     JobProfileGenerationError,
     _JobProfileOutput,
+    _cache_key,
     generate_job_profile,
     load_or_generate_job_profile,
 )
@@ -72,12 +73,16 @@ def test_load_or_generate_regenerates_on_model_change(tmp_path: Path):
     assert chain.invoke.call_count == 2
 
 
-def test_load_or_generate_discards_corrupt_cache(tmp_path: Path):
+def test_load_or_generate_discards_corrupt_cache(tmp_path: Path, caplog):
     chain = _mock_chain()
     cache_path = tmp_path / "job_profile.json"
+    jd = _jd()
+    real_key = _cache_key(jd, "qwen2.5:14b")
     cache_path.write_text(
-        json.dumps({"jd-1": {"cache_key": "wrong-key", "job_profile": {"bad": "data"}}}), encoding="utf-8"
+        json.dumps({"jd-1": {"cache_key": real_key, "job_profile": {"bad": "data"}}}), encoding="utf-8"
     )
-    result = load_or_generate_job_profile(_jd(), chain, "qwen2.5:14b", cache_path)
+    with caplog.at_level("WARNING"):
+        result = load_or_generate_job_profile(jd, chain, "qwen2.5:14b", cache_path)
     assert isinstance(result, JobProfile)
     assert chain.invoke.call_count == 1
+    assert "Discarding invalid cached job profile" in caplog.text

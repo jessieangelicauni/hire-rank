@@ -271,6 +271,21 @@ prompt change already does today. The two old cache files are simply
 left behind on disk (not read, not deleted by this change) — stale but
 harmless.
 
+A LangGraph checkpoint (`checkpoints.db`) from a run interrupted before
+this change cannot be resumed after it — the pending `Send` payloads
+and `PipelineState` keys it holds (`jd_skills`/`jd_requirements`, old
+payload shapes) no longer match this code, and resuming surfaces as an
+opaque `KeyError` rather than a clear error. Start interrupted
+pre-merge runs over with a fresh `--run-id` (or delete
+`runs/_cache/checkpoints.db`) rather than resuming them after this
+change.
+
+Separately, every cached `Assessment` also invalidates on the first
+run after this change: `_assessment_cache_key` hashes the whole
+`JobProfile`, whose shape changed, so the full JD×candidate
+qualification-gate pass — the dominant LLM cost in this pipeline —
+reruns once, not just the cheaper per-JD profile extraction.
+
 ## Error Handling
 
 - One `JobProfileGenerationError` (structured-output validation

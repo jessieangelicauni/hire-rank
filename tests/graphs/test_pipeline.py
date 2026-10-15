@@ -1,16 +1,15 @@
 from __future__ import annotations
-import json
 from pathlib import Path
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 import numpy as np
-import pytest
 from candidate_ranking.config import RunConfig
 from candidate_ranking.graphs.pipeline import (
     PipelineState,
     assessments_by_jd,
     build_pipeline_graph,
 )
-from candidate_ranking.models import Assessment, JobDescription, RequirementEvaluation
+from candidate_ranking.models import Assessment, Candidate, JobDescription, JobProfile, RequirementEvaluation
+from candidate_ranking.scoring.job_profile import JobProfileGenerationError
 
 
 def _qualified_assessment(jd_id: str, candidate_id: str) -> Assessment:
@@ -71,3 +70,63 @@ def test_build_pipeline_graph_has_profile_node_and_no_jev_nodes(tmp_path: Path):
     assert "extract_skills_for_jd" not in node_names
     assert "extract_requirements_for_jd" not in node_names
     assert not any("jev" in n.lower() for n in node_names)
+
+
+def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_path: Path):
+    cfg = RunConfig.full(tmp_path)
+    jd_ok = JobDescription(id="jd-ok", title="Engineer", raw_text="Python", source_path="a.pdf")
+    jd_fail = JobDescription(id="jd-fail", title="Other", raw_text="...", source_path="b.pdf")
+    candidate = Candidate(
+        id="cand-1", source_path="cv.pdf", raw_text="...", num_pages=1, char_count=10, parse_status="ok",
+    )
+
+    def fake_load_or_generate_job_profile(jd, chain, model_name, cache_path):
+        if jd.id == "jd-fail":
+            raise JobProfileGenerationError("boom")
+        return JobProfile(job_description_id=jd.id, generated_by_model=model_name, must_have_skills=["Python"])
+
+    def fake_shortlist_candidates(jd, profile, index, row_map, embedder, **kwargs):
+        return ["cand-1"] if jd.id == "jd-ok" else []
+
+    def fake_load_or_generate_assessment(jd, candidate_, profile, chain, model_name, cache_dir):
+        return Assessment(
+            job_description_id=jd.id, candidate_id=candidate_.id,
+            generated_by_model=model_name,
+            must_have_evaluations=[
+                RequirementEvaluation(requirement="Python", verdict="MET", evidence="x",
+                                      evidence_strength="strong", recency="current", years_demonstrated=1)
+            ],
+        )
+
+    with patch(
+        "candidate_ranking.graphs.pipeline.load_or_generate_job_profile",
+        side_effect=fake_load_or_generate_job_profile,
+    ), patch(
+        "candidate_ranking.graphs.pipeline.shortlist_candidates", side_effect=fake_shortlist_candidates
+    ), patch(
+        "candidate_ranking.graphs.pipeline.load_or_generate_assessment",
+        side_effect=fake_load_or_generate_assessment,
+    ), patch(
+        "candidate_ranking.graphs.pipeline.rank_active_listwise", return_value={"cand-1": 1.0}
+    ), patch(
+        "candidate_ranking.graphs.pipeline.write_jd_ranking"
+    ) as mock_write:
+        graph = build_pipeline_graph(
+            cfg=cfg,
+            job_profile_chain=MagicMock(),
+            qualification_chain=MagicMock(),
+            ranking_llm=MagicMock(),
+            skill_index=np.zeros((1, 10)),
+            skill_row_map=[("jd-ok", "cand-1")],
+            skill_embedder=MagicMock(return_value=np.zeros((1, 10))),
+            run_id="test-run",
+        )
+        compiled = graph.compile()
+        compiled.invoke({
+            "jds": [jd_ok, jd_fail], "candidates": [candidate],
+            "job_profiles": {}, "shortlists": {}, "assessment_results": [],
+        })
+
+    written_jd_ids = {call.args[1].id for call in mock_write.call_args_list}
+    assert "jd-fail" in written_jd_ids
+    assert "jd-ok" in written_jd_ids

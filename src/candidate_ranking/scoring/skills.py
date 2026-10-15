@@ -149,7 +149,7 @@ def shortlist_candidates(
 ) -> list[str]:
     all_skills = profile.must_have_skills + profile.nice_to_have_skills
     if not all_skills:
-        logger.warning("JD %s has no extracted technical skills; shortlist is empty", jd.id)
+        logger.warning("JD %s has no extracted skills; shortlist is empty", jd.id)
         return []
 
     matched = match_candidate_skills(profile, index, row_map, embedder, threshold)
