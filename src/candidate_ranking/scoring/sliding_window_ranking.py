@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+import random
 from typing import Callable
 
 from langchain_core.language_models import BaseChatModel
@@ -121,3 +122,30 @@ def _rank_window(
         return list(window_ids)
 
     return [token_to_id[token] for token in result.ranking]  # type: ignore[attr-defined]
+
+
+def rank_sliding_window(
+    jd: JobDescription,
+    assessments: dict[str, Assessment],
+    build_chain: Callable[[type[BaseModel]], Runnable],
+    window_size: int = 15,
+    step: int = 7,
+    rng_seed: int | None = None,
+) -> dict[str, float]:
+    """2-pass sliding window LLM ranking. Returns utility per candidate_id (higher = better)."""
+    ordered = _initial_sort(assessments)
+    if rng_seed is not None:
+        random.Random(rng_seed).shuffle(ordered)
+    n = len(ordered)
+    if n <= 1:
+        return {cid: 1.0 for cid in ordered}
+
+    effective_window = min(window_size, n)
+    forward_starts = list(range(0, n - effective_window + 1, step)) or [0]
+
+    for pass_starts in (forward_starts, list(reversed(forward_starts))):
+        for start in pass_starts:
+            end = min(start + effective_window, n)
+            ordered[start:end] = _rank_window(jd, ordered[start:end], assessments, build_chain)
+
+    return {cid: float(n - i) for i, cid in enumerate(ordered)}

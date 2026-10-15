@@ -1,5 +1,6 @@
 # tests/scoring/test_sliding_window_ranking.py
 from __future__ import annotations
+import random
 from typing import Callable
 from unittest.mock import MagicMock
 import pytest
@@ -12,6 +13,7 @@ from candidate_ranking.scoring.sliding_window_ranking import (
     build_sliding_window_chain_factory,
     _initial_sort,
     _rank_window,
+    rank_sliding_window,
 )
 
 
@@ -145,3 +147,67 @@ def test_rank_window_falls_back_on_generation_error():
 
     result = _rank_window(_jd(), window_ids, assessments, _build)
     assert result == window_ids
+
+
+def _identity_chain_factory() -> Callable:
+    """Chain factory that always returns candidates in input order (no reranking)."""
+    def _build(model):
+        chain = MagicMock()
+        def _invoke(payload):
+            blocks = [b for b in payload["candidates_text"].split("\n\n") if b.strip()]
+            size = len(blocks)
+            evals = [
+                _CandidateEvaluation(id=i, key_strengths="s", key_gaps="g")
+                for i in range(1, size + 1)
+            ]
+            return model(candidate_evaluations=evals, ranking=list(range(1, size + 1)))
+        chain.invoke.side_effect = _invoke
+        return chain
+    return _build
+
+
+def test_rank_sliding_window_returns_dict_with_all_candidates():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}") for i in range(5)}
+    result = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2)
+    assert isinstance(result, dict)
+    assert set(result.keys()) == set(assessments.keys())
+    assert all(isinstance(v, float) for v in result.values())
+
+
+def test_rank_sliding_window_single_candidate_no_chain_call():
+    jd = _jd()
+    assessments = {"cand-a": _assessment("cand-a")}
+    build_chain = MagicMock()
+    result = rank_sliding_window(jd, assessments, build_chain, window_size=3, step=2)
+    assert result == {"cand-a": 1.0}
+    build_chain.assert_not_called()
+
+
+def test_rank_sliding_window_utilities_reflect_initial_sort():
+    jd = _jd()
+    assessments = {
+        "cand-a": _assessment("cand-a", strong_met=0, years=1),
+        "cand-b": _assessment("cand-b", strong_met=2, years=5),
+        "cand-c": _assessment("cand-c", strong_met=1, years=3),
+    }
+    # identity chain preserves order → initial sort determines final order
+    # initial sort: cand-b (2 strong) > cand-c (1 strong) > cand-a (0 strong)
+    result = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2)
+    assert result["cand-b"] > result["cand-c"] > result["cand-a"]
+
+
+def test_rank_sliding_window_rng_seed_same_seed_reproducible():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}", strong_met=1, years=i + 1) for i in range(5)}
+    result_a = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2, rng_seed=42)
+    result_b = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2, rng_seed=42)
+    assert result_a == result_b
+
+
+def test_rank_sliding_window_rng_seed_none_unchanged():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}", strong_met=1, years=i + 1) for i in range(5)}
+    result_default = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2)
+    result_none = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2, rng_seed=None)
+    assert result_default == result_none
