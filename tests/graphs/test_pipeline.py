@@ -59,7 +59,7 @@ def test_build_pipeline_graph_has_requirements_and_no_jev_nodes(tmp_path: Path):
         jd_skills_chain=MagicMock(),
         jd_requirements_chain=MagicMock(),
         qualification_chain=MagicMock(),
-        build_ranking_chain=MagicMock(),
+        build_sliding_window_chain=MagicMock(),
         skill_index=np.zeros((1, 10)),
         skill_row_map=[("jd-1", "cand-1")],
         skill_embedder=MagicMock(return_value=np.zeros((1, 10))),

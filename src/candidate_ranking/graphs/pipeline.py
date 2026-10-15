@@ -14,7 +14,6 @@ from pydantic import BaseModel
 from candidate_ranking.config import RunConfig
 from candidate_ranking.models import Assessment, Candidate, JDRequirements, JDSkills, JobDescription
 from candidate_ranking.output.formatter import write_jd_ranking
-from candidate_ranking.ranking.tournament import run_tournament_for_jd_repeat
 from candidate_ranking.scoring.jd_requirements import (
     JDRequirementsGenerationError,
     load_or_generate_jd_requirements,
@@ -23,8 +22,8 @@ from candidate_ranking.scoring.jd_skills import JDSkillsGenerationError, load_or
 from candidate_ranking.scoring.llm_assessment import (
     AssessmentGenerationError,
     load_or_generate_assessment,
-    rank_one_shot,
 )
+from candidate_ranking.scoring.sliding_window_ranking import rank_sliding_window
 from candidate_ranking.scoring.skills import shortlist_candidates
 
 logger = logging.getLogger(__name__)
@@ -61,7 +60,7 @@ def build_pipeline_graph(
     jd_skills_chain: Runnable,
     jd_requirements_chain: Runnable,
     qualification_chain: Runnable,
-    build_ranking_chain: Callable[[type[BaseModel]], Runnable],
+    build_sliding_window_chain: Callable[[type[BaseModel]], Runnable],
     skill_index: np.ndarray,
     skill_row_map: list[tuple[str, str]],
     skill_embedder: Callable[[list[str]], np.ndarray],
@@ -170,25 +169,13 @@ def build_pipeline_graph(
             write_jd_ranking(cfg.runs_dir / run_id, jd, {}, {})
             return {}
 
-        if len(qualified) <= cfg.ranking_pool_threshold:
-            utilities_list = rank_one_shot(jd, qualified, build_ranking_chain)
-            utilities = {cid: float(len(qualified) - i) for i, cid in enumerate(utilities_list)}
-        else:
-            checkpoint_path = cfg.cache_dir / "tournament" / jd.id / "0.json"
-            result = run_tournament_for_jd_repeat(
-                jd=jd,
-                assessments=qualified,
-                repeat_index=0,
-                tournament_iterations=35,
-                tournament_subset_size=10,
-                num_subset_samples=50,
-                num_mc_draws=100,
-                pl_prior_variance=1.0,
-                build_ranking_chain=build_ranking_chain,
-                checkpoint_path=checkpoint_path,
-                rng_seed=42,
-            )
-            utilities = result.final_utilities
+        utilities = rank_sliding_window(
+            jd,
+            qualified,
+            build_sliding_window_chain,
+            window_size=cfg.sliding_window_size,
+            step=cfg.sliding_window_step,
+        )
 
         write_jd_ranking(cfg.runs_dir / run_id, jd, qualified, utilities)
         return {}
