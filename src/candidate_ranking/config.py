@@ -45,7 +45,6 @@ class RunConfig:
         )
 
 
-
 _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_JD_DIR": ("jd_dir", Path),
     "CANDIDATE_RANKING_CV_DIR": ("cv_dir", Path),
