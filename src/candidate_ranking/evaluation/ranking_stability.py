@@ -74,3 +74,22 @@ def run_stability_report(
         min_tau=per_jd[min_jd],
         min_tau_jd=min_jd,
     )
+
+
+def load_cached_assessments(cache_dir: Path) -> dict[str, dict[str, Assessment]]:
+    assessments_dir = cache_dir / "assessments"
+    if not assessments_dir.exists():
+        return {}
+    result: dict[str, dict[str, Assessment]] = {}
+    for jd_dir in assessments_dir.iterdir():
+        if not jd_dir.is_dir():
+            continue
+        for candidate_file in jd_dir.glob("*.json"):
+            try:
+                assessment = Assessment.model_validate_json(
+                    candidate_file.read_text(encoding="utf-8")
+                )
+                result.setdefault(jd_dir.name, {})[assessment.candidate_id] = assessment
+            except Exception as exc:
+                logger.warning("Skipping %s: %s", candidate_file, exc)
+    return result

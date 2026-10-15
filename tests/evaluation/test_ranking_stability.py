@@ -100,3 +100,24 @@ def test_run_stability_report_raises_when_no_qualified_candidates():
     jd_assessments = {"jd-1": (jd, {"cand-a": _assessment("cand-a")})}
     with pytest.raises(ValueError, match="No JDs"):
         run_stability_report(jd_assessments, _identity_chain_factory())
+
+
+from pathlib import Path
+from candidate_ranking.evaluation.ranking_stability import load_cached_assessments
+
+
+def test_load_cached_assessments_reads_by_jd(tmp_path: Path):
+    assessments_dir = tmp_path / "assessments"
+    jd_dir = assessments_dir / "jd-1"
+    jd_dir.mkdir(parents=True)
+    a = _assessment("cand-a")
+    (jd_dir / "cand-a.json").write_text(a.model_dump_json(), encoding="utf-8")
+    result = load_cached_assessments(tmp_path)
+    assert "jd-1" in result
+    assert "cand-a" in result["jd-1"]
+    assert result["jd-1"]["cand-a"].candidate_id == "cand-a"
+
+
+def test_load_cached_assessments_returns_empty_for_missing_dir(tmp_path: Path):
+    result = load_cached_assessments(tmp_path)
+    assert result == {}
