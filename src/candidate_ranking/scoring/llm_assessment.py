@@ -6,6 +6,7 @@ import logging
 import threading
 import uuid
 from pathlib import Path
+from typing import Literal
 from langchain_core.language_models import BaseChatModel
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import Runnable
@@ -49,6 +50,9 @@ QUALIFICATION_GATE_PROMPT = ChatPromptTemplate.from_messages(
             "  Compute total_relevant_years by summing durations of roles where the candidate used\n"
             "  skills relevant to this JD. Use CV dates directly.\n"
             "  years_demonstrated per requirement = years that skill appears in active use.\n\n"
+            "RED_FLAG RULE:\n"
+            "  type must be exactly one of: EMPLOYMENT_GAP, SKILL_MISMATCH, REGRESSION, JOB_HOPPING, OTHER.\n"
+            "  severity must be exactly one of: MINOR, MODERATE, MAJOR.\n\n"
             "Evaluate every MUST_HAVE requirement first. If candidate qualifies, also evaluate\n"
             "NICE_TO_HAVE requirements and fill all remaining fields.",
         ),
@@ -65,17 +69,17 @@ QUALIFICATION_GATE_PROMPT = ChatPromptTemplate.from_messages(
 
 class _RequirementEvaluationOutput(BaseModel):
     requirement: str
-    verdict: str  # MET | PARTIALLY_MET | NOT_MET
+    verdict: Literal["MET", "PARTIALLY_MET", "NOT_MET"]
     evidence: str = Field(min_length=1)
-    evidence_strength: str  # strong | adequate | weak
-    recency: str = "unknown"  # current | recent | dated | unknown
+    evidence_strength: Literal["strong", "adequate", "weak"]
+    recency: Literal["current", "recent", "dated", "unknown"] = "unknown"
     years_demonstrated: int = Field(ge=0, default=0)
 
 
 class _CareerTrajectoryOutput(BaseModel):
-    direction: str  # ascending | lateral | descending | unclear
+    direction: Literal["ascending", "lateral", "descending", "unclear"]
     evidence: str
-    tenure_pattern: str  # stable | variable | concerning
+    tenure_pattern: Literal["stable", "variable", "concerning"]
     average_tenure_months: int = Field(ge=0, default=0)
     most_recent_role_duration_months: int = Field(ge=0, default=0)
     has_multinational_experience: bool
@@ -83,10 +87,10 @@ class _CareerTrajectoryOutput(BaseModel):
 
 
 class _RedFlagOutput(BaseModel):
-    type: str  # employment_gap | skill_mismatch | regression | job_hopping
+    type: Literal["employment_gap", "skill_mismatch", "regression", "job_hopping", "other"]
     detail: str
     duration_months: int | None = None
-    severity: str  # minor | moderate | major
+    severity: Literal["minor", "moderate", "major"]
 
 
 class _QualificationOutput(BaseModel):
@@ -109,34 +113,60 @@ def build_qualification_chain(llm: BaseChatModel) -> Runnable:
     return QUALIFICATION_GATE_PROMPT | llm.with_structured_output(_QualificationOutput)
 
 
+def _to_requirement_evaluation(ev: _RequirementEvaluationOutput) -> RequirementEvaluation:
+    # LLM output casing is unreliable (e.g. the prompt's "STRONG/ADEQUATE/WEAK" evidence
+    # labels vs. the lowercase Literal here) — normalize before validating against the
+    # strict Literal types instead of crashing the whole run on a casing mismatch.
+    return RequirementEvaluation(
+        requirement=ev.requirement,
+        verdict=ev.verdict.strip().upper(),  # type: ignore[arg-type]
+        evidence=ev.evidence,
+        evidence_strength=ev.evidence_strength.strip().lower(),  # type: ignore[arg-type]
+        recency=ev.recency.strip().lower(),  # type: ignore[arg-type]
+        years_demonstrated=ev.years_demonstrated,
+    )
+
+
+_RED_FLAG_TYPE_SYNONYMS = {
+    "missing_experience": "skill_mismatch",
+    "insufficient_experience": "skill_mismatch",
+    "experience_gap": "employment_gap",
+    "career_regression": "regression",
+    "frequent_job_changes": "job_hopping",
+}
+_RED_FLAG_SEVERITY_SYNONYMS = {"low": "minor", "medium": "moderate", "med": "moderate", "high": "major"}
+_RED_FLAG_VALID_TYPES = {"employment_gap", "skill_mismatch", "regression", "job_hopping", "other"}
+_RED_FLAG_VALID_SEVERITIES = {"minor", "moderate", "major"}
+
+
+def _to_red_flag(rf: _RedFlagOutput) -> RedFlag:
+    # Same unreliable-casing problem as evidence_strength, plus the LLM sometimes invents
+    # categories/severities outside the fixed vocabulary — normalize and fall back instead
+    # of crashing the whole run on one red flag's wording.
+    raw_type = rf.type.strip().lower()
+    raw_type = _RED_FLAG_TYPE_SYNONYMS.get(raw_type, raw_type)
+    red_flag_type = raw_type if raw_type in _RED_FLAG_VALID_TYPES else "other"
+
+    raw_severity = rf.severity.strip().lower()
+    raw_severity = _RED_FLAG_SEVERITY_SYNONYMS.get(raw_severity, raw_severity)
+    severity = raw_severity if raw_severity in _RED_FLAG_VALID_SEVERITIES else "moderate"
+
+    return RedFlag(
+        type=red_flag_type,  # type: ignore[arg-type]
+        detail=rf.detail,
+        duration_months=rf.duration_months,
+        severity=severity,  # type: ignore[arg-type]
+    )
+
+
 def _output_to_assessment(
     jd: JobDescription,
     candidate: Candidate,
     model_name: str,
     output: _QualificationOutput,
 ) -> Assessment:
-    must_have_evals = [
-        RequirementEvaluation(
-            requirement=ev.requirement,
-            verdict=ev.verdict,  # type: ignore[arg-type]
-            evidence=ev.evidence,
-            evidence_strength=ev.evidence_strength,  # type: ignore[arg-type]
-            recency=ev.recency,  # type: ignore[arg-type]
-            years_demonstrated=ev.years_demonstrated,
-        )
-        for ev in output.must_have_evaluations
-    ]
-    nice_to_have_evals = [
-        RequirementEvaluation(
-            requirement=ev.requirement,
-            verdict=ev.verdict,  # type: ignore[arg-type]
-            evidence=ev.evidence,
-            evidence_strength=ev.evidence_strength,  # type: ignore[arg-type]
-            recency=ev.recency,  # type: ignore[arg-type]
-            years_demonstrated=ev.years_demonstrated,
-        )
-        for ev in output.nice_to_have_evaluations
-    ]
+    must_have_evals = [_to_requirement_evaluation(ev) for ev in output.must_have_evaluations]
+    nice_to_have_evals = [_to_requirement_evaluation(ev) for ev in output.nice_to_have_evaluations]
     traj = None
     if output.career_trajectory:
         t = output.career_trajectory
@@ -149,15 +179,7 @@ def _output_to_assessment(
             has_multinational_experience=t.has_multinational_experience,
             multinational_evidence=t.multinational_evidence,
         )
-    red_flags = [
-        RedFlag(
-            type=rf.type,  # type: ignore[arg-type]
-            detail=rf.detail,
-            duration_months=rf.duration_months,
-            severity=rf.severity,  # type: ignore[arg-type]
-        )
-        for rf in output.red_flags
-    ]
+    red_flags = [_to_red_flag(rf) for rf in output.red_flags]
     return Assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,

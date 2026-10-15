@@ -71,7 +71,7 @@ class CareerTrajectory(BaseModel):
 
 
 class RedFlag(BaseModel):
-    type: Literal["employment_gap", "skill_mismatch", "regression", "job_hopping"]
+    type: Literal["employment_gap", "skill_mismatch", "regression", "job_hopping", "other"]
     detail: str
     duration_months: int | None = None
     severity: Literal["minor", "moderate", "major"]
