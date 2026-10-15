@@ -176,6 +176,10 @@ def rank_sliding_window_ensemble(
 ) -> dict[str, float]:
     """K-run ensemble with Plackett-Luce aggregation. Higher utility = better fit."""
     item_ids = list(assessments)
+    if not seeds:
+        raise ValueError("seeds must be non-empty")
+    if pl_prior_variance <= 0.0:
+        raise ValueError(f"pl_prior_variance must be positive, got {pl_prior_variance}")
     if len(item_ids) <= 1:
         return {cid: 1.0 for cid in item_ids}
 

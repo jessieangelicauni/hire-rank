@@ -273,3 +273,17 @@ def test_ensemble_deterministic_with_same_seeds():
     result_a = rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), window_size=3, step=2, seeds=(42, 137))
     result_b = rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), window_size=3, step=2, seeds=(42, 137))
     assert result_a == result_b
+
+
+def test_ensemble_raises_on_empty_seeds():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}") for i in range(3)}
+    with pytest.raises(ValueError, match="seeds must be non-empty"):
+        rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), seeds=())
+
+
+def test_ensemble_raises_on_zero_prior_variance():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}") for i in range(3)}
+    with pytest.raises(ValueError, match="pl_prior_variance must be positive"):
+        rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), pl_prior_variance=0.0)
