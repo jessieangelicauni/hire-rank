@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field, create_model
 
 from candidate_ranking.generation import GenerationError, invoke_and_validate
 from candidate_ranking.models import Assessment, JobDescription
+from candidate_ranking.ranking.plackett_luce import fit_utilities
 from candidate_ranking.scoring.llm_assessment import (
     _extract_jd_summary,
     _render_evidence_for_ranking,
@@ -162,3 +163,27 @@ def rank_sliding_window(
             ordered[start:end] = _rank_window(jd, ordered[start:end], assessments, build_chain)
 
     return {cid: float(n - i) for i, cid in enumerate(ordered)}
+
+
+def rank_sliding_window_ensemble(
+    jd: JobDescription,
+    assessments: dict[str, Assessment],
+    build_chain: Callable[[type[BaseModel]], Runnable],
+    window_size: int = 15,
+    step: int = 7,
+    seeds: tuple[int, ...] = (42, 137, 271),
+    pl_prior_variance: float = 1.0,
+) -> dict[str, float]:
+    """K-run ensemble with Plackett-Luce aggregation. Higher utility = better fit."""
+    item_ids = list(assessments)
+    if len(item_ids) <= 1:
+        return {cid: 1.0 for cid in item_ids}
+
+    rankings: list[list[str]] = []
+    for seed in seeds:
+        utilities = rank_sliding_window(jd, assessments, build_chain, window_size, step, rng_seed=seed)
+        ordering = sorted(item_ids, key=utilities.__getitem__, reverse=True)
+        rankings.append(ordering)
+
+    pl_utilities = fit_utilities(rankings, item_ids, pl_prior_variance)
+    return {cid: float(pl_utilities[i]) for i, cid in enumerate(item_ids)}

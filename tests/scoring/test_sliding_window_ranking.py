@@ -14,6 +14,7 @@ from candidate_ranking.scoring.sliding_window_ranking import (
     _initial_sort,
     _rank_window,
     rank_sliding_window,
+    rank_sliding_window_ensemble,
 )
 
 
@@ -234,3 +235,41 @@ def test_rank_sliding_window_rng_seed_none_unchanged():
     result_default = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2)
     result_none = rank_sliding_window(jd, assessments, _identity_chain_factory(), window_size=3, step=2, rng_seed=None)
     assert result_default == result_none
+
+
+def test_ensemble_returns_dict_with_all_candidates():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}") for i in range(5)}
+    result = rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), window_size=3, step=2)
+    assert isinstance(result, dict)
+    assert set(result.keys()) == set(assessments.keys())
+    assert all(isinstance(v, float) for v in result.values())
+
+
+def test_ensemble_single_candidate_returns_without_chain_call():
+    jd = _jd()
+    assessments = {"cand-a": _assessment("cand-a")}
+    build_chain = MagicMock()
+    result = rank_sliding_window_ensemble(jd, assessments, build_chain)
+    assert result == {"cand-a": 1.0}
+    build_chain.assert_not_called()
+
+
+def test_ensemble_single_seed_ordering_matches_single_run():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}", strong_met=1, years=i + 1) for i in range(5)}
+    chain_factory = _identity_chain_factory()
+    single_utils = rank_sliding_window(jd, assessments, chain_factory, window_size=3, step=2, rng_seed=42)
+    ensemble_utils = rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), window_size=3, step=2, seeds=(42,))
+    item_ids = list(assessments)
+    single_order = sorted(item_ids, key=single_utils.__getitem__, reverse=True)
+    ensemble_order = sorted(item_ids, key=ensemble_utils.__getitem__, reverse=True)
+    assert single_order == ensemble_order
+
+
+def test_ensemble_deterministic_with_same_seeds():
+    jd = _jd()
+    assessments = {f"cand-{i}": _assessment(f"cand-{i}", strong_met=1, years=i + 1) for i in range(5)}
+    result_a = rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), window_size=3, step=2, seeds=(42, 137))
+    result_b = rank_sliding_window_ensemble(jd, assessments, _identity_chain_factory(), window_size=3, step=2, seeds=(42, 137))
+    assert result_a == result_b
