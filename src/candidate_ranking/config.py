@@ -23,8 +23,10 @@ class RunConfig:
     ranking_temperature: float = 0.4
     sliding_window_size: int = 15
     sliding_window_step: int = 7
-    ranking_ensemble_seeds: tuple[int, ...] = (42,)
     ranking_pl_prior_variance: float = 1.0
+    ranking_subset_size: int = 8
+    ranking_max_iterations: int = 40
+    ranking_min_delta_u: float = 0.01
 
     @classmethod
     def full(cls, project_root: Path) -> "RunConfig":
@@ -43,9 +45,6 @@ class RunConfig:
         )
 
 
-def _parse_seeds(s: str) -> tuple[int, ...]:
-    return tuple(int(x.strip()) for x in s.split(",") if x.strip())
-
 
 _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_JD_DIR": ("jd_dir", Path),
@@ -62,8 +61,10 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_RANKING_TEMPERATURE": ("ranking_temperature", float),
     "CANDIDATE_RANKING_SLIDING_WINDOW_SIZE": ("sliding_window_size", int),
     "CANDIDATE_RANKING_SLIDING_WINDOW_STEP": ("sliding_window_step", int),
-    "CANDIDATE_RANKING_ENSEMBLE_SEEDS": ("ranking_ensemble_seeds", _parse_seeds),
     "CANDIDATE_RANKING_RANKING_PL_PRIOR_VARIANCE": ("ranking_pl_prior_variance", float),
+    "CANDIDATE_RANKING_SUBSET_SIZE": ("ranking_subset_size", int),
+    "CANDIDATE_RANKING_MAX_ITERATIONS": ("ranking_max_iterations", int),
+    "CANDIDATE_RANKING_MIN_DELTA_U": ("ranking_min_delta_u", float),
 }
 
 ENV_OVERRIDE_VARS: tuple[str, ...] = tuple(_ENV_OVERRIDES)
