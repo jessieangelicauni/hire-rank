@@ -27,8 +27,8 @@ def test_env_overrides_apply_ranking_pool_threshold(monkeypatch):
 
 def test_full_config_has_sliding_window_defaults():
     cfg = RunConfig.full(Path("/tmp/project"))
-    assert cfg.sliding_window_size == 10
-    assert cfg.sliding_window_step == 5
+    assert cfg.sliding_window_size == 15
+    assert cfg.sliding_window_step == 7
 
 
 def test_env_override_sliding_window_size(monkeypatch):

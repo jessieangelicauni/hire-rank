@@ -23,8 +23,8 @@ class RunConfig:
     ollama_num_ctx: int = 8192
     ranking_temperature: float = 0.4
     ranking_pool_threshold: int = 20
-    sliding_window_size: int = 10
-    sliding_window_step: int = 5
+    sliding_window_size: int = 15
+    sliding_window_step: int = 7
 
     @classmethod
     def full(cls, project_root: Path) -> "RunConfig":
