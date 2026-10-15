@@ -20,11 +20,10 @@ from candidate_ranking.graphs.pipeline import build_pipeline_graph
 from candidate_ranking.ingestion.cv import build_skill_extraction_chain, enrich_candidates_with_skills, load_candidates
 from candidate_ranking.ingestion.jd import load_job_descriptions
 from candidate_ranking.logging_setup import configure_logging
-from candidate_ranking.models import Assessment, Candidate, JDRequirements, JobDescription
+from candidate_ranking.models import Assessment, Candidate, JobDescription
 from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
 from candidate_ranking.output.writer import write_run_output
-from candidate_ranking.scoring.jd_requirements import build_jd_requirements_chain
-from candidate_ranking.scoring.jd_skills import build_jd_skills_chain
+from candidate_ranking.scoring.job_profile import build_job_profile_chain
 from candidate_ranking.scoring.llm_assessment import (
     build_qualification_chain,
     filter_assessable_candidates,
@@ -52,7 +51,7 @@ def load_corpus(cfg: RunConfig) -> tuple[list[JobDescription], list[Candidate]]:
 
 _CHECKPOINT_ALLOWED_MSGPACK_MODULES = [
     ("candidate_ranking.models", name)
-    for name in ("JobDescription", "Candidate", "JDSkills", "Assessment", "JDRequirements")
+    for name in ("JobDescription", "Candidate", "JobProfile", "Assessment")
 ]
 
 
@@ -92,8 +91,7 @@ def run(
         temperature=cfg.ranking_temperature, num_ctx=cfg.ollama_num_ctx,
     )
 
-    jd_skills_chain = build_jd_skills_chain(llm)
-    jd_requirements_chain = build_jd_requirements_chain(llm)
+    job_profile_chain = build_job_profile_chain(llm)
     qualification_chain = build_qualification_chain(llm)
     skill_extraction_chain = build_skill_extraction_chain(llm)
     candidates = enrich_candidates_with_skills(
@@ -105,8 +103,7 @@ def run(
 
     graph = build_pipeline_graph(
         cfg=cfg,
-        jd_skills_chain=jd_skills_chain,
-        jd_requirements_chain=jd_requirements_chain,
+        job_profile_chain=job_profile_chain,
         qualification_chain=qualification_chain,
         ranking_llm=llm_ranking,
         skill_index=skill_index,
@@ -122,8 +119,7 @@ def run(
     initial_state = {
         "jds": jds,
         "candidates": candidates,
-        "jd_skills": {},
-        "jd_requirements": {},
+        "job_profiles": {},
         "shortlists": {},
         "assessment_results": [],
     }
