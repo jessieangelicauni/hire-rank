@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING
 
-from candidate_ranking.models import Assessment, JobDescription, JobProfile
+from candidate_ranking.models import Assessment, JobProfile
 from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise
 from candidate_ranking.utils import load_json_cache
 
@@ -84,7 +84,7 @@ def rank_biased_overlap(
 
 
 def evaluate_jd_stability(
-    jd: JobDescription,
+    jp: JobProfile,
     assessments: dict[str, Assessment],
     llm: "BaseChatModel",
     subset_size: int = 8,
@@ -94,8 +94,8 @@ def evaluate_jd_stability(
 ) -> tuple[float, float]:
     kwargs = dict(llm=llm, subset_size=subset_size, max_iterations=max_iterations,
                   min_delta_u=min_delta_u, pl_prior_variance=pl_prior_variance)
-    run_a = rank_active_listwise(jd, assessments, **kwargs)
-    run_b = rank_active_listwise(jd, assessments, **kwargs)
+    run_a = rank_active_listwise(jp, assessments, **kwargs)
+    run_b = rank_active_listwise(jp, assessments, **kwargs)
     return kendall_tau(run_a, run_b), rank_biased_overlap(run_a, run_b)
 
 
@@ -109,15 +109,15 @@ def run_stability_report(
 ) -> StabilityReport:
     per_jd: dict[str, float] = {}
     rbo_per_jd: dict[str, float] = {}
-    for jd_id, (jd, assessments) in jd_assessments.items():
+    for jp_id, (jp, assessments) in jd_assessments.items():
         if len(assessments) < 2:
-            logger.info("Skipping JD %s: fewer than 2 assessed candidates", jd_id)
+            logger.info("Skipping JD %s: fewer than 2 assessed candidates", jp_id)
             continue
         tau, rbo = evaluate_jd_stability(
-            jd, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance
+            jp, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance
         )
-        per_jd[jd_id] = tau
-        rbo_per_jd[jd_id] = rbo
+        per_jd[jp_id] = tau
+        rbo_per_jd[jp_id] = rbo
 
     if not per_jd:
         raise ValueError("No JDs with ≥ 2 assessed candidates found")
@@ -139,11 +139,11 @@ def run_stability_report(
 def load_job_profiles(cache_dir: Path) -> dict[str, JobProfile]:
     cache = load_json_cache(cache_dir / "job_profile.json", "job profile cache")
     profiles: dict[str, JobProfile] = {}
-    for jd_id, entry in cache.items():
+    for jp_id, entry in cache.items():
         try:
-            profiles[jd_id] = JobProfile.model_validate(entry["job_profile"])
+            profiles[jp_id] = JobProfile.model_validate(entry["job_profile"])
         except (KeyError, ValueError) as exc:
-            logger.warning("Skipping invalid cached job profile for %s: %s", jd_id, exc)
+            logger.warning("Skipping invalid cached job profile for %s: %s", jp_id, exc)
     return profiles
 
 

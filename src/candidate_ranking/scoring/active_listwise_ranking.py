@@ -9,7 +9,7 @@ import numpy as np
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field, create_model
 
-from candidate_ranking.models import Assessment, JobDescription
+from candidate_ranking.models import Assessment, JobProfile
 from candidate_ranking.ranking.plackett_luce import fit_utilities, laplace_covariance
 from candidate_ranking.scoring.render import (
     _extract_jd_summary,
@@ -49,7 +49,7 @@ def _active_ranking_model(size: int) -> type[BaseModel]:
     )
 
 
-def _bm25_sort(jd: JobDescription, assessments: dict[str, Assessment]) -> list[str]:
+def _bm25_sort(jp: JobProfile, assessments: dict[str, Assessment]) -> list[str]:
     from rank_bm25 import BM25Okapi
 
     cids = list(assessments)
@@ -64,10 +64,10 @@ def _bm25_sort(jd: JobDescription, assessments: dict[str, Assessment]) -> list[s
         # BM25Okapi divides by its vocabulary size while fitting; every candidate's
         # evidence tokenizing to nothing (e.g. a JD whose requirement extraction came
         # back empty) leaves that vocabulary empty and raises ZeroDivisionError.
-        logger.warning("JD %s: no evidence text to warm-start BM25 — using arbitrary initial order", jd.id)
+        logger.warning("JD %s: no evidence text to warm-start BM25 — using arbitrary initial order", jp.id)
         return cids
 
-    scores = BM25Okapi(corpus).get_scores(jd.raw_text.lower().split())
+    scores = BM25Okapi(corpus).get_scores(jp.raw_text.lower().split())
     return [cid for cid, _ in sorted(zip(cids, scores), key=lambda x: -x[1])]
 
 
@@ -105,7 +105,7 @@ def _select_uncertain_subset(
 
 
 def _rank_subset(
-    jd: JobDescription,
+    jp: JobProfile,
     subset_ids: list[str],
     assessments: dict[str, Assessment],
     llm: "BaseChatModel",
@@ -125,29 +125,29 @@ def _rank_subset(
         result = invoke_and_validate(
             chain,
             {
-                "jd_title": jd.title,
-                "jd_summary": _extract_jd_summary(jd),
+                "jd_title": jp.title,
+                "jd_summary": _extract_jd_summary(jp),
                 "candidates_text": _render_evidence_for_ranking(subset_ids, assessments),
             },
             model, validate,
-            log_context=f"Active ranking {jd.id} (size={size})",
+            log_context=f"Active ranking {jp.id} (size={size})",
         )
     except GenerationError as exc:
-        logger.warning("Active ranking subset failed for %s: %s — skipping", jd.id, exc)
+        logger.warning("Active ranking subset failed for %s: %s — skipping", jp.id, exc)
         return None
 
     return [token_to_id[t] for t in result.ranking]  # type: ignore[attr-defined]
 
 
 def _rank_pair_jev(
-    jd: JobDescription,
+    jp: JobProfile,
     pair_ids: list[str],
     assessments: dict[str, Assessment],
     jev_client: "JevClient",
 ) -> list[str] | None:
     """Ask Jev which of two candidates is the stronger fit. Returns [winner, loser] or None on error.
 
-    A/B assignment is deterministically randomised per (jd, pair) using MD5 to
+    A/B assignment is deterministically randomised per (jp, pair) using MD5 to
     mitigate position bias: the LLM's known tendency to favour the first-presented
     candidate (Zheng et al. 2023). Since _select_uncertain_subset always returns
     items in descending variance order, without this the highest-variance candidate
@@ -157,13 +157,13 @@ def _rank_pair_jev(
     from candidate_ranking.scoring.jev_client import JevClientError, JevQuestion
     assert len(pair_ids) == 2, "pairwise comparator requires exactly 2 candidates"
 
-    # Deterministic shuffle: stable across runs, varies by (jd, pair) combination.
-    digest = hashlib.md5(f"{pair_ids[0]}||{pair_ids[1]}||{jd.id}".encode()).hexdigest()
+    # Deterministic shuffle: stable across runs, varies by (jp, pair) combination.
+    digest = hashlib.md5(f"{pair_ids[0]}||{pair_ids[1]}||{jp.id}".encode()).hexdigest()
     flip = int(digest, 16) % 2 == 1
     a_id, b_id = (pair_ids[1], pair_ids[0]) if flip else (pair_ids[0], pair_ids[1])
 
     state = (
-        f"ROLE: {jd.title}\n\n"
+        f"ROLE: {jp.title}\n\n"
         f"CANDIDATE A:\n{_render_candidate_evidence(a_id, assessments)}\n\n"
         f"CANDIDATE B:\n{_render_candidate_evidence(b_id, assessments)}"
     )
@@ -184,7 +184,7 @@ def _rank_pair_jev(
     try:
         answers = jev_client.evaluate(state, [question])
     except JevClientError as exc:
-        logger.warning("Jev pairwise ranking failed for %s: %s — skipping", jd.id, exc)
+        logger.warning("Jev pairwise ranking failed for %s: %s — skipping", jp.id, exc)
         return None
     winner = answers[0].value
     winner_id = a_id if winner == "A" else b_id
@@ -193,7 +193,7 @@ def _rank_pair_jev(
 
 
 def rank_active_listwise(
-    jd: JobDescription,
+    jp: JobProfile,
     assessments: dict[str, Assessment],
     llm: "BaseChatModel | None" = None,
     jev_client: "JevClient | None" = None,
@@ -223,22 +223,22 @@ def rank_active_listwise(
 
     if qualified and disqualified:
         qualified_utilities = _rank_active_listwise_core(
-            jd, qualified, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
+            jp, qualified, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
         )
         floor = min(qualified_utilities.values()) - 1.0
-        disqualified_order = _bm25_sort(jd, disqualified)
+        disqualified_order = _bm25_sort(jp, disqualified)
         disqualified_utilities = {cid: floor - i for i, cid in enumerate(disqualified_order)}
         return {**qualified_utilities, **disqualified_utilities}
 
     return _rank_active_listwise_core(
-        jd, assessments, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
+        jp, assessments, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
     )
 
 
 def _rank_active_listwise_core(
-    jd: JobDescription,
+    jp: JobProfile,
     assessments: dict[str, Assessment],
-    rank_fn: "Callable[[JobDescription, list[str], dict[str, Assessment]], list[str] | None]",
+    rank_fn: "Callable[[JobProfile, list[str], dict[str, Assessment]], list[str] | None]",
     subset_size: int,
     max_iterations: int,
     min_delta_u: float,
@@ -252,7 +252,7 @@ def _rank_active_listwise_core(
     if n <= 1:
         return {cid: 1.0 for cid in item_ids}
 
-    rankings: list[list[str]] = [_bm25_sort(jd, assessments)]
+    rankings: list[list[str]] = [_bm25_sort(jp, assessments)]
     u = fit_utilities(rankings, item_ids, pl_prior_variance)
 
     min_iter = math.ceil(n / subset_size)
@@ -263,7 +263,7 @@ def _rank_active_listwise_core(
         variances = np.diag(laplace_covariance(u, rankings, item_ids, pl_prior_variance))
         subset_ids = _select_uncertain_subset(variances, item_ids, subset_size, last_failed_signature, iteration)
 
-        ordering = rank_fn(jd, subset_ids, assessments)
+        ordering = rank_fn(jp, subset_ids, assessments)
         if ordering is None:
             last_failed_signature = frozenset(subset_ids)
             continue
@@ -275,9 +275,9 @@ def _rank_active_listwise_core(
         u = u_new
 
         if delta_u < min_delta_u and iteration >= min_iter:
-            logger.info("Active ranking for %s converged at iteration %d (delta_u=%.4f)", jd.id, iteration, delta_u)
+            logger.info("Active ranking for %s converged at iteration %d (delta_u=%.4f)", jp.id, iteration, delta_u)
             break
     else:
-        logger.warning("Active ranking for %s did not converge after %d iterations", jd.id, actual_max_iter)
+        logger.warning("Active ranking for %s did not converge after %d iterations", jp.id, actual_max_iter)
 
     return {cid: float(u[i]) for i, cid in enumerate(item_ids)}

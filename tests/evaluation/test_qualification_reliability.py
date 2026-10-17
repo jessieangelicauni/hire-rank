@@ -11,7 +11,7 @@ from candidate_ranking.evaluation.qualification_reliability import (
 
 def _assessment(qualified: bool, verdict: str = "MET") -> Assessment:
     return Assessment(
-        job_description_id="jd-1", candidate_id="cand-1", generated_by_model="test",
+        job_profile_id="jd-1", candidate_id="cand-1", generated_by_model="test",
         must_have_evaluations=[
             RequirementEvaluation(
                 requirement="Python", verdict=verdict, evidence="x",

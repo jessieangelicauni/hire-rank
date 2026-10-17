@@ -2,13 +2,26 @@ from __future__ import annotations
 
 import json
 import logging
+import time
 import uuid
 from pathlib import Path
 from typing import Any, Callable, TypeVar
 
+from langchain_core.callbacks.base import BaseCallbackHandler
 from langchain_core.runnables import Runnable
 
 logger = logging.getLogger(__name__)
+
+
+class OllamaLatencyCallback(BaseCallbackHandler):
+    """Logs wall-clock latency for every Ollama LLM call at DEBUG level."""
+
+    def on_llm_start(self, serialized: dict, prompts: list[str], **kwargs: Any) -> None:
+        self._t0 = time.perf_counter()
+
+    def on_llm_end(self, response: Any, **kwargs: Any) -> None:
+        latency_ms = (time.perf_counter() - self._t0) * 1000
+        logger.debug("Ollama latency: %.0f ms", latency_ms)
 
 T = TypeVar("T")
 

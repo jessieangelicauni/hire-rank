@@ -10,11 +10,17 @@ def slugify(text: str) -> str:
     return re.sub(r"[^a-zA-Z0-9]+", "-", text).strip("-").lower()
 
 
-class JobDescription(BaseModel):
+class JobProfile(BaseModel):
     id: str
     title: str
     raw_text: str
     source_path: str
+    generated_by_model: str = ""
+    must_have_skills: list[str] = Field(default_factory=list)
+    nice_to_have_skills: list[str] = Field(default_factory=list)
+    education_requirement: str | None = None
+    seniority_requirement: str | None = None
+    other_requirements: list[str] = Field(default_factory=list)
 
 
 class Candidate(BaseModel):
@@ -28,16 +34,6 @@ class Candidate(BaseModel):
     skills: list[str] = Field(default_factory=list)
 
 
-class JobProfile(BaseModel):
-    job_description_id: str
-    generated_by_model: str
-    must_have_skills: list[str] = Field(default_factory=list)
-    nice_to_have_skills: list[str] = Field(default_factory=list)
-    education_requirement: str | None = None
-    seniority_requirement: str | None = None
-    other_requirements: list[str] = Field(default_factory=list)
-
-
 class RequirementEvaluation(BaseModel):
     requirement: str
     verdict: Literal["MET", "PARTIALLY_MET", "NOT_MET"]
@@ -49,16 +45,14 @@ class RequirementEvaluation(BaseModel):
 
 class CareerTrajectory(BaseModel):
     direction: Literal["ascending", "lateral", "descending", "unclear"]
-    evidence: str
     tenure_pattern: Literal["stable", "variable", "concerning"]
     average_tenure_months: int = Field(ge=0, default=0)
     most_recent_role_duration_months: int = Field(ge=0, default=0)
     has_multinational_experience: bool
-    multinational_evidence: str | None = None
 
 
 class Assessment(BaseModel):
-    job_description_id: str = Field(min_length=1)
+    job_profile_id: str = Field(min_length=1)
     candidate_id: str = Field(min_length=1)
     generated_by_model: str = Field(min_length=1)
     must_have_evaluations: list[RequirementEvaluation] = Field(default_factory=list)
@@ -67,8 +61,3 @@ class Assessment(BaseModel):
     career_trajectory: CareerTrajectory | None = None
     qualified: bool = False
     disqualification_reason: str | None = None
-    education_evaluation: Literal["meets", "equivalent_experience", "does_not_meet"] | None = None
-    seniority_evaluation: Literal["meets_or_exceeds", "below"] | None = None
-    other_requirement_evaluations: dict[str, bool] = Field(default_factory=dict)
-
-

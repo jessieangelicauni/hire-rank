@@ -22,7 +22,7 @@ def _assessment(
     if qualified is None:
         qualified = all(ev.verdict != "NOT_MET" for ev in evals)
     return Assessment(
-        job_description_id=jd_id, candidate_id=cid,
+        job_profile_id=jd_id, candidate_id=cid,
         generated_by_model="jev/jev-latest",
         must_have_evaluations=evals,
         qualified=qualified,
@@ -65,7 +65,7 @@ def test_no_coherence_violations_for_valid_assessments():
         "jd-1": {
             "a": _assessment("jd-1", "a", [
                 _eval("Python", "strong", "MET"),
-                _eval("SQL", "adequate", "PARTIALLY_MET"),
+                _eval("SQL", "adequate", "MET"),
                 _eval("Java", "none", "NOT_MET"),
             ]),
         }
@@ -124,7 +124,7 @@ def test_qualification_rate_per_jd():
         }
     }
     report = audit_assessments(assessments)
-    assert report.qualification_rate_per_jd["jd-1"] == pytest.approx(2 / 3)
+    assert report.qualification_rate_per_jp["jd-1"] == pytest.approx(2 / 3)
     assert report.mean_qualification_rate == pytest.approx(2 / 3)
 
 
@@ -135,25 +135,25 @@ def test_zero_qualified_jd_flagged():
         }
     }
     report = audit_assessments(assessments)
-    assert "jd-1" in report.zero_qualified_jds
-    assert "jd-1" not in report.fully_qualified_jds
+    assert "jd-1" in report.zero_qualified_jps
+    assert "jd-1" not in report.fully_qualified_jps
 
 
 def test_fully_qualified_jd_flagged():
     assessments = {
         "jd-1": {
             "a": _assessment("jd-1", "a", [_eval("Python", "strong", "MET")]),
-            "b": _assessment("jd-1", "b", [_eval("Python", "adequate", "PARTIALLY_MET")]),
+            "b": _assessment("jd-1", "b", [_eval("Python", "adequate", "MET")]),
         }
     }
     report = audit_assessments(assessments)
-    assert "jd-1" in report.fully_qualified_jds
-    assert "jd-1" not in report.zero_qualified_jds
+    assert "jd-1" in report.fully_qualified_jps
+    assert "jd-1" not in report.zero_qualified_jps
 
 
 def test_empty_assessments_returns_zero_counts():
     report = audit_assessments({})
-    assert report.n_jds == 0
+    assert report.n_jps == 0
     assert report.n_assessments == 0
     assert report.evidence_coverage_rate == pytest.approx(1.0)
     assert report.coherence_violations == []
@@ -170,7 +170,7 @@ def test_evidence_strength_distribution_sums_to_one():
                 _eval("SQL", "none", "NOT_MET"),
             ]),
             "b": _assessment("jd-1", "b", [
-                _eval("Python", "adequate", "PARTIALLY_MET"),
+                _eval("Python", "adequate", "MET"),
                 _eval("SQL", "weak", "PARTIALLY_MET"),
             ]),
         }

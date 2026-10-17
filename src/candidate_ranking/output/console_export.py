@@ -9,8 +9,8 @@ from langchain_ollama import ChatOllama
 
 from candidate_ranking.config import RunConfig
 from candidate_ranking.ingestion.cv import build_name_extraction_chain, load_candidates, load_or_extract_candidate_name
-from candidate_ranking.ingestion.jd import load_job_descriptions
-from candidate_ranking.models import JobDescription
+from candidate_ranking.ingestion.jp import load_job_profiles
+from candidate_ranking.models import JobProfile
 
 logger = logging.getLogger(__name__)
 
@@ -18,125 +18,8 @@ _PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_OUTPUT_PATH = _PROJECT_ROOT / "console-web" / "src" / "data" / "real-data.json"
 
 
-def _role_stub(jd: JobDescription, candidate_count: int) -> dict:
-    return {"id": jd.id, "title": jd.title, "description": jd.raw_text, "candidateCount": candidate_count}
-
-
-def _utility_from_ranking(ranking_rows: list[dict], cv_id: str) -> float | None:
-    for row in ranking_rows:
-        if row.get("candidate_id") == cv_id:
-            return row.get("utility")
-    return None
-
-
-def _null_comparison(jd_id: str) -> dict:
-    return {"jdId": jd_id, "meanFitScore": None, "rankingStability": None}
-
-
-def _comparison_from_assessments(jd_id: str, jd_assessments: dict[str, dict], ranking_stability: float | None) -> dict:
-    if not jd_assessments:
-        return _null_comparison(jd_id)
-    qualified_count = sum(1 for a in jd_assessments.values() if a.get("qualified"))
-    return {
-        "jdId": jd_id,
-        "qualifiedCount": qualified_count,
-        "totalAssessed": len(jd_assessments),
-        "rankingStability": ranking_stability,
-    }
-
-
-def _load_evaluation_report(run_dir: Path) -> dict | None:
-    path = run_dir / "evaluation" / "report.json"
-    if not path.exists():
-        return None
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning("console-web export: discarding unreadable evaluation report %s: %s", path, exc)
-        return None
-
-
-def _load_shortlisting_audit(run_dir: Path) -> dict | None:
-    path = run_dir / "evaluation" / "shortlisting_audit.json"
-    if not path.exists():
-        return None
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning("console-web export: discarding unreadable shortlisting audit %s: %s", path, exc)
-        return None
-
-
-def _load_test_retest(run_dir: Path) -> list[dict] | None:
-    path = run_dir / "evaluation" / "test_retest.json"
-    if not path.exists():
-        return None
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError) as exc:
-        logger.warning("console-web export: discarding unreadable test-retest data %s: %s", path, exc)
-        return None
-
-
-def _repeat_samples_by_row(records: list[dict] | None) -> dict[str, list[dict]]:
-    if records is None:
-        return {}
-    result: dict[str, list[dict]] = {}
-    for record in records:
-        row_id = f"{record['candidate_id']}::{record['jd_id']}"
-        result[row_id] = [
-            {"compositeFitScore": repeat["composite_fit_score"]}
-            for repeat in record["repeats"]
-        ]
-    return result
-
-
-def _shortlisting_audit_by_jd(audit: dict | None) -> dict[str, dict]:
-    if audit is None:
-        return {}
-    result = {}
-    for jd in audit.get("per_job_profile", []):
-        result[jd["jd_id"]] = {
-            "nCandidates": jd["n_candidates"],
-            "nFlagged": jd["n_flagged"],
-            "flaggedPoolFraction": jd["flagged_pool_fraction"],
-            "profileFlagged": jd["profile_flagged"],
-            "flaggedCandidates": [
-                {
-                    "candidateId": c["candidate_id"],
-                    "compositeFitScore": c["composite_fit_score"],
-                    "nearZeroRequirements": c["near_zero_requirements"],
-                }
-                for c in jd["flagged_candidates"][:5]
-            ],
-        }
-    return result
-
-
-def _ranking_stability_by_jd(report: dict | None) -> dict[str, float]:
-    if report is None:
-        return {}
-    per_job_profile = report.get("ranking_convergence", {}).get("per_job_profile", {})
-    return {
-        jd_id: stats["mean_kendall_tau"]
-        for jd_id, stats in per_job_profile.items()
-        if stats.get("mean_kendall_tau") is not None
-    }
-
-
-def _evaluation_summary(report: dict | None) -> dict | None:
-    if report is None:
-        return None
-    test_retest = report.get("test_retest", {})
-    ranking_convergence = report.get("ranking_convergence", {})
-    coherence = report.get("internal_coherence", {}).get("requirement_vs_composite_score_correlation")
-    return {
-        "nPairs": test_retest.get("n_pairs"),
-        "nRepeats": test_retest.get("n_repeats_per_pair"),
-        "compositeScoreStdev": test_retest.get("composite_fit_score_stdev", {}).get("mean"),
-        "meanRankingConvergence": ranking_convergence.get("mean_kendall_tau_across_all_profiles"),
-        "coherenceSpearmanRho": coherence.get("spearman_rho") if coherence else None,
-    }
+def _role_stub(jp: JobProfile, candidate_count: int) -> dict:
+    return {"id": jp.id, "title": jp.title, "description": jp.raw_text, "candidateCount": candidate_count}
 
 
 def _initials_for(name: str | None, cv_id: str) -> str:
@@ -148,8 +31,8 @@ def _initials_for(name: str | None, cv_id: str) -> str:
     return name[:2].upper()
 
 
-def _load_jd_assessments(run_dir: Path, jd_id: str) -> dict[str, dict]:
-    path = run_dir / jd_id / "assessments.json"
+def _load_jd_assessments(run_dir: Path, jp_id: str) -> dict[str, dict]:
+    path = run_dir / jp_id / "assessments.json"
     if not path.exists():
         return {}
     return json.loads(path.read_text(encoding="utf-8"))
@@ -162,23 +45,23 @@ def seed_console_web_roles(cfg: RunConfig, output_path: Path = DEFAULT_OUTPUT_PA
         existing = {"roles": [], "candidates": [], "assessments": {}, "comparison": {}}
 
     existing_roles_by_id = {r["id"]: r for r in existing["roles"]}
-    jds = load_job_descriptions(cfg.jd_dir)
-    if not jds:
+    jps = load_job_profiles(cfg.jp_dir)
+    if not jps:
         logger.warning(
-            "seed_console_web_roles: no JDs found in %s; leaving %s unchanged.", cfg.jd_dir, output_path
+            "seed_console_web_roles: no JPs found in %s; leaving %s unchanged.", cfg.jp_dir, output_path
         )
         return output_path
 
-    roles = [existing_roles_by_id.get(jd.id, _role_stub(jd, candidate_count=0)) for jd in jds]
+    roles = [existing_roles_by_id.get(jp.id, _role_stub(jp, candidate_count=0)) for jp in jps]
 
     comparison = dict(existing["comparison"])
     for role in roles:
-        comparison.setdefault(role["id"], _null_comparison(role["id"]))
+        comparison.setdefault(role["id"], {"jpId": role["id"], "qualifiedCount": None, "totalAssessed": None})
 
     output = {**existing, "roles": roles, "comparison": comparison}
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(output, indent=2), encoding="utf-8")
-    logger.info("Seeded %d role(s) into %s", len(roles), output_path)
+    logger.info("Seeded %d role(s) into %s", len(jps), output_path)
     return output_path
 
 
@@ -193,28 +76,27 @@ def export_console_web_data(
         return None
 
     manifest = json.loads((run_dir / "manifest.json").read_text(encoding="utf-8"))
+    model_name = manifest["ollama_model"]
 
-    jds_by_id = {jd.id: jd for jd in load_job_descriptions(cfg.jd_dir)}
-    run_jd_ids = sorted(p.name for p in run_dir.iterdir() if p.is_dir() and (p / "assessments.json").is_file())
-    jd_ids = [jd_id for jd_id in run_jd_ids if jd_id in jds_by_id]
+    jps_by_id = {jp.id: jp for jp in load_job_profiles(cfg.jp_dir)}
+    run_jp_ids = sorted(p.name for p in run_dir.iterdir() if p.is_dir() and (p / "assessments.json").is_file())
+    jp_ids = [jp_id for jp_id in run_jp_ids if jp_id in jps_by_id]
 
-    skipped = sorted(set(run_jd_ids) - set(jd_ids))
+    skipped = sorted(set(run_jp_ids) - set(jp_ids))
     if skipped:
         logger.warning(
             "console-web export: excluding %d JD(s) with run data but no matching file in %s: %s",
             len(skipped), cfg.jd_dir, skipped,
         )
-    if not jd_ids:
+    if not jp_ids:
         logger.warning(
             "No exportable JDs for run %s (no assessment data, or all matching JDs have since been "
             "removed from %s); skipping console-web export.", run_id, cfg.jd_dir,
         )
         return None
 
-    model_name = manifest["ollama_model"]
-
     candidates_by_id = {c.id: c for c in load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")}
-    run_candidate_ids = sorted({cv_id for jd_id in jd_ids for cv_id in _load_jd_assessments(run_dir, jd_id)})
+    run_candidate_ids = sorted({cv_id for jp_id in jp_ids for cv_id in _load_jd_assessments(run_dir, jp_id)})
     target_candidate_ids = [cv_id for cv_id in run_candidate_ids if cv_id in candidates_by_id]
 
     skipped_candidates = sorted(set(run_candidate_ids) - set(target_candidate_ids))
@@ -235,45 +117,35 @@ def export_console_web_data(
     with ThreadPoolExecutor(max_workers=cfg.ollama_num_parallel) as executor:
         names_by_cv_id: dict[str, str | None] = dict(executor.map(_extract_name, target_candidate_ids))
 
-    evaluation_report = _load_evaluation_report(run_dir)
-    ranking_stability_by_jd = _ranking_stability_by_jd(evaluation_report)
-    shortlisting_audit_by_jd = _shortlisting_audit_by_jd(_load_shortlisting_audit(run_dir))
-    repeat_samples_by_row = _repeat_samples_by_row(_load_test_retest(run_dir))
-
     roles: list[dict] = []
     candidates: list[dict] = []
     assessments: dict[str, dict] = {}
     comparison_out: dict[str, dict] = {}
 
-    for jd_id in jd_ids:
-        jd = jds_by_id[jd_id]
+    for jp_id in jp_ids:
+        jp = jps_by_id[jp_id]
 
-        ranking = json.loads((run_dir / jd_id / "ranking.json").read_text(encoding="utf-8"))
+        ranking = json.loads((run_dir / jp_id / "ranking.json").read_text(encoding="utf-8"))
         rank_by_cv_id = {row["candidate_id"]: row["rank"] for row in ranking["rankings"]}
-        ranking_rows = ranking.get("rankings", [])
-        score_by_cv_id = {row["candidate_id"]: row.get("utility", 0.0) for row in ranking_rows}
+        score_by_cv_id = {row["candidate_id"]: row.get("utility", 0.0) for row in ranking.get("rankings", [])}
 
         jd_assessments = {
-            cv_id: entry for cv_id, entry in sorted(_load_jd_assessments(run_dir, jd_id).items())
+            cv_id: entry for cv_id, entry in sorted(_load_jd_assessments(run_dir, jp_id).items())
             if cv_id in candidates_by_id
         }
         exported_count = 0
         for cv_id, assessment_entry in jd_assessments.items():
-            row_id = f"{cv_id}::{jd_id}"
+            row_id = f"{cv_id}::{jp_id}"
             name = names_by_cv_id[cv_id]
-
-            candidates.append(
-                {
-                    "id": row_id,
-                    "cvId": cv_id,
-                    "roleId": jd_id,
-                    "name": name if name else cv_id.upper(),
-                    "initials": _initials_for(name, cv_id),
-                    "rank": rank_by_cv_id.get(cv_id),
-                    "utility": score_by_cv_id.get(cv_id),
-                }
-            )
-
+            candidates.append({
+                "id": row_id,
+                "cvId": cv_id,
+                "roleId": jp_id,
+                "name": name if name else cv_id.upper(),
+                "initials": _initials_for(name, cv_id),
+                "rank": rank_by_cv_id.get(cv_id),
+                "utility": score_by_cv_id.get(cv_id),
+            })
             assessments[row_id] = {
                 "qualified": assessment_entry.get("qualified"),
                 "total_relevant_years": assessment_entry.get("total_relevant_years", 0),
@@ -291,29 +163,23 @@ def export_console_web_data(
             }
             exported_count += 1
 
-        roles.append(_role_stub(jd, candidate_count=exported_count))
+        roles.append(_role_stub(jp, candidate_count=exported_count))
+        comparison_out[jp_id] = {
+            "jdId": jp_id,
+            "qualifiedCount": sum(1 for a in jd_assessments.values() if a.get("qualified")),
+            "totalAssessed": len(jd_assessments),
+        }
 
-        comparison_out[jd_id] = _comparison_from_assessments(
-            jd_id, jd_assessments, ranking_stability_by_jd.get(jd_id)
-        )
-
-    unprocessed_jd_ids = sorted(set(jds_by_id) - set(jd_ids))
-    for jd_id in unprocessed_jd_ids:
-        jd = jds_by_id[jd_id]
-        roles.append(_role_stub(jd, candidate_count=0))
-        comparison_out[jd_id] = _null_comparison(jd_id)
+    for jp_id in sorted(set(jps_by_id) - set(jp_ids)):
+        roles.append(_role_stub(jps_by_id[jp_id], candidate_count=0))
+        comparison_out[jp_id] = {"jdId": jp_id, "qualifiedCount": None, "totalAssessed": None}
 
     roles_by_id = {r["id"]: r for r in roles}
-    roles = [roles_by_id[jd_id] for jd_id in jds_by_id if jd_id in roles_by_id]
-
     output = {
-        "roles": roles,
+        "roles": [roles_by_id[jp_id] for jp_id in jps_by_id if jp_id in roles_by_id],
         "candidates": candidates,
         "assessments": assessments,
         "comparison": comparison_out,
-        "evaluationSummary": _evaluation_summary(evaluation_report),
-        "shortlistingAudit": shortlisting_audit_by_jd,
-        "repeatSamples": repeat_samples_by_row,
     }
 
     output_path.parent.mkdir(parents=True, exist_ok=True)

@@ -4,7 +4,7 @@ from typing import Callable
 
 import numpy as np
 
-from candidate_ranking.models import Candidate, JobDescription, JobProfile
+from candidate_ranking.models import Candidate, JobProfile
 from candidate_ranking.scoring.skills import build_candidate_skill_index, shortlist_candidates
 
 _JD_SKILLS = ["Python", "SQL", "AWS", "Docker", "Kubernetes", "Terraform", "Jenkins"]
@@ -28,15 +28,10 @@ def _one_hot_embedder(vocab: list[str]) -> Callable[[list[str]], np.ndarray]:
     return embed
 
 
-def _jd() -> JobDescription:
-    return JobDescription(id="jd-1", title="Backend Engineer", raw_text="...", source_path="jd.pdf")
-
-
-def _profile(must_have: list[str]) -> JobProfile:
+def _jp(must_have: list[str]) -> JobProfile:
     nice_to_have = [s for s in _JD_SKILLS if s not in must_have]
     return JobProfile(
-        job_description_id="jd-1",
-        generated_by_model="qwen2.5:14b",
+        id="jd-1", title="Backend Engineer", raw_text="...", source_path="jd.pdf",
         must_have_skills=must_have,
         nice_to_have_skills=nice_to_have,
     )
@@ -55,7 +50,7 @@ def test_shortlist_excludes_candidate_who_meets_total_but_not_must_have():
     index, row_map = build_candidate_skill_index([peripheral_only], embedder)
 
     shortlisted = shortlist_candidates(
-        _jd(), _profile(_MUST_HAVE), index, row_map, embedder,
+        _jp(_MUST_HAVE), index, row_map, embedder,
         min_matches=5,
     )
 
@@ -69,7 +64,7 @@ def test_shortlist_excludes_candidate_missing_one_of_several_must_haves():
     index, row_map = build_candidate_skill_index([missing_one], embedder)
 
     shortlisted = shortlist_candidates(
-        _jd(), _profile(three_must_haves), index, row_map, embedder,
+        _jp(three_must_haves), index, row_map, embedder,
         min_matches=4,
     )
 
@@ -82,7 +77,7 @@ def test_shortlist_excludes_candidate_who_meets_must_have_but_not_total():
     index, row_map = build_candidate_skill_index([core_only], embedder)
 
     shortlisted = shortlist_candidates(
-        _jd(), _profile(_MUST_HAVE), index, row_map, embedder,
+        _jp(_MUST_HAVE), index, row_map, embedder,
         min_matches=5,
     )
 
@@ -95,7 +90,7 @@ def test_shortlist_includes_candidate_who_meets_both():
     index, row_map = build_candidate_skill_index([both], embedder)
 
     shortlisted = shortlist_candidates(
-        _jd(), _profile(_MUST_HAVE), index, row_map, embedder,
+        _jp(_MUST_HAVE), index, row_map, embedder,
         min_matches=5,
     )
 
@@ -108,7 +103,7 @@ def test_shortlist_empty_must_have_skills_preserves_prior_behavior():
     index, row_map = build_candidate_skill_index([peripheral_only], embedder)
 
     shortlisted = shortlist_candidates(
-        _jd(), _profile([]), index, row_map, embedder,
+        _jp([]), index, row_map, embedder,
         min_matches=5,
     )
 

@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from candidate_ranking.models import Assessment, JobDescription
+from candidate_ranking.models import Assessment, JobProfile
 
 
-def _extract_jd_summary(jd: JobDescription) -> str:
-    words = jd.raw_text.split()
+def _extract_jd_summary(jp: JobProfile) -> str:
+    words = jp.raw_text.split()
     return f"{jd.title}\n\n" + " ".join(words[:200])
 
 
@@ -30,7 +30,7 @@ def _render_candidate_evidence(candidate_id: str, assessments: dict[str, Assessm
 
 
 def _render_evidence_for_ranking(candidate_ids: list[str], assessments: dict[str, Assessment]) -> str:
-    """Numbered multi-candidate block — used for listwise ranking."""
+    """Numbered multi-candidate block — used for pairwise ranking."""
     blocks = []
     for index, candidate_id in enumerate(candidate_ids, start=1):
         blocks.append(f"{index}:\n" + "\n".join(

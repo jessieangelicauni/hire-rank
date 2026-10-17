@@ -3,7 +3,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 import pytest
 from candidate_ranking.models import (
-    Assessment, Candidate, JobDescription, JobProfile, RequirementEvaluation,
+    Assessment, Candidate, JobProfile, RequirementEvaluation,
 )
 from candidate_ranking.scoring.llm_assessment import (
     AssessmentGenerationError,
@@ -13,9 +13,9 @@ from candidate_ranking.scoring.llm_assessment import (
 )
 
 
-def _jd() -> JobDescription:
-    return JobDescription(id="jd-1", title="Backend Engineer",
-                          raw_text="Python 3+ yrs required.", source_path="jd.pdf")
+def _jp() -> JobProfile:
+    return JobProfile(id="jd-1", title="Backend Engineer",
+                       raw_text="Python 3+ yrs required.", source_path="jd.pdf")
 
 
 def _candidate(parse_status="ok") -> Candidate:
@@ -25,14 +25,16 @@ def _candidate(parse_status="ok") -> Candidate:
 
 def _job_profile() -> JobProfile:
     return JobProfile(
-        job_description_id="jd-1", generated_by_model="qwen2.5:14b",
+        id="jd-1", title="Backend Engineer",
+        raw_text="Python 3+ yrs required.", source_path="jd.pdf",
+        generated_by_model="qwen2.5:14b",
         must_have_skills=["Python"], nice_to_have_skills=["Docker"],
     )
 
 
 def _assessment(qualified: bool = True) -> Assessment:
     return Assessment(
-        job_description_id="jd-1",
+        job_profile_id="jd-1",
         candidate_id="cand-1",
         generated_by_model="jev/jev-latest",
         must_have_evaluations=[
@@ -59,14 +61,7 @@ def _fake_answers(profile: JobProfile, must_have_strength: str = "strong") -> li
     for i in range(len(profile.nice_to_have_skills)):
         answers.append(JevAnswer(key=f"nice_to_have_{i}_evidence_strength", kind="choice",
                                  value="adequate", confidence=0.7))
-    if profile.education_requirement:
-        answers.append(JevAnswer(key="education_requirement", kind="choice",
-                                 value="meets", confidence=0.8))
-    if profile.seniority_requirement:
-        answers.append(JevAnswer(key="seniority_requirement", kind="choice",
-                                 value="meets_or_exceeds", confidence=0.8))
-    for i in range(len(profile.other_requirements)):
-        answers.append(JevAnswer(key=f"other_req_{i}", kind="noul", value=True, confidence=0.8))
+
     answers += [
         JevAnswer(key="total_relevant_years", kind="score", value=2.0, confidence=0.8),
         JevAnswer(key="career_direction", kind="choice", value="ascending", confidence=0.8),
@@ -82,7 +77,7 @@ def test_generate_assessment_returns_qualified_assessment():
     profile = _job_profile()
     jev = MagicMock()
     jev.evaluate.return_value = _fake_answers(profile)
-    result = generate_assessment(_jd(), _candidate(), profile, jev)
+    result = generate_assessment(profile, _candidate(), jev)
     assert isinstance(result, Assessment)
     assert result.qualified is True
     assert result.must_have_evaluations[0].requirement == "Python"
@@ -96,7 +91,7 @@ def test_generate_assessment_computes_qualified_from_verdicts():
     answers = _fake_answers(profile, must_have_strength="none")  # none → NOT_MET → disqualified
     jev = MagicMock()
     jev.evaluate.return_value = answers
-    result = generate_assessment(_jd(), _candidate(), profile, jev)
+    result = generate_assessment(profile, _candidate(), jev)
     assert result.qualified is False
     assert result.disqualification_reason is not None
     assert "Python" in result.disqualification_reason
@@ -112,7 +107,7 @@ def test_generate_assessment_evidence_is_bm25_verbatim():
         raw_text="Developed Python microservices using FastAPI at Tokopedia. Also used Docker.",
         num_pages=1, char_count=60, parse_status="ok",
     )
-    result = generate_assessment(_jd(), candidate, profile, jev)
+    result = generate_assessment(profile, candidate, jev)
     # Evidence must come from CV text verbatim
     ev = result.must_have_evaluations[0]
     assert "Python" in ev.evidence or "FastAPI" in ev.evidence or ev.evidence == ""
@@ -123,7 +118,7 @@ def test_generate_assessment_raises_on_jev_error():
     jev = MagicMock()
     jev.evaluate.side_effect = JevClientError("network failure")
     with pytest.raises(AssessmentGenerationError):
-        generate_assessment(_jd(), _candidate(), _job_profile(), jev)
+        generate_assessment(_job_profile(), _candidate(), jev)
 
 
 def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
@@ -131,10 +126,10 @@ def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
     with patch("candidate_ranking.scoring.llm_assessment.generate_assessment",
                return_value=_assessment()) as mock_gen:
         first = load_or_generate_assessment(
-            _jd(), _candidate(), profile, MagicMock(), tmp_path
+            profile, _candidate(), MagicMock(), tmp_path
         )
         second = load_or_generate_assessment(
-            _jd(), _candidate(), profile, MagicMock(), tmp_path
+            profile, _candidate(), MagicMock(), tmp_path
         )
     assert first == second
     assert mock_gen.call_count == 1
@@ -144,16 +139,17 @@ def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
 def test_load_or_generate_assessment_regenerates_when_profile_changes(tmp_path: Path):
     profile_v1 = _job_profile()
     profile_v2 = JobProfile(
-        job_description_id="jd-1", generated_by_model="qwen2.5:14b",
+        id="jd-1", title="Backend", raw_text="Go 3+ yrs.", source_path="j.pdf",
+        generated_by_model="qwen2.5:14b",
         must_have_skills=["Go"],
     )
     with patch("candidate_ranking.scoring.llm_assessment.generate_assessment",
                return_value=_assessment()) as mock_gen:
         load_or_generate_assessment(
-            _jd(), _candidate(), profile_v1, MagicMock(), tmp_path
+            profile_v1, _candidate(), MagicMock(), tmp_path
         )
         load_or_generate_assessment(
-            _jd(), _candidate(), profile_v2, MagicMock(), tmp_path
+            profile_v2, _candidate(), MagicMock(), tmp_path
         )
     assert mock_gen.call_count == 2
 
@@ -172,7 +168,8 @@ def test_filter_assessable_candidates_excludes_failed_parse():
 def test_build_jev_questions_keys_for_minimal_profile():
     from candidate_ranking.scoring.llm_assessment import _build_jev_questions
     profile = JobProfile(
-        job_description_id="jd-1", generated_by_model="m",
+        id="jd-1", title="Backend", raw_text="req.", source_path="j.pdf",
+        generated_by_model="m",
         must_have_skills=["Python", "PostgreSQL"],
         nice_to_have_skills=["Docker"],
     )
@@ -188,24 +185,6 @@ def test_build_jev_questions_keys_for_minimal_profile():
     # 2 must + 1 nih + 1 total_years + 5 career = 9
     assert len(questions) == 9
 
-
-def test_build_jev_questions_includes_edu_seniority_other_when_set():
-    from candidate_ranking.scoring.llm_assessment import _build_jev_questions
-    profile = JobProfile(
-        job_description_id="jd-1", generated_by_model="m",
-        must_have_skills=["Python"],
-        education_requirement="Bachelor's degree in Computer Science or related",
-        seniority_requirement="Senior (5+ years)",
-        other_requirements=["Must have valid driver's license", "Willing to relocate"],
-    )
-    questions = _build_jev_questions(profile)
-    keys = [q.key for q in questions]
-    assert "education_requirement" in keys
-    assert "seniority_requirement" in keys
-    assert "other_req_0" in keys
-    assert "other_req_1" in keys
-    # 1 must + 1 edu + 1 seniority + 2 other + 1 total_years + 5 career = 11
-    assert len(questions) == 11
 
 
 def test_score_to_int_interpolates_correctly():

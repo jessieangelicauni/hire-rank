@@ -11,11 +11,10 @@ from langgraph.graph import END, StateGraph
 from langgraph.types import Send
 
 if TYPE_CHECKING:
-    from langchain_core.language_models import BaseChatModel
     from candidate_ranking.scoring.jev_client import JevClient
 
 from candidate_ranking.config import RunConfig
-from candidate_ranking.models import Assessment, Candidate, JobDescription, JobProfile
+from candidate_ranking.models import Assessment, Candidate, JobProfile
 from candidate_ranking.output.writer import write_jd_ranking
 from candidate_ranking.scoring.job_profile import (
     JobProfileGenerationError,
@@ -32,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 
 class AssessmentResult(TypedDict):
-    jd_id: str
+    jp_id: str
     candidate_id: str
     status: Literal["ok", "failed"]
     assessment: Assessment | None
@@ -40,7 +39,7 @@ class AssessmentResult(TypedDict):
 
 
 class PipelineState(TypedDict):
-    jds: list[JobDescription]
+    job_postings: list[JobProfile]
     candidates: list[Candidate]
     job_profiles: Annotated[dict[str, JobProfile], operator.or_]
     shortlists: Annotated[dict[str, list[str]], operator.or_]
@@ -52,7 +51,7 @@ def assessments_by_jd(assessment_results: list[AssessmentResult]) -> dict[str, d
     for result in assessment_results:
         if result["status"] != "ok":
             continue
-        grouped.setdefault(result["jd_id"], {})[result["candidate_id"]] = result["assessment"]
+        grouped.setdefault(result["jp_id"], {})[result["candidate_id"]] = result["assessment"]
     return grouped
 
 
@@ -60,7 +59,6 @@ def build_pipeline_graph(
     cfg: RunConfig,
     job_profile_chain: Runnable,
     jev_client: "JevClient",
-    ranking_llm: "BaseChatModel | None",
     skill_index: np.ndarray,
     skill_row_map: list[tuple[str, str]],
     skill_embedder: Callable[[list[str]], np.ndarray],
@@ -74,31 +72,31 @@ def build_pipeline_graph(
         return {}
 
     def fanout_job_profile_extraction(state: PipelineState) -> list[Send]:
-        return [Send("extract_job_profile_for_jd", {"jd": jd}) for jd in state["jds"]]
+        return [Send("extract_job_profile_for_jd", {"jp": jp}) for jp in state["job_postings"]]
 
     def extract_job_profile_for_jd(payload: dict) -> dict:
-        jd = payload["jd"]
+        jp = payload["jp"]
         try:
-            profile = load_or_generate_job_profile(jd, job_profile_chain, cfg.ollama_model, job_profile_cache_path)
+            profile = load_or_generate_job_profile(jp, job_profile_chain, cfg.ollama_model, job_profile_cache_path)
         except JobProfileGenerationError as exc:
-            logger.warning("Excluding %s from this run: %s", jd.id, exc)
+            logger.warning("Excluding %s from this run: %s", jp.id, exc)
             return {}
-        return {"job_profiles": {jd.id: profile}}
+        return {"job_profiles": {jp.id: profile}}
 
     def fanout_shortlist(state: PipelineState) -> list[Send]:
         return [
-            Send("build_shortlist_for_jd", {"jd": jd, "profile": state["job_profiles"][jd.id]})
-            for jd in state["jds"]
-            if jd.id in state["job_profiles"]
+            Send("build_shortlist_for_jd", {"jp": jp, "profile": state["job_profiles"][jp.id]})
+            for jp in state["job_postings"]
+            if jp.id in state["job_profiles"]
         ]
 
     def build_shortlist_for_jd(payload: dict) -> dict:
-        jd, profile = payload["jd"], payload["profile"]
+        jp, profile = payload["jp"], payload["profile"]
         candidate_ids = shortlist_candidates(
-            jd, profile, skill_index, skill_row_map, skill_embedder,
+            profile, skill_index, skill_row_map, skill_embedder,
             threshold=skill_match_threshold, min_matches=min_skill_matches,
         )
-        return {"shortlists": {jd.id: candidate_ids}}
+        return {"shortlists": {jp.id: candidate_ids}}
 
     def fanout_assessments(state: PipelineState) -> list[Send]:
         candidates_by_id = {c.id: c for c in state["candidates"]}
@@ -106,29 +104,29 @@ def build_pipeline_graph(
             Send(
                 "generate_assessment_for_pair",
                 {
-                    "jd": jd,
+                    "jp": jp,
                     "candidate": candidates_by_id[cid],
-                    "job_profile": state["job_profiles"].get(jd.id),
+                    "job_profile": state["job_profiles"].get(jp.id),
                 },
             )
-            for jd in state["jds"]
-            for cid in state["shortlists"].get(jd.id, [])
+            for jp in state["job_postings"]
+            for cid in state["shortlists"].get(jp.id, [])
         ]
 
     def generate_assessment_for_pair(payload: dict) -> dict:
-        jd, candidate = payload["jd"], payload["candidate"]
-        profile = payload.get("job_profile")
+        candidate = payload["candidate"]
+        jp = payload.get("job_profile") or payload["jp"]
         try:
             assessment = load_or_generate_assessment(
-                jd, candidate, profile, jev_client, cfg.cache_dir
+                jp, candidate, jev_client, cfg.cache_dir
             )
             result: AssessmentResult = {
-                "jd_id": jd.id, "candidate_id": candidate.id, "status": "ok",
+                "jp_id": jp.id, "candidate_id": candidate.id, "status": "ok",
                 "assessment": assessment, "error": None,
             }
         except AssessmentGenerationError as exc:
             result = {
-                "jd_id": jd.id, "candidate_id": candidate.id, "status": "failed",
+                "jp_id": jp.id, "candidate_id": candidate.id, "status": "failed",
                 "assessment": None, "error": str(exc),
             }
         return {"assessment_results": [result]}
@@ -136,39 +134,29 @@ def build_pipeline_graph(
     def fanout_rank_and_format(state: PipelineState) -> list[Send]:
         grouped = assessments_by_jd(state["assessment_results"])
         return [
-            Send("rank_and_format_jd_node", {"jd": jd, "assessments": grouped.get(jd.id, {})})
-            for jd in state["jds"]
+            Send("rank_and_format_jd_node", {"jp": jp, "assessments": grouped.get(jp.id, {})})
+            for jp in state["job_postings"]
         ]
 
     def rank_and_format_jd_node(payload: dict) -> dict:
-        jd: JobDescription = payload["jd"]
+        jp: JobProfile = payload["jp"]
         all_assessments: dict[str, Assessment] = payload["assessments"]
 
         if not all_assessments:
-            logger.warning("No assessed candidates for JD %s — skipping ranking", jd.id)
-            write_jd_ranking(cfg.runs_dir / run_id, jd, {}, {})
+            logger.warning("No assessed candidates for JP %s — skipping ranking", jp.id)
+            write_jd_ranking(cfg.runs_dir / run_id, jp, {}, {})
             return {}
 
-        if ranking_llm is None:
-            utilities = rank_active_listwise(
-                jd, all_assessments,
-                jev_client=jev_client,
-                subset_size=2,
-                max_iterations=cfg.ranking_pairwise_max_iterations,
-                min_delta_u=cfg.ranking_min_delta_u,
-                pl_prior_variance=cfg.ranking_pl_prior_variance,
-            )
-        else:
-            utilities = rank_active_listwise(
-                jd, all_assessments,
-                llm=ranking_llm,
-                subset_size=cfg.ranking_subset_size,
-                max_iterations=cfg.ranking_max_iterations,
-                min_delta_u=cfg.ranking_min_delta_u,
-                pl_prior_variance=cfg.ranking_pl_prior_variance,
-            )
+        utilities = rank_active_listwise(
+            jp, all_assessments,
+            jev_client=jev_client,
+            subset_size=2,
+            max_iterations=cfg.ranking_pairwise_max_iterations,
+            min_delta_u=cfg.ranking_min_delta_u,
+            pl_prior_variance=cfg.ranking_pl_prior_variance,
+        )
 
-        write_jd_ranking(cfg.runs_dir / run_id, jd, all_assessments, utilities)
+        write_jd_ranking(cfg.runs_dir / run_id, jp, all_assessments, utilities)
         return {}
 
     graph = StateGraph(PipelineState)

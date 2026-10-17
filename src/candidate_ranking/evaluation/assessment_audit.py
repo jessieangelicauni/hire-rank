@@ -9,7 +9,7 @@ from candidate_ranking.models import Assessment
 # Any deviation is a legacy cache artefact or a code-path bug.
 _EXPECTED_VERDICT = {
     "strong": "MET",
-    "adequate": "PARTIALLY_MET",
+    "adequate": "MET",
     "weak": "PARTIALLY_MET",
     "none": "NOT_MET",
 }
@@ -17,7 +17,7 @@ _EXPECTED_VERDICT = {
 
 @dataclass
 class CoherenceViolation:
-    jd_id: str
+    jp_id: str
     candidate_id: str
     requirement: str
     issue: str
@@ -31,7 +31,7 @@ class AssessmentAuditReport:
     (no ground truth required) and computable from a single pipeline run.
     """
 
-    n_jds: int
+    n_jps: int
     n_assessments: int
 
     # --- BM25 extraction quality ---
@@ -52,10 +52,10 @@ class AssessmentAuditReport:
     qualified_flag_errors: int  # assessments where flag != verdict-derived value
 
     # --- qualification funnel ---
-    qualification_rate_per_jd: dict[str, float]
+    qualification_rate_per_jp: dict[str, float]
     mean_qualification_rate: float
-    fully_qualified_jds: list[str]   # 100% — gate may be too loose
-    zero_qualified_jds: list[str]    # 0%   — gate may be too strict / must-haves misconfigured
+    fully_qualified_jps: list[str]   # 100% — gate may be too loose
+    zero_qualified_jps: list[str]    # 0%   — gate may be too strict / must-haves misconfigured
 
     # --- disqualification bottlenecks ---
     # Which must-have requirements are most often NOT_MET.
@@ -65,7 +65,7 @@ class AssessmentAuditReport:
 
 
 def audit_assessments(
-    assessments_by_jd: dict[str, dict[str, Assessment]],
+    assessments_by_jp: dict[str, dict[str, Assessment]],
 ) -> AssessmentAuditReport:
     """Compute publication-quality metrics from cached assessments — zero LLM calls.
 
@@ -75,16 +75,16 @@ def audit_assessments(
     3. Internal pipeline consistency (coherence, qualified flag integrity)
     4. Qualification funnel (rate per JD, anomaly detection, disqualifier analysis)
     """
-    n_assessments = sum(len(v) for v in assessments_by_jd.values())
+    n_assessments = sum(len(v) for v in assessments_by_jp.values())
     must_have_total = 0
     must_have_with_evidence = 0
     strength_counter: Counter[str] = Counter()
     disqualifier_counter: Counter[str] = Counter()
     violations: list[CoherenceViolation] = []
     flag_errors = 0
-    qualification_rate_per_jd: dict[str, float] = {}
+    qualification_rate_per_jp: dict[str, float] = {}
 
-    for jd_id, assessments in assessments_by_jd.items():
+    for jp_id, assessments in assessments_by_jp.items():
         n_qualified = 0
         for candidate_id, assessment in assessments.items():
             if assessment.qualified:
@@ -111,7 +111,7 @@ def audit_assessments(
                     expected = _EXPECTED_VERDICT[ev.evidence_strength]
                     if ev.verdict != expected:
                         violations.append(CoherenceViolation(
-                            jd_id=jd_id,
+                            jp_id=jp_id,
                             candidate_id=candidate_id,
                             requirement=ev.requirement,
                             issue=(
@@ -126,7 +126,7 @@ def audit_assessments(
 
         n = len(assessments)
         if n > 0:
-            qualification_rate_per_jd[jd_id] = n_qualified / n
+            qualification_rate_per_jp[jp_id] = n_qualified / n
 
     # Normalise strength distribution to fractions
     total_strengths = sum(strength_counter.values())
@@ -135,7 +135,7 @@ def audit_assessments(
     } if total_strengths else {}
 
     return AssessmentAuditReport(
-        n_jds=len(assessments_by_jd),
+        n_jps=len(assessments_by_jp),
         n_assessments=n_assessments,
         must_have_evals_total=must_have_total,
         must_have_evals_with_evidence=must_have_with_evidence,
@@ -148,12 +148,12 @@ def audit_assessments(
             len(violations) / must_have_total if must_have_total else 0.0
         ),
         qualified_flag_errors=flag_errors,
-        qualification_rate_per_jd=qualification_rate_per_jd,
+        qualification_rate_per_jp=qualification_rate_per_jp,
         mean_qualification_rate=(
-            sum(qualification_rate_per_jd.values()) / len(qualification_rate_per_jd)
-            if qualification_rate_per_jd else 0.0
+            sum(qualification_rate_per_jp.values()) / len(qualification_rate_per_jp)
+            if qualification_rate_per_jp else 0.0
         ),
-        fully_qualified_jds=[jd for jd, r in qualification_rate_per_jd.items() if r >= 1.0],
-        zero_qualified_jds=[jd for jd, r in qualification_rate_per_jd.items() if r == 0.0],
+        fully_qualified_jps=[jp for jp, r in qualification_rate_per_jp.items() if r >= 1.0],
+        zero_qualified_jps=[jp for jp, r in qualification_rate_per_jp.items() if r == 0.0],
         most_common_disqualifiers=disqualifier_counter.most_common(),
     )

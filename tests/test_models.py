@@ -21,7 +21,7 @@ def _trajectory() -> CareerTrajectory:
 
 def _assessment(qualified=True) -> Assessment:
     return Assessment(
-        job_description_id="jd-1", candidate_id="cand-1",
+        job_profile_id="jd-1", candidate_id="cand-1",
         generated_by_model="qwen2.5:14b",
         must_have_evaluations=[_req_eval()],
         qualified=qualified,
@@ -54,7 +54,7 @@ def test_career_trajectory_roundtrips():
     assert t.has_multinational_experience is False
 
 def test_job_profile_defaults_empty():
-    jp = JobProfile(job_description_id="jd-1", generated_by_model="qwen2.5:14b")
+    jp = JobProfile(id="jd-1", title="Backend", raw_text="req.", source_path="j.txt", generated_by_model="qwen2.5:14b")
     assert jp.must_have_skills == []
     assert jp.nice_to_have_skills == []
     assert jp.education_requirement is None
@@ -63,7 +63,7 @@ def test_job_profile_defaults_empty():
 
 def test_job_profile_fields_roundtrip():
     jp = JobProfile(
-        job_description_id="jd-1", generated_by_model="qwen2.5:14b",
+        id="jd-1", title="Backend", raw_text="req.", source_path="j.txt", generated_by_model="qwen2.5:14b",
         must_have_skills=["Python"], nice_to_have_skills=["Docker"],
         education_requirement="Bachelor's degree", seniority_requirement="5+ years",
         other_requirements=["AWS Certified Solutions Architect"],
@@ -82,10 +82,3 @@ def test_requirement_evaluation_accepts_none_evidence_strength():
     )
     assert ev.evidence_strength == "none"
 
-def test_assessment_advisory_fields_default_to_none_or_empty():
-    a = Assessment(
-        job_description_id="jd-1", candidate_id="c-1", generated_by_model="m",
-    )
-    assert a.education_evaluation is None
-    assert a.seniority_evaluation is None
-    assert a.other_requirement_evaluations == {}

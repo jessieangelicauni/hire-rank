@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 from unittest.mock import MagicMock
 import pytest
-from candidate_ranking.models import JobDescription, JobProfile
+from candidate_ranking.models import JobProfile
 from candidate_ranking.scoring.job_profile import (
     JobProfileGenerationError,
     _JobProfileOutput,
@@ -13,9 +13,9 @@ from candidate_ranking.scoring.job_profile import (
 )
 
 
-def _jd() -> JobDescription:
-    return JobDescription(id="jd-1", title="Backend Engineer",
-                          raw_text="Requires Python 3+ years. Docker preferred.", source_path="jd.pdf")
+def _jp() -> JobProfile:
+    return JobProfile(id="jd-1", title="Backend Engineer",
+                       raw_text="Requires Python 3+ years. Docker preferred.", source_path="jd.pdf")
 
 
 def _mock_chain(**overrides) -> MagicMock:
@@ -33,9 +33,9 @@ def _mock_chain(**overrides) -> MagicMock:
 
 
 def test_generate_job_profile_returns_job_profile():
-    result = generate_job_profile(_jd(), _mock_chain(), "qwen2.5:14b")
+    result = generate_job_profile(_jp(), _mock_chain(), "qwen2.5:14b")
     assert isinstance(result, JobProfile)
-    assert result.job_description_id == "jd-1"
+    assert result.id == "jd-1"
     assert result.generated_by_model == "qwen2.5:14b"
     assert result.must_have_skills == ["Python"]
     assert result.nice_to_have_skills == ["Docker"]
@@ -43,7 +43,7 @@ def test_generate_job_profile_returns_job_profile():
 
 def test_generate_job_profile_carries_education_and_seniority():
     chain = _mock_chain(education_requirement="Bachelor's degree", seniority_requirement="3+ years")
-    result = generate_job_profile(_jd(), chain, "qwen2.5:14b")
+    result = generate_job_profile(_jp(), chain, "qwen2.5:14b")
     assert result.education_requirement == "Bachelor's degree"
     assert result.seniority_requirement == "3+ years"
 
@@ -52,15 +52,15 @@ def test_generate_job_profile_raises_on_chain_error_without_retry():
     chain = MagicMock()
     chain.invoke.side_effect = ValueError("schema violation")
     with pytest.raises(JobProfileGenerationError):
-        generate_job_profile(_jd(), chain, "qwen2.5:14b")
+        generate_job_profile(_jp(), chain, "qwen2.5:14b")
     assert chain.invoke.call_count == 1  # no retry loop
 
 
 def test_load_or_generate_uses_cache_on_second_call(tmp_path: Path):
     chain = _mock_chain()
     cache_path = tmp_path / "job_profile.json"
-    first = load_or_generate_job_profile(_jd(), chain, "qwen2.5:14b", cache_path)
-    second = load_or_generate_job_profile(_jd(), chain, "qwen2.5:14b", cache_path)
+    first = load_or_generate_job_profile(_jp(), chain, "qwen2.5:14b", cache_path)
+    second = load_or_generate_job_profile(_jp(), chain, "qwen2.5:14b", cache_path)
     assert first == second
     assert chain.invoke.call_count == 1
 
@@ -68,21 +68,21 @@ def test_load_or_generate_uses_cache_on_second_call(tmp_path: Path):
 def test_load_or_generate_regenerates_on_model_change(tmp_path: Path):
     chain = _mock_chain()
     cache_path = tmp_path / "job_profile.json"
-    load_or_generate_job_profile(_jd(), chain, "model-a", cache_path)
-    load_or_generate_job_profile(_jd(), chain, "model-b", cache_path)
+    load_or_generate_job_profile(_jp(), chain, "model-a", cache_path)
+    load_or_generate_job_profile(_jp(), chain, "model-b", cache_path)
     assert chain.invoke.call_count == 2
 
 
 def test_load_or_generate_discards_corrupt_cache(tmp_path: Path, caplog):
     chain = _mock_chain()
     cache_path = tmp_path / "job_profile.json"
-    jd = _jd()
-    real_key = _cache_key(jd, "qwen2.5:14b")
+    jp = _jp()
+    real_key = _cache_key(jp, "qwen2.5:14b")
     cache_path.write_text(
         json.dumps({"jd-1": {"cache_key": real_key, "job_profile": {"bad": "data"}}}), encoding="utf-8"
     )
     with caplog.at_level("WARNING"):
-        result = load_or_generate_job_profile(jd, chain, "qwen2.5:14b", cache_path)
+        result = load_or_generate_job_profile(jp, chain, "qwen2.5:14b", cache_path)
     assert isinstance(result, JobProfile)
     assert chain.invoke.call_count == 1
     assert "Discarding invalid cached job profile" in caplog.text

@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import logging
+import time
 from typing import Literal
 
 import requests
 from pydantic import BaseModel
+
+logger = logging.getLogger(__name__)
 
 _ENDPOINT = "https://api.typesafe.ai/v1/systemone"
 JEV_MODEL_ID = "jev-latest"
@@ -72,18 +76,23 @@ class JevClient:
             },
         }
         try:
+            t0 = time.perf_counter()
             response = requests.post(
                 _ENDPOINT,
                 json=payload,
                 headers={"Authorization": f"Bearer {self._api_token}"},
                 timeout=self._timeout,
             )
+            latency_ms = (time.perf_counter() - t0) * 1000
             response.raise_for_status()
             data = response.json()
         except requests.RequestException as exc:
             raise JevClientError(f"Jev request failed: {exc}") from exc
         except ValueError as exc:
             raise JevClientError(f"Jev response was not valid JSON: {exc}") from exc
+
+        n_questions = len(questions)
+        logger.debug("Jev latency: %.0f ms (%d question(s))", latency_ms, n_questions)
 
         try:
             raw_answers = data["answers"]

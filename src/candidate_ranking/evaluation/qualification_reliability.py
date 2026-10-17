@@ -4,7 +4,7 @@ import logging
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from candidate_ranking.models import Assessment, Candidate, JobDescription, JobProfile
+from candidate_ranking.models import Assessment, Candidate, JobProfile
 from candidate_ranking.scoring.llm_assessment import generate_assessment
 
 if TYPE_CHECKING:
@@ -62,9 +62,8 @@ def _verdict_map(assessment: Assessment) -> dict[str, str]:
 
 
 def repeat_qualification_gate(
-    jd: JobDescription,
+    jp: JobProfile,
     candidate: Candidate,
-    profile: JobProfile | None,
     jev_client: "JevClient",
     repeats: int = 3,
 ) -> list[Assessment]:
@@ -73,7 +72,7 @@ def repeat_qualification_gate(
     cache entirely, since the cache is keyed to return the same answer forever
     and would make every "repeat" trivially identical."""
     return [
-        generate_assessment(jd, candidate, profile, jev_client)
+        generate_assessment(jp, candidate, jev_client)
         for _ in range(repeats)
     ]
 

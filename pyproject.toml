@@ -2,7 +2,7 @@
 name = "candidate-ranking"
 version = "0.1.0"
 description = "LLM-driven agentic candidate ranking research"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "langgraph>=0.2.60",
     "langgraph-checkpoint-sqlite>=2.0.1",
@@ -14,7 +14,7 @@ dependencies = [
     "torch>=2.13.0",
     "sentence-transformers>=5.7.0",
     "transformers>=4.44.0",
-    "numpy>=2.5.2",
+    "numpy>=2.0.0",
     "scipy>=1.14.0",
     "rank-bm25>=0.2.2",
     "python-dotenv>=1.2.3",

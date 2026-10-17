@@ -8,13 +8,13 @@ from candidate_ranking.graphs.pipeline import (
     assessments_by_jd,
     build_pipeline_graph,
 )
-from candidate_ranking.models import Assessment, Candidate, JobDescription, JobProfile, RequirementEvaluation
+from candidate_ranking.models import Assessment, Candidate, JobProfile, RequirementEvaluation
 from candidate_ranking.scoring.job_profile import JobProfileGenerationError
 
 
 def _qualified_assessment(jd_id: str, candidate_id: str) -> Assessment:
     return Assessment(
-        job_description_id=jd_id, candidate_id=candidate_id,
+        job_profile_id=jd_id, candidate_id=candidate_id,
         generated_by_model="qwen2.5:14b", qualified=True,
         must_have_evaluations=[
             RequirementEvaluation(requirement="Python", verdict="MET", evidence="FastAPI",
@@ -25,7 +25,7 @@ def _qualified_assessment(jd_id: str, candidate_id: str) -> Assessment:
 
 def _ok_result(jd_id: str, candidate_id: str) -> dict:
     return {
-        "jd_id": jd_id, "candidate_id": candidate_id, "status": "ok",
+        "jp_id": jd_id, "candidate_id": candidate_id, "status": "ok",
         "assessment": _qualified_assessment(jd_id, candidate_id), "error": None,
     }
 
@@ -37,6 +37,7 @@ def _failed_result(jd_id: str, candidate_id: str) -> dict:
 
 def test_pipeline_state_has_job_profiles_key():
     assert "job_profiles" in PipelineState.__annotations__
+    assert "job_postings" in PipelineState.__annotations__
 
 
 def test_pipeline_state_has_no_jev_fields():
@@ -57,7 +58,7 @@ def test_build_pipeline_graph_has_profile_node_and_no_jev_nodes(tmp_path: Path):
         cfg=cfg,
         job_profile_chain=MagicMock(),
         jev_client=MagicMock(),
-        ranking_llm=MagicMock(),
+
         skill_index=np.zeros((1, 10)),
         skill_row_map=[("jd-1", "cand-1")],
         skill_embedder=MagicMock(return_value=np.zeros((1, 10))),
@@ -74,23 +75,23 @@ def test_build_pipeline_graph_has_profile_node_and_no_jev_nodes(tmp_path: Path):
 
 def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_path: Path):
     cfg = RunConfig.full(tmp_path)
-    jd_ok = JobDescription(id="jd-ok", title="Engineer", raw_text="Python", source_path="a.pdf")
-    jd_fail = JobDescription(id="jd-fail", title="Other", raw_text="...", source_path="b.pdf")
+    jp_ok = JobProfile(id="jd-ok", title="Engineer", raw_text="Python", source_path="a.pdf")
+    jp_fail = JobProfile(id="jd-fail", title="Other", raw_text="...", source_path="b.pdf")
     candidate = Candidate(
         id="cand-1", source_path="cv.pdf", raw_text="...", num_pages=1, char_count=10, parse_status="ok",
     )
 
-    def fake_load_or_generate_job_profile(jd, chain, model_name, cache_path):
-        if jd.id == "jd-fail":
+    def fake_load_or_generate_job_profile(jp, chain, model_name, cache_path):
+        if jp.id == "jd-fail":
             raise JobProfileGenerationError("boom")
-        return JobProfile(job_description_id=jd.id, generated_by_model=model_name, must_have_skills=["Python"])
+        return JobProfile(id=jp.id, title=jp.title, raw_text=jp.raw_text, source_path=jp.source_path, generated_by_model=model_name, must_have_skills=["Python"])
 
-    def fake_shortlist_candidates(jd, profile, index, row_map, embedder, **kwargs):
-        return ["cand-1"] if jd.id == "jd-ok" else []
+    def fake_shortlist_candidates(jp, index, row_map, embedder, **kwargs):
+        return ["cand-1"] if jp.id == "jd-ok" else []
 
-    def fake_load_or_generate_assessment(jd, candidate_, profile, jev_client, cache_dir):
+    def fake_load_or_generate_assessment(jp, candidate_, jev_client, cache_dir):
         return Assessment(
-            job_description_id=jd.id, candidate_id=candidate_.id,
+            job_profile_id=jp.id, candidate_id=candidate_.id,
             generated_by_model="jev/jev-latest",
             must_have_evaluations=[
                 RequirementEvaluation(requirement="Python", verdict="MET", evidence="x",
@@ -115,7 +116,7 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
             cfg=cfg,
             job_profile_chain=MagicMock(),
             jev_client=MagicMock(),
-            ranking_llm=MagicMock(),
+    
             skill_index=np.zeros((1, 10)),
             skill_row_map=[("jd-ok", "cand-1")],
             skill_embedder=MagicMock(return_value=np.zeros((1, 10))),
@@ -123,10 +124,10 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
         )
         compiled = graph.compile()
         compiled.invoke({
-            "jds": [jd_ok, jd_fail], "candidates": [candidate],
+            "job_postings": [jp_ok, jp_fail], "candidates": [candidate],
             "job_profiles": {}, "shortlists": {}, "assessment_results": [],
         })
 
-    written_jd_ids = {call.args[1].id for call in mock_write.call_args_list}
-    assert "jd-fail" in written_jd_ids
-    assert "jd-ok" in written_jd_ids
+    written_jp_ids = {call.args[1].id for call in mock_write.call_args_list}
+    assert "jd-fail" in written_jp_ids
+    assert "jd-ok" in written_jp_ids

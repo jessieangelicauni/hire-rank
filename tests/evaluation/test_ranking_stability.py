@@ -2,7 +2,7 @@ from __future__ import annotations
 import json
 import pytest
 from unittest.mock import MagicMock, patch
-from candidate_ranking.models import Assessment, JobDescription, RequirementEvaluation
+from candidate_ranking.models import Assessment, JobProfile, RequirementEvaluation
 from candidate_ranking.evaluation.ranking_stability import (
     StabilityReport,
     kendall_tau,
@@ -72,14 +72,14 @@ def test_rank_biased_overlap_weighs_top_agreement_more_than_kendall_tau():
     assert rbo > tau
 
 
-def _jd(jd_id: str = "jd-1") -> JobDescription:
-    return JobDescription(id=jd_id, title="Backend Engineer",
+def _jp(jp_id: str = "jd-1") -> JobProfile:
+    return JobProfile(id=jp_id, title="Backend Engineer",
                           raw_text="Python required.", source_path="jd.pdf")
 
 
 def _assessment(candidate_id: str, jd_id: str = "jd-1", years: int = 3) -> Assessment:
     return Assessment(
-        job_description_id=jd_id, candidate_id=candidate_id,
+        job_profile_id=jd_id, candidate_id=candidate_id,
         generated_by_model="qwen2.5:14b",
         must_have_evaluations=[
             RequirementEvaluation(
@@ -92,11 +92,11 @@ def _assessment(candidate_id: str, jd_id: str = "jd-1", years: int = 3) -> Asses
 
 
 def test_evaluate_jd_stability_returns_float_between_minus_one_and_one():
-    jd = _jd()
+    jp = _jp()
     assessments = {f"cand-{i}": _assessment(f"cand-{i}", years=i + 1) for i in range(6)}
 
-    with patch(f"{ACTIVE_LISTWISE_MODULE}._rank_subset", side_effect=lambda jd, subset_ids, asmt, llm: list(subset_ids)):
-        tau, rbo = evaluate_jd_stability(jd, assessments, MagicMock(), subset_size=3)
+    with patch(f"{ACTIVE_LISTWISE_MODULE}._rank_subset", side_effect=lambda jp, subset_ids, asmt, llm: list(subset_ids)):
+        tau, rbo = evaluate_jd_stability(jp, assessments, MagicMock(), subset_size=3)
 
     assert isinstance(tau, float)
     assert -1.0 <= tau <= 1.0
@@ -105,14 +105,14 @@ def test_evaluate_jd_stability_returns_float_between_minus_one_and_one():
 
 
 def test_run_stability_report_aggregates_correctly():
-    jd1 = _jd("jd-1")
-    jd2 = _jd("jd-2")
+    jp1 = _jp("jd-1")
+    jp2 = _jp("jd-2")
     assessments1 = {f"cand-{i}": _assessment(f"cand-{i}", "jd-1", years=i + 1) for i in range(4)}
     assessments2 = {f"cand-{i}": _assessment(f"cand-{i}", "jd-2", years=i + 1) for i in range(4)}
-    jd_assessments = {"jd-1": (jd1, assessments1), "jd-2": (jd2, assessments2)}
+    jp_assessments = {"jd-1": (jp1, assessments1), "jd-2": (jp2, assessments2)}
 
-    with patch(f"{ACTIVE_LISTWISE_MODULE}._rank_subset", side_effect=lambda jd, subset_ids, asmt, llm: list(subset_ids)):
-        report = run_stability_report(jd_assessments, MagicMock(), subset_size=3)
+    with patch(f"{ACTIVE_LISTWISE_MODULE}._rank_subset", side_effect=lambda jp, subset_ids, asmt, llm: list(subset_ids)):
+        report = run_stability_report(jp_assessments, MagicMock(), subset_size=3)
 
     assert set(report.per_jd.keys()) == {"jd-1", "jd-2"}
     assert report.min_tau_jd in {"jd-1", "jd-2"}
@@ -120,14 +120,13 @@ def test_run_stability_report_aggregates_correctly():
 
 
 def test_run_stability_report_raises_when_fewer_than_two_candidates():
-    jd = _jd()
-    jd_assessments = {"jd-1": (jd, {"cand-a": _assessment("cand-a")})}
+    jp = _jp()
+    jp_assessments = {"jd-1": (jp, {"cand-a": _assessment("cand-a")})}
     with pytest.raises(ValueError, match="No JDs"):
-        run_stability_report(jd_assessments, MagicMock())
+        run_stability_report(jp_assessments, MagicMock())
 
 
 from pathlib import Path
-from candidate_ranking.models import JobProfile
 from candidate_ranking.evaluation.ranking_stability import load_cached_assessments
 
 
@@ -157,7 +156,8 @@ def test_load_cached_assessments_skips_entries_scored_against_a_stale_profile(tm
     _write_assessment_cache(jd_dir, "cand-stale", "Wireshark")  # scored against an old must-have list
 
     current_profile = JobProfile(
-        job_description_id="jd-1", generated_by_model="qwen2.5:14b", must_have_skills=["Python"]
+        id="jd-1", title="Job", raw_text="...", source_path="j.txt",
+        generated_by_model="qwen2.5:14b", must_have_skills=["Python"]
     )
     result = load_cached_assessments(tmp_path, job_profiles={"jd-1": current_profile})
 

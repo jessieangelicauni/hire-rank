@@ -18,9 +18,9 @@ from langgraph.checkpoint.sqlite import SqliteSaver
 from candidate_ranking.config import RunConfig, apply_env_overrides
 from candidate_ranking.graphs.pipeline import build_pipeline_graph
 from candidate_ranking.ingestion.cv import build_skill_extraction_chain, enrich_candidates_with_skills, load_candidates
-from candidate_ranking.ingestion.jd import load_job_descriptions
+from candidate_ranking.ingestion.jp import load_job_profiles
 from candidate_ranking.logging_setup import configure_logging
-from candidate_ranking.models import Assessment, Candidate, JobDescription
+from candidate_ranking.models import Assessment, Candidate, JobProfile
 from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
 from candidate_ranking.output.writer import write_run_output
 from candidate_ranking.scoring.job_profile import build_job_profile_chain
@@ -31,32 +31,32 @@ from candidate_ranking.scoring.jev_client import JevClient
 from candidate_ranking.evaluation.ranking_stability import (
     load_cached_assessments,
     load_job_profiles,
-    run_stability_report,
 )
 from candidate_ranking.evaluation.qualification_reliability import (
     repeat_qualification_gate,
     build_reliability_report,
 )
 from candidate_ranking.scoring.skills import build_candidate_skill_index, build_skill_embedder
+from candidate_ranking.utils import OllamaLatencyCallback
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 ASSESSMENT_SCOPE_VERSION = "jev-qualification-gate-v1"
 
 
-def load_corpus(cfg: RunConfig) -> tuple[list[JobDescription], list[Candidate]]:
-    jds = load_job_descriptions(cfg.jd_dir)
+def load_corpus(cfg: RunConfig) -> tuple[list[JobProfile], list[Candidate]]:
+    jps = load_job_profiles(cfg.jp_dir)
     candidates = load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")
-    if cfg.max_jds is not None:
-        jds = jds[: cfg.max_jds]
+    if cfg.max_jps is not None:
+        jps = jps[: cfg.max_jps]
     if cfg.max_candidates is not None:
         candidates = candidates[: cfg.max_candidates]
-    return jds, candidates
+    return jps, candidates
 
 
 _CHECKPOINT_ALLOWED_MSGPACK_MODULES = [
     ("candidate_ranking.models", name)
-    for name in ("JobDescription", "Candidate", "JobProfile", "Assessment")
+    for name in ("JobProfile", "Candidate", "Assessment")
 ]
 
 
@@ -80,7 +80,7 @@ def run(
     print(f"Run ID: {run_id}")
     configure_logging(cfg.runs_dir / run_id / "warnings.json")
 
-    jds, candidates = load_corpus(cfg)
+    jps, candidates = load_corpus(cfg)
     try:
         seed_console_web_roles(cfg)
     except Exception as exc:
@@ -88,7 +88,8 @@ def run(
     candidates = filter_assessable_candidates(candidates)
 
     llm = ChatOllama(
-        model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx
+        model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx,
+        callbacks=[OllamaLatencyCallback()],
     )
 
     if not cfg.jev_api_key:
@@ -109,7 +110,6 @@ def run(
         cfg=cfg,
         job_profile_chain=job_profile_chain,
         jev_client=jev_client,
-        ranking_llm=None,  # pairwise Jev mode
         skill_index=skill_index,
         skill_row_map=skill_row_map,
         skill_embedder=skill_embedder,
@@ -120,7 +120,7 @@ def run(
 
     db_path = cfg.cache_dir / "checkpoints.db"
     initial_state = {
-        "jds": jds,
+        "jps": jps,
         "candidates": candidates,
         "job_profiles": {},
         "shortlists": {},
@@ -133,10 +133,10 @@ def run(
         resuming = saver.get_tuple(thread_config) is not None
         final_state = compiled.invoke(None if resuming else initial_state, config=thread_config)
 
-    for jd in jds:
-        if len(final_state["shortlists"].get(jd.id, [])) == 0:
+    for jp in jps:
+        if len(final_state["shortlists"].get(jp.id, [])) == 0:
             print(
-                f"WARNING: JD {jd.id}'s shortlist is empty — no candidates assessed.",
+                f"WARNING: JP {jp.id}'s shortlist is empty — no candidates assessed.",
                 file=sys.stderr,
             )
 
@@ -157,9 +157,8 @@ def run(
         "skill_embedding_model": cfg.skill_embedding_model,
         "skill_match_threshold": skill_match_threshold,
         "min_skill_matches": min_skill_matches,
-        "ranking_temperature": cfg.ranking_temperature,
-        "shortlist_sizes": {jd_id: len(cids) for jd_id, cids in final_state["shortlists"].items()},
-        "jd_ids": [jd.id for jd in jds],
+        "shortlist_sizes": {jp_id: len(cids) for jp_id, cids in final_state["shortlists"].items()},
+        "jp_ids": [jp.id for jp in jps],
         "candidate_ids": [c.id for c in candidates],
     }
     run_dir = write_run_output(cfg.runs_dir, run_id, manifest, final_state["assessment_results"])
@@ -167,7 +166,7 @@ def run(
     total_shortlisted = sum(len(v) for v in final_state["shortlists"].values())
     if total_shortlisted == 0:
         raise RuntimeError(
-            f"Run produced zero shortlisted candidates across {len(jds)} JDs — no assessments generated."
+            f"Run produced zero shortlisted candidates across {len(jps)} JDs — no assessments generated."
         )
 
     try:
@@ -189,11 +188,10 @@ def main() -> None:
     run_parser.add_argument("--skill-match-threshold", type=float, default=0.8)
     run_parser.add_argument("--min-skill-matches", type=int, default=3)
 
-    subparsers.add_parser("evaluate-stability")
     subparsers.add_parser("evaluate-audit")
 
     reliability_parser = subparsers.add_parser("evaluate-reliability")
-    reliability_parser.add_argument("--sample-per-jd", type=int, default=2)
+    reliability_parser.add_argument("--sample-per-jp", type=int, default=2)
     reliability_parser.add_argument("--repeats", type=int, default=3)
 
     args = parser.parse_args()
@@ -206,68 +204,6 @@ def main() -> None:
         )
         print(f"Run complete: {run_dir / 'summary.json'}")
 
-    elif args.command == "evaluate-stability":
-        import json as _json
-        # TODO: migrate stability evaluation to pairwise Jev (currently still uses Ollama listwise)
-        cfg = RunConfig.full(PROJECT_ROOT)
-        cfg = apply_env_overrides(cfg)
-
-        llm_ranking = ChatOllama(
-            model=cfg.ollama_model, base_url=cfg.ollama_base_url,
-            temperature=cfg.ranking_temperature, num_ctx=cfg.ollama_num_ctx,
-        )
-
-        jds = load_job_descriptions(cfg.jd_dir)
-        jd_map = {jd.id: jd for jd in jds}
-        cached = load_cached_assessments(cfg.cache_dir)
-
-        jd_assessments = {
-            jd_id: (jd_map[jd_id], assessments)
-            for jd_id, assessments in cached.items()
-            if jd_id in jd_map
-        }
-        if not jd_assessments:
-            print("No cached assessments found. Run the pipeline first.", file=sys.stderr)
-            sys.exit(1)
-
-        report = run_stability_report(
-            jd_assessments, llm_ranking,
-            cfg.ranking_subset_size, cfg.ranking_max_iterations,
-            cfg.ranking_min_delta_u, cfg.ranking_pl_prior_variance,
-        )
-
-        sep = "─" * 70
-        print(f"\nRanking Stability Report")
-        print(f"subset_size={cfg.ranking_subset_size}  max_iterations={cfg.ranking_max_iterations}")
-        print(sep)
-        print(f"{'JD':<35} {'Candidates':>10}  {'τ':>6}  {'RBO':>6}")
-        for jd_id, tau in sorted(report.per_jd.items()):
-            n = len(cached[jd_id])
-            print(f"{jd_id:<35} {n:>10}  {tau:>6.3f}  {report.rbo_per_jd[jd_id]:>6.3f}")
-        print(sep)
-        print(f"Mean τ   : {report.mean_tau:.3f}      Mean RBO : {report.mean_rbo:.3f}")
-        print(f"Min  τ   : {report.min_tau:.3f}  ({report.min_tau_jd})")
-        print(f"Min  RBO : {report.min_rbo:.3f}  ({report.min_rbo_jd})")
-        print(sep)
-        print("τ (Kendall-tau): agreement across ALL rank pairs, equally weighted.")
-        print("RBO (rank-biased overlap): agreement weighted toward the TOP of the list —")
-        print("  what matters for shortlisting. τ ≥ 0.90 / RBO ≥ 0.90 = stable,")
-        print("  0.75–0.90 = moderate, < 0.75 = unstable.\n")
-
-        report_path = cfg.cache_dir / "stability_report.json"
-        report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(
-            _json.dumps({
-                "subset_size": cfg.ranking_subset_size, "max_iterations": cfg.ranking_max_iterations,
-                "per_jd": report.per_jd, "mean_tau": report.mean_tau,
-                "min_tau": report.min_tau, "min_tau_jd": report.min_tau_jd,
-                "rbo_per_jd": report.rbo_per_jd, "mean_rbo": report.mean_rbo,
-                "min_rbo": report.min_rbo, "min_rbo_jd": report.min_rbo_jd,
-            }, indent=2),
-            encoding="utf-8",
-        )
-        print(f"Saved to {report_path}")
-
     elif args.command == "evaluate-reliability":
         import json as _json
         import random
@@ -279,8 +215,8 @@ def main() -> None:
             raise RuntimeError("CANDIDATE_RANKING_JEV_API_KEY is required for reliability evaluation")
         jev_client = JevClient(api_token=cfg.jev_api_key)
 
-        jds = load_job_descriptions(cfg.jd_dir)
-        jd_map = {jd.id: jd for jd in jds}
+        jps = load_job_profiles(cfg.jp_dir)
+        jp_map = {jp.id: jp for jp in jps}
         job_profiles = load_job_profiles(cfg.cache_dir)
         candidates = load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")
         candidate_map = {c.id: c for c in candidates}
@@ -292,13 +228,13 @@ def main() -> None:
 
         rng = random.Random(42)
         sampled_pairs: list[tuple[str, str]] = []
-        for jd_id, assessments in cached.items():
-            if jd_id not in jd_map:
+        for jp_id, assessments in cached.items():
+            if jp_id not in jp_map:
                 continue
             candidate_ids = [cid for cid in assessments if cid in candidate_map]
             rng.shuffle(candidate_ids)
             for cid in candidate_ids[: args.sample_per_jd]:
-                sampled_pairs.append((jd_id, cid))
+                sampled_pairs.append((jp_id, cid))
 
         if not sampled_pairs:
             print("No (JD, candidate) pairs available to sample.", file=sys.stderr)
@@ -309,14 +245,14 @@ def main() -> None:
             f"{len(sampled_pairs)} sampled pairs — this makes real LLM calls...\n"
         )
         repeated_assessments: dict[str, list[Assessment]] = {}
-        for jd_id, candidate_id in sampled_pairs:
-            jd = jd_map[jd_id]
-            profile = job_profiles.get(jd_id)
+        for jp_id, candidate_id in sampled_pairs:
+            jp = jp_map[jp_id]
+            profile = job_profiles.get(jp_id)
             candidate = candidate_map[candidate_id]
-            pair_id = f"{jd_id}/{candidate_id}"
+            pair_id = f"{jp_id}/{candidate_id}"
             try:
                 repeated_assessments[pair_id] = repeat_qualification_gate(
-                    jd, candidate, profile, jev_client, repeats=args.repeats
+                    jp, candidate, jev_client, repeats=args.repeats
                 )
             except Exception as exc:
                 print(f"WARNING: skipping {pair_id}: {exc}", file=sys.stderr)
@@ -365,7 +301,7 @@ def main() -> None:
         sep = "─" * 70
         print(f"\nAssessment Audit Report (zero LLM calls)")
         print(sep)
-        print(f"JDs assessed          : {report.n_jds}")
+        print(f"JPs assessed          : {report.n_jps}")
         print(f"Candidates assessed   : {report.n_assessments}")
         print(f"\n── Evidence Coverage (BM25) ──")
         print(f"Must-have evaluations : {report.must_have_evals_total}")
@@ -380,17 +316,17 @@ def main() -> None:
         print(f"Qualified flag errors : {report.qualified_flag_errors}")
         if report.coherence_violations:
             for v in report.coherence_violations[:5]:
-                print(f"  [{v.jd_id}/{v.candidate_id}] {v.requirement}: {v.issue}")
+                print(f"  [{v.jp_id}/{v.candidate_id}] {v.requirement}: {v.issue}")
             if len(report.coherence_violations) > 5:
                 print(f"  ... and {len(report.coherence_violations) - 5} more")
         print(f"\n── Qualification Funnel ──")
         print(f"Mean qualification rate: {report.mean_qualification_rate:.1%}")
-        if report.zero_qualified_jds:
-            print(f"WARNING — 0% qualified : {', '.join(report.zero_qualified_jds)}")
-        if report.fully_qualified_jds:
-            print(f"WARNING — 100% qualified: {', '.join(report.fully_qualified_jds)}")
-        for jd_id, rate in sorted(report.qualification_rate_per_jd.items()):
-            print(f"  {jd_id:<40}: {rate:.1%}")
+        if report.zero_qualified_jps:
+            print(f"WARNING — 0% qualified : {', '.join(report.zero_qualified_jps)}")
+        if report.fully_qualified_jps:
+            print(f"WARNING — 100% qualified: {', '.join(report.fully_qualified_jps)}")
+        for jp_id, rate in sorted(report.qualification_rate_per_jp.items()):
+            print(f"  {jp_id:<40}: {rate:.1%}")
         print(f"\n── Top Disqualifying Requirements ──")
         if report.most_common_disqualifiers:
             for req, count in report.most_common_disqualifiers[:10]:
@@ -402,7 +338,7 @@ def main() -> None:
         report_path = cfg.cache_dir / "audit_report.json"
         report_path.write_text(
             _json.dumps({
-                "n_jds": report.n_jds,
+                "n_jps": report.n_jps,
                 "n_assessments": report.n_assessments,
                 "evidence_coverage_rate": report.evidence_coverage_rate,
                 "must_have_evals_total": report.must_have_evals_total,
@@ -410,15 +346,15 @@ def main() -> None:
                 "evidence_strength_distribution": report.evidence_strength_distribution,
                 "coherence_violation_rate": report.coherence_violation_rate,
                 "coherence_violations": [
-                    {"jd_id": v.jd_id, "candidate_id": v.candidate_id,
+                    {"jp_id": v.jp_id, "candidate_id": v.candidate_id,
                      "requirement": v.requirement, "issue": v.issue}
                     for v in report.coherence_violations
                 ],
                 "qualified_flag_errors": report.qualified_flag_errors,
                 "mean_qualification_rate": report.mean_qualification_rate,
-                "qualification_rate_per_jd": report.qualification_rate_per_jd,
-                "fully_qualified_jds": report.fully_qualified_jds,
-                "zero_qualified_jds": report.zero_qualified_jds,
+                "qualification_rate_per_jp": report.qualification_rate_per_jp,
+                "fully_qualified_jps": report.fully_qualified_jps,
+                "zero_qualified_jps": report.zero_qualified_jps,
                 "most_common_disqualifiers": report.most_common_disqualifiers,
             }, indent=2),
             encoding="utf-8",

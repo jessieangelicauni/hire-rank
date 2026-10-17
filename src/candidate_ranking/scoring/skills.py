@@ -6,7 +6,7 @@ from typing import Callable
 
 import numpy as np
 
-from candidate_ranking.models import Candidate, JobDescription, JobProfile
+from candidate_ranking.models import Candidate, JobProfile
 
 logger = logging.getLogger(__name__)
 
@@ -138,25 +138,24 @@ def match_candidate_skills(
 
 
 def shortlist_candidates(
-    jd: JobDescription,
-    profile: JobProfile,
+    jp: JobProfile,
     index: np.ndarray,
     row_map: list[tuple[str, str]],
     embedder: Callable[[list[str]], np.ndarray],
     threshold: float = 0.8,
     min_matches: int = 2,
 ) -> list[str]:
-    all_skills = profile.must_have_skills + profile.nice_to_have_skills
+    all_skills = jp.must_have_skills + jp.nice_to_have_skills
     if not all_skills:
-        logger.warning("JD %s has no extracted skills; shortlist is empty", jd.id)
+        logger.warning("JP %s has no extracted skills; shortlist is empty", jp.id)
         return []
 
-    matched = match_candidate_skills(profile, index, row_map, embedder, threshold)
+    matched = match_candidate_skills(jp, index, row_map, embedder, threshold)
 
     deduplicated_count = len({s.strip().lower() for s in all_skills})
     required = min(min_matches, deduplicated_count)
 
-    must_have_normalized = {s.strip().lower() for s in profile.must_have_skills}
+    must_have_normalized = {s.strip().lower() for s in jp.must_have_skills}
 
     def has_all_must_haves(skills: set[str]) -> bool:
         matched_lower = {skill.strip().lower() for skill in skills}
@@ -169,7 +168,7 @@ def shortlist_candidates(
     )
     if not shortlisted:
         logger.warning(
-            "JD %s's skill-match shortlist is empty at threshold=%s, required matches=%s, "
-            "requiring all %d must-have skill(s)", jd.id, threshold, required, len(must_have_normalized),
+            "JP %s skill-match shortlist is empty at threshold=%s, required matches=%s, "
+            "requiring all %d must-have skill(s)", jp.id, threshold, required, len(must_have_normalized),
         )
     return shortlisted

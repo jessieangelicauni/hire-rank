@@ -1,17 +1,17 @@
 from __future__ import annotations
 import json
 from pathlib import Path
-from candidate_ranking.models import Assessment, JobDescription, RequirementEvaluation
+from candidate_ranking.models import Assessment, JobProfile, RequirementEvaluation
 from candidate_ranking.output.writer import format_jd_ranking, write_jd_ranking
 
 
-def _jd() -> JobDescription:
-    return JobDescription(id="jd-1", title="Backend Engineer", raw_text="...", source_path="jd.pdf")
+def _jp() -> JobProfile:
+    return JobProfile(id="jd-1", title="Backend Engineer", raw_text="...", source_path="jd.pdf")
 
 
 def _assessment(candidate_id: str, qualified: bool = True) -> Assessment:
     return Assessment(
-        job_description_id="jd-1", candidate_id=candidate_id,
+        job_profile_id="jd-1", candidate_id=candidate_id,
         generated_by_model="qwen2.5:14b", qualified=qualified,
         must_have_evaluations=[
             RequirementEvaluation(requirement="Python", verdict="MET" if qualified else "NOT_MET",
@@ -29,7 +29,7 @@ def test_format_jd_ranking_orders_by_utility():
     }
     utilities = {"cand-a": 0.5, "cand-b": 2.1, "cand-c": 1.0}
 
-    _, json_payload = format_jd_ranking(_jd(), assessments, utilities)
+    _, json_payload = format_jd_ranking(_jp(), assessments, utilities)
 
     rows = json_payload["rankings"]
     assert [r["candidate_id"] for r in rows] == ["cand-b", "cand-c", "cand-a"]
@@ -42,7 +42,7 @@ def test_format_jd_ranking_includes_qualified_and_years():
     assessments = {"cand-a": _assessment("cand-a")}
     utilities = {"cand-a": 1.0}
 
-    _, json_payload = format_jd_ranking(_jd(), assessments, utilities)
+    _, json_payload = format_jd_ranking(_jp(), assessments, utilities)
 
     row = json_payload["rankings"][0]
     assert row["qualified"] is True
@@ -56,7 +56,7 @@ def test_format_jd_ranking_flags_disqualified_candidates_in_markdown():
     }
     utilities = {"cand-qualified": 1.0, "cand-disqualified": -1.0}
 
-    markdown_text, json_payload = format_jd_ranking(_jd(), assessments, utilities)
+    markdown_text, json_payload = format_jd_ranking(_jp(), assessments, utilities)
     lines_by_candidate = {line.split("**")[1]: line for line in markdown_text.splitlines() if "**" in line}
 
     assert "DISQUALIFIED" in lines_by_candidate["cand-disqualified"]
@@ -67,7 +67,7 @@ def test_write_jd_ranking_writes_markdown_and_json(tmp_path: Path):
     assessments = {"cand-a": _assessment("cand-a")}
     utilities = {"cand-a": 1.5}
 
-    write_jd_ranking(tmp_path, _jd(), assessments, utilities)
+    write_jd_ranking(tmp_path, _jp(), assessments, utilities)
 
     assert (tmp_path / "jd-1" / "ranking.md").exists()
     json_payload = json.loads((tmp_path / "jd-1" / "ranking.json").read_text(encoding="utf-8"))
