@@ -5,6 +5,7 @@ import logging
 import re
 import threading
 from pathlib import Path
+from typing import Literal
 
 from langchain_core.language_models import BaseChatModel
 from langchain_core.prompts import ChatPromptTemplate
@@ -12,7 +13,8 @@ from langchain_core.runnables import Runnable
 from pydantic import BaseModel, Field, ValidationError
 
 from candidate_ranking.utils import GenerationError, invoke_and_validate, load_json_cache, save_json_cache
-from candidate_ranking.models import JobProfile
+from candidate_ranking.models import AdaptiveRequirement, JobProfile, SkillCriteria, TotalYearsCriteria
+from candidate_ranking.scoring.assessment import fallback_skill_criteria, fallback_total_years_criteria
 
 logger = logging.getLogger(__name__)
 
@@ -82,9 +84,160 @@ def build_job_profile_chain(llm: BaseChatModel) -> Runnable:
     return JOB_PROFILE_PROMPT | llm.with_structured_output(_JobProfileOutput)
 
 
+class _SkillCriteriaOutput(BaseModel):
+    skill: str
+    instructions: str
+    strong: str
+    adequate: str
+    weak: str
+    none: str
+
+
+class _TotalYearsCriteriaOutput(BaseModel):
+    instructions: str
+
+
+class _AdaptiveRequirementOutput(BaseModel):
+    source: Literal["education", "seniority", "other"]
+    requirement: str
+    criteria_meets: str
+    criteria_partially_meets: str
+    criteria_does_not_meet: str
+
+
+class _RubricOutput(BaseModel):
+    reasoning: str = Field(min_length=1)
+    skill_criteria: list[_SkillCriteriaOutput] = Field(default_factory=list)
+    total_years_criteria: _TotalYearsCriteriaOutput | None = None
+    adaptive_requirements: list[_AdaptiveRequirementOutput] = Field(default_factory=list)
+
+
+RUBRIC_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        (
+            "system",
+            "You are a senior technical recruiter building a detailed evaluation rubric for a "
+            "specific job profile, to brief an AI evaluator that will assess candidate CVs "
+            "against it.\n\n"
+            "In `reasoning` (max 3 sentences), note anything non-obvious before answering.\n\n"
+            "For EACH skill listed below (must-have and nice-to-have together), produce one "
+            "`skill_criteria` entry with the EXACT same `skill` name given to you, verbatim. "
+            "`instructions` should give role-specific guidance for judging evidence of that "
+            "skill in a CV; `strong`/`adequate`/`weak`/`none` should each describe what that "
+            "evidence-strength level looks like FOR THIS SKILL IN THIS ROLE, calibrated to the "
+            "role's seniority and domain.\n\n"
+            "Produce exactly one `total_years_criteria` entry whose `instructions` calibrate "
+            "what counts as 'relevant' experience for THIS role, and what years-of-experience "
+            "ranges correspond to junior/mid/senior for this specific role's seniority level.\n\n"
+            "For EACH requirement listed below (education, seniority, and each 'other' "
+            "requirement), produce one `adaptive_requirements` entry with the EXACT same "
+            "`source` and `requirement` text given to you, verbatim, plus `criteria_meets`, "
+            "`criteria_partially_meets`, and `criteria_does_not_meet` describing what each "
+            "match level looks like in a candidate's CV for that specific requirement.",
+        ),
+        (
+            "human",
+            "Job Title: {title}\n\n"
+            "Skills to calibrate:\n{skills_block}\n\n"
+            "Requirements to calibrate:\n{requirements_block}",
+        ),
+    ]
+)
+
+
+def build_rubric_chain(llm: BaseChatModel) -> Runnable:
+    return RUBRIC_PROMPT | llm.with_structured_output(_RubricOutput)
+
+
+def _format_skills_block(must_have_skills: list[str], nice_to_have_skills: list[str]) -> str:
+    lines = [f"- {skill} (must-have)" for skill in must_have_skills]
+    lines += [f"- {skill} (nice-to-have)" for skill in nice_to_have_skills]
+    return "\n".join(lines) if lines else "(none)"
+
+
+def _format_requirements_block(
+    education_requirement: str | None,
+    seniority_requirement: str | None,
+    other_requirements: list[str],
+) -> str:
+    lines = []
+    if education_requirement:
+        lines.append(f"- education: {education_requirement}")
+    if seniority_requirement:
+        lines.append(f"- seniority: {seniority_requirement}")
+    lines += [f"- other: {req}" for req in other_requirements]
+    return "\n".join(lines) if lines else "(none)"
+
+
+def _finalize_skill_criteria(
+    skills: list[str],
+    rubric_skills: list[_SkillCriteriaOutput],
+    jp_id: str,
+) -> list[SkillCriteria]:
+    by_name = {s.skill: s for s in rubric_skills}
+    result = []
+    for skill in skills:
+        match = by_name.get(skill)
+        if match is None:
+            logger.warning(
+                "Rubric generation for %s: no skill-criteria rubric returned for skill %r — "
+                "using generic fallback", jp_id, skill,
+            )
+            result.append(fallback_skill_criteria(jp_id, skill))
+            continue
+        result.append(SkillCriteria(
+            skill=skill, instructions=match.instructions,
+            strong=match.strong, adequate=match.adequate, weak=match.weak, none=match.none,
+        ))
+    return result
+
+
+def _finalize_total_years_criteria(
+    rubric_total_years: _TotalYearsCriteriaOutput | None,
+) -> TotalYearsCriteria:
+    if rubric_total_years is None:
+        logger.warning("Rubric generation: no total_years_criteria returned — using generic fallback")
+        return fallback_total_years_criteria()
+    return TotalYearsCriteria(instructions=rubric_total_years.instructions)
+
+
+def _finalize_adaptive_requirements(
+    education_requirement: str | None,
+    seniority_requirement: str | None,
+    other_requirements: list[str],
+    rubric_requirements: list[_AdaptiveRequirementOutput],
+    jp_id: str,
+) -> list[AdaptiveRequirement]:
+    expected: list[tuple[str, str]] = []
+    if education_requirement:
+        expected.append(("education", education_requirement))
+    if seniority_requirement:
+        expected.append(("seniority", seniority_requirement))
+    expected += [("other", req) for req in other_requirements]
+
+    by_key = {(r.source, r.requirement): r for r in rubric_requirements}
+    result = []
+    for source, requirement in expected:
+        match = by_key.get((source, requirement))
+        if match is None:
+            logger.warning(
+                "Rubric generation for %s: no adaptive-requirement rubric returned for %s "
+                "requirement %r — dropping this question", jp_id, source, requirement,
+            )
+            continue
+        result.append(AdaptiveRequirement(
+            source=source, requirement=requirement,
+            criteria_meets=match.criteria_meets,
+            criteria_partially_meets=match.criteria_partially_meets,
+            criteria_does_not_meet=match.criteria_does_not_meet,
+        ))
+    return result
+
+
 def generate_job_profile(
     jp: JobProfile,
     chain: Runnable,
+    rubric_chain: Runnable,
     model_name: str,
 ) -> JobProfile:
     try:
@@ -106,6 +259,30 @@ def generate_job_profile(
         if skill.strip().lower() not in must_have_normalized
     ]
 
+    try:
+        rubric = invoke_and_validate(
+            rubric_chain,
+            {
+                "title": jp.title,
+                "skills_block": _format_skills_block(must_have_skills, nice_to_have_skills),
+                "requirements_block": _format_requirements_block(
+                    result.education_requirement, result.seniority_requirement, result.other_requirements,
+                ),
+            },
+            _RubricOutput,
+            lambda _: None,
+            log_context=f"Adaptive rubric generation for {jp.id}",
+        )
+    except GenerationError as exc:
+        raise JobProfileGenerationError(str(exc)) from exc
+
+    skill_criteria = _finalize_skill_criteria(must_have_skills + nice_to_have_skills, rubric.skill_criteria, jp.id)
+    total_years_criteria = _finalize_total_years_criteria(rubric.total_years_criteria)
+    adaptive_requirements = _finalize_adaptive_requirements(
+        result.education_requirement, result.seniority_requirement, result.other_requirements,
+        rubric.adaptive_requirements, jp.id,
+    )
+
     return JobProfile(
         id=jp.id,
         title=jp.title,
@@ -117,6 +294,9 @@ def generate_job_profile(
         education_requirement=result.education_requirement,
         seniority_requirement=result.seniority_requirement,
         other_requirements=result.other_requirements,
+        skill_criteria=skill_criteria,
+        total_years_criteria=total_years_criteria,
+        adaptive_requirements=adaptive_requirements,
     )
 
 
@@ -130,6 +310,7 @@ def _cache_key(jp: JobProfile, model_name: str) -> str:
 def load_or_generate_job_profile(
     jp: JobProfile,
     chain: Runnable,
+    rubric_chain: Runnable,
     model_name: str,
     cache_path: Path,
 ) -> JobProfile:
@@ -144,7 +325,7 @@ def load_or_generate_job_profile(
             except (KeyError, ValidationError) as exc:
                 logger.warning("Discarding invalid cached job profile for %s: %s", jp.id, exc)
 
-    job_profile = generate_job_profile(jp, chain, model_name)
+    job_profile = generate_job_profile(jp, chain, rubric_chain, model_name)
 
     with _cache_lock:
         cache = load_json_cache(cache_path, "job profile cache")
