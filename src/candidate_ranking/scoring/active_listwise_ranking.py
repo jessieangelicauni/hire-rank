@@ -71,25 +71,30 @@ def _select_uncertain_subset(
     item_ids: list[str],
     subset_size: int,
     avoid_signature: frozenset[str] | None = None,
+    iteration: int = 0,
 ) -> list[str]:
     """Pick the subset_size items with highest utility variance.
 
-    If that exact combination is `avoid_signature` (the LLM just failed to
-    produce a valid ranking for it), swap its lowest-variance member for the
-    next-highest-variance item not already included. Without this, a subset
-    the model can't rank stays the top-variance pick forever — since nothing
-    about `u`/variance changes on a failed attempt — and the active loop
-    wastes its whole iteration budget retrying the same unsolvable subset
-    with an unchanged prompt instead of making progress elsewhere.
+    If that exact combination is `avoid_signature`, first try swapping the
+    lowest-variance member for the next-highest-variance item outside the
+    subset.  If no such item exists (n <= subset_size), rotate the list by
+    `iteration` instead — ensuring each retry presents candidates in a
+    different order even when the pool is exhausted.
     """
     order = np.argsort(variances)[::-1]
     selected = [item_ids[i] for i in order[:subset_size]]
     if avoid_signature is not None and frozenset(selected) == avoid_signature:
+        swapped = False
         for i in order[subset_size:]:
             replacement = item_ids[i]
             if replacement not in selected:
                 selected[-1] = replacement
+                swapped = True
                 break
+        if not swapped and len(selected) > 1:
+            # No swap candidate (pool exhausted) — rotate by iteration
+            offset = iteration % len(selected)
+            selected = selected[offset:] + selected[:offset]
     return selected
 
 
@@ -201,7 +206,7 @@ def _rank_active_listwise_core(
     last_failed_signature: frozenset[str] | None = None
     for iteration in range(1, actual_max_iter + 1):
         variances = np.diag(laplace_covariance(u, rankings, item_ids, pl_prior_variance))
-        subset_ids = _select_uncertain_subset(variances, item_ids, subset_size, last_failed_signature)
+        subset_ids = _select_uncertain_subset(variances, item_ids, subset_size, last_failed_signature, iteration)
 
         ordering = _rank_subset(jd, subset_ids, assessments, llm)
         if ordering is None:

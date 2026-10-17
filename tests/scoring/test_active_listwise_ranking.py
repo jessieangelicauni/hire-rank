@@ -190,3 +190,16 @@ def test_consistent_ranking_orders_candidates():
         )
 
     assert result["c9"] > result["c0"]
+
+
+def test_select_uncertain_subset_rotates_when_no_swap_candidate():
+    """When n == subset_size (all in pool), avoid_signature must be escaped via rotation."""
+    item_ids = ["a", "b", "c"]
+    variances = np.array([1.0, 0.9, 0.8])
+    # Top-3 == all 3, so there is no swap candidate.
+    initial = _select_uncertain_subset(variances, item_ids, subset_size=3)
+    avoid = frozenset(initial)
+    # With iteration=1, the list must be rotated (not identical).
+    result = _select_uncertain_subset(variances, item_ids, subset_size=3, avoid_signature=avoid, iteration=1)
+    assert frozenset(result) == avoid          # same members — pool is the same
+    assert result != initial                   # different ORDER — rotation happened
