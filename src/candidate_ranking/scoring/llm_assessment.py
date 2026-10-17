@@ -158,6 +158,7 @@ _FLAG_DURATION_CRITERIA: list[str] = [
     "0 months", "3 months", "6 months", "12 months", "24 months", "36+ months",
 ]
 
+# Jev noul criteria keys are strings "true"/"false", not Python bools — Jev API requirement.
 _PRESENT_CRITERIA: dict[str, str] = {
     "true": "Clear evidence of this flag is present in the CV",
     "false": "No evidence of this flag, or all instances are clearly explained",

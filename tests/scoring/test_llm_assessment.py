@@ -206,3 +206,10 @@ def test_score_to_int_interpolates_correctly():
     assert _score_to_int(2.0, ticks) == 6
     assert _score_to_int(2.5, ticks) == 8   # midpoint between 6 and 10
 
+
+def test_score_to_int_clamps_out_of_range():
+    from candidate_ranking.scoring.llm_assessment import _score_to_int
+    ticks = [0, 3, 6, 10, 15, 20]
+    assert _score_to_int(99.0, ticks) == 20  # above max → clamp to last tick
+    assert _score_to_int(-1.0, ticks) == 0   # below min → clamp to first tick
+
