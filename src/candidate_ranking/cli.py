@@ -23,7 +23,7 @@ from candidate_ranking.logging_setup import configure_logging
 from candidate_ranking.models import Assessment, Candidate, JobProfile
 from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
 from candidate_ranking.output.writer import write_run_output
-from candidate_ranking.scoring.job_profile import build_job_profile_chain
+from candidate_ranking.scoring.job_profile import build_job_profile_chain, build_rubric_chain
 from candidate_ranking.scoring.assessment import (
     filter_assessable_candidates,
 )
@@ -31,6 +31,7 @@ from candidate_ranking.scoring.jev_client import JevClient
 from candidate_ranking.evaluation.ranking_stability import (
     load_cached_assessments,
     load_job_profiles as load_cached_job_profiles,
+    run_stability_report,
 )
 from candidate_ranking.evaluation.qualification_reliability import (
     repeat_qualification_gate,
@@ -97,6 +98,7 @@ def run(
             "CANDIDATE_RANKING_JEV_API_KEY is required — set it in .env or the environment"
         )
     job_profile_chain = build_job_profile_chain(llm)
+    rubric_chain = build_rubric_chain(llm)
     jev_client = JevClient(api_token=cfg.jev_api_key)
     skill_extraction_chain = build_skill_extraction_chain(llm)
     candidates = enrich_candidates_with_skills(
@@ -109,6 +111,7 @@ def run(
     graph = build_pipeline_graph(
         cfg=cfg,
         job_profile_chain=job_profile_chain,
+        rubric_chain=rubric_chain,
         jev_client=jev_client,
         skill_index=skill_index,
         skill_row_map=skill_row_map,
@@ -194,6 +197,9 @@ def main() -> None:
     reliability_parser.add_argument("--sample-per-jp", type=int, default=2)
     reliability_parser.add_argument("--repeats", type=int, default=3)
 
+    stability_parser = subparsers.add_parser("evaluate-stability")
+    stability_parser.add_argument("--max-jps", type=int, default=None)
+
     args = parser.parse_args()
 
     if args.command == "run":
@@ -233,7 +239,7 @@ def main() -> None:
                 continue
             candidate_ids = [cid for cid in assessments if cid in candidate_map]
             rng.shuffle(candidate_ids)
-            for cid in candidate_ids[: args.sample_per_jd]:
+            for cid in candidate_ids[: args.sample_per_jp]:
                 sampled_pairs.append((jp_id, cid))
 
         if not sampled_pairs:
@@ -272,6 +278,15 @@ def main() -> None:
         print("  0.40–0.60 = moderate, < 0.40 = low self-consistency — the conclusion is")
         print("  largely noise, independent of whether it happens to be correct.\n")
 
+        print("── Confidence calibration (does Jev's own confidence predict agreement?) ──")
+        for label, rate in report.confidence_calibration.items():
+            n = report.confidence_calibration_n[label]
+            print(f"  {label:<16}: agreement={rate:.3f}  (n={n})")
+        print(
+            "If 'high' confidence doesn't agree noticeably more than 'low', confidence "
+            "isn't calibrated — it doesn't tell you how much to trust that answer.\n"
+        )
+
         report_path = cfg.cache_dir / "reliability_report.json"
         report_path.parent.mkdir(parents=True, exist_ok=True)
         report_path.write_text(
@@ -281,6 +296,81 @@ def main() -> None:
                 "qualified_cohens_kappa": report.qualified_cohens_kappa,
                 "evidence_strength_agreement_rate": report.evidence_strength_agreement_rate,
                 "per_pair_qualified": report.per_pair_qualified,
+                "confidence_calibration": report.confidence_calibration,
+                "confidence_calibration_n": report.confidence_calibration_n,
+            }, indent=2),
+            encoding="utf-8",
+        )
+        print(f"Saved to {report_path}")
+
+    elif args.command == "evaluate-stability":
+        import json as _json
+
+        cfg = RunConfig.full(PROJECT_ROOT)
+        cfg = apply_env_overrides(cfg)
+
+        if not cfg.jev_api_key:
+            raise RuntimeError("CANDIDATE_RANKING_JEV_API_KEY is required for stability evaluation")
+        jev_client = JevClient(api_token=cfg.jev_api_key)
+
+        jps = load_job_profiles(cfg.jp_dir)
+        job_profiles = load_cached_job_profiles(cfg.cache_dir)
+        cached = load_cached_assessments(cfg.cache_dir, job_profiles)
+        if not cached:
+            print("No cached assessments found. Run the pipeline first.", file=sys.stderr)
+            sys.exit(1)
+
+        jp_map = {jp.id: jp for jp in jps}
+        jp_assessments = {
+            jp_id: (jp_map[jp_id], assessments)
+            for jp_id, assessments in cached.items()
+            if jp_id in jp_map
+        }
+        if args.max_jps is not None:
+            jp_assessments = dict(list(jp_assessments.items())[: args.max_jps])
+        if not jp_assessments:
+            print("No JPs with cached assessments available.", file=sys.stderr)
+            sys.exit(1)
+
+        print(
+            f"Re-ranking {len(jp_assessments)} JP(s) twice each (no cache) to measure "
+            f"ranking stability — this makes real Jev calls...\n"
+        )
+        report = run_stability_report(
+            jp_assessments, jev_client=jev_client,
+            max_iterations=cfg.ranking_pairwise_max_iterations,
+            min_delta_u=cfg.ranking_min_delta_u,
+            pl_prior_variance=cfg.ranking_pl_prior_variance,
+        )
+
+        sep = "─" * 70
+        print(f"\nRanking Stability Report (two independent re-ranks of the same pool)")
+        print(sep)
+        print(f"JPs evaluated : {len(report.per_jp)}")
+        print(f"Mean Kendall's tau : {report.mean_tau:.3f}")
+        print(f"Min Kendall's tau  : {report.min_tau:.3f}  ({report.min_tau_jp})")
+        print(f"Mean RBO (top-weighted) : {report.mean_rbo:.3f}")
+        print(f"Min RBO                 : {report.min_rbo:.3f}  ({report.min_rbo_jp})")
+        print(sep)
+        for jp_id in sorted(report.per_jp):
+            print(f"  {jp_id:<40}: tau={report.per_jp[jp_id]:.3f}  rbo={report.rbo_per_jp[jp_id]:.3f}")
+        print(sep)
+        print("Interpretation: tau/RBO near 1.0 means re-ranking the same pool twice gives")
+        print("  the same order — the ranking is a real signal, not noise. Near 0 means the")
+        print("  final order is close to arbitrary from run to run.\n")
+
+        report_path = cfg.cache_dir / "stability_report.json"
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(
+            _json.dumps({
+                "per_jp": report.per_jp,
+                "mean_tau": report.mean_tau,
+                "min_tau": report.min_tau,
+                "min_tau_jp": report.min_tau_jp,
+                "rbo_per_jp": report.rbo_per_jp,
+                "mean_rbo": report.mean_rbo,
+                "min_rbo": report.min_rbo,
+                "min_rbo_jp": report.min_rbo_jp,
             }, indent=2),
             encoding="utf-8",
         )
@@ -297,12 +387,21 @@ def main() -> None:
             print("No cached assessments found. Run the pipeline first.", file=sys.stderr)
             sys.exit(1)
 
-        report = audit_assessments(cached)
+        all_candidates = load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")
+        total_candidates = len(filter_assessable_candidates(all_candidates))
+
+        report = audit_assessments(cached, total_candidates=total_candidates)
         sep = "─" * 70
         print(f"\nAssessment Audit Report (zero LLM calls)")
         print(sep)
         print(f"JPs assessed          : {report.n_jps}")
         print(f"Candidates assessed   : {report.n_assessments}")
+        print(f"\n── Shortlist Funnel ──")
+        print(f"Total candidate pool  : {report.total_candidates}")
+        print(f"Mean shortlist rate   : {report.mean_shortlist_rate:.1%}")
+        for jp_id, rate in sorted(report.shortlist_rate_per_jp.items()):
+            n = len(cached.get(jp_id, {}))
+            print(f"  {jp_id:<40}: {rate:.1%}  ({n}/{report.total_candidates})")
         print(f"\n── Evidence Coverage (BM25) ──")
         print(f"Must-have evaluations : {report.must_have_evals_total}")
         print(f"With non-empty evidence: {report.must_have_evals_with_evidence}")
@@ -334,16 +433,13 @@ def main() -> None:
             _json.dumps({
                 "n_jps": report.n_jps,
                 "n_assessments": report.n_assessments,
+                "total_candidates": report.total_candidates,
+                "shortlist_rate_per_jp": report.shortlist_rate_per_jp,
+                "mean_shortlist_rate": report.mean_shortlist_rate,
                 "evidence_coverage_rate": report.evidence_coverage_rate,
                 "must_have_evals_total": report.must_have_evals_total,
                 "must_have_evals_with_evidence": report.must_have_evals_with_evidence,
                 "evidence_strength_distribution": report.evidence_strength_distribution,
-                "coherence_violation_rate": report.coherence_violation_rate,
-                "coherence_violations": [
-                    {"jp_id": v.jp_id, "candidate_id": v.candidate_id,
-                     "requirement": v.requirement, "issue": v.issue}
-                    for v in report.coherence_violations
-                ],
                 "qualified_flag_errors": report.qualified_flag_errors,
                 "mean_qualification_rate": report.mean_qualification_rate,
                 "qualification_rate_per_jp": report.qualification_rate_per_jp,

@@ -58,6 +58,7 @@ def assessments_by_jd(assessment_results: list[AssessmentResult]) -> dict[str, d
 def build_pipeline_graph(
     cfg: RunConfig,
     job_profile_chain: Runnable,
+    rubric_chain: Runnable,
     jev_client: "JevClient",
     skill_index: np.ndarray,
     skill_row_map: list[tuple[str, str]],
@@ -77,7 +78,7 @@ def build_pipeline_graph(
     def extract_job_profile_for_jd(payload: dict) -> dict:
         jp = payload["jp"]
         try:
-            profile = load_or_generate_job_profile(jp, job_profile_chain, cfg.ollama_model, job_profile_cache_path)
+            profile = load_or_generate_job_profile(jp, job_profile_chain, rubric_chain, cfg.ollama_model, job_profile_cache_path)
         except JobProfileGenerationError as exc:
             logger.warning("Excluding %s from this run: %s", jp.id, exc)
             return {}

@@ -57,6 +57,7 @@ def test_build_pipeline_graph_has_profile_node_and_no_jev_nodes(tmp_path: Path):
     graph = build_pipeline_graph(
         cfg=cfg,
         job_profile_chain=MagicMock(),
+        rubric_chain=MagicMock(),
         jev_client=MagicMock(),
 
         skill_index=np.zeros((1, 10)),
@@ -81,7 +82,7 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
         id="cand-1", source_path="cv.pdf", raw_text="...", num_pages=1, char_count=10, parse_status="ok",
     )
 
-    def fake_load_or_generate_job_profile(jp, chain, model_name, cache_path):
+    def fake_load_or_generate_job_profile(jp, chain, rubric_chain, model_name, cache_path):
         if jp.id == "jd-fail":
             raise JobProfileGenerationError("boom")
         return JobProfile(id=jp.id, title=jp.title, raw_text=jp.raw_text, source_path=jp.source_path, generated_by_model=model_name, must_have_skills=["Python"])
@@ -115,8 +116,9 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
         graph = build_pipeline_graph(
             cfg=cfg,
             job_profile_chain=MagicMock(),
+            rubric_chain=MagicMock(),
             jev_client=MagicMock(),
-    
+
             skill_index=np.zeros((1, 10)),
             skill_row_map=[("jd-ok", "cand-1")],
             skill_embedder=MagicMock(return_value=np.zeros((1, 10))),
