@@ -86,12 +86,12 @@ def export_console_web_data(
     if skipped:
         logger.warning(
             "console-web export: excluding %d JD(s) with run data but no matching file in %s: %s",
-            len(skipped), cfg.jd_dir, skipped,
+            len(skipped), cfg.jp_dir, skipped,
         )
     if not jp_ids:
         logger.warning(
             "No exportable JDs for run %s (no assessment data, or all matching JDs have since been "
-            "removed from %s); skipping console-web export.", run_id, cfg.jd_dir,
+            "removed from %s); skipping console-web export.", run_id, cfg.jp_dir,
         )
         return None
 

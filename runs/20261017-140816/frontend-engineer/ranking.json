@@ -1,0 +1,110 @@
+{
+  "job_profile_id": "frontend-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00629",
+      "utility": 1.2008257122981612,
+      "qualified": true,
+      "total_relevant_years": 14
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00548",
+      "utility": 1.0200578580438102,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00276",
+      "utility": 0.9503824977902534,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00660",
+      "utility": 0.6693586990635421,
+      "qualified": true,
+      "total_relevant_years": 14
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00341",
+      "utility": 0.15893726293879382,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00555",
+      "utility": 0.14011769833568596,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00452",
+      "utility": 0.10916453811561148,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00243",
+      "utility": -0.16057162419271037,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00594",
+      "utility": -0.24270860916092382,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00370",
+      "utility": -0.2975661614486215,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00371",
+      "utility": -0.30186330553661694,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00350",
+      "utility": -0.45297754477178487,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00628",
+      "utility": -0.6387031588335772,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 14,
+      "candidate_id": "cv-00607",
+      "utility": -0.8817234987318952,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 15,
+      "candidate_id": "cv-00591",
+      "utility": -1.2727303639097283,
+      "qualified": true,
+      "total_relevant_years": 6
+    }
+  ]
+}

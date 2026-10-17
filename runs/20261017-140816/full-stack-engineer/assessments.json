@@ -1,0 +1,4728 @@
+{
+  "cv-00216": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00216",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... Seasoned software professional with deep expertise in HTML, Dart, and TypeScript ... HTML Dart TypeScript JavaScript CSS Remix Astro Bootstrap Vue",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... Git Jest Supabase Firebase MongoDB PostgreSQL Netlify AWS Amplify Cloudflare Pages",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... Git Jest Supabase Firebase MongoDB PostgreSQL Netlify AWS Amplify Cloudflare Pages",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... Git Jest Supabase Firebase MongoDB PostgreSQL Netlify AWS Amplify Cloudflare Pages ... Created accessible UI components using AWS Amplify, achieving WCAG AA compliance",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | East Melissa, Japan ... com | (277)660-0490x824 | https://linkedin ... com/in/joshua-garner",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 31,
+      "most_recent_role_duration_months": 23,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00256": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00256",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... CSS \u2022 Python \u2022 HTML \u2022 TypeScript \u2022 JavaScript \u2022 Next",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... Prettier \u2022 IndexedDB \u2022 MongoDB \u2022 PostgreSQL \u2022 Supabase \u2022 Firebase \u2022 Vercel \u2022 Cloudflare Pages \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... React Developer at AgentForge (2024-01 \u2013 Present) ... React Developer at Vercel (2017-12 \u2013 2021-03)",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 7 ... 6 years \u00b7 Johnathanton, UK ... com \u00b7 7015061817 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 7,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 41,
+      "most_recent_role_duration_months": 20,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00267": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00267",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... JavaScript, CSS, TypeScript with track record of building and scaling engineering teams",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... React Developer , ModelShip 2019-11 \u2013 2023-09",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Implemented state management solution using AWS Amplify, reducing API calls by 39% ... Built interactive data visualizations using AWS Amplify, serving 100000+ daily users ... Implemented automated testing framework using AWS Amplify, achieving 25% code coverage",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "0543x6459 \u00b7 Lake Brianside, UAE \u00b7 https://linkedin ... com/in/melinda-schmitt ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 33,
+      "most_recent_role_duration_months": 7,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00276": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00276",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Playwright PostgreSQL MongoDB Render Vercel Responsive Design Agile Accessibility (WCAG)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "JavaScript Python CSS Svelte Bootstrap Angular React ESLint Vite Cypress Git ... React Developer at Amazon (2021-08 \u2013 2024-11) ... React Developer at Uber (2020-04 \u2013 2021-02)",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... JavaScript Python CSS Svelte Bootstrap Angular React ESLint Vite Cypress Git",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... Improved website accessibility score to 21% using AWS Amplify ... Built interactive data visualizations using AWS Amplify, serving 5000+ daily users",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Autumnmouth, USA ... com | (547)329-2842x222 | https://linkedin ... Lead frontend engineering professional with 10 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 37,
+      "most_recent_role_duration_months": 6,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00331": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00331",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... Improved website accessibility score to 24% using TypeScript",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... React Developer 2018-10 \u2014 2019-04",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... MongoDB, Firebase, Supabase, PostgreSQL, AWS Amplify, Netlify, Vercel, Agile, Progressive Web",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "8510x17490 | Port Julie, USA ... https://linkedin ... com/in/raymond-barber | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 31,
+      "most_recent_role_duration_months": 22,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00334": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00334",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... TypeScript \u2022 Go \u2022 PHP \u2022 C# \u2022 Ruby \u2022 Spring Boot \u2022 FastAPI \u2022 Actix \u2022 Django \u2022 Redis \u2022 Neon \u2022 Nginx \u2022 Git",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... TypeScript \u2022 Go \u2022 PHP \u2022 C# \u2022 Ruby \u2022 Spring Boot \u2022 FastAPI \u2022 Actix \u2022 Django \u2022 Redis \u2022 Neon \u2022 Nginx \u2022 Git",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Hansen ... Backend Engineering \u00b7 14 ... 8 years \u00b7 Kevinstad, India",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 15,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 46,
+      "most_recent_role_duration_months": 33,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00341": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00341",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... Dart | CSS | JavaScript | Python | TypeScript | Angular | React | Remix | Tailwind CSS | Storybook | Jest | Vite |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... Figma | Git | MongoDB | Supabase | IndexedDB | Firebase | PostgreSQL | Netlify | Render | Progressive Web",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "Lead Frontend Engineering | 10 ... React Developer 2019-03 \u2013 2022-01 ... Dart | CSS | JavaScript | Python | TypeScript | Angular | React | Remix | Tailwind CSS | Storybook | Jest | Vite |",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... Figma | Git | MongoDB | Supabase | IndexedDB | Firebase | PostgreSQL | Netlify | Render | Progressive Web",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 10 ... 7+ Years Experience ... com | (749)467-1832 | New Stephanie, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 44,
+      "most_recent_role_duration_months": 37,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00347": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00347",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... HTML | Dart | JavaScript | Python | TypeScript | Vue",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... Git | Cypress | PostgreSQL | Supabase | Vercel | Cloudflare Pages | AWS Amplify | Netlify | Render | Component-",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... Git | Cypress | PostgreSQL | Supabase | Vercel | Cloudflare Pages | AWS Amplify | Netlify | Render | Component-",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... Git | Cypress | PostgreSQL | Supabase | Vercel | Cloudflare Pages | AWS Amplify | Netlify | Render | Component-",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Courtney Norris DVM ... Mid Frontend Engineering | 4 ... 4+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 34,
+      "most_recent_role_duration_months": 16,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00349": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00349",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Anthony Williams ... com | (361)796-3990x7676 | South Zacharyshire, Singapore ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 11,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 33,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00350": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00350",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "React Developer at TechFlow AI 2023-02 \u2013 Present ... React Developer at Meta 2019-09 \u2013 2022-12 ... React Certified Developer (React, 2021)",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... Supabase, PostgreSQL, MongoDB, Render, AWS Amplify, Responsive Design, Component-Driven",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 East Devin, UAE ... com \u00b7 993-992-8456 \u00b7 https://linkedin ... com/in/brian-larson \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 36,
+      "most_recent_role_duration_months": 28,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00371": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00371",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... JavaScript | TypeScript | Astro | React | Svelte | Tailwind CSS | Vite | Figma | Supabase | MongoDB | PostgreSQL",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... JavaScript | TypeScript | Astro | React | Svelte | Tailwind CSS | Vite | Figma | Supabase | MongoDB | PostgreSQL",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... JavaScript | TypeScript | Astro | React | Svelte | Tailwind CSS | Vite | Figma | Supabase | MongoDB | PostgreSQL",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Lead Frontend Engineering | 8 ... Created accessible UI components using AWS Amplify, achieving WCAG AA compliance ... | Firebase | IndexedDB | Vercel | Netlify | AWS Amplify | Cloudflare Pages | Accessibility (WCAG) | Responsive",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Frontend Engineering | 8 ... 9+ Years Experience ... davis@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 34,
+      "most_recent_role_duration_months": 35,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00380": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00380",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... Senior technical leader specializing in frontend engineering with expertise in HTML, Dart, TypeScript",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... React Developer at AgentForge 2024-11 \u2013 Present ... React Certified Developer (React, 2021)",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Christopherfurt, Netherlands ... dev \u00b7 (433)270-5024x97243 \u00b7 https://linkedin ... com/in/anthony-cruz \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 45,
+      "most_recent_role_duration_months": 7,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00392": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00392",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... Proficiency in Java, Rust, TypeScript",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... io, AWS, Render, GCP, Hugging Face, AWS Bedrock,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... MongoDB, GitHub Actions, ArgoCD, DigitalOcean, Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 North Tinamouth, Netherlands ... dev \u00b7 001-912-466-2015 \u00b7 https://linkedin ... com/in/matthew-cox \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 25,
+      "most_recent_role_duration_months": 30,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00404": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00404",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... Senior technical leader specializing in frontend engineering with expertise in JavaScript, CSS, TypeScript",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... React Certified Developer (React, 2024)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... Firebase, PostgreSQL, MongoDB, IndexedDB, AWS Amplify, Render, Cloudflare Pages, Vercel, Netlify, Agile,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Graystad, France ... 2832x15285 \u00b7 https://github ... com/maryknappdvm",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 48,
+      "most_recent_role_duration_months": 28,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00426": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00426",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... TypeScript HTML CSS JavaScript Remix Svelte Playwright Vite Figma Git Webpack",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... Supabase IndexedDB PostgreSQL MongoDB Firebase AWS Amplify Cloudflare Pages",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... React Developer at NeuroLink Labs (2017-08 \u2013 2018-09) ... React Certified Developer \u2014 React",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... TypeScript HTML CSS JavaScript Remix Svelte Playwright Vite Figma Git Webpack",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... Supabase IndexedDB PostgreSQL MongoDB Firebase AWS Amplify Cloudflare Pages ... AWS Certified Developer Associate \u2014 Amazon Web Services",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | West Christopher, Canada ... com | 001-550-234-2811x39043 | https://linkedin ... com/in/brian-cox",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 25,
+      "most_recent_role_duration_months": 32,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00427": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00427",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... com/in/emily-myers",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev | (921)256-8182x096 | Evanmouth, UK ... https://linkedin ... Certified Kubernetes Administrator \u2014 CNCF (2019)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 7,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 27,
+      "most_recent_role_duration_months": 14,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00434": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00434",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... TypeScript with track record of building and scaling engineering teams",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... Jest, MongoDB, Firebase, PostgreSQL, AWS Amplify, Vercel, Netlify, Agile, Responsive Design, Component-",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Fowlershire, Netherlands ... com \u00b7 001-950-427-2751x6480 \u00b7 https://linkedin ... com/in/brianna-beck \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 8,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 23,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00436": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00436",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... C# \u2022 PHP \u2022 Java \u2022 TypeScript \u2022 Node",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... js \u2022 Rails \u2022 LlamaIndex \u2022 FastAPI \u2022 Elasticsearch \u2022 PostgreSQL \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... Helm \u2022 Jenkins \u2022 Heroku \u2022 Vercel \u2022 Cloudflare \u2022 AWS \u2022 Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... com \u00b7 (885)612-7652x89286 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... AI Engineer at Stripe (2024-06 \u2013 Present)",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 4 years \u00b7 Waltersville, India ... Certified Kubernetes Administrator \u2014 CNCF",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 44,
+      "most_recent_role_duration_months": 10,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00441": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00441",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... Playwright, MongoDB, IndexedDB, Supabase, Firebase, PostgreSQL, AWS Amplify, Render, Cloudflare",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "0412 \u00b7 South Saraville, Canada ... com/matthewwalker \u00b7 https://linkedin ... com/in/matthew-walker",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 12,
+      "most_recent_role_duration_months": 9,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00450": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00450",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... Python TypeScript Node",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... Cassandra PostgreSQL ArgoCD RabbitMQ Helm AWS Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... Cassandra PostgreSQL ArgoCD RabbitMQ Helm AWS Fly ... AWS Bedrock Replicate TDD RAG Architecture Event-Driven Architecture",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | New Steven, Canada ... com | 001-604-401-0414x596 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 12,
+      "most_recent_role_duration_months": 23,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00484": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00484",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... Mentored team of 5 junior developers on PostgreSQL best practices",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "gRPC \u2022 ArgoCD \u2022 GCP \u2022 AWS \u2022 Cloudflare \u2022 Heroku \u2022 Claude API \u2022 OpenAI API \u2022 Anthropic \u2022 Google ... Gemini \u2022 AWS Bedrock \u2022 GraphQL \u2022 REST API Design \u2022 Event-Driven Architecture ... AWS Certified Developer Associate \u2014 Amazon Web Services",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... gRPC \u2022 ArgoCD \u2022 GCP \u2022 AWS \u2022 Cloudflare \u2022 Heroku \u2022 Claude API \u2022 OpenAI API \u2022 Anthropic \u2022 Google",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 North Juan, Singapore ... mitchell@mitchell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 17,
+      "most_recent_role_duration_months": 31,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00492": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00492",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... Dart TypeScript JavaScript HTML Python Angular Next",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... PostgreSQL MongoDB Render Cloudflare Pages Netlify Vercel AWS Amplify Accessibility (WCAG)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... Improved website accessibility score to 41% using Git",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... PostgreSQL MongoDB Render Cloudflare Pages Netlify Vercel AWS Amplify Accessibility (WCAG)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | North Rickyhaven, Germany ... com | (783)769-2944 | https://linkedin ... com/in/crystal-carey",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 18,
+      "most_recent_role_duration_months": 32,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00507": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00507",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... React Developer , Stripe 2018-10 \u2013 2019-10",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... Built real-time collaboration features using AWS Amplify, serving 1000+ concurrent users ... Built reusable component library using AWS Amplify, used by 100+ developers",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... React Developer , Stripe 2018-10 \u2013 2019-10",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "5357 \u00b7 South Hollyfurt, Netherlands ... com/shelbyadams \u00b7 https://linkedin ... com/in/shelby-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 28,
+      "most_recent_role_duration_months": 36,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00523": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00523",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... PostgreSQL, MongoDB, Supabase, Netlify, Cloudflare Pages, AWS Amplify, Agile, Progressive Web",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "com | (450)914-2576 | Lake Dylanburgh, UAE | https://github ... com/williamwalton ... Lead frontend engineering professional with 8 years driving technical strategy and team excellence",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 8,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 44,
+      "most_recent_role_duration_months": 21,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00534": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00534",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... Experienced software engineer with expertise in C#, PHP, and TypeScript ... C# PHP TypeScript Java Go FastAPI FastAPI Spring Boot PostgreSQL MySQL",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... C# PHP TypeScript Java Go FastAPI FastAPI Spring Boot PostgreSQL MySQL",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Implemented caching layer with Express",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... PlanetScale Neon Git Terraform Kafka RabbitMQ Kubernetes Railway Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Backend Developer at Stripe (2025-06 \u2013 Present)",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... PlanetScale Neon Git Terraform Kafka RabbitMQ Kubernetes Railway Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 23,
+      "most_recent_role_duration_months": 6,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00538": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00538",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... TypeScript \u2022 Rust \u2022 Node",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... NET \u2022 DynamoDB \u2022 Neon \u2022 PostgreSQL \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... Reduced infrastructure costs by 24% through optimization using Git",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... ArgoCD \u2022 Jenkins \u2022 Terraform \u2022 gRPC \u2022 Vercel \u2022 AWS \u2022 Azure \u2022 OpenAI API \u2022 AWS Bedrock \u2022 Google",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 42,
+      "most_recent_role_duration_months": 8,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00544": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00544",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... Junior engineer with 1 years working with TypeScript ... TypeScript \u2022 Dart \u2022 HTML \u2022 Python \u2022 JavaScript \u2022 Material UI \u2022 Remix \u2022 Vue",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... Git \u2022 Storybook \u2022 Cypress \u2022 PostgreSQL \u2022 Supabase \u2022 MongoDB \u2022 Netlify \u2022 Render \u2022 Cloudflare Pages",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... Git \u2022 Storybook \u2022 Cypress \u2022 PostgreSQL \u2022 Supabase \u2022 MongoDB \u2022 Netlify \u2022 Render \u2022 Cloudflare Pages",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... \u2022 AWS Amplify \u2022 Agile \u2022 Progressive Web Apps \u2022 Accessibility (WCAG) ... AWS Certified Developer Associate \u2014 Amazon Web Services",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 1 ... 0 years \u00b7 Lauraburgh, Australia ... dev \u00b7 (515)581-4888x1079 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 1,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 7,
+      "most_recent_role_duration_months": 8,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00548": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00548",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... Engineering leader with deep technical background in HTML, JavaScript, and TypeScript ... js for core functionality and TypeScript",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... React Developer at CodeReview",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... Built real-time collaboration features using AWS Amplify, serving 500+ concurrent users ... PostgreSQL, Firebase, Supabase, IndexedDB, Cloudflare Pages, AWS Amplify, Vercel, Netlify, Progressive Web",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u2014 Port Scottside, Japan ... 5877x221 \u00b7 https://linkedin ... com/in/justin-parker \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 33,
+      "most_recent_role_duration_months": 31,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00582": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00582",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... Expert in Java, Kotlin, TypeScript with track record of building and scaling engineering teams ... Java Kotlin TypeScript Rust NestJS Django Flask PostgreSQL Neon Supabase Terraform",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... Java Kotlin TypeScript Rust NestJS Django Flask PostgreSQL Neon Supabase Terraform",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... Java Kotlin TypeScript Rust NestJS Django Flask PostgreSQL Neon Supabase Terraform",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "io Render AWS Azure OpenAI Replicate ... Anthropic Claude API AWS Bedrock CI/CD Scrum ... AWS Certified Developer Associate \u2014 Amazon Web Services",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... Kafka Jenkins Helm Nginx GCP Azure Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 33,
+      "most_recent_role_duration_months": 16,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00607": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00607",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... ESLint, Supabase, IndexedDB, MongoDB, PostgreSQL, Firebase, Cloudflare Pages, AWS Amplify,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "com | 4169583737 | Jessicashire, Canada ... https://linkedin ... com/in/rickey-hall | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 7,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 28,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00635": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00635",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... TypeScript | CSS | Angular | Vue",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... js | Jest | Git | Webpack | Figma | Firebase | MongoDB | Supabase | Render |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... Netlify | Vercel | AWS Amplify | Cloudflare Pages | Responsive Design | Component-Driven Development",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Senior Frontend Engineering | 7 ... 8+ Years Experience ... dev | 421-837-7306 | West Ianmouth, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 37,
+      "most_recent_role_duration_months": 9,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00660": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00660",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... HTML CSS Python JavaScript TypeScript Angular React ESLint Webpack Jest Vite",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "Designed E-commerce Platform leveraging React microservices architecture with CSS for caching ... Created React Component Library leveraging HTML for core functionality and React for optimization ... React Developer at PromptStack (2016-08 \u2013 2019-03)",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Prettier Firebase MongoDB Supabase Vercel Render AWS Amplify Netlify Cloudflare Pages ... Improved website accessibility score to 25% using AWS Amplify ... Built real-time collaboration features using AWS Amplify, serving 50000+ concurrent users",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering | Fresher | South Amy, Japan ... 2369 | https://linkedin ... com/in/luis-hill",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 14,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 42,
+      "most_recent_role_duration_months": 35,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00664": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00664",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... TypeScript \u2022 JavaScript \u2022 Next",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... js \u2022 Bootstrap \u2022 Prettier \u2022 Jest \u2022 IndexedDB \u2022 PostgreSQL \u2022 Firebase \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 5 ... 0 years \u00b7 Kochfort, Netherlands ... com \u00b7 +1-615-506-6626x70551 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 4,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 25,
+      "most_recent_role_duration_months": 29,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00700": {
+    "job_profile_id": "full-stack-engineer",
+    "candidate_id": "cv-00700",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "TypeScript",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... Dart \u2022 TypeScript \u2022 CSS \u2022 HTML \u2022 Next",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... Supabase \u2022 PostgreSQL \u2022 Netlify \u2022 AWS Amplify \u2022 Render \u2022 Vercel \u2022 Cloudflare Pages \u2022 Progressive",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "React",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Next.js",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Node.js",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Express",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "NestJS",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prisma",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... Supabase \u2022 PostgreSQL \u2022 Netlify \u2022 AWS Amplify \u2022 Render \u2022 Vercel \u2022 Cloudflare Pages \u2022 Progressive",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GCP",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Stripe",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Frontend Engineering \u00b7 10 ... 4 years \u00b7 North Caroltown, UK ... woods@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 47,
+      "most_recent_role_duration_months": 27,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  }
+}

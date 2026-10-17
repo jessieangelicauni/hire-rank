@@ -1,0 +1,89 @@
+{
+  "job_profile_id": "cloud-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00539",
+      "utility": 1.2240858834409631,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00653",
+      "utility": 0.9544153984225738,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00299",
+      "utility": 0.7688735354182928,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00224",
+      "utility": 0.135190814169242,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00357",
+      "utility": -0.085600441392822,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00423",
+      "utility": -0.15960052947638045,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00695",
+      "utility": -0.17992678330242756,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00352",
+      "utility": -0.2626316732414478,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00342",
+      "utility": -0.46996129467878617,
+      "qualified": true,
+      "total_relevant_years": 2
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00445",
+      "utility": -0.736733104029246,
+      "qualified": true,
+      "total_relevant_years": 4
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00512",
+      "utility": -1.1881118053299615,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00345",
+      "utility": -2.1881118053299615,
+      "qualified": false,
+      "total_relevant_years": 6
+    }
+  ]
+}

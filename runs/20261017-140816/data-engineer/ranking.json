@@ -1,0 +1,54 @@
+{
+  "job_profile_id": "data-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00481",
+      "utility": 1.413607084606052,
+      "qualified": true,
+      "total_relevant_years": 4
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00270",
+      "utility": 0.36224417287899724,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00618",
+      "utility": 0.1812783019820082,
+      "qualified": true,
+      "total_relevant_years": 11
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00414",
+      "utility": -0.14984159977826222,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00531",
+      "utility": -0.18683309297764744,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00684",
+      "utility": -0.5077802470057631,
+      "qualified": true,
+      "total_relevant_years": 14
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00650",
+      "utility": -1.112674619705385,
+      "qualified": true,
+      "total_relevant_years": 5
+    }
+  ]
+}

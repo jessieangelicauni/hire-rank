@@ -1,0 +1,68 @@
+{
+  "job_profile_id": "backend-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00302",
+      "utility": 1.1018123593475526,
+      "qualified": true,
+      "total_relevant_years": 4
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00420",
+      "utility": 0.6456550562112295,
+      "qualified": true,
+      "total_relevant_years": 15
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00244",
+      "utility": 0.3674295487052371,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00257",
+      "utility": 0.19258129544095012,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00242",
+      "utility": -0.10825459838167444,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00516",
+      "utility": -0.14198106243973865,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00511",
+      "utility": -0.3348511188662414,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00233",
+      "utility": -0.6208040659562356,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00620",
+      "utility": -1.1015874140610795,
+      "qualified": true,
+      "total_relevant_years": 13
+    }
+  ]
+}

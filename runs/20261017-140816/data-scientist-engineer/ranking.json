@@ -1,0 +1,110 @@
+{
+  "job_profile_id": "data-scientist-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00525",
+      "utility": 1.2237975380170227,
+      "qualified": true,
+      "total_relevant_years": 4
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00455",
+      "utility": 1.119891120313483,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00566",
+      "utility": 0.9215892586233102,
+      "qualified": true,
+      "total_relevant_years": 13
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00272",
+      "utility": 0.5340492323226366,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00531",
+      "utility": 0.26126345522282957,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 6,
+      "candidate_id": "daniel-adif-nugroho",
+      "utility": 0.06055516830352271,
+      "qualified": true,
+      "total_relevant_years": 4
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00618",
+      "utility": -0.030988743644727753,
+      "qualified": true,
+      "total_relevant_years": 11
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00469",
+      "utility": -0.13464635509433015,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00551",
+      "utility": -0.15636867199375296,
+      "qualified": true,
+      "total_relevant_years": 11
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00606",
+      "utility": -0.27134070151616985,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00577",
+      "utility": -0.29370354676368693,
+      "qualified": true,
+      "total_relevant_years": 4
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00650",
+      "utility": -0.44944610141739794,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00214",
+      "utility": -0.635515493536873,
+      "qualified": true,
+      "total_relevant_years": 11
+    },
+    {
+      "rank": 14,
+      "candidate_id": "cv-00669",
+      "utility": -0.8788562664900497,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 15,
+      "candidate_id": "cv-00661",
+      "utility": -1.270279892345816,
+      "qualified": true,
+      "total_relevant_years": 10
+    }
+  ]
+}

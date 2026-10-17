@@ -47,7 +47,7 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_CV_DIR": ("cv_dir", Path),
     "CANDIDATE_RANKING_CACHE_DIR": ("cache_dir", Path),
     "CANDIDATE_RANKING_RUNS_DIR": ("runs_dir", Path),
-    "CANDIDATE_RANKING_MAX_JDS": ("max_jds", int),
+    "CANDIDATE_RANKING_MAX_JPS": ("max_jps", int),
     "CANDIDATE_RANKING_MAX_CANDIDATES": ("max_candidates", int),
     "CANDIDATE_RANKING_MODEL": ("ollama_model", str),
     "CANDIDATE_RANKING_OLLAMA_BASE_URL": ("ollama_base_url", str),

@@ -1,0 +1,893 @@
+{
+  "cv-00233": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00233",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... PostgreSQL | AWS | Azure | GCP | BDD | Test Automation | Test Planning",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... C# | Ruby | Java | JavaScript | TestNG | Cypress | Sauce Labs | Docker | Jira | BrowserStack | Postman | Redis |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... 9+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... 9+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... C# | Ruby | Java | JavaScript | TestNG | Cypress | Sauce Labs | Docker | Jira | BrowserStack | Postman | Redis |",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... 9+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... 9+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... 9+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... 9+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Rogers ... Mid QA / Testing | 4 ... 9+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 26,
+      "most_recent_role_duration_months": 7,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00242": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00242",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... com \u00b7 993-221-4958x7020 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "MET",
+        "evidence": "QA / Testing \u2014 South Brianchester, Japan ... harding@protonmail ... Task Scheduler \u2014 Designed BDD Framework leveraging TestNG microservices architecture with Playwright",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 34,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00244": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00244",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "C# \u2022 PHP \u2022 Go \u2022 Rails \u2022 FastAPI \u2022 Spring Boot \u2022 Redis \u2022 Supabase \u2022 PostgreSQL \u2022 CockroachDB \u2022 ... Mentored team of 8 junior developers on PostgreSQL best practices ... Mentored team of 8 junior developers on PostgreSQL best practices",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... C# \u2022 PHP \u2022 Go \u2022 Rails \u2022 FastAPI \u2022 Spring Boot \u2022 Redis \u2022 Supabase \u2022 PostgreSQL \u2022 CockroachDB \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... thomas@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... thomas@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... thomas@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... thomas@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... Neon \u2022 Terraform \u2022 Ansible \u2022 GitHub Actions \u2022 Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... thomas@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 10 ... 8 years \u00b7 Murrayburgh, Brazil ... Created authentication and authorization system using GCP, securing 5000+ user accounts",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "MET",
+        "evidence": "Hugging Face \u2022 OpenAI API \u2022 RAG Architecture \u2022 REST API Design ... Led migration from monolithic to microservices using Hugging Face, improving system scalability by 52% ... Built event-driven architecture using Ansible, processing 100+ events daily",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 43,
+      "most_recent_role_duration_months": 27,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00257": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00257",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... JavaScript | Python | Java | JUnit | Playwright | BrowserStack | Docker | MySQL | MongoDB | PostgreSQL | Redis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... JavaScript | Python | Java | JUnit | Playwright | BrowserStack | Docker | MySQL | MongoDB | PostgreSQL | Redis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... dev | +1-626-892-1244x717 | Jonathanland, Netherlands",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... dev | +1-626-892-1244x717 | Jonathanland, Netherlands",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... JavaScript | Python | Java | JUnit | Playwright | BrowserStack | Docker | MySQL | MongoDB | PostgreSQL | Redis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... dev | +1-626-892-1244x717 | Jonathanland, Netherlands",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... dev | +1-626-892-1244x717 | Jonathanland, Netherlands",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... dev | +1-626-892-1244x717 | Jonathanland, Netherlands",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... dev | +1-626-892-1244x717 | Jonathanland, Netherlands",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "NOT_MET",
+        "evidence": "Senior QA / Testing | 6 ... 0+ Years Experience ... dev | +1-626-892-1244x717 | Jonathanland, Netherlands",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 33,
+      "most_recent_role_duration_months": 8,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00302": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00302",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... Cassandra, SQLite, Kubernetes, gRPC, Terraform, Helm, GitHub Actions, Railway, Azure, Render, GCP, AWS",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 Lake Tammyton, Japan ... 8673x4257 \u00b7 https://linkedin ... com/in/david-lawrence \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "MET",
+        "evidence": "Designed and implemented microservices architecture using GCP, handling 5000+ concurrent users ... Designed and implemented microservices architecture using AWS Bedrock, handling 100+ concurrent users ... Designed and implemented microservices architecture using Replicate, handling 500+ concurrent users",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 4,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 15,
+      "most_recent_role_duration_months": 26,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00420": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00420",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... PostgreSQL Redis Kubernetes Nginx GitHub Actions Git AWS DigitalOcean Cloudflare",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... PostgreSQL Redis Kubernetes Nginx GitHub Actions Git AWS DigitalOcean Cloudflare",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... com/in/darrell-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... com/in/darrell-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... com/in/darrell-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... PostgreSQL Redis Kubernetes Nginx GitHub Actions Git AWS DigitalOcean Cloudflare",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... PostgreSQL Redis Kubernetes Nginx GitHub Actions Git AWS DigitalOcean Cloudflare",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... com/in/darrell-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | West Sandraland, Netherlands ... com | (343)761-7213x145 | https://linkedin ... com/in/darrell-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "MET",
+        "evidence": "Led migration from monolithic to microservices using Node ... Designed and implemented microservices architecture using DigitalOcean, handling 100+ concurrent users ... Designed and implemented microservices architecture using Ruby, handling 50000+ concurrent users",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 15,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 40,
+      "most_recent_role_duration_months": 40,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00511": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00511",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... Python, Rust, Ruby, Java, Django, Gin, Actix, Rails, Redis, PostgreSQL, MongoDB, GitHub Actions,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "NOT_MET",
+        "evidence": "com | 469-345-9648x8319 | West Gregory, UAE ... https://linkedin ... com/in/adrian-lee | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 47,
+      "most_recent_role_duration_months": 9,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00516": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00516",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... Docker MongoDB Redis MySQL PostgreSQL GCP AWS Performance Testing Agile Testing",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... Docker MongoDB Redis MySQL PostgreSQL GCP AWS Performance Testing Agile Testing",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... com/in/diamond-phelps",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... com/in/diamond-phelps",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... Docker MongoDB Redis MySQL PostgreSQL GCP AWS Performance Testing Agile Testing",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... com/in/diamond-phelps",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... com/in/diamond-phelps",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... com/in/diamond-phelps",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... com/in/diamond-phelps",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "MET",
+        "evidence": "QA / Testing | Fresher | Lake Joseph, India ... com | +1-390-555-2958x0660 | https://linkedin ... Designed API Testing leveraging Java microservices architecture with Selenium for caching",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 7,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 37,
+      "most_recent_role_duration_months": 10,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00620": {
+    "job_profile_id": "backend-engineer",
+    "candidate_id": "cv-00620",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "GraphQL",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kubernetes",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Linux environments",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "JWT-based authentication",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "microservices architecture",
+        "verdict": "NOT_MET",
+        "evidence": "QA / Testing \u2014 Williamburgh, USA ... 5826x3280 \u00b7 https://linkedin ... com/in/andrew-perez \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 13,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 21,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  }
+}

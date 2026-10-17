@@ -1,0 +1,46 @@
+{
+  "succeeded": 149,
+  "failed": 0,
+  "per_jp": {
+    "backend-engineer": {
+      "succeeded": 9,
+      "failed": 0
+    },
+    "cloud-engineer": {
+      "succeeded": 12,
+      "failed": 0
+    },
+    "data-engineer": {
+      "succeeded": 7,
+      "failed": 0
+    },
+    "data-scientist-engineer": {
+      "succeeded": 15,
+      "failed": 0
+    },
+    "devops-engineer": {
+      "succeeded": 7,
+      "failed": 0
+    },
+    "frontend-engineer": {
+      "succeeded": 15,
+      "failed": 0
+    },
+    "full-stack-engineer": {
+      "succeeded": 34,
+      "failed": 0
+    },
+    "it-security-engineer": {
+      "succeeded": 15,
+      "failed": 0
+    },
+    "java-developer": {
+      "succeeded": 8,
+      "failed": 0
+    },
+    "ui-ux-designer": {
+      "succeeded": 27,
+      "failed": 0
+    }
+  }
+}

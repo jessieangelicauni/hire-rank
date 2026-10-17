@@ -1,0 +1,61 @@
+{
+  "job_profile_id": "java-developer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00538",
+      "utility": 0.6379490793797419,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00304",
+      "utility": 0.5027576121723235,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00335",
+      "utility": 0.4889183722779914,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00663",
+      "utility": 0.24279689282180575,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00534",
+      "utility": 0.0657970840348627,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00609",
+      "utility": -0.06171485087943628,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00582",
+      "utility": -0.6743067818945812,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00234",
+      "utility": -1.202197407912708,
+      "qualified": true,
+      "total_relevant_years": 6
+    }
+  ]
+}

@@ -1,0 +1,1958 @@
+{
+  "cv-00224": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00224",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... NET, Django, Rails, Actix, Redis, MySQL, MongoDB, PlanetScale, GitHub",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u2014 New Tammy, Singapore ... com \u00b7 (310)446-3681x579 ... Experienced software engineer with expertise in PHP, Java, and Go",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 24,
+      "most_recent_role_duration_months": 18,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00299": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00299",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... Python | HCL | Bash | YAML | Terraform | Ansible | ArgoCD | CloudFormation | Helm | Envoy | Docker |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... Python | HCL | Bash | YAML | Terraform | Ansible | ArgoCD | CloudFormation | Helm | Envoy | Docker |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... Podman | GitLab CI | Tekton | VictoriaMetrics | Prometheus | PagerDuty | AWS | Azure | MLflow | Kale | Triton",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... Python | HCL | Bash | YAML | Terraform | Ansible | ArgoCD | CloudFormation | Helm | Envoy | Docker |",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... Python | HCL | Bash | YAML | Terraform | Ansible | ArgoCD | CloudFormation | Helm | Envoy | Docker |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... Podman | GitLab CI | Tekton | VictoriaMetrics | Prometheus | PagerDuty | AWS | Azure | MLflow | Kale | Triton",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... Implemented security scanning using GitLab CI, identifying 50000+ vulnerabilities ... Podman | GitLab CI | Tekton | VictoriaMetrics | Prometheus | PagerDuty | AWS | Azure | MLflow | Kale | Triton",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 8 ... 1+ Years Experience ... com | 866-551-3644x2493 | East Jamesbury, UAE",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 7,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 38,
+      "most_recent_role_duration_months": 33,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00342": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00342",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Go Python Rust HCL Terraform CloudFormation ArgoCD Ansible Kubernetes Docker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Go Python Rust HCL Terraform CloudFormation ArgoCD Ansible Kubernetes Docker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Jenkins GitHub Actions Datadog Thanos PagerDuty Prometheus Opsgenie AWS DigitalOcean",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Go Python Rust HCL Terraform CloudFormation ArgoCD Ansible Kubernetes Docker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Go Python Rust HCL Terraform CloudFormation ArgoCD Ansible Kubernetes Docker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Jenkins GitHub Actions Datadog Thanos PagerDuty Prometheus Opsgenie AWS DigitalOcean",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Jenkins GitHub Actions Datadog Thanos PagerDuty Prometheus Opsgenie AWS DigitalOcean",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Jenkins GitHub Actions Datadog Thanos PagerDuty Prometheus Opsgenie AWS DigitalOcean",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... 0749x465 | https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Kristen Williams ... DevOps / SRE / MLOps | Fresher | East Jocelynshire, Brazil ... Jenkins GitHub Actions Datadog Thanos PagerDuty Prometheus Opsgenie AWS DigitalOcean",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 2,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 20,
+      "most_recent_role_duration_months": 6,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00345": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00345",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... Built CI/CD pipelines using GitHub Actions, reducing deployment time from 2s to 252ms ... Jenkins, CircleCI, GitHub Actions, GitLab CI, Grafana, Opsgenie, Thanos, Datadog, Hetzner, GCP, AWS,",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... Jenkins, CircleCI, GitHub Actions, GitLab CI, Grafana, Opsgenie, Thanos, Datadog, Hetzner, GCP, AWS,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 498-372-8399x921 \u00b7 West Sarah, Brazil ... com/robertofoster \u00b7 https://linkedin ... com/in/roberto-foster",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 24,
+      "most_recent_role_duration_months": 30,
+      "has_multinational_experience": true
+    },
+    "qualified": false,
+    "disqualification_reason": "Failed must-have requirements: Docker"
+  },
+  "cv-00352": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00352",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... CockroachDB \u2022 Kubernetes \u2022 Docker \u2022 Terraform \u2022 Ansible \u2022 DigitalOcean \u2022 Azure \u2022 AWS \u2022 Anthropic \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... CockroachDB \u2022 Kubernetes \u2022 Docker \u2022 Terraform \u2022 Ansible \u2022 DigitalOcean \u2022 Azure \u2022 AWS \u2022 Anthropic \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... CockroachDB \u2022 Kubernetes \u2022 Docker \u2022 Terraform \u2022 Ansible \u2022 DigitalOcean \u2022 Azure \u2022 AWS \u2022 Anthropic \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... CockroachDB \u2022 Kubernetes \u2022 Docker \u2022 Terraform \u2022 Ansible \u2022 DigitalOcean \u2022 Azure \u2022 AWS \u2022 Anthropic \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 4 ... 2 years \u00b7 South Jessica, Netherlands ... dev \u00b7 994-565-2170x73033 \u00b7 https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 22,
+      "most_recent_role_duration_months": 9,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00357": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00357",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... Release Engineer , Datadog 2018-05 \u2013 2022-03",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "blackwell@blackwell ... 2868 \u00b7 Whitestad, USA \u00b7 https://linkedin ... com/in/tracy-blackwell",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 41,
+      "most_recent_role_duration_months": 33,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00423": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00423",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... DevOps, GitLab CI, CircleCI, Tekton, VictoriaMetrics, Opsgenie, Alibaba Cloud, AWS, Hetzner, TorchServe,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-421-226-0650x1917 \u00b7 West Donald, Australia ... com/danielwalker ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 43,
+      "most_recent_role_duration_months": 7,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00445": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00445",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "NOT_MET",
+        "evidence": "com | (934)823-4619x9423 | Hendersonview, Brazil ... https://linkedin ... com/in/robert-graham | https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 4,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 20,
+      "most_recent_role_duration_months": 31,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00512": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00512",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... HashiCorp Terraform Associate (HashiCorp, 2019)",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "NOT_MET",
+        "evidence": "DevOps / SRE / MLOps \u2014 East Fred, Canada ... dev \u00b7 001-594-397-3203 \u00b7 https://linkedin ... com/in/erin-ingram",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 40,
+      "most_recent_role_duration_months": 8,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00539": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00539",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Shannon Jones MD ... HCL | Go | CDK | Ansible | Terraform | ArgoCD | Crossplane | Skopeo | Podman | Docker | Tekton | GitHub ... HashiCorp Terraform Associate \u2014 HashiCorp, 2019",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... HCL | Go | CDK | Ansible | Terraform | ArgoCD | Crossplane | Skopeo | Podman | Docker | Tekton | GitHub",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... | GCP | AWS | Linode | MLflow | Kale | MLOps | Incident Management | Chaos Engineering",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... HCL | Go | CDK | Ansible | Terraform | ArgoCD | Crossplane | Skopeo | Podman | Docker | Tekton | GitHub",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... Actions | GitLab CI | CircleCI | Argo Workflows | Datadog | VictoriaMetrics | ELK Stack | Oracle Cloud | Hetzner",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "MET",
+        "evidence": "Implemented log aggregation using GitHub Actions, processing 1000+ logs/day ... HCL | Go | CDK | Ansible | Terraform | ArgoCD | Crossplane | Skopeo | Podman | Docker | Tekton | GitHub ... Actions | GitLab CI | CircleCI | Argo Workflows | Datadog | VictoriaMetrics | ELK Stack | Oracle Cloud | Hetzner",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... Actions | GitLab CI | CircleCI | Argo Workflows | Datadog | VictoriaMetrics | ELK Stack | Oracle Cloud | Hetzner",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "MET",
+        "evidence": "Shannon Jones MD ... Lead DevOps / SRE / MLOps | 10 ... 2+ Years Experience",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 11,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00653": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00653",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... HCL | Python | YAML | Bash | Rust | Terraform | CDK | Linkerd | Docker | Envoy | CircleCI | Tekton | GitHub",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... HCL | Python | YAML | Bash | Rust | Terraform | CDK | Linkerd | Docker | Envoy | CircleCI | Tekton | GitHub",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... AWS | Kubeflow | Seldon | MLflow | Kale | TorchServe | MLOps | Platform Engineering | GitOps | Zero Trust",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... Actions | Opsgenie | ELK Stack | Grafana | PagerDuty | Thanos | Azure | DigitalOcean | Oracle Cloud | GCP |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... HCL | Python | YAML | Bash | Rust | Terraform | CDK | Linkerd | Docker | Envoy | CircleCI | Tekton | GitHub ... Actions | Opsgenie | ELK Stack | Grafana | PagerDuty | Thanos | Azure | DigitalOcean | Oracle Cloud | GCP |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "NOT_MET",
+        "evidence": "Lead DevOps / SRE / MLOps | 9 ... 1+ Years Experience ... com | 8524480880 | North Taylor, Japan",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 33,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00695": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00695",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Terraform",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... Terraform | DigitalOcean | GCP | Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Docker",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... Kotlin | C# | Python | TypeScript | Go | LangChain | Flask | CockroachDB | Elasticsearch | SQLite | Docker |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS",
+        "verdict": "MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... io | Render | Vercel | Anthropic | AWS Bedrock | Replicate | OpenAI API |",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "CloudFormation",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "EKS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GKE",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AKS",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Ansible",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Chef",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Puppet",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Prometheus",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Grafana",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CloudWatch",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Datadog",
+        "verdict": "MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "adequate",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitHub Actions",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "GitLab CI",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Jenkins",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 8 ... 9+ Years Experience ... patel@protonmail",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 8,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 27,
+      "most_recent_role_duration_months": 32,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  }
+}

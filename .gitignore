@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 *.db
 *.sqlite
+.env
+runs/_cache/
 
 # LaTeX build artifacts
 *.aux

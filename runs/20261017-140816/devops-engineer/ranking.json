@@ -1,0 +1,54 @@
+{
+  "job_profile_id": "devops-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00345",
+      "utility": 1.0943508739999455,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00357",
+      "utility": 0.7325327334374008,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00423",
+      "utility": -0.024601775307991992,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00342",
+      "utility": -0.2136164015882432,
+      "qualified": true,
+      "total_relevant_years": 2
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00382",
+      "utility": -1.5886654305411112,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00673",
+      "utility": -2.588665430541111,
+      "qualified": false,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00352",
+      "utility": -3.588665430541111,
+      "qualified": false,
+      "total_relevant_years": 3
+    }
+  ]
+}

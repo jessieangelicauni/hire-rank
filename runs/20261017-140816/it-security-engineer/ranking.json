@@ -1,0 +1,110 @@
+{
+  "job_profile_id": "it-security-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00323",
+      "utility": 1.3572295966521013,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00353",
+      "utility": 0.9288015821033264,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00495",
+      "utility": 0.7394588566127495,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00381",
+      "utility": 0.5103621525731605,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00518",
+      "utility": 0.36890675999901484,
+      "qualified": true,
+      "total_relevant_years": 16
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00562",
+      "utility": 0.23014384349011385,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00470",
+      "utility": 0.13956510493294064,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00630",
+      "utility": 0.05887439635354097,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00273",
+      "utility": -0.2873855813848875,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00412",
+      "utility": -0.37483605188634167,
+      "qualified": true,
+      "total_relevant_years": 14
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00430",
+      "utility": -0.44124016086390944,
+      "qualified": true,
+      "total_relevant_years": 13
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00255",
+      "utility": -0.560208349288764,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00487",
+      "utility": -0.7881039061965684,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 14,
+      "candidate_id": "cv-00624",
+      "utility": -0.9095198975538387,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 15,
+      "candidate_id": "cv-00400",
+      "utility": -0.9720483455426383,
+      "qualified": true,
+      "total_relevant_years": 10
+    }
+  ]
+}

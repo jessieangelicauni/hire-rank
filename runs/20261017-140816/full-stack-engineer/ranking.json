@@ -1,0 +1,243 @@
+{
+  "job_profile_id": "full-stack-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00548",
+      "utility": 1.4671114992852354,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00582",
+      "utility": 1.2733318772628424,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00660",
+      "utility": 1.233383483288482,
+      "qualified": true,
+      "total_relevant_years": 14
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00276",
+      "utility": 0.9796486980374254,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00434",
+      "utility": 0.6468477927603694,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00635",
+      "utility": 0.6023386280990208,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00331",
+      "utility": 0.5149969628222093,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00436",
+      "utility": 0.5082038453630328,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00371",
+      "utility": 0.4918182008093805,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00523",
+      "utility": 0.43148003725703216,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00492",
+      "utility": 0.26423214345578594,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00267",
+      "utility": 0.21719043522223597,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00534",
+      "utility": 0.19867477434948516,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 14,
+      "candidate_id": "cv-00484",
+      "utility": 0.1827224676551278,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 15,
+      "candidate_id": "cv-00392",
+      "utility": 0.1315514030650584,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 16,
+      "candidate_id": "cv-00341",
+      "utility": 0.07949209479178258,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 17,
+      "candidate_id": "cv-00404",
+      "utility": 0.026325458892455914,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 18,
+      "candidate_id": "cv-00380",
+      "utility": -0.028195711739602745,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 19,
+      "candidate_id": "cv-00347",
+      "utility": -0.08435632200556262,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 20,
+      "candidate_id": "cv-00507",
+      "utility": -0.14249174727756733,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 21,
+      "candidate_id": "cv-00450",
+      "utility": -0.20300540447301474,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 22,
+      "candidate_id": "cv-00538",
+      "utility": -0.26639368793907336,
+      "qualified": true,
+      "total_relevant_years": 9
+    },
+    {
+      "rank": 23,
+      "candidate_id": "cv-00544",
+      "utility": -0.2761236362313387,
+      "qualified": true,
+      "total_relevant_years": 1
+    },
+    {
+      "rank": 24,
+      "candidate_id": "cv-00216",
+      "utility": -0.29015588495824735,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 25,
+      "candidate_id": "cv-00426",
+      "utility": -0.33328254993777884,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 26,
+      "candidate_id": "cv-00700",
+      "utility": -0.4044831845755901,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 27,
+      "candidate_id": "cv-00256",
+      "utility": -0.4810805010148826,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 28,
+      "candidate_id": "cv-00664",
+      "utility": -0.5645810974837207,
+      "qualified": true,
+      "total_relevant_years": 4
+    },
+    {
+      "rank": 29,
+      "candidate_id": "cv-00350",
+      "utility": -0.6571770009600901,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 30,
+      "candidate_id": "cv-00334",
+      "utility": -0.7622557879778795,
+      "qualified": true,
+      "total_relevant_years": 15
+    },
+    {
+      "rank": 31,
+      "candidate_id": "cv-00427",
+      "utility": -0.8855021553833898,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 32,
+      "candidate_id": "cv-00607",
+      "utility": -1.0376850848668526,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 33,
+      "candidate_id": "cv-00441",
+      "utility": -1.2437249841014815,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 34,
+      "candidate_id": "cv-00349",
+      "utility": -1.5888550614908898,
+      "qualified": true,
+      "total_relevant_years": 11
+    }
+  ]
+}

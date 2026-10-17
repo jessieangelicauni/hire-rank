@@ -1,0 +1,730 @@
+{
+  "cv-00234": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00234",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... js Java Python NestJS ASP",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... Supabase MongoDB PostgreSQL RabbitMQ Helm Docker Jenkins gRPC Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... Supabase MongoDB PostgreSQL RabbitMQ Helm Docker Jenkins gRPC Fly",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... NET Spring Boot Actix LangChain SQLite Cassandra",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... NET Spring Boot Actix LangChain SQLite Cassandra",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | East Eddiestad, UK ... 7671x9903 | https://linkedin ... com/in/kimberly-smith",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 11,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00304": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00304",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 7 ... 0 years \u00b7 Guzmanside, Brazil ... com \u00b7 001-360-741-7765x61248 \u00b7 https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... 0 years \u00b7 Guzmanside, Brazil ... js \u2022 NestJS \u2022 Spring Boot \u2022 FastAPI \u2022 PlanetScale \u2022 PostgreSQL",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... 0 years \u00b7 Guzmanside, Brazil ... com \u00b7 001-360-741-7765x61248 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... 0 years \u00b7 Guzmanside, Brazil ... \u2022 Cassandra \u2022 Elasticsearch \u2022 MongoDB \u2022 GitHub Actions \u2022 RabbitMQ \u2022 ArgoCD \u2022 gRPC \u2022 Kafka \u2022 AWS",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... 0 years \u00b7 Guzmanside, Brazil ... \u2022 Cassandra \u2022 Elasticsearch \u2022 MongoDB \u2022 GitHub Actions \u2022 RabbitMQ \u2022 ArgoCD \u2022 gRPC \u2022 Kafka \u2022 AWS",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... js \u2022 NestJS \u2022 Spring Boot \u2022 FastAPI \u2022 PlanetScale \u2022 PostgreSQL ... Architected and built RESTful APIs serving 1000+ requests/day using Spring Boot, reducing response time by",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... js \u2022 NestJS \u2022 Spring Boot \u2022 FastAPI \u2022 PlanetScale \u2022 PostgreSQL ... Architected and built RESTful APIs serving 1000+ requests/day using Spring Boot, reducing response time by",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... 0 years \u00b7 Guzmanside, Brazil ... com \u00b7 001-360-741-7765x61248 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 7 ... 0 years \u00b7 Guzmanside, Brazil ... com \u00b7 001-360-741-7765x61248 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 30,
+      "most_recent_role_duration_months": 8,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00335": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00335",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... js | Kotlin | Java | Rails | Flask | PlanetScale | PostgreSQL | MySQL | ArgoCD | Kafka | Render |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... js | Kotlin | Java | Rails | Flask | PlanetScale | PostgreSQL | MySQL | ArgoCD | Kafka | Render |",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... dev | (296)304-4327 | Carloston, Australia",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... js | Kotlin | Java | Rails | Flask | PlanetScale | PostgreSQL | MySQL | ArgoCD | Kafka | Render |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... dev | (296)304-4327 | Carloston, Australia",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... dev | (296)304-4327 | Carloston, Australia",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... dev | (296)304-4327 | Carloston, Australia",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... dev | (296)304-4327 | Carloston, Australia",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "MET",
+        "evidence": "Lead Backend Engineering | 11 ... 8+ Years Experience ... js | Kotlin | Java | Rails | Flask | PlanetScale | PostgreSQL | MySQL | ArgoCD | Kafka | Render |",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 41,
+      "most_recent_role_duration_months": 24,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00534": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00534",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... C# PHP TypeScript Java Go FastAPI FastAPI Spring Boot PostgreSQL MySQL",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... C# PHP TypeScript Java Go FastAPI FastAPI Spring Boot PostgreSQL MySQL",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... PlanetScale Neon Git Terraform Kafka RabbitMQ Kubernetes Railway Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... PlanetScale Neon Git Terraform Kafka RabbitMQ Kubernetes Railway Fly",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "Tech: Java, FastAPI, Spring Boot ... C# PHP TypeScript Java Go FastAPI FastAPI Spring Boot PostgreSQL MySQL ... Built automated CI/CD pipelines with Spring Boot, reducing deployment time by 62%",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "Tech: Java, FastAPI, Spring Boot ... C# PHP TypeScript Java Go FastAPI FastAPI Spring Boot PostgreSQL MySQL ... Built automated CI/CD pipelines with Spring Boot, reducing deployment time by 62%",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Luisstad, Singapore ... com | 594-822-6865 ... Experienced software engineer with expertise in C#, PHP, and TypeScript",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 24,
+      "most_recent_role_duration_months": 6,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00538": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00538",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... NET \u2022 DynamoDB \u2022 Neon \u2022 PostgreSQL \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... Reduced infrastructure costs by 58% through optimization using RabbitMQ",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering \u00b7 8 ... 7 years \u00b7 Lake Ericahaven, India ... com \u00b7 (378)219-5237 \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 42,
+      "most_recent_role_duration_months": 8,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00582": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00582",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... Java Kotlin TypeScript Rust NestJS Django Flask PostgreSQL Neon Supabase Terraform",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... Java Kotlin TypeScript Rust NestJS Django Flask PostgreSQL Neon Supabase Terraform",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... Kafka Jenkins Helm Nginx GCP Azure Fly",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... com/in/shannon-sosa",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Backend Engineering | Fresher | Mccarthyburgh, Japan ... 3512 | https://linkedin ... Java Kotlin TypeScript Rust NestJS Django Flask PostgreSQL Neon Supabase Terraform",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 33,
+      "most_recent_role_duration_months": 16,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00609": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00609",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... com/in/tracy-king",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... com/in/tracy-king",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... com/in/tracy-king",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... com/in/tracy-king",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... com/in/tracy-king",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... js, C#, Spring Boot, Gin, FastAPI, PostgreSQL, MongoDB, DynamoDB, Nginx, Jenkins,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... js, C#, Spring Boot, Gin, FastAPI, PostgreSQL, MongoDB, DynamoDB, Nginx, Jenkins,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... com/in/tracy-king",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-721-701-7509x61701 \u00b7 New Josemouth, Germany ... com/tracyking \u00b7 https://linkedin ... com/in/tracy-king",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 31,
+      "most_recent_role_duration_months": 31,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00663": {
+    "job_profile_id": "java-developer",
+    "candidate_id": "cv-00663",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Java",
+        "verdict": "MET",
+        "evidence": "dev \u00b7 712-883-3372x188 \u00b7 Barnesmouth, Australia ... com/kevinsolis \u00b7 https://linkedin ... com/in/kevin-solis",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 712-883-3372x188 \u00b7 Barnesmouth, Australia ... com/kevinsolis \u00b7 https://linkedin ... com/in/kevin-solis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Gradle",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 712-883-3372x188 \u00b7 Barnesmouth, Australia ... com/kevinsolis \u00b7 https://linkedin ... com/in/kevin-solis",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kafka",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 712-883-3372x188 \u00b7 Barnesmouth, Australia ... com/kevinsolis \u00b7 https://linkedin ... com/in/kevin-solis",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "RabbitMQ",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 712-883-3372x188 \u00b7 Barnesmouth, Australia ... com/kevinsolis \u00b7 https://linkedin ... com/in/kevin-solis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring Cloud",
+        "verdict": "NOT_MET",
+        "evidence": "js, Rust, Java, Ruby, Spring Boot, Django, PostgreSQL, Elasticsearch, Helm, RabbitMQ, ... Real-time Analytics Engine [Ruby, Spring Boot, Django] \u2014 Designed and implemented Auth Service with ... Spring Boot, integrating with Ruby for seamless data flow",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Spring WebFlux",
+        "verdict": "NOT_MET",
+        "evidence": "js, Rust, Java, Ruby, Spring Boot, Django, PostgreSQL, Elasticsearch, Helm, RabbitMQ, ... Real-time Analytics Engine [Ruby, Spring Boot, Django] \u2014 Designed and implemented Auth Service with ... Spring Boot, integrating with Ruby for seamless data flow",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Project Reactor",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 712-883-3372x188 \u00b7 Barnesmouth, Australia ... com/kevinsolis \u00b7 https://linkedin ... com/in/kevin-solis",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Kotlin",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 712-883-3372x188 \u00b7 Barnesmouth, Australia ... com/kevinsolis \u00b7 https://linkedin ... com/in/kevin-solis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 33,
+      "most_recent_role_duration_months": 17,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  }
+}

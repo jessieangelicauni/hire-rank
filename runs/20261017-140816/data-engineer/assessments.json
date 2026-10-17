@@ -1,0 +1,1311 @@
+{
+  "cv-00270": {
+    "job_profile_id": "data-engineer",
+    "candidate_id": "cv-00270",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "SQL",
+        "verdict": "MET",
+        "evidence": "Tech: Go, Python, SQL ... Tech: Python, Go, SQL ... SQL Go Python TensorFlow OpenCV Hugging Face Keras Dagster Spark Neptune Polars",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Seasoned software professional with deep expertise in SQL, Go, and Python ... Tech: SQL, Go, Python ... SQL Go Python TensorFlow OpenCV Hugging Face Keras Dagster Spark Neptune Polars",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Airflow",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Dagster",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... SQL Go Python TensorFlow OpenCV Hugging Face Keras Dagster Spark Neptune Polars",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "dbt",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Pandas",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PySpark",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Apache Spark",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... SQL Go Python TensorFlow OpenCV Hugging Face Keras Dagster Spark Neptune Polars",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Snowflake",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... Kubeflow Snowflake Pinecone Neo4j MongoDB Hugging Face Endpoints Lambda Labs Bedrock",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "BigQuery",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redshift",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Power BI",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AS400",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "MySQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CI/CD",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Terraform",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Databricks",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... GCP Vertex AI Databricks Prompt Engineering MLOps Statistical Modeling NLP",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Great Expectations",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Ronniebury, UAE ... dev | +1-992-698-3168x7397 | https://linkedin ... com/in/lindsey-clarke",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 44,
+      "most_recent_role_duration_months": 6,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00414": {
+    "job_profile_id": "data-engineer",
+    "candidate_id": "cv-00414",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "SQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... Proficiency in Scala, R, Python ... Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Airflow",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Dagster",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... MLflow Dagster Neptune Pinecone Databricks Snowflake MongoDB Weaviate AWS SageMaker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "dbt",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Pandas",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PySpark",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Apache Spark",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Snowflake",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... MLflow Dagster Neptune Pinecone Databricks Snowflake MongoDB Weaviate AWS SageMaker",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "BigQuery",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redshift",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Power BI",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AS400",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "MySQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CI/CD",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Terraform",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Databricks",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... MLflow Dagster Neptune Pinecone Databricks Snowflake MongoDB Weaviate AWS SageMaker ... Databricks Bedrock Azure ML Prompt Engineering RAG LLM Evaluation MLOps A/B Testing",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Great Expectations",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | North Ernest, Singapore ... dev | (678)581-2786x8669 ... Technical leader in data science / ml / ai with extensive experience designing microservices,",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 28,
+      "most_recent_role_duration_months": 30,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00481": {
+    "job_profile_id": "data-engineer",
+    "candidate_id": "cv-00481",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "SQL",
+        "verdict": "MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... Created MLOps Platform leveraging Go for core functionality and SQL for optimization",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... Python with focus on performance optimization and code quality",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Airflow",
+        "verdict": "MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Dagster",
+        "verdict": "MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "dbt",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Pandas",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PySpark",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Apache Spark",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Snowflake",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "BigQuery",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redshift",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Power BI",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AS400",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "MySQL",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CI/CD",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Terraform",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Databricks",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Great Expectations",
+        "verdict": "NOT_MET",
+        "evidence": "richardson@protonmail ... com | +1-243-784-5881 | Thorntonfort, Netherlands ... https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 4,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 24,
+      "most_recent_role_duration_months": 10,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00531": {
+    "job_profile_id": "data-engineer",
+    "candidate_id": "cv-00531",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "SQL",
+        "verdict": "MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... Engineering leader with deep technical background in SQL, Go, and Python",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Airflow",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Dagster",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "dbt",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Pandas",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PySpark",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Apache Spark",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Snowflake",
+        "verdict": "MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "BigQuery",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redshift",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Power BI",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... AutoScale Monitor [Python, Go, MATLAB] \u2014 Developed BI Dashboard using Go, reducing processing",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AS400",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "MySQL",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CI/CD",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Terraform",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Databricks",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Great Expectations",
+        "verdict": "NOT_MET",
+        "evidence": "clements@protonmail ... com \u00b7 216-713-9449x883 \u00b7 Lewischester, Germany \u00b7 https://linkedin ... com/in/alex-clements",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 8,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 43,
+      "most_recent_role_duration_months": 8,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00618": {
+    "job_profile_id": "data-engineer",
+    "candidate_id": "cv-00618",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "SQL",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... Julia Python Go XGBoost JAX OpenAI API PyTorch Hugging Face MLflow Airflow",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Airflow",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... Julia Python Go XGBoost JAX OpenAI API PyTorch Hugging Face MLflow Airflow",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Dagster",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "dbt",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Pandas",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PySpark",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Apache Spark",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Snowflake",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "BigQuery",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redshift",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... Weaviate PostgreSQL Redshift Databricks Databricks Bedrock Lambda Labs GCP Vertex AI",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Power BI",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AS400",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "MySQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... Weaviate PostgreSQL Redshift Databricks Databricks Bedrock Lambda Labs GCP Vertex AI",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CI/CD",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Terraform",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Databricks",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... Weaviate PostgreSQL Redshift Databricks Databricks Bedrock Lambda Labs GCP Vertex AI ... Databricks Certified Data Engineer \u2014 Databricks",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Great Expectations",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Jeremyton, UK ... com | 001-417-368-0866x28137 | https://linkedin ... com/in/gina-gutierrez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 11,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 47,
+      "most_recent_role_duration_months": 32,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00650": {
+    "job_profile_id": "data-engineer",
+    "candidate_id": "cv-00650",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "SQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Airflow",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Dagster",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "dbt",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Pandas",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PySpark",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Apache Spark",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Snowflake",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "BigQuery",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redshift",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Power BI",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AS400",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "MySQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CI/CD",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Terraform",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Databricks",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Great Expectations",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI \u2014 South Jonathanbury, Australia ... com \u00b7 9698556076 \u00b7 https://github ... com/michaelchavez",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 27,
+      "most_recent_role_duration_months": 32,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00684": {
+    "job_profile_id": "data-engineer",
+    "candidate_id": "cv-00684",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "SQL",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... SQL Python OpenAI API LightGBM Claude API TensorFlow Dask Dagster Spark NumPy",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... SQL Python OpenAI API LightGBM Claude API TensorFlow Dask Dagster Spark NumPy",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Airflow",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Dagster",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... SQL Python OpenAI API LightGBM Claude API TensorFlow Dask Dagster Spark NumPy",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "dbt",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Pandas",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PySpark",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Apache Spark",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... SQL Python OpenAI API LightGBM Claude API TensorFlow Dask Dagster Spark NumPy",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redis",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Snowflake",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "BigQuery",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... DVC BigQuery MongoDB Hugging Face Endpoints Azure ML GCP Vertex AI Fine-tuning MLOps",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Redshift",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Power BI",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AS400",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "MySQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "PostgreSQL",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Git",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CI/CD",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Terraform",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Databricks",
+        "verdict": "MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Great Expectations",
+        "verdict": "NOT_MET",
+        "evidence": "Data Science / ML / AI | Fresher | Lake Johnton, Australia ... com | +1-416-449-7016x934 | https://linkedin ... com/in/kenneth-adams",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 14,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 37,
+      "most_recent_role_duration_months": 35,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  }
+}

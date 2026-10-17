@@ -1,0 +1,1847 @@
+{
+  "cv-00255": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00255",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... Resume Parser [Python, C, Burp Suite] \u2014 Designed Security Dashboard leveraging Python microservices",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... Bash, C, PowerShell, Go, Python, Burp Suite, Metasploit, Hashicorp Vault, Nessus, Nmap, PostgreSQL, ... Resume Parser [Python, C, Burp Suite] \u2014 Designed Security Dashboard leveraging Python microservices",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Architect , TechFlow AI 2023-07 \u2013 Present ... Security Architect , Block 2022-09 \u2013 2023-05 ... MongoDB, AWS Security Hub, Azure Sentinel, GCP Security Command Center, SOC2 Compliance, Incident",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Architect , TechFlow AI 2023-07 \u2013 Present ... Security Architect , Block 2022-09 \u2013 2023-05 ... MongoDB, AWS Security Hub, Azure Sentinel, GCP Security Command Center, SOC2 Compliance, Incident",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... in Artificial Intelligence, GPA: 2",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 +1-658-801-8569x45441 \u00b7 Mejiabury, Singapore \u00b7 https://linkedin ... com/in/timothy-cole ... ReseaRch InteRests",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 6,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 38,
+      "most_recent_role_duration_months": 24,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00273": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00273",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... Rust, Bash, C, Python, Suricata, OWASP ZAP, Metasploit, Snort, Burp Suite, Nmap, SonarQube, Hashicorp",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "MET",
+        "evidence": "Designed zero-trust architecture using AWS Security Hub, securing 100000+ endpoints ... Security Architect , OpenAI 2023-04 \u2013 2025-03 ... Azure Sentinel, AWS Security Hub, SOC2 Compliance, OWASP Top 10, Threat Modeling, Incident Response",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Designed zero-trust architecture using AWS Security Hub, securing 100000+ endpoints ... Security Architect , OpenAI 2023-04 \u2013 2025-03 ... Azure Sentinel, AWS Security Hub, SOC2 Compliance, OWASP Top 10, Threat Modeling, Incident Response",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... SOC Analyst , Palantir 2025-04 \u2013 Present",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "com \u00b7 001-832-653-8179x33554 \u00b7 North Nathanmouth, UAE ... com/michelecastro \u00b7 https://linkedin ... com/in/michele-castro",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 24,
+      "most_recent_role_duration_months": 10,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00323": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00323",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... Bash | C | PowerShell | Rust | Go | Suricata | Sigma | Snort | Burp Suite | Metasploit | CrowdStrike | SonarQube |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... Bash | C | PowerShell | Rust | Go | Suricata | Sigma | Snort | Burp Suite | Metasploit | CrowdStrike | SonarQube |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "MET",
+        "evidence": "Implemented identity management using AWS Security Hub, securing 100000+ user identities ... Built secure CI/CD pipeline using AWS Security Hub, preventing 500+ security issues ... Elasticsearch | Redis | PostgreSQL | AWS Security Hub | Azure Sentinel | GCP Security Command Center |",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Security Engineer 2019-10 \u2013 2023-09 ... Built secure CI/CD pipeline using AWS Security Hub, preventing 500+ security issues ... Elasticsearch | Redis | PostgreSQL | AWS Security Hub | Azure Sentinel | GCP Security Command Center |",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... SOC Analyst 2016-01 \u2013 2019-09",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 9 ... 9+ Years Experience ... 7602x4375 | New Regina, Canada",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 41,
+      "most_recent_role_duration_months": 18,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00353": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00353",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... Bash | Rust | C | OWASP ZAP | Suricata | Metasploit | Trivy | Hashicorp Vault | Nmap | Nessus | Redis |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... Bash | Rust | C | OWASP ZAP | Suricata | Metasploit | Trivy | Hashicorp Vault | Nmap | Nessus | Redis |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Implemented security monitoring using SOC2 Compliance, detecting 100000+ threats ... Built secure CI/CD pipeline using PowerShell, preventing 100000+ security issues ... MongoDB | Elasticsearch | AWS Security Hub | GCP Security Command Center | Zero Trust Architecture |",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Implemented security monitoring using SOC2 Compliance, detecting 100000+ threats ... Built secure CI/CD pipeline using PowerShell, preventing 100000+ security issues ... MongoDB | Elasticsearch | AWS Security Hub | GCP Security Command Center | Zero Trust Architecture |",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Lead Cybersecurity | 8 ... 8+ Years Experience ... 0150 | Scottshire, Brazil",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 9,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 46,
+      "most_recent_role_duration_months": 10,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00381": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00381",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "NOT_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... C, Python, Bash, Rust, PowerShell, Sigma, OWASP ZAP, Metasploit, Burp Suite, Snort, Wireshark,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Engineer , Block 2022-07 \u2013 Present ... Built security automation using GCP Security Command Center, reducing incident response time by 21% ... Command Center, Azure Sentinel, AWS Security Hub, Zero Trust Architecture, Incident Response, SAST/",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Engineer , Block 2022-07 \u2013 Present ... Built security automation using GCP Security Command Center, reducing incident response time by 21% ... Command Center, Azure Sentinel, AWS Security Hub, Zero Trust Architecture, Incident Response, SAST/",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... in Computer Science, GPA: 2 ... in Mathematics, GPA: 2",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "4488x69461 \u00b7 West Kaitlyn, Brazil ... com/kevinsantana \u00b7 https://linkedin ... com/in/kevin-santana",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 39,
+      "most_recent_role_duration_months": 33,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00400": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00400",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... PowerShell \u2022 C \u2022 Go \u2022 Python \u2022 Suricata \u2022 OWASP ZAP \u2022 Snort \u2022 Nessus \u2022 Wireshark \u2022 MongoDB \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... PowerShell \u2022 C \u2022 Go \u2022 Python \u2022 Suricata \u2022 OWASP ZAP \u2022 Snort \u2022 Nessus \u2022 Wireshark \u2022 MongoDB \u2022",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "NOT_MET",
+        "evidence": "Created security awareness training using Nessus, reducing phishing clicks by 50% ... Built secure CI/CD pipeline using Metasploit, preventing 1000+ security issues ... Built secure CI/CD pipeline using PowerShell, preventing 100000+ security issues",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Redis \u2022 Elasticsearch \u2022 PostgreSQL \u2022 GCP Security Command Center \u2022 Azure Sentinel \u2022 SAST/DAST \u2022 ... Built secure CI/CD pipeline using Metasploit, preventing 1000+ security issues ... Built secure CI/CD pipeline using PowerShell, preventing 100000+ security issues",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... SOC Analyst at Google (2023-04 \u2013 Present)",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 9 ... 6 years \u00b7 North Georgefurt, Germany ... com \u00b7 628-649-7185 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 42,
+      "most_recent_role_duration_months": 30,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00412": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00412",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... Go \u2022 Bash \u2022 Rust \u2022 PowerShell \u2022 Metasploit \u2022 OWASP ZAP \u2022 Suricata \u2022 Trivy \u2022 Hashicorp Vault \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... CrowdStrike \u2022 Splunk \u2022 SonarQube \u2022 Redis \u2022 Elasticsearch \u2022 AWS Security Hub \u2022 Azure Sentinel \u2022 GCP",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "CrowdStrike \u2022 Splunk \u2022 SonarQube \u2022 Redis \u2022 Elasticsearch \u2022 AWS Security Hub \u2022 Azure Sentinel \u2022 GCP ... Security Engineer at Spotify (2019-01 \u2013 2022-04) ... Implemented security monitoring using GCP Security Command Center, detecting 1000+ threats",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "CrowdStrike \u2022 Splunk \u2022 SonarQube \u2022 Redis \u2022 Elasticsearch \u2022 AWS Security Hub \u2022 Azure Sentinel \u2022 GCP ... Security Command Center \u2022 OWASP Top 10 \u2022 SOC2 Compliance ... Implemented security monitoring using GCP Security Command Center, detecting 1000+ threats",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... SOC Analyst at AgentForge (2022-07 \u2013 Present) ... SOC Analyst at Google (2015-04 \u2013 2019-01)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 15 ... 0 years \u00b7 Mayoborough, UAE ... com \u00b7 7936371189 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 14,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 47,
+      "most_recent_role_duration_months": 34,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00430": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00430",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... Python \u2022 Bash \u2022 Rust \u2022 Go \u2022 Burp Suite \u2022 Snort \u2022 OWASP ZAP \u2022 Metasploit \u2022 Suricata \u2022 Hashicorp Vault",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... Python \u2022 Bash \u2022 Rust \u2022 Go \u2022 Burp Suite \u2022 Snort \u2022 OWASP ZAP \u2022 Metasploit \u2022 Suricata \u2022 Hashicorp Vault",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... \u2022 Splunk \u2022 Nessus \u2022 Nmap \u2022 Trivy \u2022 Elasticsearch \u2022 PostgreSQL \u2022 MongoDB \u2022 Redis \u2022 AWS Security",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... dev \u00b7 +1-227-558-9551x68740 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u00b7 12 ... Python \u2022 Bash \u2022 Rust \u2022 Go \u2022 Burp Suite \u2022 Snort \u2022 OWASP ZAP \u2022 Metasploit \u2022 Suricata \u2022 Hashicorp Vault ... Implemented security monitoring using Burp Suite, detecting 50000+ threats",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... \u2022 Splunk \u2022 Nessus \u2022 Nmap \u2022 Trivy \u2022 Elasticsearch \u2022 PostgreSQL \u2022 MongoDB \u2022 Redis \u2022 AWS Security",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "\u2022 Splunk \u2022 Nessus \u2022 Nmap \u2022 Trivy \u2022 Elasticsearch \u2022 PostgreSQL \u2022 MongoDB \u2022 Redis \u2022 AWS Security ... Hub \u2022 Azure Sentinel \u2022 GCP Security Command Center \u2022 Zero Trust Architecture \u2022 Incident Response \u2022 ... Security Architect at Notion (2012-09 \u2013 2015-01)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Hub \u2022 Azure Sentinel \u2022 GCP Security Command Center \u2022 Zero Trust Architecture \u2022 Incident Response \u2022 ... Implemented security monitoring using Burp Suite, detecting 50000+ threats ... Security Architect at Notion (2012-09 \u2013 2015-01)",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... dev \u00b7 +1-227-558-9551x68740 \u00b7 https://linkedin",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... SOC Analyst at DataPulse (2015-04 \u2013 2017-06)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... dev \u00b7 +1-227-558-9551x68740 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... dev \u00b7 +1-227-558-9551x68740 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u00b7 12 ... 7 years \u00b7 East Melissaport, UAE ... dev \u00b7 +1-227-558-9551x68740 \u00b7 https://linkedin",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 13,
+    "career_trajectory": {
+      "direction": "descending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 36,
+      "most_recent_role_duration_months": 16,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00470": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00470",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... Go, Python, Snort, OWASP ZAP, Burp Suite, Metasploit, SonarQube, Trivy, Nessus, Redis, Elasticsearch,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "MET",
+        "evidence": "Created security awareness training using AWS Security Hub, reducing phishing clicks by 69% ... Developed threat intelligence platform using AWS Security Hub, tracking 10000+ threats ... PostgreSQL, Azure Sentinel, AWS Security Hub, GCP Security Command Center, Incident Response, Zero Trust",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Created vulnerability management program using Azure Sentinel, reducing CVEs by 49% ... Created security awareness training using AWS Security Hub, reducing phishing clicks by 69% ... PostgreSQL, Azure Sentinel, AWS Security Hub, GCP Security Command Center, Incident Response, Zero Trust",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... SOC Analyst at NeuroLink Labs 2021-09 \u2013 2023-09",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Lake Mario, Brazil ... com \u00b7 (444)661-7679 \u00b7 https://linkedin ... com/in/julia-trevino \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 24,
+      "most_recent_role_duration_months": 18,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00487": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00487",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "MET",
+        "evidence": "C, Python, Bash, Go, Metasploit, Burp Suite, OWASP ZAP, Suricata, Splunk, Nmap, Hashicorp Vault, ... DataPipe CLI (C, Burp Suite, Suricata) ... Developed Access Control System using Burp Suite, reducing processing time by 60% through algorithmic",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Architect 2022-03 \u2014 Present ... Implemented security monitoring using SonarQube, detecting 1000+ threats ... Nessus, SonarQube, Redis, MongoDB, PostgreSQL, Elasticsearch, AWS Security Hub, Azure",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Architect 2022-03 \u2014 Present ... Implemented security monitoring using SonarQube, detecting 1000+ threats ... Nessus, SonarQube, Redis, MongoDB, PostgreSQL, Elasticsearch, AWS Security Hub, Azure",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "com | +1-287-595-0830x44058 | Danielhaven, Canada ... https://linkedin ... com/in/brian-johnson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 19,
+      "most_recent_role_duration_months": 34,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00495": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00495",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... architecture with Metasploit for caching",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... PowerShell, Python, C, Go, Rust, Metasploit, OWASP ZAP, Sigma, Burp Suite, Suricata, Hashicorp Vault,",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Engineer , PipelineIO 2022-09 \u2013 Present ... Built secure CI/CD pipeline using C, preventing 50000+ security issues ... Wireshark, Splunk, Redis, Elasticsearch, PostgreSQL, MongoDB, Azure Sentinel, AWS Security Hub, GCP",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Security Engineer , PipelineIO 2022-09 \u2013 Present ... Created security awareness training using Azure Sentinel, reducing phishing clicks by 57% ... Wireshark, Splunk, Redis, Elasticsearch, PostgreSQL, MongoDB, Azure Sentinel, AWS Security Hub, GCP",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "dev \u00b7 001-422-303-6849x95154 \u00b7 Joshuamouth, UK ... com/dominiquecruz \u00b7 https://linkedin ... com/in/dominique-cruz",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 26,
+      "most_recent_role_duration_months": 31,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00518": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00518",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... Expertise in Go, Rust, Python with track",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... Created vulnerability management program using Burp Suite, reducing CVEs by 29% ... Go, Rust, Python, Bash, OWASP ZAP, Suricata, Snort, Burp Suite, Metasploit, Trivy, CrowdStrike, Nmap,",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Architect at Microsoft 2021-12 \u2013 Present ... Created security awareness training using GCP Security Command Center, reducing phishing clicks by 61% ... Hashicorp Vault, PostgreSQL, MongoDB, Elasticsearch, AWS Security Hub, Azure Sentinel, GCP Security",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Security Architect at Microsoft 2021-12 \u2013 Present ... Created security awareness training using GCP Security Command Center, reducing phishing clicks by 61% ... Hashicorp Vault, PostgreSQL, MongoDB, Elasticsearch, AWS Security Hub, Azure Sentinel, GCP Security",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity \u2014 Port Jacob, Canada ... 4242 \u00b7 https://linkedin ... com/in/michael-bender \u00b7 https://github",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 16,
+    "career_trajectory": {
+      "direction": "ascending",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 46,
+      "most_recent_role_duration_months": 34,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00562": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00562",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... C \u2022 Python \u2022 PowerShell \u2022 Snort \u2022 OWASP ZAP \u2022 Suricata \u2022 Metasploit \u2022 SonarQube \u2022 Nmap \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... C \u2022 Python \u2022 PowerShell \u2022 Snort \u2022 OWASP ZAP \u2022 Suricata \u2022 Metasploit \u2022 SonarQube \u2022 Nmap \u2022",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "MET",
+        "evidence": "Hashicorp Vault \u2022 Wireshark \u2022 PostgreSQL \u2022 Redis \u2022 Elasticsearch \u2022 MongoDB \u2022 Azure Sentinel \u2022 AWS ... Security Hub \u2022 GCP Security Command Center \u2022 Threat Modeling \u2022 SAST/DAST \u2022 OWASP Top 10 \u2022 ... Built secure CI/CD pipeline using AWS Security Hub, preventing 10000+ security issues",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Hashicorp Vault \u2022 Wireshark \u2022 PostgreSQL \u2022 Redis \u2022 Elasticsearch \u2022 MongoDB \u2022 Azure Sentinel \u2022 AWS ... Security Hub \u2022 GCP Security Command Center \u2022 Threat Modeling \u2022 SAST/DAST \u2022 OWASP Top 10 \u2022 ... Built secure CI/CD pipeline using AWS Security Hub, preventing 10000+ security issues",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... SOC Analyst at Anthropic (2014-05 \u2013 2018-07)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Christopher Stone ... Cybersecurity \u00b7 11 ... 4 years \u00b7 Christytown, USA",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 10,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 47,
+      "most_recent_role_duration_months": 35,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00624": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00624",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... Bash PowerShell Python Sigma Metasploit OWASP ZAP Burp Suite SonarQube CrowdStrike",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... Experienced software engineer with expertise in Bash, PowerShell, and Python ... Bash PowerShell Python Sigma Metasploit OWASP ZAP Burp Suite SonarQube CrowdStrike",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... Nessus Wireshark Trivy Elasticsearch PostgreSQL Redis MongoDB AWS Security Hub",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... com/in/natalie-watson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... Bash PowerShell Python Sigma Metasploit OWASP ZAP Burp Suite SonarQube CrowdStrike",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... com/in/natalie-watson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... Nessus Wireshark Trivy Elasticsearch PostgreSQL Redis MongoDB AWS Security Hub ... Security Architect at TechFlow AI (2021-11 \u2013 Present)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Nessus Wireshark Trivy Elasticsearch PostgreSQL Redis MongoDB AWS Security Hub ... Azure Sentinel Threat Modeling Incident Response SAST/DAST SOC2 Compliance ... Security Architect at TechFlow AI (2021-11 \u2013 Present)",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... com/in/natalie-watson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... com/in/natalie-watson",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... com/in/natalie-watson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... com/in/natalie-watson",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | North Daniel, Canada ... com | 260-940-1424x731 | https://linkedin ... CEH - Certified Ethical Hacker \u2014 EC-Council",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 3,
+    "career_trajectory": {
+      "direction": "unclear",
+      "tenure_pattern": "stable",
+      "average_tenure_months": 27,
+      "most_recent_role_duration_months": 32,
+      "has_multinational_experience": false
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  },
+  "cv-00630": {
+    "job_profile_id": "it-security-engineer",
+    "candidate_id": "cv-00630",
+    "generated_by_model": "jev/jev-latest",
+    "must_have_evaluations": [
+      {
+        "requirement": "Metasploit",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... Seasoned software professional with deep expertise in PowerShell, Python, and Metasploit ... PowerShell Python Metasploit Suricata Snort Nessus CrowdStrike Splunk MongoDB Redis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Python",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... PowerShell Python Metasploit Suricata Snort Nessus CrowdStrike Splunk MongoDB Redis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "nice_to_have_evaluations": [
+      {
+        "requirement": "Nessus",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... PowerShell Python Metasploit Suricata Snort Nessus CrowdStrike Splunk MongoDB Redis",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Qualys",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... com/in/jason-walton",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Burp Suite",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... com/in/jason-walton",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Splunk",
+        "verdict": "MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... PowerShell Python Metasploit Suricata Snort Nessus CrowdStrike Splunk MongoDB Redis",
+        "evidence_strength": "strong",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "AWS Security Hub",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Security Research ... PostgreSQL AWS Security Hub GCP Security Command Center SOC2 Compliance SAST/DAST ... Security Engineer at Amazon (2020-04 \u2013 2021-01)",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "Azure Security Center",
+        "verdict": "NOT_MET",
+        "evidence": "Security Research ... PostgreSQL AWS Security Hub GCP Security Command Center SOC2 Compliance SAST/DAST ... Security Engineer at Amazon (2020-04 \u2013 2021-01)",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "IAM",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... com/in/jason-walton",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "SOC 2",
+        "verdict": "PARTIALLY_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... com/in/jason-walton",
+        "evidence_strength": "weak",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "ISO 27001",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... com/in/jason-walton",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CISSP",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... com/in/jason-walton",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      },
+      {
+        "requirement": "CEH",
+        "verdict": "NOT_MET",
+        "evidence": "Cybersecurity | Fresher | Johnfurt, Japan ... com | 437-323-0817 | https://linkedin ... com/in/jason-walton",
+        "evidence_strength": "none",
+        "recency": "unknown",
+        "years_demonstrated": 0
+      }
+    ],
+    "total_relevant_years": 5,
+    "career_trajectory": {
+      "direction": "lateral",
+      "tenure_pattern": "variable",
+      "average_tenure_months": 15,
+      "most_recent_role_duration_months": 26,
+      "has_multinational_experience": true
+    },
+    "qualified": true,
+    "disqualification_reason": null
+  }
+}

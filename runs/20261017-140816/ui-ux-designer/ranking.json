@@ -1,0 +1,194 @@
+{
+  "job_profile_id": "ui-ux-designer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00424",
+      "utility": 1.339524789933168,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00692",
+      "utility": 1.3276314161782612,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00238",
+      "utility": 1.0449996247955493,
+      "qualified": true,
+      "total_relevant_years": 14
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00314",
+      "utility": 0.7116695558554336,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00530",
+      "utility": 0.5525543369493157,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00454",
+      "utility": 0.49797661785480507,
+      "qualified": true,
+      "total_relevant_years": 3
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00546",
+      "utility": 0.4936563515759851,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00389",
+      "utility": 0.4730431862876686,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00596",
+      "utility": 0.44336234765582483,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00341",
+      "utility": 0.17426687072613856,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00594",
+      "utility": 0.10944444246016458,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00682",
+      "utility": 0.04306541907797699,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00232",
+      "utility": -0.02533973572489122,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 14,
+      "candidate_id": "cv-00688",
+      "utility": -0.09535054976135492,
+      "qualified": true,
+      "total_relevant_years": 15
+    },
+    {
+      "rank": 15,
+      "candidate_id": "cv-00656",
+      "utility": -0.09632810328966751,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 16,
+      "candidate_id": "cv-00465",
+      "utility": -0.14457535246701428,
+      "qualified": true,
+      "total_relevant_years": 10
+    },
+    {
+      "rank": 17,
+      "candidate_id": "cv-00256",
+      "utility": -0.17058329866284003,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 18,
+      "candidate_id": "cv-00529",
+      "utility": -0.18432972731622854,
+      "qualified": true,
+      "total_relevant_years": 0
+    },
+    {
+      "rank": 19,
+      "candidate_id": "cv-00402",
+      "utility": -0.24897380100659725,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 20,
+      "candidate_id": "cv-00394",
+      "utility": -0.33264473175152603,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 21,
+      "candidate_id": "cv-00204",
+      "utility": -0.4231705283725353,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 22,
+      "candidate_id": "cv-00426",
+      "utility": -0.5228262247275521,
+      "qualified": true,
+      "total_relevant_years": 7
+    },
+    {
+      "rank": 23,
+      "candidate_id": "cv-00300",
+      "utility": -0.6351110697935483,
+      "qualified": true,
+      "total_relevant_years": 6
+    },
+    {
+      "rank": 24,
+      "candidate_id": "cv-00291",
+      "utility": -0.7658768151207334,
+      "qualified": true,
+      "total_relevant_years": 13
+    },
+    {
+      "rank": 25,
+      "candidate_id": "cv-00492",
+      "utility": -0.9261724199682283,
+      "qualified": true,
+      "total_relevant_years": 5
+    },
+    {
+      "rank": 26,
+      "candidate_id": "cv-00288",
+      "utility": -1.1414392972529075,
+      "qualified": true,
+      "total_relevant_years": 8
+    },
+    {
+      "rank": 27,
+      "candidate_id": "cv-00380",
+      "utility": -1.4984733041346665,
+      "qualified": true,
+      "total_relevant_years": 9
+    }
+  ]
+}

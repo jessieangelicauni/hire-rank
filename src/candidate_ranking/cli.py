@@ -30,7 +30,7 @@ from candidate_ranking.scoring.assessment import (
 from candidate_ranking.scoring.jev_client import JevClient
 from candidate_ranking.evaluation.ranking_stability import (
     load_cached_assessments,
-    load_job_profiles,
+    load_job_profiles as load_cached_job_profiles,
 )
 from candidate_ranking.evaluation.qualification_reliability import (
     repeat_qualification_gate,
@@ -120,7 +120,7 @@ def run(
 
     db_path = cfg.cache_dir / "checkpoints.db"
     initial_state = {
-        "jps": jps,
+        "job_postings": jps,
         "candidates": candidates,
         "job_profiles": {},
         "shortlists": {},
@@ -217,7 +217,7 @@ def main() -> None:
 
         jps = load_job_profiles(cfg.jp_dir)
         jp_map = {jp.id: jp for jp in jps}
-        job_profiles = load_job_profiles(cfg.cache_dir)
+        job_profiles = load_cached_job_profiles(cfg.cache_dir)
         candidates = load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")
         candidate_map = {c.id: c for c in candidates}
 

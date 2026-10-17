@@ -4,19 +4,19 @@
       "id": "backend-engineer",
       "title": "Backend Engineer",
       "description": "Backend Engineer\nWe're hiring a Backend Engineer to help build and scale the services powering our e-commerce platform. You'll work closely with product and frontend teams to design APIs, optimize database performance, and keep our systems reliable as we grow.\n\nRequirements:\n- 3+ years of experience building backend services in Node.js and TypeScript or a comparable stack.\n- Strong understanding of RESTful API design; experience with GraphQL is a plus.\n- Experience with relational databases (PostgreSQL preferred) and query optimization.\n- Familiarity with message queues (Kafka) for asynchronous processing.\n- Comfortable writing and maintaining unit and integration tests.\n- Experience with Docker and Kubernetes for container-based deployments.\n- Familiarity with CI/CD pipelines (GitHub Actions) and Linux environments.\n- Nice to have: experience with Redis for caching, JWT-based authentication, and microservices architecture.\n- Bachelor's degree in Computer Science or equivalent practical experience.\n\nMust Have Skills: PostgreSQL, Redis",
-      "candidateCount": 10
+      "candidateCount": 9
     },
     {
       "id": "cloud-engineer",
       "title": "Cloud Engineer",
       "description": "Cloud Engineer\nWe're looking for a Cloud Engineer to design, provision, and operate the cloud infrastructure our products run on. You'll partner with product and platform teams to build environments that are secure, cost-efficient, and ready to scale.\n\nWhat you'll need:\n- Hands-on experience architecting and operating workloads on a major cloud provider (AWS, GCP, or Azure).\n- Proficiency with Infrastructure as Code (Terraform or CloudFormation) for provisioning and managing cloud resources.\n- Solid understanding of cloud networking (VPC design, load balancing, DNS, and VPN/Direct Connect).\n- Experience with containerized workloads on managed Kubernetes (EKS, GKE, or AKS).\n- Working knowledge of IAM and cloud security best practices (least-privilege access, encryption, security groups).\n- Experience with cost optimization and cloud governance, including budgeting, tagging, and rightsizing resources.\n- Familiarity with CI/CD tooling (GitHub Actions, GitLab CI, or Jenkins) for automating infrastructure and deployments.\n- Experience with configuration management tools (Ansible, Chef, or Puppet) for fleet configuration and drift management.\n- Working knowledge of observability stacks (Prometheus, Grafana, CloudWatch, or Datadog) for monitoring, alerting, and incident response.\n\nMust Have Skills: Terraform, Docker, AWS",
-      "candidateCount": 13
+      "candidateCount": 12
     },
     {
       "id": "data-engineer",
       "title": "Data Engineer",
       "description": "Data Engineer\nWe're looking for a Data Engineer to design and maintain the data pipelines that feed our analytics and machine learning teams. You'll work with large, messy datasets and turn them into reliable, well-modeled data products.\n\nRequirements:\n- Strong SQL skills and experience building ETL/ELT pipelines using tools such as Airflow, Dagster, and dbt.\n- Proficiency in Python for data processing (Pandas, PySpark).\n- Hands-on experience with distributed data processing (Apache Spark, Redis) and cloud data warehouses (Snowflake, BigQuery, or Redshift).\n- Understanding of data modeling concepts (star schema, slowly changing dimensions) and data warehousing best practices.\n- Experience working with streaming data (Kafka).\n- Comfortable with Docker and Kubernetes for containerized pipeline deployments.\n- Experience with Power BI, AS400, SQL, MySQL, PostgreSQL, version control (Git) and CI/CD for data pipelines.\n- Nice to have: experience with Terraform for infrastructure as code, Databricks, and data quality/testing frameworks (Great Expectations).\n- Bachelor's degree in Computer Science, Engineering, or a related quantitative field.\n\nMust Have Skills: SQL, Python, Airflow",
-      "candidateCount": 8
+      "candidateCount": 7
     },
     {
       "id": "data-scientist-engineer",
@@ -34,31 +34,31 @@
       "id": "frontend-engineer",
       "title": "Frontend Engineer",
       "description": "Frontend Engineer\nOur product team is looking for a Frontend Engineer to build responsive, accessible web applications used by thousands of customers daily. You'll collaborate with designers and backend engineers to ship polished user experiences.\n\nWhat we're looking for:\n- Solid experience with React (hooks, component composition patterns) and TypeScript.\n- Experience with server-side rendering and routing via Next.js (App Router).\n- Understanding of state management patterns (Redux Toolkit or Zustand) and server-state tooling (TanStack Query).\n- Proficiency with Tailwind CSS for utility-first styling.\n- Comfortable working with REST or GraphQL APIs.\n- Experience with build tooling such as Vite, and testing with Jest, React Testing Library, and Playwright.\n- Fluent written and spoken English for daily collaboration with a distributed team.\n- Experience with responsive design and cross-browser compatibility.\n- A good eye for UI/UX detail and experience collaborating with design tools like Figma.\n- Advantageous: experience with Next.js, Go, testing libraries (Jest, React Testing Library), and CI/CD pipelines.\n\nMust Have Skills: React",
-      "candidateCount": 18
+      "candidateCount": 15
     },
     {
       "id": "full-stack-engineer",
       "title": "Full-Stack Engineer",
       "description": "Full-Stack Engineer\nWe are a fast-growing fintech startup looking for a Full-Stack Engineer who can move comfortably between frontend and backend work. You'll own features end-to-end, from database schema to the final UI polish.\n\nRequirements:\n- Proficiency in TypeScript across both React or Next.js (frontend) and Node.js (backend, Express or NestJS).\n- Experience designing and consuming REST APIs.\n- Working knowledge of PostgreSQL and ORMs such as Prisma.\n- Comfortable with Git-based workflows and code review.\n- A pragmatic, product-minded approach to engineering trade-offs.\n\nNice to have (not required, but a plus):\n- Familiarity with Docker for containerized development and deployment.\n- Some exposure to deploying applications to a cloud platform such as AWS or GCP.\n- Familiarity with CI/CD pipelines (GitHub Actions).\n- Experience with Stripe payment integrations and Kubernetes.\n\nMust Have Skills: TypeScript, PostgreSQL",
-      "candidateCount": 24
+      "candidateCount": 34
     },
     {
       "id": "it-security-engineer",
       "title": "IT Security Engineer",
       "description": "IT Security Engineer\nWe're looking for an IT Security Engineer to protect our infrastructure, applications, and data from evolving threats. You'll work across the stack to identify vulnerabilities, respond to incidents, and keep the company audit-ready.\n\nWhat you'll need:\n- Experience with vulnerability scanning and management (Nessus or Qualys).\n- Hands-on experience with penetration testing tools (Burp Suite or Metasploit).\n- Familiarity with SIEM platforms (Splunk) for monitoring and threat detection.\n- Experience securing cloud environments (AWS Security Hub, IAM, or Azure Security Center).\n- Solid understanding of Network Security and Firewalls.\n- Scripting ability in Python or Bash for security automation.\n- Familiarity with compliance frameworks (SOC 2 or ISO 27001).\n- Experience with incident response and threat hunting.\n- Advantageous: certifications such as CISSP or CEH.\n\nMust Have Skills: Metasploit, Python",
-      "candidateCount": 14
+      "candidateCount": 15
     },
     {
       "id": "java-developer",
       "title": "Java Developer",
       "description": "Java Developer\nWe're looking for a Java Developer to help design and build the backend services powering our platform. You'll work closely with product and platform teams to deliver reliable, well-tested APIs and services.\n\nRequirements:\n- 3+ years of experience building backend applications in Java (17+ preferred).\n- Strong experience with the Spring ecosystem (Spring Boot, Spring Data, Spring Security; Spring Cloud a plus).\n- Solid understanding of RESTful API design and microservices architecture.\n- Experience with relational databases (PostgreSQL or MySQL) via JPA/Hibernate.\n- Familiarity with build tools (Maven or Gradle) and dependency management.\n- Experience writing unit and integration tests with JUnit 5 and Mockito.\n- Comfortable with Docker and container-based deployments to Kubernetes.\n- Familiarity with message brokers (Kafka or RabbitMQ) for asynchronous processing.\n- Nice to have: exposure to reactive programming (Spring WebFlux/Project Reactor) or Kotlin.\n- Bachelor's degree in Computer Science or equivalent practical experience.\n\nMust Have Skills: Java, PostgreSQL",
-      "candidateCount": 16
+      "candidateCount": 8
     },
     {
       "id": "ui-ux-designer",
       "title": "UI/UX Designer",
       "description": "UI/UX Designer\nWe're looking for a UI/UX Designer to shape how users experience our products, from early research through polished, production-ready interfaces. You'll work closely with product managers and engineers to turn ambiguous problems into clear, usable designs.\n\nWhat you'll need:\n- 3+ years of experience designing digital products, with a strong portfolio of shipped work.\n- Proficiency in Figma for wireframing, prototyping, and high-fidelity UI design.\n- Experience building and maintaining Design Systems and component libraries.\n- Solid grounding in User Research and Usability Testing methods to validate design decisions.\n- Understanding of Interaction Design and Information Architecture principles.\n- Familiarity with Accessibility standards (WCAG) and designing for inclusive use.\n- Working knowledge of HTML, CSS, and JavaScript to collaborate effectively with engineering on implementation.\n- Strong communication skills to present and defend design decisions to stakeholders.\n- Advantageous: experience with Motion Design or tools like Adobe XD and Sketch.\n\nMust Have Skills: Figma, HTML, CSS",
-      "candidateCount": 26
+      "candidateCount": 27
     }
   ],
   "candidates": [
@@ -68,8 +68,8 @@
       "roleId": "backend-engineer",
       "name": "Christopher Rogers",
       "initials": "CR",
-      "rank": 6,
-      "utility": -0.10542395818112837
+      "rank": 8,
+      "utility": -0.6208040659562356
     },
     {
       "id": "cv-00242::backend-engineer",
@@ -78,7 +78,7 @@
       "name": "Denise Harding",
       "initials": "DH",
       "rank": 5,
-      "utility": 0.03775806492088577
+      "utility": -0.10825459838167444
     },
     {
       "id": "cv-00244::backend-engineer",
@@ -86,8 +86,17 @@
       "roleId": "backend-engineer",
       "name": "Travis Thomas",
       "initials": "TT",
-      "rank": 1,
-      "utility": 1.3994438346907556
+      "rank": 3,
+      "utility": 0.3674295487052371
+    },
+    {
+      "id": "cv-00257::backend-engineer",
+      "cvId": "cv-00257",
+      "roleId": "backend-engineer",
+      "name": "Michelle Wilson",
+      "initials": "MW",
+      "rank": 4,
+      "utility": 0.19258129544095012
     },
     {
       "id": "cv-00302::backend-engineer",
@@ -95,8 +104,8 @@
       "roleId": "backend-engineer",
       "name": "David Lawrence",
       "initials": "DL",
-      "rank": 7,
-      "utility": -0.1391436218317212
+      "rank": 1,
+      "utility": 1.1018123593475526
     },
     {
       "id": "cv-00420::backend-engineer",
@@ -104,26 +113,8 @@
       "roleId": "backend-engineer",
       "name": "Darrell Cruz",
       "initials": "DC",
-      "rank": 9,
-      "utility": -0.7243083527237234
-    },
-    {
-      "id": "cv-00450::backend-engineer",
-      "cvId": "cv-00450",
-      "roleId": "backend-engineer",
-      "name": "Kimberly Smith",
-      "initials": "KS",
-      "rank": 3,
-      "utility": 0.2675884527051932
-    },
-    {
-      "id": "cv-00498::backend-engineer",
-      "cvId": "cv-00498",
-      "roleId": "backend-engineer",
-      "name": "Tim Hamilton",
-      "initials": "TH",
-      "rank": 4,
-      "utility": 0.21614400160198494
+      "rank": 2,
+      "utility": 0.6456550562112295
     },
     {
       "id": "cv-00511::backend-engineer",
@@ -131,8 +122,8 @@
       "roleId": "backend-engineer",
       "name": "Adrian Lee",
       "initials": "AL",
-      "rank": 2,
-      "utility": 1.010868198563674
+      "rank": 7,
+      "utility": -0.3348511188662414
     },
     {
       "id": "cv-00516::backend-engineer",
@@ -140,8 +131,8 @@
       "roleId": "backend-engineer",
       "name": "Diamond Phelps",
       "initials": "DP",
-      "rank": 8,
-      "utility": -0.4568753687021263
+      "rank": 6,
+      "utility": -0.14198106243973865
     },
     {
       "id": "cv-00620::backend-engineer",
@@ -149,8 +140,8 @@
       "roleId": "backend-engineer",
       "name": "Andrew Perez",
       "initials": "AP",
-      "rank": 10,
-      "utility": -1.5060512510437938
+      "rank": 9,
+      "utility": -1.1015874140610795
     },
     {
       "id": "cv-00224::cloud-engineer",
@@ -158,8 +149,17 @@
       "roleId": "cloud-engineer",
       "name": "Mary Durham",
       "initials": "MD",
+      "rank": 4,
+      "utility": 0.135190814169242
+    },
+    {
+      "id": "cv-00299::cloud-engineer",
+      "cvId": "cv-00299",
+      "roleId": "cloud-engineer",
+      "name": "Chris Jennings",
+      "initials": "CJ",
       "rank": 3,
-      "utility": 1.2235232554060709
+      "utility": 0.7688735354182928
     },
     {
       "id": "cv-00342::cloud-engineer",
@@ -167,8 +167,8 @@
       "roleId": "cloud-engineer",
       "name": "Kristen Williams",
       "initials": "KW",
-      "rank": 13,
-      "utility": -2.4347246723490756
+      "rank": 9,
+      "utility": -0.46996129467878617
     },
     {
       "id": "cv-00345::cloud-engineer",
@@ -176,8 +176,8 @@
       "roleId": "cloud-engineer",
       "name": "RobeRto FosteR",
       "initials": "RF",
-      "rank": 7,
-      "utility": -0.1414572221388897
+      "rank": 12,
+      "utility": -2.1881118053299615
     },
     {
       "id": "cv-00352::cloud-engineer",
@@ -185,8 +185,8 @@
       "roleId": "cloud-engineer",
       "name": "Erin Lane",
       "initials": "EL",
-      "rank": 11,
-      "utility": -0.8622058246117356
+      "rank": 8,
+      "utility": -0.2626316732414478
     },
     {
       "id": "cv-00357::cloud-engineer",
@@ -194,17 +194,8 @@
       "roleId": "cloud-engineer",
       "name": "Tracy Blackwell",
       "initials": "TB",
-      "rank": 1,
-      "utility": 1.7556255066526274
-    },
-    {
-      "id": "cv-00395::cloud-engineer",
-      "cvId": "cv-00395",
-      "roleId": "cloud-engineer",
-      "name": "Kerri Brown",
-      "initials": "KB",
-      "rank": 4,
-      "utility": 0.5292793215511068
+      "rank": 5,
+      "utility": -0.085600441392822
     },
     {
       "id": "cv-00423::cloud-engineer",
@@ -212,8 +203,8 @@
       "roleId": "cloud-engineer",
       "name": "Daniel Walker",
       "initials": "DW",
-      "rank": 12,
-      "utility": -1.0693341494736552
+      "rank": 6,
+      "utility": -0.15960052947638045
     },
     {
       "id": "cv-00445::cloud-engineer",
@@ -221,8 +212,8 @@
       "roleId": "cloud-engineer",
       "name": "Robert Graham",
       "initials": "RG",
-      "rank": 9,
-      "utility": -0.462185098526616
+      "rank": 10,
+      "utility": -0.736733104029246
     },
     {
       "id": "cv-00512::cloud-engineer",
@@ -230,8 +221,8 @@
       "roleId": "cloud-engineer",
       "name": "Erin Ingram",
       "initials": "EI",
-      "rank": 8,
-      "utility": -0.40346719623255667
+      "rank": 11,
+      "utility": -1.1881118053299615
     },
     {
       "id": "cv-00539::cloud-engineer",
@@ -239,17 +230,8 @@
       "roleId": "cloud-engineer",
       "name": "Shannon Jones MD",
       "initials": "SJ",
-      "rank": 5,
-      "utility": 0.4904456766406369
-    },
-    {
-      "id": "cv-00626::cloud-engineer",
-      "cvId": "cv-00626",
-      "roleId": "cloud-engineer",
-      "name": "William Ray",
-      "initials": "WR",
-      "rank": 10,
-      "utility": -0.7266091334542517
+      "rank": 1,
+      "utility": 1.2240858834409631
     },
     {
       "id": "cv-00653::cloud-engineer",
@@ -258,7 +240,7 @@
       "name": "Joseph Lopez",
       "initials": "JL",
       "rank": 2,
-      "utility": 1.6911037753732345
+      "utility": 0.9544153984225738
     },
     {
       "id": "cv-00695::cloud-engineer",
@@ -266,8 +248,8 @@
       "roleId": "cloud-engineer",
       "name": "James Patel",
       "initials": "JP",
-      "rank": 6,
-      "utility": 0.41000576116310233
+      "rank": 7,
+      "utility": -0.17992678330242756
     },
     {
       "id": "cv-00270::data-engineer",
@@ -276,16 +258,7 @@
       "name": "Lindsey Clarke",
       "initials": "LC",
       "rank": 2,
-      "utility": 0.4221861114354007
-    },
-    {
-      "id": "cv-00305::data-engineer",
-      "cvId": "cv-00305",
-      "roleId": "data-engineer",
-      "name": "Jody Johnson",
-      "initials": "JJ",
-      "rank": 5,
-      "utility": 0.08527025697830495
+      "utility": 0.36224417287899724
     },
     {
       "id": "cv-00414::data-engineer",
@@ -293,8 +266,8 @@
       "roleId": "data-engineer",
       "name": "Melissa Yang",
       "initials": "MY",
-      "rank": 8,
-      "utility": -1.4158559359609262
+      "rank": 4,
+      "utility": -0.14984159977826222
     },
     {
       "id": "cv-00481::data-engineer",
@@ -302,8 +275,8 @@
       "roleId": "data-engineer",
       "name": "Eric Richardson",
       "initials": "ER",
-      "rank": 3,
-      "utility": 0.41599470272536615
+      "rank": 1,
+      "utility": 1.413607084606052
     },
     {
       "id": "cv-00531::data-engineer",
@@ -311,8 +284,8 @@
       "roleId": "data-engineer",
       "name": "Alex Clements",
       "initials": "AC",
-      "rank": 4,
-      "utility": 0.14752513801680545
+      "rank": 5,
+      "utility": -0.18683309297764744
     },
     {
       "id": "cv-00618::data-engineer",
@@ -320,8 +293,8 @@
       "roleId": "data-engineer",
       "name": "Gina Gutierrez",
       "initials": "GG",
-      "rank": 6,
-      "utility": 0.027549046538590773
+      "rank": 3,
+      "utility": 0.1812783019820082
     },
     {
       "id": "cv-00650::data-engineer",
@@ -330,7 +303,7 @@
       "name": "Michael Chavez",
       "initials": "MC",
       "rank": 7,
-      "utility": -0.7514565426500858
+      "utility": -1.112674619705385
     },
     {
       "id": "cv-00684::data-engineer",
@@ -338,8 +311,8 @@
       "roleId": "data-engineer",
       "name": "Kenneth Adams",
       "initials": "KA",
-      "rank": 1,
-      "utility": 1.0687872229165436
+      "rank": 6,
+      "utility": -0.5077802470057631
     },
     {
       "id": "cv-00214::data-scientist-engineer",
@@ -347,8 +320,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Anne Hardy",
       "initials": "AH",
-      "rank": 1,
-      "utility": 2.854226574165725
+      "rank": 13,
+      "utility": -0.635515493536873
     },
     {
       "id": "cv-00272::data-scientist-engineer",
@@ -356,8 +329,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Shelly Sullivan",
       "initials": "SS",
-      "rank": 11,
-      "utility": -0.8850569196355551
+      "rank": 4,
+      "utility": 0.5340492323226366
     },
     {
       "id": "cv-00455::data-scientist-engineer",
@@ -365,8 +338,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Anthony Johnson",
       "initials": "AJ",
-      "rank": 7,
-      "utility": 0.2920777380135248
+      "rank": 2,
+      "utility": 1.119891120313483
     },
     {
       "id": "cv-00469::data-scientist-engineer",
@@ -374,8 +347,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Terry Estes",
       "initials": "TE",
-      "rank": 13,
-      "utility": -1.4303692907640424
+      "rank": 8,
+      "utility": -0.13464635509433015
     },
     {
       "id": "cv-00525::data-scientist-engineer",
@@ -383,8 +356,8 @@
       "roleId": "data-scientist-engineer",
       "name": "PhilliP Anderson",
       "initials": "PA",
-      "rank": 15,
-      "utility": -2.2055010063483587
+      "rank": 1,
+      "utility": 1.2237975380170227
     },
     {
       "id": "cv-00531::data-scientist-engineer",
@@ -392,8 +365,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Alex Clements",
       "initials": "AC",
-      "rank": 6,
-      "utility": 0.41348735080795523
+      "rank": 5,
+      "utility": 0.26126345522282957
     },
     {
       "id": "cv-00551::data-scientist-engineer",
@@ -401,8 +374,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Justin Stevenson",
       "initials": "JS",
-      "rank": 5,
-      "utility": 0.706761625917539
+      "rank": 9,
+      "utility": -0.15636867199375296
     },
     {
       "id": "cv-00566::data-scientist-engineer",
@@ -410,8 +383,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Steven Scott",
       "initials": "SS",
-      "rank": 12,
-      "utility": -1.2478198828788678
+      "rank": 3,
+      "utility": 0.9215892586233102
     },
     {
       "id": "cv-00577::data-scientist-engineer",
@@ -419,8 +392,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Dr. Kimberly Garcia",
       "initials": "DK",
-      "rank": 14,
-      "utility": -1.6502748551802942
+      "rank": 11,
+      "utility": -0.29370354676368693
     },
     {
       "id": "cv-00606::data-scientist-engineer",
@@ -429,7 +402,7 @@
       "name": "Peggy Shields",
       "initials": "PS",
       "rank": 10,
-      "utility": -0.8821965972639596
+      "utility": -0.27134070151616985
     },
     {
       "id": "cv-00618::data-scientist-engineer",
@@ -437,8 +410,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Gina Gutierrez",
       "initials": "GG",
-      "rank": 2,
-      "utility": 2.326097494648613
+      "rank": 7,
+      "utility": -0.030988743644727753
     },
     {
       "id": "cv-00650::data-scientist-engineer",
@@ -446,8 +419,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Michael Chavez",
       "initials": "MC",
-      "rank": 8,
-      "utility": -0.1343760245898635
+      "rank": 12,
+      "utility": -0.44944610141739794
     },
     {
       "id": "cv-00661::data-scientist-engineer",
@@ -455,8 +428,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Thomas Smith",
       "initials": "TS",
-      "rank": 9,
-      "utility": -0.15946890872590155
+      "rank": 15,
+      "utility": -1.270279892345816
     },
     {
       "id": "cv-00669::data-scientist-engineer",
@@ -464,8 +437,8 @@
       "roleId": "data-scientist-engineer",
       "name": "Anthony Golden",
       "initials": "AG",
-      "rank": 4,
-      "utility": 0.8966137989717139
+      "rank": 14,
+      "utility": -0.8788562664900497
     },
     {
       "id": "daniel-adif-nugroho::data-scientist-engineer",
@@ -473,8 +446,17 @@
       "roleId": "data-scientist-engineer",
       "name": "Daniel Adif Nugroho",
       "initials": "DA",
-      "rank": 3,
-      "utility": 1.105798902861771
+      "rank": 6,
+      "utility": 0.06055516830352271
+    },
+    {
+      "id": "cv-00342::devops-engineer",
+      "cvId": "cv-00342",
+      "roleId": "devops-engineer",
+      "name": "Kristen Williams",
+      "initials": "KW",
+      "rank": 4,
+      "utility": -0.2136164015882432
     },
     {
       "id": "cv-00345::devops-engineer",
@@ -482,8 +464,8 @@
       "roleId": "devops-engineer",
       "name": "RobeRto FosteR",
       "initials": "RF",
-      "rank": 2,
-      "utility": 0.4939103330937094
+      "rank": 1,
+      "utility": 1.0943508739999455
     },
     {
       "id": "cv-00352::devops-engineer",
@@ -491,8 +473,8 @@
       "roleId": "devops-engineer",
       "name": "Erin Lane",
       "initials": "EL",
-      "rank": 3,
-      "utility": 0.20495229179958774
+      "rank": 7,
+      "utility": -3.588665430541111
     },
     {
       "id": "cv-00357::devops-engineer",
@@ -500,8 +482,8 @@
       "roleId": "devops-engineer",
       "name": "Tracy Blackwell",
       "initials": "TB",
-      "rank": 1,
-      "utility": 0.7383666265187214
+      "rank": 2,
+      "utility": 0.7325327334374008
     },
     {
       "id": "cv-00382::devops-engineer",
@@ -510,7 +492,7 @@
       "name": "Jennifer Parker",
       "initials": "JP",
       "rank": 5,
-      "utility": -0.30906801060766115
+      "utility": -1.5886654305411112
     },
     {
       "id": "cv-00423::devops-engineer",
@@ -518,17 +500,8 @@
       "roleId": "devops-engineer",
       "name": "Daniel Walker",
       "initials": "DW",
-      "rank": 6,
-      "utility": -0.43600753158054567
-    },
-    {
-      "id": "cv-00626::devops-engineer",
-      "cvId": "cv-00626",
-      "roleId": "devops-engineer",
-      "name": "William Ray",
-      "initials": "WR",
-      "rank": 7,
-      "utility": -0.4893463992861292
+      "rank": 3,
+      "utility": -0.024601775307991992
     },
     {
       "id": "cv-00673::devops-engineer",
@@ -536,8 +509,8 @@
       "roleId": "devops-engineer",
       "name": "Suzanne Lynch",
       "initials": "SL",
-      "rank": 4,
-      "utility": -0.20280730993768273
+      "rank": 6,
+      "utility": -2.588665430541111
     },
     {
       "id": "cv-00243::frontend-engineer",
@@ -545,8 +518,8 @@
       "roleId": "frontend-engineer",
       "name": "Michael Vance",
       "initials": "MV",
-      "rank": 6,
-      "utility": 0.8284465124391028
+      "rank": 8,
+      "utility": -0.16057162419271037
     },
     {
       "id": "cv-00276::frontend-engineer",
@@ -554,26 +527,17 @@
       "roleId": "frontend-engineer",
       "name": "Dr. Randy Williams",
       "initials": "DR",
-      "rank": 9,
-      "utility": 0.24155952560590038
+      "rank": 3,
+      "utility": 0.9503824977902534
     },
     {
-      "id": "cv-00279::frontend-engineer",
-      "cvId": "cv-00279",
+      "id": "cv-00341::frontend-engineer",
+      "cvId": "cv-00341",
       "roleId": "frontend-engineer",
-      "name": "Cheyenne Stewart",
-      "initials": "CS",
-      "rank": 4,
-      "utility": 1.448187191211442
-    },
-    {
-      "id": "cv-00331::frontend-engineer",
-      "cvId": "cv-00331",
-      "roleId": "frontend-engineer",
-      "name": "Raymond Barber",
-      "initials": "RB",
-      "rank": 15,
-      "utility": -2.0450304863936792
+      "name": "Danielle Peters",
+      "initials": "DP",
+      "rank": 5,
+      "utility": 0.15893726293879382
     },
     {
       "id": "cv-00350::frontend-engineer",
@@ -582,16 +546,7 @@
       "name": "Brian Larson",
       "initials": "BL",
       "rank": 12,
-      "utility": -0.17105475234405462
-    },
-    {
-      "id": "cv-00368::frontend-engineer",
-      "cvId": "cv-00368",
-      "roleId": "frontend-engineer",
-      "name": "Kimberly Estrada",
-      "initials": "KE",
-      "rank": 14,
-      "utility": -1.7234147058946787
+      "utility": -0.45297754477178487
     },
     {
       "id": "cv-00370::frontend-engineer",
@@ -599,8 +554,8 @@
       "roleId": "frontend-engineer",
       "name": "Margaret Moran",
       "initials": "MM",
-      "rank": 13,
-      "utility": -1.190713199376619
+      "rank": 10,
+      "utility": -0.2975661614486215
     },
     {
       "id": "cv-00371::frontend-engineer",
@@ -608,26 +563,17 @@
       "roleId": "frontend-engineer",
       "name": "Tyler Davis",
       "initials": "TD",
-      "rank": 16,
-      "utility": -2.7301872877116073
+      "rank": 11,
+      "utility": -0.30186330553661694
     },
     {
-      "id": "cv-00386::frontend-engineer",
-      "cvId": "cv-00386",
+      "id": "cv-00452::frontend-engineer",
+      "cvId": "cv-00452",
       "roleId": "frontend-engineer",
-      "name": "Nancy Gregory",
-      "initials": "NG",
-      "rank": 3,
-      "utility": 1.5750534802842555
-    },
-    {
-      "id": "cv-00540::frontend-engineer",
-      "cvId": "cv-00540",
-      "roleId": "frontend-engineer",
-      "name": "Ryan Chang",
-      "initials": "RC",
-      "rank": 2,
-      "utility": 2.7190307214292155
+      "name": "Nancy Harris",
+      "initials": "NH",
+      "rank": 7,
+      "utility": 0.10916453811561148
     },
     {
       "id": "cv-00548::frontend-engineer",
@@ -635,8 +581,8 @@
       "roleId": "frontend-engineer",
       "name": "Justin Parker",
       "initials": "JP",
-      "rank": 5,
-      "utility": 1.2461844764338523
+      "rank": 2,
+      "utility": 1.0200578580438102
     },
     {
       "id": "cv-00555::frontend-engineer",
@@ -644,8 +590,8 @@
       "roleId": "frontend-engineer",
       "name": "Rebecca TyleR",
       "initials": "RT",
-      "rank": 17,
-      "utility": -2.736717411080603
+      "rank": 6,
+      "utility": 0.14011769833568596
     },
     {
       "id": "cv-00591::frontend-engineer",
@@ -653,8 +599,17 @@
       "roleId": "frontend-engineer",
       "name": "Kristen Jimenez",
       "initials": "KJ",
-      "rank": 11,
-      "utility": -0.03774851973526228
+      "rank": 15,
+      "utility": -1.2727303639097283
+    },
+    {
+      "id": "cv-00594::frontend-engineer",
+      "cvId": "cv-00594",
+      "roleId": "frontend-engineer",
+      "name": "Christopher Payne",
+      "initials": "CP",
+      "rank": 9,
+      "utility": -0.24270860916092382
     },
     {
       "id": "cv-00607::frontend-engineer",
@@ -662,8 +617,8 @@
       "roleId": "frontend-engineer",
       "name": "Rickey Hall",
       "initials": "RH",
-      "rank": 18,
-      "utility": -2.803965977697857
+      "rank": 14,
+      "utility": -0.8817234987318952
     },
     {
       "id": "cv-00628::frontend-engineer",
@@ -671,8 +626,8 @@
       "roleId": "frontend-engineer",
       "name": "John Reed",
       "initials": "JR",
-      "rank": 7,
-      "utility": 0.6777293300976344
+      "rank": 13,
+      "utility": -0.6387031588335772
     },
     {
       "id": "cv-00629::frontend-engineer",
@@ -681,7 +636,7 @@
       "name": "Vanessa Sparks",
       "initials": "VS",
       "rank": 1,
-      "utility": 4.229077100656069
+      "utility": 1.2008257122981612
     },
     {
       "id": "cv-00660::frontend-engineer",
@@ -689,17 +644,17 @@
       "roleId": "frontend-engineer",
       "name": "Luis Hill",
       "initials": "LH",
-      "rank": 8,
-      "utility": 0.3603931198736491
+      "rank": 4,
+      "utility": 0.6693586990635421
     },
     {
-      "id": "cv-00688::frontend-engineer",
-      "cvId": "cv-00688",
-      "roleId": "frontend-engineer",
-      "name": "John Kim",
-      "initials": "JK",
-      "rank": 10,
-      "utility": 0.11317088220323358
+      "id": "cv-00216::full-stack-engineer",
+      "cvId": "cv-00216",
+      "roleId": "full-stack-engineer",
+      "name": "Joshua Garner",
+      "initials": "JG",
+      "rank": 24,
+      "utility": -0.29015588495824735
     },
     {
       "id": "cv-00256::full-stack-engineer",
@@ -707,8 +662,8 @@
       "roleId": "full-stack-engineer",
       "name": "Wendy Edwards",
       "initials": "WE",
-      "rank": 20,
-      "utility": -0.966298698620264
+      "rank": 27,
+      "utility": -0.4810805010148826
     },
     {
       "id": "cv-00267::full-stack-engineer",
@@ -716,8 +671,8 @@
       "roleId": "full-stack-engineer",
       "name": "Melinda SchMitt",
       "initials": "MS",
-      "rank": 14,
-      "utility": -0.16228475075143375
+      "rank": 12,
+      "utility": 0.21719043522223597
     },
     {
       "id": "cv-00276::full-stack-engineer",
@@ -725,8 +680,8 @@
       "roleId": "full-stack-engineer",
       "name": "Dr. Randy Williams",
       "initials": "DR",
-      "rank": 15,
-      "utility": -0.24449032075204605
+      "rank": 4,
+      "utility": 0.9796486980374254
     },
     {
       "id": "cv-00331::full-stack-engineer",
@@ -734,8 +689,8 @@
       "roleId": "full-stack-engineer",
       "name": "Raymond Barber",
       "initials": "RB",
-      "rank": 8,
-      "utility": 0.22488610450471247
+      "rank": 7,
+      "utility": 0.5149969628222093
     },
     {
       "id": "cv-00334::full-stack-engineer",
@@ -743,8 +698,17 @@
       "roleId": "full-stack-engineer",
       "name": "Christopher Hansen",
       "initials": "CH",
-      "rank": 1,
-      "utility": 2.8882157170141847
+      "rank": 30,
+      "utility": -0.7622557879778795
+    },
+    {
+      "id": "cv-00341::full-stack-engineer",
+      "cvId": "cv-00341",
+      "roleId": "full-stack-engineer",
+      "name": "Danielle Peters",
+      "initials": "DP",
+      "rank": 16,
+      "utility": 0.07949209479178258
     },
     {
       "id": "cv-00347::full-stack-engineer",
@@ -752,8 +716,8 @@
       "roleId": "full-stack-engineer",
       "name": "Courtney Norris DVM",
       "initials": "CN",
-      "rank": 5,
-      "utility": 1.0258748836756975
+      "rank": 19,
+      "utility": -0.08435632200556262
     },
     {
       "id": "cv-00349::full-stack-engineer",
@@ -761,8 +725,8 @@
       "roleId": "full-stack-engineer",
       "name": "Anthony Williams",
       "initials": "AW",
-      "rank": 21,
-      "utility": -0.9878251761398686
+      "rank": 34,
+      "utility": -1.5888550614908898
     },
     {
       "id": "cv-00350::full-stack-engineer",
@@ -770,17 +734,8 @@
       "roleId": "full-stack-engineer",
       "name": "Brian Larson",
       "initials": "BL",
-      "rank": 4,
-      "utility": 1.1426216768142368
-    },
-    {
-      "id": "cv-00368::full-stack-engineer",
-      "cvId": "cv-00368",
-      "roleId": "full-stack-engineer",
-      "name": "Kimberly Estrada",
-      "initials": "KE",
-      "rank": 17,
-      "utility": -0.5352091593694625
+      "rank": 29,
+      "utility": -0.6571770009600901
     },
     {
       "id": "cv-00371::full-stack-engineer",
@@ -788,8 +743,8 @@
       "roleId": "full-stack-engineer",
       "name": "Tyler Davis",
       "initials": "TD",
-      "rank": 11,
-      "utility": 0.10354023156490062
+      "rank": 9,
+      "utility": 0.4918182008093805
     },
     {
       "id": "cv-00380::full-stack-engineer",
@@ -797,8 +752,8 @@
       "roleId": "full-stack-engineer",
       "name": "Anthony Cruz",
       "initials": "AC",
-      "rank": 7,
-      "utility": 0.620976239573115
+      "rank": 18,
+      "utility": -0.028195711739602745
     },
     {
       "id": "cv-00392::full-stack-engineer",
@@ -806,8 +761,26 @@
       "roleId": "full-stack-engineer",
       "name": "Matthew Cox",
       "initials": "MC",
-      "rank": 22,
-      "utility": -1.0111644901312593
+      "rank": 15,
+      "utility": 0.1315514030650584
+    },
+    {
+      "id": "cv-00404::full-stack-engineer",
+      "cvId": "cv-00404",
+      "roleId": "full-stack-engineer",
+      "name": "Mary Knapp DVM",
+      "initials": "MK",
+      "rank": 17,
+      "utility": 0.026325458892455914
+    },
+    {
+      "id": "cv-00426::full-stack-engineer",
+      "cvId": "cv-00426",
+      "roleId": "full-stack-engineer",
+      "name": "Brian Cox",
+      "initials": "BC",
+      "rank": 25,
+      "utility": -0.33328254993777884
     },
     {
       "id": "cv-00427::full-stack-engineer",
@@ -815,8 +788,17 @@
       "roleId": "full-stack-engineer",
       "name": "Emily Myers",
       "initials": "EM",
-      "rank": 16,
-      "utility": -0.27569616075658315
+      "rank": 31,
+      "utility": -0.8855021553833898
+    },
+    {
+      "id": "cv-00434::full-stack-engineer",
+      "cvId": "cv-00434",
+      "roleId": "full-stack-engineer",
+      "name": "Brianna Beck",
+      "initials": "BB",
+      "rank": 5,
+      "utility": 0.6468477927603694
     },
     {
       "id": "cv-00436::full-stack-engineer",
@@ -824,8 +806,17 @@
       "roleId": "full-stack-engineer",
       "name": "Guy Clayton",
       "initials": "GC",
-      "rank": 2,
-      "utility": 1.5864697832272254
+      "rank": 8,
+      "utility": 0.5082038453630328
+    },
+    {
+      "id": "cv-00441::full-stack-engineer",
+      "cvId": "cv-00441",
+      "roleId": "full-stack-engineer",
+      "name": "Matthew walker",
+      "initials": "MW",
+      "rank": 33,
+      "utility": -1.2437249841014815
     },
     {
       "id": "cv-00450::full-stack-engineer",
@@ -833,8 +824,17 @@
       "roleId": "full-stack-engineer",
       "name": "Kimberly Smith",
       "initials": "KS",
-      "rank": 13,
-      "utility": 0.01322276523445082
+      "rank": 21,
+      "utility": -0.20300540447301474
+    },
+    {
+      "id": "cv-00484::full-stack-engineer",
+      "cvId": "cv-00484",
+      "roleId": "full-stack-engineer",
+      "name": "Tara Mitchell",
+      "initials": "TM",
+      "rank": 14,
+      "utility": 0.1827224676551278
     },
     {
       "id": "cv-00492::full-stack-engineer",
@@ -842,8 +842,26 @@
       "roleId": "full-stack-engineer",
       "name": "Crystal Carey",
       "initials": "CC",
-      "rank": 6,
-      "utility": 0.8638075003512471
+      "rank": 11,
+      "utility": 0.26423214345578594
+    },
+    {
+      "id": "cv-00507::full-stack-engineer",
+      "cvId": "cv-00507",
+      "roleId": "full-stack-engineer",
+      "name": "Shelby AdAmS",
+      "initials": "SA",
+      "rank": 20,
+      "utility": -0.14249174727756733
+    },
+    {
+      "id": "cv-00523::full-stack-engineer",
+      "cvId": "cv-00523",
+      "roleId": "full-stack-engineer",
+      "name": "William Walton",
+      "initials": "WW",
+      "rank": 10,
+      "utility": 0.43148003725703216
     },
     {
       "id": "cv-00534::full-stack-engineer",
@@ -851,8 +869,8 @@
       "roleId": "full-stack-engineer",
       "name": "Anne Robinson",
       "initials": "AR",
-      "rank": 24,
-      "utility": -2.3557876518867618
+      "rank": 13,
+      "utility": 0.19867477434948516
     },
     {
       "id": "cv-00538::full-stack-engineer",
@@ -860,8 +878,17 @@
       "roleId": "full-stack-engineer",
       "name": "Larry Fritz",
       "initials": "LF",
-      "rank": 19,
-      "utility": -0.958139569827195
+      "rank": 22,
+      "utility": -0.26639368793907336
+    },
+    {
+      "id": "cv-00544::full-stack-engineer",
+      "cvId": "cv-00544",
+      "roleId": "full-stack-engineer",
+      "name": "Dale Beck",
+      "initials": "DB",
+      "rank": 23,
+      "utility": -0.2761236362313387
     },
     {
       "id": "cv-00548::full-stack-engineer",
@@ -869,8 +896,8 @@
       "roleId": "full-stack-engineer",
       "name": "Justin Parker",
       "initials": "JP",
-      "rank": 10,
-      "utility": 0.1888189100210019
+      "rank": 1,
+      "utility": 1.4671114992852354
     },
     {
       "id": "cv-00582::full-stack-engineer",
@@ -878,8 +905,8 @@
       "roleId": "full-stack-engineer",
       "name": "Shannon Sosa",
       "initials": "SS",
-      "rank": 12,
-      "utility": 0.041066727560877335
+      "rank": 2,
+      "utility": 1.2733318772628424
     },
     {
       "id": "cv-00607::full-stack-engineer",
@@ -887,8 +914,17 @@
       "roleId": "full-stack-engineer",
       "name": "Rickey Hall",
       "initials": "RH",
-      "rank": 9,
-      "utility": 0.21882507013109834
+      "rank": 32,
+      "utility": -1.0376850848668526
+    },
+    {
+      "id": "cv-00635::full-stack-engineer",
+      "cvId": "cv-00635",
+      "roleId": "full-stack-engineer",
+      "name": "Dylan Rivera",
+      "initials": "DR",
+      "rank": 6,
+      "utility": 0.6023386280990208
     },
     {
       "id": "cv-00660::full-stack-engineer",
@@ -896,8 +932,8 @@
       "roleId": "full-stack-engineer",
       "name": "Luis Hill",
       "initials": "LH",
-      "rank": 23,
-      "utility": -2.068613852690879
+      "rank": 3,
+      "utility": 1.233383483288482
     },
     {
       "id": "cv-00664::full-stack-engineer",
@@ -905,8 +941,8 @@
       "roleId": "full-stack-engineer",
       "name": "David Dean",
       "initials": "DD",
-      "rank": 18,
-      "utility": -0.6096589564386875
+      "rank": 28,
+      "utility": -0.5645810974837207
     },
     {
       "id": "cv-00700::full-stack-engineer",
@@ -914,8 +950,8 @@
       "roleId": "full-stack-engineer",
       "name": "Laura Woods",
       "initials": "LW",
-      "rank": 3,
-      "utility": 1.2568431776916926
+      "rank": 26,
+      "utility": -0.4044831845755901
     },
     {
       "id": "cv-00255::it-security-engineer",
@@ -923,8 +959,8 @@
       "roleId": "it-security-engineer",
       "name": "TimoThy Cole",
       "initials": "TC",
-      "rank": 1,
-      "utility": 1.5345959529774993
+      "rank": 12,
+      "utility": -0.560208349288764
     },
     {
       "id": "cv-00273::it-security-engineer",
@@ -933,7 +969,7 @@
       "name": "Michele castro",
       "initials": "MC",
       "rank": 9,
-      "utility": -0.3809194843398499
+      "utility": -0.2873855813848875
     },
     {
       "id": "cv-00323::it-security-engineer",
@@ -941,8 +977,8 @@
       "roleId": "it-security-engineer",
       "name": "Steven Butler",
       "initials": "SB",
-      "rank": 7,
-      "utility": 0.654059836909644
+      "rank": 1,
+      "utility": 1.3572295966521013
     },
     {
       "id": "cv-00353::it-security-engineer",
@@ -950,8 +986,8 @@
       "roleId": "it-security-engineer",
       "name": "Erin Singh",
       "initials": "ES",
-      "rank": 5,
-      "utility": 0.7155763443164215
+      "rank": 2,
+      "utility": 0.9288015821033264
     },
     {
       "id": "cv-00381::it-security-engineer",
@@ -959,8 +995,8 @@
       "roleId": "it-security-engineer",
       "name": "Kevin Santana",
       "initials": "KS",
-      "rank": 2,
-      "utility": 1.3564115066524667
+      "rank": 4,
+      "utility": 0.5103621525731605
     },
     {
       "id": "cv-00400::it-security-engineer",
@@ -968,8 +1004,17 @@
       "roleId": "it-security-engineer",
       "name": "Courtney Lynn",
       "initials": "CL",
-      "rank": 8,
-      "utility": 0.19166153997143548
+      "rank": 15,
+      "utility": -0.9720483455426383
+    },
+    {
+      "id": "cv-00412::it-security-engineer",
+      "cvId": "cv-00412",
+      "roleId": "it-security-engineer",
+      "name": "Mark Guzman",
+      "initials": "MG",
+      "rank": 10,
+      "utility": -0.37483605188634167
     },
     {
       "id": "cv-00430::it-security-engineer",
@@ -977,8 +1022,8 @@
       "roleId": "it-security-engineer",
       "name": "Jason Harvey",
       "initials": "JH",
-      "rank": 3,
-      "utility": 1.2246917508257933
+      "rank": 11,
+      "utility": -0.44124016086390944
     },
     {
       "id": "cv-00470::it-security-engineer",
@@ -986,8 +1031,8 @@
       "roleId": "it-security-engineer",
       "name": "Julia Trevino",
       "initials": "JT",
-      "rank": 6,
-      "utility": 0.706361043138176
+      "rank": 7,
+      "utility": 0.13956510493294064
     },
     {
       "id": "cv-00487::it-security-engineer",
@@ -995,8 +1040,8 @@
       "roleId": "it-security-engineer",
       "name": "Brian Johnson",
       "initials": "BJ",
-      "rank": 10,
-      "utility": -0.7339240041328383
+      "rank": 13,
+      "utility": -0.7881039061965684
     },
     {
       "id": "cv-00495::it-security-engineer",
@@ -1004,8 +1049,8 @@
       "roleId": "it-security-engineer",
       "name": "Dominique Cruz",
       "initials": "DC",
-      "rank": 11,
-      "utility": -0.8709082661276967
+      "rank": 3,
+      "utility": 0.7394588566127495
     },
     {
       "id": "cv-00518::it-security-engineer",
@@ -1013,8 +1058,8 @@
       "roleId": "it-security-engineer",
       "name": "Michael Bender",
       "initials": "MB",
-      "rank": 4,
-      "utility": 1.1079387539159404
+      "rank": 5,
+      "utility": 0.36890675999901484
     },
     {
       "id": "cv-00562::it-security-engineer",
@@ -1022,8 +1067,8 @@
       "roleId": "it-security-engineer",
       "name": "Christopher Stone",
       "initials": "CS",
-      "rank": 13,
-      "utility": -1.9075522328066095
+      "rank": 6,
+      "utility": 0.23014384349011385
     },
     {
       "id": "cv-00624::it-security-engineer",
@@ -1032,7 +1077,7 @@
       "name": "Natalie Watson",
       "initials": "NW",
       "rank": 14,
-      "utility": -2.1631612997051266
+      "utility": -0.9095198975538387
     },
     {
       "id": "cv-00630::it-security-engineer",
@@ -1040,17 +1085,8 @@
       "roleId": "it-security-engineer",
       "name": "Jason Walton",
       "initials": "JW",
-      "rank": 12,
-      "utility": -1.434831441595263
-    },
-    {
-      "id": "cv-00233::java-developer",
-      "cvId": "cv-00233",
-      "roleId": "java-developer",
-      "name": "Christopher Rogers",
-      "initials": "CR",
       "rank": 8,
-      "utility": -0.3160269240536745
+      "utility": 0.05887439635354097
     },
     {
       "id": "cv-00234::java-developer",
@@ -1058,26 +1094,8 @@
       "roleId": "java-developer",
       "name": "Kimberly Smith",
       "initials": "KS",
-      "rank": 13,
-      "utility": -1.3268369310523012
-    },
-    {
-      "id": "cv-00242::java-developer",
-      "cvId": "cv-00242",
-      "roleId": "java-developer",
-      "name": "Denise Harding",
-      "initials": "DH",
-      "rank": 6,
-      "utility": 0.02419598924007066
-    },
-    {
-      "id": "cv-00302::java-developer",
-      "cvId": "cv-00302",
-      "roleId": "java-developer",
-      "name": "David Lawrence",
-      "initials": "DL",
-      "rank": 9,
-      "utility": -0.3362544332319359
+      "rank": 8,
+      "utility": -1.202197407912708
     },
     {
       "id": "cv-00304::java-developer",
@@ -1085,8 +1103,8 @@
       "roleId": "java-developer",
       "name": "Lynn Suarez",
       "initials": "LS",
-      "rank": 12,
-      "utility": -0.8055124997148024
+      "rank": 2,
+      "utility": 0.5027576121723235
     },
     {
       "id": "cv-00335::java-developer",
@@ -1094,53 +1112,8 @@
       "roleId": "java-developer",
       "name": "John Moody",
       "initials": "JM",
-      "rank": 2,
-      "utility": 2.3922144683440028
-    },
-    {
-      "id": "cv-00349::java-developer",
-      "cvId": "cv-00349",
-      "roleId": "java-developer",
-      "name": "Anthony Williams",
-      "initials": "AW",
-      "rank": 7,
-      "utility": -0.15678118634517582
-    },
-    {
-      "id": "cv-00444::java-developer",
-      "cvId": "cv-00444",
-      "roleId": "java-developer",
-      "name": "Kelly Hodges",
-      "initials": "KH",
-      "rank": 16,
-      "utility": -1.7424842066398756
-    },
-    {
-      "id": "cv-00503::java-developer",
-      "cvId": "cv-00503",
-      "roleId": "java-developer",
-      "name": "Mitchell Roberts",
-      "initials": "MR",
-      "rank": 15,
-      "utility": -1.6333696839927563
-    },
-    {
-      "id": "cv-00509::java-developer",
-      "cvId": "cv-00509",
-      "roleId": "java-developer",
-      "name": "Matthew Thomas",
-      "initials": "MT",
       "rank": 3,
-      "utility": 1.4637786964621537
-    },
-    {
-      "id": "cv-00516::java-developer",
-      "cvId": "cv-00516",
-      "roleId": "java-developer",
-      "name": "Diamond Phelps",
-      "initials": "DP",
-      "rank": 5,
-      "utility": 0.907555598573694
+      "utility": 0.4889183722779914
     },
     {
       "id": "cv-00534::java-developer",
@@ -1148,8 +1121,17 @@
       "roleId": "java-developer",
       "name": "Anne Robinson",
       "initials": "AR",
-      "rank": 14,
-      "utility": -1.4599910258557354
+      "rank": 5,
+      "utility": 0.0657970840348627
+    },
+    {
+      "id": "cv-00538::java-developer",
+      "cvId": "cv-00538",
+      "roleId": "java-developer",
+      "name": "Larry Fritz",
+      "initials": "LF",
+      "rank": 1,
+      "utility": 0.6379490793797419
     },
     {
       "id": "cv-00582::java-developer",
@@ -1157,8 +1139,8 @@
       "roleId": "java-developer",
       "name": "Shannon Sosa",
       "initials": "SS",
-      "rank": 10,
-      "utility": -0.5710290493979101
+      "rank": 7,
+      "utility": -0.6743067818945812
     },
     {
       "id": "cv-00609::java-developer",
@@ -1166,17 +1148,8 @@
       "roleId": "java-developer",
       "name": "Tracy King",
       "initials": "TK",
-      "rank": 1,
-      "utility": 2.9402940956349153
-    },
-    {
-      "id": "cv-00620::java-developer",
-      "cvId": "cv-00620",
-      "roleId": "java-developer",
-      "name": "Andrew Perez",
-      "initials": "AP",
-      "rank": 11,
-      "utility": -0.645643190528125
+      "rank": 6,
+      "utility": -0.06171485087943628
     },
     {
       "id": "cv-00663::java-developer",
@@ -1185,7 +1158,7 @@
       "name": "Kevin SoliS",
       "initials": "KS",
       "rank": 4,
-      "utility": 1.2658902825574414
+      "utility": 0.24279689282180575
     },
     {
       "id": "cv-00204::ui-ux-designer",
@@ -1193,8 +1166,8 @@
       "roleId": "ui-ux-designer",
       "name": "Dylan Walsh",
       "initials": "DW",
-      "rank": 17,
-      "utility": -0.39815122716451223
+      "rank": 21,
+      "utility": -0.4231705283725353
     },
     {
       "id": "cv-00232::ui-ux-designer",
@@ -1202,8 +1175,8 @@
       "roleId": "ui-ux-designer",
       "name": "Stephanie Khan",
       "initials": "SK",
-      "rank": 25,
-      "utility": -1.385106871800511
+      "rank": 13,
+      "utility": -0.02533973572489122
     },
     {
       "id": "cv-00238::ui-ux-designer",
@@ -1211,8 +1184,8 @@
       "roleId": "ui-ux-designer",
       "name": "Karen Burton",
       "initials": "KB",
-      "rank": 13,
-      "utility": 0.09089628143494025
+      "rank": 3,
+      "utility": 1.0449996247955493
     },
     {
       "id": "cv-00256::ui-ux-designer",
@@ -1220,8 +1193,8 @@
       "roleId": "ui-ux-designer",
       "name": "Wendy Edwards",
       "initials": "WE",
-      "rank": 5,
-      "utility": 0.8931058233442324
+      "rank": 17,
+      "utility": -0.17058329866284003
     },
     {
       "id": "cv-00288::ui-ux-designer",
@@ -1229,8 +1202,8 @@
       "roleId": "ui-ux-designer",
       "name": "Pamela Rice",
       "initials": "PR",
-      "rank": 18,
-      "utility": -0.3993369569991808
+      "rank": 26,
+      "utility": -1.1414392972529075
     },
     {
       "id": "cv-00291::ui-ux-designer",
@@ -1238,8 +1211,8 @@
       "roleId": "ui-ux-designer",
       "name": "Jack Gonzalez",
       "initials": "JG",
-      "rank": 1,
-      "utility": 2.425184944548574
+      "rank": 24,
+      "utility": -0.7658768151207334
     },
     {
       "id": "cv-00300::ui-ux-designer",
@@ -1247,8 +1220,8 @@
       "roleId": "ui-ux-designer",
       "name": "Maria Williams",
       "initials": "MW",
-      "rank": 4,
-      "utility": 0.9412810468975761
+      "rank": 23,
+      "utility": -0.6351110697935483
     },
     {
       "id": "cv-00314::ui-ux-designer",
@@ -1256,8 +1229,17 @@
       "roleId": "ui-ux-designer",
       "name": "Jonathan Davis",
       "initials": "JD",
-      "rank": 21,
-      "utility": -0.6347802919769326
+      "rank": 4,
+      "utility": 0.7116695558554336
+    },
+    {
+      "id": "cv-00341::ui-ux-designer",
+      "cvId": "cv-00341",
+      "roleId": "ui-ux-designer",
+      "name": "Danielle Peters",
+      "initials": "DP",
+      "rank": 10,
+      "utility": 0.17426687072613856
     },
     {
       "id": "cv-00380::ui-ux-designer",
@@ -1265,8 +1247,8 @@
       "roleId": "ui-ux-designer",
       "name": "Anthony Cruz",
       "initials": "AC",
-      "rank": 14,
-      "utility": -0.036690995019445005
+      "rank": 27,
+      "utility": -1.4984733041346665
     },
     {
       "id": "cv-00389::ui-ux-designer",
@@ -1274,8 +1256,8 @@
       "roleId": "ui-ux-designer",
       "name": "Bethany Edwards",
       "initials": "BE",
-      "rank": 26,
-      "utility": -1.757341793064427
+      "rank": 8,
+      "utility": 0.4730431862876686
     },
     {
       "id": "cv-00394::ui-ux-designer",
@@ -1283,8 +1265,8 @@
       "roleId": "ui-ux-designer",
       "name": "Laura Hill",
       "initials": "LH",
-      "rank": 9,
-      "utility": 0.5006753578393819
+      "rank": 20,
+      "utility": -0.33264473175152603
     },
     {
       "id": "cv-00402::ui-ux-designer",
@@ -1292,8 +1274,8 @@
       "roleId": "ui-ux-designer",
       "name": "William Lindsey",
       "initials": "WL",
-      "rank": 23,
-      "utility": -0.9781271748674613
+      "rank": 19,
+      "utility": -0.24897380100659725
     },
     {
       "id": "cv-00424::ui-ux-designer",
@@ -1301,8 +1283,8 @@
       "roleId": "ui-ux-designer",
       "name": "Charles Rose",
       "initials": "CR",
-      "rank": 2,
-      "utility": 1.0306825576079515
+      "rank": 1,
+      "utility": 1.339524789933168
     },
     {
       "id": "cv-00426::ui-ux-designer",
@@ -1310,8 +1292,8 @@
       "roleId": "ui-ux-designer",
       "name": "Brian Cox",
       "initials": "BC",
-      "rank": 16,
-      "utility": -0.38681184123752727
+      "rank": 22,
+      "utility": -0.5228262247275521
     },
     {
       "id": "cv-00454::ui-ux-designer",
@@ -1319,8 +1301,8 @@
       "roleId": "ui-ux-designer",
       "name": "Dominic Davis",
       "initials": "DD",
-      "rank": 22,
-      "utility": -0.8596318505317432
+      "rank": 6,
+      "utility": 0.49797661785480507
     },
     {
       "id": "cv-00465::ui-ux-designer",
@@ -1328,8 +1310,8 @@
       "roleId": "ui-ux-designer",
       "name": "Marie Cook",
       "initials": "MC",
-      "rank": 6,
-      "utility": 0.6718635448494295
+      "rank": 16,
+      "utility": -0.14457535246701428
     },
     {
       "id": "cv-00492::ui-ux-designer",
@@ -1337,17 +1319,8 @@
       "roleId": "ui-ux-designer",
       "name": "Crystal Carey",
       "initials": "CC",
-      "rank": 19,
-      "utility": -0.4202986427643799
-    },
-    {
-      "id": "cv-00508::ui-ux-designer",
-      "cvId": "cv-00508",
-      "roleId": "ui-ux-designer",
-      "name": "Adam Meyer",
-      "initials": "AM",
-      "rank": 20,
-      "utility": -0.6237857013990913
+      "rank": 25,
+      "utility": -0.9261724199682283
     },
     {
       "id": "cv-00529::ui-ux-designer",
@@ -1355,17 +1328,17 @@
       "roleId": "ui-ux-designer",
       "name": "Jaclyn Simmons",
       "initials": "JS",
-      "rank": 24,
-      "utility": -1.2743157745094136
+      "rank": 18,
+      "utility": -0.18432972731622854
     },
     {
       "id": "cv-00530::ui-ux-designer",
       "cvId": "cv-00530",
       "roleId": "ui-ux-designer",
-      "name": "Steven Reed",
+      "name": "Steven Reed MD",
       "initials": "SR",
-      "rank": 12,
-      "utility": 0.1339199344274983
+      "rank": 5,
+      "utility": 0.5525543369493157
     },
     {
       "id": "cv-00546::ui-ux-designer",
@@ -1373,8 +1346,8 @@
       "roleId": "ui-ux-designer",
       "name": "Mark Gonzalez",
       "initials": "MG",
-      "rank": 15,
-      "utility": -0.0775561749119171
+      "rank": 7,
+      "utility": 0.4936563515759851
     },
     {
       "id": "cv-00594::ui-ux-designer",
@@ -1382,8 +1355,17 @@
       "roleId": "ui-ux-designer",
       "name": "Christopher Payne",
       "initials": "CP",
-      "rank": 7,
-      "utility": 0.5606257926418232
+      "rank": 11,
+      "utility": 0.10944444246016458
+    },
+    {
+      "id": "cv-00596::ui-ux-designer",
+      "cvId": "cv-00596",
+      "roleId": "ui-ux-designer",
+      "name": "Jason Hobbs",
+      "initials": "JH",
+      "rank": 9,
+      "utility": 0.44336234765582483
     },
     {
       "id": "cv-00656::ui-ux-designer",
@@ -1391,8 +1373,8 @@
       "roleId": "ui-ux-designer",
       "name": "Andrew Jones",
       "initials": "AJ",
-      "rank": 8,
-      "utility": 0.5046197435063773
+      "rank": 15,
+      "utility": -0.09632810328966751
     },
     {
       "id": "cv-00682::ui-ux-designer",
@@ -1400,8 +1382,8 @@
       "roleId": "ui-ux-designer",
       "name": "Robert Sullivan",
       "initials": "RS",
-      "rank": 11,
-      "utility": 0.2365783704569637
+      "rank": 12,
+      "utility": 0.04306541907797699
     },
     {
       "id": "cv-00688::ui-ux-designer",
@@ -1409,8 +1391,8 @@
       "roleId": "ui-ux-designer",
       "name": "John Kim",
       "initials": "JK",
-      "rank": 10,
-      "utility": 0.23966927681352193
+      "rank": 14,
+      "utility": -0.09535054976135492
     },
     {
       "id": "cv-00692::ui-ux-designer",
@@ -1418,1132 +1400,1105 @@
       "roleId": "ui-ux-designer",
       "name": "David Hull",
       "initials": "DH",
-      "rank": 3,
-      "utility": 1.0028326218782688
+      "rank": 2,
+      "utility": 1.3276314161782612
     }
   ],
   "assessments": {
     "cv-00233::backend-engineer": {
       "qualified": true,
       "total_relevant_years": 5,
-      "must_have_met": 2,
+      "must_have_met": 0,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00242::backend-engineer": {
       "qualified": true,
-      "total_relevant_years": 5,
-      "must_have_met": 2,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00244::backend-engineer": {
       "qualified": true,
       "total_relevant_years": 10,
-      "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00302::backend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00420::backend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00450::backend-engineer": {
-      "qualified": true,
-      "total_relevant_years": 1,
       "must_have_met": 1,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
-    "cv-00498::backend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
+    "cv-00257::backend-engineer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
+    },
+    "cv-00302::backend-engineer": {
+      "qualified": true,
+      "total_relevant_years": 4,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00420::backend-engineer": {
+      "qualified": true,
+      "total_relevant_years": 15,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": false
     },
     "cv-00511::backend-engineer": {
       "qualified": true,
       "total_relevant_years": 6,
-      "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
-    },
-    "cv-00516::backend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
       "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
+    },
+    "cv-00516::backend-engineer": {
+      "qualified": true,
+      "total_relevant_years": 7,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00620::backend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
+      "qualified": true,
+      "total_relevant_years": 13,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00224::cloud-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
+      "qualified": true,
+      "total_relevant_years": 5,
       "must_have_met": 1,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00299::cloud-engineer": {
+      "qualified": true,
+      "total_relevant_years": 7,
+      "must_have_met": 0,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00342::cloud-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 2,
+      "qualified": true,
+      "total_relevant_years": 2,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00345::cloud-engineer": {
       "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 2,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "total_relevant_years": 6,
+      "must_have_met": 1,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00352::cloud-engineer": {
-      "qualified": false,
-      "total_relevant_years": 1,
-      "must_have_met": 2,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "qualified": true,
+      "total_relevant_years": 3,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00357::cloud-engineer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 2,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
-    },
-    "cv-00395::cloud-engineer": {
-      "qualified": true,
-      "total_relevant_years": 2,
-      "must_have_met": 2,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00423::cloud-engineer": {
-      "qualified": false,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00445::cloud-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 2,
+      "qualified": true,
+      "total_relevant_years": 4,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00512::cloud-engineer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "total_relevant_years": 9,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00539::cloud-engineer": {
       "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 2,
-      "nice_to_have_met": 4,
-      "has_multinational_experience": null
-    },
-    "cv-00626::cloud-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 2,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "total_relevant_years": 10,
+      "must_have_met": 0,
+      "nice_to_have_met": 3,
+      "has_multinational_experience": true
     },
     "cv-00653::cloud-engineer": {
       "qualified": true,
-      "total_relevant_years": 5,
-      "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "total_relevant_years": 9,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00695::cloud-engineer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 2,
+      "total_relevant_years": 8,
+      "must_have_met": 1,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00270::data-engineer": {
-      "qualified": false,
-      "total_relevant_years": 7,
-      "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00305::data-engineer": {
       "qualified": true,
       "total_relevant_years": 6,
-      "must_have_met": 2,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
+      "must_have_met": 3,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00414::data-engineer": {
       "qualified": true,
-      "total_relevant_years": 3,
-      "must_have_met": 2,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
+      "total_relevant_years": 6,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00481::data-engineer": {
       "qualified": true,
       "total_relevant_years": 4,
-      "must_have_met": 2,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
+      "must_have_met": 3,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00531::data-engineer": {
       "qualified": true,
       "total_relevant_years": 8,
       "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 1,
+      "has_multinational_experience": false
     },
     "cv-00618::data-engineer": {
-      "qualified": false,
-      "total_relevant_years": 4,
-      "must_have_met": 1,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
+      "qualified": true,
+      "total_relevant_years": 11,
+      "must_have_met": 2,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00650::data-engineer": {
       "qualified": true,
-      "total_relevant_years": 3,
-      "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "total_relevant_years": 5,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": false
     },
     "cv-00684::data-engineer": {
       "qualified": true,
-      "total_relevant_years": 7,
-      "must_have_met": 3,
+      "total_relevant_years": 14,
+      "must_have_met": 2,
       "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00214::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 12,
-      "must_have_met": 3,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "total_relevant_years": 11,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00272::data-scientist-engineer": {
-      "qualified": false,
-      "total_relevant_years": 3,
+      "qualified": true,
+      "total_relevant_years": 9,
       "must_have_met": 2,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00455::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 2,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
       "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00469::data-scientist-engineer": {
-      "qualified": false,
-      "total_relevant_years": 6,
-      "must_have_met": 1,
+      "qualified": true,
+      "total_relevant_years": 8,
+      "must_have_met": 2,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00525::data-scientist-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 1,
+      "qualified": true,
+      "total_relevant_years": 4,
+      "must_have_met": 3,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00531::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 7,
+      "total_relevant_years": 8,
       "must_have_met": 2,
-      "nice_to_have_met": 4,
-      "has_multinational_experience": null
+      "nice_to_have_met": 0,
+      "has_multinational_experience": false
     },
     "cv-00551::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 3,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "total_relevant_years": 11,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00566::data-scientist-engineer": {
-      "qualified": false,
-      "total_relevant_years": 10,
-      "must_have_met": 2,
+      "qualified": true,
+      "total_relevant_years": 13,
+      "must_have_met": 3,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00577::data-scientist-engineer": {
-      "qualified": false,
-      "total_relevant_years": 3,
-      "must_have_met": 2,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "qualified": true,
+      "total_relevant_years": 4,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00606::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 2,
+      "total_relevant_years": 9,
+      "must_have_met": 0,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00618::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 8,
+      "total_relevant_years": 11,
       "must_have_met": 3,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00650::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 2,
+      "total_relevant_years": 5,
       "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 0,
+      "has_multinational_experience": false
     },
     "cv-00661::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00669::data-scientist-engineer": {
       "qualified": true,
-      "total_relevant_years": 5,
-      "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "total_relevant_years": 8,
+      "must_have_met": 3,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "daniel-adif-nugroho::data-scientist-engineer": {
       "qualified": true,
       "total_relevant_years": 4,
-      "must_have_met": 3,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "must_have_met": 2,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00342::devops-engineer": {
+      "qualified": true,
+      "total_relevant_years": 2,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00345::devops-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 2,
-      "nice_to_have_met": 4,
-      "has_multinational_experience": null
+      "total_relevant_years": 6,
+      "must_have_met": 0,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00352::devops-engineer": {
-      "qualified": true,
-      "total_relevant_years": 1,
-      "must_have_met": 3,
+      "qualified": false,
+      "total_relevant_years": 3,
+      "must_have_met": 0,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00357::devops-engineer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 2,
-      "nice_to_have_met": 5,
-      "has_multinational_experience": null
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00382::devops-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 2,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00423::devops-engineer": {
-      "qualified": false,
-      "total_relevant_years": 8,
+      "qualified": true,
+      "total_relevant_years": 10,
       "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00626::devops-engineer": {
-      "qualified": true,
-      "total_relevant_years": 2,
-      "must_have_met": 3,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00673::devops-engineer": {
-      "qualified": true,
+      "qualified": false,
       "total_relevant_years": 5,
-      "must_have_met": 2,
-      "nice_to_have_met": 4,
-      "has_multinational_experience": null
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00243::frontend-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
+      "total_relevant_years": 6,
       "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 3,
+      "has_multinational_experience": false
     },
     "cv-00276::frontend-engineer": {
       "qualified": true,
-      "total_relevant_years": 8,
+      "total_relevant_years": 9,
       "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
-    "cv-00279::frontend-engineer": {
+    "cv-00341::frontend-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
+      "total_relevant_years": 10,
       "must_have_met": 1,
-      "nice_to_have_met": 4,
-      "has_multinational_experience": null
-    },
-    "cv-00331::frontend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00350::frontend-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
+      "total_relevant_years": 6,
       "must_have_met": 1,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
-    },
-    "cv-00368::frontend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 8,
-      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00370::frontend-engineer": {
       "qualified": true,
       "total_relevant_years": 5,
-      "must_have_met": 5,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00371::frontend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00386::frontend-engineer": {
-      "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
-    },
-    "cv-00540::frontend-engineer": {
       "qualified": true,
       "total_relevant_years": 9,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00452::frontend-engineer": {
+      "qualified": true,
+      "total_relevant_years": 3,
       "must_have_met": 1,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00548::frontend-engineer": {
       "qualified": true,
-      "total_relevant_years": 7,
+      "total_relevant_years": 10,
       "must_have_met": 1,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00555::frontend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00591::frontend-engineer": {
       "qualified": true,
       "total_relevant_years": 5,
       "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00591::frontend-engineer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00594::frontend-engineer": {
+      "qualified": true,
+      "total_relevant_years": 5,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00607::frontend-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
+      "qualified": true,
+      "total_relevant_years": 7,
       "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "nice_to_have_met": 3,
+      "has_multinational_experience": true
     },
     "cv-00628::frontend-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
+      "total_relevant_years": 7,
       "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00629::frontend-engineer": {
       "qualified": true,
       "total_relevant_years": 14,
       "must_have_met": 1,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00660::frontend-engineer": {
       "qualified": true,
-      "total_relevant_years": 1,
+      "total_relevant_years": 14,
       "must_have_met": 1,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
-    "cv-00688::frontend-engineer": {
+    "cv-00216::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "total_relevant_years": 6,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00256::full-stack-engineer": {
-      "qualified": false,
+      "qualified": true,
       "total_relevant_years": 7,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00267::full-stack-engineer": {
       "qualified": true,
       "total_relevant_years": 10,
-      "must_have_met": 1,
+      "must_have_met": 0,
       "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "has_multinational_experience": false
     },
     "cv-00276::full-stack-engineer": {
-      "qualified": false,
+      "qualified": true,
       "total_relevant_years": 9,
       "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00331::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 4,
+      "qualified": true,
+      "total_relevant_years": 6,
       "must_have_met": 1,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00334::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 7,
+      "total_relevant_years": 15,
       "must_have_met": 2,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
+    },
+    "cv-00341::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00347::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "total_relevant_years": 3,
+      "must_have_met": 0,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00349::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
+      "qualified": true,
+      "total_relevant_years": 11,
       "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00350::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 2,
+      "total_relevant_years": 6,
+      "must_have_met": 0,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
-    },
-    "cv-00368::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00371::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "total_relevant_years": 9,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00380::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 7,
-      "must_have_met": 1,
+      "total_relevant_years": 9,
+      "must_have_met": 0,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00392::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 1,
+      "qualified": true,
+      "total_relevant_years": 5,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00404::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": false
+    },
+    "cv-00426::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00427::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 3,
-      "must_have_met": 1,
-      "nice_to_have_met": 4,
-      "has_multinational_experience": null
+      "total_relevant_years": 7,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00434::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 8,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00436::full-stack-engineer": {
       "qualified": true,
       "total_relevant_years": 10,
       "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
-    "cv-00450::full-stack-engineer": {
-      "qualified": false,
+    "cv-00441::full-stack-engineer": {
+      "qualified": true,
       "total_relevant_years": 3,
       "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00450::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 3,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00484::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 3,
+      "must_have_met": 2,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00492::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 2,
+      "total_relevant_years": 5,
+      "must_have_met": 1,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00507::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 0,
+      "nice_to_have_met": 3,
+      "has_multinational_experience": true
+    },
+    "cv-00523::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 8,
       "must_have_met": 1,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00534::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
+      "qualified": true,
+      "total_relevant_years": 3,
       "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00538::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00548::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 7,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00582::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 7,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00607::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 5,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00660::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
+      "total_relevant_years": 9,
       "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00664::full-stack-engineer": {
-      "qualified": false,
-      "total_relevant_years": 3,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00700::full-stack-engineer": {
-      "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
-    "cv-00255::it-security-engineer": {
+    "cv-00544::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 5,
-      "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00273::it-security-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00323::it-security-engineer": {
-      "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00353::it-security-engineer": {
-      "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
-    },
-    "cv-00381::it-security-engineer": {
-      "qualified": true,
-      "total_relevant_years": 7,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00400::it-security-engineer": {
-      "qualified": false,
-      "total_relevant_years": 5,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00430::it-security-engineer": {
-      "qualified": true,
-      "total_relevant_years": 12,
-      "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
-    },
-    "cv-00470::it-security-engineer": {
-      "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00487::it-security-engineer": {
-      "qualified": false,
-      "total_relevant_years": 3,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00495::it-security-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00518::it-security-engineer": {
-      "qualified": true,
-      "total_relevant_years": 12,
-      "must_have_met": 2,
-      "nice_to_have_met": 3,
-      "has_multinational_experience": null
-    },
-    "cv-00562::it-security-engineer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00624::it-security-engineer": {
-      "qualified": true,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
-    },
-    "cv-00630::it-security-engineer": {
-      "qualified": false,
-      "total_relevant_years": 2,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00233::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00234::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00242::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00302::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00304::java-developer": {
-      "qualified": false,
       "total_relevant_years": 1,
       "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": false
     },
-    "cv-00335::java-developer": {
+    "cv-00548::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00349::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00444::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00503::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00509::java-developer": {
-      "qualified": true,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
-    },
-    "cv-00516::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 3,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00534::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00582::java-developer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00609::java-developer": {
-      "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00620::java-developer": {
-      "qualified": false,
       "total_relevant_years": 10,
-      "must_have_met": 0,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00663::java-developer": {
-      "qualified": true,
-      "total_relevant_years": 2,
       "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 3,
+      "has_multinational_experience": true
     },
-    "cv-00204::ui-ux-designer": {
+    "cv-00582::full-stack-engineer": {
       "qualified": true,
-      "total_relevant_years": 3,
-      "must_have_met": 2,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00232::ui-ux-designer": {
-      "qualified": false,
       "total_relevant_years": 9,
       "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
+    },
+    "cv-00607::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 7,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00635::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 2,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00660::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 14,
+      "must_have_met": 2,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00664::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 4,
+      "must_have_met": 0,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00700::full-stack-engineer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": false
+    },
+    "cv-00255::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 2,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": false
+    },
+    "cv-00273::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 3,
+      "must_have_met": 1,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00323::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00353::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 9,
+      "must_have_met": 1,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00381::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": false
+    },
+    "cv-00400::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00412::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 14,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00430::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 13,
+      "must_have_met": 0,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00470::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 3,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": false
+    },
+    "cv-00487::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 5,
+      "must_have_met": 1,
+      "nice_to_have_met": 3,
+      "has_multinational_experience": true
+    },
+    "cv-00495::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 5,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": false
+    },
+    "cv-00518::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 16,
+      "must_have_met": 0,
+      "nice_to_have_met": 4,
+      "has_multinational_experience": true
+    },
+    "cv-00562::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": false
+    },
+    "cv-00624::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 3,
+      "must_have_met": 0,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": false
+    },
+    "cv-00630::it-security-engineer": {
+      "qualified": true,
+      "total_relevant_years": 5,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00234::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 0,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00304::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 6,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00335::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00534::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 3,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00538::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 9,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00582::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 9,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00609::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00663::java-developer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00204::ui-ux-designer": {
+      "qualified": true,
+      "total_relevant_years": 5,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00232::ui-ux-designer": {
+      "qualified": true,
+      "total_relevant_years": 8,
+      "must_have_met": 1,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     },
     "cv-00238::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 3,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "total_relevant_years": 14,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00256::ui-ux-designer": {
       "qualified": true,
       "total_relevant_years": 7,
-      "must_have_met": 3,
+      "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00288::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 9,
-      "must_have_met": 2,
+      "total_relevant_years": 8,
+      "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00291::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 4,
+      "total_relevant_years": 13,
       "must_have_met": 3,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00300::ui-ux-designer": {
-      "qualified": false,
-      "total_relevant_years": 7,
+      "qualified": true,
+      "total_relevant_years": 6,
       "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00314::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 4,
+      "total_relevant_years": 6,
       "must_have_met": 2,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
+    },
+    "cv-00341::ui-ux-designer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 1,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": false
     },
     "cv-00380::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 7,
-      "must_have_met": 3,
+      "total_relevant_years": 9,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00389::ui-ux-designer": {
-      "qualified": false,
-      "total_relevant_years": 11,
-      "must_have_met": 1,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 0,
+      "nice_to_have_met": 1,
+      "has_multinational_experience": true
     },
     "cv-00394::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 8,
-      "must_have_met": 3,
+      "total_relevant_years": 6,
+      "must_have_met": 0,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": false
     },
     "cv-00402::ui-ux-designer": {
-      "qualified": false,
-      "total_relevant_years": 5,
-      "must_have_met": 1,
-      "nice_to_have_met": 2,
-      "has_multinational_experience": null
-    },
-    "cv-00424::ui-ux-designer": {
       "qualified": true,
       "total_relevant_years": 7,
       "must_have_met": 3,
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
+    },
+    "cv-00424::ui-ux-designer": {
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 2,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00426::ui-ux-designer": {
-      "qualified": false,
-      "total_relevant_years": 2,
+      "qualified": true,
+      "total_relevant_years": 7,
       "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00454::ui-ux-designer": {
-      "qualified": false,
-      "total_relevant_years": 1,
+      "qualified": true,
+      "total_relevant_years": 3,
       "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00465::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 6,
-      "must_have_met": 3,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "total_relevant_years": 10,
+      "must_have_met": 2,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00492::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 2,
+      "total_relevant_years": 5,
       "must_have_met": 2,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
-    },
-    "cv-00508::ui-ux-designer": {
-      "qualified": false,
-      "total_relevant_years": 0,
-      "must_have_met": 2,
-      "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00529::ui-ux-designer": {
       "qualified": true,
       "total_relevant_years": 0,
-      "must_have_met": 2,
+      "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00530::ui-ux-designer": {
       "qualified": true,
       "total_relevant_years": 6,
       "must_have_met": 2,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00546::ui-ux-designer": {
-      "qualified": false,
-      "total_relevant_years": 8,
-      "must_have_met": 1,
+      "qualified": true,
+      "total_relevant_years": 10,
+      "must_have_met": 3,
       "nice_to_have_met": 2,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00594::ui-ux-designer": {
       "qualified": true,
       "total_relevant_years": 5,
+      "must_have_met": 0,
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
+    },
+    "cv-00596::ui-ux-designer": {
+      "qualified": true,
+      "total_relevant_years": 6,
       "must_have_met": 3,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00656::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 4,
-      "must_have_met": 2,
+      "total_relevant_years": 6,
+      "must_have_met": 3,
       "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00682::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 6,
+      "total_relevant_years": 10,
       "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "nice_to_have_met": 0,
+      "has_multinational_experience": true
     },
     "cv-00688::ui-ux-designer": {
       "qualified": true,
       "total_relevant_years": 15,
-      "must_have_met": 2,
+      "must_have_met": 1,
       "nice_to_have_met": 0,
-      "has_multinational_experience": null
+      "has_multinational_experience": true
     },
     "cv-00692::ui-ux-designer": {
       "qualified": true,
-      "total_relevant_years": 5,
+      "total_relevant_years": 6,
       "must_have_met": 2,
-      "nice_to_have_met": 1,
-      "has_multinational_experience": null
+      "nice_to_have_met": 2,
+      "has_multinational_experience": true
     }
   },
   "comparison": {
     "backend-engineer": {
       "jdId": "backend-engineer",
-      "qualifiedCount": 5,
-      "totalAssessed": 10,
-      "rankingStability": null
+      "qualifiedCount": 9,
+      "totalAssessed": 9
     },
     "cloud-engineer": {
       "jdId": "cloud-engineer",
-      "qualifiedCount": 6,
-      "totalAssessed": 13,
-      "rankingStability": null
+      "qualifiedCount": 11,
+      "totalAssessed": 12
     },
     "data-engineer": {
       "jdId": "data-engineer",
-      "qualifiedCount": 6,
-      "totalAssessed": 8,
-      "rankingStability": null
+      "qualifiedCount": 7,
+      "totalAssessed": 7
     },
     "data-scientist-engineer": {
       "jdId": "data-scientist-engineer",
-      "qualifiedCount": 10,
-      "totalAssessed": 15,
-      "rankingStability": null
+      "qualifiedCount": 15,
+      "totalAssessed": 15
     },
     "devops-engineer": {
       "jdId": "devops-engineer",
-      "qualifiedCount": 6,
-      "totalAssessed": 7,
-      "rankingStability": null
+      "qualifiedCount": 5,
+      "totalAssessed": 7
     },
     "frontend-engineer": {
       "jdId": "frontend-engineer",
-      "qualifiedCount": 13,
-      "totalAssessed": 18,
-      "rankingStability": null
+      "qualifiedCount": 15,
+      "totalAssessed": 15
     },
     "full-stack-engineer": {
       "jdId": "full-stack-engineer",
-      "qualifiedCount": 11,
-      "totalAssessed": 24,
-      "rankingStability": null
+      "qualifiedCount": 34,
+      "totalAssessed": 34
     },
     "it-security-engineer": {
       "jdId": "it-security-engineer",
-      "qualifiedCount": 8,
-      "totalAssessed": 14,
-      "rankingStability": null
+      "qualifiedCount": 15,
+      "totalAssessed": 15
     },
     "java-developer": {
       "jdId": "java-developer",
-      "qualifiedCount": 4,
-      "totalAssessed": 16,
-      "rankingStability": null
+      "qualifiedCount": 8,
+      "totalAssessed": 8
     },
     "ui-ux-designer": {
       "jdId": "ui-ux-designer",
-      "qualifiedCount": 18,
-      "totalAssessed": 26,
-      "rankingStability": null
+      "qualifiedCount": 27,
+      "totalAssessed": 27
     }
-  },
-  "evaluationSummary": null,
-  "shortlistingAudit": {},
-  "repeatSamples": {}
+  }
 }
