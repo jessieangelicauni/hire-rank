@@ -25,7 +25,6 @@ from candidate_ranking.output.console_export import export_console_web_data, see
 from candidate_ranking.output.writer import write_run_output
 from candidate_ranking.scoring.job_profile import build_job_profile_chain
 from candidate_ranking.scoring.llm_assessment import (
-    build_free_text_chain,
     filter_assessable_candidates,
 )
 from candidate_ranking.scoring.jev_client import JevClient
@@ -101,7 +100,6 @@ def run(
             "CANDIDATE_RANKING_JEV_API_KEY is required — set it in .env or the environment"
         )
     job_profile_chain = build_job_profile_chain(llm)
-    free_text_chain = build_free_text_chain(llm)
     jev_client = JevClient(api_token=cfg.jev_api_key)
     skill_extraction_chain = build_skill_extraction_chain(llm)
     candidates = enrich_candidates_with_skills(
@@ -115,7 +113,6 @@ def run(
         cfg=cfg,
         job_profile_chain=job_profile_chain,
         jev_client=jev_client,
-        free_text_chain=free_text_chain,
         ranking_llm=llm_ranking,
         skill_index=skill_index,
         skill_row_map=skill_row_map,
@@ -282,11 +279,7 @@ def main() -> None:
 
         if not cfg.jev_api_key:
             raise RuntimeError("CANDIDATE_RANKING_JEV_API_KEY is required for reliability evaluation")
-        llm = ChatOllama(
-            model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx
-        )
         jev_client = JevClient(api_token=cfg.jev_api_key)
-        free_text_chain = build_free_text_chain(llm)
 
         jds = load_job_descriptions(cfg.jd_dir)
         jd_map = {jd.id: jd for jd in jds}
@@ -325,7 +318,7 @@ def main() -> None:
             pair_id = f"{jd_id}/{candidate_id}"
             try:
                 repeated_assessments[pair_id] = repeat_qualification_gate(
-                    jd, candidate, profile, jev_client, free_text_chain, cfg.ollama_model, repeats=args.repeats
+                    jd, candidate, profile, jev_client, repeats=args.repeats
                 )
             except Exception as exc:
                 print(f"WARNING: skipping {pair_id}: {exc}", file=sys.stderr)

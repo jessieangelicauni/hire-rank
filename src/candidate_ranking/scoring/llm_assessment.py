@@ -3,15 +3,12 @@ from __future__ import annotations
 import hashlib
 import json
 import logging
+import re
 import threading
 import uuid
 from pathlib import Path
-from langchain_core.language_models import BaseChatModel
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.runnables import Runnable
-from pydantic import BaseModel, Field, ValidationError
+from pydantic import ValidationError
 
-from candidate_ranking.utils import invoke_and_validate
 from candidate_ranking.models import (
     Assessment, Candidate, CareerTrajectory, JobDescription, JobProfile, RequirementEvaluation,
 )
@@ -289,41 +286,21 @@ def _build_jev_questions(profile: JobProfile) -> list[JevQuestion]:
     return questions
 
 
-# ── Free-text Ollama chain ────────────────────────────────────────────────────
+# ── BM25 evidence extractor ───────────────────────────────────────────────────
 
-FREE_TEXT_PROMPT = ChatPromptTemplate.from_messages([
-    (
-        "system",
-        "You are a senior technical recruiter extracting evidence from a CV.\n\n"
-        "Your task is purely EXTRACTION and SUMMARIZATION — do not make hiring judgments.\n"
-        "Quote relevant CV text directly where possible. Be concise and specific.\n\n"
-        "For career trajectory evidence, quote the most relevant role transitions. "
-        "If a field has no applicable content, leave it empty or null.",
-    ),
-    (
-        "human",
-        "ROLE: {jd_title}\n\n"
-        "MUST-HAVE SKILLS: {must_have_skills}\n"
-        "NICE-TO-HAVE SKILLS: {nice_to_have_skills}\n\n"
-        "CV:\n{cv_text}",
-    ),
-])
-
-
-class _SkillEvidenceItem(BaseModel):
-    requirement: str
-    evidence: str = Field(min_length=1)
-
-
-class _FreeTextOutput(BaseModel):
-    must_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
-    nice_to_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
-    career_trajectory_evidence: str = ""
-    multinational_evidence: str | None = None
-
-
-def build_free_text_chain(llm: BaseChatModel) -> Runnable:
-    return FREE_TEXT_PROMPT | llm.with_structured_output(_FreeTextOutput)
+def _extract_bm25_evidence(cv_text: str, query: str, top_k: int = 3) -> str:
+    """Return the top-k most relevant CV sentences for the query, verbatim."""
+    from rank_bm25 import BM25Okapi
+    sentences = [s.strip() for s in re.split(r"[.!\n]+", cv_text) if len(s.strip()) > 15]
+    if not sentences:
+        return ""
+    tokenized = [s.lower().split() for s in sentences]
+    bm25 = BM25Okapi(tokenized)
+    scores = bm25.get_scores(query.lower().split())
+    top_indices = sorted(
+        sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k]
+    )
+    return " … ".join(sentences[i] for i in top_indices)
 
 
 class AssessmentGenerationError(Exception):
@@ -332,23 +309,20 @@ class AssessmentGenerationError(Exception):
 
 def _answers_to_assessment(
     answers: list,
-    free_text: _FreeTextOutput,
     profile: JobProfile,
     jd: JobDescription,
     candidate: Candidate,
-    ollama_model_name: str,
 ) -> Assessment:
     by_key = {a.key: a for a in answers}
+    cv = candidate.raw_text
 
     must_have_evals = []
     for i, skill in enumerate(profile.must_have_skills):
         es = by_key[f"must_have_{i}_evidence_strength"].value
         verdict = _EVIDENCE_TO_VERDICT[es]
-        evidence = next(
-            (e.evidence for e in free_text.must_have_evidence if e.requirement == skill), ""
-        )
         must_have_evals.append(RequirementEvaluation(
-            requirement=skill, verdict=verdict, evidence=evidence,
+            requirement=skill, verdict=verdict,
+            evidence=_extract_bm25_evidence(cv, skill),
             evidence_strength=es, recency="unknown", years_demonstrated=0,
         ))
 
@@ -356,11 +330,9 @@ def _answers_to_assessment(
     for i, skill in enumerate(profile.nice_to_have_skills):
         es = by_key[f"nice_to_have_{i}_evidence_strength"].value
         verdict = _EVIDENCE_TO_VERDICT[es]
-        evidence = next(
-            (e.evidence for e in free_text.nice_to_have_evidence if e.requirement == skill), ""
-        )
         nih_evals.append(RequirementEvaluation(
-            requirement=skill, verdict=verdict, evidence=evidence,
+            requirement=skill, verdict=verdict,
+            evidence=_extract_bm25_evidence(cv, skill),
             evidence_strength=es, recency="unknown", years_demonstrated=0,
         ))
 
@@ -376,15 +348,12 @@ def _answers_to_assessment(
     recent_tenure = _score_to_int(
         by_key["most_recent_role_duration_months"].value, _RECENT_MONTHS_TICKS
     )
-    has_multi = bool(by_key["has_multinational_experience"].value)
     trajectory = CareerTrajectory(
         direction=by_key["career_direction"].value,
-        evidence=free_text.career_trajectory_evidence or "",
         tenure_pattern=by_key["tenure_pattern"].value,
         average_tenure_months=avg_tenure,
         most_recent_role_duration_months=recent_tenure,
-        has_multinational_experience=has_multi,
-        multinational_evidence=free_text.multinational_evidence if has_multi else None,
+        has_multinational_experience=bool(by_key["has_multinational_experience"].value),
     )
 
     education_eval = None
@@ -404,7 +373,7 @@ def _answers_to_assessment(
     return Assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
-        generated_by_model=f"jev/{JEV_MODEL_ID}+{ollama_model_name}",
+        generated_by_model=f"jev/{JEV_MODEL_ID}",
         must_have_evaluations=must_have_evals,
         nice_to_have_evaluations=nih_evals,
         total_relevant_years=total_years,
@@ -421,14 +390,13 @@ def _assessment_cache_key(
     jd: JobDescription,
     candidate: Candidate,
     questions: list,
-    ollama_model_name: str,
 ) -> str:
     questions_repr = json.dumps(
         [q.model_dump() for q in questions], sort_keys=True
     )
     digest_input = (
         f"{jd.id}||{jd.raw_text}||{candidate.id}||{candidate.raw_text}"
-        f"||{questions_repr}||{JEV_MODEL_ID}||{ollama_model_name}"
+        f"||{questions_repr}||{JEV_MODEL_ID}"
     )
     return hashlib.sha256(digest_input.encode("utf-8")).hexdigest()
 
@@ -438,12 +406,7 @@ def generate_assessment(
     candidate: Candidate,
     profile: JobProfile | None,
     jev_client: "JevClient",
-    free_text_chain: Runnable,
-    ollama_model_name: str,
 ) -> Assessment:
-    from candidate_ranking.scoring.jev_client import JevClient
-    from candidate_ranking.utils import GenerationError
-
     if profile is None:
         raise AssessmentGenerationError(
             f"Cannot assess {jd.id}/{candidate.id}: JobProfile is required for Jev gate"
@@ -451,7 +414,6 @@ def generate_assessment(
 
     questions = _build_jev_questions(profile)
 
-    # §1.4: catch only domain-specific errors — broad except was masking bugs
     try:
         answers = jev_client.evaluate(candidate.raw_text, questions)
     except JevClientError as exc:
@@ -459,25 +421,7 @@ def generate_assessment(
             f"Jev call failed for {jd.id}/{candidate.id}: {exc}"
         ) from exc
 
-    try:
-        free_text = invoke_and_validate(
-            free_text_chain,
-            {
-                "jd_title": jd.title,
-                "must_have_skills": ", ".join(profile.must_have_skills),
-                "nice_to_have_skills": ", ".join(profile.nice_to_have_skills),
-                "cv_text": candidate.raw_text,
-            },
-            _FreeTextOutput,
-            lambda r: None,
-            log_context=f"Free-text chain for {jd.id}/{candidate.id}",
-        )
-    except GenerationError as exc:
-        raise AssessmentGenerationError(
-            f"Free-text chain failed for {jd.id}/{candidate.id}: {exc}"
-        ) from exc
-
-    return _answers_to_assessment(answers, free_text, profile, jd, candidate, ollama_model_name)
+    return _answers_to_assessment(answers, profile, jd, candidate)
 
 
 def _assessment_cache_path(cache_dir: Path, jd_id: str, candidate_id: str) -> Path:
@@ -489,15 +433,11 @@ def load_or_generate_assessment(
     candidate: Candidate,
     profile: JobProfile | None,
     jev_client: "JevClient",
-    free_text_chain: Runnable,
-    ollama_model_name: str,
     cache_dir: Path,
 ) -> Assessment:
-    from candidate_ranking.scoring.jev_client import JevClient
-
     questions = _build_jev_questions(profile) if profile else []
     path = _assessment_cache_path(cache_dir, jd.id, candidate.id)
-    key = _assessment_cache_key(jd, candidate, questions, ollama_model_name)
+    key = _assessment_cache_key(jd, candidate, questions)
 
     with _cache_lock:
         if path.exists():
@@ -508,9 +448,7 @@ def load_or_generate_assessment(
             except (json.JSONDecodeError, KeyError, ValidationError, OSError) as exc:
                 logger.warning("Discarding unreadable assessment cache %s: %s", path, exc)
 
-    assessment = generate_assessment(
-        jd, candidate, profile, jev_client, free_text_chain, ollama_model_name
-    )
+    assessment = generate_assessment(jd, candidate, profile, jev_client)
 
     with _cache_lock:
         path.parent.mkdir(parents=True, exist_ok=True)

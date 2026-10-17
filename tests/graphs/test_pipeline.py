@@ -57,7 +57,6 @@ def test_build_pipeline_graph_has_profile_node_and_no_jev_nodes(tmp_path: Path):
         cfg=cfg,
         job_profile_chain=MagicMock(),
         jev_client=MagicMock(),
-        free_text_chain=MagicMock(),
         ranking_llm=MagicMock(),
         skill_index=np.zeros((1, 10)),
         skill_row_map=[("jd-1", "cand-1")],
@@ -89,10 +88,10 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
     def fake_shortlist_candidates(jd, profile, index, row_map, embedder, **kwargs):
         return ["cand-1"] if jd.id == "jd-ok" else []
 
-    def fake_load_or_generate_assessment(jd, candidate_, profile, jev_client, free_text_chain, model_name, cache_dir):
+    def fake_load_or_generate_assessment(jd, candidate_, profile, jev_client, cache_dir):
         return Assessment(
             job_description_id=jd.id, candidate_id=candidate_.id,
-            generated_by_model=model_name,
+            generated_by_model="jev/jev-latest",
             must_have_evaluations=[
                 RequirementEvaluation(requirement="Python", verdict="MET", evidence="x",
                                       evidence_strength="strong", recency="current", years_demonstrated=1)
@@ -116,7 +115,6 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
             cfg=cfg,
             job_profile_chain=MagicMock(),
             jev_client=MagicMock(),
-            free_text_chain=MagicMock(),
             ranking_llm=MagicMock(),
             skill_index=np.zeros((1, 10)),
             skill_row_map=[("jd-ok", "cand-1")],

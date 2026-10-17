@@ -60,7 +60,6 @@ def build_pipeline_graph(
     cfg: RunConfig,
     job_profile_chain: Runnable,
     jev_client: "JevClient",
-    free_text_chain: Runnable,
     ranking_llm: "BaseChatModel",
     skill_index: np.ndarray,
     skill_row_map: list[tuple[str, str]],
@@ -121,7 +120,7 @@ def build_pipeline_graph(
         profile = payload.get("job_profile")
         try:
             assessment = load_or_generate_assessment(
-                jd, candidate, profile, jev_client, free_text_chain, cfg.ollama_model, cfg.cache_dir
+                jd, candidate, profile, jev_client, cfg.cache_dir
             )
             result: AssessmentResult = {
                 "jd_id": jd.id, "candidate_id": candidate.id, "status": "ok",

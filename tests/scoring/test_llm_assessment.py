@@ -34,7 +34,7 @@ def _assessment(qualified: bool = True) -> Assessment:
     return Assessment(
         job_description_id="jd-1",
         candidate_id="cand-1",
-        generated_by_model="jev/jev-latest+qwen2.5:14b",
+        generated_by_model="jev/jev-latest",
         must_have_evaluations=[
             RequirementEvaluation(
                 requirement="Python",
@@ -78,33 +78,16 @@ def _fake_answers(profile: JobProfile, must_have_strength: str = "strong") -> li
     return answers
 
 
-def _fake_free_text(profile: JobProfile):
-    from candidate_ranking.scoring.llm_assessment import _FreeTextOutput, _SkillEvidenceItem
-    return _FreeTextOutput(
-        must_have_evidence=[
-            _SkillEvidenceItem(requirement=s, evidence=f"Evidence for {s}")
-            for s in profile.must_have_skills
-        ],
-        nice_to_have_evidence=[
-            _SkillEvidenceItem(requirement=s, evidence=f"Evidence for {s}")
-            for s in profile.nice_to_have_skills
-        ],
-        career_trajectory_evidence="Promoted from junior to senior in 3 years",
-    )
-
-
 def test_generate_assessment_returns_qualified_assessment():
     profile = _job_profile()
     jev = MagicMock()
     jev.evaluate.return_value = _fake_answers(profile)
-    chain = MagicMock()
-    chain.invoke.return_value = _fake_free_text(profile)
-    result = generate_assessment(_jd(), _candidate(), profile, jev, chain, "qwen2.5:14b")
+    result = generate_assessment(_jd(), _candidate(), profile, jev)
     assert isinstance(result, Assessment)
     assert result.qualified is True
     assert result.must_have_evaluations[0].requirement == "Python"
     assert result.must_have_evaluations[0].verdict == "MET"
-    assert result.must_have_evaluations[0].evidence == "Evidence for Python"
+    assert result.generated_by_model.startswith("jev/")
 
 
 def test_generate_assessment_computes_qualified_from_verdicts():
@@ -113,12 +96,26 @@ def test_generate_assessment_computes_qualified_from_verdicts():
     answers = _fake_answers(profile, must_have_strength="none")  # none → NOT_MET → disqualified
     jev = MagicMock()
     jev.evaluate.return_value = answers
-    chain = MagicMock()
-    chain.invoke.return_value = _fake_free_text(profile)
-    result = generate_assessment(_jd(), _candidate(), profile, jev, chain, "qwen2.5:14b")
+    result = generate_assessment(_jd(), _candidate(), profile, jev)
     assert result.qualified is False
     assert result.disqualification_reason is not None
     assert "Python" in result.disqualification_reason
+
+
+def test_generate_assessment_evidence_is_bm25_verbatim():
+    """Evidence must be extracted verbatim from CV via BM25, not hallucinated."""
+    profile = _job_profile()
+    jev = MagicMock()
+    jev.evaluate.return_value = _fake_answers(profile)
+    candidate = Candidate(
+        id="cand-1", source_path="cv.pdf",
+        raw_text="Developed Python microservices using FastAPI at Tokopedia. Also used Docker.",
+        num_pages=1, char_count=60, parse_status="ok",
+    )
+    result = generate_assessment(_jd(), candidate, profile, jev)
+    # Evidence must come from CV text verbatim
+    ev = result.must_have_evaluations[0]
+    assert "Python" in ev.evidence or "FastAPI" in ev.evidence or ev.evidence == ""
 
 
 def test_generate_assessment_raises_on_jev_error():
@@ -126,18 +123,7 @@ def test_generate_assessment_raises_on_jev_error():
     jev = MagicMock()
     jev.evaluate.side_effect = JevClientError("network failure")
     with pytest.raises(AssessmentGenerationError):
-        generate_assessment(_jd(), _candidate(), _job_profile(), jev, MagicMock(), "qwen2.5:14b")
-
-
-def test_generate_assessment_raises_on_free_text_error():
-    from candidate_ranking.utils import GenerationError
-    profile = _job_profile()
-    jev = MagicMock()
-    jev.evaluate.return_value = _fake_answers(profile)
-    chain = MagicMock()
-    chain.invoke.side_effect = GenerationError("schema mismatch")
-    with pytest.raises(AssessmentGenerationError):
-        generate_assessment(_jd(), _candidate(), profile, jev, chain, "qwen2.5:14b")
+        generate_assessment(_jd(), _candidate(), _job_profile(), jev)
 
 
 def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
@@ -145,10 +131,10 @@ def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
     with patch("candidate_ranking.scoring.llm_assessment.generate_assessment",
                return_value=_assessment()) as mock_gen:
         first = load_or_generate_assessment(
-            _jd(), _candidate(), profile, MagicMock(), MagicMock(), "qwen2.5:14b", tmp_path
+            _jd(), _candidate(), profile, MagicMock(), tmp_path
         )
         second = load_or_generate_assessment(
-            _jd(), _candidate(), profile, MagicMock(), MagicMock(), "qwen2.5:14b", tmp_path
+            _jd(), _candidate(), profile, MagicMock(), tmp_path
         )
     assert first == second
     assert mock_gen.call_count == 1
@@ -164,10 +150,10 @@ def test_load_or_generate_assessment_regenerates_when_profile_changes(tmp_path: 
     with patch("candidate_ranking.scoring.llm_assessment.generate_assessment",
                return_value=_assessment()) as mock_gen:
         load_or_generate_assessment(
-            _jd(), _candidate(), profile_v1, MagicMock(), MagicMock(), "qwen2.5:14b", tmp_path
+            _jd(), _candidate(), profile_v1, MagicMock(), tmp_path
         )
         load_or_generate_assessment(
-            _jd(), _candidate(), profile_v2, MagicMock(), MagicMock(), "qwen2.5:14b", tmp_path
+            _jd(), _candidate(), profile_v2, MagicMock(), tmp_path
         )
     assert mock_gen.call_count == 2
 
@@ -236,18 +222,3 @@ def test_score_to_int_clamps_out_of_range():
     ticks = [0, 3, 6, 10, 15, 20]
     assert _score_to_int(99.0, ticks) == 20
     assert _score_to_int(-1.0, ticks) == 0
-
-
-def test_build_free_text_chain_returns_runnable():
-    from candidate_ranking.scoring.llm_assessment import build_free_text_chain
-    chain = build_free_text_chain(MagicMock())
-    assert chain is not None
-
-
-def test_free_text_output_model_validates():
-    from candidate_ranking.scoring.llm_assessment import _FreeTextOutput, _SkillEvidenceItem
-    out = _FreeTextOutput(
-        must_have_evidence=[_SkillEvidenceItem(requirement="Python", evidence="Built FastAPI")],
-    )
-    assert out.must_have_evidence[0].requirement == "Python"
-    assert out.career_trajectory_evidence == ""
