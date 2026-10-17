@@ -60,7 +60,7 @@ def build_pipeline_graph(
     cfg: RunConfig,
     job_profile_chain: Runnable,
     jev_client: "JevClient",
-    ranking_llm: "BaseChatModel",
+    ranking_llm: "BaseChatModel | None",
     skill_index: np.ndarray,
     skill_row_map: list[tuple[str, str]],
     skill_embedder: Callable[[list[str]], np.ndarray],
@@ -149,15 +149,24 @@ def build_pipeline_graph(
             write_jd_ranking(cfg.runs_dir / run_id, jd, {}, {})
             return {}
 
-        utilities = rank_active_listwise(
-            jd,
-            all_assessments,
-            ranking_llm,
-            subset_size=cfg.ranking_subset_size,
-            max_iterations=cfg.ranking_max_iterations,
-            min_delta_u=cfg.ranking_min_delta_u,
-            pl_prior_variance=cfg.ranking_pl_prior_variance,
-        )
+        if ranking_llm is None:
+            utilities = rank_active_listwise(
+                jd, all_assessments,
+                jev_client=jev_client,
+                subset_size=2,
+                max_iterations=cfg.ranking_pairwise_max_iterations,
+                min_delta_u=cfg.ranking_min_delta_u,
+                pl_prior_variance=cfg.ranking_pl_prior_variance,
+            )
+        else:
+            utilities = rank_active_listwise(
+                jd, all_assessments,
+                llm=ranking_llm,
+                subset_size=cfg.ranking_subset_size,
+                max_iterations=cfg.ranking_max_iterations,
+                min_delta_u=cfg.ranking_min_delta_u,
+                pl_prior_variance=cfg.ranking_pl_prior_variance,
+            )
 
         write_jd_ranking(cfg.runs_dir / run_id, jd, all_assessments, utilities)
         return {}

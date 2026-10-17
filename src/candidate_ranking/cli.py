@@ -90,10 +90,6 @@ def run(
     llm = ChatOllama(
         model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx
     )
-    llm_ranking = ChatOllama(
-        model=cfg.ollama_model, base_url=cfg.ollama_base_url,
-        temperature=cfg.ranking_temperature, num_ctx=cfg.ollama_num_ctx,
-    )
 
     if not cfg.jev_api_key:
         raise RuntimeError(
@@ -113,7 +109,7 @@ def run(
         cfg=cfg,
         job_profile_chain=job_profile_chain,
         jev_client=jev_client,
-        ranking_llm=llm_ranking,
+        ranking_llm=None,  # pairwise Jev mode
         skill_index=skill_index,
         skill_row_map=skill_row_map,
         skill_embedder=skill_embedder,
@@ -211,6 +207,7 @@ def main() -> None:
 
     elif args.command == "evaluate-stability":
         import json as _json
+        # TODO: migrate stability evaluation to pairwise Jev (currently still uses Ollama listwise)
         cfg = RunConfig.full(PROJECT_ROOT)
         cfg = apply_env_overrides(cfg)
 
