@@ -42,7 +42,7 @@ from candidate_ranking.scoring.skills import build_candidate_skill_index, build_
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-ASSESSMENT_SCOPE_VERSION = "llm-qualification-gate-v1"
+ASSESSMENT_SCOPE_VERSION = "jev-qualification-gate-v1"
 
 
 def load_corpus(cfg: RunConfig) -> tuple[list[JobDescription], list[Candidate]]:
@@ -96,6 +96,10 @@ def run(
         temperature=cfg.ranking_temperature, num_ctx=cfg.ollama_num_ctx,
     )
 
+    if not cfg.jev_api_key:
+        raise RuntimeError(
+            "CANDIDATE_RANKING_JEV_API_KEY is required — set it in .env or the environment"
+        )
     job_profile_chain = build_job_profile_chain(llm)
     free_text_chain = build_free_text_chain(llm)
     jev_client = JevClient(api_token=cfg.jev_api_key)
@@ -276,11 +280,13 @@ def main() -> None:
         cfg = RunConfig.full(PROJECT_ROOT)
         cfg = apply_env_overrides(cfg)
 
+        if not cfg.jev_api_key:
+            raise RuntimeError("CANDIDATE_RANKING_JEV_API_KEY is required for reliability evaluation")
         llm = ChatOllama(
             model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx
         )
-        free_text_chain = build_free_text_chain(llm)
         jev_client = JevClient(api_token=cfg.jev_api_key)
+        free_text_chain = build_free_text_chain(llm)
 
         jds = load_job_descriptions(cfg.jd_dir)
         jd_map = {jd.id: jd for jd in jds}
