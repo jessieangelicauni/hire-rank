@@ -5,7 +5,7 @@ import pytest
 from candidate_ranking.models import (
     Assessment, Candidate, JobProfile, RequirementEvaluation,
 )
-from candidate_ranking.scoring.llm_assessment import (
+from candidate_ranking.scoring.assessment import (
     AssessmentGenerationError,
     filter_assessable_candidates,
     generate_assessment,
@@ -123,7 +123,7 @@ def test_generate_assessment_raises_on_jev_error():
 
 def test_load_or_generate_assessment_uses_cache(tmp_path: Path):
     profile = _job_profile()
-    with patch("candidate_ranking.scoring.llm_assessment.generate_assessment",
+    with patch("candidate_ranking.scoring.assessment.generate_assessment",
                return_value=_assessment()) as mock_gen:
         first = load_or_generate_assessment(
             profile, _candidate(), MagicMock(), tmp_path
@@ -143,7 +143,7 @@ def test_load_or_generate_assessment_regenerates_when_profile_changes(tmp_path: 
         generated_by_model="qwen2.5:14b",
         must_have_skills=["Go"],
     )
-    with patch("candidate_ranking.scoring.llm_assessment.generate_assessment",
+    with patch("candidate_ranking.scoring.assessment.generate_assessment",
                return_value=_assessment()) as mock_gen:
         load_or_generate_assessment(
             profile_v1, _candidate(), MagicMock(), tmp_path
@@ -166,7 +166,7 @@ def test_filter_assessable_candidates_excludes_failed_parse():
 
 
 def test_build_jev_questions_keys_for_minimal_profile():
-    from candidate_ranking.scoring.llm_assessment import _build_jev_questions
+    from candidate_ranking.scoring.assessment import _build_jev_questions
     profile = JobProfile(
         id="jd-1", title="Backend", raw_text="req.", source_path="j.pdf",
         generated_by_model="m",
@@ -188,7 +188,7 @@ def test_build_jev_questions_keys_for_minimal_profile():
 
 
 def test_score_to_int_interpolates_correctly():
-    from candidate_ranking.scoring.llm_assessment import _score_to_int
+    from candidate_ranking.scoring.assessment import _score_to_int
     ticks = [0, 3, 6, 10, 15, 20]
     assert _score_to_int(0.0, ticks) == 0
     assert _score_to_int(5.0, ticks) == 20
@@ -197,7 +197,7 @@ def test_score_to_int_interpolates_correctly():
 
 
 def test_score_to_int_clamps_out_of_range():
-    from candidate_ranking.scoring.llm_assessment import _score_to_int
+    from candidate_ranking.scoring.assessment import _score_to_int
     ticks = [0, 3, 6, 10, 15, 20]
     assert _score_to_int(99.0, ticks) == 20
     assert _score_to_int(-1.0, ticks) == 0

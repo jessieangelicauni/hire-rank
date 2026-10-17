@@ -24,7 +24,7 @@ from candidate_ranking.models import Assessment, Candidate, JobProfile
 from candidate_ranking.output.console_export import export_console_web_data, seed_console_web_roles
 from candidate_ranking.output.writer import write_run_output
 from candidate_ranking.scoring.job_profile import build_job_profile_chain
-from candidate_ranking.scoring.llm_assessment import (
+from candidate_ranking.scoring.assessment import (
     filter_assessable_candidates,
 )
 from candidate_ranking.scoring.jev_client import JevClient

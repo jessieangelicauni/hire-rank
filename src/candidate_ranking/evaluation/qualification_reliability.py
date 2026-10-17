@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from candidate_ranking.models import Assessment, Candidate, JobProfile
-from candidate_ranking.scoring.llm_assessment import generate_assessment
+from candidate_ranking.scoring.assessment import generate_assessment
 
 if TYPE_CHECKING:
     from candidate_ranking.scoring.jev_client import JevClient

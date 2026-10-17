@@ -11,7 +11,7 @@ from candidate_ranking.evaluation.ranking_stability import (
     run_stability_report,
 )
 
-ACTIVE_LISTWISE_MODULE = "candidate_ranking.scoring.active_listwise_ranking"
+ACTIVE_LISTWISE_MODULE = "candidate_ranking.scoring.active_pairwise_ranking"
 
 
 def test_kendall_tau_identical_rankings_returns_one():

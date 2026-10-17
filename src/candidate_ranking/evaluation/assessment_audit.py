@@ -5,7 +5,7 @@ from dataclasses import dataclass, field
 
 from candidate_ranking.models import Assessment
 
-# Must mirror _EVIDENCE_TO_VERDICT in llm_assessment — the only legal mappings.
+# Must mirror _EVIDENCE_TO_VERDICT in assessment — the only legal mappings.
 # Any deviation is a legacy cache artefact or a code-path bug.
 _EXPECTED_VERDICT = {
     "strong": "MET",

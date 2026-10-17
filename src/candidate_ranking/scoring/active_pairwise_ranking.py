@@ -192,7 +192,7 @@ def _rank_pair_jev(
     return [winner_id, loser_id]
 
 
-def rank_active_listwise(
+def rank_active_pairwise(
     jp: JobProfile,
     assessments: dict[str, Assessment],
     llm: "BaseChatModel | None" = None,
@@ -216,13 +216,13 @@ def rank_active_listwise(
     elif llm is not None:
         def rank_fn(j, s, a): return _rank_subset(j, s, a, llm)
     else:
-        raise ValueError("Either llm or jev_client must be provided to rank_active_listwise")
+        raise ValueError("Either llm or jev_client must be provided to rank_active_pairwise")
 
     qualified = {cid: a for cid, a in assessments.items() if a.qualified}
     disqualified = {cid: a for cid, a in assessments.items() if not a.qualified}
 
     if qualified and disqualified:
-        qualified_utilities = _rank_active_listwise_core(
+        qualified_utilities = _rank_active_pairwise_core(
             jp, qualified, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
         )
         floor = min(qualified_utilities.values()) - 1.0
@@ -230,12 +230,12 @@ def rank_active_listwise(
         disqualified_utilities = {cid: floor - i for i, cid in enumerate(disqualified_order)}
         return {**qualified_utilities, **disqualified_utilities}
 
-    return _rank_active_listwise_core(
+    return _rank_active_pairwise_core(
         jp, assessments, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
     )
 
 
-def _rank_active_listwise_core(
+def _rank_active_pairwise_core(
     jp: JobProfile,
     assessments: dict[str, Assessment],
     rank_fn: "Callable[[JobProfile, list[str], dict[str, Assessment]], list[str] | None]",
@@ -245,7 +245,7 @@ def _rank_active_listwise_core(
     pl_prior_variance: float,
 ) -> dict[str, float]:
     """The algorithm itself, run over whatever pool it's given — see
-    `rank_active_listwise` for the qualified/disqualified split wrapped around it."""
+    `rank_active_pairwise` for the qualified/disqualified split wrapped around it."""
     item_ids = list(assessments)
     n = len(item_ids)
 

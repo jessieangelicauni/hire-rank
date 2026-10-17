@@ -4,9 +4,9 @@ import numpy as np
 from unittest.mock import MagicMock, patch
 
 from candidate_ranking.models import Assessment, JobProfile, RequirementEvaluation
-from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise, _select_uncertain_subset
+from candidate_ranking.scoring.active_pairwise_ranking import rank_active_pairwise, _select_uncertain_subset
 
-MODULE = "candidate_ranking.scoring.active_listwise_ranking"
+MODULE = "candidate_ranking.scoring.active_pairwise_ranking"
 
 
 def _jp() -> JobProfile:
@@ -29,7 +29,7 @@ def _assessment(cid: str, years: int = 3, qualified: bool = True) -> Assessment:
 
 
 def test_single_candidate_returns_immediately():
-    result = rank_active_listwise(_jp(), {"a": _assessment("a")}, MagicMock())
+    result = rank_active_pairwise(_jp(), {"a": _assessment("a")}, MagicMock())
     assert result == {"a": 1.0}
 
 
@@ -45,10 +45,10 @@ def test_small_pool_gets_more_than_one_independent_llm_ranking():
         return sorted(subset_ids, key=lambda cid: asmt[cid].total_relevant_years, reverse=True)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
-        result = rank_active_listwise(_jp(), assessments, MagicMock(), subset_size=8, min_delta_u=0.01)
+        result = rank_active_pairwise(_jp(), assessments, MagicMock(), subset_size=8, min_delta_u=0.01)
 
     # A small pool (n <= subset_size) must still get more than one independent
-    # LLM ranking call — settling for N=1 was the bug (see active_listwise_ranking.py).
+    # LLM ranking call — settling for N=1 was the bug (see active_pairwise_ranking.py).
     assert call_count > 1
     assert set(result) == set(assessments)
 
@@ -60,7 +60,7 @@ def test_returns_float_utilities_for_all_candidates():
         return list(subset_ids)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
-        result = rank_active_listwise(_jp(), assessments, MagicMock(), subset_size=4)
+        result = rank_active_pairwise(_jp(), assessments, MagicMock(), subset_size=4)
 
     assert set(result) == set(assessments)
     assert all(isinstance(v, float) for v in result.values())
@@ -70,7 +70,7 @@ def test_llm_failure_does_not_crash():
     assessments = {f"c{i}": _assessment(f"c{i}") for i in range(10)}
 
     with patch(f"{MODULE}._rank_subset", return_value=None):
-        result = rank_active_listwise(_jp(), assessments, MagicMock(), subset_size=4, max_iterations=3)
+        result = rank_active_pairwise(_jp(), assessments, MagicMock(), subset_size=4, max_iterations=3)
 
     assert set(result) == set(assessments)
 
@@ -87,7 +87,7 @@ def test_empty_evidence_does_not_crash_bm25_warm_start():
         return list(subset_ids)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
-        result = rank_active_listwise(_jp(), assessments, MagicMock(), subset_size=8)
+        result = rank_active_pairwise(_jp(), assessments, MagicMock(), subset_size=8)
 
     assert set(result) == set(assessments)
 
@@ -126,7 +126,7 @@ def test_active_loop_does_not_get_stuck_on_one_unrankable_subset():
         return list(subset_ids)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
-        result = rank_active_listwise(
+        result = rank_active_pairwise(
             _jp(), assessments, MagicMock(), subset_size=4, max_iterations=10,
         )
 
@@ -148,7 +148,7 @@ def test_disqualified_candidates_never_outrank_a_qualified_one():
         return sorted(subset_ids, key=lambda cid: asmt[cid].total_relevant_years, reverse=True)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
-        result = rank_active_listwise(_jp(), assessments, MagicMock(), subset_size=8)
+        result = rank_active_pairwise(_jp(), assessments, MagicMock(), subset_size=8)
 
     assert result["weak-but-qualified"] > result["strong-but-disqualified"]
 
@@ -161,7 +161,7 @@ def test_disqualified_candidates_keep_a_relative_order_among_themselves():
     }
 
     with patch(f"{MODULE}._rank_subset", side_effect=lambda jp, s, a, l: list(s)):
-        result = rank_active_listwise(_jp(), assessments, MagicMock(), subset_size=8)
+        result = rank_active_pairwise(_jp(), assessments, MagicMock(), subset_size=8)
 
     assert result["disqualified-a"] != result["disqualified-b"]
     assert result["qualified-1"] > result["disqualified-a"]
@@ -172,7 +172,7 @@ def test_all_disqualified_pool_still_returns_every_candidate():
     assessments = {f"c{i}": _assessment(f"c{i}", qualified=False) for i in range(5)}
 
     with patch(f"{MODULE}._rank_subset", side_effect=lambda jp, s, a, l: list(s)):
-        result = rank_active_listwise(_jp(), assessments, MagicMock(), subset_size=8)
+        result = rank_active_pairwise(_jp(), assessments, MagicMock(), subset_size=8)
 
     assert set(result) == set(assessments)
 
@@ -184,7 +184,7 @@ def test_consistent_ranking_orders_candidates():
         return sorted(subset_ids, key=lambda cid: asmt[cid].total_relevant_years, reverse=True)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
-        result = rank_active_listwise(
+        result = rank_active_pairwise(
             _jp(), assessments, MagicMock(),
             subset_size=5, max_iterations=20, min_delta_u=0.01,
         )
@@ -235,7 +235,7 @@ def test_rank_pair_jev_returns_winner_first():
     """
     import hashlib
     from candidate_ranking.scoring.jev_client import JevAnswer
-    from candidate_ranking.scoring.active_listwise_ranking import _rank_pair_jev
+    from candidate_ranking.scoring.active_pairwise_ranking import _rank_pair_jev
     jp = _jp()
     pair = ["alice", "bob"]
     assessments = {"alice": _assessment("alice", years=5), "bob": _assessment("bob", years=3)}
@@ -259,7 +259,7 @@ def test_rank_pair_jev_position_assignment_is_deterministic():
     """Same inputs must produce the same A/B assignment on every call."""
     import hashlib
     from candidate_ranking.scoring.jev_client import JevAnswer
-    from candidate_ranking.scoring.active_listwise_ranking import _rank_pair_jev
+    from candidate_ranking.scoring.active_pairwise_ranking import _rank_pair_jev
     jp = _jp()
     assessments = {"x": _assessment("x"), "y": _assessment("y")}
     jev = MagicMock()
@@ -273,14 +273,14 @@ def test_rank_pair_jev_position_assignment_is_deterministic():
 
 def test_rank_pair_jev_returns_none_on_jev_error():
     from candidate_ranking.scoring.jev_client import JevClientError
-    from candidate_ranking.scoring.active_listwise_ranking import _rank_pair_jev
+    from candidate_ranking.scoring.active_pairwise_ranking import _rank_pair_jev
     jev = MagicMock()
     jev.evaluate.side_effect = JevClientError("timeout")
     result = _rank_pair_jev(_jp(), ["a", "b"], {"a": _assessment("a"), "b": _assessment("b")}, jev)
     assert result is None
 
 
-def test_rank_active_listwise_uses_jev_pairwise_when_client_provided():
+def test_rank_active_pairwise_uses_jev_pairwise_when_client_provided():
     """When jev_client is given, the LLM path must never be called."""
     from candidate_ranking.scoring.jev_client import JevAnswer
     assessments = {f"c{i}": _assessment(f"c{i}") for i in range(4)}
@@ -289,6 +289,6 @@ def test_rank_active_listwise_uses_jev_pairwise_when_client_provided():
         JevAnswer(key="stronger_fit", kind="choice", value="A", confidence=0.9)
     ]
     with patch(f"{MODULE}._rank_subset") as mock_llm_rank:
-        result = rank_active_listwise(_jp(), assessments, jev_client=jev, subset_size=2, max_iterations=5)
+        result = rank_active_pairwise(_jp(), assessments, jev_client=jev, subset_size=2, max_iterations=5)
     mock_llm_rank.assert_not_called()
     assert set(result) == set(assessments)

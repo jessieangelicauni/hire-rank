@@ -108,7 +108,7 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
         "candidate_ranking.graphs.pipeline.load_or_generate_assessment",
         side_effect=fake_load_or_generate_assessment,
     ), patch(
-        "candidate_ranking.graphs.pipeline.rank_active_listwise", return_value={"cand-1": 1.0}
+        "candidate_ranking.graphs.pipeline.rank_active_pairwise", return_value={"cand-1": 1.0}
     ), patch(
         "candidate_ranking.graphs.pipeline.write_jd_ranking"
     ) as mock_write:

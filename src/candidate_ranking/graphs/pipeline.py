@@ -20,11 +20,11 @@ from candidate_ranking.scoring.job_profile import (
     JobProfileGenerationError,
     load_or_generate_job_profile,
 )
-from candidate_ranking.scoring.llm_assessment import (
+from candidate_ranking.scoring.assessment import (
     AssessmentGenerationError,
     load_or_generate_assessment,
 )
-from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise
+from candidate_ranking.scoring.active_pairwise_ranking import rank_active_pairwise
 from candidate_ranking.scoring.skills import shortlist_candidates
 
 logger = logging.getLogger(__name__)
@@ -147,7 +147,7 @@ def build_pipeline_graph(
             write_jd_ranking(cfg.runs_dir / run_id, jp, {}, {})
             return {}
 
-        utilities = rank_active_listwise(
+        utilities = rank_active_pairwise(
             jp, all_assessments,
             jev_client=jev_client,
             subset_size=2,

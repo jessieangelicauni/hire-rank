@@ -7,7 +7,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from candidate_ranking.models import Assessment, JobProfile
-from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise
+from candidate_ranking.scoring.active_pairwise_ranking import rank_active_pairwise
 from candidate_ranking.utils import load_json_cache
 
 if TYPE_CHECKING:
@@ -94,8 +94,8 @@ def evaluate_jd_stability(
 ) -> tuple[float, float]:
     kwargs = dict(llm=llm, subset_size=subset_size, max_iterations=max_iterations,
                   min_delta_u=min_delta_u, pl_prior_variance=pl_prior_variance)
-    run_a = rank_active_listwise(jp, assessments, **kwargs)
-    run_b = rank_active_listwise(jp, assessments, **kwargs)
+    run_a = rank_active_pairwise(jp, assessments, **kwargs)
+    run_b = rank_active_pairwise(jp, assessments, **kwargs)
     return kendall_tau(run_a, run_b), rank_biased_overlap(run_a, run_b)
 
 
