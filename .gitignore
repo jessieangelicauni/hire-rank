@@ -10,3 +10,6 @@ runs/_cache/
 *.aux
 *.log
 
+# superpowers scratch (task briefs, review packages, progress ledger)
+.superpowers/
+
