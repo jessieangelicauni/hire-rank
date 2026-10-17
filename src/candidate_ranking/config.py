@@ -25,6 +25,8 @@ class RunConfig:
     ranking_subset_size: int = 8
     ranking_max_iterations: int = 40
     ranking_min_delta_u: float = 0.01
+    jev_api_key: str | None = None
+    ranking_pairwise_max_iterations: int = 80
 
     @classmethod
     def full(cls, project_root: Path) -> "RunConfig":
@@ -60,6 +62,8 @@ _ENV_OVERRIDES: dict[str, tuple[str, Callable[[str], object]]] = {
     "CANDIDATE_RANKING_SUBSET_SIZE": ("ranking_subset_size", int),
     "CANDIDATE_RANKING_MAX_ITERATIONS": ("ranking_max_iterations", int),
     "CANDIDATE_RANKING_MIN_DELTA_U": ("ranking_min_delta_u", float),
+    "CANDIDATE_RANKING_JEV_API_KEY": ("jev_api_key", str),
+    "CANDIDATE_RANKING_PAIRWISE_MAX_ITERATIONS": ("ranking_pairwise_max_iterations", int),
 }
 
 ENV_OVERRIDE_VARS: tuple[str, ...] = tuple(_ENV_OVERRIDES)
