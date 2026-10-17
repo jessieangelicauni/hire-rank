@@ -2,7 +2,8 @@ UI/UX Designer
 We're looking for a UI/UX Designer to shape how users experience our products, from early research through polished, production-ready interfaces. You'll work closely with product managers and engineers to turn ambiguous problems into clear, usable designs.
 
 What you'll need:
-- 3+ years of experience designing digital products, with a strong portfolio of shipped work.
+- Minimum 1-2 years of experience designing digital products, with a strong portfolio of shipped work.
+- Bachelor's degree in Computer Science, Information Technology, Information Systems, or a related field (or equivalent practical experience).
 - Proficiency in Figma for wireframing, prototyping, and high-fidelity UI design.
 - Experience building and maintaining Design Systems and component libraries.
 - Solid grounding in User Research and Usability Testing methods to validate design decisions.

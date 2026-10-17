@@ -2,6 +2,8 @@ Frontend Engineer
 Our product team is looking for a Frontend Engineer to build responsive, accessible web applications used by thousands of customers daily. You'll collaborate with designers and backend engineers to ship polished user experiences.
 
 What we're looking for:
+- Minimum 1-2 years of experience building frontend web applications.
+- Bachelor's degree in Computer Science, Information Technology, Information Systems, or a related field (or equivalent practical experience).
 - Solid experience with React (hooks, component composition patterns) and TypeScript.
 - Experience with server-side rendering and routing via Next.js (App Router).
 - Understanding of state management patterns (Redux Toolkit or Zustand) and server-state tooling (TanStack Query).

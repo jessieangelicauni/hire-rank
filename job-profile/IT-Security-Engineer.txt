@@ -2,6 +2,8 @@ IT Security Engineer
 We're looking for an IT Security Engineer to protect our infrastructure, applications, and data from evolving threats. You'll work across the stack to identify vulnerabilities, respond to incidents, and keep the company audit-ready.
 
 What you'll need:
+- Minimum 1-2 years of experience in an IT security or security engineering role.
+- Bachelor's degree in Computer Science, Information Technology, Information Systems, or a related field (or equivalent practical experience).
 - Experience with vulnerability scanning and management (Nessus or Qualys).
 - Hands-on experience with penetration testing tools (Burp Suite or Metasploit).
 - Familiarity with SIEM platforms (Splunk) for monitoring and threat detection.

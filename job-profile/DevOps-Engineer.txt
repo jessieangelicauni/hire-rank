@@ -2,6 +2,8 @@ DevOps Engineer
 Join our infrastructure team to help build and operate the platform that keeps our services running reliably at scale. You'll work on automation, CI/CD, and observability across a multi-cloud environment.
 
 What you'll need:
+- Minimum 1-2 years of experience in a DevOps, infrastructure, or site-reliability role.
+- Bachelor's degree in Computer Science, Information Technology, Information Systems, or a related field (or equivalent practical experience).
 - Strong experience with Infrastructure as Code (Terraform ).
 - Hands-on experience with Docker and Kubernetes, and GitOps-based delivery (ArgoCD or Flux) in production environments.
 - Experience with CI/CD tooling such as GitHub Actions, GitLab CI, or Jenkins.

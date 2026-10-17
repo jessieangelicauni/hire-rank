@@ -2,6 +2,8 @@ Full-Stack Engineer
 We are a fast-growing fintech startup looking for a Full-Stack Engineer who can move comfortably between frontend and backend work. You'll own features end-to-end, from database schema to the final UI polish.
 
 Requirements:
+- Minimum 1-2 years of experience as a full-stack or backend/frontend software engineer.
+- Bachelor's degree in Computer Science, Information Technology, Information Systems, or a related field (or equivalent practical experience).
 - Proficiency in TypeScript across both React or Next.js (frontend) and Node.js (backend, Express or NestJS).
 - Experience designing and consuming REST APIs.
 - Working knowledge of PostgreSQL and ORMs such as Prisma.

@@ -2,6 +2,8 @@ Cloud Engineer
 We're looking for a Cloud Engineer to design, provision, and operate the cloud infrastructure our products run on. You'll partner with product and platform teams to build environments that are secure, cost-efficient, and ready to scale.
 
 What you'll need:
+- Minimum 1-2 years of hands-on experience with cloud infrastructure or platform engineering.
+- Bachelor's degree in Computer Science, Information Technology, Information Systems, or a related field (or equivalent practical experience).
 - Hands-on experience architecting and operating workloads on a major cloud provider (AWS, GCP, or Azure).
 - Proficiency with Infrastructure as Code (Terraform or CloudFormation) for provisioning and managing cloud resources.
 - Solid understanding of cloud networking (VPC design, load balancing, DNS, and VPN/Direct Connect).
