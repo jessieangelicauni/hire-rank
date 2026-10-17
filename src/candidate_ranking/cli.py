@@ -30,7 +30,12 @@ from candidate_ranking.scoring.llm_assessment import (
 )
 from candidate_ranking.evaluation.ranking_stability import (
     load_cached_assessments,
+    load_job_profiles,
     run_stability_report,
+)
+from candidate_ranking.evaluation.qualification_reliability import (
+    repeat_qualification_gate,
+    build_reliability_report,
 )
 from candidate_ranking.scoring.skills import build_candidate_skill_index, build_skill_embedder
 
@@ -66,8 +71,7 @@ def sqlite_checkpointer(db_path: Path) -> Iterator[SqliteSaver]:
 def run(
     run_id: str | None = None,
     skill_match_threshold: float = 0.8,
-    min_skill_matches: int = 5,
-    min_must_have_matches: int = 2,
+    min_skill_matches: int = 3,
 ) -> Path:
     cfg = RunConfig.full(PROJECT_ROOT)
     cfg = apply_env_overrides(cfg)
@@ -112,7 +116,6 @@ def run(
         run_id=run_id,
         skill_match_threshold=skill_match_threshold,
         min_skill_matches=min_skill_matches,
-        min_must_have_matches=min_must_have_matches,
     )
 
     db_path = cfg.cache_dir / "checkpoints.db"
@@ -143,7 +146,6 @@ def run(
             prior_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
             skill_match_threshold = prior_manifest.get("skill_match_threshold", skill_match_threshold)
             min_skill_matches = prior_manifest.get("min_skill_matches", min_skill_matches)
-            min_must_have_matches = prior_manifest.get("min_must_have_matches", min_must_have_matches)
         except (json.JSONDecodeError, OSError):
             pass
 
@@ -155,7 +157,6 @@ def run(
         "skill_embedding_model": cfg.skill_embedding_model,
         "skill_match_threshold": skill_match_threshold,
         "min_skill_matches": min_skill_matches,
-        "min_must_have_matches": min_must_have_matches,
         "ranking_temperature": cfg.ranking_temperature,
         "shortlist_sizes": {jd_id: len(cids) for jd_id, cids in final_state["shortlists"].items()},
         "jd_ids": [jd.id for jd in jds],
@@ -186,10 +187,13 @@ def main() -> None:
     run_parser = subparsers.add_parser("run")
     run_parser.add_argument("--run-id", default=None)
     run_parser.add_argument("--skill-match-threshold", type=float, default=0.8)
-    run_parser.add_argument("--min-skill-matches", type=int, default=5)
-    run_parser.add_argument("--min-must-have-matches", type=int, default=2)
+    run_parser.add_argument("--min-skill-matches", type=int, default=3)
 
     subparsers.add_parser("evaluate-stability")
+
+    reliability_parser = subparsers.add_parser("evaluate-reliability")
+    reliability_parser.add_argument("--sample-per-jd", type=int, default=2)
+    reliability_parser.add_argument("--repeats", type=int, default=3)
 
     args = parser.parse_args()
 
@@ -198,7 +202,6 @@ def main() -> None:
             run_id=args.run_id,
             skill_match_threshold=args.skill_match_threshold,
             min_skill_matches=args.min_skill_matches,
-            min_must_have_matches=args.min_must_have_matches,
         )
         print(f"Run complete: {run_dir / 'summary.json'}")
 
@@ -231,19 +234,23 @@ def main() -> None:
             cfg.ranking_min_delta_u, cfg.ranking_pl_prior_variance,
         )
 
-        sep = "─" * 56
+        sep = "─" * 70
         print(f"\nRanking Stability Report")
         print(f"subset_size={cfg.ranking_subset_size}  max_iterations={cfg.ranking_max_iterations}")
         print(sep)
-        print(f"{'JD':<35} {'Candidates':>10}  {'τ':>6}")
+        print(f"{'JD':<35} {'Candidates':>10}  {'τ':>6}  {'RBO':>6}")
         for jd_id, tau in sorted(report.per_jd.items()):
             n = len(cached[jd_id])
-            print(f"{jd_id:<35} {n:>10}  {tau:>6.3f}")
+            print(f"{jd_id:<35} {n:>10}  {tau:>6.3f}  {report.rbo_per_jd[jd_id]:>6.3f}")
         print(sep)
-        print(f"Mean τ : {report.mean_tau:.3f}")
-        print(f"Min  τ : {report.min_tau:.3f}  ({report.min_tau_jd})")
+        print(f"Mean τ   : {report.mean_tau:.3f}      Mean RBO : {report.mean_rbo:.3f}")
+        print(f"Min  τ   : {report.min_tau:.3f}  ({report.min_tau_jd})")
+        print(f"Min  RBO : {report.min_rbo:.3f}  ({report.min_rbo_jd})")
         print(sep)
-        print("Interpretation: τ ≥ 0.90 = stable, 0.75–0.90 = moderate, < 0.75 = unstable\n")
+        print("τ (Kendall-tau): agreement across ALL rank pairs, equally weighted.")
+        print("RBO (rank-biased overlap): agreement weighted toward the TOP of the list —")
+        print("  what matters for shortlisting. τ ≥ 0.90 / RBO ≥ 0.90 = stable,")
+        print("  0.75–0.90 = moderate, < 0.75 = unstable.\n")
 
         report_path = cfg.cache_dir / "stability_report.json"
         report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -252,6 +259,91 @@ def main() -> None:
                 "subset_size": cfg.ranking_subset_size, "max_iterations": cfg.ranking_max_iterations,
                 "per_jd": report.per_jd, "mean_tau": report.mean_tau,
                 "min_tau": report.min_tau, "min_tau_jd": report.min_tau_jd,
+                "rbo_per_jd": report.rbo_per_jd, "mean_rbo": report.mean_rbo,
+                "min_rbo": report.min_rbo, "min_rbo_jd": report.min_rbo_jd,
+            }, indent=2),
+            encoding="utf-8",
+        )
+        print(f"Saved to {report_path}")
+
+    elif args.command == "evaluate-reliability":
+        import json as _json
+        import random
+
+        cfg = RunConfig.full(PROJECT_ROOT)
+        cfg = apply_env_overrides(cfg)
+
+        llm = ChatOllama(
+            model=cfg.ollama_model, base_url=cfg.ollama_base_url, temperature=0, num_ctx=cfg.ollama_num_ctx
+        )
+        qualification_chain = build_qualification_chain(llm)
+
+        jds = load_job_descriptions(cfg.jd_dir)
+        jd_map = {jd.id: jd for jd in jds}
+        job_profiles = load_job_profiles(cfg.cache_dir)
+        candidates = load_candidates(cfg.cv_dir, cfg.cache_dir / "cv.json")
+        candidate_map = {c.id: c for c in candidates}
+
+        cached = load_cached_assessments(cfg.cache_dir, job_profiles)
+        if not cached:
+            print("No cached assessments found. Run the pipeline first.", file=sys.stderr)
+            sys.exit(1)
+
+        rng = random.Random(42)
+        sampled_pairs: list[tuple[str, str]] = []
+        for jd_id, assessments in cached.items():
+            if jd_id not in jd_map:
+                continue
+            candidate_ids = [cid for cid in assessments if cid in candidate_map]
+            rng.shuffle(candidate_ids)
+            for cid in candidate_ids[: args.sample_per_jd]:
+                sampled_pairs.append((jd_id, cid))
+
+        if not sampled_pairs:
+            print("No (JD, candidate) pairs available to sample.", file=sys.stderr)
+            sys.exit(1)
+
+        print(
+            f"Repeating the qualification gate {args.repeats}x (no cache) for "
+            f"{len(sampled_pairs)} sampled pairs — this makes real LLM calls...\n"
+        )
+        repeated_assessments: dict[str, list[Assessment]] = {}
+        for jd_id, candidate_id in sampled_pairs:
+            jd = jd_map[jd_id]
+            profile = job_profiles.get(jd_id)
+            candidate = candidate_map[candidate_id]
+            pair_id = f"{jd_id}/{candidate_id}"
+            try:
+                repeated_assessments[pair_id] = repeat_qualification_gate(
+                    jd, candidate, profile, qualification_chain, cfg.ollama_model, repeats=args.repeats
+                )
+            except Exception as exc:
+                print(f"WARNING: skipping {pair_id}: {exc}", file=sys.stderr)
+
+        report = build_reliability_report(repeated_assessments)
+
+        sep = "─" * 70
+        print(f"\nQualification Gate Reliability Report (no ground truth — self-consistency only)")
+        print(sep)
+        print(f"Pairs sampled     : {report.n_pairs}")
+        print(f"Repeats per pair  : {report.n_repeats}")
+        print(f"qualified agreement rate : {report.qualified_agreement_rate:.3f}")
+        print(f"qualified Cohen's kappa  : {report.qualified_cohens_kappa:.3f}")
+        print(f"per-requirement verdict agreement : {report.verdict_agreement_rate:.3f}")
+        print(sep)
+        print("Interpretation (kappa): > 0.80 = near-perfect, 0.60–0.80 = substantial,")
+        print("  0.40–0.60 = moderate, < 0.40 = low self-consistency — the verdict is")
+        print("  largely noise, independent of whether it happens to be correct.\n")
+
+        report_path = cfg.cache_dir / "reliability_report.json"
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(
+            _json.dumps({
+                "n_pairs": report.n_pairs, "n_repeats": report.n_repeats,
+                "qualified_agreement_rate": report.qualified_agreement_rate,
+                "qualified_cohens_kappa": report.qualified_cohens_kappa,
+                "verdict_agreement_rate": report.verdict_agreement_rate,
+                "per_pair_qualified": report.per_pair_qualified,
             }, indent=2),
             encoding="utf-8",
         )

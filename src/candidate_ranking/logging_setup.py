@@ -33,17 +33,21 @@ class JsonFileHandler(logging.Handler):
 
 
 def configure_logging(warnings_path: Path, console_level: int = logging.ERROR) -> JsonFileHandler:
-    root = logging.getLogger()
-    root.setLevel(logging.WARNING)
-    root.handlers.clear()
+    # Scoped to this package's own logger (not root) so warnings.json captures
+    # only candidate_ranking's diagnostics, not third-party library chatter
+    # (httpx, sentence-transformers, etc.) that would otherwise propagate up.
+    app_logger = logging.getLogger("candidate_ranking")
+    app_logger.setLevel(logging.WARNING)
+    app_logger.propagate = False
+    app_logger.handlers.clear()
 
     console_handler = logging.StreamHandler(sys.stderr)
     console_handler.setLevel(console_level)
     console_handler.setFormatter(logging.Formatter("%(levelname)s: %(message)s"))
-    root.addHandler(console_handler)
+    app_logger.addHandler(console_handler)
 
     json_handler = JsonFileHandler(warnings_path)
     json_handler.setLevel(logging.WARNING)
-    root.addHandler(json_handler)
+    app_logger.addHandler(json_handler)
 
     return json_handler

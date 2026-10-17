@@ -32,7 +32,8 @@ def format_jd_ranking(
     for rank, candidate_id in enumerate(ranked, start=1):
         a = assessments.get(candidate_id)
         utility = utilities[candidate_id]
-        lines.append(f"{rank}. **{candidate_id}** (utility={utility:.4f})")
+        flag = " — DISQUALIFIED (failed a must-have)" if a and not a.qualified else ""
+        lines.append(f"{rank}. **{candidate_id}** (utility={utility:.4f}){flag}")
         rows.append({
             "rank": rank,
             "candidate_id": candidate_id,

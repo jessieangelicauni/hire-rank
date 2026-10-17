@@ -9,13 +9,14 @@ def _jd() -> JobDescription:
     return JobDescription(id="jd-1", title="Backend Engineer", raw_text="...", source_path="jd.pdf")
 
 
-def _assessment(candidate_id: str) -> Assessment:
+def _assessment(candidate_id: str, qualified: bool = True) -> Assessment:
     return Assessment(
         job_description_id="jd-1", candidate_id=candidate_id,
-        generated_by_model="qwen2.5:14b", qualified=True,
+        generated_by_model="qwen2.5:14b", qualified=qualified,
         must_have_evaluations=[
-            RequirementEvaluation(requirement="Python", verdict="MET", evidence="FastAPI",
-                                  evidence_strength="strong", recency="current", years_demonstrated=3)
+            RequirementEvaluation(requirement="Python", verdict="MET" if qualified else "NOT_MET",
+                                  evidence="FastAPI", evidence_strength="strong",
+                                  recency="current", years_demonstrated=3)
         ],
     )
 
@@ -46,6 +47,20 @@ def test_format_jd_ranking_includes_qualified_and_years():
     row = json_payload["rankings"][0]
     assert row["qualified"] is True
     assert row["total_relevant_years"] == 0
+
+
+def test_format_jd_ranking_flags_disqualified_candidates_in_markdown():
+    assessments = {
+        "cand-qualified": _assessment("cand-qualified", qualified=True),
+        "cand-disqualified": _assessment("cand-disqualified", qualified=False),
+    }
+    utilities = {"cand-qualified": 1.0, "cand-disqualified": -1.0}
+
+    markdown_text, json_payload = format_jd_ranking(_jd(), assessments, utilities)
+    lines_by_candidate = {line.split("**")[1]: line for line in markdown_text.splitlines() if "**" in line}
+
+    assert "DISQUALIFIED" in lines_by_candidate["cand-disqualified"]
+    assert "DISQUALIFIED" not in lines_by_candidate["cand-qualified"]
 
 
 def test_write_jd_ranking_writes_markdown_and_json(tmp_path: Path):

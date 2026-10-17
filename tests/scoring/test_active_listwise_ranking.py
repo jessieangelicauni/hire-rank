@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+import numpy as np
 from unittest.mock import MagicMock, patch
 
 from candidate_ranking.models import Assessment, JobDescription, RequirementEvaluation
-from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise
+from candidate_ranking.scoring.active_listwise_ranking import rank_active_listwise, _select_uncertain_subset
 
 MODULE = "candidate_ranking.scoring.active_listwise_ranking"
 
@@ -16,14 +17,14 @@ def _jd() -> JobDescription:
     )
 
 
-def _assessment(cid: str, years: int = 3) -> Assessment:
+def _assessment(cid: str, years: int = 3, qualified: bool = True) -> Assessment:
     return Assessment(
         job_description_id="jd-t", candidate_id=cid, generated_by_model="test",
         must_have_evaluations=[RequirementEvaluation(
-            requirement="Python", verdict="MET", evidence="used it",
+            requirement="Python", verdict="MET" if qualified else "NOT_MET", evidence="used it",
             evidence_strength="strong", recency="current", years_demonstrated=years,
         )],
-        total_relevant_years=years, qualified=True,
+        total_relevant_years=years, qualified=qualified,
     )
 
 
@@ -32,19 +33,23 @@ def test_single_candidate_returns_immediately():
     assert result == {"a": 1.0}
 
 
-def test_small_pool_one_llm_call():
+def test_small_pool_gets_more_than_one_independent_llm_ranking():
     assessments = {f"c{i}": _assessment(f"c{i}") for i in range(5)}
     call_count = 0
 
     def mock_rank(jd, subset_ids, asmt, llm):
+        # A consistent, input-order-independent ranking — same opinion every
+        # call, regardless of what order the subset happens to arrive in.
         nonlocal call_count
         call_count += 1
-        return list(subset_ids)
+        return sorted(subset_ids, key=lambda cid: asmt[cid].total_relevant_years, reverse=True)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
-        result = rank_active_listwise(_jd(), assessments, MagicMock(), subset_size=8)
+        result = rank_active_listwise(_jd(), assessments, MagicMock(), subset_size=8, min_delta_u=0.01)
 
-    assert call_count == 1
+    # A small pool (n <= subset_size) must still get more than one independent
+    # LLM ranking call — settling for N=1 was the bug (see active_listwise_ranking.py).
+    assert call_count > 1
     assert set(result) == set(assessments)
 
 
@@ -82,6 +87,91 @@ def test_empty_evidence_does_not_crash_bm25_warm_start():
         return list(subset_ids)
 
     with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
+        result = rank_active_listwise(_jd(), assessments, MagicMock(), subset_size=8)
+
+    assert set(result) == set(assessments)
+
+
+def test_select_uncertain_subset_avoids_repeating_a_failed_combination():
+    item_ids = ["a", "b", "c", "d", "e"]
+    variances = np.array([5.0, 4.0, 3.0, 2.0, 1.0])  # top-3 by variance: a, b, c
+
+    first_pick = _select_uncertain_subset(variances, item_ids, subset_size=3)
+    assert set(first_pick) == {"a", "b", "c"}
+
+    retried_pick = _select_uncertain_subset(
+        variances, item_ids, subset_size=3, avoid_signature=frozenset({"a", "b", "c"})
+    )
+    assert set(retried_pick) != {"a", "b", "c"}
+    assert set(retried_pick) == {"a", "b", "d"}  # lowest-variance member (c) swapped for next-best (d)
+
+
+def test_select_uncertain_subset_unaffected_when_signature_differs():
+    item_ids = ["a", "b", "c", "d"]
+    variances = np.array([4.0, 3.0, 2.0, 1.0])
+    pick = _select_uncertain_subset(variances, item_ids, subset_size=2, avoid_signature=frozenset({"x", "y"}))
+    assert set(pick) == {"a", "b"}
+
+
+def test_active_loop_does_not_get_stuck_on_one_unrankable_subset():
+    assessments = {f"c{i}": _assessment(f"c{i}", years=i + 1) for i in range(10)}
+    cursed = {"c9", "c8", "c7", "c6"}  # highest-variance subset at the start (most years)
+    calls_on_cursed = 0
+
+    def mock_rank(jd, subset_ids, asmt, llm):
+        nonlocal calls_on_cursed
+        if set(subset_ids) == cursed:
+            calls_on_cursed += 1
+            return None  # this exact combination always fails, like a real stuck LLM
+        return list(subset_ids)
+
+    with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
+        result = rank_active_listwise(
+            _jd(), assessments, MagicMock(), subset_size=4, max_iterations=10,
+        )
+
+    assert set(result) == set(assessments)
+    # the cursed combination should be hit once, then avoided — not retried every iteration
+    assert calls_on_cursed <= 2
+
+
+def test_disqualified_candidates_never_outrank_a_qualified_one():
+    # A disqualified candidate the LLM would otherwise rate very highly must
+    # still land below every qualified candidate, however poorly rated.
+    assessments = {
+        "weak-but-qualified": _assessment("weak-but-qualified", years=1, qualified=True),
+        "strong-but-disqualified": _assessment("strong-but-disqualified", years=20, qualified=False),
+    }
+
+    def mock_rank(jd, subset_ids, asmt, llm):
+        # LLM would rank the disqualified one first if given the chance.
+        return sorted(subset_ids, key=lambda cid: asmt[cid].total_relevant_years, reverse=True)
+
+    with patch(f"{MODULE}._rank_subset", side_effect=mock_rank):
+        result = rank_active_listwise(_jd(), assessments, MagicMock(), subset_size=8)
+
+    assert result["weak-but-qualified"] > result["strong-but-disqualified"]
+
+
+def test_disqualified_candidates_keep_a_relative_order_among_themselves():
+    assessments = {
+        "qualified-1": _assessment("qualified-1", qualified=True),
+        "disqualified-a": _assessment("disqualified-a", qualified=False),
+        "disqualified-b": _assessment("disqualified-b", qualified=False),
+    }
+
+    with patch(f"{MODULE}._rank_subset", side_effect=lambda jd, s, a, l: list(s)):
+        result = rank_active_listwise(_jd(), assessments, MagicMock(), subset_size=8)
+
+    assert result["disqualified-a"] != result["disqualified-b"]
+    assert result["qualified-1"] > result["disqualified-a"]
+    assert result["qualified-1"] > result["disqualified-b"]
+
+
+def test_all_disqualified_pool_still_returns_every_candidate():
+    assessments = {f"c{i}": _assessment(f"c{i}", qualified=False) for i in range(5)}
+
+    with patch(f"{MODULE}._rank_subset", side_effect=lambda jd, s, a, l: list(s)):
         result = rank_active_listwise(_jd(), assessments, MagicMock(), subset_size=8)
 
     assert set(result) == set(assessments)
