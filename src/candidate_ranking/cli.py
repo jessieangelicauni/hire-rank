@@ -190,6 +190,7 @@ def main() -> None:
     run_parser.add_argument("--min-skill-matches", type=int, default=3)
 
     subparsers.add_parser("evaluate-stability")
+    subparsers.add_parser("evaluate-audit")
 
     reliability_parser = subparsers.add_parser("evaluate-reliability")
     reliability_parser.add_argument("--sample-per-jd", type=int, default=2)
@@ -344,6 +345,81 @@ def main() -> None:
                 "qualified_cohens_kappa": report.qualified_cohens_kappa,
                 "verdict_agreement_rate": report.verdict_agreement_rate,
                 "per_pair_qualified": report.per_pair_qualified,
+            }, indent=2),
+            encoding="utf-8",
+        )
+        print(f"Saved to {report_path}")
+
+    elif args.command == "evaluate-audit":
+        import json as _json
+        from candidate_ranking.evaluation.assessment_audit import audit_assessments
+        cfg = RunConfig.full(PROJECT_ROOT)
+        cfg = apply_env_overrides(cfg)
+
+        cached = load_cached_assessments(cfg.cache_dir)
+        if not cached:
+            print("No cached assessments found. Run the pipeline first.", file=sys.stderr)
+            sys.exit(1)
+
+        report = audit_assessments(cached)
+        sep = "─" * 70
+        print(f"\nAssessment Audit Report (zero LLM calls)")
+        print(sep)
+        print(f"JDs assessed          : {report.n_jds}")
+        print(f"Candidates assessed   : {report.n_assessments}")
+        print(f"\n── Evidence Coverage (BM25) ──")
+        print(f"Must-have evaluations : {report.must_have_evals_total}")
+        print(f"With non-empty evidence: {report.must_have_evals_with_evidence}")
+        print(f"Coverage rate         : {report.evidence_coverage_rate:.1%}")
+        print(f"\n── Jev Assessment Distribution ──")
+        for strength in ("strong", "adequate", "weak", "none"):
+            frac = report.evidence_strength_distribution.get(strength, 0.0)
+            print(f"  {strength:<10}: {frac:.1%}")
+        print(f"\n── Internal Consistency ──")
+        print(f"Coherence violations  : {len(report.coherence_violations)} ({report.coherence_violation_rate:.1%})")
+        print(f"Qualified flag errors : {report.qualified_flag_errors}")
+        if report.coherence_violations:
+            for v in report.coherence_violations[:5]:
+                print(f"  [{v.jd_id}/{v.candidate_id}] {v.requirement}: {v.issue}")
+            if len(report.coherence_violations) > 5:
+                print(f"  ... and {len(report.coherence_violations) - 5} more")
+        print(f"\n── Qualification Funnel ──")
+        print(f"Mean qualification rate: {report.mean_qualification_rate:.1%}")
+        if report.zero_qualified_jds:
+            print(f"WARNING — 0% qualified : {', '.join(report.zero_qualified_jds)}")
+        if report.fully_qualified_jds:
+            print(f"WARNING — 100% qualified: {', '.join(report.fully_qualified_jds)}")
+        for jd_id, rate in sorted(report.qualification_rate_per_jd.items()):
+            print(f"  {jd_id:<40}: {rate:.1%}")
+        print(f"\n── Top Disqualifying Requirements ──")
+        if report.most_common_disqualifiers:
+            for req, count in report.most_common_disqualifiers[:10]:
+                print(f"  {count:4d}x  {req}")
+        else:
+            print("  (none — all candidates qualified on all must-haves)")
+        print(sep)
+
+        report_path = cfg.cache_dir / "audit_report.json"
+        report_path.write_text(
+            _json.dumps({
+                "n_jds": report.n_jds,
+                "n_assessments": report.n_assessments,
+                "evidence_coverage_rate": report.evidence_coverage_rate,
+                "must_have_evals_total": report.must_have_evals_total,
+                "must_have_evals_with_evidence": report.must_have_evals_with_evidence,
+                "evidence_strength_distribution": report.evidence_strength_distribution,
+                "coherence_violation_rate": report.coherence_violation_rate,
+                "coherence_violations": [
+                    {"jd_id": v.jd_id, "candidate_id": v.candidate_id,
+                     "requirement": v.requirement, "issue": v.issue}
+                    for v in report.coherence_violations
+                ],
+                "qualified_flag_errors": report.qualified_flag_errors,
+                "mean_qualification_rate": report.mean_qualification_rate,
+                "qualification_rate_per_jd": report.qualification_rate_per_jd,
+                "fully_qualified_jds": report.fully_qualified_jds,
+                "zero_qualified_jds": report.zero_qualified_jds,
+                "most_common_disqualifiers": report.most_common_disqualifiers,
             }, indent=2),
             encoding="utf-8",
         )

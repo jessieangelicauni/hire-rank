@@ -92,8 +92,10 @@ def evaluate_jd_stability(
     min_delta_u: float = 0.01,
     pl_prior_variance: float = 1.0,
 ) -> tuple[float, float]:
-    run_a = rank_active_listwise(jd, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance)
-    run_b = rank_active_listwise(jd, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance)
+    kwargs = dict(llm=llm, subset_size=subset_size, max_iterations=max_iterations,
+                  min_delta_u=min_delta_u, pl_prior_variance=pl_prior_variance)
+    run_a = rank_active_listwise(jd, assessments, **kwargs)
+    run_b = rank_active_listwise(jd, assessments, **kwargs)
     return kendall_tau(run_a, run_b), rank_biased_overlap(run_a, run_b)
 
 
