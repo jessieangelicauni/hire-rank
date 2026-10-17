@@ -149,3 +149,60 @@ def test_filter_assessable_candidates_excludes_failed_parse():
     assert len(result) == 1
     assert result[0].id == "cand-1"
 
+
+def test_build_jev_questions_keys_for_minimal_profile():
+    """Question keys must follow the documented naming scheme."""
+    from candidate_ranking.scoring.llm_assessment import _build_jev_questions
+    from candidate_ranking.models import JobProfile
+    profile = JobProfile(
+        job_description_id="jd-1", generated_by_model="m",
+        must_have_skills=["Python", "PostgreSQL"],
+        nice_to_have_skills=["Docker"],
+    )
+    questions = _build_jev_questions(profile)
+    keys = [q.key for q in questions]
+    # Skill evidence
+    assert "must_have_0_evidence_strength" in keys
+    assert "must_have_1_evidence_strength" in keys
+    assert "nice_to_have_0_evidence_strength" in keys
+    # No edu/seniority/other when not set
+    assert "education_requirement" not in keys
+    assert "seniority_requirement" not in keys
+    # Fixed questions always present
+    assert "total_relevant_years" in keys
+    assert "career_direction" in keys
+    assert "has_employment_gap" in keys
+    assert "employment_gap_severity" in keys
+    assert "employment_gap_duration_months" in keys
+    # Total count: 2 must + 1 nih + 1 total_years + 5 career + 15 red_flags = 24
+    assert len(questions) == 24
+
+
+def test_build_jev_questions_includes_edu_seniority_other_when_set():
+    from candidate_ranking.scoring.llm_assessment import _build_jev_questions
+    from candidate_ranking.models import JobProfile
+    profile = JobProfile(
+        job_description_id="jd-1", generated_by_model="m",
+        must_have_skills=["Python"],
+        education_requirement="Bachelor's degree in Computer Science or related",
+        seniority_requirement="Senior (5+ years)",
+        other_requirements=["Must have valid driver's license", "Willing to relocate"],
+    )
+    questions = _build_jev_questions(profile)
+    keys = [q.key for q in questions]
+    assert "education_requirement" in keys
+    assert "seniority_requirement" in keys
+    assert "other_req_0" in keys
+    assert "other_req_1" in keys
+    # 1 must + 1 edu + 1 seniority + 2 other + 1 total_years + 5 career + 15 red_flags = 26
+    assert len(questions) == 26
+
+
+def test_score_to_int_interpolates_correctly():
+    from candidate_ranking.scoring.llm_assessment import _score_to_int
+    ticks = [0, 3, 6, 10, 15, 20]
+    assert _score_to_int(0.0, ticks) == 0
+    assert _score_to_int(5.0, ticks) == 20
+    assert _score_to_int(2.0, ticks) == 6
+    assert _score_to_int(2.5, ticks) == 8   # midpoint between 6 and 10
+
