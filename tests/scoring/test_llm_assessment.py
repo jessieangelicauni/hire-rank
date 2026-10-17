@@ -171,11 +171,8 @@ def test_build_jev_questions_keys_for_minimal_profile():
     # Fixed questions always present
     assert "total_relevant_years" in keys
     assert "career_direction" in keys
-    assert "has_employment_gap" in keys
-    assert "employment_gap_severity" in keys
-    assert "employment_gap_duration_months" in keys
-    # Total count: 2 must + 1 nih + 1 total_years + 5 career + 15 red_flags = 24
-    assert len(questions) == 24
+    # Total count: 2 must + 1 nih + 1 total_years + 5 career = 9
+    assert len(questions) == 9
 
 
 def test_build_jev_questions_includes_edu_seniority_other_when_set():
@@ -194,8 +191,8 @@ def test_build_jev_questions_includes_edu_seniority_other_when_set():
     assert "seniority_requirement" in keys
     assert "other_req_0" in keys
     assert "other_req_1" in keys
-    # 1 must + 1 edu + 1 seniority + 2 other + 1 total_years + 5 career + 15 red_flags = 26
-    assert len(questions) == 26
+    # 1 must + 1 edu + 1 seniority + 2 other + 1 total_years + 5 career = 11
+    assert len(questions) == 11
 
 
 def test_score_to_int_interpolates_correctly():

@@ -2,7 +2,7 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 from candidate_ranking.models import (
-    Assessment, CareerTrajectory, JobProfile, RedFlag, RequirementEvaluation,
+    Assessment, CareerTrajectory, JobProfile, RequirementEvaluation,
 )
 
 def _req_eval(verdict="MET") -> RequirementEvaluation:
@@ -52,10 +52,6 @@ def test_career_trajectory_roundtrips():
     t = _trajectory()
     assert t.direction == "ascending"
     assert t.has_multinational_experience is False
-
-def test_red_flag_duration_optional():
-    rf = RedFlag(type="employment_gap", detail="6-month gap", severity="minor")
-    assert rf.duration_months is None
 
 def test_job_profile_defaults_empty():
     jp = JobProfile(job_description_id="jd-1", generated_by_model="qwen2.5:14b")

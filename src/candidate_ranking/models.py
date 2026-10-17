@@ -57,13 +57,6 @@ class CareerTrajectory(BaseModel):
     multinational_evidence: str | None = None
 
 
-class RedFlag(BaseModel):
-    type: Literal["employment_gap", "skill_mismatch", "regression", "job_hopping", "other"]
-    detail: str
-    duration_months: int | None = None
-    severity: Literal["minor", "moderate", "major"]
-
-
 class Assessment(BaseModel):
     job_description_id: str = Field(min_length=1)
     candidate_id: str = Field(min_length=1)
@@ -74,7 +67,6 @@ class Assessment(BaseModel):
     career_trajectory: CareerTrajectory | None = None
     strongest_achievements: list[str] = Field(default_factory=list)
     notable_signals: str | None = None
-    red_flags: list[RedFlag] = Field(default_factory=list)
     qualified: bool = False
     disqualification_reason: str | None = None
     education_evaluation: Literal["meets", "equivalent_experience", "does_not_meet"] | None = None

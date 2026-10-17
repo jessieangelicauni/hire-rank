@@ -14,7 +14,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from candidate_ranking.utils import invoke_and_validate
 from candidate_ranking.models import (
-    Assessment, Candidate, CareerTrajectory, JobDescription, JobProfile, RedFlag, RequirementEvaluation,
+    Assessment, Candidate, CareerTrajectory, JobDescription, JobProfile, RequirementEvaluation,
 )
 from candidate_ranking.scoring.jev_client import JEV_MODEL_ID, JevClientError, JevQuestion
 logger = logging.getLogger(__name__)
@@ -22,10 +22,6 @@ logger = logging.getLogger(__name__)
 _cache_lock = threading.Lock()
 
 # ── Jev question builder ──────────────────────────────────────────────────────
-
-_RED_FLAG_TYPES: list[str] = [
-    "employment_gap", "skill_mismatch", "regression", "job_hopping", "other",
-]
 
 _EVIDENCE_TO_VERDICT: dict[str, str] = {
     "strong": "MET",
@@ -38,7 +34,6 @@ _EVIDENCE_TO_VERDICT: dict[str, str] = {
 _YEARS_TICKS = [0, 3, 6, 10, 15, 20]
 _MONTHS_TICKS = [6, 12, 24, 36, 48, 72]
 _RECENT_MONTHS_TICKS = [1, 6, 12, 24, 36, 60]
-_FLAG_MONTHS_TICKS = [0, 3, 6, 12, 24, 36]
 
 _SKILL_EVIDENCE_CRITERIA: dict[str, str] = {
     "strong": (
@@ -62,107 +57,6 @@ _SKILL_EVIDENCE_CRITERIA: dict[str, str] = {
     ),
 }
 
-
-_FLAG_INSTRUCTIONS: dict[str, dict[str, str]] = {
-    "employment_gap": {
-        "has": (
-            "Is there an unexplained employment gap of 3+ months in this CV?\n"
-            "Count periods between end-of-role and start-of-next-role that are not explained "
-            "by education, parental leave, caregiving, health, freelancing, or founding a company.\n"
-            "Explicitly stated reasons are NOT gaps."
-        ),
-        "severity": (
-            "How significant is the employment gap concern?\n"
-            "  MINOR    — single gap of 3–6 months, or clearly transitional\n"
-            "  MODERATE — gap of 6–18 months, or multiple shorter unexplained gaps totaling 6+ months\n"
-            "  MAJOR    — gap of 18+ months, or multiple large gaps suggesting long-term disengagement"
-        ),
-        "duration": (
-            "What is the total duration (in months) of unexplained employment gaps? "
-            "Sum all gaps ≥3 months that lack explanation."
-        ),
-    },
-    "skill_mismatch": {
-        "has": (
-            "Does this candidate's recent experience (last 3–5 years) show a significant "
-            "domain mismatch with the role's core requirements?\n"
-            "A mismatch means the background is predominantly in a DIFFERENT domain, language stack, "
-            "or job function — not merely missing a few skills."
-        ),
-        "severity": (
-            "How severe is the domain mismatch?\n"
-            "  MINOR    — adjacent domain, 1 tool generation away; typical upskilling expected\n"
-            "  MODERATE — different domain but transferable core skills; requires targeted upskilling\n"
-            "  MAJOR    — fundamentally different field; very little overlap with requirements"
-        ),
-        "duration": (
-            "For how many months has the candidate been in a mismatched domain? "
-            "Count from when their career diverged from this role's domain."
-        ),
-    },
-    "regression": {
-        "has": (
-            "Has the candidate taken a step back in seniority, scope, or responsibility "
-            "without a clear strategic reason (e.g. co-founding a startup, relocating, caregiving)?"
-        ),
-        "severity": (
-            "How significant is the career regression?\n"
-            "  MINOR    — slight step back in one dimension (title or scope, not both)\n"
-            "  MODERATE — clear step back in both title and scope\n"
-            "  MAJOR    — significant drop in seniority or from leadership to individual contributor"
-        ),
-        "duration": "How many months has the candidate been in the regressed position?",
-    },
-    "job_hopping": {
-        "has": (
-            "Does this candidate show a pattern of job hopping — multiple short tenures (<18 months) "
-            "across consecutive non-contract roles, suggesting a retention risk?"
-        ),
-        "severity": (
-            "How concerning is the job hopping pattern?\n"
-            "  MINOR    — 2–3 short stints with longer tenures elsewhere; may be early career\n"
-            "  MODERATE — 3–4 consecutive short stints; raises retention questions\n"
-            "  MAJOR    — 5+ consecutive short stints with no apparent pattern justification"
-        ),
-        "duration": (
-            "Over how many months does the job hopping pattern span? "
-            "Count from the first short-tenure role to the most recent."
-        ),
-    },
-    "other": {
-        "has": (
-            "Is there any other red flag in this CV not covered by the specific categories above? "
-            "(e.g. unexplained credential inconsistency, suspicious date overlaps, "
-            "vague role descriptions suggesting possible embellishment, repeated industry exits)"
-        ),
-        "severity": (
-            "How significant is the other red flag?\n"
-            "  MINOR    — worth noting, unlikely to be decisive\n"
-            "  MODERATE — requires clarification in an interview\n"
-            "  MAJOR    — serious concern that could be disqualifying"
-        ),
-        "duration": (
-            "If duration-based, over how many months does this flag span? "
-            "Use 0 if not duration-based."
-        ),
-    },
-}
-
-_SEVERITY_CRITERIA: dict[str, str] = {
-    "minor": "Minor concern — worth noting but unlikely to be decisive",
-    "moderate": "Notable concern — requires clarification or monitoring",
-    "major": "Significant red flag — could be disqualifying",
-}
-
-_FLAG_DURATION_CRITERIA: list[str] = [
-    "0 months", "3 months", "6 months", "12 months", "24 months", "36+ months",
-]
-
-# Jev noul criteria keys are strings "true"/"false", not Python bools — Jev API requirement.
-_PRESENT_CRITERIA: dict[str, str] = {
-    "true": "Clear evidence of this flag is present in the CV",
-    "false": "No evidence of this flag, or all instances are clearly explained",
-}
 
 
 def _score_to_int(value: float, ticks: list[int]) -> int:
@@ -393,28 +287,6 @@ def _build_jev_questions(profile: JobProfile) -> list[JevQuestion]:
         },
     ))
 
-    # ── Red flags (5 types × 3 questions each) ────────────────────────────────
-    for flag_type in _RED_FLAG_TYPES:
-        instr = _FLAG_INSTRUCTIONS[flag_type]
-        questions.append(JevQuestion(
-            key=f"has_{flag_type}",
-            kind="noul",
-            instructions=instr["has"],
-            criteria=_PRESENT_CRITERIA,
-        ))
-        questions.append(JevQuestion(
-            key=f"{flag_type}_severity",
-            kind="choice",
-            instructions=instr["severity"],
-            criteria=_SEVERITY_CRITERIA,
-        ))
-        questions.append(JevQuestion(
-            key=f"{flag_type}_duration_months",
-            kind="score",
-            instructions=instr["duration"],
-            criteria=_FLAG_DURATION_CRITERIA,
-        ))
-
     return questions
 
 
@@ -426,16 +298,14 @@ FREE_TEXT_PROMPT = ChatPromptTemplate.from_messages([
         "You are a senior technical recruiter extracting evidence from a CV.\n\n"
         "Your task is purely EXTRACTION and SUMMARIZATION — do not make hiring judgments.\n"
         "Quote relevant CV text directly where possible. Be concise and specific.\n\n"
-        "For skills marked as active red flags, provide a brief factual description "
-        "of what the CV shows. For career trajectory evidence, quote the most relevant "
-        "role transitions. If a field has no applicable content, leave it empty or null.",
+        "For career trajectory evidence, quote the most relevant role transitions. "
+        "If a field has no applicable content, leave it empty or null.",
     ),
     (
         "human",
         "ROLE: {jd_title}\n\n"
         "MUST-HAVE SKILLS: {must_have_skills}\n"
         "NICE-TO-HAVE SKILLS: {nice_to_have_skills}\n\n"
-        "ACTIVE RED FLAGS TO DESCRIBE: {active_flags}\n\n"
         "CV:\n{cv_text}",
     ),
 ])
@@ -446,17 +316,11 @@ class _SkillEvidenceItem(BaseModel):
     evidence: str = Field(min_length=1)
 
 
-class _RedFlagDetailItem(BaseModel):
-    type: str
-    detail: str = Field(min_length=1)
-
-
 class _FreeTextOutput(BaseModel):
     must_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
     nice_to_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
     strongest_achievements: list[str] = Field(default_factory=list)
     notable_signals: str | None = None
-    red_flag_details: list[_RedFlagDetailItem] = Field(default_factory=list)
     career_trajectory_evidence: str = ""
     multinational_evidence: str | None = None
 
@@ -494,9 +358,6 @@ QUALIFICATION_GATE_PROMPT = ChatPromptTemplate.from_messages(
             "  Compute total_relevant_years by summing durations of roles where the candidate used\n"
             "  skills relevant to this JD. Use CV dates directly.\n"
             "  years_demonstrated per requirement = years that skill appears in active use.\n\n"
-            "RED_FLAG RULE:\n"
-            "  type must be exactly one of: EMPLOYMENT_GAP, SKILL_MISMATCH, REGRESSION, JOB_HOPPING, OTHER.\n"
-            "  severity must be exactly one of: MINOR, MODERATE, MAJOR.\n\n"
             "Evaluate every MUST_HAVE requirement first. If candidate qualifies, also evaluate\n"
             "NICE_TO_HAVE requirements and fill all remaining fields.",
         ),
@@ -530,13 +391,6 @@ class _CareerTrajectoryOutput(BaseModel):
     multinational_evidence: str | None = None
 
 
-class _RedFlagOutput(BaseModel):
-    type: Literal["employment_gap", "skill_mismatch", "regression", "job_hopping", "other"]
-    detail: str
-    duration_months: int | None = None
-    severity: Literal["minor", "moderate", "major"]
-
-
 class _QualificationOutput(BaseModel):
     must_have_evaluations: list[_RequirementEvaluationOutput]
     nice_to_have_evaluations: list[_RequirementEvaluationOutput] = Field(default_factory=list)
@@ -544,7 +398,6 @@ class _QualificationOutput(BaseModel):
     career_trajectory: _CareerTrajectoryOutput | None = None
     strongest_achievements: list[str] = Field(default_factory=list)
     notable_signals: str | None = None
-    red_flags: list[_RedFlagOutput] = Field(default_factory=list)
     qualified: bool
     disqualification_reason: str | None = None
 
@@ -597,15 +450,6 @@ def _output_to_assessment(
             has_multinational_experience=t.has_multinational_experience,
             multinational_evidence=t.multinational_evidence,
         )
-    red_flags = [
-        RedFlag(
-            type=rf.type,
-            detail=rf.detail,
-            duration_months=rf.duration_months,
-            severity=rf.severity,
-        )
-        for rf in output.red_flags
-    ]
     return Assessment(
         job_description_id=jd.id,
         candidate_id=candidate.id,
@@ -616,7 +460,6 @@ def _output_to_assessment(
         career_trajectory=traj,
         strongest_achievements=output.strongest_achievements,
         notable_signals=output.notable_signals,
-        red_flags=red_flags,
         qualified=output.qualified,
         disqualification_reason=output.disqualification_reason,
     )
