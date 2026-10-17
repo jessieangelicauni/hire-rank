@@ -193,3 +193,47 @@ def test_generate_job_profile_drops_adaptive_requirement_missing_from_rubric(cap
         result = generate_job_profile(_jp(), chain, rubric_chain, "qwen2.5:14b")
     assert result.adaptive_requirements == []
     assert "no adaptive-requirement rubric returned" in caplog.text
+
+
+def test_generate_job_profile_falls_back_to_generic_rubric_when_rubric_chain_fails(caplog):
+    """A rubric-call hiccup must not discard the whole JP — Call 1 already
+    succeeded, so degrade every field to its generic fallback instead of
+    raising, mirroring the per-field fallback philosophy below it."""
+    chain = _mock_chain(must_have_skills=["Python"], nice_to_have_skills=[])
+    rubric_chain = MagicMock()
+    rubric_chain.invoke.side_effect = ValueError("rubric model timed out")
+    with caplog.at_level("WARNING"):
+        result = generate_job_profile(_jp(), chain, rubric_chain, "qwen2.5:14b")
+    assert isinstance(result, JobProfile)
+    assert result.must_have_skills == ["Python"]
+    assert len(result.skill_criteria) == 1
+    assert result.skill_criteria[0].skill == "Python"
+    assert result.total_years_criteria is not None
+    assert "Adaptive rubric generation for" in caplog.text
+
+
+def test_generate_job_profile_skill_criteria_matches_despite_whitespace_case_drift():
+    """The rubric echoes the skill name back verbatim in theory, but minor
+    whitespace/case drift from the model must not fall through to the
+    generic fallback when a real match exists."""
+    chain = _mock_chain(must_have_skills=["PostgreSQL"], nice_to_have_skills=[])
+    rubric_chain = _mock_rubric_chain(skill_criteria=[
+        _SkillCriteriaOutput(skill=" postgresql ", instructions="PG instructions",
+                              strong="S", adequate="A", weak="W", none="N"),
+    ])
+    result = generate_job_profile(_jp(), chain, rubric_chain, "qwen2.5:14b")
+    assert result.skill_criteria[0].instructions == "PG instructions"
+    assert result.skill_criteria[0].skill == "PostgreSQL"
+
+
+def test_generate_job_profile_adaptive_requirement_matches_despite_whitespace_case_drift():
+    chain = _mock_chain(education_requirement="Bachelor's in CS")
+    rubric_chain = _mock_rubric_chain(adaptive_requirements=[
+        _AdaptiveRequirementOutput(source="education", requirement=" Bachelor's In CS  ",
+                                    criteria_meets="has CS degree", criteria_partially_meets="related degree",
+                                    criteria_does_not_meet="no degree"),
+    ])
+    result = generate_job_profile(_jp(), chain, rubric_chain, "qwen2.5:14b")
+    assert len(result.adaptive_requirements) == 1
+    assert result.adaptive_requirements[0].criteria_meets == "has CS degree"
+    assert result.adaptive_requirements[0].requirement == "Bachelor's in CS"

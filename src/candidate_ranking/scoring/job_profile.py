@@ -174,10 +174,13 @@ def _finalize_skill_criteria(
     rubric_skills: list[_SkillCriteriaOutput],
     jp_id: str,
 ) -> list[SkillCriteria]:
-    by_name = {s.skill: s for s in rubric_skills}
+    # Keyed on a normalized form — the model is told to echo the skill name
+    # back verbatim, but whitespace/case drift shouldn't drop a real match
+    # into the fallback path.
+    by_name = {s.skill.strip().casefold(): s for s in rubric_skills}
     result = []
     for skill in skills:
-        match = by_name.get(skill)
+        match = by_name.get(skill.strip().casefold())
         if match is None:
             logger.warning(
                 "Rubric generation for %s: no skill-criteria rubric returned for skill %r — "
@@ -215,10 +218,11 @@ def _finalize_adaptive_requirements(
         expected.append(("seniority", seniority_requirement))
     expected += [("other", req) for req in other_requirements]
 
-    by_key = {(r.source, r.requirement): r for r in rubric_requirements}
+    # Same normalized-key rationale as _finalize_skill_criteria above.
+    by_key = {(r.source, r.requirement.strip().casefold()): r for r in rubric_requirements}
     result = []
     for source, requirement in expected:
-        match = by_key.get((source, requirement))
+        match = by_key.get((source, requirement.strip().casefold()))
         if match is None:
             logger.warning(
                 "Rubric generation for %s: no adaptive-requirement rubric returned for %s "
@@ -274,7 +278,15 @@ def generate_job_profile(
             log_context=f"Adaptive rubric generation for {jp.id}",
         )
     except GenerationError as exc:
-        raise JobProfileGenerationError(str(exc)) from exc
+        # Call 1 already succeeded — a rubric hiccup shouldn't discard the
+        # whole JP (the same reasoning that motivates the per-skill/per-field
+        # fallbacks below). Degrade to an empty rubric; _finalize_* fills
+        # every skill/field in with its generic fallback.
+        logger.warning(
+            "Adaptive rubric generation for %s failed, falling back to generic rubric for every "
+            "field: %s", jp.id, exc,
+        )
+        rubric = _RubricOutput(reasoning="rubric generation failed")
 
     skill_criteria = _finalize_skill_criteria(must_have_skills + nice_to_have_skills, rubric.skill_criteria, jp.id)
     total_years_criteria = _finalize_total_years_criteria(rubric.total_years_criteria)
