@@ -65,8 +65,6 @@ class Assessment(BaseModel):
     nice_to_have_evaluations: list[RequirementEvaluation] = Field(default_factory=list)
     total_relevant_years: int = Field(ge=0, default=0)
     career_trajectory: CareerTrajectory | None = None
-    strongest_achievements: list[str] = Field(default_factory=list)
-    notable_signals: str | None = None
     qualified: bool = False
     disqualification_reason: str | None = None
     education_evaluation: Literal["meets", "equivalent_experience", "does_not_meet"] | None = None

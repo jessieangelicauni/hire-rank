@@ -18,7 +18,6 @@ def _render_evidence_for_ranking(candidate_ids: list[str], assessments: dict[str
         ) or "    (none)"
         met_nice = [ev for ev in a.nice_to_have_evaluations if ev.verdict in ("MET", "PARTIALLY_MET")]
         nice_text = ", ".join(f"{ev.requirement} [{ev.verdict}]" for ev in met_nice) or "(none)"
-        ach_text = "\n".join(f"    - {ach}" for ach in a.strongest_achievements) or "    (none)"
         traj = a.career_trajectory
         traj_text = (
             f"{traj.direction}, avg {traj.average_tenure_months}mo/role"
@@ -28,7 +27,6 @@ def _render_evidence_for_ranking(candidate_ids: list[str], assessments: dict[str
             f"{index}:\n"
             f"  Must-have evaluations:\n{must_text}\n"
             f"  Nice-to-have met: {nice_text}\n"
-            f"  Achievements:\n{ach_text}\n"
             f"  Trajectory: {traj_text} | Relevant years: {a.total_relevant_years}"
         )
     return "\n\n".join(blocks)

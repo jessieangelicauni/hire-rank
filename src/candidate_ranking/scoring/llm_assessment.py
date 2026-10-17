@@ -318,8 +318,6 @@ class _SkillEvidenceItem(BaseModel):
 class _FreeTextOutput(BaseModel):
     must_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
     nice_to_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
-    strongest_achievements: list[str] = Field(default_factory=list)
-    notable_signals: str | None = None
     career_trajectory_evidence: str = ""
     multinational_evidence: str | None = None
 
@@ -411,8 +409,6 @@ def _answers_to_assessment(
         nice_to_have_evaluations=nih_evals,
         total_relevant_years=total_years,
         career_trajectory=trajectory,
-        strongest_achievements=free_text.strongest_achievements,
-        notable_signals=free_text.notable_signals,
         qualified=qualified,
         disqualification_reason=disqualification_reason,
         education_evaluation=education_eval,

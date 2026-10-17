@@ -89,7 +89,6 @@ def _fake_free_text(profile: JobProfile):
             _SkillEvidenceItem(requirement=s, evidence=f"Evidence for {s}")
             for s in profile.nice_to_have_skills
         ],
-        strongest_achievements=["Led migration project"],
         career_trajectory_evidence="Promoted from junior to senior in 3 years",
     )
 
@@ -249,7 +248,6 @@ def test_free_text_output_model_validates():
     from candidate_ranking.scoring.llm_assessment import _FreeTextOutput, _SkillEvidenceItem
     out = _FreeTextOutput(
         must_have_evidence=[_SkillEvidenceItem(requirement="Python", evidence="Built FastAPI")],
-        strongest_achievements=["Led migration to microservices"],
     )
     assert out.must_have_evidence[0].requirement == "Python"
     assert out.career_trajectory_evidence == ""
