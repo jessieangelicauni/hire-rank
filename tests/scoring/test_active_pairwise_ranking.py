@@ -292,3 +292,20 @@ def test_rank_active_pairwise_uses_jev_pairwise_when_client_provided():
         result = rank_active_pairwise(_jp(), assessments, jev_client=jev, subset_size=2, max_iterations=5)
     mock_llm_rank.assert_not_called()
     assert set(result) == set(assessments)
+
+
+def test_active_ranking_prompt_has_no_career_trajectory_reference():
+    from candidate_ranking.scoring.active_pairwise_ranking import ACTIVE_RANKING_PROMPT
+    prompt_text = str(ACTIVE_RANKING_PROMPT)
+    assert "career trajectory" not in prompt_text.lower()
+
+
+def test_rank_pair_jev_instructions_have_no_career_trajectory_reference():
+    from candidate_ranking.scoring.jev_client import JevAnswer
+    from candidate_ranking.scoring.active_pairwise_ranking import _rank_pair_jev
+    jp = _jp()
+    jev = MagicMock()
+    jev.evaluate.return_value = [JevAnswer(key="stronger_fit", kind="choice", value="A", confidence=0.9)]
+    _rank_pair_jev(jp, ["a", "b"], {"a": _assessment("a"), "b": _assessment("b")}, jev)
+    sent_question = jev.evaluate.call_args[0][1][0]
+    assert "career trajectory" not in sent_question.instructions.lower()
