@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import hashlib
 import json
@@ -10,7 +10,8 @@ from pathlib import Path
 from pydantic import ValidationError
 
 from candidate_ranking.models import (
-    Assessment, Candidate, CareerTrajectory, JobProfile, RequirementEvaluation,
+    Assessment, Candidate, JobProfile, RequirementEvaluation, SkillCriteria, TotalYearsCriteria,
+    AdaptiveRequirementEvaluation,
 )
 from candidate_ranking.scoring.jev_client import JEV_MODEL_ID, JevClientError, JevQuestion
 logger = logging.getLogger(__name__)
@@ -18,8 +19,6 @@ logger = logging.getLogger(__name__)
 _cache_lock = threading.Lock()
 
 _YEARS_TICKS = [0, 1, 2, 3, 4, 5]
-_MONTHS_TICKS = [6, 12, 24, 36, 48, 72]
-_RECENT_MONTHS_TICKS = [1, 6, 12, 24, 36, 60]
 
 _SKILL_EVIDENCE_CRITERIA: dict[str, str] = {
     "strong": (
@@ -43,6 +42,52 @@ _SKILL_EVIDENCE_CRITERIA: dict[str, str] = {
     ),
 }
 
+_GENERIC_SKILL_INSTRUCTION_TEMPLATE = (
+    "Role context: {jp_role}.\n"
+    "Assess the evidence strength for the skill '{skill}' in this CV.\n\n"
+    "EVIDENCE RULES (apply strictly and consistently across all roles and industries):\n"
+    "  STRONG   — demonstrated in work experience with a specific system, project, or measurable outcome\n"
+    "  ADEQUATE — mentioned in an experience context but without a named project or specific system\n"
+    "  WEAK     — listed in Skills/Summary/Certifications only, never shown in any experience\n"
+    "  NONE     — no mention anywhere; check ALL sections before answering NONE; "
+    "consider implied skills (Django->Python, Spring Boot->Java, React->JavaScript)"
+)
+
+_TOTAL_YEARS_FALLBACK_INSTRUCTIONS = (
+    "How many total years of RELEVANT experience does this candidate have for this role?\n\n"
+    "COUNT: Only years where the candidate actively used skills directly applicable to this role. "
+    "Exclude career breaks and education years. Parallel full-time roles count separately only if "
+    "genuinely concurrent.\n\n"
+    "CALIBRATION:\n"
+    " 0 years  — student, bootcamp grad, or career changer with no relevant work history\n"
+    " 1 year   — junior, first year in the field\n"
+    " 2 years  — early-mid, building independence on domain tasks\n"
+    " 3 years  — solid, works independently on most domain tasks\n"
+    " 4 years  — experienced, has seen multiple project cycles\n"
+    " 5+ years — very experienced, likely has led teams or major projects"
+)
+
+
+def fallback_skill_criteria(jp_id: str, skill: str) -> SkillCriteria:
+    """Generic, role-agnostic skill-evidence rubric — used when the adaptive rubric
+    (scoring/job_profile.py Call 2) doesn't have an entry for this skill, and as the
+    defensive fallback here when a JobProfile has no skill_criteria at all (e.g. one
+    cached before this feature existed)."""
+    return SkillCriteria(
+        skill=skill,
+        instructions=_GENERIC_SKILL_INSTRUCTION_TEMPLATE.format(jp_role=jp_id, skill=skill),
+        strong=_SKILL_EVIDENCE_CRITERIA["strong"],
+        adequate=_SKILL_EVIDENCE_CRITERIA["adequate"],
+        weak=_SKILL_EVIDENCE_CRITERIA["weak"],
+        none=_SKILL_EVIDENCE_CRITERIA["none"],
+    )
+
+
+def fallback_total_years_criteria() -> TotalYearsCriteria:
+    """Generic, role-agnostic years-of-experience calibration — same fallback role as
+    fallback_skill_criteria, for total_years_criteria."""
+    return TotalYearsCriteria(instructions=_TOTAL_YEARS_FALLBACK_INSTRUCTIONS)
+
 
 def _score_to_int(value: float, ticks: list[int]) -> int:
     n = len(ticks) - 1
@@ -56,145 +101,55 @@ def _score_to_int(value: float, ticks: list[int]) -> int:
 def _build_jev_questions(jp: JobProfile) -> list[JevQuestion]:
     questions: list[JevQuestion] = []
 
-    skill_instruction = (
-        "Role context: {jp_role}.\n"
-        "Assess the evidence strength for the skill '{skill}' in this CV.\n\n"
-        "EVIDENCE RULES (apply strictly and consistently across all roles and industries):\n"
-        "  STRONG   — demonstrated in work experience with a specific system, project, or measurable outcome\n"
-        "  ADEQUATE — mentioned in an experience context but without a named project or specific system\n"
-        "  WEAK     — listed in Skills/Summary/Certifications only, never shown in any experience\n"
-        "  NONE     — no mention anywhere; check ALL sections before answering NONE; "
-        "consider implied skills (Django->Python, Spring Boot->Java, React->JavaScript)"
-    )
-    for i, skill in enumerate(jp.must_have_skills):
-        questions.append(JevQuestion(
-            key=f"must_have_{i}_evidence_strength",
-            kind="choice",
-            instructions=skill_instruction.format(jp_role=jp.id, skill=skill),
-            criteria=_SKILL_EVIDENCE_CRITERIA,
-        ))
-    for i, skill in enumerate(jp.nice_to_have_skills):
-        questions.append(JevQuestion(
-            key=f"nice_to_have_{i}_evidence_strength",
-            kind="choice",
-            instructions=skill_instruction.format(jp_role=jp.id, skill=skill),
-            criteria=_SKILL_EVIDENCE_CRITERIA,
-        ))
+    criteria_by_skill = {c.skill: c for c in jp.skill_criteria}
 
+    def _skill_question(key: str, skill: str) -> JevQuestion:
+        criteria = criteria_by_skill.get(skill)
+        if criteria is None:
+            logger.warning(
+                "JobProfile %s: no skill_criteria entry for %r — using generic fallback", jp.id, skill
+            )
+            criteria = fallback_skill_criteria(jp.id, skill)
+        return JevQuestion(
+            key=key,
+            kind="choice",
+            instructions=criteria.instructions,
+            criteria={
+                "strong": criteria.strong, "adequate": criteria.adequate,
+                "weak": criteria.weak, "none": criteria.none,
+            },
+        )
+
+    for i, skill in enumerate(jp.must_have_skills):
+        questions.append(_skill_question(f"must_have_{i}_evidence_strength", skill))
+    for i, skill in enumerate(jp.nice_to_have_skills):
+        questions.append(_skill_question(f"nice_to_have_{i}_evidence_strength", skill))
+
+    years_criteria = jp.total_years_criteria
+    if years_criteria is None:
+        logger.warning("JobProfile %s: no total_years_criteria — using generic fallback", jp.id)
+        years_criteria = fallback_total_years_criteria()
     questions.append(JevQuestion(
         key="total_relevant_years",
         kind="score",
-        instructions=(
-            "How many total years of RELEVANT experience does this candidate have for this role?\n\n"
-            "COUNT: Only years where the candidate actively used skills directly applicable to this role. "
-            "Exclude career breaks and education years. Parallel full-time roles count separately only if "
-            "genuinely concurrent.\n\n"
-            "CALIBRATION:\n"
-            " 0 years  — student, bootcamp grad, or career changer with no relevant work history\n"
-            " 1 year   — junior, first year in the field\n"
-            " 2 years  — early-mid, building independence on domain tasks\n"
-            " 3 years  — solid, works independently on most domain tasks\n"
-            " 4 years  — experienced, has seen multiple project cycles\n"
-            " 5+ years — very experienced, likely has led teams or major projects"
-        ),
+        instructions=years_criteria.instructions,
         criteria=["0 years", "1 year", "2 years", "3 years", "4 years", "5+ years"],
     ))
 
-    questions.append(JevQuestion(
-        key="career_direction",
-        kind="choice",
-        instructions=(
-            "Based on the progression of roles — titles, responsibilities, scope, and team size "
-            "— what is this candidate's career trajectory? Focus on the last 5 years if the career is longer."
-        ),
-        criteria={
-            "ascending": (
-                "Clear upward progression: increasing scope, seniority, team size, or "
-                "strategic responsibility over time"
+    for i, req in enumerate(jp.adaptive_requirements):
+        questions.append(JevQuestion(
+            key=f"adaptive_{i}_match_level",
+            kind="choice",
+            instructions=(
+                f"Requirement ({req.source}): {req.requirement}\n\n"
+                "Assess whether this candidate meets this requirement based on their CV."
             ),
-            "lateral": (
-                "Movement across domains or roles without a clear upward trajectory — "
-                "specialization change, industry change, or horizontal moves at the same level"
-            ),
-            "descending": (
-                "Move to lower seniority, smaller scope, or smaller organization without a "
-                "clear strategic reason (e.g. demotion, stepping down from leadership)"
-            ),
-            "unclear": (
-                "Insufficient information, or trajectory is mixed and inconsistent"
-            ),
-        },
-    ))
-    questions.append(JevQuestion(
-        key="tenure_pattern",
-        kind="choice",
-        instructions=(
-            "Based on the duration of each role listed, what is the candidate's tenure pattern?\n"
-            "Note: mark VARIABLE (not CONCERNING) if short stints are clearly contract, "
-            "freelance, or project-based."
-        ),
-        criteria={
-            "stable": "Most roles lasted 2+ years; average tenure suggests reliable commitment",
-            "variable": (
-                "Mix of short and long tenures — some stints under 18 months alongside longer ones; "
-                "may be contextually acceptable (contracts, startups, project-based work)"
-            ),
-            "concerning": (
-                "Predominantly short tenures (<18 months) across multiple consecutive roles "
-                "without context suggesting contract or project-based work"
-            ),
-        },
-    ))
-    questions.append(JevQuestion(
-        key="average_tenure_months",
-        kind="score",
-        instructions=(
-            "What is the average length of each role this candidate has held (in months)?\n"
-            "Count each distinct role/employer as one unit. "
-            "Exclude the current role if it started less than 6 months ago.\n\n"
-            "CALIBRATION:\n"
-            "  6 months  — very short average, mostly <6 month stints\n"
-            " 12 months  — short, mostly ~1 year roles\n"
-            " 24 months  — typical, most roles ~2 years\n"
-            " 36 months  — good average, most roles ~3 years\n"
-            " 48 months  — solid long-tenured professional\n"
-            " 72+ months — rare, typically senior specialists"
-        ),
-        criteria=["6 months", "12 months", "24 months", "36 months", "48 months", "72+ months"],
-    ))
-    questions.append(JevQuestion(
-        key="most_recent_role_duration_months",
-        kind="score",
-        instructions=(
-            "How long has the candidate been in their MOST RECENT role (in months)?\n"
-            "If still employed: count from start date to today (approximately).\n"
-            "A very recent start (1-3 months) is normal for active job seekers.\n\n"
-            "CALIBRATION:\n"
-            " 1 month  — just started or left after a brief stint\n"
-            " 6 months — early stage\n"
-            "12 months — one year in\n"
-            "24 months — meaningfully invested\n"
-            "36 months — owns significant scope\n"
-            "60+ months — deeply established"
-        ),
-        criteria=["1 month", "6 months", "12 months", "24 months", "36 months", "60+ months"],
-    ))
-    questions.append(JevQuestion(
-        key="has_multinational_experience",
-        kind="noul",
-        instructions=(
-            "Has this candidate worked internationally or for multinational organizations?\n"
-            "Check: company names and nationalities, job locations, project scopes, "
-            "mentions of international clients or offices, remote work for foreign companies."
-        ),
-        criteria={
-            "true": (
-                "Has worked in more than one country, remotely for a foreign company, or held "
-                "roles explicitly spanning multiple international markets"
-            ),
-            "false": "All experience appears to be within a single country, for domestic companies",
-        },
-    ))
+            criteria={
+                "meets": req.criteria_meets,
+                "partially_meets": req.criteria_partially_meets,
+                "does_not_meet": req.criteria_does_not_meet,
+            },
+        ))
 
     return questions
 
@@ -232,20 +187,22 @@ def _answers_to_assessment(
 
     must_have_evals = []
     for i, skill in enumerate(jp.must_have_skills):
-        es = by_key[f"must_have_{i}_evidence_strength"].value
+        answer = by_key[f"must_have_{i}_evidence_strength"]
         must_have_evals.append(RequirementEvaluation(
             requirement=skill,
             evidence=_extract_bm25_evidence(cv, skill),
-            evidence_strength=es,
+            evidence_strength=answer.value,
+            confidence=answer.confidence,
         ))
 
     nih_evals = []
     for i, skill in enumerate(jp.nice_to_have_skills):
-        es = by_key[f"nice_to_have_{i}_evidence_strength"].value
+        answer = by_key[f"nice_to_have_{i}_evidence_strength"]
         nih_evals.append(RequirementEvaluation(
             requirement=skill,
             evidence=_extract_bm25_evidence(cv, skill),
-            evidence_strength=es,
+            evidence_strength=answer.value,
+            confidence=answer.confidence,
         ))
 
     qualified = all(ev.evidence_strength != "none" for ev in must_have_evals)
@@ -255,17 +212,17 @@ def _answers_to_assessment(
     )
 
     total_years = _score_to_int(by_key["total_relevant_years"].value, _YEARS_TICKS)
-    avg_tenure = _score_to_int(by_key["average_tenure_months"].value, _MONTHS_TICKS)
-    recent_tenure = _score_to_int(
-        by_key["most_recent_role_duration_months"].value, _RECENT_MONTHS_TICKS
-    )
-    trajectory = CareerTrajectory(
-        direction=by_key["career_direction"].value,
-        tenure_pattern=by_key["tenure_pattern"].value,
-        average_tenure_months=avg_tenure,
-        most_recent_role_duration_months=recent_tenure,
-        has_multinational_experience=bool(by_key["has_multinational_experience"].value),
-    )
+
+    adaptive_evals = []
+    for i, req in enumerate(jp.adaptive_requirements):
+        answer = by_key[f"adaptive_{i}_match_level"]
+        adaptive_evals.append(AdaptiveRequirementEvaluation(
+            source=req.source,
+            requirement=req.requirement,
+            evidence=_extract_bm25_evidence(cv, req.requirement),
+            match_level=answer.value,
+            confidence=answer.confidence,
+        ))
 
     return Assessment(
         job_profile_id=jp.id,
@@ -274,7 +231,7 @@ def _answers_to_assessment(
         must_have_evaluations=must_have_evals,
         nice_to_have_evaluations=nih_evals,
         total_relevant_years=total_years,
-        career_trajectory=trajectory,
+        adaptive_requirement_evaluations=adaptive_evals,
         qualified=qualified,
         disqualification_reason=disqualification_reason,
     )

@@ -59,14 +59,7 @@ def _fake_answers(profile: JobProfile, must_have_strength: str = "strong") -> li
         answers.append(JevAnswer(key=f"nice_to_have_{i}_evidence_strength", kind="choice",
                                  value="adequate", confidence=0.7))
 
-    answers += [
-        JevAnswer(key="total_relevant_years", kind="score", value=2.0, confidence=0.8),
-        JevAnswer(key="career_direction", kind="choice", value="ascending", confidence=0.8),
-        JevAnswer(key="tenure_pattern", kind="choice", value="stable", confidence=0.8),
-        JevAnswer(key="average_tenure_months", kind="score", value=2.0, confidence=0.8),
-        JevAnswer(key="most_recent_role_duration_months", kind="score", value=2.0, confidence=0.8),
-        JevAnswer(key="has_multinational_experience", kind="noul", value=False, confidence=0.8),
-    ]
+    answers.append(JevAnswer(key="total_relevant_years", kind="score", value=2.0, confidence=0.8))
     return answers
 
 
@@ -178,9 +171,9 @@ def test_build_jev_questions_keys_for_minimal_profile():
     assert "education_requirement" not in keys
     assert "seniority_requirement" not in keys
     assert "total_relevant_years" in keys
-    assert "career_direction" in keys
-    # 2 must + 1 nih + 1 total_years + 5 career = 9
-    assert len(questions) == 9
+    assert "career_direction" not in keys
+    # 2 must + 1 nih + 1 total_years = 4 (no adaptive_requirements on this minimal profile)
+    assert len(questions) == 4
 
 
 
@@ -238,3 +231,106 @@ def test_bm25_evidence_splits_on_pipe_delimiter():
     evidence = _extract_bm25_evidence(cv_text, "Airflow")
     assert "Airflow" in evidence
     assert "Jakarta" not in evidence
+
+
+def test_build_jev_questions_uses_skill_criteria_when_present():
+    from candidate_ranking.scoring.assessment import _build_jev_questions
+    from candidate_ranking.models import SkillCriteria
+    profile = JobProfile(
+        id="jd-1", title="Backend", raw_text="req.", source_path="j.pdf",
+        generated_by_model="m", must_have_skills=["Python"],
+        skill_criteria=[SkillCriteria(
+            skill="Python", instructions="Custom instructions for Python",
+            strong="S", adequate="A", weak="W", none="N",
+        )],
+    )
+    questions = _build_jev_questions(profile)
+    q = next(q for q in questions if q.key == "must_have_0_evidence_strength")
+    assert q.instructions == "Custom instructions for Python"
+    assert q.criteria == {"strong": "S", "adequate": "A", "weak": "W", "none": "N"}
+
+
+def test_build_jev_questions_falls_back_when_skill_criteria_missing(caplog):
+    from candidate_ranking.scoring.assessment import _build_jev_questions
+    profile = JobProfile(
+        id="jd-1", title="Backend", raw_text="req.", source_path="j.pdf",
+        generated_by_model="m", must_have_skills=["Python"],
+    )
+    with caplog.at_level("WARNING"):
+        questions = _build_jev_questions(profile)
+    q = next(q for q in questions if q.key == "must_have_0_evidence_strength")
+    assert "Assess the evidence strength for the skill 'Python'" in q.instructions
+    assert "no skill_criteria entry" in caplog.text
+
+
+def test_build_jev_questions_emits_adaptive_requirement_questions():
+    from candidate_ranking.scoring.assessment import _build_jev_questions
+    from candidate_ranking.models import AdaptiveRequirement
+    profile = JobProfile(
+        id="jd-1", title="Backend", raw_text="req.", source_path="j.pdf",
+        generated_by_model="m",
+        adaptive_requirements=[AdaptiveRequirement(
+            source="education", requirement="Bachelor's degree in CS",
+            criteria_meets="Has CS degree", criteria_partially_meets="Related degree",
+            criteria_does_not_meet="No degree",
+        )],
+    )
+    questions = _build_jev_questions(profile)
+    q = next(q for q in questions if q.key == "adaptive_0_match_level")
+    assert q.kind == "choice"
+    assert q.criteria == {
+        "meets": "Has CS degree",
+        "partially_meets": "Related degree",
+        "does_not_meet": "No degree",
+    }
+
+
+def test_answers_to_assessment_builds_adaptive_requirement_evaluations():
+    from candidate_ranking.scoring.assessment import _answers_to_assessment
+    from candidate_ranking.models import AdaptiveRequirement
+    from candidate_ranking.scoring.jev_client import JevAnswer
+    profile = JobProfile(
+        id="jd-1", title="Backend", raw_text="req.", source_path="j.pdf",
+        generated_by_model="m", must_have_skills=["Python"],
+        adaptive_requirements=[AdaptiveRequirement(
+            source="seniority", requirement="5+ years",
+            criteria_meets="meets", criteria_partially_meets="partial", criteria_does_not_meet="none",
+        )],
+    )
+    candidate = Candidate(id="cand-1", source_path="cv.pdf",
+                           raw_text="6 years of experience at PT XYZ.", num_pages=1, char_count=30, parse_status="ok")
+    answers = [
+        JevAnswer(key="must_have_0_evidence_strength", kind="choice", value="strong", confidence=0.9),
+        JevAnswer(key="total_relevant_years", kind="score", value=3.0, confidence=0.8),
+        JevAnswer(key="adaptive_0_match_level", kind="choice", value="partially_meets", confidence=0.7),
+    ]
+    result = _answers_to_assessment(answers, profile, candidate)
+    assert len(result.adaptive_requirement_evaluations) == 1
+    ev = result.adaptive_requirement_evaluations[0]
+    assert ev.source == "seniority"
+    assert ev.match_level == "partially_meets"
+    assert result.qualified is True
+
+
+def test_adaptive_requirement_match_level_never_affects_qualification():
+    from candidate_ranking.scoring.assessment import _answers_to_assessment
+    from candidate_ranking.models import AdaptiveRequirement
+    from candidate_ranking.scoring.jev_client import JevAnswer
+    profile = JobProfile(
+        id="jd-1", title="Backend", raw_text="req.", source_path="j.pdf",
+        generated_by_model="m", must_have_skills=["Python"],
+        adaptive_requirements=[AdaptiveRequirement(
+            source="seniority", requirement="5+ years",
+            criteria_meets="meets", criteria_partially_meets="partial", criteria_does_not_meet="none",
+        )],
+    )
+    candidate = Candidate(id="cand-1", source_path="cv.pdf",
+                           raw_text="1 year of experience.", num_pages=1, char_count=20, parse_status="ok")
+    answers = [
+        JevAnswer(key="must_have_0_evidence_strength", kind="choice", value="strong", confidence=0.9),
+        JevAnswer(key="total_relevant_years", kind="score", value=0.0, confidence=0.8),
+        JevAnswer(key="adaptive_0_match_level", kind="choice", value="does_not_meet", confidence=0.7),
+    ]
+    result = _answers_to_assessment(answers, profile, candidate)
+    assert result.qualified is True  # must-have strong -> qualified, regardless of adaptive match_level
+    assert result.disqualification_reason is None
