@@ -17,15 +17,15 @@ def _render_candidate_evidence(candidate_id: str, assessments: dict[str, Assessm
     ) or "  (none)"
     met_nice = [ev for ev in a.nice_to_have_evaluations if ev.evidence_strength != "none"]
     nice_text = ", ".join(f"{ev.requirement} [{ev.evidence_strength}]" for ev in met_nice) or "(none)"
-    traj = a.career_trajectory
-    traj_text = (
-        f"{traj.direction}, avg {traj.average_tenure_months}mo/role"
-        + (", multinational exp." if traj.has_multinational_experience else "")
-    ) if traj else "unknown"
+    other_text = "\n".join(
+        f"  [{ev.match_level}] {ev.requirement} ({ev.source})"
+        for ev in a.adaptive_requirement_evaluations
+    ) or "  (none)"
     return (
         f"Must-have evaluations:\n{must_text}\n"
         f"Nice-to-have met: {nice_text}\n"
-        f"Trajectory: {traj_text} | Relevant years: {a.total_relevant_years}"
+        f"Other requirements:\n{other_text}\n"
+        f"Relevant years: {a.total_relevant_years}"
     )
 
 
