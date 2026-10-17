@@ -63,6 +63,107 @@ _SKILL_EVIDENCE_CRITERIA: dict[str, str] = {
 }
 
 
+_FLAG_INSTRUCTIONS: dict[str, dict[str, str]] = {
+    "employment_gap": {
+        "has": (
+            "Is there an unexplained employment gap of 3+ months in this CV?\n"
+            "Count periods between end-of-role and start-of-next-role that are not explained "
+            "by education, parental leave, caregiving, health, freelancing, or founding a company.\n"
+            "Explicitly stated reasons are NOT gaps."
+        ),
+        "severity": (
+            "How significant is the employment gap concern?\n"
+            "  MINOR    — single gap of 3–6 months, or clearly transitional\n"
+            "  MODERATE — gap of 6–18 months, or multiple shorter unexplained gaps totaling 6+ months\n"
+            "  MAJOR    — gap of 18+ months, or multiple large gaps suggesting long-term disengagement"
+        ),
+        "duration": (
+            "What is the total duration (in months) of unexplained employment gaps? "
+            "Sum all gaps ≥3 months that lack explanation."
+        ),
+    },
+    "skill_mismatch": {
+        "has": (
+            "Does this candidate's recent experience (last 3–5 years) show a significant "
+            "domain mismatch with the role's core requirements?\n"
+            "A mismatch means the background is predominantly in a DIFFERENT domain, language stack, "
+            "or job function — not merely missing a few skills."
+        ),
+        "severity": (
+            "How severe is the domain mismatch?\n"
+            "  MINOR    — adjacent domain, 1 tool generation away; typical upskilling expected\n"
+            "  MODERATE — different domain but transferable core skills; requires targeted upskilling\n"
+            "  MAJOR    — fundamentally different field; very little overlap with requirements"
+        ),
+        "duration": (
+            "For how many months has the candidate been in a mismatched domain? "
+            "Count from when their career diverged from this role's domain."
+        ),
+    },
+    "regression": {
+        "has": (
+            "Has the candidate taken a step back in seniority, scope, or responsibility "
+            "without a clear strategic reason (e.g. co-founding a startup, relocating, caregiving)?"
+        ),
+        "severity": (
+            "How significant is the career regression?\n"
+            "  MINOR    — slight step back in one dimension (title or scope, not both)\n"
+            "  MODERATE — clear step back in both title and scope\n"
+            "  MAJOR    — significant drop in seniority or from leadership to individual contributor"
+        ),
+        "duration": "How many months has the candidate been in the regressed position?",
+    },
+    "job_hopping": {
+        "has": (
+            "Does this candidate show a pattern of job hopping — multiple short tenures (<18 months) "
+            "across consecutive non-contract roles, suggesting a retention risk?"
+        ),
+        "severity": (
+            "How concerning is the job hopping pattern?\n"
+            "  MINOR    — 2–3 short stints with longer tenures elsewhere; may be early career\n"
+            "  MODERATE — 3–4 consecutive short stints; raises retention questions\n"
+            "  MAJOR    — 5+ consecutive short stints with no apparent pattern justification"
+        ),
+        "duration": (
+            "Over how many months does the job hopping pattern span? "
+            "Count from the first short-tenure role to the most recent."
+        ),
+    },
+    "other": {
+        "has": (
+            "Is there any other red flag in this CV not covered by the specific categories above? "
+            "(e.g. unexplained credential inconsistency, suspicious date overlaps, "
+            "vague role descriptions suggesting possible embellishment, repeated industry exits)"
+        ),
+        "severity": (
+            "How significant is the other red flag?\n"
+            "  MINOR    — worth noting, unlikely to be decisive\n"
+            "  MODERATE — requires clarification in an interview\n"
+            "  MAJOR    — serious concern that could be disqualifying"
+        ),
+        "duration": (
+            "If duration-based, over how many months does this flag span? "
+            "Use 0 if not duration-based."
+        ),
+    },
+}
+
+_SEVERITY_CRITERIA: dict[str, str] = {
+    "minor": "Minor concern — worth noting but unlikely to be decisive",
+    "moderate": "Notable concern — requires clarification or monitoring",
+    "major": "Significant red flag — could be disqualifying",
+}
+
+_FLAG_DURATION_CRITERIA: list[str] = [
+    "0 months", "3 months", "6 months", "12 months", "24 months", "36+ months",
+]
+
+_PRESENT_CRITERIA: dict[str, str] = {
+    "true": "Clear evidence of this flag is present in the CV",
+    "false": "No evidence of this flag, or all instances are clearly explained",
+}
+
+
 def _score_to_int(value: float, ticks: list[int]) -> int:
     """Convert a Jev score (0..n-1 float) to an integer via linear interpolation."""
     n = len(ticks) - 1
@@ -292,121 +393,25 @@ def _build_jev_questions(profile: JobProfile) -> list[JevQuestion]:
     ))
 
     # ── Red flags (5 types × 3 questions each) ────────────────────────────────
-    _flag_instructions: dict[str, dict[str, str]] = {
-        "employment_gap": {
-            "has": (
-                "Is there an unexplained employment gap of 3+ months in this CV?\n"
-                "Count periods between end-of-role and start-of-next-role that are not explained "
-                "by education, parental leave, caregiving, health, freelancing, or founding a company.\n"
-                "Explicitly stated reasons are NOT gaps."
-            ),
-            "severity": (
-                "How significant is the employment gap concern?\n"
-                "  MINOR    — single gap of 3–6 months, or clearly transitional\n"
-                "  MODERATE — gap of 6–18 months, or multiple shorter unexplained gaps totaling 6+ months\n"
-                "  MAJOR    — gap of 18+ months, or multiple large gaps suggesting long-term disengagement"
-            ),
-            "duration": (
-                "What is the total duration (in months) of unexplained employment gaps? "
-                "Sum all gaps ≥3 months that lack explanation."
-            ),
-        },
-        "skill_mismatch": {
-            "has": (
-                "Does this candidate's recent experience (last 3–5 years) show a significant "
-                "domain mismatch with the role's core requirements?\n"
-                "A mismatch means the background is predominantly in a DIFFERENT domain, language stack, "
-                "or job function — not merely missing a few skills."
-            ),
-            "severity": (
-                "How severe is the domain mismatch?\n"
-                "  MINOR    — adjacent domain, 1 tool generation away; typical upskilling expected\n"
-                "  MODERATE — different domain but transferable core skills; requires targeted upskilling\n"
-                "  MAJOR    — fundamentally different field; very little overlap with requirements"
-            ),
-            "duration": (
-                "For how many months has the candidate been in a mismatched domain? "
-                "Count from when their career diverged from this role's domain."
-            ),
-        },
-        "regression": {
-            "has": (
-                "Has the candidate taken a step back in seniority, scope, or responsibility "
-                "without a clear strategic reason (e.g. co-founding a startup, relocating, caregiving)?"
-            ),
-            "severity": (
-                "How significant is the career regression?\n"
-                "  MINOR    — slight step back in one dimension (title or scope, not both)\n"
-                "  MODERATE — clear step back in both title and scope\n"
-                "  MAJOR    — significant drop in seniority or from leadership to individual contributor"
-            ),
-            "duration": "How many months has the candidate been in the regressed position?",
-        },
-        "job_hopping": {
-            "has": (
-                "Does this candidate show a pattern of job hopping — multiple short tenures (<18 months) "
-                "across consecutive non-contract roles, suggesting a retention risk?"
-            ),
-            "severity": (
-                "How concerning is the job hopping pattern?\n"
-                "  MINOR    — 2–3 short stints with longer tenures elsewhere; may be early career\n"
-                "  MODERATE — 3–4 consecutive short stints; raises retention questions\n"
-                "  MAJOR    — 5+ consecutive short stints with no apparent pattern justification"
-            ),
-            "duration": (
-                "Over how many months does the job hopping pattern span? "
-                "Count from the first short-tenure role to the most recent."
-            ),
-        },
-        "other": {
-            "has": (
-                "Is there any other red flag in this CV not covered by the specific categories above? "
-                "(e.g. unexplained credential inconsistency, suspicious date overlaps, "
-                "vague role descriptions suggesting possible embellishment, repeated industry exits)"
-            ),
-            "severity": (
-                "How significant is the other red flag?\n"
-                "  MINOR    — worth noting, unlikely to be decisive\n"
-                "  MODERATE — requires clarification in an interview\n"
-                "  MAJOR    — serious concern that could be disqualifying"
-            ),
-            "duration": (
-                "If duration-based, over how many months does this flag span? "
-                "Use 0 if not duration-based."
-            ),
-        },
-    }
-    _severity_criteria = {
-        "minor": "Minor concern — worth noting but unlikely to be decisive",
-        "moderate": "Notable concern — requires clarification or monitoring",
-        "major": "Significant red flag — could be disqualifying",
-    }
-    _flag_duration_criteria = [
-        "0 months", "3 months", "6 months", "12 months", "24 months", "36+ months",
-    ]
-    _present_criteria = {
-        "true": "Clear evidence of this flag is present in the CV",
-        "false": "No evidence of this flag, or all instances are clearly explained",
-    }
     for flag_type in _RED_FLAG_TYPES:
-        instr = _flag_instructions[flag_type]
+        instr = _FLAG_INSTRUCTIONS[flag_type]
         questions.append(JevQuestion(
             key=f"has_{flag_type}",
             kind="noul",
             instructions=instr["has"],
-            criteria=_present_criteria,
+            criteria=_PRESENT_CRITERIA,
         ))
         questions.append(JevQuestion(
             key=f"{flag_type}_severity",
             kind="choice",
             instructions=instr["severity"],
-            criteria=_severity_criteria,
+            criteria=_SEVERITY_CRITERIA,
         ))
         questions.append(JevQuestion(
             key=f"{flag_type}_duration_months",
             kind="score",
             instructions=instr["duration"],
-            criteria=_flag_duration_criteria,
+            criteria=_FLAG_DURATION_CRITERIA,
         ))
 
     return questions
