@@ -1,8 +1,7 @@
 # Jev-Backed Qualification Gate & Pairwise Ranking — Design
 
 **Date:** 2026-10-17
-**Status:** Design agreed in conversation; not yet implemented. One HR policy
-question remains open (§4).
+**Status:** Design agreed and complete. All decisions closed. Ready for implementation.
 **Builds on:** `docs/evaluation_report_2026-10-16.md` (4 bugs found/fixed —
 already committed, see commits `9e225dc`, `13d32ab`, `0d43ea5`, `bd49a80`).
 
@@ -144,20 +143,17 @@ ADEQUATE / WEAK / NONE evidence rules, "re-read the whole CV before
 answering NONE — skills are often implied") carries over unchanged from the
 current `QUALIFICATION_GATE_PROMPT`.
 
-## 4. OPEN DECISION — not yet answered
+## 4. DECISION — advisory-only
 
-**Should failing education / seniority / `other_requirements` be
-non-compensatory (auto-disqualifying, like a failed must-have skill), or
-advisory-only (shown in the report, doesn't block qualification)?**
+**Failing education / seniority / `other_requirements` is advisory-only:
+results are shown in the report but do not block qualification.**
 
-Recommendation given during design: **advisory-only**, because
-`JobProfile` has no signal distinguishing a JD's hard "required" wording
-from a soft "preferred" one for these fields (skills already have this via
-the explicit `Must Have Skills:` line parsed by `job_profile.py`'s
+Rationale: `JobProfile` has no signal distinguishing a JD's hard "required"
+wording from a soft "preferred" one for these fields (skills already have
+this via the explicit `Must Have Skills:` line parsed by `job_profile.py`'s
 `_parse_explicit_must_have`; education/seniority/other_requirements don't).
 Auto-disqualifying on an ambiguous signal risks rejecting strong candidates
-over a technicality. **This still needs the user's explicit sign-off before
-implementation starts.**
+over a technicality. Decision confirmed 2026-10-17.
 
 ## 5. Ranking → pairwise tournament via Jev (replaces active-listwise's LLM backend)
 
