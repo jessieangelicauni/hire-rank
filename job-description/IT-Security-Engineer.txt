@@ -11,3 +11,5 @@ What you'll need:
 - Familiarity with compliance frameworks (SOC 2 or ISO 27001).
 - Experience with incident response and threat hunting.
 - Advantageous: certifications such as CISSP or CEH.
+
+Must Have Skills: Metasploit, Python

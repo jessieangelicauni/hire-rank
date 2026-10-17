@@ -13,3 +13,5 @@ Nice to have (not required, but a plus):
 - Some exposure to deploying applications to a cloud platform such as AWS or GCP.
 - Familiarity with CI/CD pipelines (GitHub Actions).
 - Experience with Stripe payment integrations and Kubernetes.
+
+Must Have Skills: TypeScript, PostgreSQL

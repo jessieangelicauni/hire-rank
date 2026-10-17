@@ -12,3 +12,5 @@ Requirements:
 - Familiarity with message brokers (Kafka or RabbitMQ) for asynchronous processing.
 - Nice to have: exposure to reactive programming (Spring WebFlux/Project Reactor) or Kotlin.
 - Bachelor's degree in Computer Science or equivalent practical experience.
+
+Must Have Skills: Java, PostgreSQL

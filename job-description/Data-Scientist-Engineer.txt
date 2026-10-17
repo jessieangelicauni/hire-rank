@@ -9,3 +9,5 @@ Requirements:
 - Experience deploying ML models to production, including MLOps practices (model versioning with MLflow, monitoring, CI/CD for ML).
 - Solid grounding in deep learning and NLP fundamentals, especially transformer-based architectures (Hugging Face Transformers).
 - Master's degree in Computer Science, Statistics, or a related field preferred, but strong practical experience will also be considered.
+
+Must Have Skills: Python, SQL, PyTorch

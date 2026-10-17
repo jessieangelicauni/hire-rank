@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import logging
+import re
 import threading
 from pathlib import Path
 
@@ -24,17 +25,24 @@ JOB_PROFILE_PROMPT = ChatPromptTemplate.from_messages(
             "You are a senior technical recruiter extracting a structured job profile "
             "from a job description, for candidate evaluation and skill matching.\n\n"
             "In `reasoning` (max 3 sentences), note anything non-obvious before answering.\n\n"
-            "Skills → list every named technology, split into:\n"
-            "- `must_have_skills`: the core the role is built around — main language(s) plus "
-            "1-3 defining frameworks or platforms. Infra/tooling (Docker, cloud, CI/CD) is not "
-            "core unless it IS the role.\n"
-            "- `nice_to_have_skills`: every other named technology. Most skills belong here.\n\n"
+            "Skills → must_have_skills and nice_to_have_skills hold ONLY concrete tools, "
+            "software, languages, frameworks, libraries, or platforms by name (e.g. React, "
+            "PostgreSQL, Terraform). Never a practice, methodology, architecture pattern, "
+            "certification, or standard (e.g. \"microservices architecture\", \"user research\", "
+            "\"CISSP\", \"SOC 2\") — those belong in `other_requirements` instead.\n"
+            "- `must_have_skills`: if the JD has an explicit \"Must Have Skills\" section, use "
+            "exactly those tools/technologies. Otherwise, use the core the role is built "
+            "around — main language(s) plus 1-3 defining frameworks or platforms; infra/tooling "
+            "(Docker, cloud, CI/CD) is not core unless it IS the role.\n"
+            "- `nice_to_have_skills`: every other named tool/technology mentioned anywhere in "
+            "the job description (narrative included) that isn't already in must_have_skills.\n\n"
             "Non-skill requirements:\n"
             "- `education_requirement`: one sentence summary if the JD states one, else null.\n"
             "- `seniority_requirement`: one sentence summary of seniority/years-of-experience "
             "if stated, else null.\n"
-            "- `other_requirements`: anything else the JD requires or prefers (certifications, "
-            "languages, domain knowledge, etc.), each as a short phrase.",
+            "- `other_requirements`: anything else the JD requires or prefers — practices, "
+            "methodologies, certifications, compliance standards, domain knowledge, soft "
+            "skills, languages (spoken), etc. — each as a short phrase.",
         ),
         ("human", "Job Title: {title}\n\nJob Description:\n{description}"),
     ]
@@ -52,6 +60,22 @@ class _JobProfileOutput(BaseModel):
 
 class JobProfileGenerationError(Exception):
     pass
+
+
+_MUST_HAVE_LINE_RE = re.compile(r"^Must Have Skills:\s*(.+)$", re.IGNORECASE | re.MULTILINE)
+
+
+def _parse_explicit_must_have(raw_text: str) -> list[str] | None:
+    """Parse a literal "Must Have Skills: A, B, C" line out of the JD text.
+
+    The LLM is unreliable at using this list verbatim (it tends to pad it
+    back in with narrative bullets), so when the line is present we bypass
+    the LLM for must_have_skills entirely and parse it deterministically.
+    """
+    match = _MUST_HAVE_LINE_RE.search(raw_text)
+    if match is None:
+        return None
+    return [skill.strip() for skill in match.group(1).split(",") if skill.strip()]
 
 
 def build_job_profile_chain(llm: BaseChatModel) -> Runnable:
@@ -74,11 +98,19 @@ def generate_job_profile(
     except GenerationError as exc:
         raise JobProfileGenerationError(str(exc)) from exc
 
+    explicit_must_have = _parse_explicit_must_have(jd.raw_text)
+    must_have_skills = explicit_must_have if explicit_must_have is not None else result.must_have_skills
+    must_have_normalized = {skill.strip().lower() for skill in must_have_skills}
+    nice_to_have_skills = [
+        skill for skill in result.nice_to_have_skills
+        if skill.strip().lower() not in must_have_normalized
+    ]
+
     return JobProfile(
         job_description_id=jd.id,
         generated_by_model=model_name,
-        must_have_skills=result.must_have_skills,
-        nice_to_have_skills=result.nice_to_have_skills,
+        must_have_skills=must_have_skills,
+        nice_to_have_skills=nice_to_have_skills,
         education_requirement=result.education_requirement,
         seniority_requirement=result.seniority_requirement,
         other_requirements=result.other_requirements,

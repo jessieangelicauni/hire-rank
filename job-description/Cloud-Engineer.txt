@@ -11,3 +11,5 @@ What you'll need:
 - Familiarity with CI/CD tooling (GitHub Actions, GitLab CI, or Jenkins) for automating infrastructure and deployments.
 - Experience with configuration management tools (Ansible, Chef, or Puppet) for fleet configuration and drift management.
 - Working knowledge of observability stacks (Prometheus, Grafana, CloudWatch, or Datadog) for monitoring, alerting, and incident response.
+
+Must Have Skills: Terraform, Docker, AWS

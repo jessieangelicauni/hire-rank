@@ -145,7 +145,6 @@ def shortlist_candidates(
     embedder: Callable[[list[str]], np.ndarray],
     threshold: float = 0.8,
     min_matches: int = 2,
-    min_must_have_matches: int = 2,
 ) -> list[str]:
     all_skills = profile.must_have_skills + profile.nice_to_have_skills
     if not all_skills:
@@ -158,19 +157,19 @@ def shortlist_candidates(
     required = min(min_matches, deduplicated_count)
 
     must_have_normalized = {s.strip().lower() for s in profile.must_have_skills}
-    required_must_have = min(min_must_have_matches, len(must_have_normalized))
 
-    def must_have_match_count(skills: set[str]) -> int:
-        return sum(1 for skill in skills if skill.strip().lower() in must_have_normalized)
+    def has_all_must_haves(skills: set[str]) -> bool:
+        matched_lower = {skill.strip().lower() for skill in skills}
+        return must_have_normalized <= matched_lower
 
     shortlisted = sorted(
         candidate_id
         for candidate_id, skills in matched.items()
-        if len(skills) >= required and must_have_match_count(skills) >= required_must_have
+        if len(skills) >= required and has_all_must_haves(skills)
     )
     if not shortlisted:
         logger.warning(
             "JD %s's skill-match shortlist is empty at threshold=%s, required matches=%s, "
-            "required must-have matches=%s", jd.id, threshold, required, required_must_have,
+            "requiring all %d must-have skill(s)", jd.id, threshold, required, len(must_have_normalized),
         )
     return shortlisted

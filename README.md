@@ -33,7 +33,7 @@ per job description (JD) and/or per candidate where noted:
    for fast similarity search.
 3. **Shortlisting** — per JD, candidates are shortlisted by cosine
    similarity between their extracted skills and the JD's extracted
-   technical skills (`--skill-match-threshold`, `--min-skill-matches`, `--min-must-have-matches`). Only
+   technical skills (`--skill-match-threshold`, `--min-skill-matches`). Only
    shortlisted candidates get assessed — this is what keeps the expensive
    LLM/Jev stages below from running against the whole CV corpus for every
    JD.
@@ -84,9 +84,9 @@ Install Python dependencies with `uv`:
 uv sync
 ```
 
-Copy the example environment file and adjust as needed (at minimum, the
-`CANDIDATE_RANKING_*_DIR` paths should point at this repo's absolute path,
-and `CANDIDATE_RANKING_JEV_API_KEY` must be set):
+Copy the example environment file and adjust as needed — all variables are
+optional and fall back to sensible defaults (see
+[Configuration](#configuration)):
 
 ```bash
 cp .env.example .env
@@ -116,8 +116,7 @@ measured latency).
 |---|---|---|
 | `--run-id ID` | new timestamp | Resume a prior run from its checkpoint instead of starting fresh. Pass the `Run ID` printed by the run you want to continue. |
 | `--skill-match-threshold FLOAT` | `0.8` | Cosine similarity at or above which a candidate's skill counts as matching a JD's technical skill. |
-| `--min-skill-matches INT` | `5` | Number of a JD's technical skills a candidate must match to be shortlisted for assessment (auto-reduced to the JD's total technical-skill count if that's smaller). |
-| `--min-must-have-matches INT` | `2` | Number of a JD's must-have technical skills a candidate must match to be shortlisted for assessment (auto-reduced to the JD's total must-have-skill count if that's smaller; has no effect if the JD has no classified must-have skills). |
+| `--min-skill-matches INT` | `3` | Number of a JD's technical skills a candidate must match to be shortlisted for assessment (auto-reduced to the JD's total technical-skill count if that's smaller). A candidate must also match every one of the JD's must-have skills, with no exceptions. |
 
 Most other pipeline parameters (model names, concurrency, etc.) are set via
 environment variables — see [Configuration](#configuration).
@@ -133,7 +132,7 @@ uv run python -m candidate_ranking.cli run --run-id 20260826-010039
 
 This restores pipeline state from `runs/_cache/checkpoints.db` and
 continues from the last completed stage. On resume, the original run's
-`--skill-match-threshold`/`--min-skill-matches`/`--min-must-have-matches` (read back from that run's
+`--skill-match-threshold`/`--min-skill-matches` (read back from that run's
 `manifest.json`) are preserved even if different values are passed on the
 command line.
 

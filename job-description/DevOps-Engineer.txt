@@ -8,3 +8,5 @@ What you'll need:
 - Familiarity with observability stacks (Prometheus, Grafana, OpenTelemetry, or Datadog).
 - Solid understanding of Linux and Networking fundamentals.
 - A plus: experience with Helm, service mesh technologies (Istio), and on-call incident response.
+
+Must Have Skills: Terraform, Docker, Kubernetes

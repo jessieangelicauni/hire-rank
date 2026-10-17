@@ -12,3 +12,5 @@ What we're looking for:
 - Experience with responsive design and cross-browser compatibility.
 - A good eye for UI/UX detail and experience collaborating with design tools like Figma.
 - Advantageous: experience with Next.js, Go, testing libraries (Jest, React Testing Library), and CI/CD pipelines.
+
+Must Have Skills: React

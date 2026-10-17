@@ -11,3 +11,5 @@ What you'll need:
 - Working knowledge of HTML, CSS, and JavaScript to collaborate effectively with engineering on implementation.
 - Strong communication skills to present and defend design decisions to stakeholders.
 - Advantageous: experience with Motion Design or tools like Adobe XD and Sketch.
+
+Must Have Skills: Figma, HTML, CSS

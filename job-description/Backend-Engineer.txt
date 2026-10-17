@@ -11,3 +11,5 @@ Requirements:
 - Familiarity with CI/CD pipelines (GitHub Actions) and Linux environments.
 - Nice to have: experience with Redis for caching, JWT-based authentication, and microservices architecture.
 - Bachelor's degree in Computer Science or equivalent practical experience.
+
+Must Have Skills: PostgreSQL, Redis

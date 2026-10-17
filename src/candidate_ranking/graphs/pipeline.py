@@ -65,8 +65,7 @@ def build_pipeline_graph(
     skill_embedder: Callable[[list[str]], np.ndarray],
     run_id: str,
     skill_match_threshold: float = 0.8,
-    min_skill_matches: int = 5,
-    min_must_have_matches: int = 2,
+    min_skill_matches: int = 3,
 ) -> StateGraph:
     job_profile_cache_path = cfg.cache_dir / "job_profile.json"
 
@@ -97,7 +96,6 @@ def build_pipeline_graph(
         candidate_ids = shortlist_candidates(
             jd, profile, skill_index, skill_row_map, skill_embedder,
             threshold=skill_match_threshold, min_matches=min_skill_matches,
-            min_must_have_matches=min_must_have_matches,
         )
         return {"shortlists": {jd.id: candidate_ids}}
 

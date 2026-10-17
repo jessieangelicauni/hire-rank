@@ -56,7 +56,21 @@ def test_shortlist_excludes_candidate_who_meets_total_but_not_must_have():
 
     shortlisted = shortlist_candidates(
         _jd(), _profile(_MUST_HAVE), index, row_map, embedder,
-        min_matches=5, min_must_have_matches=2,
+        min_matches=5,
+    )
+
+    assert shortlisted == []
+
+
+def test_shortlist_excludes_candidate_missing_one_of_several_must_haves():
+    three_must_haves = ["Python", "SQL", "AWS"]
+    missing_one = _candidate("missing-one", ["Python", "SQL", "Docker", "Kubernetes"])
+    embedder = _one_hot_embedder(_JD_SKILLS)
+    index, row_map = build_candidate_skill_index([missing_one], embedder)
+
+    shortlisted = shortlist_candidates(
+        _jd(), _profile(three_must_haves), index, row_map, embedder,
+        min_matches=4,
     )
 
     assert shortlisted == []
@@ -69,7 +83,7 @@ def test_shortlist_excludes_candidate_who_meets_must_have_but_not_total():
 
     shortlisted = shortlist_candidates(
         _jd(), _profile(_MUST_HAVE), index, row_map, embedder,
-        min_matches=5, min_must_have_matches=2,
+        min_matches=5,
     )
 
     assert shortlisted == []
@@ -82,7 +96,7 @@ def test_shortlist_includes_candidate_who_meets_both():
 
     shortlisted = shortlist_candidates(
         _jd(), _profile(_MUST_HAVE), index, row_map, embedder,
-        min_matches=5, min_must_have_matches=2,
+        min_matches=5,
     )
 
     assert shortlisted == ["both"]
@@ -95,7 +109,7 @@ def test_shortlist_empty_must_have_skills_preserves_prior_behavior():
 
     shortlisted = shortlist_candidates(
         _jd(), _profile([]), index, row_map, embedder,
-        min_matches=5, min_must_have_matches=2,
+        min_matches=5,
     )
 
     assert shortlisted == ["peripheral-only"]
