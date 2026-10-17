@@ -92,6 +92,7 @@ def _select_uncertain_subset(
                 swapped = True
                 break
         if not swapped and len(selected) > 1:
+            # Single-item subsets can't be rotated meaningfully; skip.
             # No swap candidate (pool exhausted) — rotate by iteration
             offset = iteration % len(selected)
             selected = selected[offset:] + selected[:offset]

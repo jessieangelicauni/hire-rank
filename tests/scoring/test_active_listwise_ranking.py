@@ -203,3 +203,24 @@ def test_select_uncertain_subset_rotates_when_no_swap_candidate():
     result = _select_uncertain_subset(variances, item_ids, subset_size=3, avoid_signature=avoid, iteration=1)
     assert frozenset(result) == avoid          # same members — pool is the same
     assert result != initial                   # different ORDER — rotation happened
+
+
+def test_select_uncertain_subset_iteration_zero_no_rotation():
+    """iteration=0 (default) must not rotate when no swap candidate exists."""
+    item_ids = ["a", "b", "c"]
+    variances = np.array([1.0, 0.9, 0.8])
+    initial = _select_uncertain_subset(variances, item_ids, subset_size=3)
+    avoid = frozenset(initial)
+    result = _select_uncertain_subset(variances, item_ids, subset_size=3, avoid_signature=avoid, iteration=0)
+    assert result == initial  # iteration=0 → offset=0, no rotation
+
+
+def test_select_uncertain_subset_rotation_varies_by_iteration():
+    """Different iteration values must produce different rotations."""
+    item_ids = ["a", "b", "c"]
+    variances = np.array([1.0, 0.9, 0.8])
+    initial = _select_uncertain_subset(variances, item_ids, subset_size=3)
+    avoid = frozenset(initial)
+    result1 = _select_uncertain_subset(variances, item_ids, subset_size=3, avoid_signature=avoid, iteration=1)
+    result2 = _select_uncertain_subset(variances, item_ids, subset_size=3, avoid_signature=avoid, iteration=2)
+    assert result1 != result2  # different iterations → different rotations
