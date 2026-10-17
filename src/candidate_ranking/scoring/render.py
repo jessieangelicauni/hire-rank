@@ -12,11 +12,11 @@ def _render_candidate_evidence(candidate_id: str, assessments: dict[str, Assessm
     """Single-candidate evidence block — used for pairwise comparisons."""
     a = assessments[candidate_id]
     must_text = "\n".join(
-        f"  [{ev.verdict}] {ev.requirement} ({ev.evidence_strength}, {ev.years_demonstrated}yr): {ev.evidence}"
+        f"  [{ev.evidence_strength}] {ev.requirement}: {ev.evidence}"
         for ev in a.must_have_evaluations
     ) or "  (none)"
-    met_nice = [ev for ev in a.nice_to_have_evaluations if ev.verdict in ("MET", "PARTIALLY_MET")]
-    nice_text = ", ".join(f"{ev.requirement} [{ev.verdict}]" for ev in met_nice) or "(none)"
+    met_nice = [ev for ev in a.nice_to_have_evaluations if ev.evidence_strength != "none"]
+    nice_text = ", ".join(f"{ev.requirement} [{ev.evidence_strength}]" for ev in met_nice) or "(none)"
     traj = a.career_trajectory
     traj_text = (
         f"{traj.direction}, avg {traj.average_tenure_months}mo/role"

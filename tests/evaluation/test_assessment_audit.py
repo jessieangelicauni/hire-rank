@@ -5,11 +5,10 @@ from candidate_ranking.models import Assessment, RequirementEvaluation
 from candidate_ranking.evaluation.assessment_audit import audit_assessments, AssessmentAuditReport
 
 
-def _eval(requirement: str, strength: str, verdict: str, evidence: str = "") -> RequirementEvaluation:
+def _eval(requirement: str, strength: str, evidence: str = "") -> RequirementEvaluation:
     return RequirementEvaluation(
-        requirement=requirement, verdict=verdict,
+        requirement=requirement,
         evidence=evidence, evidence_strength=strength,
-        recency="unknown", years_demonstrated=0,
     )
 
 
@@ -20,7 +19,7 @@ def _assessment(
     qualified: bool | None = None,
 ) -> Assessment:
     if qualified is None:
-        qualified = all(ev.verdict != "NOT_MET" for ev in evals)
+        qualified = all(ev.evidence_strength != "none" for ev in evals)
     return Assessment(
         job_profile_id=jd_id, candidate_id=cid,
         generated_by_model="jev/jev-latest",
@@ -35,8 +34,8 @@ def test_evidence_coverage_rate_counts_non_empty_evidence():
     assessments = {
         "jd-1": {
             "a": _assessment("jd-1", "a", [
-                _eval("Python", "strong", "MET", evidence="Built FastAPI at Tokopedia"),
-                _eval("SQL", "none", "NOT_MET", evidence=""),
+                _eval("Python", "strong", evidence="Built FastAPI at Tokopedia"),
+                _eval("SQL", "none", evidence=""),
             ]),
         }
     }
@@ -50,7 +49,7 @@ def test_evidence_coverage_rate_is_one_when_all_filled():
     assessments = {
         "jd-1": {
             "a": _assessment("jd-1", "a", [
-                _eval("Python", "strong", "MET", evidence="did Python"),
+                _eval("Python", "strong", evidence="did Python"),
             ]),
         }
     }
@@ -58,45 +57,13 @@ def test_evidence_coverage_rate_is_one_when_all_filled():
     assert report.evidence_coverage_rate == pytest.approx(1.0)
 
 
-# --- coherence ---
-
-def test_no_coherence_violations_for_valid_assessments():
-    assessments = {
-        "jd-1": {
-            "a": _assessment("jd-1", "a", [
-                _eval("Python", "strong", "MET"),
-                _eval("SQL", "adequate", "MET"),
-                _eval("Java", "none", "NOT_MET"),
-            ]),
-        }
-    }
-    report = audit_assessments(assessments)
-    assert report.coherence_violations == []
-    assert report.coherence_violation_rate == pytest.approx(0.0)
-
-
-def test_coherence_violation_detected_for_mismatched_verdict():
-    # evidence_strength="none" should force verdict="NOT_MET"
-    assessments = {
-        "jd-1": {
-            "a": _assessment("jd-1", "a", [
-                _eval("Python", "none", "MET"),  # violation: none → NOT_MET
-            ], qualified=True),
-        }
-    }
-    report = audit_assessments(assessments)
-    assert len(report.coherence_violations) == 1
-    assert "Python" in report.coherence_violations[0].requirement
-    assert report.coherence_violation_rate == pytest.approx(1.0)
-
-
 # --- qualified flag integrity ---
 
-def test_no_flag_errors_when_flag_matches_verdicts():
+def test_no_flag_errors_when_flag_matches_evidence_strength():
     assessments = {
         "jd-1": {
-            "a": _assessment("jd-1", "a", [_eval("Python", "strong", "MET")], qualified=True),
-            "b": _assessment("jd-1", "b", [_eval("Python", "none", "NOT_MET")], qualified=False),
+            "a": _assessment("jd-1", "a", [_eval("Python", "strong")], qualified=True),
+            "b": _assessment("jd-1", "b", [_eval("Python", "none")], qualified=False),
         }
     }
     report = audit_assessments(assessments)
@@ -106,7 +73,7 @@ def test_no_flag_errors_when_flag_matches_verdicts():
 def test_flag_error_detected_when_qualified_wrong():
     assessments = {
         "jd-1": {
-            "a": _assessment("jd-1", "a", [_eval("Python", "none", "NOT_MET")], qualified=True),
+            "a": _assessment("jd-1", "a", [_eval("Python", "none")], qualified=True),
         }
     }
     report = audit_assessments(assessments)
@@ -118,9 +85,9 @@ def test_flag_error_detected_when_qualified_wrong():
 def test_qualification_rate_per_jd():
     assessments = {
         "jd-1": {
-            "a": _assessment("jd-1", "a", [_eval("Python", "strong", "MET")]),
-            "b": _assessment("jd-1", "b", [_eval("Python", "none", "NOT_MET")]),
-            "c": _assessment("jd-1", "c", [_eval("Python", "strong", "MET")]),
+            "a": _assessment("jd-1", "a", [_eval("Python", "strong")]),
+            "b": _assessment("jd-1", "b", [_eval("Python", "none")]),
+            "c": _assessment("jd-1", "c", [_eval("Python", "strong")]),
         }
     }
     report = audit_assessments(assessments)
@@ -131,7 +98,7 @@ def test_qualification_rate_per_jd():
 def test_zero_qualified_jd_flagged():
     assessments = {
         "jd-1": {
-            "a": _assessment("jd-1", "a", [_eval("Python", "none", "NOT_MET")]),
+            "a": _assessment("jd-1", "a", [_eval("Python", "none")]),
         }
     }
     report = audit_assessments(assessments)
@@ -142,8 +109,8 @@ def test_zero_qualified_jd_flagged():
 def test_fully_qualified_jd_flagged():
     assessments = {
         "jd-1": {
-            "a": _assessment("jd-1", "a", [_eval("Python", "strong", "MET")]),
-            "b": _assessment("jd-1", "b", [_eval("Python", "adequate", "MET")]),
+            "a": _assessment("jd-1", "a", [_eval("Python", "strong")]),
+            "b": _assessment("jd-1", "b", [_eval("Python", "adequate")]),
         }
     }
     report = audit_assessments(assessments)
@@ -156,7 +123,6 @@ def test_empty_assessments_returns_zero_counts():
     assert report.n_jps == 0
     assert report.n_assessments == 0
     assert report.evidence_coverage_rate == pytest.approx(1.0)
-    assert report.coherence_violations == []
     assert report.mean_qualification_rate == pytest.approx(0.0)
 
 
@@ -166,12 +132,12 @@ def test_evidence_strength_distribution_sums_to_one():
     assessments = {
         "jd-1": {
             "a": _assessment("jd-1", "a", [
-                _eval("Python", "strong", "MET"),
-                _eval("SQL", "none", "NOT_MET"),
+                _eval("Python", "strong"),
+                _eval("SQL", "none"),
             ]),
             "b": _assessment("jd-1", "b", [
-                _eval("Python", "adequate", "MET"),
-                _eval("SQL", "weak", "PARTIALLY_MET"),
+                _eval("Python", "adequate"),
+                _eval("SQL", "weak"),
             ]),
         }
     }
@@ -188,11 +154,11 @@ def test_most_common_disqualifiers_ranked_by_count():
     assessments = {
         "jd-1": {
             "a": _assessment("jd-1", "a", [
-                _eval("Python", "none", "NOT_MET"),
-                _eval("SQL", "none", "NOT_MET"),
+                _eval("Python", "none"),
+                _eval("SQL", "none"),
             ]),
             "b": _assessment("jd-1", "b", [
-                _eval("Python", "none", "NOT_MET"),
+                _eval("Python", "none"),
             ]),
         }
     }
@@ -206,7 +172,7 @@ def test_most_common_disqualifiers_ranked_by_count():
 def test_most_common_disqualifiers_empty_when_all_qualified():
     assessments = {
         "jd-1": {
-            "a": _assessment("jd-1", "a", [_eval("Python", "strong", "MET")]),
+            "a": _assessment("jd-1", "a", [_eval("Python", "strong")]),
         }
     }
     report = audit_assessments(assessments)

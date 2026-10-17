@@ -50,11 +50,11 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
             "qualified": True,
             "total_relevant_years": 3,
             "must_have_evaluations": [
-                {"requirement": "Python", "verdict": "MET"},
-                {"requirement": "Django", "verdict": "MET"},
+                {"requirement": "Python", "evidence_strength": "strong"},
+                {"requirement": "Django", "evidence_strength": "adequate"},
             ],
             "nice_to_have_evaluations": [
-                {"requirement": "Docker", "verdict": "MET"},
+                {"requirement": "Docker", "evidence_strength": "strong"},
             ],
             "career_trajectory": {"has_multinational_experience": False},
         }

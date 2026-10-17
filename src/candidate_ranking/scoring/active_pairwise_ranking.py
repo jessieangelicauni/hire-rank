@@ -57,7 +57,7 @@ def _bm25_sort(jp: JobProfile, assessments: dict[str, Assessment]) -> list[str]:
     for cid in cids:
         a = assessments[cid]
         parts = [f"{ev.requirement} {ev.evidence}" for ev in a.must_have_evaluations]
-        parts += [f"{ev.requirement} {ev.evidence}" for ev in a.nice_to_have_evaluations if ev.verdict in ("MET", "PARTIALLY_MET")]
+        parts += [f"{ev.requirement} {ev.evidence}" for ev in a.nice_to_have_evaluations if ev.evidence_strength != "none"]
         corpus.append(" ".join(parts).lower().split())
 
     if not any(corpus):

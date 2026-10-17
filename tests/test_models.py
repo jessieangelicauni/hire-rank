@@ -5,10 +5,10 @@ from candidate_ranking.models import (
     Assessment, CareerTrajectory, JobProfile, RequirementEvaluation,
 )
 
-def _req_eval(verdict="MET") -> RequirementEvaluation:
+def _req_eval(evidence_strength="strong") -> RequirementEvaluation:
     return RequirementEvaluation(
-        requirement="Python", verdict=verdict, evidence="FastAPI at PT XYZ",
-        evidence_strength="strong", recency="current", years_demonstrated=3,
+        requirement="Python", evidence="FastAPI at PT XYZ",
+        evidence_strength=evidence_strength,
     )
 
 def _trajectory() -> CareerTrajectory:
@@ -41,12 +41,12 @@ def test_assessment_has_no_jev_fields():
     assert "confidence" not in Assessment.model_fields
     assert "seniority_years_fit_score" not in Assessment.model_fields
 
-def test_requirement_evaluation_verdict_literals():
-    for v in ("MET", "PARTIALLY_MET", "NOT_MET"):
-        ev = _req_eval(verdict=v)
-        assert ev.verdict == v
+def test_requirement_evaluation_evidence_strength_literals():
+    for s in ("strong", "adequate", "weak", "none"):
+        ev = _req_eval(evidence_strength=s)
+        assert ev.evidence_strength == s
     with pytest.raises(ValidationError):
-        _req_eval(verdict="UNKNOWN")
+        _req_eval(evidence_strength="UNKNOWN")
 
 def test_career_trajectory_roundtrips():
     t = _trajectory()
@@ -76,9 +76,8 @@ def test_job_profile_fields_roundtrip():
 
 def test_requirement_evaluation_accepts_none_evidence_strength():
     ev = RequirementEvaluation(
-        requirement="Python", verdict="NOT_MET",
+        requirement="Python",
         evidence="Not found", evidence_strength="none",
-        recency="unknown", years_demonstrated=0,
     )
     assert ev.evidence_strength == "none"
 

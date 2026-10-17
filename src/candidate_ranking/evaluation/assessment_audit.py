@@ -1,26 +1,9 @@
 from __future__ import annotations
 
 from collections import Counter
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from candidate_ranking.models import Assessment
-
-# Must mirror _EVIDENCE_TO_VERDICT in assessment — the only legal mappings.
-# Any deviation is a legacy cache artefact or a code-path bug.
-_EXPECTED_VERDICT = {
-    "strong": "MET",
-    "adequate": "MET",
-    "weak": "PARTIALLY_MET",
-    "none": "NOT_MET",
-}
-
-
-@dataclass
-class CoherenceViolation:
-    jp_id: str
-    candidate_id: str
-    requirement: str
-    issue: str
 
 
 @dataclass
@@ -44,12 +27,8 @@ class AssessmentAuditReport:
     # A healthy distribution should not be dominated by "none" or "strong" alone.
     evidence_strength_distribution: dict[str, float]  # {strength: fraction}
 
-    # --- evidence_strength ↔ verdict alignment ---
-    coherence_violations: list[CoherenceViolation]
-    coherence_violation_rate: float
-
     # --- qualified flag integrity ---
-    qualified_flag_errors: int  # assessments where flag != verdict-derived value
+    qualified_flag_errors: int  # assessments where flag != evidence_strength-derived value
 
     # --- qualification funnel ---
     qualification_rate_per_jp: dict[str, float]
@@ -58,8 +37,8 @@ class AssessmentAuditReport:
     zero_qualified_jps: list[str]    # 0%   — gate may be too strict / must-haves misconfigured
 
     # --- disqualification bottlenecks ---
-    # Which must-have requirements are most often NOT_MET.
-    # Key = requirement text, value = fraction of all NOT_MET verdicts attributed to it.
+    # Which must-have requirements most often have evidence_strength="none".
+    # Key = requirement text, value = fraction of all such requirements.
     # Useful for identifying ambiguous or unrealistic must-haves.
     most_common_disqualifiers: list[tuple[str, int]]  # [(requirement, count)] descending
 
@@ -69,18 +48,16 @@ def audit_assessments(
 ) -> AssessmentAuditReport:
     """Compute publication-quality metrics from cached assessments — zero LLM calls.
 
-    Covers four dimensions:
+    Covers three dimensions:
     1. BM25 evidence extraction quality (coverage rate)
     2. Jev assessment distribution (evidence_strength distribution)
-    3. Internal pipeline consistency (coherence, qualified flag integrity)
-    4. Qualification funnel (rate per JD, anomaly detection, disqualifier analysis)
+    3. Qualification funnel (rate per JD, anomaly detection, disqualifier analysis)
     """
     n_assessments = sum(len(v) for v in assessments_by_jp.values())
     must_have_total = 0
     must_have_with_evidence = 0
     strength_counter: Counter[str] = Counter()
     disqualifier_counter: Counter[str] = Counter()
-    violations: list[CoherenceViolation] = []
     flag_errors = 0
     qualification_rate_per_jp: dict[str, float] = {}
 
@@ -90,8 +67,8 @@ def audit_assessments(
             if assessment.qualified:
                 n_qualified += 1
 
-            # Qualified flag must equal verdict-derived value
-            computed = all(ev.verdict != "NOT_MET" for ev in assessment.must_have_evaluations)
+            # Qualified flag must equal evidence_strength-derived value
+            computed = all(ev.evidence_strength != "none" for ev in assessment.must_have_evaluations)
             if computed != assessment.qualified:
                 flag_errors += 1
 
@@ -106,22 +83,8 @@ def audit_assessments(
                 if ev.evidence_strength:
                     strength_counter[ev.evidence_strength] += 1
 
-                # Coherence: evidence_strength must imply the stored verdict
-                if ev.evidence_strength in _EXPECTED_VERDICT:
-                    expected = _EXPECTED_VERDICT[ev.evidence_strength]
-                    if ev.verdict != expected:
-                        violations.append(CoherenceViolation(
-                            jp_id=jp_id,
-                            candidate_id=candidate_id,
-                            requirement=ev.requirement,
-                            issue=(
-                                f"evidence_strength='{ev.evidence_strength}' → "
-                                f"expected '{expected}', got '{ev.verdict}'"
-                            ),
-                        ))
-
                 # Disqualification bottlenecks
-                if ev.verdict == "NOT_MET":
+                if ev.evidence_strength == "none":
                     disqualifier_counter[ev.requirement] += 1
 
         n = len(assessments)
@@ -143,10 +106,6 @@ def audit_assessments(
             must_have_with_evidence / must_have_total if must_have_total else 1.0
         ),
         evidence_strength_distribution=evidence_strength_distribution,
-        coherence_violations=violations,
-        coherence_violation_rate=(
-            len(violations) / must_have_total if must_have_total else 0.0
-        ),
         qualified_flag_errors=flag_errors,
         qualification_rate_per_jp=qualification_rate_per_jp,
         mean_qualification_rate=(

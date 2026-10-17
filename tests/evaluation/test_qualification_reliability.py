@@ -9,13 +9,13 @@ from candidate_ranking.evaluation.qualification_reliability import (
 )
 
 
-def _assessment(qualified: bool, verdict: str = "MET") -> Assessment:
+def _assessment(qualified: bool, evidence_strength: str = "strong") -> Assessment:
     return Assessment(
         job_profile_id="jd-1", candidate_id="cand-1", generated_by_model="test",
         must_have_evaluations=[
             RequirementEvaluation(
-                requirement="Python", verdict=verdict, evidence="x",
-                evidence_strength="strong", recency="current", years_demonstrated=1,
+                requirement="Python", evidence="x",
+                evidence_strength=evidence_strength,
             )
         ],
         qualified=qualified,
@@ -56,19 +56,19 @@ def test_build_reliability_report_perfect_consistency():
     assert report.n_repeats == 3
     assert report.qualified_agreement_rate == pytest.approx(1.0)
     assert report.qualified_cohens_kappa == pytest.approx(1.0)
-    assert report.verdict_agreement_rate == pytest.approx(1.0)
+    assert report.evidence_strength_agreement_rate == pytest.approx(1.0)
 
 
-def test_build_reliability_report_flags_inconsistent_verdicts():
+def test_build_reliability_report_flags_inconsistent_evidence_strength():
     repeated = {
         "jd-1/cand-1": [
-            _assessment(True, verdict="MET"),
-            _assessment(False, verdict="NOT_MET"),
+            _assessment(True, evidence_strength="strong"),
+            _assessment(False, evidence_strength="none"),
         ],
     }
     report = build_reliability_report(repeated)
     assert report.qualified_agreement_rate == pytest.approx(0.0)
-    assert report.verdict_agreement_rate == pytest.approx(0.0)
+    assert report.evidence_strength_agreement_rate == pytest.approx(0.0)
 
 
 def test_build_reliability_report_skips_pairs_with_fewer_than_two_repeats():

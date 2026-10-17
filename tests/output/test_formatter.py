@@ -14,9 +14,8 @@ def _assessment(candidate_id: str, qualified: bool = True) -> Assessment:
         job_profile_id="jd-1", candidate_id=candidate_id,
         generated_by_model="qwen2.5:14b", qualified=qualified,
         must_have_evaluations=[
-            RequirementEvaluation(requirement="Python", verdict="MET" if qualified else "NOT_MET",
-                                  evidence="FastAPI", evidence_strength="strong",
-                                  recency="current", years_demonstrated=3)
+            RequirementEvaluation(requirement="Python",
+                                  evidence="FastAPI", evidence_strength="strong")
         ],
     )
 

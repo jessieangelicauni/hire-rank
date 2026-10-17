@@ -40,11 +40,8 @@ def _assessment(qualified: bool = True) -> Assessment:
         must_have_evaluations=[
             RequirementEvaluation(
                 requirement="Python",
-                verdict="MET" if qualified else "NOT_MET",
                 evidence="FastAPI at PT XYZ" if qualified else "",
                 evidence_strength="strong" if qualified else "none",
-                recency="unknown",
-                years_demonstrated=0,
             )
         ],
         qualified=qualified,
@@ -81,14 +78,14 @@ def test_generate_assessment_returns_qualified_assessment():
     assert isinstance(result, Assessment)
     assert result.qualified is True
     assert result.must_have_evaluations[0].requirement == "Python"
-    assert result.must_have_evaluations[0].verdict == "MET"
+    assert result.must_have_evaluations[0].evidence_strength == "strong"
     assert result.generated_by_model.startswith("jev/")
 
 
-def test_generate_assessment_computes_qualified_from_verdicts():
-    """qualified must be derived from must-have verdicts, never trusted from Jev."""
+def test_generate_assessment_computes_qualified_from_evidence_strength():
+    """qualified must be derived from must-have evidence_strength, never trusted from Jev."""
     profile = _job_profile()
-    answers = _fake_answers(profile, must_have_strength="none")  # none → NOT_MET → disqualified
+    answers = _fake_answers(profile, must_have_strength="none")  # none → disqualified
     jev = MagicMock()
     jev.evaluate.return_value = answers
     result = generate_assessment(profile, _candidate(), jev)
@@ -201,3 +198,43 @@ def test_score_to_int_clamps_out_of_range():
     ticks = [0, 3, 6, 10, 15, 20]
     assert _score_to_int(99.0, ticks) == 20
     assert _score_to_int(-1.0, ticks) == 0
+
+
+def test_bm25_evidence_is_empty_when_skill_never_mentioned():
+    """When a skill never appears anywhere in the CV, every sentence ties at
+    BM25 score 0 — the extractor must not fall back to the header/contact
+    block just because it happens to be first."""
+    from candidate_ranking.scoring.assessment import _extract_bm25_evidence
+    cv_text = (
+        "richardson@protonmail.com | +1-243-784-5881 | Thorntonfort, Netherlands | "
+        "https://linkedin.com/in/richardson\n"
+        "Senior backend engineer with experience in PostgreSQL and Django.\n"
+        "Led a team of 4 engineers across two product launches.\n"
+    )
+    assert _extract_bm25_evidence(cv_text, "Airflow") == ""
+
+
+def test_bm25_evidence_returns_matching_sentence():
+    from candidate_ranking.scoring.assessment import _extract_bm25_evidence
+    cv_text = (
+        "richardson@protonmail.com | +1-243-784-5881 | Thorntonfort, Netherlands\n"
+        "Built and scheduled ETL pipelines using Airflow for daily reporting.\n"
+        "Led a team of 4 engineers across two product launches.\n"
+    )
+    evidence = _extract_bm25_evidence(cv_text, "Airflow")
+    assert "Airflow" in evidence
+    assert "protonmail" not in evidence
+
+
+def test_bm25_evidence_splits_on_pipe_delimiter():
+    """A pipe-joined line (contact header, or a 'Company | City | Dates' entry)
+    must not be treated as one indivisible sentence — only the segment that
+    actually matches the query should come back, not the whole joined line."""
+    from candidate_ranking.scoring.assessment import _extract_bm25_evidence
+    cv_text = (
+        "PT Teknologi Maju | Jakarta, Indonesia | Jan 2021 - Dec 2023 | "
+        "Built data pipelines with Apache Airflow for the analytics team\n"
+    )
+    evidence = _extract_bm25_evidence(cv_text, "Airflow")
+    assert "Airflow" in evidence
+    assert "Jakarta" not in evidence

@@ -36,11 +36,8 @@ class Candidate(BaseModel):
 
 class RequirementEvaluation(BaseModel):
     requirement: str
-    verdict: Literal["MET", "PARTIALLY_MET", "NOT_MET"]
     evidence: str
     evidence_strength: Literal["strong", "adequate", "weak", "none"]
-    recency: Literal["current", "recent", "dated", "unknown"]
-    years_demonstrated: int = Field(ge=0, default=0)
 
 
 class CareerTrajectory(BaseModel):

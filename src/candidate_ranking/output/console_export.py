@@ -151,11 +151,11 @@ def export_console_web_data(
                 "total_relevant_years": assessment_entry.get("total_relevant_years", 0),
                 "must_have_met": sum(
                     1 for ev in assessment_entry.get("must_have_evaluations", [])
-                    if ev.get("verdict") == "MET"
+                    if ev.get("evidence_strength") in ("strong", "adequate")
                 ),
                 "nice_to_have_met": sum(
                     1 for ev in assessment_entry.get("nice_to_have_evaluations", [])
-                    if ev.get("verdict") == "MET"
+                    if ev.get("evidence_strength") in ("strong", "adequate")
                 ),
                 "has_multinational_experience": (
                     assessment_entry.get("career_trajectory") or {}

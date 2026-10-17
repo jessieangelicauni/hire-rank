@@ -17,8 +17,8 @@ def _qualified_assessment(jd_id: str, candidate_id: str) -> Assessment:
         job_profile_id=jd_id, candidate_id=candidate_id,
         generated_by_model="qwen2.5:14b", qualified=True,
         must_have_evaluations=[
-            RequirementEvaluation(requirement="Python", verdict="MET", evidence="FastAPI",
-                                  evidence_strength="strong", recency="current", years_demonstrated=3)
+            RequirementEvaluation(requirement="Python", evidence="FastAPI",
+                                  evidence_strength="strong")
         ],
     )
 
@@ -94,8 +94,8 @@ def test_rank_and_format_writes_empty_ranking_for_jd_with_no_assessments(tmp_pat
             job_profile_id=jp.id, candidate_id=candidate_.id,
             generated_by_model="jev/jev-latest",
             must_have_evaluations=[
-                RequirementEvaluation(requirement="Python", verdict="MET", evidence="x",
-                                      evidence_strength="strong", recency="current", years_demonstrated=1)
+                RequirementEvaluation(requirement="Python", evidence="x",
+                                      evidence_strength="strong")
             ],
         )
 

@@ -266,10 +266,10 @@ def main() -> None:
         print(f"Repeats per pair  : {report.n_repeats}")
         print(f"qualified agreement rate : {report.qualified_agreement_rate:.3f}")
         print(f"qualified Cohen's kappa  : {report.qualified_cohens_kappa:.3f}")
-        print(f"per-requirement verdict agreement : {report.verdict_agreement_rate:.3f}")
+        print(f"per-requirement evidence-strength agreement : {report.evidence_strength_agreement_rate:.3f}")
         print(sep)
         print("Interpretation (kappa): > 0.80 = near-perfect, 0.60–0.80 = substantial,")
-        print("  0.40–0.60 = moderate, < 0.40 = low self-consistency — the verdict is")
+        print("  0.40–0.60 = moderate, < 0.40 = low self-consistency — the conclusion is")
         print("  largely noise, independent of whether it happens to be correct.\n")
 
         report_path = cfg.cache_dir / "reliability_report.json"
@@ -279,7 +279,7 @@ def main() -> None:
                 "n_pairs": report.n_pairs, "n_repeats": report.n_repeats,
                 "qualified_agreement_rate": report.qualified_agreement_rate,
                 "qualified_cohens_kappa": report.qualified_cohens_kappa,
-                "verdict_agreement_rate": report.verdict_agreement_rate,
+                "evidence_strength_agreement_rate": report.evidence_strength_agreement_rate,
                 "per_pair_qualified": report.per_pair_qualified,
             }, indent=2),
             encoding="utf-8",
@@ -312,13 +312,7 @@ def main() -> None:
             frac = report.evidence_strength_distribution.get(strength, 0.0)
             print(f"  {strength:<10}: {frac:.1%}")
         print(f"\n── Internal Consistency ──")
-        print(f"Coherence violations  : {len(report.coherence_violations)} ({report.coherence_violation_rate:.1%})")
         print(f"Qualified flag errors : {report.qualified_flag_errors}")
-        if report.coherence_violations:
-            for v in report.coherence_violations[:5]:
-                print(f"  [{v.jp_id}/{v.candidate_id}] {v.requirement}: {v.issue}")
-            if len(report.coherence_violations) > 5:
-                print(f"  ... and {len(report.coherence_violations) - 5} more")
         print(f"\n── Qualification Funnel ──")
         print(f"Mean qualification rate: {report.mean_qualification_rate:.1%}")
         if report.zero_qualified_jps:

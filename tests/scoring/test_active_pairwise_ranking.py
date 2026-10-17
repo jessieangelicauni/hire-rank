@@ -21,8 +21,8 @@ def _assessment(cid: str, years: int = 3, qualified: bool = True) -> Assessment:
     return Assessment(
         job_profile_id="jd-t", candidate_id=cid, generated_by_model="test",
         must_have_evaluations=[RequirementEvaluation(
-            requirement="Python", verdict="MET" if qualified else "NOT_MET", evidence="used it",
-            evidence_strength="strong", recency="current", years_demonstrated=years,
+            requirement="Python", evidence="used it",
+            evidence_strength="strong",
         )],
         total_relevant_years=years, qualified=qualified,
     )

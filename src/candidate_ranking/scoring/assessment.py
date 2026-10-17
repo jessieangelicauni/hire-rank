@@ -17,14 +17,7 @@ logger = logging.getLogger(__name__)
 
 _cache_lock = threading.Lock()
 
-_EVIDENCE_TO_VERDICT: dict[str, str] = {
-    "strong": "MET",
-    "adequate": "MET",
-    "weak": "PARTIALLY_MET",
-    "none": "NOT_MET",
-}
-
-_YEARS_TICKS = [0, 3, 6, 10, 15, 20]
+_YEARS_TICKS = [0, 1, 2, 3, 4, 5]
 _MONTHS_TICKS = [6, 12, 24, 36, 48, 72]
 _RECENT_MONTHS_TICKS = [1, 6, 12, 24, 36, 60]
 
@@ -97,14 +90,14 @@ def _build_jev_questions(jp: JobProfile) -> list[JevQuestion]:
             "Exclude career breaks and education years. Parallel full-time roles count separately only if "
             "genuinely concurrent.\n\n"
             "CALIBRATION:\n"
-            "  0 years  — student, bootcamp grad, or career changer with no relevant work history\n"
-            "  3 years  — junior-to-mid, first few years in the field\n"
-            "  6 years  — solid mid-level, works independently on most domain tasks\n"
-            " 10 years  — senior tenure, has seen multiple tech cycles\n"
-            " 15 years  — very experienced senior, likely has led teams or major projects\n"
-            " 20+ years — career specialist, principal/distinguished level"
+            " 0 years  — student, bootcamp grad, or career changer with no relevant work history\n"
+            " 1 year   — junior, first year in the field\n"
+            " 2 years  — early-mid, building independence on domain tasks\n"
+            " 3 years  — solid, works independently on most domain tasks\n"
+            " 4 years  — experienced, has seen multiple project cycles\n"
+            " 5+ years — very experienced, likely has led teams or major projects"
         ),
-        criteria=["0 years", "3 years", "6 years", "10 years", "15 years", "20+ years"],
+        criteria=["0 years", "1 year", "2 years", "3 years", "4 years", "5+ years"],
     ))
 
     questions.append(JevQuestion(
@@ -208,15 +201,20 @@ def _build_jev_questions(jp: JobProfile) -> list[JevQuestion]:
 
 def _extract_bm25_evidence(cv_text: str, query: str, top_k: int = 3) -> str:
     from rank_bm25 import BM25Okapi
-    sentences = [s.strip() for s in re.split(r"[.!\n]+", cv_text) if len(s.strip()) > 15]
+    sentences = [s.strip() for s in re.split(r"[.!\n|]+", cv_text) if len(s.strip()) > 15]
     if not sentences:
         return ""
     tokenized = [s.lower().split() for s in sentences]
     bm25 = BM25Okapi(tokenized)
     scores = bm25.get_scores(query.lower().split())
-    top_indices = sorted(
-        sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k]
-    )
+    ranked = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)[:top_k]
+    # A score of 0 means none of the query's tokens appear in that sentence at
+    # all. When every sentence ties at 0 (the query term never appears
+    # anywhere in the CV), the sort above falls back to original CV order —
+    # i.e. the header/contact block — which is not evidence of anything.
+    top_indices = sorted(i for i in ranked if scores[i] > 0)
+    if not top_indices:
+        return ""
     return " ... ".join(sentences[i] for i in top_indices)
 
 
@@ -235,25 +233,23 @@ def _answers_to_assessment(
     must_have_evals = []
     for i, skill in enumerate(jp.must_have_skills):
         es = by_key[f"must_have_{i}_evidence_strength"].value
-        verdict = _EVIDENCE_TO_VERDICT[es]
         must_have_evals.append(RequirementEvaluation(
-            requirement=skill, verdict=verdict,
+            requirement=skill,
             evidence=_extract_bm25_evidence(cv, skill),
-            evidence_strength=es, recency="unknown", years_demonstrated=0,
+            evidence_strength=es,
         ))
 
     nih_evals = []
     for i, skill in enumerate(jp.nice_to_have_skills):
         es = by_key[f"nice_to_have_{i}_evidence_strength"].value
-        verdict = _EVIDENCE_TO_VERDICT[es]
         nih_evals.append(RequirementEvaluation(
-            requirement=skill, verdict=verdict,
+            requirement=skill,
             evidence=_extract_bm25_evidence(cv, skill),
-            evidence_strength=es, recency="unknown", years_demonstrated=0,
+            evidence_strength=es,
         ))
 
-    qualified = all(ev.verdict != "NOT_MET" for ev in must_have_evals)
-    failed = [ev.requirement for ev in must_have_evals if ev.verdict == "NOT_MET"]
+    qualified = all(ev.evidence_strength != "none" for ev in must_have_evals)
+    failed = [ev.requirement for ev in must_have_evals if ev.evidence_strength == "none"]
     disqualification_reason = (
         f"Failed must-have requirements: {', '.join(failed)}" if failed else None
     )

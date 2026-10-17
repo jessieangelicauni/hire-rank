@@ -83,8 +83,8 @@ def _assessment(candidate_id: str, jd_id: str = "jd-1", years: int = 3) -> Asses
         generated_by_model="qwen2.5:14b",
         must_have_evaluations=[
             RequirementEvaluation(
-                requirement="Python", verdict="MET", evidence="FastAPI",
-                evidence_strength="strong", recency="current", years_demonstrated=years,
+                requirement="Python", evidence="FastAPI",
+                evidence_strength="strong",
             )
         ],
         total_relevant_years=years,
