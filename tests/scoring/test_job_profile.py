@@ -36,14 +36,17 @@ def _mock_chain(**overrides) -> MagicMock:
     return chain
 
 
+_UNSET = object()
+
+
 def _mock_rubric_chain(
-    skill_criteria: list[_SkillCriteriaOutput] | None = None,
-    total_years_criteria: _TotalYearsCriteriaOutput | None = None,
-    adaptive_requirements: list[_AdaptiveRequirementOutput] | None = None,
+    skill_criteria: list[_SkillCriteriaOutput] | object = _UNSET,
+    total_years_criteria: _TotalYearsCriteriaOutput | None | object = _UNSET,
+    adaptive_requirements: list[_AdaptiveRequirementOutput] | object = _UNSET,
 ) -> MagicMock:
     output = _RubricOutput(
         reasoning="rubric analysis",
-        skill_criteria=skill_criteria if skill_criteria is not None else [
+        skill_criteria=skill_criteria if skill_criteria is not _UNSET else [
             _SkillCriteriaOutput(
                 skill="Python", instructions="Assess Python evidence",
                 strong="S", adequate="A", weak="W", none="N",
@@ -54,10 +57,10 @@ def _mock_rubric_chain(
             ),
         ],
         total_years_criteria=(
-            total_years_criteria if total_years_criteria is not None
+            total_years_criteria if total_years_criteria is not _UNSET
             else _TotalYearsCriteriaOutput(instructions="Calibrate relevant years for this role")
         ),
-        adaptive_requirements=adaptive_requirements if adaptive_requirements is not None else [],
+        adaptive_requirements=adaptive_requirements if adaptive_requirements is not _UNSET else [],
     )
     chain = MagicMock()
     chain.invoke.return_value = output
