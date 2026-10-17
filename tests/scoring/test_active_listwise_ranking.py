@@ -227,16 +227,48 @@ def test_select_uncertain_subset_rotation_varies_by_iteration():
 
 
 def test_rank_pair_jev_returns_winner_first():
+    """Winner must be first regardless of which candidate was assigned A or B.
+
+    A/B assignment is deterministically shuffled by hash to mitigate position
+    bias, so the test recomputes the expected A/B assignment and verifies the
+    returned order — not a hardcoded position.
+    """
+    import hashlib
     from candidate_ranking.scoring.jev_client import JevAnswer
     from candidate_ranking.scoring.active_listwise_ranking import _rank_pair_jev
     jd = _jd()
+    pair = ["alice", "bob"]
     assessments = {"alice": _assessment("alice", years=5), "bob": _assessment("bob", years=3)}
+
+    # Mirror the hash-flip logic in _rank_pair_jev
+    digest = hashlib.md5(f"{pair[0]}||{pair[1]}||{jd.id}".encode()).hexdigest()
+    flip = int(digest, 16) % 2 == 1
+    expected_a_id = pair[1] if flip else pair[0]
+    expected_b_id = pair[0] if flip else pair[1]
+
     jev = MagicMock()
     jev.evaluate.return_value = [
         JevAnswer(key="stronger_fit", kind="choice", value="A", confidence=0.85)
     ]
-    result = _rank_pair_jev(jd, ["alice", "bob"], assessments, jev)
-    assert result == ["alice", "bob"]   # A=alice won
+    result = _rank_pair_jev(jd, pair, assessments, jev)
+    # Jev says "A" wins — so the candidate assigned to A must come first
+    assert result == [expected_a_id, expected_b_id]
+
+
+def test_rank_pair_jev_position_assignment_is_deterministic():
+    """Same inputs must produce the same A/B assignment on every call."""
+    import hashlib
+    from candidate_ranking.scoring.jev_client import JevAnswer
+    from candidate_ranking.scoring.active_listwise_ranking import _rank_pair_jev
+    jd = _jd()
+    assessments = {"x": _assessment("x"), "y": _assessment("y")}
+    jev = MagicMock()
+    jev.evaluate.return_value = [
+        JevAnswer(key="stronger_fit", kind="choice", value="A", confidence=0.9)
+    ]
+    result1 = _rank_pair_jev(jd, ["x", "y"], assessments, jev)
+    result2 = _rank_pair_jev(jd, ["x", "y"], assessments, jev)
+    assert result1 == result2  # deterministic — no randomness
 
 
 def test_rank_pair_jev_returns_none_on_jev_error():

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import logging
 import math
 from typing import TYPE_CHECKING, Callable
@@ -10,7 +11,11 @@ from pydantic import BaseModel, Field, create_model
 
 from candidate_ranking.models import Assessment, JobDescription
 from candidate_ranking.ranking.plackett_luce import fit_utilities, laplace_covariance
-from candidate_ranking.scoring.render import _extract_jd_summary, _render_evidence_for_ranking
+from candidate_ranking.scoring.render import (
+    _extract_jd_summary,
+    _render_candidate_evidence,
+    _render_evidence_for_ranking,
+)
 from candidate_ranking.utils import GenerationError, invoke_and_validate
 
 if TYPE_CHECKING:
@@ -140,14 +145,27 @@ def _rank_pair_jev(
     assessments: dict[str, Assessment],
     jev_client: "JevClient",
 ) -> list[str] | None:
-    """Ask Jev which of two candidates is the stronger fit. Returns [winner, loser] or None on error."""
+    """Ask Jev which of two candidates is the stronger fit. Returns [winner, loser] or None on error.
+
+    A/B assignment is deterministically randomised per (jd, pair) using MD5 to
+    mitigate position bias: the LLM's known tendency to favour the first-presented
+    candidate (Zheng et al. 2023). Since _select_uncertain_subset always returns
+    items in descending variance order, without this the highest-variance candidate
+    would always occupy position A across all iterations, accumulating a systematic
+    advantage unrelated to fit.
+    """
     from candidate_ranking.scoring.jev_client import JevClientError, JevQuestion
     assert len(pair_ids) == 2, "pairwise comparator requires exactly 2 candidates"
-    a_id, b_id = pair_ids
+
+    # Deterministic shuffle: stable across runs, varies by (jd, pair) combination.
+    digest = hashlib.md5(f"{pair_ids[0]}||{pair_ids[1]}||{jd.id}".encode()).hexdigest()
+    flip = int(digest, 16) % 2 == 1
+    a_id, b_id = (pair_ids[1], pair_ids[0]) if flip else (pair_ids[0], pair_ids[1])
+
     state = (
         f"ROLE: {jd.title}\n\n"
-        f"CANDIDATE A:\n{_render_evidence_for_ranking([a_id], assessments)}\n\n"
-        f"CANDIDATE B:\n{_render_evidence_for_ranking([b_id], assessments)}"
+        f"CANDIDATE A:\n{_render_candidate_evidence(a_id, assessments)}\n\n"
+        f"CANDIDATE B:\n{_render_candidate_evidence(b_id, assessments)}"
     )
     question = JevQuestion(
         key="stronger_fit",
@@ -169,7 +187,9 @@ def _rank_pair_jev(
         logger.warning("Jev pairwise ranking failed for %s: %s — skipping", jd.id, exc)
         return None
     winner = answers[0].value
-    return [a_id, b_id] if winner == "A" else [b_id, a_id]
+    winner_id = a_id if winner == "A" else b_id
+    loser_id = b_id if winner == "A" else a_id
+    return [winner_id, loser_id]
 
 
 def rank_active_listwise(
