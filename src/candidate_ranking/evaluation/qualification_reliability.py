@@ -9,6 +9,7 @@ from candidate_ranking.scoring.llm_assessment import generate_assessment
 
 if TYPE_CHECKING:
     from langchain_core.runnables import Runnable
+    from candidate_ranking.scoring.jev_client import JevClient
 
 logger = logging.getLogger(__name__)
 
@@ -65,7 +66,8 @@ def repeat_qualification_gate(
     jd: JobDescription,
     candidate: Candidate,
     profile: JobProfile | None,
-    chain: "Runnable",
+    jev_client: "JevClient",
+    free_text_chain: "Runnable",
     model_name: str,
     repeats: int = 3,
 ) -> list[Assessment]:
@@ -73,7 +75,10 @@ def repeat_qualification_gate(
     candidate) pair — every call hits the LLM fresh, bypassing the on-disk
     cache entirely, since the cache is keyed to return the same answer forever
     and would make every "repeat" trivially identical."""
-    return [generate_assessment(jd, candidate, profile, chain, model_name) for _ in range(repeats)]
+    return [
+        generate_assessment(jd, candidate, profile, jev_client, free_text_chain, model_name)
+        for _ in range(repeats)
+    ]
 
 
 def build_reliability_report(
