@@ -56,7 +56,6 @@ def run_with_jev_ranking(tmp_path: Path, monkeypatch) -> tuple[RunConfig, str]:
             "nice_to_have_evaluations": [
                 {"requirement": "Docker", "evidence_strength": "strong"},
             ],
-            "career_trajectory": {"has_multinational_experience": False},
         }
     }
     (run_dir / "jd-1" / "assessments.json").write_text(json.dumps(assessments), encoding="utf-8")
@@ -89,7 +88,7 @@ def test_export_console_web_data_maps_jev_scores(run_with_jev_ranking, tmp_path)
     assert assessment["total_relevant_years"] == 3
     assert assessment["must_have_met"] == 2
     assert assessment["nice_to_have_met"] == 1
-    assert assessment["has_multinational_experience"] is False
+    assert "has_multinational_experience" not in assessment
     assert "composite_fit_score" not in assessment
     assert "requirement_scores" not in assessment
     assert "seniority_years_fit_score" not in assessment

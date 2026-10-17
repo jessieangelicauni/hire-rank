@@ -157,9 +157,6 @@ def export_console_web_data(
                     1 for ev in assessment_entry.get("nice_to_have_evaluations", [])
                     if ev.get("evidence_strength") in ("strong", "adequate")
                 ),
-                "has_multinational_experience": (
-                    assessment_entry.get("career_trajectory") or {}
-                ).get("has_multinational_experience"),
             }
             exported_count += 1
 
