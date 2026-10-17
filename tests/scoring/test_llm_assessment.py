@@ -213,3 +213,20 @@ def test_score_to_int_clamps_out_of_range():
     assert _score_to_int(99.0, ticks) == 20  # above max → clamp to last tick
     assert _score_to_int(-1.0, ticks) == 0   # below min → clamp to first tick
 
+
+def test_build_free_text_chain_returns_runnable():
+    from unittest.mock import MagicMock
+    from candidate_ranking.scoring.llm_assessment import build_free_text_chain
+    chain = build_free_text_chain(MagicMock())
+    assert chain is not None
+
+
+def test_free_text_output_model_validates():
+    from candidate_ranking.scoring.llm_assessment import _FreeTextOutput, _SkillEvidenceItem
+    out = _FreeTextOutput(
+        must_have_evidence=[_SkillEvidenceItem(requirement="Python", evidence="Built FastAPI")],
+        strongest_achievements=["Led migration to microservices"],
+    )
+    assert out.must_have_evidence[0].requirement == "Python"
+    assert out.career_trajectory_evidence == ""
+

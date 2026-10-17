@@ -418,6 +418,53 @@ def _build_jev_questions(profile: JobProfile) -> list[JevQuestion]:
     return questions
 
 
+# ── Free-text Ollama chain ────────────────────────────────────────────────────
+
+FREE_TEXT_PROMPT = ChatPromptTemplate.from_messages([
+    (
+        "system",
+        "You are a senior technical recruiter extracting evidence from a CV.\n\n"
+        "Your task is purely EXTRACTION and SUMMARIZATION — do not make hiring judgments.\n"
+        "Quote relevant CV text directly where possible. Be concise and specific.\n\n"
+        "For skills marked as active red flags, provide a brief factual description "
+        "of what the CV shows. For career trajectory evidence, quote the most relevant "
+        "role transitions. If a field has no applicable content, leave it empty or null.",
+    ),
+    (
+        "human",
+        "ROLE: {jd_title}\n\n"
+        "MUST-HAVE SKILLS: {must_have_skills}\n"
+        "NICE-TO-HAVE SKILLS: {nice_to_have_skills}\n\n"
+        "ACTIVE RED FLAGS TO DESCRIBE: {active_flags}\n\n"
+        "CV:\n{cv_text}",
+    ),
+])
+
+
+class _SkillEvidenceItem(BaseModel):
+    requirement: str
+    evidence: str = Field(min_length=1)
+
+
+class _RedFlagDetailItem(BaseModel):
+    type: str
+    detail: str = Field(min_length=1)
+
+
+class _FreeTextOutput(BaseModel):
+    must_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
+    nice_to_have_evidence: list[_SkillEvidenceItem] = Field(default_factory=list)
+    strongest_achievements: list[str] = Field(default_factory=list)
+    notable_signals: str | None = None
+    red_flag_details: list[_RedFlagDetailItem] = Field(default_factory=list)
+    career_trajectory_evidence: str = ""
+    multinational_evidence: str | None = None
+
+
+def build_free_text_chain(llm: BaseChatModel) -> Runnable:
+    return FREE_TEXT_PROMPT | llm.with_structured_output(_FreeTextOutput)
+
+
 # ── Prompt 2: Qualification Gate ─────────────────────────────────────────────
 
 QUALIFICATION_GATE_PROMPT = ChatPromptTemplate.from_messages(
