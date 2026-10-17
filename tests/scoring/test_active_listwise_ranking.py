@@ -224,3 +224,39 @@ def test_select_uncertain_subset_rotation_varies_by_iteration():
     result1 = _select_uncertain_subset(variances, item_ids, subset_size=3, avoid_signature=avoid, iteration=1)
     result2 = _select_uncertain_subset(variances, item_ids, subset_size=3, avoid_signature=avoid, iteration=2)
     assert result1 != result2  # different iterations → different rotations
+
+
+def test_rank_pair_jev_returns_winner_first():
+    from candidate_ranking.scoring.jev_client import JevAnswer
+    from candidate_ranking.scoring.active_listwise_ranking import _rank_pair_jev
+    jd = _jd()
+    assessments = {"alice": _assessment("alice", years=5), "bob": _assessment("bob", years=3)}
+    jev = MagicMock()
+    jev.evaluate.return_value = [
+        JevAnswer(key="stronger_fit", kind="choice", value="A", confidence=0.85)
+    ]
+    result = _rank_pair_jev(jd, ["alice", "bob"], assessments, jev)
+    assert result == ["alice", "bob"]   # A=alice won
+
+
+def test_rank_pair_jev_returns_none_on_jev_error():
+    from candidate_ranking.scoring.jev_client import JevClientError
+    from candidate_ranking.scoring.active_listwise_ranking import _rank_pair_jev
+    jev = MagicMock()
+    jev.evaluate.side_effect = JevClientError("timeout")
+    result = _rank_pair_jev(_jd(), ["a", "b"], {"a": _assessment("a"), "b": _assessment("b")}, jev)
+    assert result is None
+
+
+def test_rank_active_listwise_uses_jev_pairwise_when_client_provided():
+    """When jev_client is given, the LLM path must never be called."""
+    from candidate_ranking.scoring.jev_client import JevAnswer
+    assessments = {f"c{i}": _assessment(f"c{i}") for i in range(4)}
+    jev = MagicMock()
+    jev.evaluate.return_value = [
+        JevAnswer(key="stronger_fit", kind="choice", value="A", confidence=0.9)
+    ]
+    with patch(f"{MODULE}._rank_subset") as mock_llm_rank:
+        result = rank_active_listwise(_jd(), assessments, jev_client=jev, subset_size=2, max_iterations=5)
+    mock_llm_rank.assert_not_called()
+    assert set(result) == set(assessments)

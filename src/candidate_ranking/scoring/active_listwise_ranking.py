@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 import math
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Callable
 
 import numpy as np
 from langchain_core.prompts import ChatPromptTemplate
@@ -15,6 +15,7 @@ from candidate_ranking.utils import GenerationError, invoke_and_validate
 
 if TYPE_CHECKING:
     from langchain_core.language_models import BaseChatModel
+    from candidate_ranking.scoring.jev_client import JevClient
 
 logger = logging.getLogger(__name__)
 
@@ -133,47 +134,91 @@ def _rank_subset(
     return [token_to_id[t] for t in result.ranking]  # type: ignore[attr-defined]
 
 
+def _rank_pair_jev(
+    jd: JobDescription,
+    pair_ids: list[str],
+    assessments: dict[str, Assessment],
+    jev_client: "JevClient",
+) -> list[str] | None:
+    """Ask Jev which of two candidates is the stronger fit. Returns [winner, loser] or None on error."""
+    from candidate_ranking.scoring.jev_client import JevClientError, JevQuestion
+    assert len(pair_ids) == 2, "pairwise comparator requires exactly 2 candidates"
+    a_id, b_id = pair_ids
+    state = (
+        f"ROLE: {jd.title}\n\n"
+        f"CANDIDATE A:\n{_render_evidence_for_ranking([a_id], assessments)}\n\n"
+        f"CANDIDATE B:\n{_render_evidence_for_ranking([b_id], assessments)}"
+    )
+    question = JevQuestion(
+        key="stronger_fit",
+        kind="choice",
+        instructions=(
+            "Based on the evidence summaries above, which candidate is the stronger fit for this role?\n"
+            "Consider: relevance of experience, evidence quality, career trajectory, recency, "
+            "and nice-to-have coverage as a tiebreaker. Do not consider the candidate labels (A/B) "
+            "as signals — evaluate purely on the evidence."
+        ),
+        criteria={
+            "A": "Candidate A has stronger overall fit for this role",
+            "B": "Candidate B has stronger overall fit for this role",
+        },
+    )
+    try:
+        answers = jev_client.evaluate(state, [question])
+    except JevClientError as exc:
+        logger.warning("Jev pairwise ranking failed for %s: %s — skipping", jd.id, exc)
+        return None
+    winner = answers[0].value
+    return [a_id, b_id] if winner == "A" else [b_id, a_id]
+
+
 def rank_active_listwise(
     jd: JobDescription,
     assessments: dict[str, Assessment],
-    llm: "BaseChatModel",
+    llm: "BaseChatModel | None" = None,
+    jev_client: "JevClient | None" = None,
     subset_size: int = 8,
     max_iterations: int = 40,
     min_delta_u: float = 0.01,
     pl_prior_variance: float = 1.0,
 ) -> dict[str, float]:
-    """Active listwise ranking via variance-based subset selection + Plackett-Luce.
+    """Active listwise (or pairwise) ranking via variance-based subset selection + Plackett-Luce.
 
-    Disqualified candidates (failed a must-have per the qualification gate's
-    non-compensatory rule) are never ranked above a qualified one — the LLM-based
-    active loop only ever runs on qualified candidates; disqualified candidates
-    are ordered among themselves by BM25 relevance (0 extra LLM calls, since
-    spending ranking budget comparing people who already failed a must-have
-    isn't worthwhile) and placed as a block strictly below the lowest qualified
-    utility. Without this, `qualified=False` is computed and stored but never
-    actually enforced, and a disqualified candidate can outrank a qualified one
-    purely because the LLM's listwise judgment doesn't see the qualification
-    verdict at all.
+    Pass jev_client (with subset_size=2) for pairwise Jev mode.
+    Pass llm for legacy Ollama listwise mode.
+
+    Disqualified candidates are never ranked above a qualified one — the active
+    loop only runs on qualified candidates; disqualified candidates are ordered
+    by BM25 and placed strictly below the lowest qualified utility.
     """
+    if jev_client is not None:
+        def rank_fn(j, s, a): return _rank_pair_jev(j, s, a, jev_client)
+    elif llm is not None:
+        def rank_fn(j, s, a): return _rank_subset(j, s, a, llm)
+    else:
+        raise ValueError("Either llm or jev_client must be provided to rank_active_listwise")
+
     qualified = {cid: a for cid, a in assessments.items() if a.qualified}
     disqualified = {cid: a for cid, a in assessments.items() if not a.qualified}
 
     if qualified and disqualified:
         qualified_utilities = _rank_active_listwise_core(
-            jd, qualified, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance
+            jd, qualified, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
         )
         floor = min(qualified_utilities.values()) - 1.0
         disqualified_order = _bm25_sort(jd, disqualified)
         disqualified_utilities = {cid: floor - i for i, cid in enumerate(disqualified_order)}
         return {**qualified_utilities, **disqualified_utilities}
 
-    return _rank_active_listwise_core(jd, assessments, llm, subset_size, max_iterations, min_delta_u, pl_prior_variance)
+    return _rank_active_listwise_core(
+        jd, assessments, rank_fn, subset_size, max_iterations, min_delta_u, pl_prior_variance
+    )
 
 
 def _rank_active_listwise_core(
     jd: JobDescription,
     assessments: dict[str, Assessment],
-    llm: "BaseChatModel",
+    rank_fn: "Callable[[JobDescription, list[str], dict[str, Assessment]], list[str] | None]",
     subset_size: int,
     max_iterations: int,
     min_delta_u: float,
@@ -190,16 +235,6 @@ def _rank_active_listwise_core(
     rankings: list[list[str]] = [_bm25_sort(jd, assessments)]
     u = fit_utilities(rankings, item_ids, pl_prior_variance)
 
-    # No shortcut for n <= subset_size: that used to mean exactly one LLM
-    # ranking call with no refinement, so the whole result rode on a single
-    # stochastic sample (temperature > 0 by design, §2) with nothing to
-    # average it against — measurably the noisiest case in practice (a 6
-    # candidate JD swung from τ=1.000 to τ=0.619 run to run on that single
-    # call). Falling through to the loop below lets `_select_uncertain_subset`
-    # naturally select the whole pool every iteration (subset_size >= n), so
-    # small pools still get repeated independent LLM rankings aggregated via
-    # Plackett-Luce, with the same convergence check as larger pools, instead
-    # of settling for N=1.
     min_iter = math.ceil(n / subset_size)
     actual_max_iter = max(max_iterations, 2 * min_iter)
 
@@ -208,7 +243,7 @@ def _rank_active_listwise_core(
         variances = np.diag(laplace_covariance(u, rankings, item_ids, pl_prior_variance))
         subset_ids = _select_uncertain_subset(variances, item_ids, subset_size, last_failed_signature, iteration)
 
-        ordering = _rank_subset(jd, subset_ids, assessments, llm)
+        ordering = rank_fn(jd, subset_ids, assessments)
         if ordering is None:
             last_failed_signature = frozenset(subset_ids)
             continue
