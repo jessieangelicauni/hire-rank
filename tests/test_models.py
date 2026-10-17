@@ -2,21 +2,13 @@ from __future__ import annotations
 import pytest
 from pydantic import ValidationError
 from candidate_ranking.models import (
-    Assessment, CareerTrajectory, JobProfile, RequirementEvaluation,
+    AdaptiveRequirement, AdaptiveRequirementEvaluation, Assessment, JobProfile, RequirementEvaluation,
 )
 
 def _req_eval(evidence_strength="strong") -> RequirementEvaluation:
     return RequirementEvaluation(
         requirement="Python", evidence="FastAPI at PT XYZ",
         evidence_strength=evidence_strength,
-    )
-
-def _trajectory() -> CareerTrajectory:
-    return CareerTrajectory(
-        direction="ascending", evidence="Junior→Senior 2019-2023",
-        tenure_pattern="stable", average_tenure_months=24,
-        most_recent_role_duration_months=18,
-        has_multinational_experience=False, multinational_evidence=None,
     )
 
 def _assessment(qualified=True) -> Assessment:
@@ -41,17 +33,15 @@ def test_assessment_has_no_jev_fields():
     assert "confidence" not in Assessment.model_fields
     assert "seniority_years_fit_score" not in Assessment.model_fields
 
+def test_assessment_has_no_career_trajectory_field():
+    assert "career_trajectory" not in Assessment.model_fields
+
 def test_requirement_evaluation_evidence_strength_literals():
     for s in ("strong", "adequate", "weak", "none"):
         ev = _req_eval(evidence_strength=s)
         assert ev.evidence_strength == s
     with pytest.raises(ValidationError):
         _req_eval(evidence_strength="UNKNOWN")
-
-def test_career_trajectory_roundtrips():
-    t = _trajectory()
-    assert t.direction == "ascending"
-    assert t.has_multinational_experience is False
 
 def test_job_profile_defaults_empty():
     jp = JobProfile(id="jd-1", title="Backend", raw_text="req.", source_path="j.txt", generated_by_model="qwen2.5:14b")
@@ -60,6 +50,12 @@ def test_job_profile_defaults_empty():
     assert jp.education_requirement is None
     assert jp.seniority_requirement is None
     assert jp.other_requirements == []
+
+def test_job_profile_adaptive_fields_default_empty():
+    jp = JobProfile(id="jd-1", title="Backend", raw_text="req.", source_path="j.txt", generated_by_model="qwen2.5:14b")
+    assert jp.skill_criteria == []
+    assert jp.total_years_criteria is None
+    assert jp.adaptive_requirements == []
 
 def test_job_profile_fields_roundtrip():
     jp = JobProfile(
@@ -81,3 +77,25 @@ def test_requirement_evaluation_accepts_none_evidence_strength():
     )
     assert ev.evidence_strength == "none"
 
+def test_adaptive_requirement_roundtrips():
+    req = AdaptiveRequirement(
+        source="education", requirement="Bachelor's degree in CS",
+        criteria_meets="Has a CS or related bachelor's degree",
+        criteria_partially_meets="Has a related but non-CS technical degree",
+        criteria_does_not_meet="No degree mentioned",
+    )
+    assert req.source == "education"
+    assert req.criteria_meets == "Has a CS or related bachelor's degree"
+
+def test_adaptive_requirement_evaluation_roundtrips():
+    ev = AdaptiveRequirementEvaluation(
+        source="seniority", requirement="5+ years", evidence="6 years at PT XYZ",
+        match_level="meets", confidence=0.9,
+    )
+    assert ev.match_level == "meets"
+    assert ev.confidence == 0.9
+    with pytest.raises(ValidationError):
+        AdaptiveRequirementEvaluation(
+            source="seniority", requirement="5+ years", evidence="x",
+            match_level="UNKNOWN", confidence=0.9,
+        )
