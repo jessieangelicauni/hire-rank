@@ -77,3 +77,19 @@ def test_job_profile_fields_roundtrip():
     assert jp.education_requirement == "Bachelor's degree"
     assert jp.seniority_requirement == "5+ years"
     assert jp.other_requirements == ["AWS Certified Solutions Architect"]
+
+def test_requirement_evaluation_accepts_none_evidence_strength():
+    ev = RequirementEvaluation(
+        requirement="Python", verdict="NOT_MET",
+        evidence="Not found", evidence_strength="none",
+        recency="unknown", years_demonstrated=0,
+    )
+    assert ev.evidence_strength == "none"
+
+def test_assessment_advisory_fields_default_to_none_or_empty():
+    a = Assessment(
+        job_description_id="jd-1", candidate_id="c-1", generated_by_model="m",
+    )
+    assert a.education_evaluation is None
+    assert a.seniority_evaluation is None
+    assert a.other_requirement_evaluations == {}

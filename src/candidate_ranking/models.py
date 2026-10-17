@@ -42,7 +42,7 @@ class RequirementEvaluation(BaseModel):
     requirement: str
     verdict: Literal["MET", "PARTIALLY_MET", "NOT_MET"]
     evidence: str
-    evidence_strength: Literal["strong", "adequate", "weak"]
+    evidence_strength: Literal["strong", "adequate", "weak", "none"]
     recency: Literal["current", "recent", "dated", "unknown"]
     years_demonstrated: int = Field(ge=0, default=0)
 
@@ -77,5 +77,8 @@ class Assessment(BaseModel):
     red_flags: list[RedFlag] = Field(default_factory=list)
     qualified: bool = False
     disqualification_reason: str | None = None
+    education_evaluation: Literal["meets", "equivalent_experience", "does_not_meet"] | None = None
+    seniority_evaluation: Literal["meets_or_exceeds", "below"] | None = None
+    other_requirement_evaluations: dict[str, bool] = Field(default_factory=dict)
 
 
