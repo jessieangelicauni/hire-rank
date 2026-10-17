@@ -32,8 +32,9 @@ ACTIVE_RANKING_PROMPT = ChatPromptTemplate.from_messages([
         "RANKING CRITERIA (in priority order):\n"
         "1. Relevance — experience directly matching daily responsibilities\n"
         "2. Evidence quality — concrete achievements over vague responsibilities\n"
-        "3. Recency — recent hands-on experience\n"
-        "4. Nice-to-have coverage — breadth of preferred skills as tiebreaker\n\n"
+        "3. Requirement match — education/seniority/other requirements met (see 'Other requirements' below)\n"
+        "4. Recency — recent hands-on experience\n"
+        "5. Nice-to-have coverage — breadth of preferred skills as tiebreaker\n\n"
         "Output ONLY the ranking permutation. No explanations. No ties. "
         "ranking must contain every candidate number exactly once.",
     ),
@@ -171,9 +172,9 @@ def _rank_pair_jev(
         kind="choice",
         instructions=(
             "Based on the evidence summaries above, which candidate is the stronger fit for this role?\n"
-            "Consider: relevance of experience, evidence quality, recency, "
-            "and nice-to-have coverage as a tiebreaker. Do not consider the candidate labels (A/B) "
-            "as signals — evaluate purely on the evidence."
+            "Consider: relevance of experience, evidence quality, requirement match (education/seniority/"
+            "other requirements met), recency, and nice-to-have coverage as a tiebreaker. Do not consider "
+            "the candidate labels (A/B) as signals — evaluate purely on the evidence."
         ),
         criteria={
             "A": "Candidate A has stronger overall fit for this role",

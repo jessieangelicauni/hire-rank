@@ -309,3 +309,22 @@ def test_rank_pair_jev_instructions_have_no_career_trajectory_reference():
     _rank_pair_jev(jp, ["a", "b"], {"a": _assessment("a"), "b": _assessment("b")}, jev)
     sent_question = jev.evaluate.call_args[0][1][0]
     assert "career trajectory" not in sent_question.instructions.lower()
+
+
+def test_active_ranking_prompt_asks_jev_to_weigh_requirement_match():
+    """The 'Other requirements' evidence block render.py sends is useless if
+    the ranking prompt never tells Jev to weigh it."""
+    from candidate_ranking.scoring.active_pairwise_ranking import ACTIVE_RANKING_PROMPT
+    prompt_text = str(ACTIVE_RANKING_PROMPT).lower()
+    assert "requirement match" in prompt_text
+
+
+def test_rank_pair_jev_instructions_ask_jev_to_weigh_requirement_match():
+    from candidate_ranking.scoring.jev_client import JevAnswer
+    from candidate_ranking.scoring.active_pairwise_ranking import _rank_pair_jev
+    jp = _jp()
+    jev = MagicMock()
+    jev.evaluate.return_value = [JevAnswer(key="stronger_fit", kind="choice", value="A", confidence=0.9)]
+    _rank_pair_jev(jp, ["a", "b"], {"a": _assessment("a"), "b": _assessment("b")}, jev)
+    sent_question = jev.evaluate.call_args[0][1][0]
+    assert "requirement match" in sent_question.instructions.lower()

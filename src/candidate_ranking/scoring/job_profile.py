@@ -313,6 +313,14 @@ def generate_job_profile(
 
 
 def _cache_key(jp: JobProfile, model_name: str) -> str:
+    # Deliberately unchanged in shape by the adaptive-rubric feature (Call 2):
+    # it's keyed only on Call 1's formatted prompt + model name, so a cache
+    # hit skips both calls. One consequence: a job_profile.json cached by a
+    # pre-adaptive-rubric build is still a valid cache hit here, and will
+    # silently come back with empty skill_criteria/adaptive_requirements
+    # (generic fallback questions, no adaptive ones) until its JP text or
+    # model name changes. Delete cache/job_profile.json after pulling this
+    # change if you want the adaptive rubric regenerated immediately.
     prompt_repr = repr(
         JOB_PROFILE_PROMPT.format_messages(title=jp.title, description=jp.raw_text)
     )
