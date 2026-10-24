@@ -1,0 +1,99 @@
+Entry Level Full Stack AI Engineer
+
+**Role Overview**
+=================
+
+
+
+We are hiring for an entry\-level full stack software engineer with an AI focus. This is an ideal role for a recent graduate or early\-career professional with a Bachelor's or Master's degree in Computer Science with an AI/ML focus. You'll join a team of experienced software engineers building AI\-powered features, contributing your understanding of core AI/ML concepts while learning about the practical challenges of integrating new technology into existing code bases.
+
+
+
+You won't be training foundation models from scratch—but you *will* help us evaluate, integrate, fine\-tune, and apply them effectively. You'll help us think critically and creatively about how to use AI as a lever—not just a trend. And you'll collaborate with us in surfacing this technology as a platform \& toolset for other engineers to understand and leverage. We are moving towards a future where every software engineer sees AI \& LLM capabilities as part of their core toolset.
+
+
+**What You'll Do**
+==================
+
+
+* Collaborate with senior engineers and product teams to design, build, and refine AI\-powered features using LLMs and related technologies.
+* Apply your academic understanding of ML concepts (transformers, embeddings, RAG, fine\-tuning, etc.) to help guide architecture and feature decisions.
+* Run experiments and evaluations on LLM prompts, model configurations, and data quality.
+* Stay on top of the latest developments in applied AI/ML, and help translate research into actionable ideas.
+* Prototype and test new AI features using tools like OpenAI, Hugging Face, LangChain, etc.
+* Bring a thoughtful, ethical perspective to AI use—highlighting limitations, risks, and opportunities.
+* Partner closely with product managers and design leads to identify high\-impact AI opportunities in the compliance space.
+* Design and code engaging user experiences using TypeScript, Node.js, React, and Redux
+* Design and code backend architecture components including REST APIs, queueing, storage systems, RBAC, encryption, and security
+* Create technical standards, documentation, and developer upskill \& enablement materials to support AI adoption across teams.
+* Write automated tests and build monitoring and system health metrics
+
+**What We're Looking For**
+==========================
+
+
+* Bachelor's or Master's degree in Computer Science, AI/ML, Data Science, or related field.
+* Strong academic foundation in machine learning, natural language processing, or applied AI.
+* Hands\-on experience (internships, personal projects, or research labs) applying ML/AI tools to real\-world data or problems.
+* Familiarity with modern AI toolkits and platforms, vector databases, prompt engineering, fine\-tuning pre\-trained models, etc.
+* Strong communication skills and intellectual curiosity—you enjoy learning and explaining what you've learned.
+* Strong collaboration skills \- you're a great team member, working constructively with others
+* Self\-starter attitude—you're comfortable working independently and jumping into ambiguous problems.
+
+**Candidate Experience**
+========================
+
+
+* 30\-minute initial chat with our Talent Aquisition Specialist
+* Four 60\-minute 1:1 interviews with our engineering team members
+* Opportunity to ask questions and ensure the role is the right fit
+
+**WHERE YOU'LL GO**
+
+
+* Hyperproof also loves to see an internal transfer. If a linear career path is not what you're looking for, you can work with your manager and our people team to explore lateral moves to other parts of the organization as you continue to grow with us.
+
+
+**WHAT WE OFFER TO OUR EMPLOYEES**
+
+
+**Please note: Benefits listed below are for employees in the United States; contractor roles or international positions may differ**
+
+
+* Annual compensation reviews \+ equity
+* Unlimited PTO: strongly encouraged to unplug and recharge
+* Health: coverage for medical, dental, and vision \- employee and dependents
+* 401K, which vests immediately, complete with a 4% company match
+* 12 weeks of Parental leave and 1 year free diapers and wipes with Honest
+* Annual company in\-person events and quarterly in\-person connects
+* $500 home office stipend \- at the time of hire. Any additional home office needs are requested as needed.
+* $100 quarterly paid wellness stipend
+* Pet insurance discount
+* Slack channel notifications turn off after 5 pm based on your time zone
+* Two Hypercharge weeks of rest where we close company\-wide (July \& Dec)
+
+
+It's an exciting time to be at Hyperproof — we recently raised $40 million in our Series B financing, further cementing Hyperproof as the emerging leader in the risk and compliance management space.
+
+
+
+At Hyperproof's core are our passionate team members who focus on user experience, beautiful design, and evangelize a positive social impact of our cloud based platform. We help organizations streamline their risk and compliance workflows so our customers can spend more time strategically managing programs and less time wrangling spreadsheets.
+
+
+
+We are disrupting the governance, risk, and compliance software space with our innovative platform by helping traditionally unsung heroes (compliance professionals) **do the right things so the wrong things don't happen.**
+
+
+
+Learn more about the @hyperproof culture and how it all started.
+
+
+**EQUAL OPPORTUNITY EMPLOYER**
+
+
+
+Hyperproof is committed to a diverse and inclusive workplace — it's one of our core values! Hyperproof is an equal opportunity employer and does not discriminate on the basis of race, national origin, gender, gender identity, sexual orientation, protected veteran status, disability, age, or other legally protected status.
+
+
+
+Our company is dedicated to building a diverse, inclusive, and authentic workplace. If you're excited about this role, but your experience doesn't perfectly fit every qualification, we encourage you to apply anyway. You may be just the right person for this role or others.

@@ -1,0 +1,2930 @@
+{
+  "job_profile_id": "machine-learning-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "daniel-adif-nugroho",
+      "utility": 0.5611764705882353,
+      "criterion_score": 0.5758823529411764,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.73,
+          "probabilities": {
+            "strong": 0.47,
+            "partial": 0.52,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.305,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.59,
+            "none": 0.4
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.18,
+            "none": 0.8200000000000001
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.965,
+          "probabilities": {
+            "strong": 0.94,
+            "partial": 0.05,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.125,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.25,
+            "none": 0.75
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.485,
+          "probabilities": {
+            "strong": 0.27,
+            "partial": 0.43,
+            "none": 0.3
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.28500000000000003,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.45,
+            "none": 0.49
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.795,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.25,
+            "none": 0.08
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00320",
+      "utility": 0.5491176470588235,
+      "criterion_score": 0.5344117647058824,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.825,
+          "probabilities": {
+            "strong": 0.65,
+            "partial": 0.35,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.535,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.89,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.23,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.46,
+            "none": 0.54
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.97,
+          "probabilities": {
+            "strong": 0.94,
+            "partial": 0.06,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.18,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.65,
+          "probabilities": {
+            "strong": 0.53,
+            "partial": 0.24,
+            "none": 0.23
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.07,
+            "none": 0.93
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.35,
+          "probabilities": {
+            "strong": 0.25,
+            "partial": 0.2,
+            "none": 0.55
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.36,
+            "partial": 0.28,
+            "none": 0.36
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.07500000000000001,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.05,
+            "none": 0.9
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00214",
+      "utility": 0.5317267750684321,
+      "criterion_score": 0.5302941176470588,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.72,
+          "probabilities": {
+            "strong": 0.45,
+            "partial": 0.54,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8350000000000001,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.33,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.555,
+          "probabilities": {
+            "strong": 0.22,
+            "partial": 0.67,
+            "none": 0.11
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.19,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.36,
+            "none": 0.63
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.94,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.12,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8049999999999999,
+          "probabilities": {
+            "strong": 0.62,
+            "partial": 0.37,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.935,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.11,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.64,
+          "probabilities": {
+            "strong": 0.53,
+            "partial": 0.22,
+            "none": 0.25
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.075,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.15,
+            "none": 0.85
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.185,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.17,
+            "none": 0.73
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.12000000000000001,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.14,
+            "none": 0.81
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00378",
+      "utility": 0.5205882352941176,
+      "criterion_score": 0.5058823529411764,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8049999999999999,
+          "probabilities": {
+            "strong": 0.61,
+            "partial": 0.39,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9249999999999999,
+          "probabilities": {
+            "strong": 0.85,
+            "partial": 0.15,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.33499999999999996,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.49,
+            "none": 0.42
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.32,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.48,
+            "none": 0.44
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.74,
+          "probabilities": {
+            "strong": 0.5,
+            "partial": 0.48,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7050000000000001,
+          "probabilities": {
+            "strong": 0.64,
+            "partial": 0.13,
+            "none": 0.23
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9049999999999999,
+          "probabilities": {
+            "strong": 0.82,
+            "partial": 0.17,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.5700000000000001,
+          "probabilities": {
+            "strong": 0.44,
+            "partial": 0.26,
+            "none": 0.3
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.045,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.09,
+            "none": 0.91
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.125,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.13,
+            "none": 0.81
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.425,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.49,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.685,
+          "probabilities": {
+            "strong": 0.39,
+            "partial": 0.59,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00270",
+      "utility": 0.4933479382094995,
+      "criterion_score": 0.4908823529411765,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.935,
+          "probabilities": {
+            "strong": 0.87,
+            "partial": 0.13,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.665,
+          "probabilities": {
+            "strong": 0.36,
+            "partial": 0.61,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.435,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.51,
+            "none": 0.31
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.025,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.05,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.135,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.21,
+            "none": 0.76
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.15000000000000002,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.2,
+            "none": 0.75
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00455",
+      "utility": 0.4778377612435148,
+      "criterion_score": 0.48176470588235293,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.55,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.76,
+            "none": 0.07
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.605,
+          "probabilities": {
+            "strong": 0.22,
+            "partial": 0.77,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.665,
+          "probabilities": {
+            "strong": 0.34,
+            "partial": 0.65,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.01,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.89,
+          "probabilities": {
+            "strong": 0.79,
+            "partial": 0.2,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.29000000000000004,
+          "probabilities": {
+            "strong": 0.07,
+            "partial": 0.44,
+            "none": 0.49
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.15,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.18,
+            "none": 0.76
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.05,
+            "none": 0.94
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00374",
+      "utility": 0.46682931202196454,
+      "criterion_score": 0.4664705882352941,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.875,
+          "probabilities": {
+            "strong": 0.75,
+            "partial": 0.25,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.66,
+          "probabilities": {
+            "strong": 0.33,
+            "partial": 0.66,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.645,
+          "probabilities": {
+            "strong": 0.3,
+            "partial": 0.69,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.465,
+          "probabilities": {
+            "strong": 0.26,
+            "partial": 0.41000000000000003,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.655,
+          "probabilities": {
+            "strong": 0.32,
+            "partial": 0.67,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.865,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.27,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7150000000000001,
+          "probabilities": {
+            "strong": 0.55,
+            "partial": 0.33,
+            "none": 0.12
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.585,
+          "probabilities": {
+            "strong": 0.44,
+            "partial": 0.29,
+            "none": 0.27
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.045,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.09,
+            "none": 0.91
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.075,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.09,
+            "none": 0.88
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.315,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.35,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.02,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00469",
+      "utility": 0.4588566631146191,
+      "criterion_score": 0.46235294117647063,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.855,
+          "probabilities": {
+            "strong": 0.71,
+            "partial": 0.29,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.54,
+          "probabilities": {
+            "strong": 0.12,
+            "partial": 0.84,
+            "none": 0.04
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.195,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.39,
+            "none": 0.61
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.045000000000000005,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.07,
+            "none": 0.92
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.37,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.4,
+            "none": 0.43
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.025,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.05,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.12,
+            "none": 0.85
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.085,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.13,
+            "none": 0.85
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.66,
+          "probabilities": {
+            "strong": 0.34,
+            "partial": 0.64,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00477",
+      "utility": 0.4576306054824426,
+      "criterion_score": 0.46529411764705886,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.875,
+          "probabilities": {
+            "strong": 0.77,
+            "partial": 0.21,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.565,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.77,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.56,
+          "probabilities": {
+            "strong": 0.12,
+            "partial": 0.88,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.41000000000000003,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.54,
+            "none": 0.32
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.935,
+          "probabilities": {
+            "strong": 0.89,
+            "partial": 0.09,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.86,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.24,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.35,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.42,
+            "none": 0.44
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.1,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.12,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.29500000000000004,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.39,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.94,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.12,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00414",
+      "utility": 0.4555882352941177,
+      "criterion_score": 0.4408823529411765,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9450000000000001,
+          "probabilities": {
+            "strong": 0.89,
+            "partial": 0.11,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.21500000000000002,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.33,
+            "none": 0.62
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.315,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.47,
+            "none": 0.45
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.615,
+          "probabilities": {
+            "strong": 0.24,
+            "partial": 0.75,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.585,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.81,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9400000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.08,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9199999999999999,
+          "probabilities": {
+            "strong": 0.84,
+            "partial": 0.16,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.585,
+          "probabilities": {
+            "strong": 0.45,
+            "partial": 0.27,
+            "none": 0.28
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.07,
+            "none": 0.93
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.13,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.14,
+            "none": 0.8
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.13,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.18,
+            "none": 0.78
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.08,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.06,
+            "none": 0.89
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00407",
+      "utility": 0.4535294117647059,
+      "criterion_score": 0.4682352941176471,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.72,
+          "probabilities": {
+            "strong": 0.45,
+            "partial": 0.54,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.13,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.24,
+            "none": 0.75
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.27999999999999997,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.48,
+            "none": 0.48
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.595,
+          "probabilities": {
+            "strong": 0.2,
+            "partial": 0.79,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.695,
+          "probabilities": {
+            "strong": 0.61,
+            "partial": 0.17,
+            "none": 0.22
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.86,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.26,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.22,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.32,
+            "none": 0.62
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.095,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.13,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.24,
+          "probabilities": {
+            "strong": 0.12,
+            "partial": 0.24,
+            "none": 0.64
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.45999999999999996,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.58,
+            "none": 0.25
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.665,
+          "probabilities": {
+            "strong": 0.37,
+            "partial": 0.59,
+            "none": 0.04
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00479",
+      "utility": 0.4194423705673671,
+      "criterion_score": 0.4264705882352941,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.825,
+          "probabilities": {
+            "strong": 0.65,
+            "partial": 0.35,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.675,
+          "probabilities": {
+            "strong": 0.38,
+            "partial": 0.59,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.65,
+          "probabilities": {
+            "strong": 0.32,
+            "partial": 0.66,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.44,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.72,
+            "none": 0.2
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.6699999999999999,
+          "probabilities": {
+            "strong": 0.35,
+            "partial": 0.64,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.935,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.11,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9099999999999999,
+          "probabilities": {
+            "strong": 0.83,
+            "partial": 0.16,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.27,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.44,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.12,
+            "none": 0.85
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.135,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.17,
+            "none": 0.78
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.63,
+          "probabilities": {
+            "strong": 0.3,
+            "partial": 0.66,
+            "none": 0.04
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00425",
+      "utility": 0.4173529411764706,
+      "criterion_score": 0.4320588235294118,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9249999999999999,
+          "probabilities": {
+            "strong": 0.85,
+            "partial": 0.15,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.655,
+          "probabilities": {
+            "strong": 0.32,
+            "partial": 0.67,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.315,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.51,
+            "none": 0.43
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.55,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.88,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.6699999999999999,
+          "probabilities": {
+            "strong": 0.58,
+            "partial": 0.18,
+            "none": 0.24
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.225,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.33,
+            "none": 0.61
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.02,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "candidate_id": "cv-00284",
+      "utility": 0.40121904995962554,
+      "criterion_score": 0.39852941176470585,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.87,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.26,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.46499999999999997,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.83,
+            "none": 0.12
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.06,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.12,
+            "none": 0.88
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.58,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.82,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.01,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.48,
+          "probabilities": {
+            "strong": 0.22,
+            "partial": 0.52,
+            "none": 0.26
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.42000000000000004,
+          "probabilities": {
+            "strong": 0.27,
+            "partial": 0.3,
+            "none": 0.43
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.065,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.09,
+            "none": 0.89
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.13,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.18,
+            "none": 0.78
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.6699999999999999,
+          "probabilities": {
+            "strong": 0.36,
+            "partial": 0.62,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "candidate_id": "cv-00259",
+      "utility": 0.3185294117647059,
+      "criterion_score": 0.3185294117647059,
+      "criterion_breakdown": [
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.665,
+          "probabilities": {
+            "strong": 0.33,
+            "partial": 0.67,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Deep Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Convolutional Neural Networks (CNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Recurrent Neural Networks (RNNs)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Long Short-Term Memory (LSTM)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Reinforcement Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8,
+          "probabilities": {
+            "strong": 0.6,
+            "partial": 0.4,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.02,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Data Engineering",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.33999999999999997,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.62,
+            "none": 0.35
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.6200000000000001,
+          "probabilities": {
+            "strong": 0.28,
+            "partial": 0.68,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Storytelling with Data",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.12,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.22,
+            "none": 0.77
+          }
+        },
+        {
+          "requirement": "UI/UX",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9600000000000001,
+          "probabilities": {
+            "strong": 0.92,
+            "partial": 0.08,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Human-Machine Interaction",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.895,
+          "probabilities": {
+            "strong": 0.84,
+            "partial": 0.11,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Software Engineering Best Practices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Feature Engineering",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Machine Learning Model Development",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

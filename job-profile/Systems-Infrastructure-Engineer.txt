@@ -1,0 +1,47 @@
+Senior Software Engineer, Systems Infrastructure
+
+LinkedIn
+
+LinkedIn is the world’s largest professional network, built to create economic opportunity for every member of the global workforce. Our products help people make powerful connections, discover exciting opportunities, build necessary skills, and gain valuable insights every day. We’re also committed to providing transformational opportunities for our own employees by investing in their growth. We aspire to create a culture that’s built on trust, care, inclusion, and fun, where everyone can succeed.
+
+Join us to transform the way the world works.
+
+This role will be based in Bangalore, India.
+
+At LinkedIn, our approach to flexible work is centered on trust and optimized for culture, connection, clarity, and the evolving needs of our business. The work location of this role is hybrid, meaning it will be performed both from home and from a LinkedIn office on select days, as determined by the business needs of the team.
+
+As part of our world-class software engineering team, you will be charged with building the next-generation infrastructure and platforms for LinkedIn, including but not limited to: an application and service delivery platform, massively scalable data storage and replication systems, cutting-edge search platform, best-in-class AI platform, experimentation platform, privacy and compliance platform etc. You will work and learn among the best, putting to use your passion for distributed technologies and algorithms, API design and systems-design, and your passion for writing code that performs at an extreme scale. LinkedIn has already pioneered well-known open-source infrastructure projects like Apache Kafka, Pinot, Azkaban, Samza, Venice, Datahub, Feather, etc. We also work with industry standard open source infrastructure products like Kubernetes, GRPC and GraphQL - come join our infrastructure teams and share the knowledge with a broader community while making a real impact within our company.
+
+Responsibilities
+- You will design, build and operate one of the online data infra platforms that power all of Linkedin’s core applications.
+- You will participate in design and code reviews to maintain our high development standards.
+- You will partner with peers, leads and internal customers to define scope, prioritize and build impactful features at a high velocity.
+- You will mentor other engineers and will help build a fast-growing team.
+- You will work closely with the open-source community to participate and influence cutting edge open-source projects
+
+Basic Qualifications
+- BA/BS Degree in Computer Science or related technical discipline, or related practical experience
+- 5+ years industry experience in software design, development, and algorithm related solutions.
+- 5+ years experience programming in object-oriented languages such as Java, Python, Go, and/or Functional languages such as Scala or other relevant coding languages
+- Hands on experience developing distributed systems, large-scale systems, databases and/or Backend APIs
+
+Preferred Qualifications
+- Experience with Hadoop (or similar) Ecosystem (MapReduce, Yarn, HDFS, Hive, Spark, Presto)
+- Experience with industry, open-source projects and/or academic research in data management, relational databases, and/or large-data, parallel and distributed systems
+- Experience with open-source project management and governance
+- Experience with cloud computing (e.g., Azure) is a plus.
+
+Suggested Skills:
+- Distributed systems
+- Backend Systems Infrastructure
+- Java
+
+You will Benefit from our Culture:
+We strongly believe in the well-being of our employees and their families. That is why we offer generous health and wellness programs and time away for employees of all levels.
+
+India Disability Policy
+LinkedIn is an equal employment opportunity employer offering opportunities to all job seekers, including individuals with disabilities. For more information on our equal opportunity policy, please visit https://legal.linkedin.com/content/dam/legal/Policy_India_EqualOppPWD_9-12-2023.pdf
+
+Global Data Privacy Notice for Job Candidates
+This document provides transparency around the way in which LinkedIn handles personal data of employees and job applicants: https://legal.linkedin.com/candidate-portal
+Show more

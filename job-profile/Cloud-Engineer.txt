@@ -1,0 +1,68 @@
+Software Engineer (L4) - Cloud Network Engineering
+
+Netflix is one of the world's leading entertainment services, with 283 million paid memberships in over 190 countries enjoying TV series, films and games across a wide variety of genres and languages. Members can play, pause and resume watching as much as they want, anytime, anywhere, and can change their plans at any time.
+
+The Cloud Network Engineering team’s goal is to create network architectures that can readily evolve with the needs of our product services and initiatives. We achieve this goal by developing tools and services that improve network availability, scale, performance, and security. Our domain ownership is divided into two high-level segments: Cloud Network (network infrastructure) and Host Networking (the network stack). Our goals are to scale streaming services and support our expanded business use cases of Studio, Gaming, and Animation. We deliver on these goals via our mission to evolve, manage, optimize, and scale the network on Netflix’s compute infrastructure.
+
+Must Have Skills & Experience
+
+
+Experience developing solutions using cloud-native technologies and frameworks, with a strong focus on scalability and resilience.
+Expertise in cloud networking, particularly within AWS, including VPC design, subnetting, security groups, and routing.
+Experience with C++, Go, Python, or similar object-oriented programming languages and a demonstrated ability to write clean, maintainable, and efficient code.
+Solid understanding of networking fundamentals across layers L2 to L7, including knowledge of network protocols, and troubleshooting in production environments.
+A deep commitment to continuous learning, coupled with a pragmatic approach to thinking and the ability to navigate ambiguous areas and break down complex problems.
+A passion for technology combined with the ability to navigate ambiguous areas, breaking down complex problems into actionable solutions.
+
+
+Nice To Have Skills
+
+
+Experience with container and orchestration technologies such as Docker and Kubernetes.
+Experience building and operating microservices within a highly reliable and distributed systems environment.
+Demonstrated ability to ensure service resilience and scalability.
+Familiarity with Temporal or similar workflow orchestration tools for managing complex application workflows and ensuring fault-tolerant service execution.
+
+
+What You’ll Be Doing In This Role
+
+
+Balancing bias to action with the ability to make well-informed bets.
+Engaging directly with end engineering users to understand their needs and improve their experience.
+Understanding and solving business needs at scale with high-quality solutions.
+Leaning into proactiveness and effective communication in pursuit of cross-functional alignment.
+Writing and maintaining code to solve complex network problems, automate network configuration, and streamline management processes, enhancing the overall efficiency and reliability of our network infrastructure.
+Contributing to the design and architecture of network components, including VPCs, load balancers, network gateways, and IPv6 configurations, ensuring they meet the evolving needs of the platform.
+Engaging directly with end engineering users to understand their needs and continuously improve their experience with our network solutions.
+Understanding and addressing business needs at scale, delivering high-quality solutions that align with our organizational goals and strategy.
+
+
+You Will Be Successful In The Role If
+
+
+You thrive in ambiguity; complex and fuzzy requirements are more common than clearly defined customer expectations.
+You take incremental steps toward solving big problems; test and learn approaches work better than heads down development.
+You are independent and self driven; progress is often self-directed by teams & individuals;
+You’ve read about Netflix’s culture and think you would thrive here.
+
+
+Here are a few recent talks and posts from members of the team to highlight the work we do:
+
+
+How Netflix is able to enrich VPC Flow logs
+How Netflix is using IPv6 to enable hyperscale networking
+NATless IPv6/IPv4 Address Translation
+
+
+Our compensation structure consists solely of an annual salary; we do not have bonuses. You choose each year how much of your compensation you want in salary versus stock options. To determine your personal top-of-market compensation, we rely on market indicators and consider your specific job family, background, skills, and experience to determine your compensation in the market range. The range for this role is $100,000 - $720,000.
+
+Netflix provides comprehensive benefits including Health Plans, Mental Health support, a 401(k) Retirement Plan with employer match, Stock Option Program, Disability Programs, Health Savings and Flexible Spending Accounts, Family-forming benefits, and Life and Serious Injury Benefits. We also offer paid leave of absence programs. Full-time hourly employees accrue 35 days annually for paid time off to be used for vacation, holidays, and sick paid time off. Full-time salaried employees are immediately entitled to flexible time off. See more details about our Benefits here.
+
+Netflix has a unique culture and environment. Learn more here.
+
+Inclusion is a Netflix value and we strive to host a meaningful interview experience for all candidates. If you want an accommodation/adjustment for a disability or any other reason during the hiring process, please send a request to your recruiting partner.
+
+We are an equal-opportunity employer and celebrate diversity, recognizing that diversity builds stronger teams. We approach diversity and inclusion seriously and thoughtfully. We do not discriminate on the basis of race, religion, color, ancestry, national origin, caste, sex, sexual orientation, gender, gender identity or expression, age, disability, medical condition, pregnancy, genetic makeup, marital status, or military service.
+
+Job is open for no less than 7 days and will be removed when the position is filled.
+Show more

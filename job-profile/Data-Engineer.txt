@@ -1,0 +1,86 @@
+Data Engineer
+
+Calm
+
+About Calm
+
+Calm is on a mission to support everyone on every step of their mental health journey. With the #1 app for sleep, meditation and relaxation as well as a growing library of digital, evidence-based mental health programs, Calm offers trusted support for individuals and organizations alike. Our flagship consumer app provides personalized content and activities – featuring a range of experts and beloved celebrity voices – to help users manage stress, improve sleep and live mindfully. Our workplace and healthcare solutions offer a consumer-friendly approach to clinical content and HIPAA-compliant resources in order to drive positive health and business outcomes. Named a TIME100 Most Influential Company, Calm supports more than 150 million people and 3,500 organizations across seven languages and 190 countries.
+
+What We Do
+
+As a data organization, we focus on making data a competitive advantage for Calm. We’re product-minded, team-oriented, and grounded in our mission of making the world a happier and healthier place. We work closely with teams across the company such as product, finance, marketing, data science, and more. As a team, we strive to always improve.
+
+What You’ll Do
+
+We’re looking for someone who is comfortable with ambiguity, assesses what needs to be done, and delivers with the right balance of velocity and technical debt. As a Data Engineer, you’ll leverage all sorts of data, from application event streams to product databases to third-party data, to help stakeholders create products and answer business questions. Our stack spans AWS and GCP, with technologies like Airflow, Databricks, BigQuery, Postgres, and dbt. Specifically, you will:
+
+
+Work with business stakeholders to understand their goals, challenges, and decisions
+Assist with building solutions that standardize our data approach to common problems across the company
+Incorporate observability and testing best practices into projects
+Assist in the development of processes to ensure our data is trusted and well-documented
+Effectively work with data analysts on refining the data model used for reporting and analytical purposes
+Improve availability and consistency of data points crucial for analysis
+
+
+Some past projects include:
+
+
+Standing up a reporting system in BigQuery from scratch, including data replication, infrastructure setup, dbt model creation, and integration with reporting endpoints
+Creating a user-level feature store and related API endpoints to support machine learning tasks such as content recommendation and persona creation
+Remodeling a critical data pipeline to decrease our model count by 50% and reduce run time by 83%
+Integrate our Data Warehouse with 3rd party applications for personalization that reaches tens of millions of customers
+Revamping orchestration and execution to reduce critical data delivery times by 70%
+
+
+Skills And Qualifications (Who You Are)
+
+
+Demonstrated experience with the following languages/technologies/frameworks (or equivalents):
+Python
+Docker
+Kubernetes
+GCP and/or AWS
+Relational DBs / SQL
+Data Warehouses and Lakes, such as Bigquery, Databricks, or Snowflake
+Experience in designing and building data pipelines that scale
+Strong communication skills, with the ability to convey technical solutions to both technical and non-technical stakeholders
+Experience working effectively in a fast-paced, agile environment as part of a collaborative team
+Ability to work independently and as part of a team
+Willingness and enthusiasm to learn new technologies and tackle challenging problems
+Pragmatism: balancing scrappiness and rigor
+
+
+Nice to Haves
+
+
+Experience building across clouds
+Experience with streaming systems like Segment
+Knowledge of different data modeling paradigms, e.g. relational, data vault, and medallion
+Some experience in Infrastructure as Code tools like Terraform
+
+
+Minimum Requirements
+
+
+This role typically requires 5+ years of related experience
+
+
+Calm uses a geographic pay model that determines salaries based on the location where an employee lives. For this position, the base pay ranges across Calm’s pay tiers is $147,000 - $210,000. The base pay range represents the low and high end of Calm’s salary range for this position. Not all candidates will be eligible for the upper end of the salary range. Exact salary will ultimately depend on multiple factors, which include the successful candidate's geographic location, skills, experience and other qualifications. Calm uses employee zip code to determine which pay range applies. This role is also eligible for equity + comprehensive benefits + 401k + flexible time off.
+
+Please note that Calm may leverage artificial intelligence technology in the application review process.
+
+Calm is committed to providing reasonable accommodations for qualified individuals with disabilities, including disabled veterans. If you require a reasonable accommodation to complete any part of the application or interview process, please contact Calm’s Recruiting team at recruitingaccommodations@calm.com. All accommodation requests will be handled confidentially and assessed on a case-by-case basis.
+
+We believe that mental health is health, and every person should be considered in the discussion. That’s why we’re proud to be an equal opportunity workplace, committed to providing equal employment opportunities to all applicants and employees regardless of race, color, religion, national origin, age, sex, marital status, ancestry, physical or mental disability, medical condition, genetic information, military or veteran status, gender identity or expression, sexual orientation, or any other characteristic protected by applicable federal, state or local law.
+
+Calm is deeply committed to diversity, equity and inclusion. We strive to create a mindful and respectful environment where everyone can bring their authentic self to work, and experience a culture that is free of harassment, racism, and discrimination.
+
+Employment offers are contingent upon the successful completion of a background check. Roles which require access to certain types of information may also require the successful completion of a drug screening.
+
+FOR US BASED POSITIONS: Calm participates in e-verify. E-verify provides the federal government with your Form I-9 information to confirm that you are authorized to work in the U.S.
+
+
+Right to Work
+E-Verify Participation
+Show more

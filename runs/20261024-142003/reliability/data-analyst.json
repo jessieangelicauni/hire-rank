@@ -1,0 +1,54 @@
+{
+  "jp_id": "data-analyst",
+  "checks": {
+    "tiering_validity": {
+      "check": "tiering_validity",
+      "jp_id": "data-analyst",
+      "total": 29,
+      "agreed": 27,
+      "agreement_rate": 0.9310344827586207
+    },
+    "confidence_calibration": {
+      "check": "confidence_calibration",
+      "jp_id": "data-analyst",
+      "buckets": {
+        "<0.5": {
+          "mean": 0.9305555555555555,
+          "n": 24
+        },
+        "0.5-0.7": {
+          "mean": 0.9696969696969696,
+          "n": 44
+        },
+        "0.7-0.9": {
+          "mean": 1.0,
+          "n": 49
+        },
+        "0.9-1.0": {
+          "mean": 1.0,
+          "n": 78
+        }
+      }
+    },
+    "ranking_consistency": {
+      "check": "ranking_consistency",
+      "jp_id": "data-analyst",
+      "total_pairs": 78,
+      "flipped_pairs": 5,
+      "inconsistent_rate": 0.0641025641025641,
+      "cosmetic_total": 78,
+      "cosmetic_flipped": 0,
+      "cosmetic_inconsistent_rate": 0.0
+    },
+    "ranking_repeatability": {
+      "check": "ranking_repeatability",
+      "jp_id": "data-analyst",
+      "n_repeat_pairs": 3,
+      "mean_kendall_tau": 0.9829059829059826,
+      "n_candidates": 13,
+      "n_candidates_in_tie_clusters": 13,
+      "n_tie_clusters": 4,
+      "n_jev_calls": 42
+    }
+  }
+}

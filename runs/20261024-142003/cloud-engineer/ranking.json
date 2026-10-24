@@ -1,0 +1,4880 @@
+{
+  "job_profile_id": "cloud-engineer",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00240",
+      "utility": 0.455,
+      "criterion_score": 0.455,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.115,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.17,
+            "none": 0.8
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.685,
+          "probabilities": {
+            "strong": 0.37,
+            "partial": 0.63,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.515,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.97,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.26,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.48,
+            "none": 0.5
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.905,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.19,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.625,
+          "probabilities": {
+            "strong": 0.26,
+            "partial": 0.73,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.795,
+          "probabilities": {
+            "strong": 0.65,
+            "partial": 0.29,
+            "none": 0.06
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.35,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.48,
+            "none": 0.41
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00423",
+      "utility": 0.3951712065392474,
+      "criterion_score": 0.3876470588235294,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.53,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.94,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09999999999999999,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.18,
+            "none": 0.81
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.97,
+          "probabilities": {
+            "strong": 0.94,
+            "partial": 0.06,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.265,
+          "probabilities": {
+            "strong": 0.2,
+            "partial": 0.13,
+            "none": 0.67
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.26,
+            "partial": 0.48,
+            "none": 0.26
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.89,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.16,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.32,
+          "probabilities": {
+            "strong": 0.15,
+            "partial": 0.34,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00266",
+      "utility": 0.38021778841464093,
+      "criterion_score": 0.3779411764705882,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8400000000000001,
+          "probabilities": {
+            "strong": 0.68,
+            "partial": 0.32,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.19,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.34,
+            "none": 0.64
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.43000000000000005,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.66,
+            "none": 0.24
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.525,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.95,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.42000000000000004,
+          "probabilities": {
+            "strong": 0.2,
+            "partial": 0.44,
+            "none": 0.36
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00486",
+      "utility": 0.380210126070881,
+      "criterion_score": 0.36852941176470594,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9450000000000001,
+          "probabilities": {
+            "strong": 0.89,
+            "partial": 0.11,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.485,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.97,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.19,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.34,
+            "none": 0.64
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.6,
+          "probabilities": {
+            "strong": 0.42,
+            "partial": 0.36,
+            "none": 0.22
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.4,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.74,
+            "none": 0.23
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.385,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.59,
+            "none": 0.32
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9600000000000001,
+          "probabilities": {
+            "strong": 0.92,
+            "partial": 0.08,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.315,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.53,
+            "none": 0.42
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00397",
+      "utility": 0.3744117647058824,
+      "criterion_score": 0.3597058823529412,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.025,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.03,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8200000000000001,
+          "probabilities": {
+            "strong": 0.64,
+            "partial": 0.36,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.105,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.19,
+            "none": 0.8
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.62,
+          "probabilities": {
+            "strong": 0.43,
+            "partial": 0.38,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.715,
+          "probabilities": {
+            "strong": 0.43,
+            "partial": 0.57,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.32,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.44,
+            "none": 0.46
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00403",
+      "utility": 0.36988905341665035,
+      "criterion_score": 0.3744117647058824,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9650000000000001,
+          "probabilities": {
+            "strong": 0.93,
+            "partial": 0.07,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.05,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.08,
+            "none": 0.91
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.6,
+          "probabilities": {
+            "strong": 0.22,
+            "partial": 0.76,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.125,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.25,
+            "none": 0.75
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.525,
+          "probabilities": {
+            "strong": 0.23,
+            "partial": 0.59,
+            "none": 0.18
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.635,
+          "probabilities": {
+            "strong": 0.29,
+            "partial": 0.69,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.91,
+            "partial": 0.08,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00488",
+      "utility": 0.3685897288582973,
+      "criterion_score": 0.36617647058823527,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.165,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.27,
+            "none": 0.7
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.06999999999999999,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.12,
+            "none": 0.87
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.455,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.63,
+            "none": 0.23
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.52,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.96,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.31,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.58,
+            "none": 0.4
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.215,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.31,
+            "none": 0.63
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00436",
+      "utility": 0.3683586618176677,
+      "criterion_score": 0.37147058823529416,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.815,
+          "probabilities": {
+            "strong": 0.63,
+            "partial": 0.37,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.395,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.51,
+            "none": 0.35
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.11,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.2,
+            "none": 0.79
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.545,
+          "probabilities": {
+            "strong": 0.23,
+            "partial": 0.63,
+            "none": 0.14
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.555,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.89,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.385,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.49,
+            "none": 0.37
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00201",
+      "utility": 0.35739955740816576,
+      "criterion_score": 0.3614705882352941,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9600000000000001,
+          "probabilities": {
+            "strong": 0.92,
+            "partial": 0.08,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.01,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.755,
+          "probabilities": {
+            "strong": 0.51,
+            "partial": 0.49,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.25,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.48,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.395,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.61,
+            "none": 0.3
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7949999999999999,
+          "probabilities": {
+            "strong": 0.59,
+            "partial": 0.41,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.17500000000000002,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.33,
+            "none": 0.66
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7899999999999999,
+          "probabilities": {
+            "strong": 0.58,
+            "partial": 0.42,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00231",
+      "utility": 0.35671235962898284,
+      "criterion_score": 0.36088235294117643,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.63,
+          "probabilities": {
+            "strong": 0.26,
+            "partial": 0.74,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.1,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.165,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.31,
+            "none": 0.68
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.41000000000000003,
+          "probabilities": {
+            "strong": 0.15,
+            "partial": 0.52,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00211",
+      "utility": 0.3563494132250958,
+      "criterion_score": 0.3644117647058824,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.11,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.18,
+            "none": 0.8
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.51,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.98,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.21,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.38,
+            "none": 0.6
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.7,
+          "probabilities": {
+            "strong": 0.4,
+            "partial": 0.6,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.52,
+          "probabilities": {
+            "strong": 0.35,
+            "partial": 0.34,
+            "none": 0.31
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.93,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.1,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.23,
+          "probabilities": {
+            "strong": 0.07,
+            "partial": 0.32,
+            "none": 0.61
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00427",
+      "utility": 0.3466978704095362,
+      "criterion_score": 0.34852941176470587,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.05,
+            "none": 0.94
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.87,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.26,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.41,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.7,
+            "none": 0.24
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.25,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.44,
+            "none": 0.53
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.98,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.39,
+          "probabilities": {
+            "strong": 0.16,
+            "partial": 0.46,
+            "none": 0.38
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00446",
+      "utility": 0.34457893824117974,
+      "criterion_score": 0.3423529411764706,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.06,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.08,
+            "none": 0.9
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.515,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.97,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.245,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.41,
+            "none": 0.55
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.38499999999999995,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.69,
+            "none": 0.27
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.415,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.73,
+            "none": 0.22
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.2,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.32,
+            "none": 0.64
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 14,
+      "candidate_id": "cv-00342",
+      "utility": 0.3435170231971984,
+      "criterion_score": 0.35411764705882354,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9199999999999999,
+          "probabilities": {
+            "strong": 0.84,
+            "partial": 0.16,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.905,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.19,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8350000000000001,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.33,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.545,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.91,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.72,
+          "probabilities": {
+            "strong": 0.44,
+            "partial": 0.56,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.06999999999999999,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.12,
+            "none": 0.87
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.765,
+          "probabilities": {
+            "strong": 0.53,
+            "partial": 0.47,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.735,
+          "probabilities": {
+            "strong": 0.5,
+            "partial": 0.47,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 15,
+      "candidate_id": "cv-00395",
+      "utility": 0.34092766045164785,
+      "criterion_score": 0.3470588235294118,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.05,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.08,
+            "none": 0.91
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.245,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.47,
+            "none": 0.52
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.11,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.22,
+            "none": 0.78
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.815,
+          "probabilities": {
+            "strong": 0.63,
+            "partial": 0.37,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.20500000000000002,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.33,
+            "none": 0.63
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 16,
+      "candidate_id": "cv-00420",
+      "utility": 0.3353837337426884,
+      "criterion_score": 0.33088235294117646,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.125,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.21,
+            "none": 0.77
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.25,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.48,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.41000000000000003,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.64,
+            "none": 0.27
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.33,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.44,
+            "none": 0.45
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 17,
+      "candidate_id": "cv-00224",
+      "utility": 0.3336798090545595,
+      "criterion_score": 0.33529411764705885,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.045000000000000005,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.07,
+            "none": 0.92
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9600000000000001,
+          "probabilities": {
+            "strong": 0.92,
+            "partial": 0.08,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.06,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.12,
+            "none": 0.88
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.35,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.62,
+            "none": 0.34
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.295,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.43,
+            "none": 0.49
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 18,
+      "candidate_id": "cv-00275",
+      "utility": 0.3335294117647059,
+      "criterion_score": 0.31882352941176473,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.32,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.62,
+            "none": 0.37
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.16,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.3,
+            "none": 0.69
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.875,
+          "probabilities": {
+            "strong": 0.75,
+            "partial": 0.25,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.51,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.98,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8300000000000001,
+          "probabilities": {
+            "strong": 0.66,
+            "partial": 0.34,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.225,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.27,
+            "none": 0.64
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 19,
+      "candidate_id": "cv-00418",
+      "utility": 0.3170588235294117,
+      "criterion_score": 0.3317647058823529,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.385,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.59,
+            "none": 0.32
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.065,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.13,
+            "none": 0.87
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.43,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.78,
+            "none": 0.18
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8450000000000001,
+          "probabilities": {
+            "strong": 0.6900000000000001,
+            "partial": 0.31,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.42000000000000004,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.5,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 20,
+      "candidate_id": "cv-00330",
+      "utility": 0.3153439652874353,
+      "criterion_score": 0.3141176470588235,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8200000000000001,
+          "probabilities": {
+            "strong": 0.64,
+            "partial": 0.36,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.025,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.05,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.69,
+          "probabilities": {
+            "strong": 0.38,
+            "partial": 0.62,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.58,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.82,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.16,
+            "none": 0.83
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.515,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.97,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.51,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.98,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.33,
+          "probabilities": {
+            "strong": 0.16,
+            "partial": 0.34,
+            "none": 0.5
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.31,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.4,
+            "none": 0.49
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.97,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.04,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 21,
+      "candidate_id": "cv-00382",
+      "utility": 0.31029411764705883,
+      "criterion_score": 0.325,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.03,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.06,
+            "none": 0.94
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.04,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.06,
+            "none": 0.9299999999999999
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.6399999999999999,
+          "probabilities": {
+            "strong": 0.29,
+            "partial": 0.7,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.415,
+          "probabilities": {
+            "strong": 0.31,
+            "partial": 0.21,
+            "none": 0.48
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.04,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.08,
+            "none": 0.92
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9650000000000001,
+          "probabilities": {
+            "strong": 0.93,
+            "partial": 0.07,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.41000000000000003,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.46,
+            "none": 0.36
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 22,
+      "candidate_id": "cv-00302",
+      "utility": 0.3092518033868015,
+      "criterion_score": 0.3164705882352941,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.54,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.92,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.13,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.24,
+            "none": 0.75
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.435,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.71,
+            "none": 0.21
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.28,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.44,
+            "none": 0.5
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 23,
+      "candidate_id": "cv-00311",
+      "utility": 0.29343517482487186,
+      "criterion_score": 0.2988235294117647,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.88,
+          "probabilities": {
+            "strong": 0.76,
+            "partial": 0.24,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.025,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.05,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.165,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.33,
+            "none": 0.67
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.37,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.62,
+            "none": 0.32
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.85,
+          "probabilities": {
+            "strong": 0.7,
+            "partial": 0.3,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.27,
+          "probabilities": {
+            "strong": 0.07,
+            "partial": 0.4,
+            "none": 0.53
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 24,
+      "candidate_id": "cv-00271",
+      "utility": 0.28784180485275884,
+      "criterion_score": 0.28647058823529414,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.885,
+          "probabilities": {
+            "strong": 0.77,
+            "partial": 0.23,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09999999999999999,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.18,
+            "none": 0.81
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.29000000000000004,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.52,
+            "none": 0.45
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.28,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.54,
+            "none": 0.45
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.38999999999999996,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.7,
+            "none": 0.26
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.715,
+          "probabilities": {
+            "strong": 0.43,
+            "partial": 0.57,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.245,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.41,
+            "none": 0.55
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9600000000000001,
+          "probabilities": {
+            "strong": 0.93,
+            "partial": 0.06,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 25,
+      "candidate_id": "cv-00352",
+      "utility": 0.24323529411764705,
+      "criterion_score": 0.24323529411764705,
+      "criterion_breakdown": [
+        {
+          "requirement": "Cloud-native technologies",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5700000000000001,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.86,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "VPC design",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Subnetting",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Security groups",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Routing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "C++",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Go",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Networking fundamentals",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Docker",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Kubernetes",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Microservices",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.08,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.12,
+            "none": 0.86
+          }
+        },
+        {
+          "requirement": "Service resilience",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.16,
+            "none": 0.83
+          }
+        },
+        {
+          "requirement": "Service scalability",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.87,
+          "probabilities": {
+            "strong": 0.75,
+            "partial": 0.24,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Temporal",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "IPv6",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

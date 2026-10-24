@@ -1,0 +1,2642 @@
+{
+  "daniel-adif-nugroho": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "daniel-adif-nugroho",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Results-driven Digital Transformation Engineer with 4+ years at PT Mattel Indonesia, specializing in Python- Languages & Frameworks: Python, SQL, VBA",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "\u2022 ETL Pipeline Automation: Scalable pipelines processing raw machine production data \u2014 90% report size",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.47,
+          "partial": 0.52,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "\u2022 Predictive Maintenance MLP: Research-grade neural network model for machine failure prediction from",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.59,
+          "none": 0.4
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.18,
+          "none": 0.8200000000000001
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Data Engineering: ETL pipeline development, data modeling, AS400, SQL Server, structured/unstructured \u2022 Contributed to ETL process design, collecting and integrating data from AS400, Excel, and SQL sources Languages & Frameworks: Python, SQL, VBA",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Industrial Engineering Intern Bachelor of Engineering, Industrial Engineering Data Engineer (Intern)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Data Engineer (Intern) Data Engineering: ETL pipeline development, data modeling, AS400, SQL Server, structured/unstructured KEY AI / DATA PROJECTS",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "(Business Intelligence focus) with hands-on expertise in deploying production-grade AI applications, integrating Results-driven Digital Transformation Engineer with 4+ years at PT Mattel Indonesia, specializing in Python- Data Engineer (Intern)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.94,
+          "partial": 0.05,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.25,
+          "none": 0.75
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.27,
+          "partial": 0.43,
+          "none": 0.3
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.45,
+          "none": 0.49
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "AI / ML: LLM integration, Prompt Engineering, Predictive Modeling, MLP, Computer Vision, Anomaly Data Engineering: ETL pipeline development, data modeling, AS400, SQL Server, structured/unstructured Industrial Engineering Intern",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.25,
+          "none": 0.08
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Platform \u2014 handling artwork ingestion, AI model execution, compliance validation against regulatory artwork verification using AI model execution, structured reporting, and automated compliance validation \u2022 Predictive Maintenance MLP: Research-grade neural network model for machine failure prediction from",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00214": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00214",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.45,
+          "partial": 0.54,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using LLM Evaluation, processing 10000+ samples daily Implemented NLP solution using Computer Vision, processing 50000+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.33,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.22,
+          "partial": 0.67,
+          "none": 0.11
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.36,
+          "none": 0.63
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "MongoDB \u2022 Bedrock \u2022 AWS SageMaker \u2022 GCP Vertex AI \u2022 Hugging Face Endpoints \u2022 Feature Designed data warehousing solution using AWS SageMaker, enabling analytics on 100+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.88,
+          "partial": 0.12,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.62,
+          "partial": 0.37,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Data Scientist at Quantum Edge (2013-01 \u2013 2014-02) in Data Science \u2014 Carnegie Mellon University (2015) Engineering \u2022 LLM Evaluation \u2022 Vector Databases \u2022 Fine-tuning",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Azure ML, used by 1000+ analysts Data Scientist at Quantum Edge (2013-01 \u2013 2014-02) in Data Science \u2014 Carnegie Mellon University (2015)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.88,
+          "partial": 0.11,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go Data Scientist at Quantum Edge (2013-01 \u2013 2014-02) in Data Science \u2014 Carnegie Mellon University (2015)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.53,
+          "partial": 0.22,
+          "none": 0.25
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.15,
+          "none": 0.85
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.17,
+          "none": 0.73
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.14,
+          "none": 0.81
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Created feature engineering pipeline using MATLAB, reducing preprocessing time by 58% Created feature engineering pipeline using Azure ML, reducing preprocessing time by 29% Engineering \u2022 LLM Evaluation \u2022 Vector Databases \u2022 Fine-tuning",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Developed ML models using MATLAB, improving prediction accuracy by 63%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00259": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00259",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Designed and implemented Real-time Chat with Vue.js, integrating with Python for seamless data flow Senior technical leader specializing in frontend engineering with expertise in Python, TypeScript, Astro Python, TypeScript, Astro, Vue.js, Remix, Jest, Prettier, Cypress, Figma, Git, MongoDB, IndexedDB,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.33,
+          "partial": 0.67,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Supabase, Firebase, Render, Cloudflare Pages, AWS Amplify, Vercel, Netlify, Component-Driven Built reusable component library using AWS Amplify, used by 100+ developers Created progressive web app using AWS Amplify, increasing user engagement by 46%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.6,
+          "partial": 0.4,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.02,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Senior technical leader specializing in frontend engineering with expertise in Python, TypeScript, Astro Built interactive data visualizations using Storybook, serving 10000+ daily users Designed and implemented Real-time Chat with Vue.js, integrating with Python for seamless data flow",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.62,
+          "none": 0.35
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Built interactive data visualizations using Storybook, serving 10000+ daily users Designed and implemented Real-time Chat with Vue.js, integrating with Python for seamless data flow Designed and implemented UI Design System with Astro, integrating with Remix for seamless data flow",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.28,
+          "partial": 0.68,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.22,
+          "none": 0.77
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "UI Engineer 2016-05 \u2014 2019-06",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.92,
+          "partial": 0.08,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.84,
+          "partial": 0.11,
+          "none": 0.05
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "Senior technical leader specializing in frontend engineering with expertise in Python, TypeScript, Astro",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00270": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00270",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Seasoned software professional with deep expertise in SQL, Go, and Python Tech: Go, Python, SQL Built Predictive Analytics Platform with SQL and Python, serving 10,000+ daily active users",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Developed ML Model Training Pipeline using SQL, reducing processing time by 60% through algorithmic Built end-to-end ML pipeline using Airflow, processing 100+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.87,
+          "partial": 0.13,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Seasoned software professional with deep expertise in SQL, Go, and Python",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.36,
+          "partial": 0.61,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.51,
+          "none": 0.31
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Built ML model serving infrastructure using AWS SageMaker, handling 10000+ predictions/day Developed computer vision models using AWS SageMaker, achieving 23% accuracy",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Seasoned software professional with deep expertise in SQL, Go, and Python Implemented ML Model Training Pipeline using SQL, achieving 99.9% uptime and handling 50k+ requests daily Tech: Go, Python, SQL",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Data Science / ML / AI GCP Vertex AI Databricks Prompt Engineering MLOps Statistical Modeling NLP Data Analyst at TechFlow AI (2025-07 \u2013 Present)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.05,
+          "none": 0.95
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.21,
+          "none": 0.76
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.2,
+          "none": 0.75
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Created feature engineering pipeline using LightGBM, reducing preprocessing time by 58% Created feature engineering pipeline using DVC, reducing preprocessing time by 29% GCP Vertex AI Databricks Prompt Engineering MLOps Statistical Modeling NLP",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Built ML model serving infrastructure using AWS SageMaker, handling 10000+ predictions/day Established MLOps practices using Hugging Face Endpoints, reducing model deployment time by 22% Developed ML Model Training Pipeline using SQL, reducing processing time by 60% through algorithmic",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00284": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00284",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Vector Search API \u2014 Designed Data Warehouse leveraging Python microservices architecture with MATLAB Seasoned software professional with deep expertise in Python, MATLAB, and OpenCV Python, MATLAB, OpenCV, PyTorch, Hugging Face, Scikit-learn, JAX, Weights & Biases, Dask, MongoDB,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using XGBoost, processing 10000+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.26,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Seasoned software professional with deep expertise in Python, MATLAB, and OpenCV",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.83,
+          "none": 0.12
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.12,
+          "none": 0.88
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Databricks, Qdrant, Databricks, AWS SageMaker, Azure ML, Feature Engineering, Prompt Engineering, A/B",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.82,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.01,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "M.Sc., Electrical Engineering 2020 Data Scientist at VectorDB Inc 2019-09 \u2013 2023-04 Data Science / ML / AI \u2014 Samanthaburgh, Singapore",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Data Scientist at VectorDB Inc 2019-09 \u2013 2023-04 Data Science / ML / AI \u2014 Samanthaburgh, Singapore Designed data warehousing solution using Neptune, enabling analytics on 1000+ records",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.22,
+          "partial": 0.52,
+          "none": 0.26
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.27,
+          "partial": 0.3,
+          "none": 0.43
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.04,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.09,
+          "none": 0.89
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.18,
+          "none": 0.78
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "M.Sc., Electrical Engineering 2020 Databricks, Qdrant, Databricks, AWS SageMaker, Azure ML, Feature Engineering, Prompt Engineering, A/B",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.36,
+          "partial": 0.62,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Developed ML models using LLM Evaluation, improving prediction accuracy by 18%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00320": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00320",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Expert in Python, Go, Python, Go, SQL, LlamaIndex, XGBoost, LightGBM, MLflow, DVC, Pandas, MongoDB, Neo4j, Lambda Labs,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.65,
+          "partial": 0.35,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Implemented NLP solution using Statistical Modeling, processing 100000+ text documents daily Built end-to-end ML pipeline using AWS SageMaker, processing 500+ samples daily Implemented NLP solution using SQL, processing 500+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Bedrock, Computer Vision, LLM Evaluation, Deep Learning, A/B Testing, RAG",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.89,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.46,
+          "none": 0.54
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Built end-to-end ML pipeline using AWS SageMaker, processing 500+ samples daily Developed data visualization tools using AWS SageMaker, used by 5000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.94,
+          "partial": 0.06,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "SQL with track record of building and scaling engineering teams Implemented NLP solution using SQL, processing 500+ text documents daily Designed data warehousing solution using SQL, enabling analytics on 100000+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "B.Eng., Software Engineering 2014 SQL with track record of building and scaling engineering teams Databricks Certified Data Engineer (Databricks, 2022)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using LlamaIndex, used by 100+ analysts Developed data visualization tools using Statistical Modeling, used by 5000+ analysts Developed data visualization tools using LLM Evaluation, used by 5000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.81,
+          "partial": 0.18,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "SQL with track record of building and scaling engineering teams Lead data science / ml / ai professional with 9 years driving technical strategy and team excellence Databricks Certified Data Engineer (Databricks, 2022)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.53,
+          "partial": 0.24,
+          "none": 0.23
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.07,
+          "none": 0.93
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.25,
+          "partial": 0.2,
+          "none": 0.55
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.36,
+          "partial": 0.28,
+          "none": 0.36
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.05,
+          "none": 0.9
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Built ML model serving infrastructure using A/B Testing, handling 100+ predictions/day Established MLOps practices using A/B Testing, reducing model deployment time by 24% Bedrock, Computer Vision, LLM Evaluation, Deep Learning, A/B Testing, RAG",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00374": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00374",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Skilled in Julia, Python, SQL with focus Julia, Python, SQL, Scala, LangChain, LlamaIndex, TensorFlow, XGBoost, Dagster, Neptune, Kubeflow, Token Bucket Limiter \u2014 Implemented Data Quality Monitor using Python, achieving 99.9% uptime and",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.75,
+          "partial": 0.25,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using Prompt Engineering, processing 5000+ samples daily",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.33,
+          "partial": 0.66,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Weights & Biases, Dask, Snowflake, MongoDB, Pinecone, Lambda Labs, Azure ML, Deep Learning, RAG, AWS Certified Machine Learning (Amazon Web Services, 2019)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.3,
+          "partial": 0.69,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.26,
+          "partial": 0.41000000000000003,
+          "none": 0.33
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "AWS Certified Machine Learning (Amazon Web Services, 2019)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.32,
+          "partial": 0.67,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Skilled in Julia, Python, SQL with focus Julia, Python, SQL, Scala, LangChain, LlamaIndex, TensorFlow, XGBoost, Dagster, Neptune, Kubeflow,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.73,
+          "partial": 0.27,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "B.Tech., Data Science 2020 Databricks Certified Data Engineer (Databricks, 2025) Data Analyst at CodeCraft Studios 2024-09 \u2013 Present",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "B.Tech., Data Science 2020 Databricks Certified Data Engineer (Databricks, 2025) Data Analyst at CodeCraft Studios 2024-09 \u2013 Present",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.55,
+          "partial": 0.33,
+          "none": 0.12
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "Skilled in Julia, Python, SQL with focus Mid-level data science / ml / ai specialist with 4 years building production systems B.Tech., Data Science 2020",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.44,
+          "partial": 0.29,
+          "none": 0.27
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.09,
+          "none": 0.91
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.09,
+          "none": 0.88
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.35,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.02,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "AWS Certified Machine Learning (Amazon Web Services, 2019) Built ML model serving infrastructure using MATLAB, handling 100+ predictions/day Built ML model serving infrastructure using OpenCV, handling 50000+ predictions/day",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00378": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00378",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Expert in Python, Julia, MATLAB with demonstrated leadership in cross-functional teams Python Julia MATLAB Scikit-learn Claude API Hugging Face LlamaIndex Dagster Neptune",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.61,
+          "partial": 0.39,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using Airflow, processing 5000+ samples daily Implemented NLP solution using Polars, processing 500+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.85,
+          "partial": 0.15,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "AWS Certified Machine Learning \u2014 Amazon Web Services",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.49,
+          "none": 0.42
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.48,
+          "none": 0.44
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "AWS Certified Machine Learning \u2014 Amazon Web Services",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.5,
+          "partial": 0.48,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.64,
+          "partial": 0.13,
+          "none": 0.23
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Bedrock Azure ML Feature Engineering A/B Testing MLOps RAG Computer Vision Data Science / ML / AI Databricks Certified Data Engineer \u2014 Databricks",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Computer Vision, used by 50000+ analysts Data Science / ML / AI Databricks Certified Data Engineer \u2014 Databricks",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.82,
+          "partial": 0.17,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "Senior data science / ml / ai engineer with 7 years of experience architecting and delivering enterprise Expert in Python, Julia, MATLAB with demonstrated leadership in cross-functional teams Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.44,
+          "partial": 0.26,
+          "none": 0.3
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.09,
+          "none": 0.91
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.13,
+          "none": 0.81
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "Bedrock Azure ML Feature Engineering A/B Testing MLOps RAG Computer Vision Established MLOps practices using MATLAB, reducing model deployment time by 52%",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.49,
+          "none": 0.33
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Bedrock Azure ML Feature Engineering A/B Testing MLOps RAG Computer Vision",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.39,
+          "partial": 0.59,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "AWS Certified Machine Learning \u2014 Amazon Web Services Built ML model serving infrastructure using Bedrock, handling 100000+ predictions/day Established MLOps practices using MATLAB, reducing model deployment time by 52%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00407": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00407",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Subject matter expert in Python, Go, R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.45,
+          "partial": 0.54,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using LightGBM, processing 10000+ samples daily Implemented NLP solution using DVC, processing 1000+ text documents daily Built end-to-end ML pipeline using BigQuery, processing 100+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.24,
+          "none": 0.75
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.48,
+          "none": 0.48
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.2,
+          "partial": 0.79,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.61,
+          "partial": 0.17,
+          "none": 0.22
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Feature Engineering Data Scientist 2012-02 \u2013 2013-11 Principal Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Statistical Modeling, used by 50000+ analysts Data Scientist 2012-02 \u2013 2013-11 Principal Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.73,
+          "partial": 0.26,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.32,
+          "none": 0.62
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.13,
+          "none": 0.84
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.12,
+          "partial": 0.24,
+          "none": 0.64
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "Feature Engineering Created recommendation system using Prompt Engineering, increasing user engagement by 31% Implemented A/B testing framework using Prompt Engineering, running 100+ experiments",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.58,
+          "none": 0.25
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Feature Engineering Created recommendation system using Prompt Engineering, increasing user engagement by 31% Implemented A/B testing framework using Prompt Engineering, running 100+ experiments",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.37,
+          "partial": 0.59,
+          "none": 0.04
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00414": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00414",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases Proficiency in Scala, R, Python",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Implemented NLP solution using ChromaDB, processing 50000+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.89,
+          "partial": 0.11,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.33,
+          "none": 0.62
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.47,
+          "none": 0.45
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "MLflow Dagster Neptune Pinecone Databricks Snowflake MongoDB Weaviate AWS SageMaker",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.24,
+          "partial": 0.75,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.81,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Databricks Bedrock Azure ML Prompt Engineering RAG LLM Evaluation MLOps A/B Testing Data Science / ML / AI Developed data visualization tools using Pandas, used by 100+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.9,
+          "partial": 0.08,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Pandas, used by 100+ analysts Data Science / ML / AI Designed data warehousing solution using A/B Testing, enabling analytics on 50000+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.84,
+          "partial": 0.16,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "Technical leader in data science / ml / ai with extensive experience designing microservices, Data Science / ML / AI Developed data visualization tools using Pandas, used by 100+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.45,
+          "partial": 0.27,
+          "none": 0.28
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.07,
+          "none": 0.93
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.14,
+          "none": 0.8
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.18,
+          "none": 0.78
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.06,
+          "none": 0.89
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Established MLOps practices using A/B Testing, reducing model deployment time by 65% Established MLOps practices using Pandas, reducing model deployment time by 56%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00425": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00425",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Proficiency in Python, Go, Julia",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.85,
+          "partial": 0.15,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Implemented NLP solution using Prompt Engineering, processing 10000+ text documents daily Implemented NLP solution using Redshift, processing 100+ text documents daily Implemented NLP solution using Redshift, processing 50000+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.32,
+          "partial": 0.67,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.51,
+          "none": 0.43
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.88,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.58,
+          "partial": 0.18,
+          "none": 0.24
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Prompt Engineering Data Analyst 2024-11 \u2013 Present Senior Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.33,
+          "none": 0.61
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.02,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Created feature engineering pipeline using Qdrant, reducing preprocessing time by 23% Created feature engineering pipeline using Vector Databases, reducing preprocessing time by 70% Prompt Engineering",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.96,
+          "partial": 0.04,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00455": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00455",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Julia Built ML model serving infrastructure using Python, handling 10000+ predictions/day Created recommendation system using Python, increasing user engagement by 35%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using Feature Engineering, processing 100000+ samples daily Implemented NLP solution using Bedrock, processing 100+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Julia",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.76,
+          "none": 0.07
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.04,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.22,
+          "partial": 0.77,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Julia",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.34,
+          "partial": 0.65,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Feature Engineering Engineering leader with deep technical background in Python, SQL, and Julia Created feature engineering pipeline using TensorFlow, reducing preprocessing time by 23%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.01,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using MLflow, used by 500+ analysts Data Analyst 2022-07 \u2013 Present in Data Science \u2014 Technion, 2014",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.79,
+          "partial": 0.2,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.07,
+          "partial": 0.44,
+          "none": 0.49
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.18,
+          "none": 0.76
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.05,
+          "none": 0.94
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Feature Engineering Created feature engineering pipeline using TensorFlow, reducing preprocessing time by 23% Implemented A/B testing framework using Feature Engineering, running 5000+ experiments",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Built ML model serving infrastructure using XGBoost, handling 500+ predictions/day Built ML model serving infrastructure using Python, handling 10000+ predictions/day",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00469": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00469",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Created Anomaly Detection System leveraging Python for core functionality and R for optimization Senior technical leader specializing in data science / ml / ai with expertise in Python, SQL, Julia Python, SQL, Julia, R, XGBoost, Claude API, JAX, Keras, PyTorch, Spark, Polars, Weights & Biases,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.71,
+          "partial": 0.29,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Implemented NLP solution using GCP Vertex AI, processing 1000+ text documents daily Built end-to-end ML pipeline using R, processing 5000+ samples daily Built end-to-end ML pipeline using SQL, processing 500+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.12,
+          "partial": 0.84,
+          "none": 0.04
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.39,
+          "none": 0.61
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.04,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.07,
+          "none": 0.92
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Senior technical leader specializing in data science / ml / ai with expertise in Python, SQL, Julia Built end-to-end ML pipeline using SQL, processing 500+ samples daily Python, SQL, Julia, R, XGBoost, Claude API, JAX, Keras, PyTorch, Spark, Polars, Weights & Biases,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "in Software Engineering 2016 Computer Vision, Feature Engineering in Data Science 2018",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Weights & Biases, used by 500+ analysts in Data Science 2018 Data Scientist 2017-02 \u2014 2020-08",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.05,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.4,
+          "none": 0.43
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.05,
+          "none": 0.95
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.12,
+          "none": 0.85
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.13,
+          "none": 0.85
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "in Software Engineering 2016 Computer Vision, Feature Engineering",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.34,
+          "partial": 0.64,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Built ML model serving infrastructure using R, handling 500+ predictions/day Established MLOps practices using NLP, reducing model deployment time by 20% in technical vision, team development, and stakeholder management",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00477": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00477",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Token Bucket Limiter [Python, Go, R] \u2014 Built MLOps Platform using Python and Go, enabling automated Seasoned software professional with deep expertise in Python, Go, and R Python, Go, R, Scikit-learn, Keras, Hugging Face, LightGBM, LangChain, Spark, Airflow, Pinecone, Neo4j,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "processing and improving efficiency by 40%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.77,
+          "partial": 0.21,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Seasoned software professional with deep expertise in Python, Go, and R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.77,
+          "none": 0.05
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "BigQuery, Lambda Labs, AWS SageMaker, Azure ML, Feature Engineering, Statistical Modeling, RAG",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.12,
+          "partial": 0.88,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.54,
+          "none": 0.32
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Developed data visualization tools using Neptune, used by 100+ analysts Developed data visualization tools using Feature Engineering, used by 1000+ analysts Created recommendation system using Feature Engineering, increasing user engagement by 50%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.89,
+          "partial": 0.09,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Feature Engineering, used by 1000+ analysts Developed data visualization tools using Neptune, used by 100+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.24,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.42,
+          "none": 0.44
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.12,
+          "none": 0.84
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.39,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Developed data visualization tools using Feature Engineering, used by 1000+ analysts Created recommendation system using Feature Engineering, increasing user engagement by 50% BigQuery, Lambda Labs, AWS SageMaker, Azure ML, Feature Engineering, Statistical Modeling, RAG",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.88,
+          "partial": 0.12,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.05,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00479": {
+    "job_profile_id": "machine-learning-engineer",
+    "candidate_id": "cv-00479",
+    "evaluations": [
+      {
+        "requirement": "Python",
+        "evidence": "Seasoned software professional with deep expertise in Python, SQL, and R",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.65,
+          "partial": 0.35,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.38,
+          "partial": 0.59,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Deep Learning",
+        "evidence": "Seasoned software professional with deep expertise in Python, SQL, and R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.32,
+          "partial": 0.66,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Convolutional Neural Networks (CNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Recurrent Neural Networks (RNNs)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Long Short-Term Memory (LSTM)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Reinforcement Learning",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.72,
+          "none": 0.2
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Seasoned software professional with deep expertise in Python, SQL, and R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.35,
+          "partial": 0.64,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Engineering",
+        "evidence": "Feature Engineering Prompt Engineering Senior Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.88,
+          "partial": 0.11,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using MATLAB, used by 1000+ analysts Senior Data Science / ML / AI Designed data warehousing solution using Keras, enabling analytics on 100+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.83,
+          "partial": 0.16,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Storytelling with Data",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.44,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "UI/UX",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.04,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "Human-Machine Interaction",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.12,
+          "none": 0.85
+        }
+      },
+      {
+        "requirement": "Software Engineering Best Practices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.17,
+          "none": 0.78
+        }
+      },
+      {
+        "requirement": "Feature Engineering",
+        "evidence": "Feature Engineering Prompt Engineering",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.3,
+          "partial": 0.66,
+          "none": 0.04
+        }
+      },
+      {
+        "requirement": "Machine Learning Model Development",
+        "evidence": "Built ML model serving infrastructure using MATLAB, handling 500+ predictions/day",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      }
+    ]
+  }
+}

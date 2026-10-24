@@ -1,0 +1,4402 @@
+{
+  "cv-00201": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00201",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.92,
+          "partial": 0.08,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "RabbitMQ, Kubernetes, Heroku, Fly.io, GCP, AWS, Anthropic, Replicate, Agile, LLM Integration, Scrum, CI/",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.01,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Skilled in Go, Python, LangChain Go, Python, LangChain, Actix, NestJS, Flask, ASP.NET, Cassandra, SQLite, DynamoDB, GitHub Actions, Health Check Service [Go, Python, Flask] \u2014 Created gRPC Services leveraging Go for core functionality",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "and Python for optimization and Python for optimization Skilled in Go, Python, LangChain",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.51,
+          "partial": 0.49,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.48,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.61,
+          "none": 0.3
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "RabbitMQ, Kubernetes, Heroku, Fly.io, GCP, AWS, Anthropic, Replicate, Agile, LLM Integration, Scrum, CI/",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using GCP, improving system scalability by 40%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.59,
+          "partial": 0.41,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.33,
+          "none": 0.66
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using GCP, improving system scalability by 40% Health Check Service [Go, Python, Flask] \u2014 Created gRPC Services leveraging Go for core functionality",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.58,
+          "partial": 0.42,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00211": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00211",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Kubernetes, Docker, GitLab CI, CircleCI, GitHub Actions, Grafana, Thanos, AWS, Hetzner, Kubeflow, AWS Certified Solutions Architect \u2014 Amazon Web Services (2021)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.18,
+          "none": 0.8
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Rust, YAML, Python, Go, CloudFormation, Ansible, Pulumi, ArgoCD, Helm, Buildah, Linkerd, Podman,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Seasoned software professional with deep expertise in Rust, YAML, and Python Rust, YAML, Python, Go, CloudFormation, Ansible, Pulumi, ArgoCD, Helm, Buildah, Linkerd, Podman,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.98,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.38,
+          "none": 0.6
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Kubernetes, Docker, GitLab CI, CircleCI, GitHub Actions, Grafana, Thanos, AWS, Hetzner, Kubeflow,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.4,
+          "partial": 0.6,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Kubernetes, Docker, GitLab CI, CircleCI, GitHub Actions, Grafana, Thanos, AWS, Hetzner, Kubeflow,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.05,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.35,
+          "partial": 0.34,
+          "none": 0.31
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.88,
+          "partial": 0.1,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.07,
+          "partial": 0.32,
+          "none": 0.61
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00224": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00224",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.05,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Designed and implemented microservices architecture using AWS, handling 50000+ concurrent users",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.04,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.07,
+          "none": 0.92
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Experienced software engineer with expertise in PHP, Java, and Go AutoScale Monitor \u2014 Built Data Sync Platform using Go and Java, enabling automated processing and PHP, Java, Go, Rust, C#, ASP.NET, Django, Rails, Actix, Redis, MySQL, MongoDB, PlanetScale, GitHub",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.92,
+          "partial": 0.08,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.12,
+          "none": 0.88
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.62,
+          "none": 0.34
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Actions, Kafka, gRPC, Terraform, Docker, Cloudflare, Railway, Azure, DigitalOcean, Heroku, Anthropic,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Designed and implemented microservices architecture using gRPC, handling 1000+ concurrent users Designed and implemented microservices architecture using AWS, handling 50000+ concurrent users Hugging Face, OpenAI API, Replicate, Azure OpenAI, CI/CD, TDD, Scrum, Microservices, Agile",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.96,
+          "partial": 0.04,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.43,
+          "none": 0.49
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00231": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00231",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.05,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "AWS, GCP, Claude API, Azure OpenAI, RAG Architecture, TDD, Microservices, REST API Design, Event-",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "for core functionality and Go for optimization in Python, Go, Spring Boot with demonstrated leadership in cross-functional teams Python, Go, Spring Boot, LangChain, FastAPI, Supabase, SQLite, CockroachDB, gRPC, Docker, Ansible,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.26,
+          "partial": 0.74,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "in Python, Go, Spring Boot with demonstrated leadership in cross-functional teams Python, Go, Spring Boot, LangChain, FastAPI, Supabase, SQLite, CockroachDB, gRPC, Docker, Ansible, Health Check Service [LangChain, FastAPI, Python] \u2014 Built Microservices Platform with LangChain and",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.9,
+          "partial": 0.1,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.31,
+          "none": 0.68
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Python, Go, Spring Boot, LangChain, FastAPI, Supabase, SQLite, CockroachDB, gRPC, Docker, Ansible,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Designed and implemented microservices architecture using Google Gemini, handling 500+ concurrent users Led migration from monolithic to microservices using DigitalOcean, improving system scalability by 28% Health Check Service [LangChain, FastAPI, Python] \u2014 Built Microservices Platform with LangChain and",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "Health Check Service [LangChain, FastAPI, Python] \u2014 Built Microservices Platform with LangChain and",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.15,
+          "partial": 0.52,
+          "none": 0.33
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using DigitalOcean, improving system scalability by 28% Health Check Service [LangChain, FastAPI, Python] \u2014 Built Microservices Platform with LangChain and",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00240": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00240",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Skopeo Envoy Tekton Jenkins Prometheus Opsgenie PagerDuty Thanos Hetzner AWS",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.17,
+          "none": 0.8
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Proficiency in Rust, Go, Bash Designed and implemented Chaos Engineering Framework with Bash, integrating with Go for seamless data Tech: Bash, Go, Python",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.37,
+          "partial": 0.63,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Rust Go Bash Python Crossplane CloudFormation ArgoCD Docker Istio Kubernetes Tech: Bash, Go, Python",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.97,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.48,
+          "none": 0.5
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Rust Go Bash Python Crossplane CloudFormation ArgoCD Docker Istio Kubernetes",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.81,
+          "partial": 0.19,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Rust Go Bash Python Crossplane CloudFormation ArgoCD Docker Istio Kubernetes Built CI/CD pipelines using Kubernetes, reducing deployment time from 19s to 491ms Established chaos engineering practices using Kubernetes, improving system resilience",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Technical leader in devops / sre / mlops with extensive experience designing microservices, optimizing",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.26,
+          "partial": 0.73,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "Established chaos engineering practices using Kubernetes, improving system resilience",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.65,
+          "partial": 0.29,
+          "none": 0.06
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.48,
+          "none": 0.41
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00266": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00266",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "DigitalOcean, Railway, Heroku, Fly.io, AWS, AWS Bedrock, Anthropic, Agile, LLM Integration AWS Certified Solutions Architect (Amazon Web Services, 2019)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Senior technical leader specializing in backend engineering with expertise in Kotlin, Rust, Go Kotlin, Rust, Go, Python, LlamaIndex, Django, PostgreSQL, Elasticsearch, Jenkins, Kubernetes, ArgoCD, Resume Parser \u2014 Created Database Proxy leveraging Go for core functionality and Rust for optimization",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.68,
+          "partial": 0.32,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Kotlin, Rust, Go, Python, LlamaIndex, Django, PostgreSQL, Elasticsearch, Jenkins, Kubernetes, ArgoCD,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.34,
+          "none": 0.64
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.66,
+          "none": 0.24
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Kotlin, Rust, Go, Python, LlamaIndex, Django, PostgreSQL, Elasticsearch, Jenkins, Kubernetes, ArgoCD,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.95,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using Hugging Face, improving system scalability by 37% Led migration from monolithic to microservices using ArgoCD, improving system scalability by 20% Led migration from monolithic to microservices using SQLite, improving system scalability by 32%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.2,
+          "partial": 0.44,
+          "none": 0.36
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using Hugging Face, improving system scalability by 37% Led migration from monolithic to microservices using ArgoCD, improving system scalability by 20% Led migration from monolithic to microservices using SQLite, improving system scalability by 32%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00271": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00271",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.77,
+          "partial": 0.23,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "PlanetScale, Kubernetes, gRPC, Kafka, AWS, Azure, Render, Google Gemini, Claude API, Agile, AWS Certified Developer Associate \u2014 Amazon Web Services (2022)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.18,
+          "none": 0.81
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.52,
+          "none": 0.45
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.54,
+          "none": 0.45
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.7,
+          "none": 0.26
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "PlanetScale, Kubernetes, gRPC, Kafka, AWS, Azure, Render, Google Gemini, Claude API, Agile,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Microservices, REST API Design, GraphQL, Event-Driven Architecture Designed Payment Processing System leveraging Node.js microservices architecture with Express.js for caching",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.43,
+          "partial": 0.57,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.41,
+          "none": 0.55
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Developed File Processing Service using Express.js, reducing processing time by 60% through algorithmic",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.93,
+          "partial": 0.06,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00275": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00275",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Led migration from monolithic to microservices using AWS Bedrock, improving system scalability by 57% Mentored team of 2 junior developers on AWS best practices",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.62,
+          "none": 0.37
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.3,
+          "none": 0.69
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Created authentication and authorization system using Docker, securing 100000+ user accounts Mentored team of 5 junior developers on Docker best practices",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.75,
+          "partial": 0.25,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.98,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using AWS Bedrock, improving system scalability by 57%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.66,
+          "partial": 0.34,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.27,
+          "none": 0.64
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using AWS Bedrock, improving system scalability by 57%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00302": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00302",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "AWS Certified Developer Associate (Amazon Web Services, 2024) Designed and implemented microservices architecture using AWS Bedrock, handling 100+ concurrent users Cassandra, SQLite, Kubernetes, gRPC, Terraform, Helm, GitHub Actions, Railway, Azure, Render, GCP, AWS",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "using Rust, Go, Ruby Rust, Go, Ruby, Java, Express.js, Spring Boot, LlamaIndex, ASP.NET, PostgreSQL, PlanetScale, Redis,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.92,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.24,
+          "none": 0.75
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.71,
+          "none": 0.21
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Cassandra, SQLite, Kubernetes, gRPC, Terraform, Helm, GitHub Actions, Railway, Azure, Render, GCP, AWS",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Designed and implemented microservices architecture using GCP, handling 5000+ concurrent users Designed and implemented microservices architecture using Replicate, handling 500+ concurrent users Designed and implemented microservices architecture using AWS Bedrock, handling 100+ concurrent users",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.44,
+          "none": 0.5
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using DynamoDB, improving system scalability by 33%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00311": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00311",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.76,
+          "partial": 0.24,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.05,
+          "none": 0.95
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.33,
+          "none": 0.67
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.62,
+          "none": 0.32
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using Jenkins, improving system scalability by 18%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.7,
+          "partial": 0.3,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.07,
+          "partial": 0.4,
+          "none": 0.53
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using Jenkins, improving system scalability by 18%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00330": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00330",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.64,
+          "partial": 0.36,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Kafka Docker GCP Railway Render DigitalOcean Fly.io AWS Bedrock Hugging Face",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.05,
+          "none": 0.95
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Kotlin, Go and proven ability to influence C-level decisions C# Kotlin Go LlamaIndex FastAPI NestJS MongoDB SQLite Redis Elasticsearch Jenkins Tech: Go, FastAPI, NestJS",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.38,
+          "partial": 0.62,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Optimized database queries using Python, improving query performance by 29%",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.82,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.16,
+          "none": 0.83
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Kafka Docker GCP Railway Render DigitalOcean Fly.io AWS Bedrock Hugging Face",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.97,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Certified Kubernetes Administrator \u2014 CNCF",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.98,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.16,
+          "partial": 0.34,
+          "none": 0.5
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.4,
+          "none": 0.49
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.04,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00342": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00342",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.84,
+          "partial": 0.16,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Jenkins GitHub Actions Datadog Thanos PagerDuty Prometheus Opsgenie AWS DigitalOcean",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Tech: Python, Rust, Go Software developer specializing in Go with hands-on experience in Python Go Python Rust HCL Terraform CloudFormation ArgoCD Ansible Kubernetes Docker",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.81,
+          "partial": 0.19,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Tech: HCL, Rust, Python Tech: Go, HCL, Python Software developer specializing in Go with hands-on experience in Python",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.33,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Go Python Rust HCL Terraform CloudFormation ArgoCD Ansible Kubernetes Docker",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.91,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Developed Kubernetes Cluster using Rust, reducing processing time by 60% through algorithmic improvements Go Python Rust HCL Terraform CloudFormation ArgoCD Ansible Kubernetes Docker",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.44,
+          "partial": 0.56,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.12,
+          "none": 0.87
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "Established chaos engineering practices using Zero Trust, improving system resilience",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.53,
+          "partial": 0.47,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.5,
+          "partial": 0.47,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00352": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00352",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.86,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "CockroachDB \u2022 Kubernetes \u2022 Docker \u2022 Terraform \u2022 Ansible \u2022 DigitalOcean \u2022 Azure \u2022 AWS \u2022 Anthropic \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "implementing scalable solutions using Go, C#, TypeScript Go \u2022 C# \u2022 TypeScript \u2022 Java \u2022 Python \u2022 Actix \u2022 FastAPI \u2022 Redis \u2022 PlanetScale \u2022 Supabase \u2022 DynamoDB \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Go \u2022 C# \u2022 TypeScript \u2022 Java \u2022 Python \u2022 Actix \u2022 FastAPI \u2022 Redis \u2022 PlanetScale \u2022 Supabase \u2022 DynamoDB \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "CockroachDB \u2022 Kubernetes \u2022 Docker \u2022 Terraform \u2022 Ansible \u2022 DigitalOcean \u2022 Azure \u2022 AWS \u2022 Anthropic \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "CockroachDB \u2022 Kubernetes \u2022 Docker \u2022 Terraform \u2022 Ansible \u2022 DigitalOcean \u2022 Azure \u2022 AWS \u2022 Anthropic \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.12,
+          "none": 0.86
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.16,
+          "none": 0.83
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.75,
+          "partial": 0.24,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00382": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00382",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.96,
+          "partial": 0.04,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.06,
+          "none": 0.94
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.06,
+          "none": 0.9299999999999999
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Kotlin \u2022 Java \u2022 PHP \u2022 Node.js \u2022 Go \u2022 Express.js \u2022 Spring Boot \u2022 FastAPI \u2022 Actix \u2022 NestJS \u2022 DynamoDB \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.29,
+          "partial": 0.7,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.31,
+          "partial": 0.21,
+          "none": 0.48
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.08,
+          "none": 0.92
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "PlanetScale \u2022 RabbitMQ \u2022 Terraform \u2022 GitHub Actions \u2022 Docker \u2022 Kubernetes \u2022 Railway \u2022 Vercel \u2022 Fly.io",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "PlanetScale \u2022 RabbitMQ \u2022 Terraform \u2022 GitHub Actions \u2022 Docker \u2022 Kubernetes \u2022 Railway \u2022 Vercel \u2022 Fly.io",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using Django, improving system scalability by 56% \u2022 OpenAI API \u2022 Anthropic \u2022 Microservices \u2022 RAG Architecture \u2022 GraphQL",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.93,
+          "partial": 0.07,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.46,
+          "none": 0.36
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using Django, improving system scalability by 56%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00395": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00395",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Developed real-time data processing pipeline using AWS, handling 10000+ transactions/second",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.08,
+          "none": 0.91
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.47,
+          "none": 0.52
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Developed real-time data processing pipeline using Docker, handling 100000+ records/second Architected and built RESTful APIs serving 1000+ requests/day using Docker, reducing response time by 19%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.22,
+          "none": 0.78
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Designed and implemented microservices architecture using PlanetScale, handling 10000+ concurrent users",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.63,
+          "partial": 0.37,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.33,
+          "none": 0.63
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00397": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00397",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "AWS Certified Solutions Architect \u2014 Amazon Web Services (2020)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.03,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Node.js, PHP, Go with track record of building and scaling engineering teams Node.js, PHP, Go, LangChain, Gin, Elasticsearch, MongoDB, Ansible, Helm, GitHub Actions,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.64,
+          "partial": 0.36,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.19,
+          "none": 0.8
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.43,
+          "partial": 0.38,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Kubernetes, ArgoCD, Cloudflare, DigitalOcean, Azure, Hugging Face, Claude API, Replicate, Google",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.43,
+          "partial": 0.57,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using Helm, improving system scalability by 25% Designed and implemented microservices architecture using Rust, handling 100000+ concurrent users",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.44,
+          "none": 0.46
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using Helm, improving system scalability by 25%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00403": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00403",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.93,
+          "partial": 0.07,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Elasticsearch, Terraform, Kubernetes, Helm, Kafka, AWS, Vercel, Replicate, Anthropic, OpenAI API, AWS Bedrock, Claude API, TDD, Agile, REST API Design, LLM Integration",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.08,
+          "none": 0.91
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.04,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.22,
+          "partial": 0.76,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Experienced software engineer with expertise in Python, PHP, and Java Python, PHP, Java, Kotlin, FastAPI, Spring Boot, NestJS, Gin, Actix, MySQL, Redis, MongoDB, Neon,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.25,
+          "none": 0.75
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.23,
+          "partial": 0.59,
+          "none": 0.18
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Elasticsearch, Terraform, Kubernetes, Helm, Kafka, AWS, Vercel, Replicate, Anthropic, OpenAI API,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Implemented Microservices Platform using PHP, achieving 99.9% uptime and handling 50k+ requests daily Reduced infrastructure costs by 17% through optimization using Microservices",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.29,
+          "partial": 0.69,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.91,
+          "partial": 0.08,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00418": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00418",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "\u2022 ArgoCD \u2022 RabbitMQ \u2022 Helm \u2022 Docker \u2022 Jenkins \u2022 AWS \u2022 Vercel \u2022 Replicate \u2022 OpenAI API \u2022 AWS Implemented caching layer with AWS, reducing database load by 31%",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "TypeScript \u2022 Rust \u2022 Go \u2022 LlamaIndex \u2022 FastAPI \u2022 Django \u2022 FastAPI \u2022 MongoDB \u2022 Elasticsearch \u2022 MySQL Expert in TypeScript, Rust, Go with demonstrated leadership in cross-functional teams",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.59,
+          "none": 0.32
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.13,
+          "none": 0.87
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "\u2022 ArgoCD \u2022 RabbitMQ \u2022 Helm \u2022 Docker \u2022 Jenkins \u2022 AWS \u2022 Vercel \u2022 Replicate \u2022 OpenAI API \u2022 AWS",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.78,
+          "none": 0.18
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using TypeScript, improving system scalability by 64%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.6900000000000001,
+          "partial": 0.31,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.5,
+          "none": 0.33
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using TypeScript, improving system scalability by 64%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.03,
+          "none": 0.97
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00420": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00420",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "AWS Certified Developer Associate \u2014 Amazon Web Services PostgreSQL Redis Kubernetes Nginx GitHub Actions Git AWS DigitalOcean Cloudflare AWS Bedrock Anthropic Claude API Google Gemini OpenAI API Agile TDD",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.04,
+          "none": 0.96
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Ruby, Go, C# with track record of transforming organizations through technology Ruby Go C# Node.js Rails Actix Spring Boot Flask LlamaIndex CockroachDB DynamoDB",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.21,
+          "none": 0.77
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.48,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.64,
+          "none": 0.27
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "PostgreSQL Redis Kubernetes Nginx GitHub Actions Git AWS DigitalOcean Cloudflare",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Designed and implemented microservices architecture using DigitalOcean, handling 100+ concurrent users Designed and implemented microservices architecture using Ruby, handling 50000+ concurrent users Led migration from monolithic to microservices using Node.js, improving system scalability by 55%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.44,
+          "none": 0.45
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using Node.js, improving system scalability by 55% Led migration from monolithic to microservices using Node.js, improving system scalability by 28%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00423": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00423",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "DevOps, GitLab CI, CircleCI, Tekton, VictoriaMetrics, Opsgenie, Alibaba Cloud, AWS, Hetzner, TorchServe,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Python, Go with track record of building and scaling engineering teams YAML, Python, Go, HCL, Helm, Crossplane, Pulumi, Terraform, Docker, Istio, Argo Workflows, Azure",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Python, Go with track record of building and scaling engineering teams YAML, Python, Go, HCL, Helm, Crossplane, Pulumi, Terraform, Docker, Istio, Argo Workflows, Azure",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.94,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.18,
+          "none": 0.81
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "YAML, Python, Go, HCL, Helm, Crossplane, Pulumi, Terraform, Docker, Istio, Argo Workflows, Azure",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.94,
+          "partial": 0.06,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Implemented security scanning using Kubernetes, identifying 100+ vulnerabilities",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.2,
+          "partial": 0.13,
+          "none": 0.67
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "Created self-service provisioning portal using Kubeflow, serving 50000+ engineers",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.26,
+          "partial": 0.48,
+          "none": 0.26
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Created self-service provisioning portal using Kubeflow, serving 50000+ engineers",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.81,
+          "partial": 0.16,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.15,
+          "partial": 0.34,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00427": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00427",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.96,
+          "partial": 0.04,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "PostgreSQL, CockroachDB, MongoDB, Terraform, Nginx, gRPC, Cloudflare, AWS, Azure OpenAI,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.05,
+          "none": 0.94
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Engineering leader with deep technical background in Python, Node.js, and Java Implemented caching layer with Python, reducing database load by 17% Python, Node.js, Java, TypeScript, LlamaIndex, NestJS, Rails, LangChain, SQLite, MySQL,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.26,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.7,
+          "none": 0.24
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.44,
+          "none": 0.53
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Certified Kubernetes Administrator \u2014 CNCF (2019)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.98,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using REST API Design, improving system scalability by 58% Led migration from monolithic to microservices using PHP, improving system scalability by 23% Led migration from monolithic to microservices using Git, improving system scalability by 65%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.96,
+          "partial": 0.04,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.16,
+          "partial": 0.46,
+          "none": 0.38
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using REST API Design, improving system scalability by 58% Led migration from monolithic to microservices using PHP, improving system scalability by 23% Led migration from monolithic to microservices using Git, improving system scalability by 65%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00436": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00436",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Helm \u2022 Jenkins \u2022 Heroku \u2022 Vercel \u2022 Cloudflare \u2022 AWS \u2022 Fly.io \u2022 Hugging Face \u2022 Anthropic \u2022 Azure",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.02,
+          "none": 0.98
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Led migration from monolithic to microservices using Go, improving system scalability by 69%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.63,
+          "partial": 0.37,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.51,
+          "none": 0.35
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.2,
+          "none": 0.79
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.23,
+          "partial": 0.63,
+          "none": 0.14
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "Certified Kubernetes Administrator \u2014 CNCF",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.89,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Designed and implemented microservices architecture using TypeScript, handling 500+ concurrent users Designed and implemented microservices architecture using LangChain, handling 5000+ concurrent users Led migration from monolithic to microservices using Go, improving system scalability by 69%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.49,
+          "none": 0.37
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using Go, improving system scalability by 69%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00446": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00446",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "CockroachDB, Terraform, Nginx, gRPC, Kubernetes, Jenkins, Fly.io, AWS, GCP, Heroku, DigitalOcean, Google",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.08,
+          "none": 0.9
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "Proficiency in Ruby, Kotlin, Go Ruby, Kotlin, Go, FastAPI, NestJS, Rails, Actix, Gin, DynamoDB, Elasticsearch, MySQL, Supabase,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.97,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.41,
+          "none": 0.55
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.69,
+          "none": 0.27
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.73,
+          "none": 0.22
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "CockroachDB, Terraform, Nginx, gRPC, Kubernetes, Jenkins, Fly.io, AWS, GCP, Heroku, DigitalOcean, Google",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Technical leader in backend engineering with extensive experience designing microservices, optimizing performance, and Led migration from monolithic to microservices using Cloudflare, improving system scalability by 61% Designed and implemented microservices architecture using Neon, handling 1000+ concurrent users",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.32,
+          "none": 0.64
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Led migration from monolithic to microservices using Cloudflare, improving system scalability by 61%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00486": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00486",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.89,
+          "partial": 0.11,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Claude API AWS Bedrock RAG Architecture LLM Integration",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.97,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.34,
+          "none": 0.64
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "TypeScript, Go, FastAPI with focus on performance optimization and code quality TypeScript Go FastAPI ASP.NET LangChain Express.js Elasticsearch Cassandra CockroachDB",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.42,
+          "partial": 0.36,
+          "none": 0.22
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.74,
+          "none": 0.23
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.09,
+          "partial": 0.59,
+          "none": 0.32
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "MySQL Git ArgoCD gRPC RabbitMQ Kubernetes Railway GCP Heroku Azure OpenAI",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Led migration from monolithic to microservices using NestJS, improving system scalability by 45% Designed and implemented microservices architecture using MongoDB, handling 50000+ concurrent users",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.92,
+          "partial": 0.08,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "Health Check Service (2025)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.53,
+          "none": 0.42
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "Health Check Service (2025) Led migration from monolithic to microservices using NestJS, improving system scalability by 45%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  },
+  "cv-00488": {
+    "job_profile_id": "cloud-engineer",
+    "candidate_id": "cv-00488",
+    "evaluations": [
+      {
+        "requirement": "Cloud-native technologies",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "AWS",
+        "evidence": "Docker, GCP, AWS, Cloudflare, Claude API, Google Gemini, Azure OpenAI, AWS Bedrock, REST API Design,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "VPC design",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Subnetting",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Security groups",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Routing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.27,
+          "none": 0.7
+        }
+      },
+      {
+        "requirement": "C++",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.12,
+          "none": 0.87
+        }
+      },
+      {
+        "requirement": "Go",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.63,
+          "none": 0.23
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Proficiency in PHP, Python, Node.js PHP, Python, Node.js, Ruby, NestJS, Gin, Elasticsearch, Redis, Supabase, DynamoDB, Cassandra, Kubernetes,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.04,
+          "partial": 0.96,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Networking fundamentals",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.58,
+          "none": 0.4
+        }
+      },
+      {
+        "requirement": "Docker",
+        "evidence": "Docker, GCP, AWS, Cloudflare, Claude API, Google Gemini, Azure OpenAI, AWS Bedrock, REST API Design,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Kubernetes",
+        "evidence": "PHP, Python, Node.js, Ruby, NestJS, Gin, Elasticsearch, Redis, Supabase, DynamoDB, Cassandra, Kubernetes,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Microservices",
+        "evidence": "Designed and implemented microservices architecture using Nginx, handling 100000+ concurrent users Technical leader in backend engineering with extensive experience designing microservices, optimizing performance, and Event-Driven Architecture, Microservices, RAG Architecture, GraphQL",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Service resilience",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.31,
+          "none": 0.63
+        }
+      },
+      {
+        "requirement": "Service scalability",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Temporal",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "IPv6",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      }
+    ]
+  }
+}

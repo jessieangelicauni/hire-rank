@@ -1,0 +1,2254 @@
+{
+  "job_profile_id": "data-analyst",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "daniel-adif-nugroho",
+      "utility": 0.7849999999999999,
+      "criterion_score": 0.8016666666666666,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8350000000000001,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.33,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9550000000000001,
+          "probabilities": {
+            "strong": 0.93,
+            "partial": 0.05,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.1,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7200000000000001,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.1,
+            "none": 0.23
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.865,
+          "probabilities": {
+            "strong": 0.86,
+            "partial": 0.01,
+            "none": 0.13
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.885,
+          "probabilities": {
+            "strong": 0.82,
+            "partial": 0.13,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8300000000000001,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.32,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00320",
+      "utility": 0.7616666666666667,
+      "criterion_score": 0.745,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.77,
+          "probabilities": {
+            "strong": 0.54,
+            "partial": 0.46,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.18,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.79,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.1,
+            "none": 0.16
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.87,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.26,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.795,
+          "probabilities": {
+            "strong": 0.78,
+            "partial": 0.03,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.39,
+            "partial": 0.23,
+            "none": 0.38
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.6,
+          "probabilities": {
+            "strong": 0.47,
+            "partial": 0.26,
+            "none": 0.27
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00414",
+      "utility": 0.6846666666666666,
+      "criterion_score": 0.6679999999999999,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.66,
+          "probabilities": {
+            "strong": 0.32,
+            "partial": 0.68,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.42,
+            "partial": 0.17,
+            "none": 0.41
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.785,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.23,
+            "none": 0.1
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.64,
+          "probabilities": {
+            "strong": 0.31,
+            "partial": 0.66,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8200000000000001,
+          "probabilities": {
+            "strong": 0.78,
+            "partial": 0.08,
+            "none": 0.14
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9149999999999999,
+          "probabilities": {
+            "strong": 0.83,
+            "partial": 0.17,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.81,
+          "probabilities": {
+            "strong": 0.8,
+            "partial": 0.02,
+            "none": 0.18
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.39,
+            "partial": 0.22,
+            "none": 0.39
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.42000000000000004,
+          "probabilities": {
+            "strong": 0.27,
+            "partial": 0.3,
+            "none": 0.43
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00481",
+      "utility": 0.6555094551813565,
+      "criterion_score": 0.6616666666666667,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8400000000000001,
+          "probabilities": {
+            "strong": 0.68,
+            "partial": 0.32,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.655,
+          "probabilities": {
+            "strong": 0.31,
+            "partial": 0.6900000000000001,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.755,
+          "probabilities": {
+            "strong": 0.51,
+            "partial": 0.49,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9249999999999999,
+          "probabilities": {
+            "strong": 0.85,
+            "partial": 0.15,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.875,
+          "probabilities": {
+            "strong": 0.83,
+            "partial": 0.09,
+            "none": 0.08
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.83,
+          "probabilities": {
+            "strong": 0.71,
+            "partial": 0.24,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.745,
+          "probabilities": {
+            "strong": 0.5,
+            "partial": 0.49,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.765,
+          "probabilities": {
+            "strong": 0.72,
+            "partial": 0.09,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.515,
+          "probabilities": {
+            "strong": 0.23,
+            "partial": 0.57,
+            "none": 0.2
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.15000000000000002,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.02,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.435,
+          "probabilities": {
+            "strong": 0.3,
+            "partial": 0.27,
+            "none": 0.43
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.44,
+          "probabilities": {
+            "strong": 0.31,
+            "partial": 0.26,
+            "none": 0.43
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00433",
+      "utility": 0.6516077395996133,
+      "criterion_score": 0.6573333333333333,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.325,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.43,
+            "none": 0.46
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.62,
+          "probabilities": {
+            "strong": 0.24,
+            "partial": 0.76,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.73,
+          "probabilities": {
+            "strong": 0.46,
+            "partial": 0.54,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.865,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.25,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.855,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.23,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.775,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.07,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.51,
+          "probabilities": {
+            "strong": 0.19,
+            "partial": 0.64,
+            "none": 0.17
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.15000000000000002,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.02,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.58,
+          "probabilities": {
+            "strong": 0.43,
+            "partial": 0.3,
+            "none": 0.27
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.475,
+          "probabilities": {
+            "strong": 0.35,
+            "partial": 0.25,
+            "none": 0.4
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00469",
+      "utility": 0.6448340039740321,
+      "criterion_score": 0.6516666666666667,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.94,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.12,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.865,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.27,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.78,
+          "probabilities": {
+            "strong": 0.56,
+            "partial": 0.44,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.675,
+          "probabilities": {
+            "strong": 0.5700000000000001,
+            "partial": 0.21,
+            "none": 0.22
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9249999999999999,
+          "probabilities": {
+            "strong": 0.85,
+            "partial": 0.15,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.645,
+          "probabilities": {
+            "strong": 0.59,
+            "partial": 0.11,
+            "none": 0.3
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.935,
+          "probabilities": {
+            "strong": 0.87,
+            "partial": 0.13,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8300000000000001,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.04,
+            "none": 0.15
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.39,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.42,
+            "none": 0.4
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.275,
+          "probabilities": {
+            "strong": 0.07,
+            "partial": 0.41,
+            "none": 0.52
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.475,
+          "probabilities": {
+            "strong": 0.23,
+            "partial": 0.49,
+            "none": 0.28
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.04,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.02,
+            "none": 0.95
+          }
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00378",
+      "utility": 0.6216666666666667,
+      "criterion_score": 0.6383333333333334,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.545,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.89,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.20500000000000002,
+          "probabilities": {
+            "strong": 0.12,
+            "partial": 0.17,
+            "none": 0.71
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8200000000000001,
+          "probabilities": {
+            "strong": 0.64,
+            "partial": 0.36,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.765,
+          "probabilities": {
+            "strong": 0.63,
+            "partial": 0.27,
+            "none": 0.1
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.91,
+            "partial": 0.08,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.66,
+          "probabilities": {
+            "strong": 0.63,
+            "partial": 0.06,
+            "none": 0.31
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.86,
+          "probabilities": {
+            "strong": 0.72,
+            "partial": 0.28,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.64,
+          "probabilities": {
+            "strong": 0.61,
+            "partial": 0.06,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.495,
+          "probabilities": {
+            "strong": 0.38,
+            "partial": 0.23,
+            "none": 0.39
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.64,
+          "probabilities": {
+            "strong": 0.48,
+            "partial": 0.32,
+            "none": 0.2
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00214",
+      "utility": 0.6175033076069397,
+      "criterion_score": 0.6323333333333333,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.545,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.89,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.535,
+          "probabilities": {
+            "strong": 0.07,
+            "partial": 0.93,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.665,
+          "probabilities": {
+            "strong": 0.33,
+            "partial": 0.67,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.1,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8099999999999999,
+          "probabilities": {
+            "strong": 0.69,
+            "partial": 0.24,
+            "none": 0.07
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.88,
+          "probabilities": {
+            "strong": 0.86,
+            "partial": 0.04,
+            "none": 0.1
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9149999999999999,
+          "probabilities": {
+            "strong": 0.83,
+            "partial": 0.17,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.775,
+          "probabilities": {
+            "strong": 0.76,
+            "partial": 0.03,
+            "none": 0.21
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.565,
+          "probabilities": {
+            "strong": 0.47,
+            "partial": 0.19,
+            "none": 0.34
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.295,
+          "probabilities": {
+            "strong": 0.22,
+            "partial": 0.15,
+            "none": 0.63
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.055,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.01,
+            "none": 0.94
+          }
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00455",
+      "utility": 0.6041076769242364,
+      "criterion_score": 0.6016666666666667,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.1,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.51,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.98,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.01,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.675,
+          "probabilities": {
+            "strong": 0.56,
+            "partial": 0.23,
+            "none": 0.21
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.7,
+          "probabilities": {
+            "strong": 0.4,
+            "partial": 0.6,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.77,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.08,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.825,
+          "probabilities": {
+            "strong": 0.65,
+            "partial": 0.35,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.79,
+          "probabilities": {
+            "strong": 0.77,
+            "partial": 0.04,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.34,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.46,
+            "none": 0.43
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.13,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.2,
+            "none": 0.77
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.35,
+          "probabilities": {
+            "strong": 0.26,
+            "partial": 0.18,
+            "none": 0.56
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00407",
+      "utility": 0.5856666666666668,
+      "criterion_score": 0.5690000000000001,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9650000000000001,
+          "probabilities": {
+            "strong": 0.93,
+            "partial": 0.07,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.42000000000000004,
+          "probabilities": {
+            "strong": 0.33,
+            "partial": 0.18,
+            "none": 0.49
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.655,
+          "probabilities": {
+            "strong": 0.31,
+            "partial": 0.69,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.7,
+          "probabilities": {
+            "strong": 0.4,
+            "partial": 0.6,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8150000000000001,
+          "probabilities": {
+            "strong": 0.76,
+            "partial": 0.11,
+            "none": 0.13
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8200000000000001,
+          "probabilities": {
+            "strong": 0.64,
+            "partial": 0.36,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7000000000000001,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.06,
+            "none": 0.27
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.39,
+          "probabilities": {
+            "strong": 0.15,
+            "partial": 0.48,
+            "none": 0.37
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.105,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.15,
+            "none": 0.82
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.47000000000000003,
+          "probabilities": {
+            "strong": 0.34,
+            "partial": 0.26,
+            "none": 0.4
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.0,
+            "none": 0.99
+          }
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00383",
+      "utility": 0.5279999999999999,
+      "criterion_score": 0.5446666666666666,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.85,
+          "probabilities": {
+            "strong": 0.7,
+            "partial": 0.3,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.51,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.98,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.46,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.56,
+            "none": 0.26
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.74,
+          "probabilities": {
+            "strong": 0.48,
+            "partial": 0.52,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.88,
+          "probabilities": {
+            "strong": 0.85,
+            "partial": 0.06,
+            "none": 0.09
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.6,
+          "probabilities": {
+            "strong": 0.25,
+            "partial": 0.7,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.28,
+          "probabilities": {
+            "strong": 0.25,
+            "partial": 0.06,
+            "none": 0.69
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9600000000000001,
+          "probabilities": {
+            "strong": 0.92,
+            "partial": 0.08,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.37,
+          "probabilities": {
+            "strong": 0.24,
+            "partial": 0.26,
+            "none": 0.5
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.51,
+          "probabilities": {
+            "strong": 0.35,
+            "partial": 0.32,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.0,
+            "none": 0.99
+          }
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00377",
+      "utility": 0.5083333333333333,
+      "criterion_score": 0.49166666666666664,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7849999999999999,
+          "probabilities": {
+            "strong": 0.58,
+            "partial": 0.41,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5700000000000001,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.86,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.31,
+          "probabilities": {
+            "strong": 0.26,
+            "partial": 0.1,
+            "none": 0.64
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.20500000000000002,
+          "probabilities": {
+            "strong": 0.12,
+            "partial": 0.17,
+            "none": 0.71
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.585,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.83,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.04,
+            "none": 0.08
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.85,
+          "probabilities": {
+            "strong": 0.7,
+            "partial": 0.3,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.75,
+          "probabilities": {
+            "strong": 0.72,
+            "partial": 0.06,
+            "none": 0.22
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.49,
+          "probabilities": {
+            "strong": 0.39,
+            "partial": 0.2,
+            "none": 0.41
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.42000000000000004,
+          "probabilities": {
+            "strong": 0.25,
+            "partial": 0.34,
+            "none": 0.41
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.0,
+            "none": 0.98
+          }
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00479",
+      "utility": 0.423,
+      "criterion_score": 0.43966666666666665,
+      "criterion_breakdown": [
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.27,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.44,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "Social Listening",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.515,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.97,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.825,
+          "probabilities": {
+            "strong": 0.65,
+            "partial": 0.35,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "R",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Pipelines",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.55,
+          "probabilities": {
+            "strong": 0.46,
+            "partial": 0.18,
+            "none": 0.36
+          }
+        },
+        {
+          "requirement": "Statistical Analysis",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.52,
+          "probabilities": {
+            "strong": 0.33,
+            "partial": 0.38,
+            "none": 0.29
+          }
+        },
+        {
+          "requirement": "Relational Databases",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.565,
+          "probabilities": {
+            "strong": 0.21,
+            "partial": 0.71,
+            "none": 0.08
+          }
+        },
+        {
+          "requirement": "Object-Oriented Programming",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.63,
+          "probabilities": {
+            "strong": 0.59,
+            "partial": 0.08,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Data Visualization",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.81,
+          "probabilities": {
+            "strong": 0.62,
+            "partial": 0.38,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.72,
+          "probabilities": {
+            "strong": 0.7,
+            "partial": 0.04,
+            "none": 0.26
+          }
+        },
+        {
+          "requirement": "Dashboard Development",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.4,
+          "probabilities": {
+            "strong": 0.12,
+            "partial": 0.56,
+            "none": 0.32
+          }
+        },
+        {
+          "requirement": "Data Storytelling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.16,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.2,
+            "none": 0.74
+          }
+        },
+        {
+          "requirement": "Project Management",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.10500000000000001,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.11,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.025,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.01,
+            "none": 0.97
+          }
+        }
+      ]
+    }
+  ]
+}

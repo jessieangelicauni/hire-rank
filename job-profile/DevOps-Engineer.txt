@@ -1,0 +1,81 @@
+DevOps Engineer - $20K Sign-On Bonus - 23302
+
+Enlighten, honored as a Top Workplace from USA Today, is a leader in big data solution development and deployment, with expertise in cloud\-based services, software and systems engineering, cyber capabilities, and data science. Enlighten provides continued innovation and proactivity in meeting our customers’ greatest challenges.
+   
+
+  
+
+ Why Enlighten?
+   
+
+  
+
+**Benefits**
+ At Enlighten, our team’s unwavering work ethic, top talent and celebration of innovative ideas have helped us thrive. We know that our employees are essential to our company’s success, so we seek to take care of you as much as you take care of us. Here are a few highlights of our benefits package:
+   
+
+  
+
+* 100% paid employee premium for healthcare, vision and dental plans.
+* 10% 401k benefit.
+* Generous PTO \+ 10 paid holidays.
+* Education/training allowances.
+
+
+**This position will include a $20K Sign On Bonus, if hired as an employee for Enlighten.** 
+ Anticipated Salary Range: $119,574\.00 \- $170,000\.00\. The salary range for this role is intended as a good faith estimate based on the role's location, expectations, and responsibilities. When extending an offer, Enlighten takes a variety of factors into consideration which include, but are not limited to, the role's function, internal equity and a candidate's education or training, work experience, certifications and key skills. Occasionally positions/roles may include additional non\-recurrent compensation and will be addressed by the recruiter during the interview process.
+   
+
+  
+
+**Job Description**
+ Enlighten is seeking a highly motivated and experienced DevOps Engineer to join our fast\-paced development team. The ideal candidate will have strong working knowledge in Linux systems administration, and a background in Big Data solutions, configuration management, automation, scripting, containers, and AWS. The DevOps Engineer will be responsible for implementing infrastructure, automating deployment processes, and ensuring the reliability and scalability of our services. This role is primarily based on\-site in Augusta, GA, with occasional travel required both within the continental U.S. (CONUS) and internationally (OCONUS).
+   
+
+  
+
+ If you have a passion for DevOps and are interested in working with a dynamic and innovative team, we encourage you to apply for this exciting opportunity.
+   
+
+  
+
+ \#Mid\-Senior Level
+   
+
+  
+
+**Essential Job Responsibilities**
+* Support development and deployment of cloud infrastructure in AWS
+* Support development and deployment of non\-cloud (Edge) infrastructure of on\-premise and portable equipment
+* Automate deployment processes and ensure reliability and scalability of services
+* Manage and maintain Kubernetes containers and cloud infrastructure on AWS
+* Collaborate with development teams to integrate their applications into the infrastructure
+* Monitor and troubleshoot production systems and resolve issues as necessary
+* Continuously improve processes and tools to ensure high availability and performance
+* Stay current with new technologies and industry trends, continuously exploring new ways to improve our infrastructure
+* Other duties as assigned
+
+
+**Minimum Qualifications**
+* Security Clearance \- Current TS/SCI level U.S. Government security clearance is required; U.S. Citizenship required.
+* 9\+ years of experience in DevOps Engineering or Software Development and Bachelors in related field; or 7 years relevant experience with Masters in related field; or High School Diploma or equivalent and 13 years relevant experience.
+* Strong knowledge of Linux, including system administration and troubleshooting
+* Proficient in configuration management tools such as Terraform, Ansible or Puppet
+* Knowledge of AWS services (EC2, EBS, S3, Lambda) and their application to deployment and management of infrastructure
+* Experience with application and OS deployment, scaling, and management
+* Ability to develop in multiple programming languages such as Python, Bash, or Go
+* Familiarity with Git and other development tools.
+* Excellent problem\-solving skills and the ability to identify and troubleshoot complex issues
+* Excellent oral and written communication skills
+* Understanding of AGILE software development methodologies and use of standard software development tool suites
+* Must have a DoD 8140 / 8570 compliance certifications (i.e. Security\+) and computing environment cert (i.e. BDP System Admin cert)
+* Must be willing to travel OCONUS and CONUS 10% of the time
+* Must be able to work on customer site in Augusta, GA 5 days a week. Flexibility is essential to adapt to schedule changes as needed
+
+
+**Preferred Requirements**
+* Experience with big data technologies like: Hadoop, Spark, PostgreSQL, ElasticSearch, Hive, Drill, Impala, Trino, Presto, etc.
+* Experience with containers EKS, Diode, CI/CD, and Terraform are a plus
+
+
+ We have many more additional great benefits/perks that you can find on our website at www.eitccorp.com \[eitccorp.com].

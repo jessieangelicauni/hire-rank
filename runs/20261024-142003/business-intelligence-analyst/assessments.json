@@ -1,0 +1,1164 @@
+{
+  "cv-00213": {
+    "job_profile_id": "business-intelligence-analyst",
+    "candidate_id": "cv-00213",
+    "evaluations": [
+      {
+        "requirement": "SQL",
+        "evidence": "Scala, Python, R, SQL, MATLAB, Keras, LlamaIndex, OpenAI API, Weights & Biases, MLflow, Redshift,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.99,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Modeling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.34,
+          "none": 0.49
+        }
+      },
+      {
+        "requirement": "ETL/ELT",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.31,
+          "none": 0.68
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Python, R with track record of building and scaling engineering teams Scala, Python, R, SQL, MATLAB, Keras, LlamaIndex, OpenAI API, Weights & Biases, MLflow, Redshift,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.65,
+          "partial": 0.35,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Scala",
+        "evidence": "Expert in Scala, Scala, Python, R, SQL, MATLAB, Keras, LlamaIndex, OpenAI API, Weights & Biases, MLflow, Redshift,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Sigma",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Snowflake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Data Lake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.21,
+          "partial": 0.14,
+          "none": 0.65
+        }
+      },
+      {
+        "requirement": "Data Quality Frameworks",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Orchestration Tools",
+        "evidence": "Developed data visualization tools using NumPy, used by 50000+ analysts Developed data visualization tools using NumPy, used by 1000+ analysts Developed data visualization tools using MongoDB, used by 500+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.73,
+          "partial": 0.26,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "KPI Definition and Measurement",
+        "evidence": "Lead data science / ml / ai professional with 11 years driving technical strategy and team excellence Python, R with track record of building and scaling engineering teams",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.2,
+          "partial": 0.58,
+          "none": 0.22
+        }
+      },
+      {
+        "requirement": "Data Warehousing Platforms",
+        "evidence": "Designed data warehousing solution using Neptune, enabling analytics on 100+ records Designed data warehousing solution using Redshift, enabling analytics on 50000+ records Designed data warehousing solution using A/B Testing, enabling analytics on 1000+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization Tools",
+        "evidence": "Developed data visualization tools using NumPy, used by 50000+ analysts Developed data visualization tools using NumPy, used by 1000+ analysts Developed data visualization tools using MongoDB, used by 500+ analysts",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.83,
+          "none": 0.11
+        }
+      },
+      {
+        "requirement": "Real-Time Data Processing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Machine Learning Concepts",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00214": {
+    "job_profile_id": "business-intelligence-analyst",
+    "candidate_id": "cv-00214",
+    "evaluations": [
+      {
+        "requirement": "SQL",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.99,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Modeling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.34,
+          "none": 0.48
+        }
+      },
+      {
+        "requirement": "ETL/ELT",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.49,
+          "partial": 0.39,
+          "none": 0.12
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.28,
+          "partial": 0.72,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Scala",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Sigma",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Snowflake",
+        "evidence": "Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Lake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.2,
+          "partial": 0.18,
+          "none": 0.62
+        }
+      },
+      {
+        "requirement": "Data Quality Frameworks",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Orchestration Tools",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.18,
+          "none": 0.76
+        }
+      },
+      {
+        "requirement": "KPI Definition and Measurement",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.16,
+          "partial": 0.55,
+          "none": 0.29
+        }
+      },
+      {
+        "requirement": "Data Warehousing Platforms",
+        "evidence": "Designed data warehousing solution using LLM Evaluation, enabling analytics on 10000+ records Designed data warehousing solution using AWS SageMaker, enabling analytics on 100+ records Data Scientist at Quantum Edge (2013-01 \u2013 2014-02)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.39,
+          "partial": 0.6,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Visualization Tools",
+        "evidence": "Developed data visualization tools using Azure ML, used by 1000+ analysts Data Scientist at Quantum Edge (2013-01 \u2013 2014-02) in Data Science \u2014 Carnegie Mellon University (2015)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.32,
+          "partial": 0.53,
+          "none": 0.15
+        }
+      },
+      {
+        "requirement": "Real-Time Data Processing",
+        "evidence": "Built real-time analytics dashboard using Julia, used by 50000+ stakeholders Built end-to-end ML pipeline using LLM Evaluation, processing 10000+ samples daily Built real-time analytics dashboard using Statistical Modeling, used by 100000+ stakeholders",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.31,
+          "partial": 0.67,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Machine Learning Concepts",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00270": {
+    "job_profile_id": "business-intelligence-analyst",
+    "candidate_id": "cv-00270",
+    "evaluations": [
+      {
+        "requirement": "SQL",
+        "evidence": "Seasoned software professional with deep expertise in SQL, Go, and Python Implemented ML Model Training Pipeline using SQL, achieving 99.9% uptime and handling 50k+ requests daily Tech: Go, Python, SQL",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.95,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Modeling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.23,
+          "none": 0.63
+        }
+      },
+      {
+        "requirement": "ETL/ELT",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.41,
+          "partial": 0.4,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Seasoned software professional with deep expertise in SQL, Go, and Python Tech: Go, Python, SQL Built Predictive Analytics Platform with SQL and Python, serving 10,000+ daily active users",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Scala",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Sigma",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Snowflake",
+        "evidence": "Kubeflow Snowflake Pinecone Neo4j MongoDB Hugging Face Endpoints Lambda Labs Bedrock Developed computer vision models using Snowflake, achieving 25% accuracy",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.51,
+          "partial": 0.49,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Lake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.28,
+          "none": 0.62
+        }
+      },
+      {
+        "requirement": "Data Quality Frameworks",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.2,
+          "none": 0.78
+        }
+      },
+      {
+        "requirement": "Orchestration Tools",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "KPI Definition and Measurement",
+        "evidence": "Seasoned software professional with deep expertise in SQL, Go, and Python Built Predictive Analytics Platform with SQL and Python, serving 10,000+ daily active users Implemented ML Model Training Pipeline using SQL, achieving 99.9% uptime and handling 50k+ requests daily",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.67,
+          "none": 0.25
+        }
+      },
+      {
+        "requirement": "Data Warehousing Platforms",
+        "evidence": "Designed data warehousing solution using LLM Evaluation, enabling analytics on 10000+ records Data Science / ML / AI Data Analyst at TechFlow AI (2025-07 \u2013 Present)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.87,
+          "partial": 0.13,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization Tools",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Real-Time Data Processing",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.29,
+          "none": 0.7
+        }
+      },
+      {
+        "requirement": "Machine Learning Concepts",
+        "evidence": "Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00310": {
+    "job_profile_id": "business-intelligence-analyst",
+    "candidate_id": "cv-00310",
+    "evaluations": [
+      {
+        "requirement": "SQL",
+        "evidence": "Expert in Python, SQL, Scala with track record of building and scaling engineering teams Python \u2022 SQL \u2022 Scala \u2022 Julia \u2022 Keras \u2022 LlamaIndex \u2022 XGBoost \u2022 Scikit-learn \u2022 LangChain \u2022 Weights &",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Modeling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.24,
+          "none": 0.62
+        }
+      },
+      {
+        "requirement": "ETL/ELT",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.27,
+          "partial": 0.42,
+          "none": 0.31
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Expert in Python, SQL, Scala with track record of building and scaling engineering teams Python \u2022 SQL \u2022 Scala \u2022 Julia \u2022 Keras \u2022 LlamaIndex \u2022 XGBoost \u2022 Scikit-learn \u2022 LangChain \u2022 Weights &",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.89,
+          "partial": 0.11,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Scala",
+        "evidence": "Python \u2022 SQL \u2022 Scala \u2022 Julia \u2022 Keras \u2022 LlamaIndex \u2022 XGBoost \u2022 Scikit-learn \u2022 LangChain \u2022 Weights & Expert in Python, SQL, Scala with track record of building and scaling engineering teams",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Sigma",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Snowflake",
+        "evidence": "Biases \u2022 DVC \u2022 PostgreSQL \u2022 Snowflake \u2022 MongoDB \u2022 Qdrant \u2022 BigQuery \u2022 Azure ML \u2022 Databricks \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Lake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.2,
+          "none": 0.63
+        }
+      },
+      {
+        "requirement": "Data Quality Frameworks",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.05,
+          "none": 0.94
+        }
+      },
+      {
+        "requirement": "Orchestration Tools",
+        "evidence": "Developed data visualization tools using AWS SageMaker, used by 100000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.89,
+          "partial": 0.1,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "KPI Definition and Measurement",
+        "evidence": "Lead data science / ml / ai professional with 11 years driving technical strategy and team excellence Expert in Python, SQL, Scala with track record of building and scaling engineering teams",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.07,
+          "partial": 0.57,
+          "none": 0.36
+        }
+      },
+      {
+        "requirement": "Data Warehousing Platforms",
+        "evidence": "Designed data warehousing solution using AWS SageMaker, enabling analytics on 50000+ records Data Scientist at Palantir (2023-03 \u2013 Present) Data Scientist at Block (2014-10 \u2013 2018-11)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.33,
+          "partial": 0.67,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization Tools",
+        "evidence": "Developed data visualization tools using AWS SageMaker, used by 100000+ analysts Data Scientist at Palantir (2023-03 \u2013 Present) Data Scientist at Block (2014-10 \u2013 2018-11)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.21,
+          "partial": 0.7,
+          "none": 0.09
+        }
+      },
+      {
+        "requirement": "Real-Time Data Processing",
+        "evidence": "Built end-to-end ML pipeline using LightGBM, processing 100000+ samples daily Built real-time analytics dashboard using AWS SageMaker, used by 1000+ stakeholders Data Scientist at Palantir (2023-03 \u2013 Present)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.94,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Machine Learning Concepts",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00374": {
+    "job_profile_id": "business-intelligence-analyst",
+    "candidate_id": "cv-00374",
+    "evaluations": [
+      {
+        "requirement": "SQL",
+        "evidence": "Skilled in Julia, Python, SQL with focus Julia, Python, SQL, Scala, LangChain, LlamaIndex, TensorFlow, XGBoost, Dagster, Neptune, Kubeflow,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Modeling",
+        "evidence": "B.Tech., Data Science 2020 Databricks Certified Data Engineer (Databricks, 2025) Data Analyst at CodeCraft Studios 2024-09 \u2013 Present",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.46,
+          "none": 0.4
+        }
+      },
+      {
+        "requirement": "ETL/ELT",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.21,
+          "partial": 0.47,
+          "none": 0.32
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Skilled in Julia, Python, SQL with focus Julia, Python, SQL, Scala, LangChain, LlamaIndex, TensorFlow, XGBoost, Dagster, Neptune, Kubeflow, Token Bucket Limiter \u2014 Implemented Data Quality Monitor using Python, achieving 99.9% uptime and",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.61,
+          "partial": 0.39,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Scala",
+        "evidence": "Julia, Python, SQL, Scala, LangChain, LlamaIndex, TensorFlow, XGBoost, Dagster, Neptune, Kubeflow,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Sigma",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Snowflake",
+        "evidence": "Weights & Biases, Dask, Snowflake, MongoDB, Pinecone, Lambda Labs, Azure ML, Deep Learning, RAG,",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Lake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.13,
+          "partial": 0.19,
+          "none": 0.68
+        }
+      },
+      {
+        "requirement": "Data Quality Frameworks",
+        "evidence": "on performance optimization and code quality Token Bucket Limiter \u2014 Implemented Data Quality Monitor using Python, achieving 99.9% uptime and B.Tech., Data Science 2020",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.63,
+          "partial": 0.32,
+          "none": 0.05
+        }
+      },
+      {
+        "requirement": "Orchestration Tools",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.76,
+          "partial": 0.23,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "KPI Definition and Measurement",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.39,
+          "none": 0.55
+        }
+      },
+      {
+        "requirement": "Data Warehousing Platforms",
+        "evidence": "Designed data warehousing solution using MATLAB, enabling analytics on 500+ records Designed data warehousing solution using Vector Databases, enabling analytics on 10000+ records B.Tech., Data Science 2020",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.15,
+          "partial": 0.84,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Visualization Tools",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.31,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "Real-Time Data Processing",
+        "evidence": "Built end-to-end ML pipeline using Prompt Engineering, processing 5000+ samples daily Built real-time analytics dashboard using BigQuery, used by 500+ stakeholders Built real-time analytics dashboard using TensorFlow, used by 500+ stakeholders",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.94,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Machine Learning Concepts",
+        "evidence": "Weights & Biases, Dask, Snowflake, MongoDB, Pinecone, Lambda Labs, Azure ML, Deep Learning, RAG, AWS Certified Machine Learning (Amazon Web Services, 2019)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00378": {
+    "job_profile_id": "business-intelligence-analyst",
+    "candidate_id": "cv-00378",
+    "evaluations": [
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.35,
+          "none": 0.65
+        }
+      },
+      {
+        "requirement": "Data Modeling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.38,
+          "none": 0.52
+        }
+      },
+      {
+        "requirement": "ETL/ELT",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.6,
+          "partial": 0.31,
+          "none": 0.09
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Expert in Python, Julia, MATLAB with demonstrated leadership in cross-functional teams Python Julia MATLAB Scikit-learn Claude API Hugging Face LlamaIndex Dagster Neptune",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.56,
+          "partial": 0.44,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Scala",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Sigma",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Snowflake",
+        "evidence": "Polars DVC Pandas Snowflake Pinecone Lambda Labs Databricks Hugging Face Endpoints Developed ML models using Snowflake, improving prediction accuracy by 50%",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.19,
+          "partial": 0.81,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Lake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.16,
+          "partial": 0.25,
+          "none": 0.59
+        }
+      },
+      {
+        "requirement": "Data Quality Frameworks",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.06,
+          "none": 0.93
+        }
+      },
+      {
+        "requirement": "Orchestration Tools",
+        "evidence": "Developed data visualization tools using Computer Vision, used by 50000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "KPI Definition and Measurement",
+        "evidence": "Senior data science / ml / ai engineer with 7 years of experience architecting and delivering enterprise",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.7,
+          "none": 0.12
+        }
+      },
+      {
+        "requirement": "Data Warehousing Platforms",
+        "evidence": "Designed data warehousing solution using Computer Vision, enabling analytics on 1000+ records Data Science / ML / AI Databricks Certified Data Engineer \u2014 Databricks",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.9,
+          "partial": 0.1,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization Tools",
+        "evidence": "Developed data visualization tools using Computer Vision, used by 50000+ analysts Data Science / ML / AI Databricks Certified Data Engineer \u2014 Databricks",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.22,
+          "partial": 0.59,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Real-Time Data Processing",
+        "evidence": "Built real-time analytics dashboard using Airflow, used by 100+ stakeholders Built end-to-end ML pipeline using Airflow, processing 5000+ samples daily Built real-time analytics dashboard using Qdrant, used by 50000+ stakeholders",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.91,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Machine Learning Concepts",
+        "evidence": "AWS Certified Machine Learning \u2014 Amazon Web Services",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00414": {
+    "job_profile_id": "business-intelligence-analyst",
+    "candidate_id": "cv-00414",
+    "evaluations": [
+      {
+        "requirement": "SQL",
+        "evidence": "Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.99,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Data Modeling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.08,
+          "partial": 0.11,
+          "none": 0.81
+        }
+      },
+      {
+        "requirement": "ETL/ELT",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.32,
+          "none": 0.66
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases Proficiency in Scala, R, Python",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Scala",
+        "evidence": "Proficiency in Scala, R, Python Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Sigma",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Snowflake",
+        "evidence": "MLflow Dagster Neptune Pinecone Databricks Snowflake MongoDB Weaviate AWS SageMaker",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Lake",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.15,
+          "partial": 0.29,
+          "none": 0.56
+        }
+      },
+      {
+        "requirement": "Data Quality Frameworks",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.01,
+          "none": 0.99
+        }
+      },
+      {
+        "requirement": "Orchestration Tools",
+        "evidence": "Developed data visualization tools using Pandas, used by 100+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.68,
+          "partial": 0.31,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "KPI Definition and Measurement",
+        "evidence": "optimizing performance, and building high-performing teams",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.63,
+          "none": 0.26
+        }
+      },
+      {
+        "requirement": "Data Warehousing Platforms",
+        "evidence": "Designed data warehousing solution using A/B Testing, enabling analytics on 50000+ records Data Science / ML / AI Developed data visualization tools using Pandas, used by 100+ analysts",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.38,
+          "partial": 0.62,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Visualization Tools",
+        "evidence": "Developed data visualization tools using Pandas, used by 100+ analysts Data Science / ML / AI Designed data warehousing solution using A/B Testing, enabling analytics on 50000+ records",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.61,
+          "none": 0.21
+        }
+      },
+      {
+        "requirement": "Real-Time Data Processing",
+        "evidence": "Implemented NLP solution using ChromaDB, processing 50000+ text documents daily Built real-time analytics dashboard using GCP Vertex AI, used by 1000+ stakeholders Data Science / ML / AI",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.89,
+          "none": 0.1
+        }
+      },
+      {
+        "requirement": "Machine Learning Concepts",
+        "evidence": "Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,2111 @@
+{
+  "job_profile_id": "ai-automation-specialist",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00414",
+      "utility": 0.7236429560204062,
+      "criterion_score": 0.7078571428571429,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.865,
+          "probabilities": {
+            "strong": 0.74,
+            "partial": 0.25,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9550000000000001,
+          "probabilities": {
+            "strong": 0.91,
+            "partial": 0.09,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.05,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.18,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.18,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.18,
+            "none": 0.73
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.015,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.03,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.87,
+          "probabilities": {
+            "strong": 0.84,
+            "partial": 0.06,
+            "none": 0.1
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.175,
+          "probabilities": {
+            "strong": 0.09,
+            "partial": 0.17,
+            "none": 0.74
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00378",
+      "utility": 0.7217857142857144,
+      "criterion_score": 0.7039285714285715,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.885,
+          "probabilities": {
+            "strong": 0.78,
+            "partial": 0.21,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.845,
+          "probabilities": {
+            "strong": 0.7,
+            "partial": 0.29,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9299999999999999,
+          "probabilities": {
+            "strong": 0.87,
+            "partial": 0.12,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8250000000000001,
+          "probabilities": {
+            "strong": 0.66,
+            "partial": 0.33,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.265,
+          "probabilities": {
+            "strong": 0.13,
+            "partial": 0.27,
+            "none": 0.6
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.09000000000000001,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.14,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.935,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.07,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.01,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.14,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.12,
+            "none": 0.8
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00339",
+      "utility": 0.6735349756753636,
+      "criterion_score": 0.6875,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.865,
+          "probabilities": {
+            "strong": 0.75,
+            "partial": 0.23,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9099999999999999,
+          "probabilities": {
+            "strong": 0.83,
+            "partial": 0.16,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.895,
+          "probabilities": {
+            "strong": 0.79,
+            "partial": 0.21,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.81,
+          "probabilities": {
+            "strong": 0.63,
+            "partial": 0.36,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.89,
+          "probabilities": {
+            "strong": 0.85,
+            "partial": 0.08,
+            "none": 0.07
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.22499999999999998,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.29,
+            "none": 0.63
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.075,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.11,
+            "none": 0.87
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.965,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.03,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.975,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.01,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.02,
+            "none": 0.97
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00374",
+      "utility": 0.6555415543137044,
+      "criterion_score": 0.6582142857142858,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9199999999999999,
+          "probabilities": {
+            "strong": 0.85,
+            "partial": 0.14,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.1,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.905,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.19,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9149999999999999,
+          "probabilities": {
+            "strong": 0.84,
+            "partial": 0.15,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.555,
+          "probabilities": {
+            "strong": 0.23,
+            "partial": 0.65,
+            "none": 0.12
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.625,
+          "probabilities": {
+            "strong": 0.26,
+            "partial": 0.73,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.93,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.06,
+            "none": 0.04
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.23500000000000001,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.19,
+            "none": 0.67
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.03,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.04,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.02,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.95,
+          "probabilities": {
+            "strong": 0.94,
+            "partial": 0.02,
+            "none": 0.04
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.22000000000000003,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.16,
+            "none": 0.7
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00455",
+      "utility": 0.6260714285714286,
+      "criterion_score": 0.6439285714285715,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8999999999999999,
+          "probabilities": {
+            "strong": 0.8099999999999999,
+            "partial": 0.18,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8350000000000001,
+          "probabilities": {
+            "strong": 0.68,
+            "partial": 0.31,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.52,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.96,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.93,
+          "probabilities": {
+            "strong": 0.89,
+            "partial": 0.08,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.08499999999999999,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.15,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.060000000000000005,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.1,
+            "none": 0.89
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.765,
+          "probabilities": {
+            "strong": 0.68,
+            "partial": 0.17,
+            "none": 0.15
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.925,
+          "probabilities": {
+            "strong": 0.91,
+            "partial": 0.03,
+            "none": 0.06
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.03,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.04,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00234",
+      "utility": 0.5771428571428572,
+      "criterion_score": 0.5592857142857143,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.74,
+          "probabilities": {
+            "strong": 0.49,
+            "partial": 0.5,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.96,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.86,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.26,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.84,
+          "probabilities": {
+            "strong": 0.69,
+            "partial": 0.3,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.34500000000000003,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.6900000000000001,
+            "none": 0.31
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.135,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.25,
+            "none": 0.74
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.42000000000000004,
+          "probabilities": {
+            "strong": 0.22,
+            "partial": 0.4,
+            "none": 0.38
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.155,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.21,
+            "none": 0.74
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.08499999999999999,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.15,
+            "none": 0.84
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.07,
+            "none": 0.93
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.7450000000000001,
+          "probabilities": {
+            "strong": 0.55,
+            "partial": 0.39,
+            "none": 0.06
+          }
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00488",
+      "utility": 0.5717396554402391,
+      "criterion_score": 0.5700000000000001,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.71,
+          "probabilities": {
+            "strong": 0.43,
+            "partial": 0.56,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.47000000000000003,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.92,
+            "none": 0.07
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.925,
+          "probabilities": {
+            "strong": 0.87,
+            "partial": 0.11,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9149999999999999,
+          "probabilities": {
+            "strong": 0.83,
+            "partial": 0.17,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.7150000000000001,
+          "probabilities": {
+            "strong": 0.44,
+            "partial": 0.55,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.905,
+          "probabilities": {
+            "strong": 0.81,
+            "partial": 0.19,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.01,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.02,
+            "none": 0.98
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.225,
+          "probabilities": {
+            "strong": 0.13,
+            "partial": 0.19,
+            "none": 0.68
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.05,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.08,
+            "none": 0.91
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.055,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.09,
+            "none": 0.9
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.045000000000000005,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.07,
+            "none": 0.92
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.96,
+          "probabilities": {
+            "strong": 0.94,
+            "partial": 0.04,
+            "none": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "candidate_id": "cv-00271",
+      "utility": 0.5153571428571428,
+      "criterion_score": 0.5332142857142858,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.94,
+          "probabilities": {
+            "strong": 0.88,
+            "partial": 0.12,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.23,
+            "partial": 0.54,
+            "none": 0.23
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.865,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.27,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9149999999999999,
+          "probabilities": {
+            "strong": 0.84,
+            "partial": 0.15,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.6499999999999999,
+          "probabilities": {
+            "strong": 0.3,
+            "partial": 0.7,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.24,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.44,
+            "none": 0.54
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.325,
+          "probabilities": {
+            "strong": 0.13,
+            "partial": 0.39,
+            "none": 0.48
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.135,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.23,
+            "none": 0.75
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.16999999999999998,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.3,
+            "none": 0.68
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.81,
+          "probabilities": {
+            "strong": 0.67,
+            "partial": 0.28,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.075,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.09,
+            "none": 0.88
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.835,
+          "probabilities": {
+            "strong": 0.69,
+            "partial": 0.29,
+            "none": 0.02
+          }
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "candidate_id": "cv-00264",
+      "utility": 0.4835714285714286,
+      "criterion_score": 0.4835714285714286,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.05,
+            "none": 0.94
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.645,
+          "probabilities": {
+            "strong": 0.29,
+            "partial": 0.71,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.72,
+          "probabilities": {
+            "strong": 0.62,
+            "partial": 0.2,
+            "none": 0.18
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.33,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.66,
+            "none": 0.34
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9400000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.08,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.965,
+          "probabilities": {
+            "strong": 0.95,
+            "partial": 0.03,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.775,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.09,
+            "none": 0.18
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.025,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.05,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.36,
+          "probabilities": {
+            "strong": 0.24,
+            "partial": 0.24,
+            "none": 0.52
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9450000000000001,
+          "probabilities": {
+            "strong": 0.91,
+            "partial": 0.07,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.03,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.04,
+            "none": 0.95
+          }
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "candidate_id": "cv-00247",
+      "utility": 0.2835714285714286,
+      "criterion_score": 0.26571428571428574,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.034999999999999996,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.01,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.96,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.055,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.09,
+            "none": 0.9
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.275,
+          "probabilities": {
+            "strong": 0.07,
+            "partial": 0.41,
+            "none": 0.52
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.05,
+            "none": 0.94
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.08499999999999999,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.11,
+            "none": 0.86
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.22999999999999998,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.3,
+            "none": 0.62
+          }
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "candidate_id": "cv-00242",
+      "utility": 0.2604690878133779,
+      "criterion_score": 0.26071428571428573,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.98,
+          "probabilities": {
+            "strong": 0.96,
+            "partial": 0.04,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.855,
+          "probabilities": {
+            "strong": 0.71,
+            "partial": 0.29,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.15000000000000002,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.28,
+            "none": 0.71
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.095,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.11,
+            "none": 0.85
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.065,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.07,
+            "none": 0.9
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "candidate_id": "cv-00439",
+      "utility": 0.23982262879155913,
+      "criterion_score": 0.24500000000000002,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.535,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.91,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.86,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.26,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.39499999999999996,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.57,
+            "none": 0.32
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.03,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.04,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.11000000000000001,
+          "probabilities": {
+            "strong": 0.04,
+            "partial": 0.14,
+            "none": 0.82
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "candidate_id": "cv-00293",
+      "utility": 0.17785714285714288,
+      "criterion_score": 0.19571428571428573,
+      "criterion_breakdown": [
+        {
+          "requirement": "Large Language Models",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.475,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.95,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Java",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Natural Language Processing (NLP)",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AWS",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Google Cloud",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.335,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.67,
+            "none": 0.33
+          }
+        },
+        {
+          "requirement": "Azure",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Analysis",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.02,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.04,
+            "none": 0.96
+          }
+        },
+        {
+          "requirement": "Chatbots",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Virtual Assistants",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "AI Model Monitoring",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "System Integration",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.03,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.04,
+            "none": 0.95
+          }
+        },
+        {
+          "requirement": "Documentation",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.88,
+          "probabilities": {
+            "strong": 0.78,
+            "partial": 0.2,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Machine Learning",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2030 @@
+{
+  "daniel-adif-nugroho": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "daniel-adif-nugroho",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "\u2022 ETL Pipeline Automation: Scalable pipelines processing raw machine production data \u2014 90% report size",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.33,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Data Engineering: ETL pipeline development, data modeling, AS400, SQL Server, structured/unstructured \u2022 Contributed to ETL process design, collecting and integrating data from AS400, Excel, and SQL sources Languages & Frameworks: Python, SQL, VBA",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Results-driven Digital Transformation Engineer with 4+ years at PT Mattel Indonesia, specializing in Python- Languages & Frameworks: Python, SQL, VBA",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "\u2022 ETL Pipeline Automation: Scalable pipelines processing raw machine production data \u2014 90% report size \u2022 Engineered and automated scalable ETL pipelines for production machine data, transforming raw Data Engineer (Intern)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "\u2022 Supported operational process analysis and KPI reporting, gaining foundational experience in \u2022 Developing an OEE forecasting engine through machine-product correlation analysis, modeling operational data into structured, analysis-ready datasets \u2014 reducing report size by 90% and improving",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.93,
+          "partial": 0.05,
+          "none": 0.02
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.9,
+          "partial": 0.1,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.1,
+          "none": 0.23
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Data Engineer (Intern) Data Engineering: ETL pipeline development, data modeling, AS400, SQL Server, structured/unstructured KEY AI / DATA PROJECTS",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.86,
+          "partial": 0.01,
+          "none": 0.13
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Power BI dashboard load speed by 80% BI & Analytics: Power BI, DAX, dashboard design, KPI reporting, NLP on operational text Data Engineering: ETL pipeline development, data modeling, AS400, SQL Server, structured/unstructured",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "Data Engineer (Intern) Data Engineering: ETL pipeline development, data modeling, AS400, SQL Server, structured/unstructured KEY AI / DATA PROJECTS",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.82,
+          "partial": 0.13,
+          "none": 0.05
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "\u2022 Built an Excel VBA-based inventory management system for tooling operations, enabling transaction",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.32,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "in Computer Science Interests: Applied AI in manufacturing, cloud-native ML deployment, digital transformation, business (Business Intelligence focus) with hands-on expertise in deploying production-grade AI applications, integrating",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00214": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00214",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using LLM Evaluation, processing 10000+ samples daily Implemented NLP solution using Computer Vision, processing 50000+ text documents daily",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.89,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.07,
+          "partial": 0.93,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Go Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.33,
+          "partial": 0.67,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "Python \u2022 SQL \u2022 Go \u2022 R \u2022 PyTorch \u2022 Claude API \u2022 Weights & Biases \u2022 Spark \u2022 Snowflake \u2022 BigQuery \u2022",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Data Scientist at Quantum Edge (2013-01 \u2013 2014-02) in Data Science \u2014 Carnegie Mellon University (2015) Developed data visualization tools using Azure ML, used by 1000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "Built real-time analytics dashboard using Statistical Modeling, used by 100000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.9,
+          "partial": 0.1,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "Engineering \u2022 LLM Evaluation \u2022 Vector Databases \u2022 Fine-tuning",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.69,
+          "partial": 0.24,
+          "none": 0.07
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.86,
+          "partial": 0.04,
+          "none": 0.1
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Azure ML, used by 1000+ analysts Data Scientist at Quantum Edge (2013-01 \u2013 2014-02) in Data Science \u2014 Carnegie Mellon University (2015)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.83,
+          "partial": 0.17,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.76,
+          "partial": 0.03,
+          "none": 0.21
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using Statistical Modeling, used by 100000+ stakeholders Built real-time analytics dashboard using Julia, used by 50000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "Data Scientist at Quantum Edge (2013-01 \u2013 2014-02) in Data Science \u2014 Carnegie Mellon University (2015) Developed data visualization tools using Azure ML, used by 1000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.47,
+          "partial": 0.19,
+          "none": 0.34
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.22,
+          "partial": 0.15,
+          "none": 0.63
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.01,
+          "none": 0.94
+        }
+      }
+    ]
+  },
+  "cv-00320": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00320",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Implemented NLP solution using Statistical Modeling, processing 100000+ text documents daily Built end-to-end ML pipeline using AWS SageMaker, processing 500+ samples daily Implemented NLP solution using SQL, processing 500+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "SQL with track record of building and scaling engineering teams Implemented NLP solution using SQL, processing 500+ text documents daily Designed data warehousing solution using SQL, enabling analytics on 100000+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Expert in Python, Go, Python, Go, SQL, LlamaIndex, XGBoost, LightGBM, MLflow, DVC, Pandas, MongoDB, Neo4j, Lambda Labs,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.54,
+          "partial": 0.46,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Databricks Certified Data Engineer (Databricks, 2022) Data Analyst at Uber 2023-01 \u2013 2023-10 Data Science / ML / AI \u2014 Wilkinsonside, UK",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "Built real-time analytics dashboard using Statistical Modeling, used by 5000+ stakeholders Developed data visualization tools using Statistical Modeling, used by 5000+ analysts Implemented NLP solution using Statistical Modeling, processing 100000+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.05,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.81,
+          "partial": 0.18,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.1,
+          "none": 0.16
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using LlamaIndex, used by 100+ analysts Developed data visualization tools using Statistical Modeling, used by 5000+ analysts Developed data visualization tools using LLM Evaluation, used by 5000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.26,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.78,
+          "partial": 0.03,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using Statistical Modeling, used by 5000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "Databricks Certified Data Engineer (Databricks, 2022) Data Analyst at Uber 2023-01 \u2013 2023-10 Data Science / ML / AI \u2014 Wilkinsonside, UK",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.39,
+          "partial": 0.23,
+          "none": 0.38
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.47,
+          "partial": 0.26,
+          "none": 0.27
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "Expert in Python, Go, valerie.ward@gmail.com \u00b7 +1-464-512-2031x03037 \u00b7 https://linkedin.com/in/valerie-ward \u00b7 https://github.com/valerieward Lead data science / ml / ai professional with 9 years driving technical strategy and team excellence",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00377": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00377",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "NLP Engineer 2019-08 \u2013 2021-05",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.58,
+          "partial": 0.41,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Expert in Scala, Python, Julia with demonstrated leadership in cross-functional teams",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.86,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.26,
+          "partial": 0.1,
+          "none": 0.64
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.12,
+          "partial": 0.17,
+          "none": 0.71
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.17,
+          "partial": 0.83,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.88,
+          "partial": 0.04,
+          "none": 0.08
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Bedrock, used by 500+ analysts Data Analyst 2021-10 \u2013 Present Senior Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.7,
+          "partial": 0.3,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.72,
+          "partial": 0.06,
+          "none": 0.22
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using RAG, used by 50000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.02,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.39,
+          "partial": 0.2,
+          "none": 0.41
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.25,
+          "partial": 0.34,
+          "none": 0.41
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.0,
+          "none": 0.98
+        }
+      }
+    ]
+  },
+  "cv-00378": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00378",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using Airflow, processing 5000+ samples daily Implemented NLP solution using Polars, processing 500+ text documents daily",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.1,
+          "partial": 0.89,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.12,
+          "partial": 0.17,
+          "none": 0.71
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Expert in Python, Julia, MATLAB with demonstrated leadership in cross-functional teams Python Julia MATLAB Scikit-learn Claude API Hugging Face LlamaIndex Dagster Neptune",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.64,
+          "partial": 0.36,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Data Science / ML / AI Databricks Certified Data Engineer \u2014 Databricks Data Scientist at VectorDB Inc (2020-09 \u2013 2023-07)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.63,
+          "partial": 0.27,
+          "none": 0.1
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.91,
+          "partial": 0.08,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.63,
+          "partial": 0.06,
+          "none": 0.31
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Computer Vision, used by 50000+ analysts Data Science / ML / AI Databricks Certified Data Engineer \u2014 Databricks",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.72,
+          "partial": 0.28,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.61,
+          "partial": 0.06,
+          "none": 0.33
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using Airflow, used by 100+ stakeholders Built real-time analytics dashboard using Qdrant, used by 50000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.38,
+          "partial": 0.23,
+          "none": 0.39
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.48,
+          "partial": 0.32,
+          "none": 0.2
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "in Cybersecurity 2016 in Artificial Intelligence 2018 Expert in Python, Julia, MATLAB with demonstrated leadership in cross-functional teams",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00383": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00383",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using LLM Evaluation, processing 10000+ samples daily Implemented NLP solution using Fine-tuning, processing 100+ text documents daily Built end-to-end ML pipeline using Python, processing 1000+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.7,
+          "partial": 0.3,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Proficiency in Scala, SQL, Julia",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.98,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Created recommendation system using Python, increasing user engagement by 18% Built end-to-end ML pipeline using Python, processing 1000+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Senior Data Science / ML / AI in Data Science \u2014 Tsinghua University, 2020 Designed data warehousing solution using Fine-tuning, enabling analytics on 1000+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.56,
+          "none": 0.26
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "Created feature engineering pipeline using Vector Databases, reducing preprocessing time by 19%",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.48,
+          "partial": 0.52,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.85,
+          "partial": 0.06,
+          "none": 0.09
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Senior Data Science / ML / AI in Data Science \u2014 Tsinghua University, 2020 Designed data warehousing solution using Fine-tuning, enabling analytics on 1000+ records",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.25,
+          "partial": 0.7,
+          "none": 0.05
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.25,
+          "partial": 0.06,
+          "none": 0.69
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using NLP, used by 5000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.92,
+          "partial": 0.08,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.24,
+          "partial": 0.26,
+          "none": 0.5
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.35,
+          "partial": 0.32,
+          "none": 0.33
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.0,
+          "none": 0.99
+        }
+      }
+    ]
+  },
+  "cv-00407": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00407",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using LightGBM, processing 10000+ samples daily Implemented NLP solution using DVC, processing 1000+ text documents daily Built end-to-end ML pipeline using BigQuery, processing 100+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.93,
+          "partial": 0.07,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.33,
+          "partial": 0.18,
+          "none": 0.49
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Subject matter expert in Python, Go, R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.31,
+          "partial": 0.69,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "Subject matter expert in Python, Go, R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.99,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Data Scientist 2012-02 \u2013 2013-11 Principal Data Science / ML / AI Developed data visualization tools using Statistical Modeling, used by 50000+ analysts",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "Developed data visualization tools using Statistical Modeling, used by 50000+ analysts Implemented NLP solution using Statistical Modeling, processing 5000+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.96,
+          "partial": 0.04,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.4,
+          "partial": 0.6,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.76,
+          "partial": 0.11,
+          "none": 0.13
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Statistical Modeling, used by 50000+ analysts Data Scientist 2012-02 \u2013 2013-11 Principal Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.64,
+          "partial": 0.36,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.06,
+          "none": 0.27
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.15,
+          "partial": 0.48,
+          "none": 0.37
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.15,
+          "none": 0.82
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.34,
+          "partial": 0.26,
+          "none": 0.4
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.01,
+          "partial": 0.0,
+          "none": 0.99
+        }
+      }
+    ]
+  },
+  "cv-00414": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00414",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Implemented NLP solution using ChromaDB, processing 50000+ text documents daily",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.32,
+          "partial": 0.68,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases Proficiency in Scala, R, Python",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.96,
+          "partial": 0.04,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "Proficiency in Scala, R, Python Scala R Python MATLAB SQL LlamaIndex Scikit-learn JAX Airflow Weights & Biases",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Data Science / ML / AI Developed data visualization tools using Pandas, used by 100+ analysts Designed data warehousing solution using A/B Testing, enabling analytics on 50000+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.42,
+          "partial": 0.17,
+          "none": 0.41
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.67,
+          "partial": 0.23,
+          "none": 0.1
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.31,
+          "partial": 0.66,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.78,
+          "partial": 0.08,
+          "none": 0.14
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Pandas, used by 100+ analysts Data Science / ML / AI Designed data warehousing solution using A/B Testing, enabling analytics on 50000+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.83,
+          "partial": 0.17,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.8,
+          "partial": 0.02,
+          "none": 0.18
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using GCP Vertex AI, used by 1000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.97,
+          "partial": 0.03,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.39,
+          "partial": 0.22,
+          "none": 0.39
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.27,
+          "partial": 0.3,
+          "none": 0.43
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "Technical leader in data science / ml / ai with extensive experience designing microservices, in Artificial Intelligence 2020 Proficiency in Scala, R, Python",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00433": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00433",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.43,
+          "none": 0.46
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Built real-time analytics dashboard using SQL, used by 100+ stakeholders",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.24,
+          "partial": 0.76,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Designed and implemented Data Quality Monitor with MATLAB, integrating with Python for seamless data flow Deep expertise in Python, Python, MATLAB, R, LangChain, PyTorch, Weights & Biases, Dagster, Redshift, ChromaDB, Lambda",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "MATLAB, R and proven ability to influence C-level decisions Python, MATLAB, R, LangChain, PyTorch, Weights & Biases, Dagster, Redshift, ChromaDB, Lambda DataPipe CLI (Python, MATLAB, R)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.46,
+          "partial": 0.54,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Data Analyst 2015-01 \u2014 2017-12 Designed and implemented Data Quality Monitor with MATLAB, integrating with Python for seamless data flow Distinguished technologist with 13 years shaping data science / ml / ai practice",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "Labs, Databricks, Bedrock, GCP Vertex AI, Statistical Modeling, Deep Learning, Prompt Engineering,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.25,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.23,
+          "none": 0.03
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.74,
+          "partial": 0.07,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Data Analyst 2015-01 \u2014 2017-12 Designed and implemented Data Quality Monitor with MATLAB, integrating with Python for seamless data flow Distinguished technologist with 13 years shaping data science / ml / ai practice",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.19,
+          "partial": 0.64,
+          "none": 0.17
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.02,
+          "none": 0.84
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using SQL, used by 100+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.95,
+          "partial": 0.05,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "Data Analyst 2015-01 \u2014 2017-12 Designed and implemented Data Quality Monitor with MATLAB, integrating with Python for seamless data flow Distinguished technologist with 13 years shaping data science / ml / ai practice",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.43,
+          "partial": 0.3,
+          "none": 0.27
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.35,
+          "partial": 0.25,
+          "none": 0.4
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "Deep expertise in Python, in Electrical Engineering 2011 https://linkedin.com/in/ronald-davis",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00455": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00455",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Built end-to-end ML pipeline using Feature Engineering, processing 100000+ samples daily Implemented NLP solution using Bedrock, processing 100+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.9,
+          "partial": 0.1,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Julia",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.98,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Julia Built ML model serving infrastructure using Python, handling 10000+ predictions/day Created recommendation system using Python, increasing user engagement by 35%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Data Analyst 2022-07 \u2013 Present in Data Science \u2014 Technion, 2014 Lead Data Science / ML / AI",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.98,
+          "partial": 0.01,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.56,
+          "partial": 0.23,
+          "none": 0.21
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.4,
+          "partial": 0.6,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.73,
+          "partial": 0.08,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using MLflow, used by 500+ analysts Data Analyst 2022-07 \u2013 Present in Data Science \u2014 Technion, 2014",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.65,
+          "partial": 0.35,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.77,
+          "partial": 0.04,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.11,
+          "partial": 0.46,
+          "none": 0.43
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.2,
+          "none": 0.77
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.26,
+          "partial": 0.18,
+          "none": 0.56
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "Engineering leader with deep technical background in Python, SQL, and Julia in Data Science \u2014 Technion, 2014 https://linkedin.com/in/anthony-johnson",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  },
+  "cv-00469": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00469",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Implemented NLP solution using GCP Vertex AI, processing 1000+ text documents daily Built end-to-end ML pipeline using R, processing 5000+ samples daily Built end-to-end ML pipeline using SQL, processing 500+ samples daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.88,
+          "partial": 0.12,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Senior technical leader specializing in data science / ml / ai with expertise in Python, SQL, Julia Built end-to-end ML pipeline using SQL, processing 500+ samples daily Python, SQL, Julia, R, XGBoost, Claude API, JAX, Keras, PyTorch, Spark, Polars, Weights & Biases,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.73,
+          "partial": 0.27,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Created Anomaly Detection System leveraging Python for core functionality and R for optimization Senior technical leader specializing in data science / ml / ai with expertise in Python, SQL, Julia Python, SQL, Julia, R, XGBoost, Claude API, JAX, Keras, PyTorch, Spark, Polars, Weights & Biases,",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.56,
+          "partial": 0.44,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "Created Anomaly Detection System leveraging Python for core functionality and R for optimization Built end-to-end ML pipeline using R, processing 5000+ samples daily Built ML model serving infrastructure using R, handling 500+ predictions/day",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "in Data Science 2018 Data Scientist 2017-02 \u2014 2020-08 Google Cloud Professional Data Engineer \u2014 Google (2024)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.5700000000000001,
+          "partial": 0.21,
+          "none": 0.22
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.85,
+          "partial": 0.15,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.59,
+          "partial": 0.11,
+          "none": 0.3
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using Weights & Biases, used by 500+ analysts in Data Science 2018 Data Scientist 2017-02 \u2014 2020-08",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.87,
+          "partial": 0.13,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.81,
+          "partial": 0.04,
+          "none": 0.15
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "in technical vision, team development, and stakeholder management",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.18,
+          "partial": 0.42,
+          "none": 0.4
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.07,
+          "partial": 0.41,
+          "none": 0.52
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "in technical vision, team development, and stakeholder management",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.23,
+          "partial": 0.49,
+          "none": 0.28
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.02,
+          "none": 0.95
+        }
+      }
+    ]
+  },
+  "cv-00479": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00479",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.44,
+          "none": 0.51
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Seasoned software professional with deep expertise in Python, SQL, and R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.03,
+          "partial": 0.97,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Seasoned software professional with deep expertise in Python, SQL, and R",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.65,
+          "partial": 0.35,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "Seasoned software professional with deep expertise in Python, SQL, and R",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 1.0,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Senior Data Science / ML / AI Developed data visualization tools using MATLAB, used by 1000+ analysts Designed data warehousing solution using Keras, enabling analytics on 100+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.46,
+          "partial": 0.18,
+          "none": 0.36
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.33,
+          "partial": 0.38,
+          "none": 0.29
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "Vector Databases",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.21,
+          "partial": 0.71,
+          "none": 0.08
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.59,
+          "partial": 0.08,
+          "none": 0.33
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Developed data visualization tools using MATLAB, used by 1000+ analysts Senior Data Science / ML / AI Designed data warehousing solution using Keras, enabling analytics on 100+ records",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.62,
+          "partial": 0.38,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.7,
+          "partial": 0.04,
+          "none": 0.26
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.12,
+          "partial": 0.56,
+          "none": 0.32
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.06,
+          "partial": 0.2,
+          "none": 0.74
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.05,
+          "partial": 0.11,
+          "none": 0.84
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.02,
+          "partial": 0.01,
+          "none": 0.97
+        }
+      }
+    ]
+  },
+  "cv-00481": {
+    "job_profile_id": "data-analyst",
+    "candidate_id": "cv-00481",
+    "evaluations": [
+      {
+        "requirement": "Natural Language Processing (NLP)",
+        "evidence": "Developed A/B Testing Framework using Julia, reducing processing time by 60% through algorithmic Implemented NLP solution using Computer Vision, processing 5000+ text documents daily",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.68,
+          "partial": 0.32,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Social Listening",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.0,
+          "partial": 0.0,
+          "none": 1.0
+        }
+      },
+      {
+        "requirement": "SQL",
+        "evidence": "Created MLOps Platform leveraging Go for core functionality and SQL for optimization MATLAB, Go, Python, Julia, SQL, TensorFlow, Claude API, Dask, Neptune, Airflow, Kubeflow, NumPy, API Gateway (MATLAB, SQL, Julia)",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.31,
+          "partial": 0.6900000000000001,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Python",
+        "evidence": "Python with focus on performance optimization and code quality MATLAB, Go, Python, Julia, SQL, TensorFlow, Claude API, Dask, Neptune, Airflow, Kubeflow, NumPy, SmartCache (Julia, MATLAB, Python)",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.51,
+          "partial": 0.49,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "R",
+        "evidence": "Developed ML models using R, improving prediction accuracy by 63%",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.85,
+          "partial": 0.15,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Pipelines",
+        "evidence": "Mid-level data science / ml / ai specialist with 4 years building production systems in Data Science 2019",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.83,
+          "partial": 0.09,
+          "none": 0.08
+        }
+      },
+      {
+        "requirement": "Statistical Analysis",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.71,
+          "partial": 0.24,
+          "none": 0.05
+        }
+      },
+      {
+        "requirement": "Relational Databases",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.5,
+          "partial": 0.49,
+          "none": 0.01
+        }
+      },
+      {
+        "requirement": "Object-Oriented Programming",
+        "evidence": "",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.72,
+          "partial": 0.09,
+          "none": 0.19
+        }
+      },
+      {
+        "requirement": "Data Visualization",
+        "evidence": "Mid-level data science / ml / ai specialist with 4 years building production systems in Data Science 2019",
+        "evidence_strength": "partial",
+        "probabilities": {
+          "strong": 0.23,
+          "partial": 0.57,
+          "none": 0.2
+        }
+      },
+      {
+        "requirement": "Tableau",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.14,
+          "partial": 0.02,
+          "none": 0.84
+        }
+      },
+      {
+        "requirement": "Dashboard Development",
+        "evidence": "Built real-time analytics dashboard using LightGBM, used by 1000+ stakeholders Built real-time analytics dashboard using LightGBM, used by 100+ stakeholders Built real-time analytics dashboard using Dagster, used by 100000+ stakeholders",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 0.99,
+          "partial": 0.01,
+          "none": 0.0
+        }
+      },
+      {
+        "requirement": "Data Storytelling",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.3,
+          "partial": 0.27,
+          "none": 0.43
+        }
+      },
+      {
+        "requirement": "Project Management",
+        "evidence": "",
+        "evidence_strength": "none",
+        "probabilities": {
+          "strong": 0.31,
+          "partial": 0.26,
+          "none": 0.43
+        }
+      },
+      {
+        "requirement": "Bachelor's Degree in Technical or Research-Oriented Field",
+        "evidence": "in Mathematics 2021 Skilled in MATLAB, Go, in Data Science 2019",
+        "evidence_strength": "strong",
+        "probabilities": {
+          "strong": 1.0,
+          "partial": 0.0,
+          "none": 0.0
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+Data Analyst
+
+Meta
+
+The Social Measurement team is a growing team with high-visibility within the Communications organization that is being tasked with measuring the efficacy and impact of our social-first Communications and Marketing efforts. You'll play a unique role in shaping the way we approach reporting, define success, and leverage our own data to support the Communications team. In this role, you will employ data mining techniques to evaluate the success and efficacy of our social-first Communications and Marketing strategies. This role is also focused on social listening, where you'll be responsible for analyzing social conversation around specific topic areas. The ideal candidate will possess not only the technical proficiency to devise analytical solutions, but also have experience with data-storytelling.
+
+Data Analyst Responsibilities:
+
+
+Employ Natural language processing (NLP) and social listening analytical techniques to understand how people discuss specific topics.
+Create data pipelines and other analytical solutions that help us track and record metrics that are relevant to campaign measurement and audience engagement.
+Query large data sets using SQL and create data pipelines in other programming languages such as Python or R.
+Conduct statistical analyses to identify trends and patterns in campaign performance.
+Develop and maintain dashboards to communicate findings to stakeholders effectively and in a scalable manner.
+Develop analytical best practices and standardize reporting templates for use within the team.
+Create data visualizations to illustrate social listening trends and topic analyses (via Tableau or otherwise).
+
+
+Minimum Qualifications:
+
+
+Experience in managing multiple projects and meeting deadlines in a fast-paced environment.
+Bachelor's Degree in a technical or research-oriented field such as engineering, data science, social science, or related fields (with focus on data - e.g. data journalism).
+4+ years of work experience in quantitative research, statistics, or data analysis.
+2+ years of experience with SQL for data extraction and manipulation.
+Experience with statistical analysis, relational databases, and/or object-oriented programing languages.
+Experience with communicating and presenting findings to non-technical stakeholders.
+2+ years experience with NLP or other social listening and topic tagging techniques.
+
+
+Preferred Qualifications:
+
+
+Advanced technical degree or graduate degree in statistics, marketing, or related fields.
+Experience in marketing analytics or social media measurement.
+
+
+About Meta:
+
+Meta builds technologies that help people connect, find communities, and grow businesses. When Facebook launched in 2004, it changed the way people connect. Apps like Messenger, Instagram and WhatsApp further empowered billions around the world. Now, Meta is moving beyond 2D screens toward immersive experiences like augmented and virtual reality to help build the next evolution in social technology. People who choose to build their careers by building with us at Meta help shape a future that will take us beyond what digital connection makes possible today—beyond the constraints of screens, the limits of distance, and even the rules of physics.
+
+Meta is proud to be an Equal Employment Opportunity and Affirmative Action employer. We do not discriminate based upon race, religion, color, national origin, sex (including pregnancy, childbirth, or related medical conditions), sexual orientation, gender, gender identity, gender expression, transgender status, sexual stereotypes, age, status as a protected veteran, status as an individual with a disability, or other applicable legally protected characteristics. We also consider qualified applicants with criminal histories, consistent with applicable federal, state and local law. Meta participates in the E-Verify program in certain locations, as required by law. Please note that Meta may leverage artificial intelligence and machine learning technologies in connection with applications for employment.
+
+Meta is committed to providing reasonable accommodations for candidates with disabilities in our recruiting process. If you need any assistance or accommodations due to a disability, please let us know at accommodations-ext@fb.com.
+
+$124,000/year to $176,000/year + bonus + equity + benefits
+
+Individual compensation is determined by skills, qualifications, experience, and location. Compensation details listed in this posting reflect the base hourly rate, monthly rate, or annual salary only, and do not include bonus, equity or sales incentives, if applicable. In addition to base compensation, Meta offers benefits. Learn more about benefits at Meta.
+Show more Show less

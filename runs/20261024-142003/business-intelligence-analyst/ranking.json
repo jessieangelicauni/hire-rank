@@ -1,0 +1,1293 @@
+{
+  "job_profile_id": "business-intelligence-analyst",
+  "rankings": [
+    {
+      "rank": 1,
+      "candidate_id": "cv-00310",
+      "utility": 0.485,
+      "criterion_score": 0.469375,
+      "criterion_breakdown": [
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Modeling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.26,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.24,
+            "none": 0.62
+          }
+        },
+        {
+          "requirement": "ETL/ELT",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.48,
+          "probabilities": {
+            "strong": 0.27,
+            "partial": 0.42,
+            "none": 0.31
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9450000000000001,
+          "probabilities": {
+            "strong": 0.89,
+            "partial": 0.11,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Scala",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Sigma",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Snowflake",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Lake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.27,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.2,
+            "none": 0.63
+          }
+        },
+        {
+          "requirement": "Data Quality Frameworks",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.035,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.05,
+            "none": 0.94
+          }
+        },
+        {
+          "requirement": "Orchestration Tools",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9400000000000001,
+          "probabilities": {
+            "strong": 0.89,
+            "partial": 0.1,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "KPI Definition and Measurement",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.355,
+          "probabilities": {
+            "strong": 0.07,
+            "partial": 0.57,
+            "none": 0.36
+          }
+        },
+        {
+          "requirement": "Data Warehousing Platforms",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.665,
+          "probabilities": {
+            "strong": 0.33,
+            "partial": 0.67,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization Tools",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5599999999999999,
+          "probabilities": {
+            "strong": 0.21,
+            "partial": 0.7,
+            "none": 0.09
+          }
+        },
+        {
+          "requirement": "Real-Time Data Processing",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.94,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Machine Learning Concepts",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "candidate_id": "cv-00374",
+      "utility": 0.47976583121766814,
+      "criterion_score": 0.479375,
+      "criterion_breakdown": [
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Modeling",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.37,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.46,
+            "none": 0.4
+          }
+        },
+        {
+          "requirement": "ETL/ELT",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.44499999999999995,
+          "probabilities": {
+            "strong": 0.21,
+            "partial": 0.47,
+            "none": 0.32
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8049999999999999,
+          "probabilities": {
+            "strong": 0.61,
+            "partial": 0.39,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Scala",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Sigma",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Snowflake",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Lake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.225,
+          "probabilities": {
+            "strong": 0.13,
+            "partial": 0.19,
+            "none": 0.68
+          }
+        },
+        {
+          "requirement": "Data Quality Frameworks",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.79,
+          "probabilities": {
+            "strong": 0.63,
+            "partial": 0.32,
+            "none": 0.05
+          }
+        },
+        {
+          "requirement": "Orchestration Tools",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.875,
+          "probabilities": {
+            "strong": 0.76,
+            "partial": 0.23,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "KPI Definition and Measurement",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.255,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.39,
+            "none": 0.55
+          }
+        },
+        {
+          "requirement": "Data Warehousing Platforms",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.57,
+          "probabilities": {
+            "strong": 0.15,
+            "partial": 0.84,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Visualization Tools",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.33499999999999996,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.31,
+            "none": 0.51
+          }
+        },
+        {
+          "requirement": "Real-Time Data Processing",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.03,
+            "partial": 0.94,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Machine Learning Concepts",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "candidate_id": "cv-00378",
+      "utility": 0.464291370262228,
+      "criterion_score": 0.46437500000000004,
+      "criterion_breakdown": [
+        {
+          "requirement": "SQL",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.175,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.35,
+            "none": 0.65
+          }
+        },
+        {
+          "requirement": "Data Modeling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.29000000000000004,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.38,
+            "none": 0.52
+          }
+        },
+        {
+          "requirement": "ETL/ELT",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.755,
+          "probabilities": {
+            "strong": 0.6,
+            "partial": 0.31,
+            "none": 0.09
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.78,
+          "probabilities": {
+            "strong": 0.56,
+            "partial": 0.44,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Scala",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Sigma",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Snowflake",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.595,
+          "probabilities": {
+            "strong": 0.19,
+            "partial": 0.81,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Lake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.28500000000000003,
+          "probabilities": {
+            "strong": 0.16,
+            "partial": 0.25,
+            "none": 0.59
+          }
+        },
+        {
+          "requirement": "Data Quality Frameworks",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.04,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.06,
+            "none": 0.93
+          }
+        },
+        {
+          "requirement": "Orchestration Tools",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "KPI Definition and Measurement",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.53,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.7,
+            "none": 0.12
+          }
+        },
+        {
+          "requirement": "Data Warehousing Platforms",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.9500000000000001,
+          "probabilities": {
+            "strong": 0.9,
+            "partial": 0.1,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization Tools",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.515,
+          "probabilities": {
+            "strong": 0.22,
+            "partial": 0.59,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Real-Time Data Processing",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.515,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.91,
+            "none": 0.03
+          }
+        },
+        {
+          "requirement": "Machine Learning Concepts",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "candidate_id": "cv-00270",
+      "utility": 0.42814488512592225,
+      "criterion_score": 0.436875,
+      "criterion_breakdown": [
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.525,
+          "probabilities": {
+            "strong": 0.05,
+            "partial": 0.95,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Modeling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.255,
+          "probabilities": {
+            "strong": 0.14,
+            "partial": 0.23,
+            "none": 0.63
+          }
+        },
+        {
+          "requirement": "ETL/ELT",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.61,
+          "probabilities": {
+            "strong": 0.41,
+            "partial": 0.4,
+            "none": 0.19
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Scala",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Sigma",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Snowflake",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.755,
+          "probabilities": {
+            "strong": 0.51,
+            "partial": 0.49,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Lake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.24000000000000002,
+          "probabilities": {
+            "strong": 0.1,
+            "partial": 0.28,
+            "none": 0.62
+          }
+        },
+        {
+          "requirement": "Data Quality Frameworks",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.12000000000000001,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.2,
+            "none": 0.78
+          }
+        },
+        {
+          "requirement": "Orchestration Tools",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.985,
+          "probabilities": {
+            "strong": 0.97,
+            "partial": 0.03,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "KPI Definition and Measurement",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.41500000000000004,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.67,
+            "none": 0.25
+          }
+        },
+        {
+          "requirement": "Data Warehousing Platforms",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.935,
+          "probabilities": {
+            "strong": 0.87,
+            "partial": 0.13,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization Tools",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Real-Time Data Processing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.155,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.29,
+            "none": 0.7
+          }
+        },
+        {
+          "requirement": "Machine Learning Concepts",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "candidate_id": "cv-00414",
+      "utility": 0.4209375,
+      "criterion_score": 0.4365625,
+      "criterion_breakdown": [
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.495,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.99,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Modeling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.135,
+          "probabilities": {
+            "strong": 0.08,
+            "partial": 0.11,
+            "none": 0.81
+          }
+        },
+        {
+          "requirement": "ETL/ELT",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.18,
+          "probabilities": {
+            "strong": 0.02,
+            "partial": 0.32,
+            "none": 0.66
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.99,
+          "probabilities": {
+            "strong": 0.98,
+            "partial": 0.02,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Scala",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Sigma",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Snowflake",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Lake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.295,
+          "probabilities": {
+            "strong": 0.15,
+            "partial": 0.29,
+            "none": 0.56
+          }
+        },
+        {
+          "requirement": "Data Quality Frameworks",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Orchestration Tools",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.8350000000000001,
+          "probabilities": {
+            "strong": 0.68,
+            "partial": 0.31,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "KPI Definition and Measurement",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.425,
+          "probabilities": {
+            "strong": 0.11,
+            "partial": 0.63,
+            "none": 0.26
+          }
+        },
+        {
+          "requirement": "Data Warehousing Platforms",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.69,
+          "probabilities": {
+            "strong": 0.38,
+            "partial": 0.62,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization Tools",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.485,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.61,
+            "none": 0.21
+          }
+        },
+        {
+          "requirement": "Real-Time Data Processing",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.455,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.89,
+            "none": 0.1
+          }
+        },
+        {
+          "requirement": "Machine Learning Concepts",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "candidate_id": "cv-00213",
+      "utility": 0.4175,
+      "criterion_score": 0.401875,
+      "criterion_breakdown": [
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.495,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.99,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Modeling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.34,
+          "probabilities": {
+            "strong": 0.17,
+            "partial": 0.34,
+            "none": 0.49
+          }
+        },
+        {
+          "requirement": "ETL/ELT",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.165,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.31,
+            "none": 0.68
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.825,
+          "probabilities": {
+            "strong": 0.65,
+            "partial": 0.35,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Scala",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.5,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 1.0,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Sigma",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Snowflake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Data Lake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.28,
+          "probabilities": {
+            "strong": 0.21,
+            "partial": 0.14,
+            "none": 0.65
+          }
+        },
+        {
+          "requirement": "Data Quality Frameworks",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Orchestration Tools",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.86,
+          "probabilities": {
+            "strong": 0.73,
+            "partial": 0.26,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "KPI Definition and Measurement",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.49,
+          "probabilities": {
+            "strong": 0.2,
+            "partial": 0.58,
+            "none": 0.22
+          }
+        },
+        {
+          "requirement": "Data Warehousing Platforms",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.995,
+          "probabilities": {
+            "strong": 0.99,
+            "partial": 0.01,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Visualization Tools",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.475,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.83,
+            "none": 0.11
+          }
+        },
+        {
+          "requirement": "Real-Time Data Processing",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Machine Learning Concepts",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "candidate_id": "cv-00214",
+      "utility": 0.3890625,
+      "criterion_score": 0.4046875,
+      "criterion_breakdown": [
+        {
+          "requirement": "SQL",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.495,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.99,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Modeling",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.35,
+          "probabilities": {
+            "strong": 0.18,
+            "partial": 0.34,
+            "none": 0.48
+          }
+        },
+        {
+          "requirement": "ETL/ELT",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 0.685,
+          "probabilities": {
+            "strong": 0.49,
+            "partial": 0.39,
+            "none": 0.12
+          }
+        },
+        {
+          "requirement": "Python",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.64,
+          "probabilities": {
+            "strong": 0.28,
+            "partial": 0.72,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Scala",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Tableau",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Sigma",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.0,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.0,
+            "none": 1.0
+          }
+        },
+        {
+          "requirement": "Snowflake",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.505,
+          "probabilities": {
+            "strong": 0.01,
+            "partial": 0.99,
+            "none": 0.0
+          }
+        },
+        {
+          "requirement": "Data Lake",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.29000000000000004,
+          "probabilities": {
+            "strong": 0.2,
+            "partial": 0.18,
+            "none": 0.62
+          }
+        },
+        {
+          "requirement": "Data Quality Frameworks",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.005,
+          "probabilities": {
+            "strong": 0.0,
+            "partial": 0.01,
+            "none": 0.99
+          }
+        },
+        {
+          "requirement": "Orchestration Tools",
+          "evidence_strength": "none",
+          "weight": 0.0,
+          "expected_strength": 0.15,
+          "probabilities": {
+            "strong": 0.06,
+            "partial": 0.18,
+            "none": 0.76
+          }
+        },
+        {
+          "requirement": "KPI Definition and Measurement",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.43500000000000005,
+          "probabilities": {
+            "strong": 0.16,
+            "partial": 0.55,
+            "none": 0.29
+          }
+        },
+        {
+          "requirement": "Data Warehousing Platforms",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.69,
+          "probabilities": {
+            "strong": 0.39,
+            "partial": 0.6,
+            "none": 0.01
+          }
+        },
+        {
+          "requirement": "Data Visualization Tools",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.585,
+          "probabilities": {
+            "strong": 0.32,
+            "partial": 0.53,
+            "none": 0.15
+          }
+        },
+        {
+          "requirement": "Real-Time Data Processing",
+          "evidence_strength": "partial",
+          "weight": 0.5,
+          "expected_strength": 0.645,
+          "probabilities": {
+            "strong": 0.31,
+            "partial": 0.67,
+            "none": 0.02
+          }
+        },
+        {
+          "requirement": "Machine Learning Concepts",
+          "evidence_strength": "strong",
+          "weight": 1.0,
+          "expected_strength": 1.0,
+          "probabilities": {
+            "strong": 1.0,
+            "partial": 0.0,
+            "none": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}
